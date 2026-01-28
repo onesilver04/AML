@@ -1,0 +1,25 @@
+checking_status, 기존 당좌계좌 상태, 1: <0, 2: 0<= <200, 3: >=200/salary assignments for at least 1 year, 4: no checking account
+duration_months, 대출 기간
+credit_history, 신용 이력, 0: no credits taken/all credits paid back duly, 1: all credits at this bank paid back duly, 2: existing credits paid back duly till now, 3: delay in paying off in the past, 4: critical account/other credits existing (not at this bank)
+purpose, 대출 목적, 0: car(neww), 1: car(used), 2: furniture/equipment, 3: radio/television, domestic appliances, 5: repairs, 6: education, 7:(vacation - does not exist?), 8: retraining, 9: business, 10: others
+credit_amount, 대출 금액
+savings_status, 저축 및 채권, 1: <100, 2: 100<= <500, 3: 500<= <1000, 4: >=1000, 5: unknown/ no savings account
+employment_since, 현 직장 근속, 1: uneployed, 2: <1year, 3: 1<= <4, 4: 4<= <7, 5: >=7
+installment_rate, 가처분소득 대비 상환 비율
+personal_status_sex, 혼인 및 성별 상태, 1: male(divorced/separated), 2: female(divorced/separated/married), 3: male(single), 4: male(married/widowed), 5: female(single)
+other_debtors, 보증인 및 공동차입자, 1: none, 2: co-applicant, 3: guaranotr
+residence_since, 현 거주기간
+property, 재산 상태, 1: real estate, 2: building society savings agreement/life insurance, 3:car or other, not in attribute 6, 4:unknown/no property
+age, 나이
+other_installment_plans, 기타 상환 계획, 1: bank, 2: stores, 3: none
+housing, 주거 형태, 1: rent, 2: own, 3: for free
+existing_credits, 이 은행 기존 대출 건수
+job, 직업, 1: unemployed/ unskilled  - non-resident, 2: unskilled - resident, 3: skilled employee / official, 4: management/self-employed/highly qualified employee/officer
+num_dependents, 부양가족 수
+telephone, 전화보유 및 등록, 1: none, 2: yes, registered under the customers name
+foreign_worker, 외국인 근로자 여부, 1: yes, 2: no
+has_checking_account
+has_savings_account
+is_employed
+is_single
+credit_risk, 신용 위험, 1: Good, 2: Bad
