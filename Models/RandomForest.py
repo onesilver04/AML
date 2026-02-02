@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import joblib
 
 from sklearn.model_selection import train_test_split
 from sklearn.utils import resample
@@ -119,3 +120,7 @@ plt.ylabel("True Positive Rate (Sensitivity)")
 plt.title("ROC Curve (RandomForest, Test: original distribution)")
 plt.legend()
 plt.show()
+
+joblib.dump(rf, "rf_model.joblib")
+X_test.to_csv("X_test.csv", index=False)
+y_test.to_csv("y_test.csv", index=False)

@@ -1,0 +1,62 @@
+feature,mean_abs_shap
+checking_status_no checking,0.06188400269077244
+checking_status_<0,0.03977027981427628
+duration,0.036810292417246974
+savings_status_<100,0.023205004840866465
+credit_history_critical/other existing credit,0.021993498486511987
+credit_amount,0.021753846949291986
+employment_<1,0.01363880321008316
+installment_commitment,0.01356596393815955
+age,0.013184105143156506
+other_payment_plans_none,0.012415676795440056
+property_magnitude_no known property,0.01234559544516337
+other_payment_plans_bank,0.012182229423139537
+housing_own,0.011184093894975801
+property_magnitude_real estate,0.011095994655668781
+savings_status_no known savings,0.010591495185024618
+checking_status_0<=X<200,0.010286396028079507
+personal_status_male single,0.009443885846522053
+purpose_new car,0.009156540748994905
+purpose_radio/tv,0.007199974983425642
+credit_history_no credits/all paid,0.007045189551885722
+personal_status_female div/dep/mar,0.006403005840425993
+housing_rent,0.006112849997783577
+purpose_education,0.0058108935440308465
+purpose_used car,0.005132376381791167
+employment_4<=X<7,0.005123133524554247
+credit_history_all paid,0.004727787529176461
+own_telephone_none,0.0046896938857655425
+own_telephone_yes,0.004319184242152767
+job_skilled,0.0040065995465829235
+residence_since,0.003922680075884649
+existing_credits,0.003499283878214509
+employment_unemployed,0.0033801006337743807
+personal_status_male div/sep,0.0033056438548972875
+job_high qualif/self emp/mgmt,0.003223422376900745
+num_dependents,0.0032029535220365357
+purpose_furniture/equipment,0.0030425081183143095
+credit_history_existing paid,0.0029649416537171607
+property_magnitude_car,0.002902819121306521
+savings_status_100<=X<500,0.0027081409589893076
+other_parties_co applicant,0.002597351862050742
+credit_history_delayed previously,0.002531368650228577
+employment_1<=X<4,0.00239778829822827
+job_unskilled resident,0.002316532739829791
+other_parties_guarantor,0.0022644299001882266
+property_magnitude_life insurance,0.0020818458874995007
+housing_for free,0.0020131918004193815
+savings_status_>=1000,0.0019963223735958483
+employment_>=7,0.0019903380848153036
+other_parties_none,0.001851706087716472
+checking_status_>=200,0.00161612799527545
+purpose_business,0.0015853080349947702
+foreign_worker_no,0.001485158463189975
+purpose_repairs,0.0014702669584956737
+foreign_worker_yes,0.0012875863982381103
+other_payment_plans_stores,0.0011140325862602424
+personal_status_male mar/wid,0.0009379503308223593
+savings_status_500<=X<1000,0.0008685743952137471
+job_unemp/unskilled non res,0.0007120787802005037
+purpose_domestic appliance,0.0003629368524716253
+purpose_retraining,0.00014357377969941254
+purpose_other,0.00011486193967673526
