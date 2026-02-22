@@ -1,176 +1,119 @@
-import os
-import joblib
-import numpy as np
 import pandas as pd
+import numpy as np
 
-from sklearn.compose import ColumnTransformer
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix
-from sklearn.model_selection import RandomizedSearchCV, StratifiedKFold, cross_val_predict, train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.pipeline import Pipeline
+from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix, roc_curve
 
+import matplotlib.pyplot as plt
+
+
+# =========================
+# 0) 데이터 로드
+# =========================
 DATA_PATH = "german21_ohe.csv"
-RANDOM_STATE = 42
-TEST_SIZE = 0.2
-CV_SPLITS = 5
+df = pd.read_csv(DATA_PATH)
 
-N_ITER = 300          # 더 올릴수록 탐색 잘 됨 (시간 되면 500도 OK)
-SEARCH_N_JOBS = 1
-CVPRED_N_JOBS = 1
+# (선택) 외국인 컬럼 제거: 네가 이미 제거했다고 했지만, 파일에 남아있으면 제거
+df = df.drop(columns=["foreign_worker_no", "foreign_worker_yes"], errors="ignore")
 
-DROP_GROUPS = ["foreign", "existing", "num", "own", "personal", "residence", "other", "property"]
-DROP_INSTALLMENT_COMMITMENT = True
+# =========================
+# 타깃 설정 (bad=1, good=0) - 이 데이터에 맞춤
+# =========================
+if "class" not in df.columns:
+    raise ValueError("타깃 컬럼 'class'를 찾지 못했습니다.")
 
+# german21_ohe.csv의 class는 True/False (True가 700개로 good에 해당)
+# bad=1, good=0 으로 만들기
+if df["class"].dtype == bool:
+    y = (~df["class"]).astype(int)  # True(good)->0, False(bad)->1
+else:
+    # 혹시 숫자(1/2 or 0/1)로 되어 있는 경우까지 안전하게 처리
+    vals = set(pd.Series(df["class"]).dropna().unique())
+    if vals.issubset({1, 2}):
+        # 1=good, 2=bad
+        y = (df["class"] == 2).astype(int)
+    elif vals.issubset({0, 1}):
+        # 0=good, 1=bad 라고 가정
+        y = df["class"].astype(int)
+    else:
+        raise ValueError(f"예상치 못한 class 값들: {vals}")
 
-def parse_target_class(df: pd.DataFrame, target_col: str = "class") -> pd.Series:
-    raw_y = df[target_col]
-    if pd.api.types.is_bool_dtype(raw_y):
-        return raw_y.astype(int)
-    if pd.api.types.is_numeric_dtype(raw_y):
-        uniq = pd.Series(raw_y.dropna().unique()).sort_values().tolist()
-        if set(uniq).issubset({0, 1}):
-            return raw_y.astype(int)
-        return (raw_y == 2).astype(int)
-    y = (
-        raw_y.astype(str).str.strip().str.lower().map({"good": 0, "bad": 1, "false": 0, "true": 1})
-    )
-    if y.isna().any():
-        raise ValueError("class 컬럼에 예상 밖 값이 있습니다.")
-    return y.astype(int)
+X = df.drop(columns=["class"], errors="ignore")
 
-
-def coerce_bool_features_to_int(X: pd.DataFrame) -> pd.DataFrame:
-    bool_cols = X.select_dtypes(include=["bool"]).columns.tolist()
-    if bool_cols:
-        X = X.copy()
-        X[bool_cols] = X[bool_cols].astype(np.int8)
-    return X
+print("전체 분포(원본):")
+print(y.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
 
 
-def drop_prefix_groups(X: pd.DataFrame, groups: list[str]) -> pd.DataFrame:
-    X_new = X.copy()
-    for g in groups:
-        cols = [c for c in X_new.columns if c == g or c.startswith(g + "_")]
-        X_new = X_new.drop(columns=cols, errors="ignore")
-    return X_new
+# =========================
+# 1) 80/20 split
+# =========================
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y,
+    test_size=0.2,
+    random_state=42,
+    stratify=y
+)
+
+print("\nTrain 분포:")
+print(y_train.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
+print("\nTest 분포(현실 분포 유지):")
+print(y_test.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
 
 
-def tuned_threshold_accuracy(estimator, X_val, y_val) -> float:
-    """
-    RandomizedSearchCV scoring용 callable.
-    fold의 validation에서 threshold를 스캔해 accuracy 최대값을 반환.
-    """
-    proba = estimator.predict_proba(X_val)[:, 1]
-    thresholds = np.linspace(0.05, 0.95, 181)
-    best = 0.0
-    for t in thresholds:
-        pred = (proba >= t).astype(int)
-        acc = accuracy_score(y_val, pred)
-        if acc > best:
-            best = acc
-    return float(best)
+# =========================
+# 2) RandomForest 학습
+# =========================
+rf = RandomForestClassifier(
+    n_estimators=800,
+    random_state=42,
+    n_jobs=-1,
+    max_depth=None,
+    min_samples_leaf=1,
+)
+
+rf.fit(X_train, y_train)
 
 
-def main():
-    df = pd.read_csv(DATA_PATH)
-    y = parse_target_class(df, "class")
-    X = df.drop(columns=["class"], errors="ignore")
-    X = coerce_bool_features_to_int(X)
+# =========================
+# 3) 예측 & 메트릭
+# =========================
+proba = rf.predict_proba(X_test)
 
-    if DROP_INSTALLMENT_COMMITMENT and "installment_commitment" in X.columns:
-        X = X.drop(columns=["installment_commitment"])
+# 안전장치: 혹시라도 한 클래스만 학습되면(이론상 stratify면 거의 안 생김) 방어
+if proba.shape[1] == 2:
+    y_proba = proba[:, 1]  # bad(1) 확률
+else:
+    only_class = rf.classes_[0]
+    y_proba = np.zeros(len(X_test)) if only_class == 0 else np.ones(len(X_test))
 
-    if DROP_GROUPS:
-        X = drop_prefix_groups(X, DROP_GROUPS)
+y_pred = (y_proba >= 0.5).astype(int)  # threshold=0.5
 
-    print("전체 분포(원본):")
-    print(y.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
-    print("X shape:", X.shape)
+acc = accuracy_score(y_test, y_pred)
+auc = roc_auc_score(y_test, y_proba)
 
-    # ✅ 여기 split은 seed 고정이라 매번 동일합니다.
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=TEST_SIZE, random_state=RANDOM_STATE, stratify=y
-    )
+tn, fp, fn, tp = confusion_matrix(y_test, y_pred).ravel()
+sensitivity = tp / (tp + fn) if (tp + fn) > 0 else np.nan   # TPR
+specificity = tn / (tn + fp) if (tn + fp) > 0 else np.nan   # TNR
 
-    preprocess = ColumnTransformer(
-        transformers=[
-            ("num", Pipeline([("imputer", SimpleImputer(strategy="median"))]), X.columns.tolist()),
-        ],
-        remainder="drop",
-    )
-
-    base_model = RandomForestClassifier(
-        random_state=RANDOM_STATE,
-        n_jobs=-1,
-    )
-
-    pipe = Pipeline(
-        steps=[
-            ("preprocess", preprocess),
-            ("model", base_model),
-        ]
-    )
-
-    # ✅ “현재 best 근처로 집중”한 탐색 공간 (정확도 끌어올릴 때 유리)
-    param_distributions = {
-        "model__n_estimators": [800, 1200, 2000, 3000, 4000],
-        "model__max_depth": [4, 5, 6, 7, 8, 9, 10, None],
-        "model__min_samples_split": [10, 15, 20, 25, 30, 40],
-        "model__min_samples_leaf": [2, 3, 4, 5, 6, 8, 10],
-        "model__max_features": [0.3, 0.5, 0.7, 0.9, 1.0, "sqrt", "log2"],
-        "model__bootstrap": [True],
-        "model__class_weight": [None],  # accuracy 목표면 일단 None 고정 권장
-        "model__criterion": ["gini", "entropy", "log_loss"],
-    }
-
-    cv = StratifiedKFold(n_splits=CV_SPLITS, shuffle=True, random_state=RANDOM_STATE)
-
-    search = RandomizedSearchCV(
-        estimator=pipe,
-        param_distributions=param_distributions,
-        n_iter=N_ITER,
-        scoring=tuned_threshold_accuracy,   # ✅ 핵심 변경점
-        n_jobs=SEARCH_N_JOBS,
-        cv=cv,
-        refit=True,
-        verbose=1,
-        random_state=RANDOM_STATE,
-        error_score="raise",
-    )
-
-    search.fit(X_train, y_train)
-    best_model = search.best_estimator_
-
-    print("\n=== Search 결과 (CV tuned-threshold accuracy) ===")
-    print(f"- Best CV score: {search.best_score_:.4f}")
-    print(f"- Best Params: {search.best_params_}")
-
-    # ✅ train에서 OOF로 threshold 튜닝 (최종 threshold)
-    oof_proba = cross_val_predict(
-        best_model, X_train, y_train, cv=cv, method="predict_proba", n_jobs=CVPRED_N_JOBS
-    )[:, 1]
-    thresholds = np.linspace(0.05, 0.95, 181)
-    oof_accs = np.array([accuracy_score(y_train, (oof_proba >= t).astype(int)) for t in thresholds])
-    best_thr = float(thresholds[int(oof_accs.argmax())])
-
-    # test 평가
-    best_model.fit(X_train, y_train)
-    y_proba = best_model.predict_proba(X_test)[:, 1]
-    y_pred = (y_proba >= best_thr).astype(int)
-
-    acc = accuracy_score(y_test, y_pred)
-    auc = roc_auc_score(y_test, y_proba)
-    tn, fp, fn, tp = confusion_matrix(y_test, y_pred).ravel()
-
-    print("\n=== TEST (fixed 80/20 split) ===")
-    print(f"Accuracy(tuned thr): {acc:.4f} (thr={best_thr:.3f})")
-    print(f"AUC              : {auc:.4f}")
-    print(f"Confusion        : TN={tn}, FP={fp}, FN={fn}, TP={tp}")
-
-    joblib.dump(best_model, "rf_best_tuned.joblib")
-    print("\nSaved: rf_best_tuned.joblib")
+print("\n=== Metrics (RandomForest) on ORIGINAL test distribution ===")
+print(f"Accuracy     : {acc:.4f}")
+print(f"AUC          : {auc:.4f}")
+print(f"Sensitivity  : {sensitivity:.4f} (TPR, Recall of bad=1)")
+print(f"Specificity  : {specificity:.4f} (TNR, Recall of good=0)")
+print(f"Confusion    : TN={tn}, FP={fp}, FN={fn}, TP={tp}")
 
 
-if __name__ == "__main__":
-    main()
+# =========================
+# 4) ROC Curve
+# =========================
+fpr, tpr, _ = roc_curve(y_test, y_proba)
+
+plt.figure()
+plt.plot(fpr, tpr, label=f"RandomForest (AUC={auc:.4f})")
+plt.plot([0, 1], [0, 1], linestyle="--", label="Random (AUC=0.5)")
+plt.xlabel("False Positive Rate (1 - Specificity)")
+plt.ylabel("True Positive Rate (Sensitivity)")
+plt.title("ROC Curve (RandomForest, Test: original distribution)")
+plt.legend()
+plt.show()
