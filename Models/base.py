@@ -6,87 +6,45 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix, roc_curve
 
 import matplotlib.pyplot as plt
+from sklearn.metrics import f1_score
 
-
-import pandas as pd
-import numpy as np
-
-from sklearn.model_selection import train_test_split
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder
-from sklearn.impute import SimpleImputer
 
 # =========================
-# 0) 데이터 로드 (원본 german_credit_data)
+# 0) 데이터 로드
 # =========================
-DATA_PATH = "Kaggle/german_credit_data (1).csv"
-raw = pd.read_csv(DATA_PATH)
+DATA_PATH = "german21_ohe_with_married.csv"
+df = pd.read_csv(DATA_PATH)
 
-# 흔한 인덱스 컬럼 제거
-raw = raw.drop(columns=["Unnamed: 0"], errors="ignore")
-
-# =========================
-# 1) 타깃 설정 (bad=1, good=0)
-# =========================
-# 보통 Risk 컬럼이 'good'/'bad' 문자열
-if "Risk" not in raw.columns:
-    raise ValueError("타깃 컬럼 'Risk'를 찾지 못했습니다. 컬럼명을 확인하세요.")
-
-y = raw["Risk"].astype(str).map({"good": 0, "bad": 1})
-if y.isna().any():
-    raise ValueError("Risk 컬럼 값이 good/bad가 아닙니다. 실제 값들을 확인하세요.")
-
-X_raw = raw.drop(columns=["Risk"])
+# 외국인 컬럼 제거: 네가 이미 제거했다고 했지만, 파일에 남아있으면 제거
+df = df.drop(columns=["foreign_worker_no", "foreign_worker_yes", "num_dependents", "own_telephone_none", "own_telephone_yes", "personal_status_female div/dep/mar","personal_status_male div/sep","personal_status_male mar/wid","personal_status_male single","other_parties_co applicant","other_parties_guarantor","other_parties_none","property_magnitude_car","property_magnitude_life insurance","property_magnitude_no known property","property_magnitude_real estate","other_payment_plans_bank","other_payment_plans_none","other_payment_plans_stores", "residence_since"], errors="ignore")
 
 # =========================
-# 2) 수치형/범주형 컬럼 자동 분리
+# 타깃 설정 (bad=1, good=0) - 이 데이터에 맞춤
 # =========================
-num_cols = X_raw.select_dtypes(include=[np.number]).columns.tolist()
-cat_cols = X_raw.select_dtypes(exclude=[np.number]).columns.tolist()
+if "class" not in df.columns:
+    raise ValueError("타깃 컬럼 'class'를 찾지 못했습니다.")
 
-print("수치형 컬럼:", num_cols)
-print("범주형 컬럼:", cat_cols)
+# german21_ohe.csv의 class는 True/False (True가 700개로 good에 해당)
+# bad=1, good=0 으로 만들기
+if df["class"].dtype == bool:
+    y = (~df["class"]).astype(int)  # True(good)->0, False(bad)->1
+else:
+    # 혹시 숫자(1/2 or 0/1)로 되어 있는 경우까지 안전하게 처리
+    vals = set(pd.Series(df["class"]).dropna().unique())
+    if vals.issubset({1, 2}):
+        # 1=good, 2=bad
+        y = (df["class"] == 2).astype(int)
+    elif vals.issubset({0, 1}):
+        # 0=good, 1=bad 라고 가정
+        y = df["class"].astype(int)
+    else:
+        raise ValueError(f"예상치 못한 class 값들: {vals}")
 
-# =========================
-# 3) 전처리기: 결측치 처리 + OHE
-# =========================
-numeric_tf = Pipeline(steps=[
-    ("imputer", SimpleImputer(strategy="median")),
-    # ("scaler", StandardScaler()),  # RF엔 필수 아님. 필요하면 주석 해제
-])
+X = df.drop(columns=["class"], errors="ignore")
 
-categorical_tf = Pipeline(steps=[
-    ("imputer", SimpleImputer(strategy="most_frequent")),
-    ("ohe", OneHotEncoder(handle_unknown="ignore")),
-])
+print("전체 분포(원본):")
+print(y.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
 
-preprocess = ColumnTransformer(
-    transformers=[
-        ("num", numeric_tf, num_cols),
-        ("cat", categorical_tf, cat_cols),
-    ],
-    remainder="drop"
-)
-
-# =========================
-# 4) 전처리 적용 -> (희소행렬) => DataFrame으로 변환
-#    (네가 permutation importance에서 컬럼명을 쓰고 있어서 DataFrame 형태가 편함)
-# =========================
-X_mat = preprocess.fit_transform(X_raw)
-
-# OHE 후 feature name 뽑기
-feature_names = preprocess.get_feature_names_out()
-
-# 희소행렬일 수 있으니 array로 변환
-# (데이터가 작아서 변환해도 보통 괜찮음)
-X = pd.DataFrame(
-    X_mat.toarray() if hasattr(X_mat, "toarray") else X_mat,
-    columns=feature_names
-)
-
-print("전처리 후 X shape:", X.shape)
-print("타깃 분포:", y.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
 
 # =========================
 # 1) 80/20 split
@@ -108,13 +66,11 @@ print(y_test.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
 # 2) Baseline RF 학습 (선택 사항: 비교용)
 # =========================
 rf = RandomForestClassifier(
-    n_estimators=600,
-    max_depth=8,
-    min_samples_leaf=3,
-    max_features="sqrt",
-    class_weight="balanced",
+    n_estimators=800,
     random_state=42,
-    n_jobs=-1
+    n_jobs=-1,
+    max_depth=None,
+    min_samples_leaf=1,
 )
 rf.fit(X_train, y_train)
 
@@ -131,6 +87,7 @@ tnr_base = tn / (tn + fp) if (tn + fp) > 0 else np.nan
 
 print("\n=== Baseline RF (ALL features) ===")
 print(f"Accuracy     : {acc_base:.4f}")
+print(f"F1-Score     : {f1_score(y_test, pred_base):.4f}")
 print(f"AUC          : {auc_base:.4f}")
 print(f"Sensitivity  : {tpr_base:.4f}")
 print(f"Specificity  : {tnr_base:.4f}")
@@ -200,6 +157,7 @@ tnr_sel = tn / (tn + fp) if (tn + fp) > 0 else np.nan
 
 print("\n=== RF (Selected features) ===")
 print(f"Accuracy     : {acc_sel:.4f}")
+print(f"F1-Score     : {f1_score(y_test, pred_sel):.4f}")
 print(f"AUC          : {auc_sel:.4f}")
 print(f"Sensitivity  : {tpr_sel:.4f}")
 print(f"Specificity  : {tnr_sel:.4f}")

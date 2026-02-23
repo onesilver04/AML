@@ -22,11 +22,7 @@ print("shape:", data.shape)
 # =========================
 # 2) Drop columns (네가 하던 방식 유지)
 # =========================
-drop_cols = [
-    "foreign_worker_no", "foreign_worker_yes",
-    "other_parties_co applicant", "other_parties_guarantor", "other_parties_none",
-    "num_dependents"
-]
+drop_cols = ["foreign_worker_no", "foreign_worker_yes", "num_dependents", "own_telephone_none", "own_telephone_yes", "personal_status_female div/dep/mar","personal_status_male div/sep","personal_status_male mar/wid","personal_status_male single","other_parties_co applicant","other_parties_guarantor","other_parties_none","property_magnitude_car","property_magnitude_life insurance","property_magnitude_no known property","property_magnitude_real estate","other_payment_plans_bank","other_payment_plans_none","other_payment_plans_stores", "residence_since"]
 df = data.drop(columns=[c for c in drop_cols if c in data.columns])
 print("after drop shape:", df.shape)
 
