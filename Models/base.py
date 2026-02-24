@@ -12,7 +12,7 @@ from sklearn.metrics import f1_score
 # =========================
 # 0) 데이터 로드
 # =========================
-DATA_PATH = "german21_ohe_with_married.csv"
+DATA_PATH = "german21_ohe.csv"
 df = pd.read_csv(DATA_PATH)
 
 # 외국인 컬럼 제거: 네가 이미 제거했다고 했지만, 파일에 남아있으면 제거
