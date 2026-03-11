@@ -10,7 +10,7 @@ from langchain_community.vectorstores import Chroma
 
 
 PDF_DIR = "papers"
-PERSIST_DIR = "rag_db"
+PERSIST_DIR = "RAG/rag_db"
 COLLECTION_NAME = "finance_papers"
 
 # 임베딩 모델(권장: nomic-embed-text / bge-m3 등)
