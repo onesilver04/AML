@@ -209,8 +209,8 @@ imp_df = (
 print("\nTop 20 SHAP feature importance (raw features):")
 print(imp_df.head(20).to_string(index=False))
 
-imp_df.to_csv("rf_selected_shap_feature_importance.csv", index=False)
-print("\nSaved: rf_selected_shap_feature_importance.csv")
+imp_df.to_csv("selected_shap_feature_importance.csv", index=False)
+print("\nSaved: selected_shap_feature_importance.csv")
 
 # ==========================================================
 # 8) (여기부터 추가) OHE 컬럼을 prefix로 묶어서 SHAP 중요도 재계산
@@ -255,5 +255,5 @@ group_imp_df = (
 print("\nTop 20 SHAP importance (Grouped by prefix):")
 print(group_imp_df.head(20).to_string(index=False))
 
-group_imp_df.to_csv("rf_selected_shap_prefix_importance.csv", index=False)
-print("\nSaved: rf_selected_shap_prefix_importance.csv")
+group_imp_df.to_csv("selected_shap_prefix_importance.csv", index=False)
+print("\nSaved: selected_shap_prefix_importance.csv")
