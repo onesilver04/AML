@@ -11,5 +11,8 @@ Context:
 Instructions:
 - Answer in English.
 - Provide a concise explanation (5-10 sentences).
-- Then list 3-6 evidence bullets. Each bullet MUST include (source, page) and a short quote or paraphrase grounded in the context.
+- Base the explanation on the provided context only.
+- If multiple papers are relevant, synthesize them instead of relying on only one paper.
+- Stay focused on the variable in the question. Do not discuss other variables unless they are necessary to explain a limitation or ambiguity.
+- Then list 2-5 evidence bullets. Each bullet MUST include (source, page) and a short quote or paraphrase grounded in the context.
 - If the context does not support the claim, explicitly say so."""
