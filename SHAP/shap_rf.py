@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import json
 
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -209,7 +210,7 @@ imp_df = (
 print("\nTop 20 SHAP feature importance (raw features):")
 print(imp_df.head(20).to_string(index=False))
 
-imp_df.to_csv("selected_shap_feature_importance.csv", index=False)
+imp_df.to_csv("SHAP/selected_shap_feature_importance.csv", index=False)
 print("\nSaved: selected_shap_feature_importance.csv")
 
 # ==========================================================
@@ -246,14 +247,106 @@ for gi, p in enumerate(unique_prefixes):
 # prefix 중요도 = mean(abs(grouped_shap))
 grouped_mean_abs = np.mean(np.abs(grouped_sv), axis=0)
 
+# global explanation
 group_imp_df = (
     pd.DataFrame({"prefix": unique_prefixes, "mean_abs_shap": grouped_mean_abs})
     .sort_values("mean_abs_shap", ascending=False)
     .reset_index(drop=True)
 )
 
+# ==========================================================
+# 9) 특정 샘플에 대한 prefix SHAP 튜플 생성: local explanation
+# ==========================================================
+
+def build_prefix_shap_tuples(
+    grouped_sv: np.ndarray,
+    unique_prefixes,
+    sample_idx: int = 0,
+    top_k: int = 5,
+):
+    """
+    grouped_sv: (n_samples, n_prefixes)
+    unique_prefixes: prefix 이름 목록
+    sample_idx: 설명할 샘플 인덱스
+    top_k: 절대값 기준 상위 k개만 선택
+    """
+    sample_vals = grouped_sv[sample_idx]  # (n_prefixes,)
+
+    tuple_df = pd.DataFrame({
+        "feature": unique_prefixes,
+        "shap_value": sample_vals
+    })
+
+    tuple_df["abs_shap"] = tuple_df["shap_value"].abs()
+    tuple_df["direction"] = np.where(
+        tuple_df["shap_value"] >= 0,
+        "increase_risk",
+        "decrease_risk"
+    )
+
+    tuple_df = tuple_df.sort_values("abs_shap", ascending=False).head(top_k).reset_index(drop=True)
+    return tuple_df
+
+sample_idx = 0
+top_k = 3
+
+sample_tuple_df = build_prefix_shap_tuples(
+    grouped_sv=grouped_sv,
+    unique_prefixes=unique_prefixes,
+    sample_idx=sample_idx,
+    top_k=top_k,
+)
+
+print("\nSample-specific grouped SHAP tuples:")
+print(sample_tuple_df.to_string(index=False))
+
+# save tuples
+def save_shap_tuples_json(
+    tuple_df, 
+    sample_idx, 
+    prediction_label, 
+    predict_proba=None, 
+    save_path="SHAP/shap_tuples.json"):
+    
+    records = []
+
+    for _, row in tuple_df.iterrows():
+        records.append({
+            "feature": row["feature"],
+            "shap_value": float(row["shap_value"]),
+            "abs_shap": float(row["abs_shap"]),
+            "direction": row["direction"]
+        })
+
+    data = {
+        "sample_idx": sample_idx,
+        "prediction": {
+            "label": prediction_label,
+            "probability": predict_proba
+        },
+        "tuples": records
+    }
+
+    with open(save_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2)
+
+    print(f"Saved JSON: {save_path}")
+    
+
+    
 print("\nTop 20 SHAP importance (Grouped by prefix):")
 print(group_imp_df.head(20).to_string(index=False))
 
-group_imp_df.to_csv("selected_shap_prefix_importance.csv", index=False)
+group_imp_df.to_csv("SHAP/selected_shap_prefix_importance.csv", index=False)
 print("\nSaved: selected_shap_prefix_importance.csv")
+
+prediction_label = "BAD CREDIT RISK" if pred_sel[sample_idx] == 1 else "GOOD CREDIT RISK"
+prediction_proba = float(proba_sel[sample_idx])
+
+save_shap_tuples_json(
+        sample_tuple_df,
+        sample_idx,
+        prediction_label=prediction_label,
+        predict_proba=prediction_proba,
+        save_path="SHAP/shap_tuples.json"
+)

@@ -1,0 +1,5 @@
+The most influential features are savings_status, checking_status, employment.
+The contribution of 'savings_status' is -0.1040, and its direction is 'decrease_risk'.
+The contribution of 'checking_status' is 0.0763, and its direction is 'increase_risk'.
+The contribution of 'employment' is 0.0521, and its direction is 'increase_risk'.
+The predicted credit risk for this individual is 'GOOD CREDIT RISK' with a probability of 0.2800.
