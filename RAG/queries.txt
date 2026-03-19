@@ -2,5 +2,6 @@
 2.    "Higher checking account balance is associated with lower default risk.",
 3.    "Having no known savings is associated with higher default risk.",
 4.    "What is the impact of music genre on listener engagement?",
+5.    "Applicants with unstable employment are more likely to default on loans."
 
 4번은 도메인 테스트용 쿼리.
