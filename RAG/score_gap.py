@@ -18,10 +18,7 @@ EMBED_MODEL = "nomic-embed-text"
 
 # ✅ "스크립트에 그냥 박아두고" 쓰고 싶으면 여기만 편집하면 됨
 DEFAULT_QUERIES = [
-    "Higher loan duration is associated with higher default risk.",
     "Higher checking account balance is associated with lower default risk.",
-    "Having no known savings is associated with higher default risk.",
-    "What is the impact of music genre on listener engagement?",
 ]
 
 # Ollama 임베딩 모델을 사용해 Chroma 벡터DB(PERSIST_DIR) 로드

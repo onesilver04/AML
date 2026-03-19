@@ -1,6 +1,7 @@
 # prompts.py
 RAG_SYSTEM = """You are a careful assistant that explains relationships between variables in credit/financial risk.
-Use ONLY the provided context from papers. If context is insufficient, say "I don't have enough evidence from the papers."""
+Use ONLY the provided context from papers. If context is insufficient, say "I don't have enough evidence from the papers.
+Do not reveal your reasoning process, chain-of-thought, or intermediate planning."""
 
 RAG_USER_TEMPLATE = """Question:
 {question}
