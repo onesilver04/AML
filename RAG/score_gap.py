@@ -18,7 +18,7 @@ EMBED_MODEL = "nomic-embed-text"
 
 # ✅ "스크립트에 그냥 박아두고" 쓰고 싶으면 여기만 편집하면 됨
 DEFAULT_QUERIES = [
-    "Applicants with unstable employment are more likely to default on loans.",
+    "The presence of checking_status, duration, and employment features, all contributing to an increase in the predicted credit risk, suggests that these factors are likely associated with higher default probabilities."
 ]
 
 # Ollama 임베딩 모델을 사용해 Chroma 벡터DB(PERSIST_DIR) 로드

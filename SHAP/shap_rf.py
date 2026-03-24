@@ -261,7 +261,7 @@ group_imp_df = (
 def build_prefix_shap_tuples(
     grouped_sv: np.ndarray,
     unique_prefixes,
-    sample_idx: int = 0,
+    sample_idx: int = 2,
     top_k: int = 5,
 ):
     """
@@ -287,7 +287,7 @@ def build_prefix_shap_tuples(
     tuple_df = tuple_df.sort_values("abs_shap", ascending=False).head(top_k).reset_index(drop=True)
     return tuple_df
 
-sample_idx = 0
+sample_idx = 3
 top_k = 3
 
 sample_tuple_df = build_prefix_shap_tuples(
