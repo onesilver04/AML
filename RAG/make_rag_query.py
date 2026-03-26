@@ -4,7 +4,7 @@ import argparse
 from langchain_ollama import ChatOllama
 from langchain_core.prompts import ChatPromptTemplate
 
-MODEL_NAME = "llama3.1:8b" # model test: mistral:7b, llama3.1:8b
+MODEL_NAME = "mistral-small3.2:24b" # model test: mistral:7b, llama3.1:8b, qwen3.5:27b, mistral-small3.2:24b
 
 DEFAULT_INPUT_PATH = "SHAP/shap_fixed_template.txt"
 DEFAULT_OUTPUT_PATH = "RAG/generated_rag_query.txt"

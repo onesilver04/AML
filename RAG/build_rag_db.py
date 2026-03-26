@@ -14,7 +14,7 @@ PERSIST_DIR = "RAG/rag_db"
 COLLECTION_NAME = "finance_papers"
 
 # 임베딩 모델(권장: nomic-embed-text / bge-m3 등)
-EMBED_MODEL = "nomic-embed-text"
+EMBED_MODEL = "bge-large:335m" # nomic-embed-text, bge-m3:567m, bge-large:335m
 
 
 def load_pdfs(pdf_dir: str):
@@ -35,8 +35,8 @@ def load_pdfs(pdf_dir: str):
 
 def split_docs(docs):
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
-        chunk_overlap=150,
+        chunk_size=600,
+        chunk_overlap=50,
         separators=["\n\n", "\n", ". ", " ", ""],
     )
     return splitter.split_documents(docs)

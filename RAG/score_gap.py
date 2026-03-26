@@ -14,11 +14,11 @@ PERSIST_DIR = "RAG/rag_db"
 COLLECTION_NAME = "finance_papers"
 
 LLM_MODEL = "qwen3.5:27b"
-EMBED_MODEL = "nomic-embed-text"
+EMBED_MODEL = "bge-large:335m" # nomic-embed-text, bge-m3:567m, bge-large:335m
 
 # ✅ "스크립트에 그냥 박아두고" 쓰고 싶으면 여기만 편집하면 됨
 DEFAULT_QUERIES = [
-    "The presence of checking_status, duration, and employment features, all contributing to an increase in the predicted credit risk, suggests that these factors are likely associated with higher default probabilities."
+    "Higher checking_status, longer duration, and longer employment duration are associated with an increased likelihood of bad credit risk."
 ]
 
 # Ollama 임베딩 모델을 사용해 Chroma 벡터DB(PERSIST_DIR) 로드
