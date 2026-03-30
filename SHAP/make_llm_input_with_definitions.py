@@ -4,8 +4,8 @@ import argparse
 from typing import Dict, Any, List
 
 
-DEFAULT_JSON_PATH = "SHAP/shap_tuples_non_prefix.json"
-DEFAULT_OUTPUT_PATH = "SHAP/llm_input_with_definitions.txt"
+DEFAULT_JSON_PATH = "SHAP/shap_tuples_non_prefix_3.json"
+DEFAULT_OUTPUT_PATH = "SHAP/llm_input_with_definitions_3.txt"
 
 
 # ==========================================================

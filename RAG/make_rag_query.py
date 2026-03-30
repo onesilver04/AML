@@ -4,10 +4,10 @@ import argparse
 from langchain_ollama import ChatOllama
 from langchain_core.prompts import ChatPromptTemplate
 
-MODEL_NAME = "mistral-small3.2:24b" # model test: mistral:7b, llama3.1:8b, qwen3.5:27b, mistral-small3.2:24b
+MODEL_NAME = "llama3.1:8b" # model test: mistral:7b, llama3.1:8b, qwen3.5:27b, mistral-small3.2:24b
 
-DEFAULT_INPUT_PATH = "SHAP/llm_input_with_definitions.txt"
-DEFAULT_OUTPUT_PATH = "RAG/generated_rag_query.txt"
+DEFAULT_INPUT_PATH = "SHAP/llm_input_with_definitions_3.txt"
+DEFAULT_OUTPUT_PATH = "RAG/generated_rag_query_3.txt"
 
 
 def load_input_text(path: str) -> str:

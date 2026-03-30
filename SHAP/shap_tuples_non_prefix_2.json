@@ -22,6 +22,18 @@
       "shap_value": 0.07630270892892184,
       "abs_shap": 0.07630270892892184,
       "direction": "increase_risk"
+    },
+    {
+      "feature": "employment_<1",
+      "shap_value": 0.04111860284467692,
+      "abs_shap": 0.04111860284467692,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "credit_history_delayed previously",
+      "shap_value": 0.03513540499431555,
+      "abs_shap": 0.03513540499431555,
+      "direction": "increase_risk"
     }
   ]
 }

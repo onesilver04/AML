@@ -14,6 +14,7 @@ import shap
 # 0) 데이터 로드
 # =========================
 DATA_PATH = "german21_ohe.csv"
+sample_idx = 5
 df = pd.read_csv(DATA_PATH)
 
 # (선택) 컬럼 제거
@@ -257,7 +258,7 @@ group_imp_df = (
 def build_raw_shap_tuples(
     sv: np.ndarray,
     feature_names,
-    sample_idx: int = 2,
+    sample_idx: int = sample_idx,
     top_k: int = 5,
 ):
     """
@@ -288,8 +289,7 @@ def build_raw_shap_tuples(
     )
     return tuple_df
 
-sample_idx = 2
-top_k = 3
+top_k = 5
 
 sample_tuple_df = build_raw_shap_tuples(
     sv=sv,
@@ -305,7 +305,7 @@ sample_tuple_df = build_raw_shap_tuples(
 def print_raw_shap_full(
     sv: np.ndarray,
     feature_names,
-    sample_idx: int = 2,
+    sample_idx: int = sample_idx,
     top_k: int = 10,
 ):
     sample_vals = sv[sample_idx]
@@ -390,5 +390,5 @@ save_shap_tuples_json(
         sample_idx,
         prediction_label=prediction_label,
         predict_proba=prediction_proba,
-        save_path="SHAP/shap_tuples_non_prefix.json"
+        save_path=f"SHAP/shap_tuples_non_prefix_{sample_idx}.json"
 )
