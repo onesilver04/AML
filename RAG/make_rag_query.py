@@ -6,7 +6,7 @@ from langchain_core.prompts import ChatPromptTemplate
 
 MODEL_NAME = "mistral-small3.2:24b" # model test: mistral:7b, llama3.1:8b, qwen3.5:27b, mistral-small3.2:24b
 
-DEFAULT_INPUT_PATH = "SHAP/shap_fixed_template.txt"
+DEFAULT_INPUT_PATH = "SHAP/llm_input_with_definitions.txt"
 DEFAULT_OUTPUT_PATH = "RAG/generated_rag_query.txt"
 
 
@@ -27,36 +27,44 @@ def save_text(text: str, path: str) -> None:
 def build_chain(model_name: str = MODEL_NAME):
     prompt = ChatPromptTemplate.from_messages([
         (
+            "system",
+            """
+You are an expert in credit risk modeling.
+
+Your task is to generate a single concise sentence describing the relationship between given features and credit risk.
+
+You must strictly follow the provided feature definitions.
+Do not infer or assume meanings beyond the definitions.
+Do not generalize categorical variables using vague expressions like "increase in feature".
+Use precise, definition-based wording.
+
+Avoid hallucination at all costs.
+"""
+        ),
+        (
             "user",
             """
-Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
-
-### Instruction:
-The general context is credit risk prediction using machine learning models. Don’t deviate from this frame. Do not answer in lengthy form; be brief, concise, and precise at all costs.
-
-In the input, you will be given a prediction from a machine learning model for credit risk classification, categorized as either GOOD CREDIT RISK or BAD CREDIT RISK, along with the most influential features, their contribution values, and their contribution directions.
-
-Produce a single concise explanatory sentence in English that expresses the likely relationship between the most influential features and the predicted credit risk outcome.
-
-The sentence should:    
-- be written as a natural declarative statement, not a command or instruction
-- be suitable for retrieving supporting evidence from academic finance or credit risk papers
-- mention the most influential features when relevant
-- reflect the prediction direction
-- not mention SHAP
-- not use bullet points
-- not include explanations before or after the sentence
-- not start with phrases such as "Retrieve", "Find", "Search for", or "Look for"
+### Task:
+Generate a single concise English sentence suitable for retrieving supporting evidence from academic credit risk literature.
 
 ### Input:
 {input_text}
 
-### Response:
+### Requirements:
+- Use only the provided feature definitions and directions
+- Reflect the prediction direction (increase/decrease risk)
+- Do not mention SHAP or contribution values
+- Do not add explanations
+- Do not use bullet points
+- Do not generalize categorical features (e.g., avoid "increase in checking status")
+- Be concise and factual
+
+### Output:
 """.strip()
         )
     ])
 
-    llm = ChatOllama(model=model_name, temperature=0.2)
+    llm = ChatOllama(model=model_name, temperature=0.1)
     return prompt | llm
 
 def generate_rag_query(input_text: str, model_name: str = MODEL_NAME) -> str:

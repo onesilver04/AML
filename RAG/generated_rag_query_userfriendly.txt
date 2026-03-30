@@ -1,5 +1,0 @@
-For this applicant, the credit risk prediction model indicates a high likelihood of 'BAD CREDIT RISK' with a probability of 0.7013. The key factors contributing to this assessment are the applicant's checking status, duration of employment, and length of time in their current job.
-
-The checking status suggests that the applicant has an open overdraft or unpaid debts, which increases the perceived credit risk. A longer duration of employment, on the other hand, might indicate financial stability for some individuals. However, in this case, it seems to have a negative impact, possibly due to the applicant's lengthy tenure being associated with accumulated debt over time. Lastly, the shorter the current employment duration, the lower the credit risk, suggesting that recent employment may provide a fresh financial start for some individuals.
-
-In summary, the model predicts a higher credit risk for this applicant due to their open debts (checking status), extended tenure in employment (duration), and relatively short period of current employment (employment). It's essential to consider these factors when assessing the applicant's creditworthiness.

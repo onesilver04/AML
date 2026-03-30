@@ -1,0 +1,30 @@
+Credit Risk Prediction Instance
+Sample index: 2
+Predicted label: BAD CREDIT RISK
+Predicted probability: 0.70125
+
+Most influential raw features:
+
+1. Feature: checking_status_<0
+   Definition: Checking account status: balance below 0 DM.
+   SHAP value: 0.10969851870159092
+   Absolute SHAP value: 0.10969851870159092
+   Direction: increase_risk (increases credit risk)
+
+2. Feature: duration
+   Definition: Loan duration in months.
+   SHAP value: 0.08097914518717396
+   Absolute SHAP value: 0.08097914518717396
+   Direction: increase_risk (increases credit risk)
+
+3. Feature: checking_status_no checking
+   Definition: Checking account status: no checking account.
+   SHAP value: 0.07630270892892184
+   Absolute SHAP value: 0.07630270892892184
+   Direction: increase_risk (increases credit risk)
+
+Instruction for the LLM:
+Using only the feature names, SHAP directions, and feature definitions above, write one concise English sentence suitable for retrieving supporting evidence from academic finance or credit risk papers.
+Do not mention SHAP, JSON, contribution scores, or machine learning internals.
+Do not add outside knowledge that is not grounded in the provided feature definitions.
+If a feature is categorical, avoid vague expressions such as 'increase in the feature'; instead, describe the specific category in natural language.

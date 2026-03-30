@@ -18,7 +18,7 @@ EMBED_MODEL = "bge-large:335m" # nomic-embed-text, bge-m3:567m, bge-large:335m
 
 # ✅ "스크립트에 그냥 박아두고" 쓰고 싶으면 여기만 편집하면 됨
 DEFAULT_QUERIES = [
-    "Higher checking_status, longer duration, and longer employment duration are associated with an increased likelihood of bad credit risk."
+    "A checking account balance below 0 DM, a longer loan duration in months, and the absence of a checking account are associated with an increased credit risk."
 ]
 
 # Ollama 임베딩 모델을 사용해 Chroma 벡터DB(PERSIST_DIR) 로드
