@@ -18,7 +18,6 @@ EMBED_MODEL = "bge-large:335m" # nomic-embed-text, bge-m3:567m, bge-large:335m
 
 # ✅ "스크립트에 그냥 박아두고" 쓰고 싶으면 여기만 편집하면 됨
 DEFAULT_QUERIES = [
-    "Is having no previous credits or having all previous credits paid back duly associated with higher credit risk?",
     "Is having a checking account balance below 0 dm associated with higher credit risk?",
     "Is having no checking account associated with higher credit risk?"
 ]
