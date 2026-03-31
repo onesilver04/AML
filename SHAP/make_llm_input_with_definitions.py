@@ -301,7 +301,7 @@ def build_llm_input_text(data: Dict[str, Any]) -> str:
     lines.append(f"Predicted label: {label}")
     lines.append(f"Predicted probability: {prob}")
     lines.append("")
-    lines.append("Canonical feature-risk statements:")
+    lines.append("feature-risk statements:")
     for sentence in canonical_sentences:
         lines.append(f"- {sentence}")
     return "\n".join(lines)

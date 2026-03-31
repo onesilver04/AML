@@ -3,7 +3,7 @@ Sample index: 3
 Predicted label: BAD CREDIT RISK
 Predicted probability: 0.67875
 
-Canonical feature-risk statements:
+feature-risk statements:
 - Having no previous credits or having all previous credits paid back duly is associated with higher credit risk.
 - Having a checking account balance below 0 dm is associated with higher credit risk.
 - Having no checking account is associated with higher credit risk.
