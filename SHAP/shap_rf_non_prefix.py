@@ -14,7 +14,7 @@ import shap
 # 0) 데이터 로드
 # =========================
 DATA_PATH = "german21_ohe.csv"
-sample_idx = 5
+sample_idx = 1
 df = pd.read_csv(DATA_PATH)
 
 # (선택) 컬럼 제거

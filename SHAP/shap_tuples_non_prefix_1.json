@@ -1,0 +1,39 @@
+{
+  "sample_idx": 1,
+  "prediction": {
+    "label": "GOOD CREDIT RISK",
+    "probability": 0.2475
+  },
+  "tuples": [
+    {
+      "feature": "checking_status_no checking",
+      "shap_value": 0.06593572969372394,
+      "abs_shap": 0.06593572969372394,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "purpose_used car",
+      "shap_value": -0.05358422956316553,
+      "abs_shap": 0.05358422956316553,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "duration",
+      "shap_value": -0.048128960815024636,
+      "abs_shap": 0.048128960815024636,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "checking_status_0<=X<200",
+      "shap_value": 0.038229172790176215,
+      "abs_shap": 0.038229172790176215,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "credit_amount",
+      "shap_value": -0.036773435337712906,
+      "abs_shap": 0.036773435337712906,
+      "direction": "decrease_risk"
+    }
+  ]
+}

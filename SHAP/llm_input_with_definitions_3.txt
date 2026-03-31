@@ -3,40 +3,9 @@ Sample index: 3
 Predicted label: BAD CREDIT RISK
 Predicted probability: 0.67875
 
-Most influential raw features:
-
-1. Feature: credit_history_no credits/all paid
-   Definition: Credit history: no credits taken or all previous credits paid back duly.
-   SHAP value: 0.10376087705223755
-   Absolute SHAP value: 0.10376087705223755
-   Direction: increase_risk (increases credit risk)
-
-2. Feature: checking_status_<0
-   Definition: Checking account status: balance below 0 DM.
-   SHAP value: 0.09932741701371138
-   Absolute SHAP value: 0.09932741701371138
-   Direction: increase_risk (increases credit risk)
-
-3. Feature: checking_status_no checking
-   Definition: Checking account status: no checking account.
-   SHAP value: 0.07931536108521363
-   Absolute SHAP value: 0.07931536108521363
-   Direction: increase_risk (increases credit risk)
-
-4. Feature: savings_status_<100
-   Definition: Savings account status: savings below 100 DM.
-   SHAP value: 0.04595307622646661
-   Absolute SHAP value: 0.04595307622646661
-   Direction: increase_risk (increases credit risk)
-
-5. Feature: employment_4<=X<7
-   Definition: Present employment duration: between 4 and 7 years.
-   SHAP value: -0.032125691000698085
-   Absolute SHAP value: 0.032125691000698085
-   Direction: decrease_risk (decreases credit risk)
-
-Instruction for the LLM:
-Using only the feature names, SHAP directions, and feature definitions above, write one concise English sentence suitable for retrieving supporting evidence from academic finance or credit risk papers.
-Do not mention SHAP, JSON, contribution scores, or machine learning internals.
-Do not add outside knowledge that is not grounded in the provided feature definitions.
-If a feature is categorical, avoid vague expressions such as 'increase in the feature'; instead, describe the specific category in natural language.
+Canonical feature-risk statements:
+- Having no previous credits or having all previous credits paid back duly is associated with higher credit risk.
+- Having a checking account balance below 0 dm is associated with higher credit risk.
+- Having no checking account is associated with higher credit risk.
+- Having savings below 100 dm is associated with higher credit risk.
+- Having been employed for between 4 and 7 years is associated with lower credit risk.
