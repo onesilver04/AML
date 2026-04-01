@@ -1,0 +1,9 @@
+Credit Risk Prediction Instance
+Sample index: 14
+Predicted label: BAD CREDIT RISK
+Predicted probability: 0.72625
+
+feature-risk statements:
+- Having a checking account balance below 0 dm is associated with higher credit risk.
+- Having no checking account is associated with higher credit risk.
+- A longer loan duration is associated with higher credit risk.

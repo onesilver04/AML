@@ -1,0 +1,27 @@
+{
+  "sample_idx": 14,
+  "prediction": {
+    "label": "BAD CREDIT RISK",
+    "probability": 0.72625
+  },
+  "tuples": [
+    {
+      "feature": "checking_status_<0",
+      "shap_value": 0.09634145150680597,
+      "abs_shap": 0.09634145150680597,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "checking_status_no checking",
+      "shap_value": 0.06838400017542964,
+      "abs_shap": 0.06838400017542964,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "duration",
+      "shap_value": 0.06113658431749655,
+      "abs_shap": 0.06113658431749655,
+      "direction": "increase_risk"
+    }
+  ]
+}

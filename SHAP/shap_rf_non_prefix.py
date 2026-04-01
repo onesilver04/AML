@@ -1,3 +1,5 @@
+# prefix 없는 원본 SHAP 계산 및 저장 (feature 단위)
+
 import pandas as pd
 import numpy as np
 import json
@@ -14,7 +16,7 @@ import shap
 # 0) 데이터 로드
 # =========================
 DATA_PATH = "german21_ohe.csv"
-sample_idx = 1
+sample_indices = [0,1,2,3,4,5,6,7,8,9,10,11, 12, 13, 14, 15] 
 df = pd.read_csv(DATA_PATH)
 
 # (선택) 컬럼 제거
@@ -184,6 +186,15 @@ shap_exp = explainer(X_test[selected_features])  # shap.Explanation
 if len(shap_exp.values.shape) == 3:
     shap_exp = shap_exp[:, :, 1]
 
+invalid_sample_indices = [
+    idx for idx in sample_indices if idx < 0 or idx >= len(X_test)
+]
+if invalid_sample_indices:
+    raise IndexError(
+        f"유효하지 않은 sample index: {invalid_sample_indices}. "
+        f"가능한 범위는 0 ~ {len(X_test) - 1} 입니다."
+    )
+
 # (A) Summary - beeswarm
 shap.plots.beeswarm(shap_exp, max_display=20)
 plt.show()
@@ -193,8 +204,10 @@ shap.plots.bar(shap_exp, max_display=20)
 plt.show()
 
 # (C) Local - waterfall
-shap.plots.waterfall(shap_exp[0], max_display=20)
-plt.show()
+for sample_idx in sample_indices:
+    print(f"\n===== Waterfall plot for sample_idx={sample_idx} =====")
+    shap.plots.waterfall(shap_exp[sample_idx], max_display=20)
+    plt.show()
 
 # =========================
 # 7) SHAP 중요도 (원본 feature 단위) 저장
@@ -258,8 +271,8 @@ group_imp_df = (
 def build_raw_shap_tuples(
     sv: np.ndarray,
     feature_names,
-    sample_idx: int = sample_idx,
-    top_k: int = 5,
+    sample_idx: int,
+    top_k: int = 3,
 ):
     """
     sv: (n_samples, n_features) raw SHAP values
@@ -289,14 +302,7 @@ def build_raw_shap_tuples(
     )
     return tuple_df
 
-top_k = 5
-
-sample_tuple_df = build_raw_shap_tuples(
-    sv=sv,
-    feature_names=selected_features,
-    sample_idx=sample_idx,
-    top_k=top_k,
-)
+top_k = 3
 
 # =========================
 # 🔥 Raw SHAP 전체 + Top 10 출력
@@ -305,7 +311,7 @@ sample_tuple_df = build_raw_shap_tuples(
 def print_raw_shap_full(
     sv: np.ndarray,
     feature_names,
-    sample_idx: int = sample_idx,
+    sample_idx: int,
     top_k: int = 10,
 ):
     sample_vals = sv[sample_idx]
@@ -330,17 +336,6 @@ def print_raw_shap_full(
     print("\n===== 🔝 Top 10 Raw SHAP =====\n")
     print(df_full.head(top_k).to_string(index=False))
 
-
-# 실행
-print_raw_shap_full(
-    sv=sv,
-    feature_names=selected_features,
-    sample_idx=sample_idx,
-    top_k=10
-)
-
-print("\nSample-specific raw SHAP tuples:")
-print(sample_tuple_df.to_string(index=False))
 
 # save tuples
 def save_shap_tuples_json(
@@ -382,13 +377,33 @@ print(group_imp_df.head(20).to_string(index=False))
 group_imp_df.to_csv("SHAP/selected_shap_prefix_importance.csv", index=False)
 print("\nSaved: selected_shap_prefix_importance.csv")
 
-prediction_label = "BAD CREDIT RISK" if pred_sel[sample_idx] == 1 else "GOOD CREDIT RISK"
-prediction_proba = float(proba_sel[sample_idx])
+for sample_idx in sample_indices:
+    sample_tuple_df = build_raw_shap_tuples(
+        sv=sv,
+        feature_names=selected_features,
+        sample_idx=sample_idx,
+        top_k=top_k,
+    )
 
-save_shap_tuples_json(
+    print_raw_shap_full(
+        sv=sv,
+        feature_names=selected_features,
+        sample_idx=sample_idx,
+        top_k=10,
+    )
+
+    print(f"\nSample-specific raw SHAP tuples (sample_idx={sample_idx}):")
+    print(sample_tuple_df.to_string(index=False))
+
+    prediction_label = (
+        "BAD CREDIT RISK" if pred_sel[sample_idx] == 1 else "GOOD CREDIT RISK"
+    )
+    prediction_proba = float(proba_sel[sample_idx])
+
+    save_shap_tuples_json(
         sample_tuple_df,
         sample_idx,
         prediction_label=prediction_label,
         predict_proba=prediction_proba,
-        save_path=f"SHAP/shap_tuples_non_prefix_{sample_idx}.json"
-)
+        save_path=f"SHAP/Feature Importance/shap_tuples_non_prefix_{sample_idx}.json",
+    )

@@ -2,6 +2,7 @@ import argparse
 from datetime import datetime
 import json
 import math
+from typing import List
 
 from langchain_ollama import ChatOllama, OllamaEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
@@ -14,7 +15,20 @@ PERSIST_DIR = "RAG/rag_db"
 COLLECTION_NAME = "finance_papers"
 
 LLM_MODEL = "qwen3.5:27b"
-EMBED_MODEL = "bge-large:335m" # nomic-embed-text, bge-m3:567m, bge-large:335m
+EMBED_MODEL = "nomic-embed-text"
+DOC_PREFIX = "search_document: "
+QUERY_PREFIX = "search_query: "
+
+
+class PrefixedOllamaEmbeddings(OllamaEmbeddings):
+    """Apply retrieval prefixes recommended by nomic-embed-text."""
+
+    def embed_documents(self, texts: List[str]) -> List[List[float]]:
+        prefixed = [f"{DOC_PREFIX}{t}" for t in texts]
+        return super().embed_documents(prefixed)
+
+    def embed_query(self, text: str) -> List[float]:
+        return super().embed_query(f"{QUERY_PREFIX}{text}")
 
 # ✅ "스크립트에 그냥 박아두고" 쓰고 싶으면 여기만 편집하면 됨
 DEFAULT_QUERIES = [
@@ -24,7 +38,7 @@ DEFAULT_QUERIES = [
 
 # Ollama 임베딩 모델을 사용해 Chroma 벡터DB(PERSIST_DIR) 로드
 def load_db():
-    embeddings = OllamaEmbeddings(model=EMBED_MODEL)
+    embeddings = PrefixedOllamaEmbeddings(model=EMBED_MODEL)
     db = Chroma(
         collection_name=COLLECTION_NAME,
         embedding_function=embeddings,

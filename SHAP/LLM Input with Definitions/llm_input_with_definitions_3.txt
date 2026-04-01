@@ -1,0 +1,11 @@
+Credit Risk Prediction Instance
+Sample index: 3
+Predicted label: BAD CREDIT RISK
+Predicted probability: 0.67875
+
+feature-risk statements:
+- Having no previous credits or having all previous credits paid back duly is associated with higher credit risk.
+- Having a checking account balance below 0 dm is associated with higher credit risk.
+- Having no checking account is associated with higher credit risk.
+- Having savings below 100 dm is associated with higher credit risk.
+- Having been employed for between 4 and 7 years is associated with lower credit risk.

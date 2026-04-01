@@ -1,5 +1,6 @@
 import os
 from glob import glob
+from typing import List
 from tqdm import tqdm
 
 from langchain_community.document_loaders import PyPDFLoader
@@ -13,8 +14,21 @@ PDF_DIR = "papers"
 PERSIST_DIR = "RAG/rag_db"
 COLLECTION_NAME = "finance_papers"
 
-# 임베딩 모델(권장: nomic-embed-text / bge-m3 등)
-EMBED_MODEL = "bge-large:335m" # nomic-embed-text, bge-m3:567m, bge-large:335m
+# 임베딩 모델
+EMBED_MODEL = "nomic-embed-text"
+DOC_PREFIX = "search_document: "
+QUERY_PREFIX = "search_query: "
+
+
+class PrefixedOllamaEmbeddings(OllamaEmbeddings):
+    """Apply retrieval prefixes recommended by nomic-embed-text."""
+
+    def embed_documents(self, texts: List[str]) -> List[List[float]]:
+        prefixed = [f"{DOC_PREFIX}{t}" for t in texts]
+        return super().embed_documents(prefixed)
+
+    def embed_query(self, text: str) -> List[float]:
+        return super().embed_query(f"{QUERY_PREFIX}{text}")
 
 
 def load_pdfs(pdf_dir: str):
@@ -43,7 +57,7 @@ def split_docs(docs):
 
 
 def build_chroma(chunks):
-    embeddings = OllamaEmbeddings(model=EMBED_MODEL)
+    embeddings = PrefixedOllamaEmbeddings(model=EMBED_MODEL)
 
     # persist 폴더가 이미 있으면 "추가"로 이어붙이기 가능
     vectordb = Chroma(
