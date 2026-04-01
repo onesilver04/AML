@@ -1,0 +1,1 @@
+Having a checking account balance below 0 dm and having no checking account are associated with higher credit risk, while a longer loan duration is associated with higher credit risk.

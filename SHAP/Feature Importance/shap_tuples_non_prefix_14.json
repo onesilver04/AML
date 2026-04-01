@@ -7,18 +7,21 @@
   "tuples": [
     {
       "feature": "checking_status_<0",
+      "definition": "Status of existing checking account is Checking account balance below 0 dm",
       "shap_value": 0.09634145150680597,
       "abs_shap": 0.09634145150680597,
       "direction": "increase_risk"
     },
     {
       "feature": "checking_status_no checking",
+      "definition": "Status of existing checking account is 'no checking account'",
       "shap_value": 0.06838400017542964,
       "abs_shap": 0.06838400017542964,
       "direction": "increase_risk"
     },
     {
       "feature": "duration",
+      "definition": "The duration of the credit in months",
       "shap_value": 0.06113658431749655,
       "abs_shap": 0.06113658431749655,
       "direction": "increase_risk"

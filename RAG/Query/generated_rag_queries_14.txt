@@ -1,0 +1,5 @@
+[
+  "Empirical analysis of the relationship between negative checking account balances and increased credit default probability.",
+  "Statistical impact of the absence of an existing checking account on elevated credit risk.",
+  "Empirical evidence on the correlation between extended credit duration in months and increased credit risk."
+]

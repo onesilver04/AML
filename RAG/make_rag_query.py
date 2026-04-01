@@ -1,123 +1,94 @@
 import os
-import argparse
+import json
 import re
-
+from typing import List
 from langchain_ollama import ChatOllama
 from langchain_core.prompts import ChatPromptTemplate
 
+# 모델 및 경로 설정
 MODEL_NAME = "qwen3.5:27b"
+# 이제 definition이 포함된 통합 JSON 파일 하나만 사용합니다.
+INPUT_JSON_PATH = "SHAP/Feature Importance/shap_tuples_non_prefix_14.json" 
+OUTPUT_PATH = "RAG/Query/generated_rag_queries_14.txt"
 
-DEFAULT_INPUT_PATH = "SHAP/llm_input_with_definitions_3.txt"
-DEFAULT_OUTPUT_PATH = "RAG/generated_rag_query_3.txt"
-
-
-def load_input_text(path: str) -> str:
+def load_json(path: str):
     if not os.path.exists(path):
-        raise FileNotFoundError(f"Input file not found: {path}")
+        raise FileNotFoundError(f"파일이 없습니다: {path}")
     with open(path, "r", encoding="utf-8") as f:
-        return f.read().strip()
-
-
-def save_text(text: str, path: str) -> None:
-    dirpath = os.path.dirname(path)
-    if dirpath:
-        os.makedirs(dirpath, exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(text)
-    print(f"Saved: {path}")
-
-
-def postprocess_query(text: str) -> str:
-    text = text.strip()
-    text = re.sub(r"^(Query:|Sentence:|Output:)\s*", "", text, flags=re.IGNORECASE).strip()
-    text = re.sub(r"\s+", " ", text).strip()
-    text = text.split("\n")[0].strip()
-
-    if text and text[-1] not in ".!?":
-        text += "."
-
-    return text
-
+        return json.load(f)
 
 def build_chain(model_name: str = MODEL_NAME):
     prompt = ChatPromptTemplate.from_messages([
         (
             "system",
             """
-You are an expert assistant for credit risk literature retrieval.
+You are an expert financial risk analyst. Your task is to generate a LIST of independent RAG search queries based on the provided feature definitions.
 
-Your task is to convert structured feature-risk statements into a single retrieval-friendly query sentence for RAG.
+TASK:
+1. Look at the 'tuples' in the input JSON.
+2. For EACH tuple, use the 'definition' and 'direction' to create ONE formal academic search query.
+3. The query should focus on the relationship between that specific feature and credit risk.
 
-Rules:
-- Use only the provided statements.
-- Preserve the exact risk direction: "higher credit risk" or "lower credit risk".
-- Keep the wording factual and suitable for matching academic finance or credit risk papers.
-- Prefer explicit relationship wording such as "is associated with higher credit risk" or "is associated with lower credit risk".
-- Combine related statements into one sentence using natural connectors such as "while".
-- Do not mention SHAP, feature importance, prediction probability, machine learning, JSON, or contribution scores.
-- Do not add explanations, hedging, or background context.
-- Do not introduce new concepts such as default probability, creditworthiness, financial instability, or repayment behavior unless they already appear in the input.
-- Output exactly one concise English sentence.
+STRATEGY:
+- Create independent sentences (e.g., "Statistical impact of [Definition] on credit default probability").
+- Use the 'direction' to refine the tone (e.g., if 'increase_risk', focus on its contribution to default).
+- Use academic terms: 'empirical analysis', 'determinants of default', 'credit risk drivers'.
+- Output exactly one sentence per feature in a list format.
+- Do NOT mention SHAP, JSON, tuples, or specific codes like A11.
 """
         ),
         (
             "user",
-            """
-Convert the following input into one RAG-friendly query sentence for academic literature retrieval:
-
-{input_text}
-
-Return exactly one concise sentence.
-""".strip()
+            "Generate RAG queries for these specific features:\n\n{input_json}"
         )
     ])
 
-    llm = ChatOllama(
-        model=model_name,
-        temperature=0.0,
-    )
+    llm = ChatOllama(model=model_name, temperature=0.0)
     return prompt | llm
 
-
-def generate_rag_query(input_text: str, model_name: str = MODEL_NAME) -> str:
-    chain = build_chain(model_name=model_name)
-    result = chain.invoke({"input_text": input_text})
-    return postprocess_query(result.content)
-
+def postprocess_queries(text: str) -> List[str]:
+    # 줄바꿈이나 불릿 기호를 기준으로 문장 분리
+    raw_lines = text.strip().split('\n')
+    queries = []
+    for line in raw_lines:
+        # 숫자, 불릿(-, *), Query: 등의 접두사 제거
+        clean = re.sub(r'^(\d+\.|\-|\*|Query:)\s*', '', line).strip()
+        if len(clean) > 20: 
+            if clean[-1] not in ".!?":
+                clean += "."
+            queries.append(clean)
+    return queries
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--input",
-        type=str,
-        default=DEFAULT_INPUT_PATH,
-        help="Path to the structured English explanation text."
-    )
-    parser.add_argument(
-        "--output",
-        type=str,
-        default=DEFAULT_OUTPUT_PATH,
-        help="Path to save the generated RAG query."
-    )
-    parser.add_argument(
-        "--model",
-        type=str,
-        default=MODEL_NAME,
-        help="Ollama model name"
-    )
-    args = parser.parse_args()
+    print(f"데이터 로딩 중: {INPUT_JSON_PATH}")
+    try:
+        # 통합된 JSON 데이터 로드
+        input_data = load_json(INPUT_JSON_PATH)
+    except Exception as e:
+        print(f"오류: {e}")
+        return
 
-    input_text = load_input_text(args.input)
-    rag_query = generate_rag_query(input_text, model_name=args.model)
+    print(f"Generating queries using {MODEL_NAME}...")
+    chain = build_chain()
+    
+    # JSON 전체를 문자열로 직렬화하여 전달
+    response = chain.invoke({
+        "input_json": json.dumps(input_data, indent=2, ensure_ascii=False)
+    })
 
-    print("\n===== Generated RAG Query =====\n")
-    print(rag_query)
-
-    print("\n===== Copy for DEFAULT_QUERIES =====\n")
-    print(f'DEFAULT_QUERIES = [\n    "{rag_query}",\n]')
-
-    save_text(rag_query, args.output)
-
+    # 결과 리스트 처리
+    rag_queries = postprocess_queries(response.content)
+    
+    print("\n===== Generated RAG Queries =====")
+    for i, q in enumerate(rag_queries, 1):
+        print(f"{i}. {q}")
+    
+    # 결과 저장
+    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+        json.dump(rag_queries, f, indent=2, ensure_ascii=False)
+    
+    print(f"\nSaved to: {OUTPUT_PATH}")
 
 if __name__ == "__main__":
     main()

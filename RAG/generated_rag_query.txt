@@ -1,1 +1,0 @@
-A checking account balance below 0 DM, a longer loan duration in months, and the absence of a checking account are associated with an increased credit risk.

@@ -11,7 +11,7 @@ from langchain_chroma import Chroma
 from prompts import RAG_SYSTEM, RAG_USER_TEMPLATE
 
 
-PERSIST_DIR = "RAG/rag_db"
+PERSIST_DIR = "RAG/rag_db_nomic"
 COLLECTION_NAME = "finance_papers"
 
 LLM_MODEL = "qwen3.5:27b"
@@ -32,8 +32,9 @@ class PrefixedOllamaEmbeddings(OllamaEmbeddings):
 
 # ✅ "스크립트에 그냥 박아두고" 쓰고 싶으면 여기만 편집하면 됨
 DEFAULT_QUERIES = [
-    "Is having a checking account balance below 0 dm associated with higher credit risk?",
-    "Is having no checking account associated with higher credit risk?"
+  "Empirical analysis of the relationship between negative checking account balances and increased credit default probability.",
+  "Statistical impact of the absence of an existing checking account on elevated credit risk.",
+  "Empirical evidence on the correlation between extended credit duration in months and increased credit risk."
 ]
 
 # Ollama 임베딩 모델을 사용해 Chroma 벡터DB(PERSIST_DIR) 로드
@@ -43,6 +44,7 @@ def load_db():
         collection_name=COLLECTION_NAME,
         embedding_function=embeddings,
         persist_directory=PERSIST_DIR,
+        collection_metadata={"hnsw:space": "cosine"}
     )
     return db
 
@@ -53,7 +55,7 @@ def page_display(meta_page):
     return meta_page
 
 # 최종 선택된 문서 chunk들을 LLM 입력용 context 문자열로 합치는 함수
-def format_context(scored_docs, max_chars=12000):
+def format_context(scored_docs, max_chars=5000):
     """
     scored_docs: [(Document, score), ...]
     """
@@ -84,44 +86,43 @@ def translate_pair(llm, question, answer):
     result = chain.invoke({"question": question, "answer": answer})
     return result.content.strip()
 
-# 벡터 DB에서 query와 유사한 후보 chunk들을 score와 함께 가져오는 함수
+# get_all_scored_docs 함수도 유사도 순으로 정렬되도록 수정
 def get_all_scored_docs(db, question: str):
-    """
-    Chroma의 score는 보통 similarity가 아니라 distance에 가까워서
-    '작을수록 더 관련 있음'으로 해석하는 것이 일반적.
-    """
-    results = db.similarity_search_with_score(question, k=100) # k: candidate pool size
-    results = sorted(results, key=lambda x: x[1])  # 작은 score(distance) 우선
+    # similarity_search_with_relevance_scores를 사용하여 0~1 사이 점수를 얻을 수도 있음
+    results = db.similarity_search_with_score(question, k=100)
+    # 코사인 유사도 기준 '높은 점수'가 먼저 오도록 정렬
+    results = sorted(results, key=lambda x: x[1], reverse=True)
     return results
 
-# score 분포의 gap을 이용해 상위 relevant cluster를 고르는 함수
 def find_score_gap_cutoff(
     scored_docs,
     min_docs=3,
-    max_docs=100,
-    min_gap=0.0,
+    max_docs=50,
+    min_gap=0.001,
 ):
     """
-    scored_docs: [(Document, raw_score), ...]
-    raw_score는 distance라고 가정 (작을수록 관련성 높음)
-
-    반환:
-      selected_scored_docs, cut_index, gaps
+    scored_docs: [(Document, similarity_score), ...]
+    similarity_score는 코사인 유사도라고 가정 (클수록 관련성 높음)
     """
     if not scored_docs:
         return [], 0, []
 
+    # 1. 유사도 점수가 높은 순(내림차순)으로 정렬
+    scored_docs = sorted(scored_docs, key=lambda x: x[1], reverse=True)
+    
     limited = scored_docs[:max_docs]
     scores = [score for _, score in limited]
 
     if len(scores) <= min_docs:
         return limited, len(limited), []
 
+    # 2. 인접 점수 간의 차이(Gap) 계산 (앞선 점수 - 뒤의 점수)
     gaps = []
     for i in range(len(scores) - 1):
-        gap = scores[i + 1] - scores[i]
+        gap = scores[i] - scores[i + 1] # 유사도가 급격히 떨어지는 지점을 찾음
         gaps.append(gap)
 
+    # 3. 최소 문서 수(min_docs) 이후 가장 큰 Gap이 발생하는 지점 탐색
     search_start = max(min_docs - 1, 0)
     candidate_gaps = gaps[search_start:]
 
@@ -132,6 +133,7 @@ def find_score_gap_cutoff(
     best_gap_idx = search_start + relative_idx
     best_gap = gaps[best_gap_idx]
 
+    # Gap이 충분히 크지 않으면 전체 유지, 아니면 잘라냄
     if best_gap <= min_gap:
         cut_index = len(limited)
     else:
@@ -142,7 +144,7 @@ def find_score_gap_cutoff(
 
 # # 같은 source의 chunk가 너무 많이 포함되지 않도록 source당 최대 N개만 남기는 함수
 # retrieval 편중이 줄어듦
-def apply_source_cap(scored_docs, max_chunks_per_source=2): # source당 최대 N개 유지
+def apply_source_cap(scored_docs, max_chunks_per_source=1): # source당 최대 N개 유지
     """
     score-gap으로 선택된 결과 안에서 같은 source당 최대 N개 chunk만 유지.
     완전 dedup 대신 '균형 전략'으로 사용.
