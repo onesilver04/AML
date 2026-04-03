@@ -8,8 +8,8 @@ from langchain_core.prompts import ChatPromptTemplate
 # 모델 및 경로 설정
 MODEL_NAME = "qwen3.5:27b"
 # 이제 definition이 포함된 통합 JSON 파일 하나만 사용합니다.
-INPUT_JSON_PATH = "SHAP/Feature Importance/shap_tuples_non_prefix_14.json" 
-OUTPUT_PATH = "RAG/Query/generated_rag_queries_14.txt"
+INPUT_JSON_PATH = "SHAP/Feature Importance/shap_tuples_non_prefix_4.json" 
+OUTPUT_PATH = "RAG/Query/generated_rag_queries_4.txt"
 
 def load_json(path: str):
     if not os.path.exists(path):

@@ -1,0 +1,65 @@
+### RAG Experiment Result - 2026-04-02 13:44:35 ###
+Parameters: min_docs=3, max_docs=20, min_gap=0.001, max_chunks_per_source=1
+==================================================
+
+========== Query 1 ==========
+Question: Empirical analysis of the relationship between negative checking account balances and increased credit default probability.
+
+[Score-Gap Selection] cut_index=20, total_before_cap=20
+===== Final Selected Docs (9 chunks) =====
+1. score=0.277689 | German Credit Risk Prediction Using Machine Learning Models.pdf (page=6)
+2. score=0.277686 | Investigation and improvement of multi-layer perceptron neural.pdf (page=9)
+3. score=0.277417 | Interest and credit risk management in German banks.pdf (page=24)
+4. score=0.276168 | How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf (page=5)
+5. score=0.276065 | An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf (page=18)
+6. score=0.275451 | Explainable Automated Machine Learning for Credit Decisions.pdf (page=2)
+7. score=0.274749 | regression-based credit risk modeling.pdf (page=28)
+8. score=0.273699 | Comparative_Analysis_of_Machine_Learning.pdf (page=13)
+9. score=0.272812 | Credit Scoring Using Data Mining Techniques.pdf (page=4)
+
+===== LLM Generation Text =====
+The provided context does not explicitly quantify the relationship between "negative checking account balances" and credit default probability with specific regression coefficients. However, Source 4 establishes a clear inverse relationship where credit risk decreases as the amount of money in the account increases. This directional evidence implies that lower account balances, potentially including negative ones, are associated with higher default probabilities. The analysis in Source 4 utilizes Partial Dependence Plots (PDP) to visualize these trends rather than providing traditional beta coefficients. Consequently, while the general direction supports the premise that insufficient funds increase risk, the specific statistical significance for negative balances is not detailed in the excerpts. Source 1 references the German Credit dataset, which often includes checking account variables, but the text focuses on classification metrics like Accuracy and F1-score. No specific p-values or beta values for account balance categories are available in the provided snippets. Therefore, the empirical analysis is limited to the general trend that higher account funds correlate with reduced risk. Future work mentioned in Source 2 suggests feature selection is required to identify important factors, indicating variable importance is not fully resolved in the current text. In summary, the text supports the inverse relationship but lacks specific quantification for negative balances.
+
+*   "Risk decreases with a larger amount of money in the account" (Source 4, page 5).
+*   "Default probability increases for longer maturity time" (Source 4, page 5).
+*   "p-values in all cases were our statistical threshold of 0.05" regarding imbalanced techniques (Source 5, page 18).
+*   "German Credit Risk Prediction... calculates the proportion of correctly classified samples" (Source 1, page 6).
+
+========== Query 2 ==========
+Question: Statistical impact of the absence of an existing checking account on elevated credit risk.
+
+[Score-Gap Selection] cut_index=20, total_before_cap=20
+===== Final Selected Docs (10 chunks) =====
+1. score=0.329264 | Interest and credit risk management in German banks.pdf (page=20)
+2. score=0.328836 | Analysis_of_feature_selection_techniques_in_credit_risk_assessment.pdf (page=3)
+3. score=0.328668 | regression-based credit risk modeling.pdf (page=22)
+4. score=0.328091 | German Credit Risk Prediction Using Machine Learning Models.pdf (page=9)
+5. score=0.327945 | Explainable Automated Machine Learning for Credit Decisions.pdf (page=8)
+6. score=0.325946 | Probabilistic and discriminative group-wise feature selection methods for credit.pdf (page=9)
+7. score=0.325870 | Comparative_Analysis_of_Machine_Learning.pdf (page=5)
+8. score=0.325805 | Investigation and improvement of multi-layer perceptron neural.pdf (page=3)
+9. score=0.325795 | Comparison of the impact of dimensionality reduction and data splitting on classification performance in credit risk assessment .pdf (page=2)
+10. score=0.323919 | An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf (page=25)
+
+===== LLM Generation Text =====
+Based on the provided context, the "Status of checking account" is identified as the most significant predictor of credit risk among the listed attributes. This variable achieves the highest value of information gain at 0.094739, indicating a strong statistical relationship with credit risk classifications. However, the provided text does not explicitly specify the directional coefficient for the specific condition of "absence" of an account. While the variable is ranked as the top feature, the snippets do not contain regression coefficients or p-values that quantify whether lacking an account positively or negatively impacts default probability. Source 5 confirms the variable's inclusion in German credit datasets as "Balance of checking account," but does not provide outcome metrics. Therefore, while the variable is statistically significant, the specific impact of its absence cannot be determined from the given excerpts. The analysis relies on feature selection techniques rather than detailed coefficient reporting for this specific attribute. This limits the ability to confirm if the absence of an account specifically elevates risk based solely on these documents. The evidence confirms predictive power but lacks the granular directional data required for a definitive risk assessment.
+
+*   "Status of checking account" exhibits the highest information gain of 0.094739, indicating it is the strongest predictor among the listed attributes (Source: Analysis_of_feature_selection_techniques_in_credit_risk_assessment.pdf, page 3).
+*   "Balance of checking account" is designated as Variable X1 for the German dataset, establishing its inclusion in credit decision models (Source: Explainable Automated Machine Learning for Credit Decisions.pdf, page 8).
+*   Regression-based modeling sections discuss methodology but do not report specific coefficients for checking account status (Source: regression-based credit risk modeling.pdf, page 22).
+
+========== Query 3 ==========
+Question: Empirical evidence on the correlation between extended credit duration in months and increased credit risk.
+
+[Score-Gap Selection] cut_index=4, total_before_cap=4
+===== Final Selected Docs (3 chunks) =====
+1. score=0.298791 | Explainable Automated Machine Learning for Credit Decisions.pdf (page=12)
+2. score=0.298672 | Interest and credit risk management in German banks.pdf (page=1)
+3. score=0.298545 | regression-based credit risk modeling.pdf (page=8)
+
+===== LLM Generation Text =====
+Based on the provided context, there is no empirical evidence available to determine the correlation between extended credit duration in months and increased credit risk. The documents discuss credit risk management and modeling frameworks but do not present specific regression outputs or statistical tables containing the variable "duration." Source 3 indicates that the Statlog German credit dataset is utilized for regression analysis, yet the text snippet concludes before displaying the experimental results or coefficient values. Source 1 focuses on the regulatory necessity of explainable AI in credit decisions without analyzing specific risk predictors. Source 2 examines the trade-off between interest rate risk and credit risk at the institutional level rather than individual loan characteristics. Consequently, the direction and significance of credit duration on default probability cannot be established from these excerpts. The absence of specific variable coefficients prevents any conclusion on whether duration positively or negatively impacts risk. Therefore, the provided text is insufficient to validate the premise of the question regarding duration.
+
+*   Source 3 mentions the Statlog German credit dataset is used for regression modeling, but the provided text (page 8) only outlines the methodology structure without listing specific variable coefficients (Source: regression-based credit risk modeling.pdf, page 8).
+*   Source 1 discusses the importance of explainability in credit risk management for regulatory compliance but does not analyze specific risk predictors like duration (Source: Explainable Automated Machine Learning for Credit Decisions.pdf, page 12).
+*   Source 2 analyzes the relationship between interest rate risk and credit risk at the bank level, noting they are remunerated, but does not address loan duration variables (Source: Interest and credit risk management in German banks.pdf, page 1).
