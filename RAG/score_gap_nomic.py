@@ -43,7 +43,7 @@ def load_db():
         collection_name=COLLECTION_NAME,
         embedding_function=embeddings,
         persist_directory=PERSIST_DIR,
-        collection_metadata={"hnsw:space": "cosine"}
+        collection_metadata={"hnsw:space": "cosine"} # cosine
     )
     return db
 

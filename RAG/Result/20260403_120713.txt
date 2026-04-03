@@ -1,0 +1,54 @@
+### RAG Experiment Result - 2026-04-03 12:07:13 ###
+Parameters: min_docs=3, max_docs=20, min_gap=0.001, max_chunks_per_source=2
+==================================================
+
+========== Query 1 ==========
+Question: Statistical impact of lacking an existing checking account on increased credit default probability.
+
+[Score-Gap Selection] cut_index=4, total_before_cap=4
+===== Final Selected Docs (3 chunks) =====
+1. score=0.199168 | An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf (page=23)
+2. score=0.219026 | An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf (page=24)
+3. score=0.226804 | regression-based credit risk modeling.pdf (page=29)
+
+===== LLM Generation Text =====
+Based on the provided context, the statistical impact of lacking an existing checking account contradicts the premise of increased credit default probability. The analysis from the regression-based credit risk modeling study indicates that the category of "no checking account" is actually associated with a lower estimated risk within the specific dataset examined. This finding suggests that, contrary to common assumptions where banking history might signal stability, the absence of a checking account in this model correlates with a reduced likelihood of being classified as a bad credit risk. While financial variables like savings levels generally show higher risk for lower categories, the checking account variable presents an inverse relationship in this specific analysis. It is important to note that demographic predictors are generally less informative than financial variables, yet specific categories like checking account status still yield distinct risk estimates. Therefore, the data does not support a positive correlation between lacking a checking account and increased default probability in this instance. Instead, it points towards a negative association where the absence of this account type lowers the estimated risk score. Consequently, relying on this variable to predict increased default would be inaccurate according to the cited regression results.
+
+*   "No checking account" category is associated with a lower estimated risk in the dataset (Source: regression-based credit risk modeling.pdf, page 29).
+*   Lower savings categories are associated with higher estimated risk, although not all levels show statistically significant differences (Source: regression-based credit risk modeling.pdf, page 29).
+*   Age shows a statistically significant, modest negative association with credit risk in both logistic and linear models (Source: regression-based credit risk modeling.pdf, page 29).
+*   The Foreign worker indicator is associated with a higher estimated risk in both the logistic models (Source: regression-based credit risk modeling.pdf, page 29).
+
+========== Query 2 ==========
+Question: Empirical analysis of the relationship between savings account balances less than 100 DM and decreased credit risk exposure.
+
+[Score-Gap Selection] cut_index=11, total_before_cap=11
+===== Final Selected Docs (5 chunks) =====
+1. score=0.189934 | Interest and credit risk management in German banks.pdf (page=24)
+2. score=0.199403 | Interest and credit risk management in German banks.pdf (page=24)
+3. score=0.209243 | regression-based credit risk modeling.pdf (page=29)
+4. score=0.211429 | regression-based credit risk modeling.pdf (page=23)
+5. score=0.213590 | The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf (page=2)
+
+===== LLM Generation Text =====
+Based on the provided context, the specific threshold of "100 DM" is not explicitly mentioned; however, the text analyzes "savings" categories in the context of individual credit risk modeling. Contrary to the premise of decreased risk, the empirical evidence indicates that lower savings categories are associated with **higher** estimated credit risk. This suggests a positive relationship between low savings balances and the probability of default, rather than a negative one. The text notes that while savings are informative, not all specific savings levels demonstrate statistically significant differences compared to the reference category. Therefore, having lower savings (which would include balances less than 100 DM) generally signals increased risk exposure in the models described.
+
+*   **Savings Categories (Lower Levels):** Associated with higher estimated risk compared to the reference category, indicating that lower savings increase credit risk (Source: regression-based credit risk modeling.pdf, page 29).
+*   **Statistical Significance:** The text notes that "not all savings levels show statistically significant differences," implying variability in the strength of this predictor across different thresholds (Source: regression-based credit risk modeling.pdf, page 29).
+*   **Variable Relevance:** Savings are identified as "informative" predictors in the model, distinguishing them from less informative demographic characteristics (Source: regression-based credit risk modeling.pdf, page 29).
+*   **Model Context:** The analysis utilizes logistic and linear models where financial variables like savings are weighted against demographic predictors to classify clients into high or low-risk groups (Source: The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf, page 2).
+
+========== Query 3 ==========
+Question: Credit risk drivers related to the duration of the credit in months and its contribution to increased default likelihood.
+
+[Score-Gap Selection] cut_index=3, total_before_cap=3
+===== Final Selected Docs (2 chunks) =====
+1. score=0.170606 | regression-based credit risk modeling.pdf (page=23)
+2. score=0.178580 | regression-based credit risk modeling.pdf (page=2)
+
+===== LLM Generation Text =====
+Based on the provided regression analysis context, the duration of the credit in months is identified as a significant driver of credit risk. The analysis indicates a positive relationship where longer loan durations correspond to an increased likelihood of default or being classified as a bad credit risk. This variable is explicitly categorized alongside credit amount and installment rate as one of the strongest predictors within the model. The findings align with theoretical expectations, confirming that extending the repayment period elevates the probability of adverse credit outcomes. Furthermore, this positive association remains consistent across different modeling approaches, including OLS, Tikhonov regularization, and logistic regression. Although specific numerical coefficients are not detailed in the provided excerpts, the statistical significance is implied through its classification as a key risk indicator. The reduced OLS model utilizes duration to explain a substantial portion of the variation in the target variable. The consistency of these effects across reduced and regularized models reinforces the reliability of duration as a predictive factor. Consequently, duration serves as a critical baseline feature for detecting risk in the described financial framework.
+
+*   "Duration" is highlighted as a key risk indicator where longer durations increase the likelihood of credit risk (Source: regression-based credit risk modeling.pdf, page 23).
+*   Longer loan durations are explicitly associated with a higher likelihood of being classified as a bad credit risk (Source: regression-based credit risk modeling.pdf, page 2).
+*   Duration is ranked among the strongest predictors of credit risk, contributing to the model's explanatory power regarding the target variable (Source: regression-based credit risk modeling.pdf, page 2).

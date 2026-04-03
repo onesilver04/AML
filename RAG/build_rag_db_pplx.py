@@ -20,8 +20,8 @@ PERSIST_DIR = "RAG/rag_db_pplx"
 COLLECTION_NAME = "finance_papers"
 
 # 문서용 / 질의용 모델 분리
-DOC_EMBED_MODEL = "perplexity-ai/pplx-embed-context-v1-4B"
-QUERY_EMBED_MODEL = "perplexity-ai/pplx-embed-v1-4B"
+DOC_EMBED_MODEL = "perplexity-ai/pplx-embed-context-v1-4b"
+QUERY_EMBED_MODEL = "perplexity-ai/pplx-embed-v1-4b"
 
 # =========================
 # PDF 로드

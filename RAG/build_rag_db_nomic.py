@@ -52,7 +52,6 @@ def get_vector_db(chunks=None):
     embeddings = PrefixedOllamaEmbeddings(model=EMBED_MODEL)
 
     # 코사인 유사도 설정을 위한 메타데이터
-    # hnsw:space를 'cosine'으로 설정해야 코사인 유사도 기반으로 인덱싱됩니다.
     collection_metadata = {"hnsw:space": "cosine"}
 
     # DB 폴더가 이미 존재하고 새로운 청크가 인자로 들어오지 않은 경우 (로드 모드)

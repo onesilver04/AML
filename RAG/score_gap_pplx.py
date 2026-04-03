@@ -10,10 +10,6 @@ from transformers import AutoModel
 from langchain_ollama import ChatOllama
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_chroma import Chroma
-
-# 프로프트 파일이 따로 없다면 아래 주석을 해제하고 직접 정의하세요.
-# RAG_SYSTEM = "You are a helpful assistant..."
-# RAG_USER_TEMPLATE = "Context: {context}\n\nQuestion: {question}"
 from prompts import RAG_SYSTEM, RAG_USER_TEMPLATE
 
 # =========================
@@ -25,7 +21,7 @@ RESULT_DIR = "RAG/Result"
 
 LLM_MODEL = "qwen3.5:27b"
 # 질의 시에는 컨텍스트 모델이 아닌 일반 임베딩 모델을 사용합니다.
-QUERY_EMBED_MODEL = "perplexity-ai/pplx-embed-v1-4B"
+QUERY_EMBED_MODEL = "perplexity-ai/pplx-embed-v1-4b"
 
 # =========================
 # Perplexity 전용 임베딩 클래스
