@@ -1,0 +1,32 @@
+sample_idx,case_type,true_label,pred_label,bad_probability,confidence_margin,top_features,file_name
+5,ambiguous_confidence,BAD CREDIT RISK,BAD CREDIT RISK,0.5,0.0,employment_<1 | checking_status_no checking | checking_status_0<=X<200,shap_tuples_non_prefix_5.json
+41,misclassified_ambiguous,BAD CREDIT RISK,GOOD CREDIT RISK,0.495,0.0050000000000000044,duration | checking_status_no checking | savings_status_<100,shap_tuples_non_prefix_41.json
+46,misclassified_ambiguous,BAD CREDIT RISK,GOOD CREDIT RISK,0.47375,0.026249999999999996,checking_status_<0 | checking_status_no checking | housing_rent,shap_tuples_non_prefix_46.json
+36,ambiguous_confidence,BAD CREDIT RISK,BAD CREDIT RISK,0.52875,0.028750000000000053,checking_status_no checking | checking_status_<0 | installment_commitment,shap_tuples_non_prefix_36.json
+11,misclassified_ambiguous,GOOD CREDIT RISK,BAD CREDIT RISK,0.565,0.06499999999999995,checking_status_<0 | checking_status_no checking | duration,shap_tuples_non_prefix_11.json
+32,misclassified_ambiguous,BAD CREDIT RISK,GOOD CREDIT RISK,0.40875,0.09125,age | housing_rent | checking_status_no checking,shap_tuples_non_prefix_32.json
+16,misclassified_ambiguous,BAD CREDIT RISK,GOOD CREDIT RISK,0.405,0.09499999999999997,checking_status_no checking | checking_status_0<=X<200 | checking_status_<0,shap_tuples_non_prefix_16.json
+6,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.37625,0.12375000000000003,credit_amount | checking_status_no checking | checking_status_<0,shap_tuples_non_prefix_6.json
+43,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.36625,0.13374999999999998,credit_amount | checking_status_no checking | duration,shap_tuples_non_prefix_43.json
+25,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.35875,0.14125,credit_amount | checking_status_no checking | purpose_repairs,shap_tuples_non_prefix_25.json
+47,misclassified,GOOD CREDIT RISK,BAD CREDIT RISK,0.65125,0.15125,credit_history_no credits/all paid | checking_status_no checking | housing_rent,shap_tuples_non_prefix_47.json
+48,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.28875,0.21125,checking_status_<0 | checking_status_no checking | savings_status_<100,shap_tuples_non_prefix_48.json
+0,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.27375,0.22625,checking_status_no checking | savings_status_>=1000 | savings_status_<100,shap_tuples_non_prefix_0.json
+44,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.26375,0.23625000000000002,checking_status_no checking | savings_status_>=1000 | savings_status_<100,shap_tuples_non_prefix_44.json
+24,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.2575,0.2425,purpose_radio/tv | housing_rent | checking_status_no checking,shap_tuples_non_prefix_24.json
+9,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.25125,0.24875000000000003,checking_status_no checking | duration | checking_status_0<=X<200,shap_tuples_non_prefix_9.json
+1,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.24625,0.25375000000000003,checking_status_no checking | purpose_used car | duration,shap_tuples_non_prefix_1.json
+28,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.24,0.26,checking_status_no checking | employment_<1 | checking_status_<0,shap_tuples_non_prefix_28.json
+37,misclassified,GOOD CREDIT RISK,BAD CREDIT RISK,0.765,0.265,duration | checking_status_<0 | checking_status_no checking,shap_tuples_non_prefix_37.json
+38,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.21375,0.28625,duration | checking_status_<0 | checking_status_no checking,shap_tuples_non_prefix_38.json
+40,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.20625,0.29375,duration | checking_status_no checking | checking_status_<0,shap_tuples_non_prefix_40.json
+49,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.19625,0.30374999999999996,checking_status_no checking | purpose_radio/tv | checking_status_<0,shap_tuples_non_prefix_49.json
+42,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.18875,0.31125,savings_status_no known savings | savings_status_<100 | checking_status_no checking,shap_tuples_non_prefix_42.json
+31,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.16,0.33999999999999997,duration | purpose_radio/tv | checking_status_no checking,shap_tuples_non_prefix_31.json
+20,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.15875,0.34125,checking_status_no checking | employment_<1 | checking_status_<0,shap_tuples_non_prefix_20.json
+30,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.1075,0.3925,credit_history_all paid | checking_status_no checking | duration,shap_tuples_non_prefix_30.json
+15,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.0825,0.4175,duration | checking_status_no checking | age,shap_tuples_non_prefix_15.json
+10,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.08125,0.41875,checking_status_no checking | duration | checking_status_<0,shap_tuples_non_prefix_10.json
+19,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.07125,0.42875,checking_status_no checking | housing_for free | checking_status_<0,shap_tuples_non_prefix_19.json
+26,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.05375,0.44625,duration | checking_status_no checking | credit_amount,shap_tuples_non_prefix_26.json
+18,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.0425,0.4575,checking_status_no checking | checking_status_<0 | purpose_radio/tv,shap_tuples_non_prefix_18.json

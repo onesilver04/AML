@@ -16,7 +16,7 @@ import shap
 # 0) 데이터 로드
 # =========================
 DATA_PATH = "german21_ohe.csv"
-sample_indices = [0,1,2,3,4,5,6,7,8,9,10,11, 12, 13, 14, 15] 
+sample_indices = list(range(51))
 df = pd.read_csv(DATA_PATH)
 
 # (선택) 컬럼 제거

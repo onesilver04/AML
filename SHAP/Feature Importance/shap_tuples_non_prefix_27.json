@@ -1,0 +1,27 @@
+{
+  "sample_idx": 27,
+  "prediction": {
+    "label": "GOOD CREDIT RISK",
+    "probability": 0.26
+  },
+  "tuples": [
+    {
+      "feature": "duration",
+      "shap_value": -0.10389305997624218,
+      "abs_shap": 0.10389305997624218,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "employment_<1",
+      "shap_value": 0.06015704947509267,
+      "abs_shap": 0.06015704947509267,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "checking_status_no checking",
+      "shap_value": 0.049737870458847706,
+      "abs_shap": 0.049737870458847706,
+      "direction": "increase_risk"
+    }
+  ]
+}

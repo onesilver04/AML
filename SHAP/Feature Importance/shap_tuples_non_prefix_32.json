@@ -1,0 +1,27 @@
+{
+  "sample_idx": 32,
+  "prediction": {
+    "label": "GOOD CREDIT RISK",
+    "probability": 0.40875
+  },
+  "tuples": [
+    {
+      "feature": "age",
+      "shap_value": 0.06163633141989987,
+      "abs_shap": 0.06163633141989987,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "housing_rent",
+      "shap_value": 0.06121320773989996,
+      "abs_shap": 0.06121320773989996,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "checking_status_no checking",
+      "shap_value": -0.04933680428321357,
+      "abs_shap": 0.04933680428321357,
+      "direction": "decrease_risk"
+    }
+  ]
+}

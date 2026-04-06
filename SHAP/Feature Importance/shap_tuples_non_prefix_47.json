@@ -1,0 +1,27 @@
+{
+  "sample_idx": 47,
+  "prediction": {
+    "label": "BAD CREDIT RISK",
+    "probability": 0.65125
+  },
+  "tuples": [
+    {
+      "feature": "credit_history_no credits/all paid",
+      "shap_value": 0.08105597366617176,
+      "abs_shap": 0.08105597366617176,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "checking_status_no checking",
+      "shap_value": 0.07083961806213787,
+      "abs_shap": 0.07083961806213787,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "housing_rent",
+      "shap_value": 0.0529347603446012,
+      "abs_shap": 0.0529347603446012,
+      "direction": "increase_risk"
+    }
+  ]
+}

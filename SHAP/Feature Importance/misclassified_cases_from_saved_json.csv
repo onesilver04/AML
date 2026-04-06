@@ -1,0 +1,8 @@
+sample_idx,y_true,case_type,true_label,pred_label,bad_probability,confidence_margin,is_misclassified,is_ambiguous,top_features,file
+11,0,misclassified_ambiguous,GOOD CREDIT RISK,BAD CREDIT RISK,0.565,0.06499999999999995,True,True,checking_status_<0 | checking_status_no checking | duration,SHAP/Feature Importance/shap_tuples_non_prefix_11.json
+6,1,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.37625,0.12375000000000003,True,False,credit_amount | checking_status_no checking | checking_status_<0,SHAP/Feature Importance/shap_tuples_non_prefix_6.json
+0,1,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.27375,0.22625,True,False,checking_status_no checking | savings_status_>=1000 | savings_status_<100,SHAP/Feature Importance/shap_tuples_non_prefix_0.json
+9,1,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.25125,0.24875000000000003,True,False,checking_status_no checking | duration | checking_status_0<=X<200,SHAP/Feature Importance/shap_tuples_non_prefix_9.json
+1,1,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.24625,0.25375000000000003,True,False,checking_status_no checking | purpose_used car | duration,SHAP/Feature Importance/shap_tuples_non_prefix_1.json
+15,1,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.0825,0.4175,True,False,duration | checking_status_no checking | age,SHAP/Feature Importance/shap_tuples_non_prefix_15.json
+10,1,misclassified,BAD CREDIT RISK,GOOD CREDIT RISK,0.08125,0.41875,True,False,checking_status_no checking | duration | checking_status_<0,SHAP/Feature Importance/shap_tuples_non_prefix_10.json
