@@ -1,0 +1,52 @@
+# generated_rag_queries_5.txt
+### RAG Experiment Result - 2026-04-06 16:15:31 ###
+Parameters: min_docs=3, max_docs=20, min_gap=0.001, max_chunks_per_source=2
+==================================================
+
+========== Query 1 ==========
+Question: Empirical analysis of the relationship between present employment since less than one year and increased credit default probability.
+
+[Score-Gap Selection] cut_index=5, total_before_cap=5
+===== Final Selected Docs (5 chunks) =====
+1. score=0.173546 | How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf (page=5)
+2. score=0.197600 | An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf (page=2)
+3. score=0.206359 | regression-based credit risk modeling.pdf (page=23)
+4. score=0.209178 | DATA PREPARATION FOR DATA MINING BASED ON NEURAL NETWORK- A CASE STUDY ON GERMAN CREDIT CLASSIFICATION DATASET.pdf (page=13)
+5. score=0.212275 | An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf (page=5)
+
+===== LLM Generation Text =====
+
+
+========== Query 2 ==========
+Question: Statistical impact of the status of existing checking account being no checking account on elevated credit risk.
+
+[Score-Gap Selection] cut_index=6, total_before_cap=6
+===== Final Selected Docs (4 chunks) =====
+1. score=0.226903 | regression-based credit risk modeling.pdf (page=29)
+2. score=0.234508 | How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf (page=10)
+3. score=0.260980 | regression-based credit risk modeling.pdf (page=23)
+4. score=0.266004 | Investigation and improvement of multi-layer perceptron neural.pdf (page=3)
+
+===== LLM Generation Text =====
+Based on the provided regression analysis, the status of having no checking account is associated with a lower estimated credit risk rather than an elevated one. This finding indicates a negative relationship between the absence of a checking account and default probability within this specific dataset. The analysis highlights that while financial variables are generally informative, this specific categorical group demonstrates a protective effect in the model. Other demographic predictors like age also show a negative association, reinforcing that older applicants and those without checking accounts are less likely to be classified as bad credit risks in this context. However, it is noted that not all savings levels show statistically significant differences, suggesting variability in financial indicator reliability. The model retains variables with statistical relevance, implying the checking account status was deemed significant enough to remain or be discussed in the reduced model context. Ultimately, the data suggests that the absence of a checking account correlates with a reduced probability of default in this specific study.
+
+*   The category of no checking account is associated with a lower estimated risk in the dataset (Source: regression-based credit risk modeling.pdf, Page 29).
+*   Attribute 1 Status of existing checking account is defined as a Qualitative variable in the original attributes table (Source: Investigation and improvement of multi-layer perceptron neural.pdf, Page 3).
+*   Lower savings categories are associated with higher estimated risk, contrasting with the checking account finding (Source: regression-based credit risk modeling.pdf, Page 29).
+
+========== Query 3 ==========
+Question: Determinants of credit default associated with the status of existing checking account between 0 and 200 Deutsche Mark.
+
+[Score-Gap Selection] cut_index=3, total_before_cap=3
+===== Final Selected Docs (3 chunks) =====
+1. score=0.197329 | Investigation and improvement of multi-layer perceptron neural.pdf (page=3)
+2. score=0.199000 | Explainable Automated Machine Learning for Credit Decisions.pdf (page=7)
+3. score=0.209097 | regression-based credit risk modeling.pdf (page=26)
+
+===== LLM Generation Text =====
+The provided context identifies the status of the existing checking account as a qualitative attribute in the German credit dataset. Regression analysis within the text evaluates this variable using applicants with balances exceeding 200 Deutsche Mark as the reference category. However, the specific statistical impact for the category between 0 and 200 Deutsche Mark is not explicitly reported in the provided snippets. Instead, the text details that applicants with a balance below 0 DM have significantly higher log-odds of being classified as bad credit risks with an odds ratio of approximately 2.86. Conversely, applicants with no checking account demonstrate lower estimated log-odds compared to the baseline with an odds ratio of approximately 0.41. While the variable is significant, the specific determinant for the 0-200 DM range cannot be quantified from this specific text. The analysis confirms that checking account status is a key predictor, though specific category coefficients vary. Therefore, only the impacts of negative balances and the absence of an account are verifiable in this context.
+
+*   Checking Account Status (Baseline: >200 DM) is the reference category for regression analysis (Source 3, p. 26).
+*   Checking Account Status (Balance < 0 DM) has an odds ratio of 2.86, indicating higher credit risk (Source 3, p. 26).
+*   Checking Account Status (No Account) has an odds ratio of 0.41, indicating lower credit risk (Source 3, p. 26).
+*   Attribute 1 (Status of existing checking account) is listed as a qualitative variable in the dataset (Source 1, p. 3).

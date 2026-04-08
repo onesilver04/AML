@@ -1,0 +1,30 @@
+{
+  "sample_idx": 96,
+  "prediction": {
+    "label": "BAD CREDIT RISK",
+    "probability": 0.75125
+  },
+  "tuples": [
+    {
+      "feature": "credit_amount",
+      "definition": "Credit amount requested by the applicant.",
+      "shap_value": 0.11380424424873233,
+      "abs_shap": 0.11380424424873233,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": 0.0674749870746795,
+      "abs_shap": 0.0674749870746795,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "credit_history_no credits/all paid",
+      "definition": "Credit history: no credits taken or all previous credits paid back duly.",
+      "shap_value": 0.06315997491281586,
+      "abs_shap": 0.06315997491281586,
+      "direction": "increase_risk"
+    }
+  ]
+}

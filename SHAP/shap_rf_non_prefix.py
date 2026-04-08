@@ -1,8 +1,11 @@
 # prefix 없는 원본 SHAP 계산 및 저장 (feature 단위)
 
+import argparse
 import pandas as pd
 import numpy as np
 import json
+import random
+from pathlib import Path
 
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -11,12 +14,95 @@ from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix
 import matplotlib.pyplot as plt
 from sklearn.metrics import f1_score
 import shap
+from make_llm_input_with_definitions import get_feature_definition
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Train RF, compute SHAP, and save local SHAP JSON files."
+    )
+    parser.add_argument("--data-path", default="german21_ohe.csv")
+    parser.add_argument(
+        "--random-samples",
+        type=int,
+        default=100,
+        help="Randomly select this many local SHAP samples from X_test.",
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=42,
+        help="Random seed used with --random-samples.",
+    )
+    parser.add_argument(
+        "--sample-indices",
+        type=str,
+        default=None,
+        help="Comma-separated sample indices. Overrides --random-samples.",
+    )
+    parser.add_argument(
+        "--sample-index-file",
+        type=str,
+        default=None,
+        help="File containing sample indices separated by commas or newlines.",
+    )
+    parser.add_argument(
+        "--output-dir",
+        default="SHAP/100 Local Shap",
+        help="Directory where shap_tuples_non_prefix_{sample_idx}.json files are saved.",
+    )
+    parser.add_argument(
+        "--skip-plots",
+        action="store_true",
+        help="Skip SHAP summary and waterfall plots for batch generation.",
+    )
+    return parser.parse_args()
+
+
+def parse_index_text(text: str):
+    return [
+        int(part.strip())
+        for part in text.replace("\n", ",").split(",")
+        if part.strip()
+    ]
+
+
+def select_sample_indices(args, n_samples: int):
+    if args.sample_indices:
+        sample_indices = parse_index_text(args.sample_indices)
+    elif args.sample_index_file:
+        with open(args.sample_index_file, "r", encoding="utf-8") as f:
+            sample_indices = parse_index_text(f.read())
+    else:
+        if args.random_samples < 1:
+            raise ValueError("--random-samples must be at least 1.")
+        if args.random_samples > n_samples:
+            raise ValueError(
+                f"--random-samples={args.random_samples} exceeds available "
+                f"test samples ({n_samples})."
+            )
+        rng = random.Random(args.seed)
+        sample_indices = rng.sample(range(n_samples), args.random_samples)
+
+    invalid_sample_indices = [
+        idx for idx in sample_indices if idx < 0 or idx >= n_samples
+    ]
+    if invalid_sample_indices:
+        raise IndexError(
+            f"유효하지 않은 sample index: {invalid_sample_indices}. "
+            f"가능한 범위는 0 ~ {n_samples - 1} 입니다."
+        )
+    return sample_indices
+
+
+args = parse_args()
+output_dir = Path(args.output_dir)
+output_dir.mkdir(parents=True, exist_ok=True)
 
 # =========================
 # 0) 데이터 로드
 # =========================
-DATA_PATH = "german21_ohe.csv"
-sample_indices = list(range(51))
+DATA_PATH = args.data_path
 df = pd.read_csv(DATA_PATH)
 
 # (선택) 컬럼 제거
@@ -77,6 +163,9 @@ print(y.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42, stratify=y
 )
+sample_indices = select_sample_indices(args, len(X_test))
+print("\nSelected sample indices:")
+print(sample_indices)
 
 print("\nTrain 분포:")
 print(y_train.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
@@ -186,28 +275,20 @@ shap_exp = explainer(X_test[selected_features])  # shap.Explanation
 if len(shap_exp.values.shape) == 3:
     shap_exp = shap_exp[:, :, 1]
 
-invalid_sample_indices = [
-    idx for idx in sample_indices if idx < 0 or idx >= len(X_test)
-]
-if invalid_sample_indices:
-    raise IndexError(
-        f"유효하지 않은 sample index: {invalid_sample_indices}. "
-        f"가능한 범위는 0 ~ {len(X_test) - 1} 입니다."
-    )
-
-# (A) Summary - beeswarm
-shap.plots.beeswarm(shap_exp, max_display=20)
-plt.show()
-
-# (B) Summary - bar
-shap.plots.bar(shap_exp, max_display=20)
-plt.show()
-
-# (C) Local - waterfall
-for sample_idx in sample_indices:
-    print(f"\n===== Waterfall plot for sample_idx={sample_idx} =====")
-    shap.plots.waterfall(shap_exp[sample_idx], max_display=20)
+if not args.skip_plots:
+    # (A) Summary - beeswarm
+    shap.plots.beeswarm(shap_exp, max_display=20)
     plt.show()
+
+    # (B) Summary - bar
+    shap.plots.bar(shap_exp, max_display=20)
+    plt.show()
+
+    # (C) Local - waterfall
+    for sample_idx in sample_indices:
+        print(f"\n===== Waterfall plot for sample_idx={sample_idx} =====")
+        shap.plots.waterfall(shap_exp[sample_idx], max_display=20)
+        plt.show()
 
 # =========================
 # 7) SHAP 중요도 (원본 feature 단위) 저장
@@ -350,6 +431,7 @@ def save_shap_tuples_json(
     for _, row in tuple_df.iterrows():
         records.append({
             "feature": row["feature"],
+            "definition": get_feature_definition(row["feature"]),
             "shap_value": float(row["shap_value"]),
             "abs_shap": float(row["abs_shap"]),
             "direction": row["direction"]
@@ -405,5 +487,5 @@ for sample_idx in sample_indices:
         sample_idx,
         prediction_label=prediction_label,
         predict_proba=prediction_proba,
-        save_path=f"SHAP/Feature Importance/shap_tuples_non_prefix_{sample_idx}.json",
+        save_path=output_dir / f"shap_tuples_non_prefix_{sample_idx}.json",
     )

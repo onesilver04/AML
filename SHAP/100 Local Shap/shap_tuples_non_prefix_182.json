@@ -1,0 +1,30 @@
+{
+  "sample_idx": 182,
+  "prediction": {
+    "label": "GOOD CREDIT RISK",
+    "probability": 0.46875
+  },
+  "tuples": [
+    {
+      "feature": "purpose_education",
+      "definition": "Loan purpose: education.",
+      "shap_value": 0.10898835938889796,
+      "abs_shap": 0.10898835938889796,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.07126689578093222,
+      "abs_shap": 0.07126689578093222,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.04188494982059949,
+      "abs_shap": 0.04188494982059949,
+      "direction": "decrease_risk"
+    }
+  ]
+}

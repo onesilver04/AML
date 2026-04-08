@@ -2,14 +2,12 @@ import os
 import json
 import re
 from typing import List
-from langchain_ollama import ChatOllama
-from langchain_core.prompts import ChatPromptTemplate
 
 # 모델 및 경로 설정
 MODEL_NAME = "qwen3.5:27b"
 # 이제 definition이 포함된 통합 JSON 파일 하나만 사용합니다.
-INPUT_JSON_PATH = "SHAP/Feature Importance/shap_tuples_non_prefix_4.json" 
-OUTPUT_PATH = "RAG/Query/generated_rag_queries_4.txt"
+INPUT_JSON_PATH = "SHAP/Feature Importance/shap_tuples_non_prefix_41.json" 
+OUTPUT_PATH = "RAG/Query/generated_rag_queries_41.txt"
 
 def load_json(path: str):
     if not os.path.exists(path):
@@ -18,6 +16,9 @@ def load_json(path: str):
         return json.load(f)
 
 def build_chain(model_name: str = MODEL_NAME):
+    from langchain_ollama import ChatOllama
+    from langchain_core.prompts import ChatPromptTemplate
+
     prompt = ChatPromptTemplate.from_messages([
         (
             "system",
@@ -59,6 +60,13 @@ def postprocess_queries(text: str) -> List[str]:
             queries.append(clean)
     return queries
 
+def generate_rag_queries(input_data: dict, model_name: str = MODEL_NAME) -> List[str]:
+    chain = build_chain(model_name)
+    response = chain.invoke({
+        "input_json": json.dumps(input_data, indent=2, ensure_ascii=False)
+    })
+    return postprocess_queries(response.content)
+
 def main():
     print(f"데이터 로딩 중: {INPUT_JSON_PATH}")
     try:
@@ -69,15 +77,7 @@ def main():
         return
 
     print(f"Generating queries using {MODEL_NAME}...")
-    chain = build_chain()
-    
-    # JSON 전체를 문자열로 직렬화하여 전달
-    response = chain.invoke({
-        "input_json": json.dumps(input_data, indent=2, ensure_ascii=False)
-    })
-
-    # 결과 리스트 처리
-    rag_queries = postprocess_queries(response.content)
+    rag_queries = generate_rag_queries(input_data)
     
     print("\n===== Generated RAG Queries =====")
     for i, q in enumerate(rag_queries, 1):

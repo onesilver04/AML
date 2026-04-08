@@ -31,9 +31,9 @@ class PrefixedOllamaEmbeddings(OllamaEmbeddings):
 
 
 DEFAULT_QUERIES = [
-    "Statistical impact of lacking an existing checking account on increased credit default probability.",
-    "Empirical analysis of the relationship between savings account balances less than 100 DM and decreased credit risk exposure.",
-    "Credit risk drivers related to the duration of the credit in months and its contribution to increased default likelihood."
+  "Empirical analysis of the relationship between present employment since less than one year and increased credit default probability.",
+  "Statistical impact of the status of existing checking account being no checking account on elevated credit risk.",
+  "Determinants of credit default associated with the status of existing checking account between 0 and 200 Deutsche Mark."
 ]
 
 
@@ -92,10 +92,6 @@ def translate_pair(llm, question, answer):
 
 
 def get_all_scored_docs(db, question: str):
-    """
-    Chroma의 similarity_search_with_score()는 보통 distance를 반환.
-    distance가 작을수록 더 관련 있는 문서이므로 오름차순 정렬.
-    """
     results = db.similarity_search_with_score(question, k=100)
     results = sorted(results, key=lambda x: x[1])  # 작은 거리 우선
     return results

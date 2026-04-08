@@ -1,0 +1,30 @@
+{
+  "sample_idx": 132,
+  "prediction": {
+    "label": "GOOD CREDIT RISK",
+    "probability": 0.4725
+  },
+  "tuples": [
+    {
+      "feature": "credit_amount",
+      "definition": "Credit amount requested by the applicant.",
+      "shap_value": 0.1424050623486109,
+      "abs_shap": 0.1424050623486109,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "purpose_education",
+      "definition": "Loan purpose: education.",
+      "shap_value": 0.060891891157817526,
+      "abs_shap": 0.060891891157817526,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.05156842733376646,
+      "abs_shap": 0.05156842733376646,
+      "direction": "decrease_risk"
+    }
+  ]
+}

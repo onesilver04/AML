@@ -1,0 +1,30 @@
+{
+  "sample_idx": 74,
+  "prediction": {
+    "label": "GOOD CREDIT RISK",
+    "probability": 0.37
+  },
+  "tuples": [
+    {
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.08825684389612885,
+      "abs_shap": 0.08825684389612885,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "employment_<1",
+      "definition": "Present employment duration: less than 1 year.",
+      "shap_value": 0.08667969323964272,
+      "abs_shap": 0.08667969323964272,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "age",
+      "definition": "Applicant age in years.",
+      "shap_value": 0.04958854370714684,
+      "abs_shap": 0.04958854370714684,
+      "direction": "increase_risk"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "sample_idx": 70,
+  "prediction": {
+    "label": "GOOD CREDIT RISK",
+    "probability": 0.3925
+  },
+  "tuples": [
+    {
+      "feature": "credit_amount",
+      "definition": "Credit amount requested by the applicant.",
+      "shap_value": 0.19523350566764203,
+      "abs_shap": 0.19523350566764203,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.05971250783034548,
+      "abs_shap": 0.05971250783034548,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "savings_status_no known savings",
+      "definition": "Savings account status: no known savings account.",
+      "shap_value": -0.05893517079536942,
+      "abs_shap": 0.05893517079536942,
+      "direction": "decrease_risk"
+    }
+  ]
+}

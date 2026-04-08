@@ -1,0 +1,30 @@
+{
+  "sample_idx": 150,
+  "prediction": {
+    "label": "GOOD CREDIT RISK",
+    "probability": 0.1725
+  },
+  "tuples": [
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.059119770567763456,
+      "abs_shap": 0.059119770567763456,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.05175154103644041,
+      "abs_shap": 0.05175154103644041,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "job_unskilled resident",
+      "definition": "Job category: unskilled and resident.",
+      "shap_value": 0.03360283548555625,
+      "abs_shap": 0.03360283548555625,
+      "direction": "increase_risk"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "sample_idx": 116,
+  "prediction": {
+    "label": "BAD CREDIT RISK",
+    "probability": 0.51125
+  },
+  "tuples": [
+    {
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": 0.10248214712228561,
+      "abs_shap": 0.10248214712228561,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.06307951119944108,
+      "abs_shap": 0.06307951119944108,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "housing_rent",
+      "definition": "Housing status: rents housing.",
+      "shap_value": 0.05648562947154283,
+      "abs_shap": 0.05648562947154283,
+      "direction": "increase_risk"
+    }
+  ]
+}

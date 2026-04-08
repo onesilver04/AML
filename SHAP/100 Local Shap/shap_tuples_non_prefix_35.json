@@ -1,0 +1,30 @@
+{
+  "sample_idx": 35,
+  "prediction": {
+    "label": "BAD CREDIT RISK",
+    "probability": 0.6175
+  },
+  "tuples": [
+    {
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": 0.0944751511700094,
+      "abs_shap": 0.0944751511700094,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.07904602278885976,
+      "abs_shap": 0.07904602278885976,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "housing_rent",
+      "definition": "Housing status: rents housing.",
+      "shap_value": 0.05879595996174465,
+      "abs_shap": 0.05879595996174465,
+      "direction": "increase_risk"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "sample_idx": 166,
+  "prediction": {
+    "label": "BAD CREDIT RISK",
+    "probability": 0.60625
+  },
+  "tuples": [
+    {
+      "feature": "employment_<1",
+      "definition": "Present employment duration: less than 1 year.",
+      "shap_value": 0.10998046460085599,
+      "abs_shap": 0.10998046460085599,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.06759674276744189,
+      "abs_shap": 0.06759674276744189,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "age",
+      "definition": "Applicant age in years.",
+      "shap_value": 0.06338763526250776,
+      "abs_shap": 0.06338763526250776,
+      "direction": "increase_risk"
+    }
+  ]
+}

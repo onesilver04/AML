@@ -1,0 +1,5 @@
+[
+  "Empirical analysis of the impact of extended credit duration in months on credit default probability.",
+  "Determinants of credit risk associated with the absence of an existing checking account.",
+  "Relationship between low savings account balances and increased likelihood of loan default."
+]

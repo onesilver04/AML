@@ -1,0 +1,30 @@
+{
+  "sample_idx": 89,
+  "prediction": {
+    "label": "GOOD CREDIT RISK",
+    "probability": 0.4425
+  },
+  "tuples": [
+    {
+      "feature": "credit_history_delayed previously",
+      "definition": "Credit history: delay in paying off previous credits.",
+      "shap_value": 0.10653639856457423,
+      "abs_shap": 0.10653639856457423,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.10536900571392967,
+      "abs_shap": 0.10536900571392967,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.03749486447115756,
+      "abs_shap": 0.03749486447115756,
+      "direction": "decrease_risk"
+    }
+  ]
+}
