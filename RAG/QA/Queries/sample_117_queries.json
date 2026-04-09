@@ -1,0 +1,27 @@
+{
+  "sample_idx": 117,
+  "shap_json_path": "SHAP/100 Local Shap/shap_tuples_non_prefix_117.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Statistical impact of having no checking account on reduced credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of negative checking account balances as drivers of decreased credit risk."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "housing_for free",
+      "feature_definition": "Housing status: lives for free.",
+      "feature_direction": "increase_risk",
+      "question": "Investigation into the contribution of living for free housing status to increased credit default risk."
+    }
+  ]
+}

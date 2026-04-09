@@ -1,0 +1,27 @@
+{
+  "sample_idx": 166,
+  "shap_json_path": "SHAP/100 Local Shap/shap_tuples_non_prefix_166.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "employment_<1",
+      "feature_definition": "Present employment duration: less than 1 year.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of present employment duration less than one year as a contributor to increased credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Determinants of credit risk associated with applicants having no checking account status."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "age",
+      "feature_definition": "Applicant age in years.",
+      "feature_direction": "increase_risk",
+      "question": "Statistical impact of applicant age in years on the likelihood of increased credit risk."
+    }
+  ]
+}

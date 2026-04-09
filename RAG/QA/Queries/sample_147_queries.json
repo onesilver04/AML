@@ -1,0 +1,27 @@
+{
+  "sample_idx": 147,
+  "shap_json_path": "SHAP/100 Local Shap/shap_tuples_non_prefix_147.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the association between the absence of a checking account and reduced credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "age",
+      "feature_definition": "Applicant age in years.",
+      "feature_direction": "increase_risk",
+      "question": "Statistical impact of applicant age in years on credit risk drivers and increased likelihood of default."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Investigation into the correlation between checking account balances below zero and reduced credit risk exposure."
+    }
+  ]
+}

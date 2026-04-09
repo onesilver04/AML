@@ -1,0 +1,27 @@
+{
+  "sample_idx": 131,
+  "shap_json_path": "SHAP/100 Local Shap/shap_tuples_non_prefix_131.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "savings_status_<100",
+      "feature_definition": "Savings account status: savings below 100 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the association between savings balances below 100 DM and reduced credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "credit_amount",
+      "feature_definition": "Credit amount requested by the applicant.",
+      "feature_direction": "decrease_risk",
+      "question": "Determinants of credit risk mitigation associated with the requested credit amount."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "savings_status_no known savings",
+      "feature_definition": "Savings account status: no known savings account.",
+      "feature_direction": "decrease_risk",
+      "question": "Statistical evidence regarding the influence of no known savings account status on creditworthiness."
+    }
+  ]
+}

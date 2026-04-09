@@ -1,0 +1,27 @@
+{
+  "sample_idx": 152,
+  "shap_json_path": "SHAP/100 Local Shap/shap_tuples_non_prefix_152.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "employment_<1",
+      "feature_definition": "Present employment duration: less than 1 year.",
+      "feature_direction": "increase_risk",
+      "question": "Statistical impact of present employment duration less than one year on credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Credit risk drivers associated with the absence of a checking account in consumer lending."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "purpose_radio/tv",
+      "feature_definition": "Loan purpose: purchase of radio or TV.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical evidence on loan purposes for consumer durables such as radio or TV as mitigating factors in credit risk assessment."
+    }
+  ]
+}

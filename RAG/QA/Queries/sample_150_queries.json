@@ -1,0 +1,27 @@
+{
+  "sample_idx": 150,
+  "shap_json_path": "SHAP/100 Local Shap/shap_tuples_non_prefix_150.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the mitigating effect of no checking account status on credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "decrease_risk",
+      "question": "Statistical assessment of loan duration in months as a determinant of reduced credit risk exposure."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "job_unskilled resident",
+      "feature_definition": "Job category: unskilled and resident.",
+      "feature_direction": "increase_risk",
+      "question": "Investigation into the contribution of unskilled and resident job categories to increased credit default likelihood."
+    }
+  ]
+}
