@@ -1,0 +1,27 @@
+{
+  "sample_idx": 191,
+  "shap_json_path": "SHAP/100 Local Shap/shap_tuples_non_prefix_191.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the impact of lacking a checking account on increased credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "employment_<1",
+      "feature_definition": "Present employment duration: less than 1 year.",
+      "feature_direction": "increase_risk",
+      "question": "Statistical significance of employment duration less than one year as a determinant of elevated credit risk."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "checking_status_0<=X<200",
+      "feature_definition": "Checking account status: balance between 0 and 200 DM.",
+      "feature_direction": "increase_risk",
+      "question": "Relationship between minimal checking account balances and increased likelihood of loan default."
+    }
+  ]
+}

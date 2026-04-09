@@ -1,0 +1,27 @@
+{
+  "sample_idx": 199,
+  "shap_json_path": "SHAP/100 Local Shap/shap_tuples_non_prefix_199.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the relationship between having no checking account and reduced credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "credit_history_delayed previously",
+      "feature_definition": "Credit history: delay in paying off previous credits.",
+      "feature_direction": "increase_risk",
+      "question": "Determinants of credit risk associated with delay in paying off previous credits and their contribution to increased default likelihood."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "savings_status_<100",
+      "feature_definition": "Savings account status: savings below 100 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Statistical impact of savings below 100 DM on credit risk mitigation and default avoidance."
+    }
+  ]
+}

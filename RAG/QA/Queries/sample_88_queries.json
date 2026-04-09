@@ -1,0 +1,27 @@
+{
+  "sample_idx": 88,
+  "shap_json_path": "SHAP/100 Local Shap/shap_tuples_non_prefix_88.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "credit_history_all paid",
+      "feature_definition": "Credit history: all previous credits at this bank paid back duly.",
+      "feature_direction": "increase_risk",
+      "question": "An empirical analysis investigates the contribution of a credit history with all previous credits at this bank paid back duly to increased credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "decrease_risk",
+      "question": "A statistical study examines the impact of loan duration in months on the mitigation of credit risk and reduction of default likelihood."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "increase_risk",
+      "question": "Research identifies credit risk drivers associated with a checking account status indicating a balance below zero Deutsche Marks and its contribution to default."
+    }
+  ]
+}

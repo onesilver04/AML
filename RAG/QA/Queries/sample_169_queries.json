@@ -1,0 +1,27 @@
+{
+  "sample_idx": 169,
+  "shap_json_path": "SHAP/100 Local Shap/shap_tuples_non_prefix_169.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the association between lacking a checking account and reduced credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "job_unskilled resident",
+      "feature_definition": "Job category: unskilled and resident.",
+      "feature_direction": "increase_risk",
+      "question": "Determinants of credit default associated with employment status as an unskilled resident and increased risk exposure."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "age",
+      "feature_definition": "Applicant age in years.",
+      "feature_direction": "decrease_risk",
+      "question": "Statistical evidence regarding the correlation between applicant age and mitigated credit risk exposure."
+    }
+  ]
+}

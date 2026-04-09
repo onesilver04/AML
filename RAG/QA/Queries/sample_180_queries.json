@@ -1,0 +1,27 @@
+{
+  "sample_idx": 180,
+  "shap_json_path": "SHAP/100 Local Shap/shap_tuples_non_prefix_180.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the association between lacking a checking account and mitigated credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "age",
+      "feature_definition": "Applicant age in years.",
+      "feature_direction": "increase_risk",
+      "question": "Investigation into applicant age as a significant driver of increased credit risk and default likelihood."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "savings_status_<100",
+      "feature_definition": "Savings account status: savings below 100 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Statistical evidence regarding savings balances below 100 DM and their correlation with reduced credit risk."
+    }
+  ]
+}

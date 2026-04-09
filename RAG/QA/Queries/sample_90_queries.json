@@ -1,0 +1,27 @@
+{
+  "sample_idx": 90,
+  "shap_json_path": "SHAP/100 Local Shap/shap_tuples_non_prefix_90.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the impact of extended loan duration in months on increased credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Statistical significance of lacking a checking account status as a determinant of elevated credit risk."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "purpose_education",
+      "feature_definition": "Loan purpose: education.",
+      "feature_direction": "increase_risk",
+      "question": "Credit risk drivers associated with loan purpose for education and their contribution to default likelihood."
+    }
+  ]
+}

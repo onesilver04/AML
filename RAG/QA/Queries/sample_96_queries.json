@@ -1,0 +1,27 @@
+{
+  "sample_idx": 96,
+  "shap_json_path": "SHAP/100 Local Shap/shap_tuples_non_prefix_96.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "credit_amount",
+      "feature_definition": "Credit amount requested by the applicant.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the contribution of the credit amount requested by the applicant to increased probability of credit default."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "increase_risk",
+      "question": "Statistical impact of loan duration in months on the elevation of credit risk."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "credit_history_no credits/all paid",
+      "feature_definition": "Credit history: no credits taken or all previous credits paid back duly.",
+      "feature_direction": "increase_risk",
+      "question": "Assessment of credit history characterized by no credits taken or all previous credits paid back duly as a driver of increased credit risk."
+    }
+  ]
+}
