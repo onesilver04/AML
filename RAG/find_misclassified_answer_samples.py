@@ -6,9 +6,9 @@ import sys
 from pathlib import Path
 
 
-DEFAULT_ANSWERS_DIR = Path("RAG/QA/Answers")
+DEFAULT_INPUT_DIR = Path("SHAP/100 Local Shap")
 DEFAULT_Y_TEST_PATH = Path("y_test.csv")
-DEFAULT_OUTPUT_PATH = Path("RAG/QA/Answers/misclassified_answer_samples.csv")
+DEFAULT_OUTPUT_PATH = Path("SHAP/100 Local Shap/misclassified_local_shap_samples.csv")
 
 
 CSV_FIELDNAMES = [
@@ -26,13 +26,22 @@ CSV_FIELDNAMES = [
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Find misclassified RAG answer samples by comparing prediction_label with y_test.csv."
+        description="Find misclassified samples from local SHAP JSON or RAG answer JSONL files."
+    )
+    parser.add_argument(
+        "--input-dir",
+        type=Path,
+        default=DEFAULT_INPUT_DIR,
+        help=(
+            "Directory containing shap_tuples_non_prefix_*.json or "
+            f"sample_*_feature_qa.jsonl files. Default: {DEFAULT_INPUT_DIR}"
+        ),
     )
     parser.add_argument(
         "--answers-dir",
+        dest="input_dir",
         type=Path,
-        default=DEFAULT_ANSWERS_DIR,
-        help=f"Directory containing sample_*_feature_qa.jsonl files. Default: {DEFAULT_ANSWERS_DIR}",
+        help=argparse.SUPPRESS,
     )
     parser.add_argument(
         "--y-test",
@@ -55,8 +64,9 @@ def parse_args():
 
 
 def to_risk_label(value: int) -> str:
-    # y_test.csv stores the original boolean class as 1=True(good), 0=False(bad).
-    return "GOOD CREDIT RISK" if int(value) == 1 else "BAD CREDIT RISK"
+    # Match the training target used in SHAP/shap_rf_non_prefix.py:
+    # 1 -> bad credit risk, 0 -> good credit risk.
+    return "BAD CREDIT RISK" if int(value) == 1 else "GOOD CREDIT RISK"
 
 
 def load_y_test(path: Path):
@@ -79,10 +89,14 @@ def load_y_test(path: Path):
 
 
 def sample_idx_from_path(path: Path) -> int:
-    match = re.fullmatch(r"sample_(\d+)_feature_qa\.jsonl", path.name)
-    if not match:
-        raise ValueError(f"Unexpected answer file name: {path}")
-    return int(match.group(1))
+    for pattern in (
+        r"sample_(\d+)_feature_qa\.jsonl",
+        r"shap_tuples_non_prefix_(\d+)\.json",
+    ):
+        match = re.fullmatch(pattern, path.name)
+        if match:
+            return int(match.group(1))
+    raise ValueError(f"Unexpected input file name: {path}")
 
 
 def load_answer_records(path: Path):
@@ -153,13 +167,69 @@ def summarize_answer_file(path: Path, y_true):
     }
 
 
-def iter_answer_files(answers_dir: Path):
-    if not answers_dir.exists():
-        raise FileNotFoundError(f"Answers directory does not exist: {answers_dir}")
-    files = sorted(answers_dir.glob("sample_*_feature_qa.jsonl"))
-    if not files:
-        raise FileNotFoundError(f"No sample_*_feature_qa.jsonl files found in: {answers_dir}")
-    return files
+def summarize_local_shap_file(path: Path, y_true):
+    sample_idx = sample_idx_from_path(path)
+    if sample_idx >= len(y_true):
+        raise IndexError(
+            f"sample_idx {sample_idx} from {path} is out of range for y_test "
+            f"with {len(y_true)} rows."
+        )
+
+    with path.open("r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    if int(data.get("sample_idx")) != sample_idx:
+        raise ValueError(
+            f"{path} contains sample_idx={data.get('sample_idx')} "
+            f"(expected {sample_idx})."
+        )
+
+    prediction = data.get("prediction", {})
+    prediction_label = prediction.get("label")
+    if not prediction_label:
+        raise ValueError(f"{path} has no prediction.label.")
+
+    tuples = data.get("tuples", [])
+    embedded_true_label = data.get("true_label")
+    true_label = (
+        embedded_true_label
+        if embedded_true_label
+        else to_risk_label(y_true[sample_idx])
+    )
+
+    return {
+        "sample_idx": sample_idx,
+        "true_label": true_label,
+        "prediction_label": prediction_label,
+        "prediction_probability": prediction.get("probability", "UNKNOWN"),
+        "is_misclassified": true_label != prediction_label,
+        "top_features": " | ".join(str(item.get("feature", "UNKNOWN")) for item in tuples),
+        "feature_directions": " | ".join(
+            str(item.get("direction", "UNKNOWN")) for item in tuples
+        ),
+        "feature_shap_values": " | ".join(
+            str(item.get("shap_value", "UNKNOWN")) for item in tuples
+        ),
+        "file_path": str(path),
+    }
+
+
+def iter_input_files(input_dir: Path):
+    if not input_dir.exists():
+        raise FileNotFoundError(f"Input directory does not exist: {input_dir}")
+
+    shap_files = sorted(input_dir.glob("shap_tuples_non_prefix_*.json"))
+    if shap_files:
+        return "local_shap", shap_files
+
+    answer_files = sorted(input_dir.glob("sample_*_feature_qa.jsonl"))
+    if answer_files:
+        return "rag_answers", answer_files
+
+    raise FileNotFoundError(
+        "No shap_tuples_non_prefix_*.json or sample_*_feature_qa.jsonl files found in: "
+        f"{input_dir}"
+    )
 
 
 def write_csv(path: Path, rows):
@@ -174,10 +244,14 @@ def print_summary(all_rows):
     misclassified = [row for row in all_rows if row["is_misclassified"]]
     correct_count = len(all_rows) - len(misclassified)
     misclassified_indices = [str(row["sample_idx"]) for row in misclassified]
+    misclassification_rate = (
+        len(misclassified) / len(all_rows) * 100 if all_rows else 0.0
+    )
 
     print(f"Total samples: {len(all_rows)}")
     print(f"Misclassified: {len(misclassified)}")
     print(f"Correct: {correct_count}")
+    print(f"Misclassification rate: {misclassification_rate:.2f}%")
     print("Misclassified sample_idx:")
     print(", ".join(misclassified_indices) if misclassified_indices else "(none)")
 
@@ -185,11 +259,12 @@ def print_summary(all_rows):
 def main():
     args = parse_args()
     y_true = load_y_test(args.y_test)
+    input_type, input_files = iter_input_files(args.input_dir)
 
-    all_rows = [
-        summarize_answer_file(path, y_true)
-        for path in iter_answer_files(args.answers_dir)
-    ]
+    if input_type == "local_shap":
+        all_rows = [summarize_local_shap_file(path, y_true) for path in input_files]
+    else:
+        all_rows = [summarize_answer_file(path, y_true) for path in input_files]
     output_rows = all_rows if args.include_correct else [
         row for row in all_rows if row["is_misclassified"]
     ]

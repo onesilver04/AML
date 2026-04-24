@@ -1,25 +1,76 @@
-# prefix 없는 원본 SHAP 계산 및 저장 (feature 단위)
+# prefix 없는 원본 RF 학습/평가 및 글로벌 SHAP 저장
 
 import argparse
-import pandas as pd
-import numpy as np
 import json
-import random
+import os
+import tempfile
 from pathlib import Path
 
-from sklearn.model_selection import train_test_split
+import numpy as np
+import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix
+from sklearn.inspection import permutation_importance
+from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, roc_auc_score
+from sklearn.model_selection import (
+    RandomizedSearchCV,
+    StratifiedKFold,
+    cross_val_predict,
+    train_test_split,
+)
+
+os.environ.setdefault(
+    "MPLCONFIGDIR",
+    str(Path(tempfile.gettempdir()) / "matplotlib"),
+)
 
 import matplotlib.pyplot as plt
-from sklearn.metrics import f1_score
 import shap
+
 from make_llm_input_with_definitions import get_feature_definition
+
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = SCRIPT_DIR.parent
+
+
+DROP_COLUMNS = [
+    "foreign_worker_no",
+    "foreign_worker_yes",
+    "num_dependents",
+    "own_telephone_none",
+    "own_telephone_yes",
+    "personal_status_female div/dep/mar",
+    "personal_status_male div/sep",
+    "personal_status_male mar/wid",
+    "personal_status_male single",
+    "other_parties_co applicant",
+    "other_parties_guarantor",
+    "other_parties_none",
+    "property_magnitude_car",
+    "property_magnitude_life insurance",
+    "property_magnitude_no known property",
+    "property_magnitude_real estate",
+    "other_payment_plans_bank",
+    "other_payment_plans_none",
+    "other_payment_plans_stores",
+    "residence_since",
+]
+
+RF_PARAM_DISTRIBUTIONS = {
+    "n_estimators": [300, 500, 800, 1200],
+    "max_depth": [None, 6, 8, 10, 14, 20],
+    "min_samples_leaf": [1, 2, 4, 8],
+    "min_samples_split": [2, 5, 10, 20],
+    "max_features": ["sqrt", "log2", None, 0.5, 0.8],
+    "bootstrap": [True, False],
+    "criterion": ["gini", "entropy", "log_loss"],
+    "class_weight": [None, "balanced", "balanced_subsample"],
+}
 
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Train RF, compute SHAP, and save local SHAP JSON files."
+        description="Train/evaluate RF, save global SHAP importance, and export random local SHAP samples."
     )
     parser.add_argument("--data-path", default="german21_ohe.csv")
     parser.add_argument(
@@ -54,7 +105,37 @@ def parse_args():
     parser.add_argument(
         "--skip-plots",
         action="store_true",
-        help="Skip SHAP summary and waterfall plots for batch generation.",
+        help="Skip global SHAP summary plots.",
+    )
+    parser.add_argument(
+        "--search-iter",
+        type=int,
+        default=32,
+        help="Number of random RF hyperparameter candidates evaluated with CV.",
+    )
+    parser.add_argument(
+        "--cv-folds",
+        type=int,
+        default=5,
+        help="Number of folds used for hyperparameter search and threshold tuning.",
+    )
+    parser.add_argument(
+        "--threshold-min",
+        type=float,
+        default=0.20,
+        help="Minimum threshold value searched on out-of-fold train probabilities.",
+    )
+    parser.add_argument(
+        "--threshold-max",
+        type=float,
+        default=0.70,
+        help="Maximum threshold value searched on out-of-fold train probabilities.",
+    )
+    parser.add_argument(
+        "--threshold-step",
+        type=float,
+        default=0.01,
+        help="Threshold step size.",
     )
     return parser.parse_args()
 
@@ -81,8 +162,12 @@ def select_sample_indices(args, n_samples: int):
                 f"--random-samples={args.random_samples} exceeds available "
                 f"test samples ({n_samples})."
             )
-        rng = random.Random(args.seed)
-        sample_indices = rng.sample(range(n_samples), args.random_samples)
+        rng = np.random.default_rng(args.seed)
+        sample_indices = rng.choice(
+            n_samples,
+            size=args.random_samples,
+            replace=False,
+        ).tolist()
 
     invalid_sample_indices = [
         idx for idx in sample_indices if idx < 0 or idx >= n_samples
@@ -95,397 +180,384 @@ def select_sample_indices(args, n_samples: int):
     return sample_indices
 
 
-args = parse_args()
-output_dir = Path(args.output_dir)
-output_dir.mkdir(parents=True, exist_ok=True)
+def resolve_output_path(path_str: str) -> Path:
+    path = Path(path_str)
+    if path.is_absolute():
+        return path
+    return PROJECT_ROOT / path
 
-# =========================
-# 0) 데이터 로드
-# =========================
-DATA_PATH = args.data_path
-df = pd.read_csv(DATA_PATH)
 
-# (선택) 컬럼 제거
-df = df.drop(
-    columns=[
-        "foreign_worker_no",
-        "foreign_worker_yes",
-        "num_dependents",
-        "own_telephone_none",
-        "own_telephone_yes",
-        "personal_status_female div/dep/mar",
-        "personal_status_male div/sep",
-        "personal_status_male mar/wid",
-        "personal_status_male single",
-        "other_parties_co applicant",
-        "other_parties_guarantor",
-        "other_parties_none",
-        "property_magnitude_car",
-        "property_magnitude_life insurance",
-        "property_magnitude_no known property",
-        "property_magnitude_real estate",
-        "other_payment_plans_bank",
-        "other_payment_plans_none",
-        "other_payment_plans_stores",
-        "residence_since",
-    ],
-    errors="ignore",
-)
+def load_target(df: pd.DataFrame) -> pd.Series:
+    if "class" not in df.columns:
+        raise ValueError("타깃 컬럼 'class'를 찾지 못했습니다.")
 
-# =========================
-# 타깃 설정 (bad=1, good=0)
-# =========================
-if "class" not in df.columns:
-    raise ValueError("타깃 컬럼 'class'를 찾지 못했습니다.")
+    if df["class"].dtype == bool:
+        return (~df["class"]).astype(int)
 
-if df["class"].dtype == bool:
-    # True(good)->0, False(bad)->1
-    y = (~df["class"]).astype(int)
-else:
     vals = set(pd.Series(df["class"]).dropna().unique())
     if vals.issubset({1, 2}):
-        # 1=good, 2=bad
-        y = (df["class"] == 2).astype(int)
-    elif vals.issubset({0, 1}):
-        # 0=good, 1=bad 라고 가정
-        y = df["class"].astype(int)
-    else:
-        raise ValueError(f"예상치 못한 class 값들: {vals}")
+        return (df["class"] == 2).astype(int)
+    if vals.issubset({0, 1}):
+        return df["class"].astype(int)
+    raise ValueError(f"예상치 못한 class 값들: {vals}")
 
-X = df.drop(columns=["class"], errors="ignore")
 
-print("전체 분포(원본):")
-print(y.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
+def evaluate_split_at_threshold(y_true, proba, threshold):
+    pred = (proba >= threshold).astype(int)
+    tn, fp, fn, tp = confusion_matrix(y_true, pred).ravel()
+    sensitivity = tp / (tp + fn) if (tp + fn) > 0 else np.nan
+    specificity = tn / (tn + fp) if (tn + fp) > 0 else np.nan
+    return {
+        "accuracy": accuracy_score(y_true, pred),
+        "f1": f1_score(y_true, pred),
+        "auc": roc_auc_score(y_true, proba),
+        "sensitivity": sensitivity,
+        "specificity": specificity,
+        "confusion": (tn, fp, fn, tp),
+        "threshold": threshold,
+    }
 
-# =========================
-# 1) 80/20 split
-# =========================
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42, stratify=y
-)
-sample_indices = select_sample_indices(args, len(X_test))
-print("\nSelected sample indices:")
-print(sample_indices)
 
-print("\nTrain 분포:")
-print(y_train.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
-print("\nTest 분포(현실 분포 유지):")
-print(y_test.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
+def print_metrics(title: str, train_metrics: dict, test_metrics: dict):
+    print(f"\n=== {title} ===")
+    print(
+        f"Train Threshold: {train_metrics.get('threshold', 0.5):.2f} | "
+        f"Test Threshold : {test_metrics.get('threshold', 0.5):.2f}"
+    )
+    print(
+        f"Train Accuracy : {train_metrics['accuracy']:.4f} | "
+        f"Test Accuracy : {test_metrics['accuracy']:.4f}"
+    )
+    print(
+        f"Train F1       : {train_metrics['f1']:.4f} | "
+        f"Test F1       : {test_metrics['f1']:.4f}"
+    )
+    print(
+        f"Train AUC      : {train_metrics['auc']:.4f} | "
+        f"Test AUC      : {test_metrics['auc']:.4f}"
+    )
+    print(
+        f"Train Sens.    : {train_metrics['sensitivity']:.4f} | "
+        f"Test Sens.    : {test_metrics['sensitivity']:.4f}"
+    )
+    print(
+        f"Train Spec.    : {train_metrics['specificity']:.4f} | "
+        f"Test Spec.    : {test_metrics['specificity']:.4f}"
+    )
+    print(
+        "Train Confusion: "
+        f"TN={train_metrics['confusion'][0]}, FP={train_metrics['confusion'][1]}, "
+        f"FN={train_metrics['confusion'][2]}, TP={train_metrics['confusion'][3]}"
+    )
+    print(
+        "Test Confusion : "
+        f"TN={test_metrics['confusion'][0]}, FP={test_metrics['confusion'][1]}, "
+        f"FN={test_metrics['confusion'][2]}, TP={test_metrics['confusion'][3]}"
+    )
 
-# =========================
-# 2) Baseline RF 학습 (비교용)
-# =========================
-rf = RandomForestClassifier(
-    n_estimators=800,
-    random_state=42,
-    n_jobs=-1,
-    max_depth=None,
-    min_samples_leaf=1,
-)
-rf.fit(X_train, y_train)
 
-proba_base = rf.predict_proba(X_test)[:, 1]
-pred_base = (proba_base >= 0.5).astype(int)
+def print_tuning_result(tuned: dict):
+    print("\n=== RF Tuning Result (ALL features) ===")
+    print(f"Best params        : {tuned['params']}")
+    print(f"Best CV AUC        : {tuned['cv_auc']:.4f}")
+    print(f"Best threshold     : {tuned['threshold']:.2f}")
+    print(
+        f"OOF Train AUC/F1   : {tuned['oof_metrics']['auc']:.4f} / "
+        f"{tuned['oof_metrics']['f1']:.4f}"
+    )
+    print(
+        f"OOF Train Accuracy : {tuned['oof_metrics']['accuracy']:.4f}"
+    )
 
-acc_base = accuracy_score(y_test, pred_base)
-auc_base = roc_auc_score(y_test, proba_base)
 
-tn, fp, fn, tp = confusion_matrix(y_test, pred_base).ravel()
-tpr_base = tp / (tp + fn) if (tp + fn) > 0 else np.nan
-tnr_base = tn / (tn + fp) if (tn + fp) > 0 else np.nan
+def to_risk_label(value: int) -> str:
+    return "BAD CREDIT RISK" if int(value) == 1 else "GOOD CREDIT RISK"
 
-print("\n=== Baseline RF (ALL features) ===")
-print(f"Accuracy     : {acc_base:.4f}")
-print(f"F1-Score     : {f1_score(y_test, pred_base):.4f}")
-print(f"AUC          : {auc_base:.4f}")
-print(f"Sensitivity  : {tpr_base:.4f}")
-print(f"Specificity  : {tnr_base:.4f}")
-print(f"Confusion    : TN={tn}, FP={fp}, FN={fn}, TP={tp}")
 
-# =========================
-# 3) Permutation Importance 기반 피처 선택
-# =========================
-from sklearn.inspection import permutation_importance
+def build_threshold_grid(args) -> np.ndarray:
+    if args.threshold_step <= 0:
+        raise ValueError("--threshold-step must be > 0.")
+    if args.threshold_min >= args.threshold_max:
+        raise ValueError("--threshold-min must be smaller than --threshold-max.")
 
-X_tr, X_val, y_tr, y_val = train_test_split(
-    X_train, y_train, test_size=0.25, random_state=42, stratify=y_train
-)
+    return np.round(
+        np.arange(args.threshold_min, args.threshold_max + args.threshold_step / 2, args.threshold_step),
+        4,
+    )
 
-rf_tmp = RandomForestClassifier(n_estimators=800, random_state=42, n_jobs=-1)
-rf_tmp.fit(X_tr, y_tr)
 
-perm = permutation_importance(
-    rf_tmp,
-    X_val,
-    y_val,
-    n_repeats=10,
-    random_state=42,
-    scoring="roc_auc",
-)
+def make_rf(random_state: int = 42, n_jobs: int = -1, **params):
+    return RandomForestClassifier(
+        random_state=random_state,
+        n_jobs=n_jobs,
+        **params,
+    )
 
-importances = pd.Series(perm.importances_mean, index=X_val.columns).sort_values(
-    ascending=False
-)
 
-keep_ratio = 0.80
-num_keep = max(1, int(len(importances) * keep_ratio))
-selected_features = importances.index[:num_keep].tolist()
+def tune_rf(X_train, y_train, args):
+    cv = StratifiedKFold(
+        n_splits=args.cv_folds,
+        shuffle=True,
+        random_state=42,
+    )
+    threshold_grid = build_threshold_grid(args)
 
-print("\nTop 15 importances:")
-print(importances.head(15))
-print("선택된 피처 개수:", len(selected_features))
+    search = RandomizedSearchCV(
+        estimator=make_rf(n_jobs=1),
+        param_distributions=RF_PARAM_DISTRIBUTIONS,
+        n_iter=args.search_iter,
+        scoring="roc_auc",
+        cv=cv,
+        random_state=42,
+        n_jobs=-1,
+        refit=True,
+    )
+    search.fit(X_train, y_train)
 
-# =========================
-# 4) 선택된 피처로 최종 RF 재학습 + 평가
-# =========================
-rf_selected = RandomForestClassifier(
-    n_estimators=800,
-    random_state=42,
-    n_jobs=-1,
-    max_depth=None,
-    min_samples_leaf=1,
-)
-rf_selected.fit(X_train[selected_features], y_train)
+    best_params = search.best_params_
+    oof_proba = cross_val_predict(
+        make_rf(n_jobs=1, **best_params),
+        X_train,
+        y_train,
+        cv=cv,
+        method="predict_proba",
+        n_jobs=-1,
+    )[:, 1]
 
-proba_sel = rf_selected.predict_proba(X_test[selected_features])[:, 1]
-pred_sel = (proba_sel >= 0.5).astype(int)
+    best_threshold_metrics = None
+    for threshold in threshold_grid:
+        metrics = evaluate_split_at_threshold(y_train, oof_proba, threshold)
+        score = (
+            metrics["accuracy"],
+            metrics["f1"],
+            metrics["specificity"],
+            -abs(threshold - 0.5),
+        )
+        if best_threshold_metrics is None or score > best_threshold_metrics["score"]:
+            best_threshold_metrics = {
+                "score": score,
+                "threshold": threshold,
+                "metrics": metrics,
+            }
 
-acc_sel = accuracy_score(y_test, pred_sel)
-auc_sel = roc_auc_score(y_test, proba_sel)
+    return {
+        "params": best_params,
+        "cv_auc": search.best_score_,
+        "threshold": best_threshold_metrics["threshold"],
+        "oof_metrics": best_threshold_metrics["metrics"],
+    }
 
-tn, fp, fn, tp = confusion_matrix(y_test, pred_sel).ravel()
-tpr_sel = tp / (tp + fn) if (tp + fn) > 0 else np.nan
-tnr_sel = tn / (tn + fp) if (tn + fp) > 0 else np.nan
 
-print("\n=== RF (Selected features) ===")
-print(f"Accuracy     : {acc_sel:.4f}")
-print(f"F1-Score     : {f1_score(y_test, pred_sel):.4f}")
-print(f"AUC          : {auc_sel:.4f}")
-print(f"Sensitivity  : {tpr_sel:.4f}")
-print(f"Specificity  : {tnr_sel:.4f}")
-print(f"Confusion    : TN={tn}, FP={fp}, FN={fn}, TP={tp}")
-
-# =========================
-# 6) SHAP (rf_selected 기준)
-# =========================
-explainer = shap.TreeExplainer(rf_selected)
-shap_exp = explainer(X_test[selected_features])  # shap.Explanation
-
-# binary: (n,p,2) -> class 1만
-if len(shap_exp.values.shape) == 3:
-    shap_exp = shap_exp[:, :, 1]
-
-if not args.skip_plots:
-    # (A) Summary - beeswarm
-    shap.plots.beeswarm(shap_exp, max_display=20)
-    plt.show()
-
-    # (B) Summary - bar
-    shap.plots.bar(shap_exp, max_display=20)
-    plt.show()
-
-    # (C) Local - waterfall
-    for sample_idx in sample_indices:
-        print(f"\n===== Waterfall plot for sample_idx={sample_idx} =====")
-        shap.plots.waterfall(shap_exp[sample_idx], max_display=20)
-        plt.show()
-
-# =========================
-# 7) SHAP 중요도 (원본 feature 단위) 저장
-# =========================
-sv = shap_exp.values  # (n_samples, n_features)
-mean_abs_shap = np.mean(np.abs(sv), axis=0)
-
-imp_df = (
-    pd.DataFrame({"feature": selected_features, "mean_abs_shap": mean_abs_shap})
-    .sort_values("mean_abs_shap", ascending=False)
-    .reset_index(drop=True)
-)
-
-print("\nTop 20 SHAP feature importance (raw features):")
-print(imp_df.head(20).to_string(index=False))
-
-imp_df.to_csv("SHAP/selected_shap_feature_importance.csv", index=False)
-print("\nSaved: selected_shap_feature_importance.csv")
-
-# ==========================================================
-# 8) (여기부터 추가) OHE 컬럼을 prefix로 묶어서 SHAP 중요도 재계산
-#     - "샘플별 SHAP을 prefix별로 먼저 합" -> mean(|.|)
-# ==========================================================
 def ohe_prefix(name: str) -> str:
-    # 마지막 '_' 기준으로 prefix를 잡는다 (underscore 포함 prefix 보호)
-    # ex) checking_status_no checking -> checking_status
     if "_" in name:
         return name.rsplit("_", 1)[0]
-    return name  # duration, age 등
+    return name
 
-feature_names = selected_features
-prefix_map = {f: ohe_prefix(f) for f in feature_names}
 
-# prefix 목록(고유)
-prefixes = pd.Index([prefix_map[f] for f in feature_names])
-unique_prefixes = prefixes.unique()
-print("\nprefix 개수:", len(unique_prefixes))
+def group_shap_values_by_prefix(sv: np.ndarray, feature_names: list[str]):
+    prefix_codes, unique_prefixes = pd.factorize(
+        np.asarray([ohe_prefix(name) for name in feature_names], dtype=object),
+        sort=False,
+    )
+    grouped_sv = np.zeros((sv.shape[0], len(unique_prefixes)), dtype=sv.dtype)
+    for feature_idx, prefix_idx in enumerate(prefix_codes):
+        grouped_sv[:, prefix_idx] += sv[:, feature_idx]
+    return grouped_sv, unique_prefixes
 
-# prefix별 컬럼 인덱스 그룹
-group_indices = {}
-for j, f in enumerate(feature_names):
-    p = prefix_map[f]
-    group_indices.setdefault(p, []).append(j)
 
-# 샘플별 prefix SHAP 합치기
-grouped_sv = np.zeros((sv.shape[0], len(unique_prefixes)), dtype=float)
-for gi, p in enumerate(unique_prefixes):
-    cols = group_indices[p]
-    grouped_sv[:, gi] = sv[:, cols].sum(axis=1)
-
-# prefix 중요도 = mean(abs(grouped_shap))
-grouped_mean_abs = np.mean(np.abs(grouped_sv), axis=0)
-
-# global explanation
-group_imp_df = (
-    pd.DataFrame({"prefix": unique_prefixes, "mean_abs_shap": grouped_mean_abs})
-    .sort_values("mean_abs_shap", ascending=False)
-    .reset_index(drop=True)
-)
-
-def build_raw_shap_tuples(
+def build_raw_shap_records(
     sv: np.ndarray,
-    feature_names,
+    feature_names: list[str],
     sample_idx: int,
     top_k: int = 3,
 ):
-    """
-    sv: (n_samples, n_features) raw SHAP values
-    feature_names: 원본 feature 이름 목록(selected_features)
-    sample_idx: 설명할 샘플 인덱스
-    top_k: 절대값 기준 상위 k개만 선택
-    """
-    sample_vals = sv[sample_idx]  # (n_features,)
-
-    tuple_df = pd.DataFrame({
-        "feature": feature_names,
-        "shap_value": sample_vals
-    })
-
-    tuple_df["abs_shap"] = tuple_df["shap_value"].abs()
-    tuple_df["direction"] = np.where(
-        tuple_df["shap_value"] >= 0,
-        "increase_risk",
-        "decrease_risk"
-    )
-
-    tuple_df = (
-        tuple_df
-        .sort_values("abs_shap", ascending=False)
-        .head(top_k)
-        .reset_index(drop=True)
-    )
-    return tuple_df
-
-top_k = 3
-
-# =========================
-# 🔥 Raw SHAP 전체 + Top 10 출력
-# =========================
-
-def print_raw_shap_full(
-    sv: np.ndarray,
-    feature_names,
-    sample_idx: int,
-    top_k: int = 10,
-):
     sample_vals = sv[sample_idx]
+    top_indices = np.argsort(np.abs(sample_vals))[::-1][:top_k]
 
-    df_full = pd.DataFrame({
-        "feature": feature_names,
-        "shap_value": sample_vals
-    })
-
-    df_full["abs_shap"] = df_full["shap_value"].abs()
-    df_full["direction"] = np.where(
-        df_full["shap_value"] >= 0,
-        "increase_risk",
-        "decrease_risk"
-    )
-
-    df_full = df_full.sort_values("abs_shap", ascending=False).reset_index(drop=True)
-
-    print("\n===== 🔍 Full Raw SHAP (sorted) =====\n")
-    print(df_full.to_string(index=False))
-
-    print("\n===== 🔝 Top 10 Raw SHAP =====\n")
-    print(df_full.head(top_k).to_string(index=False))
-
-
-# save tuples
-def save_shap_tuples_json(
-    tuple_df, 
-    sample_idx, 
-    prediction_label, 
-    predict_proba=None, 
-    save_path="SHAP/shap_tuples_non_prefix.json"):
-    
     records = []
+    for feature_idx in top_indices:
+        shap_value = float(sample_vals[feature_idx])
+        records.append(
+            {
+                "feature": feature_names[feature_idx],
+                "definition": get_feature_definition(feature_names[feature_idx]),
+                "shap_value": shap_value,
+                "abs_shap": abs(shap_value),
+                "direction": "increase_risk" if shap_value >= 0 else "decrease_risk",
+            }
+        )
+    return records
 
-    for _, row in tuple_df.iterrows():
-        records.append({
-            "feature": row["feature"],
-            "definition": get_feature_definition(row["feature"]),
-            "shap_value": float(row["shap_value"]),
-            "abs_shap": float(row["abs_shap"]),
-            "direction": row["direction"]
-        })
 
+def save_shap_tuples_json(
+    records,
+    sample_idx,
+    true_label,
+    prediction_label,
+    predict_proba=None,
+    save_path="SHAP/shap_tuples_non_prefix.json",
+):
     data = {
         "sample_idx": sample_idx,
+        "true_label": true_label,
         "prediction": {
             "label": prediction_label,
-            "probability": predict_proba
+            "probability": predict_proba,
         },
-        "tuples": records
+        "tuples": records,
     }
 
-    with open(save_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
+    save_path = Path(save_path)
+    save_path.parent.mkdir(parents=True, exist_ok=True)
+    with save_path.open("w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
     print(f"Saved JSON: {save_path}")
-    
 
-    
-print("\nTop 20 SHAP importance (Grouped by prefix):")
-print(group_imp_df.head(20).to_string(index=False))
 
-group_imp_df.to_csv("SHAP/selected_shap_prefix_importance.csv", index=False)
-print("\nSaved: selected_shap_prefix_importance.csv")
+def main():
+    args = parse_args()
+    output_dir = resolve_output_path(args.output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
 
-for sample_idx in sample_indices:
-    sample_tuple_df = build_raw_shap_tuples(
-        sv=sv,
-        feature_names=selected_features,
-        sample_idx=sample_idx,
-        top_k=top_k,
+    df = pd.read_csv(args.data_path)
+    df = df.drop(columns=DROP_COLUMNS, errors="ignore")
+
+    y = load_target(df)
+    X = df.drop(columns=["class"], errors="ignore")
+
+    print("전체 분포(원본):")
+    print(y.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X,
+        y,
+        test_size=0.2,
+        random_state=42,
+        stratify=y,
     )
 
-    print_raw_shap_full(
-        sv=sv,
-        feature_names=selected_features,
-        sample_idx=sample_idx,
-        top_k=10,
+    sample_indices = select_sample_indices(args, len(X_test))
+    print("\nSelected sample indices:")
+    print(sample_indices)
+
+    print("\nTrain 분포:")
+    print(y_train.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
+    print("\nTest 분포(현실 분포 유지):")
+    print(y_test.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
+
+    tuned = tune_rf(X_train, y_train, args)
+    print_tuning_result(tuned)
+
+    rf = make_rf(**tuned["params"])
+    rf.fit(X_train, y_train)
+
+    proba_train = rf.predict_proba(X_train)[:, 1]
+    proba_test = rf.predict_proba(X_test)[:, 1]
+    train_metrics = evaluate_split_at_threshold(y_train, proba_train, tuned["threshold"])
+    test_metrics = evaluate_split_at_threshold(y_test, proba_test, tuned["threshold"])
+    print_metrics("RF (ALL features)", train_metrics, test_metrics)
+
+    X_tr, X_val, y_tr, y_val = train_test_split(
+        X_train,
+        y_train,
+        test_size=0.25,
+        random_state=42,
+        stratify=y_train,
+    )
+    rf_tmp = make_rf(**tuned["params"])
+    rf_tmp.fit(X_tr, y_tr)
+
+    perm = permutation_importance(
+        rf_tmp,
+        X_val,
+        y_val,
+        n_repeats=5,
+        random_state=42,
+        scoring="roc_auc",
+        n_jobs=-1,
     )
 
-    print(f"\nSample-specific raw SHAP tuples (sample_idx={sample_idx}):")
-    print(sample_tuple_df.to_string(index=False))
+    importances = pd.Series(
+        perm.importances_mean,
+        index=X_val.columns,
+    ).sort_values(ascending=False)
 
-    prediction_label = (
-        "BAD CREDIT RISK" if pred_sel[sample_idx] == 1 else "GOOD CREDIT RISK"
-    )
-    prediction_proba = float(proba_sel[sample_idx])
+    print("\nTop 15 importances:")
+    print(importances.head(15))
 
-    save_shap_tuples_json(
-        sample_tuple_df,
-        sample_idx,
-        prediction_label=prediction_label,
-        predict_proba=prediction_proba,
-        save_path=output_dir / f"shap_tuples_non_prefix_{sample_idx}.json",
+    explainer = shap.TreeExplainer(rf)
+    shap_exp = explainer(X_test)
+
+    if len(shap_exp.values.shape) == 3:
+        shap_exp = shap_exp[:, :, 1]
+
+    if not args.skip_plots:
+        shap.plots.beeswarm(shap_exp, max_display=20)
+        plt.show()
+
+        shap.plots.bar(shap_exp, max_display=20)
+        plt.show()
+
+    sv = shap_exp.values
+    feature_names = X_train.columns.tolist()
+
+    mean_abs_shap = np.mean(np.abs(sv), axis=0)
+    imp_df = (
+        pd.DataFrame({"feature": feature_names, "mean_abs_shap": mean_abs_shap})
+        .sort_values("mean_abs_shap", ascending=False)
+        .reset_index(drop=True)
     )
+
+    print("\nTop 20 SHAP feature importance (raw features):")
+    print(imp_df.head(20).to_string(index=False))
+
+    raw_output_path = PROJECT_ROOT / "SHAP/selected_shap_feature_importance.csv"
+    imp_df.to_csv(raw_output_path, index=False)
+    print(f"\nSaved: {raw_output_path}")
+
+    grouped_sv, unique_prefixes = group_shap_values_by_prefix(sv, feature_names)
+    grouped_mean_abs = np.mean(np.abs(grouped_sv), axis=0)
+
+    group_imp_df = (
+        pd.DataFrame({"prefix": unique_prefixes, "mean_abs_shap": grouped_mean_abs})
+        .sort_values("mean_abs_shap", ascending=False)
+        .reset_index(drop=True)
+    )
+    print("\nprefix 개수:", len(unique_prefixes))
+    print("\nTop 20 SHAP importance (Grouped by prefix):")
+    print(group_imp_df.head(20).to_string(index=False))
+
+    prefix_output_path = PROJECT_ROOT / "SHAP/selected_shap_prefix_importance.csv"
+    group_imp_df.to_csv(prefix_output_path, index=False)
+    print(f"\nSaved: {prefix_output_path}")
+
+    top_k = 3
+    for sample_idx in sample_indices:
+        sample_records = build_raw_shap_records(
+            sv=sv,
+            feature_names=feature_names,
+            sample_idx=sample_idx,
+            top_k=top_k,
+        )
+
+        true_label = to_risk_label(int(y_test.iloc[sample_idx]))
+        prediction_label = (
+            "BAD CREDIT RISK"
+            if proba_test[sample_idx] >= tuned["threshold"]
+            else "GOOD CREDIT RISK"
+        )
+        prediction_proba = float(proba_test[sample_idx])
+
+        save_shap_tuples_json(
+            sample_records,
+            sample_idx,
+            true_label=true_label,
+            prediction_label=prediction_label,
+            predict_proba=prediction_proba,
+            save_path=output_dir / f"shap_tuples_non_prefix_{sample_idx}.json",
+        )
+
+
+if __name__ == "__main__":
+    main()
