@@ -1,0 +1,202 @@
+{
+  "data_path": "german21_ohe.csv",
+  "n_train": 800,
+  "n_test": 200,
+  "keep_ratio": 0.8,
+  "selected_feature_count": 34,
+  "selected_metrics": {
+    "accuracy": 0.79,
+    "f1_score": 0.5882352941176471,
+    "auc": 0.7911904761904761,
+    "sensitivity": 0.5,
+    "specificity": 0.9142857142857143,
+    "confusion_matrix": {
+      "tn": 128,
+      "fp": 12,
+      "fn": 30,
+      "tp": 30
+    }
+  },
+  "top_raw_features": [
+    {
+      "feature": "checking_status_no checking",
+      "mean_abs_shap": 0.07078281545115604,
+      "mean_shap": 0.004620071636791107
+    },
+    {
+      "feature": "duration",
+      "mean_abs_shap": 0.0517846774532119,
+      "mean_shap": 0.0015381314249937434
+    },
+    {
+      "feature": "checking_status_<0",
+      "mean_abs_shap": 0.04367234069683147,
+      "mean_shap": -0.0018433282884788133
+    },
+    {
+      "feature": "credit_amount",
+      "mean_abs_shap": 0.0325795639233743,
+      "mean_shap": 0.005114746867425306
+    },
+    {
+      "feature": "savings_status_<100",
+      "mean_abs_shap": 0.026521377971873636,
+      "mean_shap": 0.002495714447137564
+    },
+    {
+      "feature": "installment_commitment",
+      "mean_abs_shap": 0.018140615036750563,
+      "mean_shap": 0.003756590325366133
+    },
+    {
+      "feature": "employment_<1",
+      "mean_abs_shap": 0.017272933149771786,
+      "mean_shap": -0.002399930354063938
+    },
+    {
+      "feature": "age",
+      "mean_abs_shap": 0.01676751548572174,
+      "mean_shap": 0.002937940902513498
+    },
+    {
+      "feature": "purpose_radio/tv",
+      "mean_abs_shap": 0.015364149834958683,
+      "mean_shap": -0.001959972579428152
+    },
+    {
+      "feature": "checking_status_0<=X<200",
+      "mean_abs_shap": 0.01519938121759316,
+      "mean_shap": -0.001838799984296582
+    },
+    {
+      "feature": "housing_rent",
+      "mean_abs_shap": 0.01361940086163032,
+      "mean_shap": -0.0006163984860602971
+    },
+    {
+      "feature": "savings_status_no known savings",
+      "mean_abs_shap": 0.013267638779876465,
+      "mean_shap": 0.0011853668048850416
+    },
+    {
+      "feature": "purpose_used car",
+      "mean_abs_shap": 0.010621458762440052,
+      "mean_shap": 0.0021828641251378737
+    },
+    {
+      "feature": "credit_history_no credits/all paid",
+      "mean_abs_shap": 0.009641023653656522,
+      "mean_shap": -0.001344616672780818
+    },
+    {
+      "feature": "Married",
+      "mean_abs_shap": 0.00921186898482375,
+      "mean_shap": -0.00015061558453862347
+    },
+    {
+      "feature": "purpose_education",
+      "mean_abs_shap": 0.009168247086040178,
+      "mean_shap": -0.001416699129501672
+    },
+    {
+      "feature": "employment_4<=X<7",
+      "mean_abs_shap": 0.008934889083164858,
+      "mean_shap": 0.001228893801317012
+    },
+    {
+      "feature": "existing_credits",
+      "mean_abs_shap": 0.008135615589189472,
+      "mean_shap": 0.0016707983997571183
+    },
+    {
+      "feature": "credit_history_all paid",
+      "mean_abs_shap": 0.008078076089891958,
+      "mean_shap": -0.00196890588195074
+    },
+    {
+      "feature": "job_unskilled resident",
+      "mean_abs_shap": 0.006420293529476012,
+      "mean_shap": 0.00045080003839063974
+    }
+  ],
+  "top_prefix_groups": [
+    {
+      "prefix": "checking_status",
+      "mean_abs_shap": 0.10776409469069577,
+      "mean_shap": 0.0017740589291040754,
+      "num_features": 4
+    },
+    {
+      "prefix": "duration",
+      "mean_abs_shap": 0.05178467745321192,
+      "mean_shap": 0.001538131424993743,
+      "num_features": 1
+    },
+    {
+      "prefix": "savings_status",
+      "mean_abs_shap": 0.04000733528385458,
+      "mean_shap": 0.004497276254928672,
+      "num_features": 5
+    },
+    {
+      "prefix": "credit",
+      "mean_abs_shap": 0.0325795639233743,
+      "mean_shap": 0.005114746867425304,
+      "num_features": 1
+    },
+    {
+      "prefix": "purpose",
+      "mean_abs_shap": 0.024953921114475586,
+      "mean_shap": -0.0014982060642979556,
+      "num_features": 7
+    },
+    {
+      "prefix": "employment",
+      "mean_abs_shap": 0.022314768590375813,
+      "mean_shap": -0.0006197536728881827,
+      "num_features": 4
+    },
+    {
+      "prefix": "credit_history",
+      "mean_abs_shap": 0.020985932720516062,
+      "mean_shap": -0.003664875727932474,
+      "num_features": 3
+    },
+    {
+      "prefix": "installment",
+      "mean_abs_shap": 0.018140615036750567,
+      "mean_shap": 0.0037565903253661335,
+      "num_features": 1
+    },
+    {
+      "prefix": "age",
+      "mean_abs_shap": 0.016767515485721737,
+      "mean_shap": 0.0029379409025134984,
+      "num_features": 1
+    },
+    {
+      "prefix": "housing",
+      "mean_abs_shap": 0.016375617165931715,
+      "mean_shap": -0.00032521371519151216,
+      "num_features": 2
+    },
+    {
+      "prefix": "job",
+      "mean_abs_shap": 0.009821760527981277,
+      "mean_shap": 0.00044568416076004244,
+      "num_features": 3
+    },
+    {
+      "prefix": "Married",
+      "mean_abs_shap": 0.009211868984823754,
+      "mean_shap": -0.00015061558453862342,
+      "num_features": 1
+    },
+    {
+      "prefix": "existing",
+      "mean_abs_shap": 0.008135615589189476,
+      "mean_shap": 0.0016707983997571191,
+      "num_features": 1
+    }
+  ]
+}
