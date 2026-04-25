@@ -1,0 +1,127 @@
+{
+  "data_path": "german21_ohe.csv",
+  "full_test_sample_count": 200,
+  "selected_test_sample_count": 200,
+  "tuned_params": {
+    "n_estimators": 800,
+    "min_samples_split": 5,
+    "min_samples_leaf": 4,
+    "max_features": "log2",
+    "max_depth": 10,
+    "criterion": "entropy",
+    "class_weight": "balanced_subsample",
+    "bootstrap": true
+  },
+  "cv_auc": 0.7856398809523809,
+  "threshold": 0.56,
+  "full_test_metrics": {
+    "accuracy": 0.775,
+    "f1": 0.5945945945945946,
+    "auc": 0.8002380952380952,
+    "sensitivity": 0.55,
+    "specificity": 0.8714285714285714,
+    "confusion": [
+      122,
+      18,
+      27,
+      33
+    ]
+  },
+  "overall": {
+    "sample_count": 200,
+    "mean_predicted_confidence": 0.6633132609010248,
+    "mean_true_class_confidence": 0.6140095546879697,
+    "mean_predicted_threshold_relative_confidence": 0.357388033148127,
+    "mean_true_class_threshold_relative_confidence": 0.30473495135682654,
+    "accuracy": 0.775,
+    "threshold": 0.56
+  },
+  "by_predicted_class": [
+    {
+      "class_value": 0,
+      "class_label": "GOOD CREDIT RISK",
+      "sample_count": 149,
+      "mean_confidence": 0.6621366301663915,
+      "median_confidence": 0.6628353731013943,
+      "std_confidence": 0.13343143167270594,
+      "min_confidence": 0.44245129170038144,
+      "max_confidence": 0.9552960603144052
+    },
+    {
+      "class_value": 1,
+      "class_label": "BAD CREDIT RISK",
+      "sample_count": 51,
+      "mean_confidence": 0.6667508683414244,
+      "median_confidence": 0.6645510142591717,
+      "std_confidence": 0.0639856716263661,
+      "min_confidence": 0.561234023149522,
+      "max_confidence": 0.8012839926256783
+    }
+  ],
+  "by_predicted_class_threshold_relative": [
+    {
+      "class_value": 0,
+      "class_label": "GOOD CREDIT RISK",
+      "sample_count": 149,
+      "mean_confidence": 0.3966725538685562,
+      "median_confidence": 0.39792030910963283,
+      "std_confidence": 0.23827041370126056,
+      "min_confidence": 0.004377306607824102,
+      "max_confidence": 0.9201715362757236
+    },
+    {
+      "class_value": 1,
+      "class_label": "BAD CREDIT RISK",
+      "sample_count": 51,
+      "mean_confidence": 0.24261560986687314,
+      "median_confidence": 0.2376159414981175,
+      "std_confidence": 0.14542198096901388,
+      "min_confidence": 0.002804598067095281,
+      "max_confidence": 0.5483727105129051
+    }
+  ],
+  "by_true_class": [
+    {
+      "class_value": 0,
+      "class_label": "GOOD CREDIT RISK",
+      "sample_count": 140,
+      "mean_confidence": 0.6373427662391915,
+      "median_confidence": 0.6607647325906183,
+      "std_confidence": 0.16489355625619734,
+      "min_confidence": 0.2638759825527619,
+      "max_confidence": 0.9552960603144052
+    },
+    {
+      "class_value": 1,
+      "class_label": "BAD CREDIT RISK",
+      "sample_count": 60,
+      "mean_confidence": 0.5595653944017853,
+      "median_confidence": 0.5761290712573167,
+      "std_confidence": 0.1600183712640976,
+      "min_confidence": 0.16209458964626158,
+      "max_confidence": 0.8012839926256783
+    }
+  ],
+  "by_true_class_threshold_relative": [
+    {
+      "class_value": 0,
+      "class_label": "GOOD CREDIT RISK",
+      "sample_count": 140,
+      "mean_confidence": 0.37235749044635236,
+      "median_confidence": 0.39422273676896136,
+      "std_confidence": 0.26117322213046795,
+      "min_confidence": 0.0,
+      "max_confidence": 0.9201715362757236
+    },
+    {
+      "class_value": 1,
+      "class_label": "BAD CREDIT RISK",
+      "sample_count": 60,
+      "mean_confidence": 0.14694902681459956,
+      "median_confidence": 0.036656980130265145,
+      "std_confidence": 0.17663829020679794,
+      "min_confidence": 0.0,
+      "max_confidence": 0.5483727105129051
+    }
+  ]
+}
