@@ -36,10 +36,20 @@ if target not in df.columns:
 X = df.drop(columns=[target])
 y = df[target]
 
-# 타겟이 0/1인지 확인 (혹시 'good'/'bad'면 매핑)
+# 타겟을 bad=1, good=0으로 매핑
 if y.dtype == "object":
     # 보통 German credit에서는 good/bad가 있을 수 있어서 안전장치
-    y = y.map({"good": 1, "bad": 0}).astype(int)
+    y = y.map({"good": 0, "bad": 1}).astype(int)
+elif y.dtype == bool:
+    y = (~y).astype(int)
+else:
+    vals = set(pd.Series(y).dropna().unique())
+    if vals.issubset({1, 2}):
+        y = (y == 2).astype(int)
+    elif vals.issubset({0, 1}):
+        y = y.astype(int)
+    else:
+        raise ValueError(f"Unexpected target values: {vals}")
 
 print("X shape:", X.shape, "y dist:", y.value_counts(dropna=False).to_dict())
 

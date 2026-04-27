@@ -34,7 +34,7 @@ column_names = [
     "is_single",                # 24
 
     # target
-    "credit_risk"               # 25 (1=good, 2=bad)
+    "credit_risk"               # 25 (1=good, 2=bad in raw Statlog)
 ]
 
 # 3. 컬럼 수 검증
@@ -44,7 +44,7 @@ assert df.shape[1] == len(column_names), "컬럼 개수가 맞지 않습니다."
 df.columns = column_names
 
 # 5. 타겟 값 정리 (ML / AML 표준)
-# 0 = good, 1 = bad
+# 1 = bad, 0 = good
 df["credit_risk"] = df["credit_risk"].map({1: 0, 2: 1})
 
 # 6. CSV로 저장

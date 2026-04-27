@@ -53,15 +53,19 @@ if df["class"].dtype == bool:
     # True(good)->0, False(bad)->1
     y = (~df["class"]).astype(int)
 else:
-    vals = set(pd.Series(df["class"]).dropna().unique())
-    if vals.issubset({1, 2}):
-        # 1=good, 2=bad
-        y = (df["class"] == 2).astype(int)
-    elif vals.issubset({0, 1}):
-        # 0=good, 1=bad 라고 가정
-        y = df["class"].astype(int)
+    lowered = pd.Series(df["class"]).dropna().astype(str).str.lower()
+    if set(lowered.unique()).issubset({"good", "bad"}):
+        y = (df["class"].astype(str).str.lower() == "bad").astype(int)
     else:
-        raise ValueError(f"예상치 못한 class 값들: {vals}")
+        vals = set(pd.Series(df["class"]).dropna().unique())
+        if vals.issubset({1, 2}):
+            # 1=good, 2=bad
+            y = (df["class"] == 2).astype(int)
+        elif vals.issubset({0, 1}):
+            # 0=good, 1=bad
+            y = df["class"].astype(int)
+        else:
+            raise ValueError(f"예상치 못한 class 값들: {vals}")
 
 X = df.drop(columns=["class"], errors="ignore")
 

@@ -1,4 +1,5 @@
 # prefix 없는 원본 RF 학습/평가 및 글로벌 SHAP 저장
+# + calibrated probability 기반 threshold 재탐색 추가
 
 import argparse
 import json
@@ -8,6 +9,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from sklearn.calibration import CalibratedClassifierCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.inspection import permutation_importance
 from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, roc_auc_score
@@ -70,73 +72,39 @@ RF_PARAM_DISTRIBUTIONS = {
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Train/evaluate RF, save global SHAP importance, and export random local SHAP samples."
+        description=(
+            "Train/evaluate RF, apply probability calibration, retune threshold, "
+            "save global SHAP importance, and export random local SHAP samples."
+        )
     )
     parser.add_argument("--data-path", default="german21_ohe.csv")
+    parser.add_argument("--random-samples", type=int, default=120)
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--sample-indices", type=str, default=None)
+    parser.add_argument("--sample-index-file", type=str, default=None)
+    parser.add_argument("--output-dir", default="SHAP/120 Local Shap")
+    parser.add_argument("--x-test-output", default="X_test.csv")
+    parser.add_argument("--y-test-output", default="y_test.csv")
+    parser.add_argument("--skip-plots", action="store_true")
+    parser.add_argument("--search-iter", type=int, default=32)
+    parser.add_argument("--cv-folds", type=int, default=5)
     parser.add_argument(
-        "--random-samples",
-        type=int,
-        default=100,
-        help="Randomly select this many local SHAP samples from X_test.",
-    )
-    parser.add_argument(
-        "--seed",
-        type=int,
-        default=42,
-        help="Random seed used with --random-samples.",
-    )
-    parser.add_argument(
-        "--sample-indices",
-        type=str,
-        default=None,
-        help="Comma-separated sample indices. Overrides --random-samples.",
-    )
-    parser.add_argument(
-        "--sample-index-file",
-        type=str,
-        default=None,
-        help="File containing sample indices separated by commas or newlines.",
-    )
-    parser.add_argument(
-        "--output-dir",
-        default="SHAP/100 Local Shap",
-        help="Directory where shap_tuples_non_prefix_{sample_idx}.json files are saved.",
-    )
-    parser.add_argument(
-        "--skip-plots",
-        action="store_true",
-        help="Skip global SHAP summary plots.",
-    )
-    parser.add_argument(
-        "--search-iter",
-        type=int,
-        default=32,
-        help="Number of random RF hyperparameter candidates evaluated with CV.",
-    )
-    parser.add_argument(
-        "--cv-folds",
-        type=int,
-        default=5,
-        help="Number of folds used for hyperparameter search and threshold tuning.",
-    )
-    parser.add_argument(
-        "--threshold-min",
+        "--test-size",
         type=float,
-        default=0.20,
-        help="Minimum threshold value searched on out-of-fold train probabilities.",
+        default=0.2,
+        help="Hold-out test set ratio. Default: 0.20.",
     )
+    parser.add_argument("--threshold-min", type=float, default=0.20)
+    parser.add_argument("--threshold-max", type=float, default=0.70)
+    parser.add_argument("--threshold-step", type=float, default=0.01)
+
     parser.add_argument(
-        "--threshold-max",
-        type=float,
-        default=0.70,
-        help="Maximum threshold value searched on out-of-fold train probabilities.",
+        "--calibration-method",
+        choices=["sigmoid", "isotonic"],
+        default="sigmoid",
+        help="Probability calibration method. sigmoid is safer for small datasets.",
     )
-    parser.add_argument(
-        "--threshold-step",
-        type=float,
-        default=0.01,
-        help="Threshold step size.",
-    )
+
     return parser.parse_args()
 
 
@@ -192,21 +160,31 @@ def load_target(df: pd.DataFrame) -> pd.Series:
         raise ValueError("타깃 컬럼 'class'를 찾지 못했습니다.")
 
     if df["class"].dtype == bool:
+        # german21_ohe.csv: True=good, False=bad. Use BAD as positive class.
         return (~df["class"]).astype(int)
+
+    lowered = pd.Series(df["class"]).dropna().astype(str).str.lower()
+    if set(lowered.unique()).issubset({"good", "bad"}):
+        return (df["class"].astype(str).str.lower() == "bad").astype(int)
 
     vals = set(pd.Series(df["class"]).dropna().unique())
     if vals.issubset({1, 2}):
+        # Statlog convention: 1=good, 2=bad.
         return (df["class"] == 2).astype(int)
     if vals.issubset({0, 1}):
+        # Existing project convention for numeric binary files: 1=bad, 0=good.
         return df["class"].astype(int)
+
     raise ValueError(f"예상치 못한 class 값들: {vals}")
 
 
 def evaluate_split_at_threshold(y_true, proba, threshold):
     pred = (proba >= threshold).astype(int)
     tn, fp, fn, tp = confusion_matrix(y_true, pred).ravel()
+
     sensitivity = tp / (tp + fn) if (tp + fn) > 0 else np.nan
     specificity = tn / (tn + fp) if (tn + fp) > 0 else np.nan
+
     return {
         "accuracy": accuracy_score(y_true, pred),
         "f1": f1_score(y_true, pred),
@@ -265,9 +243,7 @@ def print_tuning_result(tuned: dict):
         f"OOF Train AUC/F1   : {tuned['oof_metrics']['auc']:.4f} / "
         f"{tuned['oof_metrics']['f1']:.4f}"
     )
-    print(
-        f"OOF Train Accuracy : {tuned['oof_metrics']['accuracy']:.4f}"
-    )
+    print(f"OOF Train Accuracy : {tuned['oof_metrics']['accuracy']:.4f}")
 
 
 def to_risk_label(value: int) -> str:
@@ -281,7 +257,11 @@ def build_threshold_grid(args) -> np.ndarray:
         raise ValueError("--threshold-min must be smaller than --threshold-max.")
 
     return np.round(
-        np.arange(args.threshold_min, args.threshold_max + args.threshold_step / 2, args.threshold_step),
+        np.arange(
+            args.threshold_min,
+            args.threshold_max + args.threshold_step / 2,
+            args.threshold_step,
+        ),
         4,
     )
 
@@ -292,6 +272,29 @@ def make_rf(random_state: int = 42, n_jobs: int = -1, **params):
         n_jobs=n_jobs,
         **params,
     )
+
+
+def find_best_threshold(y_true, proba, threshold_grid):
+    best_threshold_metrics = None
+
+    for threshold in threshold_grid:
+        metrics = evaluate_split_at_threshold(y_true, proba, threshold)
+
+        score = (
+            metrics["accuracy"],
+            metrics["f1"],
+            metrics["sensitivity"],
+            -abs(threshold - 0.5),
+        )
+
+        if best_threshold_metrics is None or score > best_threshold_metrics["score"]:
+            best_threshold_metrics = {
+                "score": score,
+                "threshold": threshold,
+                "metrics": metrics,
+            }
+
+    return best_threshold_metrics
 
 
 def tune_rf(X_train, y_train, args):
@@ -315,6 +318,7 @@ def tune_rf(X_train, y_train, args):
     search.fit(X_train, y_train)
 
     best_params = search.best_params_
+
     oof_proba = cross_val_predict(
         make_rf(n_jobs=1, **best_params),
         X_train,
@@ -324,21 +328,11 @@ def tune_rf(X_train, y_train, args):
         n_jobs=-1,
     )[:, 1]
 
-    best_threshold_metrics = None
-    for threshold in threshold_grid:
-        metrics = evaluate_split_at_threshold(y_train, oof_proba, threshold)
-        score = (
-            metrics["accuracy"],
-            metrics["f1"],
-            metrics["specificity"],
-            -abs(threshold - 0.5),
-        )
-        if best_threshold_metrics is None or score > best_threshold_metrics["score"]:
-            best_threshold_metrics = {
-                "score": score,
-                "threshold": threshold,
-                "metrics": metrics,
-            }
+    best_threshold_metrics = find_best_threshold(
+        y_true=y_train,
+        proba=oof_proba,
+        threshold_grid=threshold_grid,
+    )
 
     return {
         "params": best_params,
@@ -346,6 +340,18 @@ def tune_rf(X_train, y_train, args):
         "threshold": best_threshold_metrics["threshold"],
         "oof_metrics": best_threshold_metrics["metrics"],
     }
+
+
+def build_calibrated_model(best_params, args):
+    base_rf = make_rf(n_jobs=1, **best_params)
+
+    calibrated_model = CalibratedClassifierCV(
+        estimator=base_rf,
+        method=args.calibration_method,
+        cv=args.cv_folds,
+    )
+
+    return calibrated_model
 
 
 def ohe_prefix(name: str) -> str:
@@ -359,9 +365,12 @@ def group_shap_values_by_prefix(sv: np.ndarray, feature_names: list[str]):
         np.asarray([ohe_prefix(name) for name in feature_names], dtype=object),
         sort=False,
     )
+
     grouped_sv = np.zeros((sv.shape[0], len(unique_prefixes)), dtype=sv.dtype)
+
     for feature_idx, prefix_idx in enumerate(prefix_codes):
         grouped_sv[:, prefix_idx] += sv[:, feature_idx]
+
     return grouped_sv, unique_prefixes
 
 
@@ -375,6 +384,7 @@ def build_raw_shap_records(
     top_indices = np.argsort(np.abs(sample_vals))[::-1][:top_k]
 
     records = []
+
     for feature_idx in top_indices:
         shap_value = float(sample_vals[feature_idx])
         records.append(
@@ -386,6 +396,7 @@ def build_raw_shap_records(
                 "direction": "increase_risk" if shap_value >= 0 else "decrease_risk",
             }
         )
+
     return records
 
 
@@ -395,6 +406,8 @@ def save_shap_tuples_json(
     true_label,
     prediction_label,
     predict_proba=None,
+    calibrated_predict_proba=None,
+    threshold=None,
     save_path="SHAP/shap_tuples_non_prefix.json",
 ):
     data = {
@@ -403,12 +416,15 @@ def save_shap_tuples_json(
         "prediction": {
             "label": prediction_label,
             "probability": predict_proba,
+            "calibrated_probability": calibrated_predict_proba,
+            "threshold": threshold,
         },
         "tuples": records,
     }
 
     save_path = Path(save_path)
     save_path.parent.mkdir(parents=True, exist_ok=True)
+
     with save_path.open("w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
@@ -432,39 +448,136 @@ def main():
     X_train, X_test, y_train, y_test = train_test_split(
         X,
         y,
-        test_size=0.2,
+        test_size=args.test_size,
         random_state=42,
         stratify=y,
     )
 
+    x_test_output = resolve_output_path(args.x_test_output)
+    y_test_output = resolve_output_path(args.y_test_output)
+    x_test_output.parent.mkdir(parents=True, exist_ok=True)
+    y_test_output.parent.mkdir(parents=True, exist_ok=True)
+    X_test.to_csv(x_test_output, index=False)
+    y_test.rename("class").to_csv(y_test_output, index=False)
+    print(f"\nSaved X_test: {x_test_output} ({len(X_test)} rows)")
+    print(f"Saved y_test: {y_test_output} ({len(y_test)} rows)")
+
     sample_indices = select_sample_indices(args, len(X_test))
+
     print("\nSelected sample indices:")
     print(sample_indices)
 
     print("\nTrain 분포:")
     print(y_train.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
+
     print("\nTest 분포(현실 분포 유지):")
     print(y_test.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
 
+    # 1. 기존 RF 하이퍼파라미터 튜닝
     tuned = tune_rf(X_train, y_train, args)
     print_tuning_result(tuned)
 
-    rf = make_rf(**tuned["params"])
-    rf.fit(X_train, y_train)
+    # 2. SHAP 계산용 일반 RF
+    # CalibratedClassifierCV는 TreeExplainer에 바로 쓰기 애매하므로
+    # SHAP은 일반 RF 기준으로 계산한다.
+    rf_for_shap = make_rf(**tuned["params"])
+    rf_for_shap.fit(X_train, y_train)
 
-    proba_train = rf.predict_proba(X_train)[:, 1]
-    proba_test = rf.predict_proba(X_test)[:, 1]
-    train_metrics = evaluate_split_at_threshold(y_train, proba_train, tuned["threshold"])
-    test_metrics = evaluate_split_at_threshold(y_test, proba_test, tuned["threshold"])
-    print_metrics("RF (ALL features)", train_metrics, test_metrics)
+    raw_proba_train = rf_for_shap.predict_proba(X_train)[:, 1]
+    raw_proba_test = rf_for_shap.predict_proba(X_test)[:, 1]
 
+    raw_train_metrics = evaluate_split_at_threshold(
+        y_train,
+        raw_proba_train,
+        tuned["threshold"],
+    )
+    raw_test_metrics = evaluate_split_at_threshold(
+        y_test,
+        raw_proba_test,
+        tuned["threshold"],
+    )
+
+    print_metrics(
+        "RF before calibration",
+        raw_train_metrics,
+        raw_test_metrics,
+    )
+
+    # 3. Calibration 적용
+    calibrated_rf = build_calibrated_model(tuned["params"], args)
+    calibrated_rf.fit(X_train, y_train)
+
+    calibrated_proba_train = calibrated_rf.predict_proba(X_train)[:, 1]
+    calibrated_proba_test = calibrated_rf.predict_proba(X_test)[:, 1]
+
+    # 4. Calibration 이후 probability 기준으로 threshold 재탐색
+    threshold_grid = build_threshold_grid(args)
+
+    calibrated_threshold_result = find_best_threshold(
+        y_true=y_train,
+        proba=calibrated_proba_train,
+        threshold_grid=threshold_grid,
+    )
+
+    calibrated_threshold = calibrated_threshold_result["threshold"]
+
+    calibrated_train_metrics = evaluate_split_at_threshold(
+        y_train,
+        calibrated_proba_train,
+        calibrated_threshold,
+    )
+    calibrated_test_metrics = evaluate_split_at_threshold(
+        y_test,
+        calibrated_proba_test,
+        calibrated_threshold,
+    )
+
+    print("\n=== Calibration Result ===")
+    print(f"Calibration method          : {args.calibration_method}")
+    print(f"Original tuned threshold    : {tuned['threshold']:.2f}")
+    print(f"Calibrated tuned threshold  : {calibrated_threshold:.2f}")
+
+    print_metrics(
+        "RF after calibration + threshold retuning",
+        calibrated_train_metrics,
+        calibrated_test_metrics,
+    )
+    
+        # ==============================
+    # Decision boundary ± sigma 분석
+    # ==============================
+
+    decision_boundary = calibrated_threshold  # ≈ 0.56
+
+    sigma = np.std(calibrated_proba_test)
+
+    lower_bound = decision_boundary - sigma
+    upper_bound = decision_boundary + sigma
+
+    near_boundary_mask = (
+        (calibrated_proba_test >= lower_bound) &
+        (calibrated_proba_test <= upper_bound)
+    )
+
+    near_boundary_count = int(near_boundary_mask.sum())
+
+    print("\n=== Decision Boundary 주변 샘플 분석 ===")
+    print(f"Decision boundary: {decision_boundary:.4f}")
+    print(f"Sigma: {sigma:.4f}")
+    print(f"범위: [{lower_bound:.4f}, {upper_bound:.4f}]")
+    print(f"+- sigma 안 샘플 수: {near_boundary_count}")
+    print(f"전체 테스트 샘플 수: {len(calibrated_proba_test)}")
+    print(f"비율: {near_boundary_count / len(calibrated_proba_test):.4f}")
+
+    # 5. Permutation importance는 일반 RF 기준으로 유지
     X_tr, X_val, y_tr, y_val = train_test_split(
         X_train,
         y_train,
-        test_size=0.25,
+        test_size=0.20,
         random_state=42,
         stratify=y_train,
     )
+
     rf_tmp = make_rf(**tuned["params"])
     rf_tmp.fit(X_tr, y_tr)
 
@@ -486,7 +599,8 @@ def main():
     print("\nTop 15 importances:")
     print(importances.head(15))
 
-    explainer = shap.TreeExplainer(rf)
+    # 6. SHAP은 일반 RF 기준으로 계산
+    explainer = shap.TreeExplainer(rf_for_shap)
     shap_exp = explainer(X_test)
 
     if len(shap_exp.values.shape) == 3:
@@ -503,8 +617,14 @@ def main():
     feature_names = X_train.columns.tolist()
 
     mean_abs_shap = np.mean(np.abs(sv), axis=0)
+
     imp_df = (
-        pd.DataFrame({"feature": feature_names, "mean_abs_shap": mean_abs_shap})
+        pd.DataFrame(
+            {
+                "feature": feature_names,
+                "mean_abs_shap": mean_abs_shap,
+            }
+        )
         .sort_values("mean_abs_shap", ascending=False)
         .reset_index(drop=True)
     )
@@ -520,10 +640,16 @@ def main():
     grouped_mean_abs = np.mean(np.abs(grouped_sv), axis=0)
 
     group_imp_df = (
-        pd.DataFrame({"prefix": unique_prefixes, "mean_abs_shap": grouped_mean_abs})
+        pd.DataFrame(
+            {
+                "prefix": unique_prefixes,
+                "mean_abs_shap": grouped_mean_abs,
+            }
+        )
         .sort_values("mean_abs_shap", ascending=False)
         .reset_index(drop=True)
     )
+
     print("\nprefix 개수:", len(unique_prefixes))
     print("\nTop 20 SHAP importance (Grouped by prefix):")
     print(group_imp_df.head(20).to_string(index=False))
@@ -532,7 +658,10 @@ def main():
     group_imp_df.to_csv(prefix_output_path, index=False)
     print(f"\nSaved: {prefix_output_path}")
 
+    # 7. Local SHAP JSON 저장
+    # prediction label과 probability는 calibrated probability + retuned threshold 기준 사용
     top_k = 3
+
     for sample_idx in sample_indices:
         sample_records = build_raw_shap_records(
             sv=sv,
@@ -542,19 +671,24 @@ def main():
         )
 
         true_label = to_risk_label(int(y_test.iloc[sample_idx]))
+
+        calibrated_bad_proba = float(calibrated_proba_test[sample_idx])
+        raw_bad_proba = float(raw_proba_test[sample_idx])
+
         prediction_label = (
             "BAD CREDIT RISK"
-            if proba_test[sample_idx] >= tuned["threshold"]
+            if calibrated_bad_proba >= calibrated_threshold
             else "GOOD CREDIT RISK"
         )
-        prediction_proba = float(proba_test[sample_idx])
 
         save_shap_tuples_json(
             sample_records,
             sample_idx,
             true_label=true_label,
             prediction_label=prediction_label,
-            predict_proba=prediction_proba,
+            predict_proba=raw_bad_proba,
+            calibrated_predict_proba=calibrated_bad_proba,
+            threshold=float(calibrated_threshold),
             save_path=output_dir / f"shap_tuples_non_prefix_{sample_idx}.json",
         )
 

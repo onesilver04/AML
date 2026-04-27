@@ -6,16 +6,21 @@ import sys
 from pathlib import Path
 
 
-DEFAULT_INPUT_DIR = Path("SHAP/100 Local Shap")
+DEFAULT_INPUT_DIR = Path("SHAP/120 Local Shap")
 DEFAULT_Y_TEST_PATH = Path("y_test.csv")
-DEFAULT_OUTPUT_PATH = Path("SHAP/100 Local Shap/misclassified_local_shap_samples.csv")
+DEFAULT_OUTPUT_PATH = Path("SHAP/120 Local Shap/misclassified_local_shap_samples.csv")
 
 
 CSV_FIELDNAMES = [
     "sample_idx",
+    "true_class",
     "true_label",
+    "embedded_true_label",
+    "embedded_true_label_matches",
     "prediction_label",
     "prediction_probability",
+    "prediction_calibrated_probability",
+    "prediction_threshold",
     "is_misclassified",
     "top_features",
     "feature_directions",
@@ -80,11 +85,17 @@ def load_y_test(path: Path):
             raise ValueError(f"{path} must contain a 'class' column.")
         for row_number, row in enumerate(reader, 2):
             try:
-                labels.append(int(row["class"]))
+                value = int(row["class"])
             except (TypeError, ValueError) as exc:
                 raise ValueError(
                     f"Invalid class value at {path}:{row_number}: {row.get('class')!r}"
                 ) from exc
+            if value not in (0, 1):
+                raise ValueError(
+                    f"Invalid class value at {path}:{row_number}: {value}. "
+                    "Expected 0=GOOD CREDIT RISK, 1=BAD CREDIT RISK."
+                )
+            labels.append(value)
     return labels
 
 
@@ -156,9 +167,14 @@ def summarize_answer_file(path: Path, y_true):
 
     return {
         "sample_idx": sample_idx,
+        "true_class": y_true[sample_idx],
         "true_label": true_label,
+        "embedded_true_label": "",
+        "embedded_true_label_matches": "",
         "prediction_label": prediction_label,
         "prediction_probability": first.get("prediction_probability", "UNKNOWN"),
+        "prediction_calibrated_probability": "UNKNOWN",
+        "prediction_threshold": "UNKNOWN",
         "is_misclassified": true_label != prediction_label,
         "top_features": " | ".join(top_features),
         "feature_directions": " | ".join(feature_directions),
@@ -189,19 +205,28 @@ def summarize_local_shap_file(path: Path, y_true):
     if not prediction_label:
         raise ValueError(f"{path} has no prediction.label.")
 
-    tuples = data.get("tuples", [])
     embedded_true_label = data.get("true_label")
-    true_label = (
-        embedded_true_label
-        if embedded_true_label
-        else to_risk_label(y_true[sample_idx])
+    true_label = to_risk_label(y_true[sample_idx])
+    embedded_true_label_matches = (
+        ""
+        if not embedded_true_label
+        else embedded_true_label == true_label
     )
+    tuples = data.get("tuples", [])
 
     return {
         "sample_idx": sample_idx,
+        "true_class": y_true[sample_idx],
         "true_label": true_label,
+        "embedded_true_label": embedded_true_label or "",
+        "embedded_true_label_matches": embedded_true_label_matches,
         "prediction_label": prediction_label,
         "prediction_probability": prediction.get("probability", "UNKNOWN"),
+        "prediction_calibrated_probability": prediction.get(
+            "calibrated_probability",
+            "UNKNOWN",
+        ),
+        "prediction_threshold": prediction.get("threshold", "UNKNOWN"),
         "is_misclassified": true_label != prediction_label,
         "top_features": " | ".join(str(item.get("feature", "UNKNOWN")) for item in tuples),
         "feature_directions": " | ".join(
@@ -218,11 +243,17 @@ def iter_input_files(input_dir: Path):
     if not input_dir.exists():
         raise FileNotFoundError(f"Input directory does not exist: {input_dir}")
 
-    shap_files = sorted(input_dir.glob("shap_tuples_non_prefix_*.json"))
+    shap_files = sorted(
+        input_dir.glob("shap_tuples_non_prefix_*.json"),
+        key=sample_idx_from_path,
+    )
     if shap_files:
         return "local_shap", shap_files
 
-    answer_files = sorted(input_dir.glob("sample_*_feature_qa.jsonl"))
+    answer_files = sorted(
+        input_dir.glob("sample_*_feature_qa.jsonl"),
+        key=sample_idx_from_path,
+    )
     if answer_files:
         return "rag_answers", answer_files
 
@@ -240,18 +271,31 @@ def write_csv(path: Path, rows):
         writer.writerows(rows)
 
 
-def print_summary(all_rows):
+def print_summary(all_rows, y_test_count):
     misclassified = [row for row in all_rows if row["is_misclassified"]]
+    embedded_mismatches = [
+        row
+        for row in all_rows
+        if row["embedded_true_label_matches"] is False
+    ]
     correct_count = len(all_rows) - len(misclassified)
     misclassified_indices = [str(row["sample_idx"]) for row in misclassified]
+    embedded_mismatch_indices = [
+        str(row["sample_idx"]) for row in embedded_mismatches
+    ]
     misclassification_rate = (
         len(misclassified) / len(all_rows) * 100 if all_rows else 0.0
     )
 
     print(f"Total samples: {len(all_rows)}")
+    print(f"y_test rows: {y_test_count}")
     print(f"Misclassified: {len(misclassified)}")
     print(f"Correct: {correct_count}")
     print(f"Misclassification rate: {misclassification_rate:.2f}%")
+    print(f"Embedded true_label mismatches: {len(embedded_mismatches)}")
+    if embedded_mismatches:
+        print("Embedded mismatch sample_idx:")
+        print(", ".join(embedded_mismatch_indices))
     print("Misclassified sample_idx:")
     print(", ".join(misclassified_indices) if misclassified_indices else "(none)")
 
@@ -270,7 +314,7 @@ def main():
     ]
 
     write_csv(args.output, output_rows)
-    print_summary(all_rows)
+    print_summary(all_rows, len(y_true))
     print(f"Saved CSV: {args.output}")
     if not args.include_correct:
         print("CSV contains only misclassified samples. Use --include-correct to save all samples.")

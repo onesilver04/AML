@@ -15,13 +15,28 @@ from lightgbm import LGBMClassifier
 DATA_PATH = "german21_ohe.csv"   # 원핫 완료 파일
 df = pd.read_csv(DATA_PATH)
 
-# 타깃 설정: class_bad(1=bad) 우선 사용
-if "class_bad" in df.columns:
+# 타깃 설정: bad=1, good=0 으로 통일
+if "class_good" in df.columns:
+    y = 1 - df["class_good"].astype(int)  # class_good를 bad=1 기준으로 변환
+    X = df.drop(columns=["class_bad", "class_good"], errors="ignore")
+elif "class_bad" in df.columns:
     y = df["class_bad"].astype(int)  # 1=bad, 0=good
     X = df.drop(columns=["class_bad", "class_good"], errors="ignore")
 else:
-    # class가 1(good), 2(bad)로 남아있는 경우
-    y = (df["class"] == 2).astype(int)
+    if df["class"].dtype == bool:
+        y = (~df["class"]).astype(int)
+    else:
+        lowered = pd.Series(df["class"]).dropna().astype(str).str.lower()
+        if set(lowered.unique()).issubset({"good", "bad"}):
+            y = (df["class"].astype(str).str.lower() == "bad").astype(int)
+        else:
+            vals = set(pd.Series(df["class"]).dropna().unique())
+            if vals.issubset({1, 2}):
+                y = (df["class"] == 2).astype(int)
+            elif vals.issubset({0, 1}):
+                y = df["class"].astype(int)
+            else:
+                raise ValueError(f"예상치 못한 class 값들: {vals}")
     X = df.drop(columns=["class"], errors="ignore")
 
 print("전체 분포(원본):")
@@ -48,7 +63,7 @@ print(y_test.value_counts().rename({0: "good(0)", 1: "bad(1)"}))
 train_df = pd.concat([X_train, y_train.rename("class_bad")], axis=1)
 
 train_good = train_df[train_df["class_bad"] == 0]
-train_bad  = train_df[train_df["class_bad"] == 1]
+train_bad = train_df[train_df["class_bad"] == 1]
 
 train_good_down = resample(
     train_good,

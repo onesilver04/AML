@@ -67,6 +67,10 @@ def load_target(df: pd.DataFrame) -> pd.Series:
     if df["class"].dtype == bool:
         return (~df["class"]).astype(int)
 
+    lowered = pd.Series(df["class"]).dropna().astype(str).str.lower()
+    if set(lowered.unique()).issubset({"good", "bad"}):
+        return (df["class"].astype(str).str.lower() == "bad").astype(int)
+
     vals = set(pd.Series(df["class"]).dropna().unique())
     if vals.issubset({1, 2}):
         return (df["class"] == 2).astype(int)
@@ -190,6 +194,33 @@ def main():
 
     selected_proba = rf_selected.predict_proba(X_test[selected_features])[:, 1]
     selected_metrics = evaluate_model(y_test, selected_proba)
+    
+        # ==============================
+    # Decision boundary 주변 샘플 분석
+    # ==============================
+    decision_boundary = 0.56
+
+    sigma = np.std(selected_proba)
+
+    lower_bound = decision_boundary - sigma
+    upper_bound = decision_boundary + sigma
+
+    near_boundary_mask = (
+        (selected_proba >= lower_bound) &
+        (selected_proba <= upper_bound)
+    )
+
+    near_boundary_count = int(near_boundary_mask.sum())
+
+    print("\n=== Decision Boundary 주변 샘플 분석 ===")
+    print(f"Decision boundary: {decision_boundary:.4f}")
+    print(f"Sigma: {sigma:.4f}")
+    print(f"범위: [{lower_bound:.4f}, {upper_bound:.4f}]")
+    print(f"+- sigma 안에 들어가는 테스트 샘플 수: {near_boundary_count}")
+    print(f"전체 테스트 샘플 수: {len(selected_proba)}")
+    print(f"비율: {near_boundary_count / len(selected_proba):.4f}")
+    
+    
     print("\n=== RF (Selected features) ===")
     print(json.dumps(selected_metrics, indent=2))
 
@@ -222,6 +253,7 @@ def main():
 
     summary = {
         "data_path": args.data_path,
+        "positive_class": {"value": 1, "label": "BAD CREDIT RISK"},
         "n_train": int(len(X_train)),
         "n_test": int(len(X_test)),
         "keep_ratio": args.keep_ratio,

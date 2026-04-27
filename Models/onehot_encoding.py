@@ -6,6 +6,10 @@ df=pd.read_csv("german21.csv")
 # 타겟
 print(df["class"].value_counts())
 
+# 모델링 코드와 맞추기: bad=1, good=0
+if "class" in df.columns:
+    df["class"] = df["class"].map({"good": 0, "bad": 1}).astype(int)
+
 # object 컬럼 자동 추출
 cat_cols = df.select_dtypes(include="object").columns.tolist()
 

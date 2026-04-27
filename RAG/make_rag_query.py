@@ -4,7 +4,7 @@ import re
 from typing import List
 
 # 모델 및 경로 설정
-MODEL_NAME = "qwen3.5:27b"
+MODEL_NAME = "qwen3.6:35b"
 # 이제 definition이 포함된 통합 JSON 파일 하나만 사용합니다.
 INPUT_JSON_PATH = "SHAP/Feature Importance/shap_tuples_non_prefix_41.json" 
 OUTPUT_PATH = "RAG/Query/generated_rag_queries_41.txt"
@@ -60,7 +60,7 @@ def postprocess_queries(text: str) -> List[str]:
             queries.append(clean)
     return queries
 
-def generate_rag_queries(input_data: dict, model_name: str = MODEL_NAME) -> List[str]:
+def generate_rag_queries(input_data: dict, model_name: str = MODEL_NAME) -> List[str]: # 
     chain = build_chain(model_name)
     response = chain.invoke({
         "input_json": json.dumps(input_data, indent=2, ensure_ascii=False)

@@ -8,8 +8,8 @@ from pathlib import Path
 
 DEFAULT_INPUT = Path("RAG/QA/Answers/sample_131_feature_qa.jsonl")
 DEFAULT_INPUT_DIR = Path("RAG/QA/Answers")
-DEFAULT_OUTPUT_DIR = Path("RAG/QA/Final Summary/Results")
-DEFAULT_MODEL = "qwen3.5:27b"
+DEFAULT_OUTPUT_DIR = Path("RAG/Final Summary/Results")
+DEFAULT_MODEL = "qwen3.6:35b"
 EXPECTED_FEATURE_COUNT = 3
 
 

@@ -2,6 +2,7 @@ import argparse
 import csv
 import json
 import random
+import re
 import sys
 from pathlib import Path
 
@@ -13,7 +14,7 @@ if str(REPO_ROOT) not in sys.path:
 from RAG.make_rag_query import generate_rag_queries
 
 
-DEFAULT_OUTPUT = Path("RAG/QA/random_100_local_shap_feature_qa_seed42.jsonl")
+DEFAULT_OUTPUT = Path("RAG/QA/random_120_local_shap_feature_qa_seed42.jsonl")
 
 
 def parse_args():
@@ -22,7 +23,7 @@ def parse_args():
     )
     parser.add_argument(
         "--shap-dir",
-        default="SHAP/100 Local Shap",
+        default="SHAP/120 Local Shap",
         help="Directory containing shap_tuples_non_prefix_{sample_idx}.json files.",
     )
     parser.add_argument(
@@ -59,6 +60,12 @@ def parse_args():
     parser.add_argument("--max_docs", type=int, default=20)
     parser.add_argument("--min_gap", type=float, default=0.001)
     parser.add_argument("--max_chunks_per_source", type=int, default=2)
+    parser.add_argument(
+        "--evidence-sentences-per-source",
+        type=int,
+        default=1,
+        help="Number of verbatim evidence sentences to keep from each selected source.",
+    )
     return parser.parse_args()
 
 
@@ -184,6 +191,100 @@ def selected_sources_payload(selected_docs):
     return sources
 
 
+def tokenize_for_evidence(text: str):
+    stopwords = {
+        "a",
+        "an",
+        "and",
+        "are",
+        "as",
+        "associated",
+        "be",
+        "by",
+        "credit",
+        "default",
+        "for",
+        "from",
+        "in",
+        "is",
+        "it",
+        "of",
+        "on",
+        "or",
+        "probability",
+        "risk",
+        "statistical",
+        "the",
+        "to",
+        "with",
+    }
+    return {
+        token
+        for token in re.findall(r"[A-Za-z0-9_<>/=+-]+", text.lower())
+        if len(token) > 2 and token not in stopwords
+    }
+
+
+def split_sentences(text: str):
+    normalized = re.sub(r"\s+", " ", text).strip()
+    if not normalized:
+        return []
+    return [
+        sentence.strip()
+        for sentence in re.split(r"(?<=[.!?])\s+(?=[A-Z0-9\"'([])", normalized)
+        if sentence.strip()
+    ]
+
+
+def evidence_sentences_payload(
+    selected_docs,
+    question: str,
+    feature_info: dict,
+    sentences_per_source: int = 1,
+):
+    if sentences_per_source < 1:
+        return []
+
+    query_terms = tokenize_for_evidence(
+        " ".join(
+            [
+                question,
+                feature_info.get("feature", ""),
+                feature_info.get("definition", ""),
+                feature_info.get("direction", ""),
+            ]
+        )
+    )
+
+    evidence_rows = []
+
+    for doc, score in selected_docs:
+        sentences = split_sentences(doc.page_content)
+        if not sentences:
+            continue
+
+        ranked_sentences = sorted(
+            sentences,
+            key=lambda sentence: (
+                len(tokenize_for_evidence(sentence) & query_terms),
+                -len(sentence),
+            ),
+            reverse=True,
+        )
+
+        for sentence in ranked_sentences[:sentences_per_source]:
+            evidence_rows.append(
+                {
+                    "source": doc.metadata.get("source", "unknown"),
+                    "page": page_display(doc.metadata.get("page", "NA")),
+                    "score": float(score),
+                    "sentence": sentence,
+                }
+            )
+
+    return evidence_rows
+
+
 def page_display(meta_page):
     if isinstance(meta_page, int):
         return meta_page + 1
@@ -233,6 +334,7 @@ def write_summary_csv(path: Path, records):
         "question",
         "answer",
         "selected_sources",
+        "evidence_sentences",
         "retrieval_params",
     ]
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -242,6 +344,10 @@ def write_summary_csv(path: Path, records):
         for record in records:
             row = record.copy()
             row["selected_sources"] = json.dumps(row["selected_sources"], ensure_ascii=False)
+            row["evidence_sentences"] = json.dumps(
+                row["evidence_sentences"],
+                ensure_ascii=False,
+            )
             row["retrieval_params"] = json.dumps(row["retrieval_params"], ensure_ascii=False)
             writer.writerow(row)
 
@@ -316,6 +422,12 @@ def main():
                 max_chunks_per_source=args.max_chunks_per_source,
                 inspect_all=False,
             )
+            evidence_sentences = evidence_sentences_payload(
+                selected_docs,
+                question=question,
+                feature_info=feature_info,
+                sentences_per_source=args.evidence_sentences_per_source,
+            )
 
             record = {
                 "sample_idx": sample_idx,
@@ -331,6 +443,7 @@ def main():
                 "question": question,
                 "answer": answer,
                 "selected_sources": selected_sources_payload(selected_docs),
+                "evidence_sentences": evidence_sentences,
                 "retrieval_params": retrieval_params,
             }
             sample_records.append(record)

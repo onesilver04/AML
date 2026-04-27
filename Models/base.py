@@ -29,16 +29,20 @@ if "class" not in df.columns:
 if df["class"].dtype == bool:
     y = (~df["class"]).astype(int)  # True(good)->0, False(bad)->1
 else:
-    # 혹시 숫자(1/2 or 0/1)로 되어 있는 경우까지 안전하게 처리
-    vals = set(pd.Series(df["class"]).dropna().unique())
-    if vals.issubset({1, 2}):
-        # 1=good, 2=bad
-        y = (df["class"] == 2).astype(int)
-    elif vals.issubset({0, 1}):
-        # 0=good, 1=bad 라고 가정
-        y = df["class"].astype(int)
+    lowered = pd.Series(df["class"]).dropna().astype(str).str.lower()
+    if set(lowered.unique()).issubset({"good", "bad"}):
+        y = (df["class"].astype(str).str.lower() == "bad").astype(int)
     else:
-        raise ValueError(f"예상치 못한 class 값들: {vals}")
+        # 혹시 숫자(1/2 or 0/1)로 되어 있는 경우까지 안전하게 처리
+        vals = set(pd.Series(df["class"]).dropna().unique())
+        if vals.issubset({1, 2}):
+            # 1=good, 2=bad
+            y = (df["class"] == 2).astype(int)
+        elif vals.issubset({0, 1}):
+            # 0=good, 1=bad 라고 가정
+            y = df["class"].astype(int)
+        else:
+            raise ValueError(f"예상치 못한 class 값들: {vals}")
 
 X = df.drop(columns=["class"], errors="ignore")
 
