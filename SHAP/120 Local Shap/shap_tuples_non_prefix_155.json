@@ -3,7 +3,7 @@
   "true_label": "GOOD CREDIT RISK",
   "prediction": {
     "label": "GOOD CREDIT RISK",
-    "probability": 0.5083210172700595,
+    "probability": 0.5083210172700594,
     "threshold": 0.56
   },
   "tuples": [

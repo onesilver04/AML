@@ -1,0 +1,32 @@
+{
+  "sample_idx": 14,
+  "true_label": "BAD CREDIT RISK",
+  "prediction": {
+    "label": "BAD CREDIT RISK",
+    "probability": 0.5887777677020651,
+    "threshold": 0.56
+  },
+  "tuples": [
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.07382058463340908,
+      "abs_shap": 0.07382058463340908,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": 0.051274966602145755,
+      "abs_shap": 0.051274966602145755,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.0505381203682975,
+      "abs_shap": 0.0505381203682975,
+      "direction": "increase_risk"
+    }
+  ]
+}

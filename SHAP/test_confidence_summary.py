@@ -138,7 +138,6 @@ def build_confidence_dataframe(y_test, proba_bad, threshold, sample_indices=None
             "true_class": y_test_array,
             "predicted_class": pred,
             "raw_bad_probability": proba_bad,
-            "calibrated_good_probability": proba_good,
             "predicted_bad_probability": predicted_bad_probability,
             "predicted_good_probability": predicted_good_probability,
             "predicted_confidence": predicted_confidence,
@@ -286,8 +285,6 @@ def main():
         tuned["threshold"],
     )
 
-    threshold_grid = build_threshold_grid(args)
-
     y_test_selected = y_test.iloc[sample_indices]
     raw_proba_selected = raw_proba_test[sample_indices]
 
@@ -358,8 +355,6 @@ def main():
         "data_path": args.data_path,
         "positive_class": {"value": 1, "label": "BAD CREDIT RISK"},
         "full_test_sample_count": int(full_test_sample_count),
-        "selected_test_sample_count": int(len(confidence_df)),
-        "selected_sample_indices": [int(idx) for idx in sample_indices],
         "tuned_params": tuned["params"],
         "cv_auc": float(tuned["cv_auc"]),
         "original_threshold": float(tuned["threshold"]),

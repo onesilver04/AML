@@ -3,7 +3,7 @@
   "true_label": "BAD CREDIT RISK",
   "prediction": {
     "label": "BAD CREDIT RISK",
-    "probability": 0.8012839926256783,
+    "probability": 0.8012839926256781,
     "threshold": 0.56
   },
   "tuples": [
