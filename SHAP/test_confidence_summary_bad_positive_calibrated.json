@@ -209,202 +209,211 @@
     199
   ],
   "tuned_params": {
-    "n_estimators": 800,
-    "min_samples_split": 5,
+    "n_estimators": 1200,
+    "min_samples_split": 2,
     "min_samples_leaf": 4,
-    "max_features": "log2",
-    "max_depth": 10,
+    "max_features": 0.8,
+    "max_depth": 20,
     "criterion": "entropy",
-    "class_weight": "balanced_subsample",
+    "class_weight": {
+      "0": 2,
+      "1": 1
+    },
     "bootstrap": true
   },
-  "cv_auc": 0.7856398809523809,
-  "original_threshold": 0.56,
-  "calibrated_threshold": 0.45,
+  "cv_auc": 0.7847470238095239,
+  "original_threshold": 0.47,
+  "calibrated_threshold": 0.39,
   "calibration_method": "sigmoid",
   "overall": {
     "sample_count": 200,
-    "mean_predicted_confidence": 0.7451342954800456,
-    "std_predicted_confidence": 0.1387472628064986,
-    "pred_confidence_mean_minus_1sigma": 0.606387032673547,
-    "accuracy": 0.775,
-    "original_threshold": 0.56,
-    "calibrated_threshold": 0.45,
+    "mean_predicted_confidence": 0.7396529072171489,
+    "std_predicted_confidence": 0.14230115397809193,
+    "pred_confidence_mean_minus_1sigma": 0.597351753239057,
+    "accuracy": 0.745,
+    "original_threshold": 0.47,
+    "calibrated_threshold": 0.39,
     "calibration_method": "sigmoid"
   },
   "confidence_category_summary": [
     {
       "category": "low_confidence",
-      "sample_count": 38,
-      "misclassified_count": 16,
+      "sample_count": 34,
+      "misclassified_count": 19,
       "misclassified_sample_indices": [
-        8,
-        11,
-        41,
+        3,
+        5,
+        16,
+        36,
+        44,
+        65,
         71,
+        73,
         112,
+        120,
         122,
         132,
-        134,
+        133,
         140,
+        152,
         154,
         156,
-        181,
-        182,
-        185,
-        186,
-        198
+        179,
+        182
       ],
-      "mean_confidence": 0.5457334175146088,
-      "min_confidence": 0.45169961679653364,
-      "max_confidence": 0.597694094852999
+      "mean_confidence": 0.48872843949531436,
+      "min_confidence": 0.3914771098342308,
+      "max_confidence": 0.597315552771796
     },
     {
       "category": "middle_confidence",
-      "sample_count": 61,
-      "misclassified_count": 20,
+      "sample_count": 48,
+      "misclassified_count": 19,
       "misclassified_sample_indices": [
-        3,
-        13,
+        11,
         35,
-        36,
-        39,
+        40,
         55,
+        58,
+        60,
         69,
         70,
-        74,
         82,
-        94,
         105,
-        121,
-        133,
-        149,
-        159,
+        111,
+        129,
+        167,
         168,
-        170,
         175,
-        183
+        181,
+        183,
+        185,
+        198
       ],
-      "mean_confidence": 0.6698729278365495,
-      "min_confidence": 0.6090537681519897,
-      "max_confidence": 0.7438737867041658
+      "mean_confidence": 0.6701548028634315,
+      "min_confidence": 0.6065939497397309,
+      "max_confidence": 0.7362745021137478
     },
     {
       "category": "high_confidence",
-      "sample_count": 101,
-      "misclassified_count": 9,
+      "sample_count": 118,
+      "misclassified_count": 13,
       "misclassified_sample_indices": [
         4,
+        13,
         22,
+        39,
         49,
-        60,
         64,
+        74,
         77,
+        94,
         109,
         110,
-        111
+        121,
+        149
       ],
-      "mean_confidence": 0.8656112933903416,
-      "min_confidence": 0.7501919131599848,
-      "max_confidence": 0.9640559382914461
+      "mean_confidence": 0.8402235929080032,
+      "min_confidence": 0.7405711857635215,
+      "max_confidence": 0.9092196153835319
     }
   ],
   "raw_test_metrics_before_calibration": {
-    "accuracy": 0.775,
-    "f1": 0.5945945945945946,
-    "auc": 0.8002380952380952,
-    "sensitivity": 0.55,
-    "specificity": 0.8714285714285714,
+    "accuracy": 0.75,
+    "f1": 0.5,
+    "auc": 0.7892857142857144,
+    "sensitivity": 0.4166666666666667,
+    "specificity": 0.8928571428571429,
     "confusion": [
-      122,
-      18,
-      27,
-      33
+      125,
+      15,
+      35,
+      25
     ]
   },
   "calibrated_test_metrics": {
-    "accuracy": 0.775,
-    "f1": 0.6017699115044248,
-    "auc": 0.800595238095238,
-    "sensitivity": 0.5666666666666667,
-    "specificity": 0.8642857142857143,
+    "accuracy": 0.745,
+    "f1": 0.5785123966942148,
+    "auc": 0.7889285714285715,
+    "sensitivity": 0.5833333333333334,
+    "specificity": 0.8142857142857143,
     "confusion": [
-      121,
-      19,
+      114,
       26,
-      34
+      25,
+      35
     ]
   },
   "raw_selected_metrics_before_calibration": {
-    "accuracy": 0.775,
-    "f1": 0.5945945945945946,
-    "auc": 0.8002380952380952,
-    "sensitivity": 0.55,
-    "specificity": 0.8714285714285714,
+    "accuracy": 0.75,
+    "f1": 0.5,
+    "auc": 0.7892857142857144,
+    "sensitivity": 0.4166666666666667,
+    "specificity": 0.8928571428571429,
     "confusion": [
-      122,
-      18,
-      27,
-      33
+      125,
+      15,
+      35,
+      25
     ]
   },
   "calibrated_selected_metrics": {
-    "accuracy": 0.775,
-    "f1": 0.6017699115044248,
-    "auc": 0.800595238095238,
-    "sensitivity": 0.5666666666666667,
-    "specificity": 0.8642857142857143,
+    "accuracy": 0.745,
+    "f1": 0.5785123966942148,
+    "auc": 0.7889285714285715,
+    "sensitivity": 0.5833333333333334,
+    "specificity": 0.8142857142857143,
     "confusion": [
-      121,
-      19,
+      114,
       26,
-      34
+      25,
+      35
     ]
   },
   "by_predicted_class": [
     {
       "class_value": 0,
       "class_label": "GOOD CREDIT RISK",
-      "sample_count": 147,
-      "mean_confidence": 0.7925015514217333,
-      "median_confidence": 0.8238469693695787,
-      "std_confidence": 0.1211560982698062,
-      "min_confidence": 0.5508568242982748,
-      "max_confidence": 0.9640559382914461
+      "sample_count": 139,
+      "mean_confidence": 0.8051460056836172,
+      "median_confidence": 0.831104570697734,
+      "std_confidence": 0.08575922710058818,
+      "min_confidence": 0.6108979368906136,
+      "max_confidence": 0.9092196153835319
     },
     {
       "class_value": 1,
       "class_label": "BAD CREDIT RISK",
-      "sample_count": 53,
-      "mean_confidence": 0.6137571893776292,
-      "median_confidence": 0.6182477718562878,
-      "std_confidence": 0.09191693990323668,
-      "min_confidence": 0.45169961679653364,
-      "max_confidence": 0.7947021701487684
+      "sample_count": 61,
+      "mean_confidence": 0.590414535301754,
+      "median_confidence": 0.5653247953604705,
+      "std_confidence": 0.1326162556958189,
+      "min_confidence": 0.3914771098342308,
+      "max_confidence": 0.8705949228355501
     }
   ],
   "by_predicted_class_good_probability": [
     {
       "class_value": 0,
       "class_label": "GOOD CREDIT RISK",
-      "sample_count": 147,
-      "mean_confidence": 0.7925015514217333,
-      "median_confidence": 0.8238469693695787,
-      "std_confidence": 0.1211560982698062,
-      "min_confidence": 0.5508568242982748,
-      "max_confidence": 0.9640559382914461
+      "sample_count": 139,
+      "mean_confidence": 0.8051460056836172,
+      "median_confidence": 0.831104570697734,
+      "std_confidence": 0.08575922710058818,
+      "min_confidence": 0.6108979368906136,
+      "max_confidence": 0.9092196153835319
     }
   ],
   "by_predicted_class_bad_probability": [
     {
       "class_value": 1,
       "class_label": "BAD CREDIT RISK",
-      "sample_count": 53,
-      "mean_confidence": 0.6137571893776292,
-      "median_confidence": 0.6182477718562878,
-      "std_confidence": 0.09191693990323668,
-      "min_confidence": 0.45169961679653364,
-      "max_confidence": 0.7947021701487684
+      "sample_count": 61,
+      "mean_confidence": 0.590414535301754,
+      "median_confidence": 0.5653247953604705,
+      "std_confidence": 0.1326162556958189,
+      "min_confidence": 0.3914771098342308,
+      "max_confidence": 0.8705949228355501
     }
   ],
   "by_true_class": [
@@ -412,21 +421,21 @@
       "class_value": 0,
       "class_label": "GOOD CREDIT RISK",
       "sample_count": 140,
-      "mean_confidence": 0.754085587485283,
-      "median_confidence": 0.8074442311200802,
-      "std_confidence": 0.17578031567520272,
-      "min_confidence": 0.27677031848279854,
-      "max_confidence": 0.9640559382914461
+      "mean_confidence": 0.7513876787937125,
+      "median_confidence": 0.8111363343274205,
+      "std_confidence": 0.16108376105393749,
+      "min_confidence": 0.21504138878777546,
+      "max_confidence": 0.9092196153835319
     },
     {
       "class_value": 1,
       "class_label": "BAD CREDIT RISK",
       "sample_count": 60,
-      "mean_confidence": 0.47672308709932004,
-      "median_confidence": 0.4905914002898777,
-      "std_confidence": 0.2029641819953086,
-      "min_confidence": 0.06923031598969562,
-      "max_confidence": 0.7947021701487684
+      "mean_confidence": 0.4715711149083994,
+      "median_confidence": 0.47466310678337975,
+      "std_confidence": 0.22390514153439792,
+      "min_confidence": 0.10156384609123566,
+      "max_confidence": 0.8705949228355501
     }
   ]
 }

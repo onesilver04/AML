@@ -2,10 +2,9 @@
   "sample_idx": 182,
   "true_label": "GOOD CREDIT RISK",
   "prediction": {
-    "label": "BAD CREDIT RISK",
+    "label": "GOOD CREDIT RISK",
     "probability": 0.5575487082996187,
-    "calibrated_probability": 0.4753931781547692,
-    "threshold": 0.45
+    "threshold": 0.56
   },
   "tuples": [
     {

@@ -3,7 +3,6 @@ import json
 
 import numpy as np
 import pandas as pd
-from sklearn.calibration import CalibratedClassifierCV
 from sklearn.model_selection import train_test_split
 
 from shap_rf_non_prefix import (
@@ -19,7 +18,7 @@ from shap_rf_non_prefix import (
 def parse_args():
     parser = argparse.ArgumentParser(
         description=(
-            "Compute calibrated test-set confidence summaries using "
+            "Compute test-set confidence summaries using "
             "predicted_confidence as the main confidence criterion."
         )
     )
@@ -34,17 +33,12 @@ def parse_args():
     parser.add_argument("--threshold-max", type=float, default=0.70)
     parser.add_argument("--threshold-step", type=float, default=0.01)
     parser.add_argument(
-        "--calibration-method",
-        choices=["sigmoid", "isotonic"],
-        default="sigmoid",
-    )
-    parser.add_argument(
         "--output-csv",
-        default="SHAP/test_confidence_by_sample_bad_positive_calibrated.csv",
+        default="SHAP/test_confidence_by_sample_bad_positive.csv",
     )
     parser.add_argument(
         "--output-json",
-        default="SHAP/test_confidence_summary_bad_positive_calibrated.json",
+        default="SHAP/test_confidence_summary_bad_positive.json",
     )
     return parser.parse_args()
 
@@ -143,7 +137,7 @@ def build_confidence_dataframe(y_test, proba_bad, threshold, sample_indices=None
             "sample_idx": np.asarray(sample_indices, dtype=int),
             "true_class": y_test_array,
             "predicted_class": pred,
-            "calibrated_bad_probability": proba_bad,
+            "raw_bad_probability": proba_bad,
             "calibrated_good_probability": proba_good,
             "predicted_bad_probability": predicted_bad_probability,
             "predicted_good_probability": predicted_good_probability,
@@ -292,37 +286,9 @@ def main():
         tuned["threshold"],
     )
 
-    base_rf = make_rf(n_jobs=1, **tuned["params"])
-
-    calibrated_rf = CalibratedClassifierCV(
-        estimator=base_rf,
-        method=args.calibration_method,
-        cv=args.cv_folds,
-    )
-
-    calibrated_rf.fit(X_train, y_train)
-
-    calibrated_proba_train = calibrated_rf.predict_proba(X_train)[:, 1]
-    calibrated_proba_test = calibrated_rf.predict_proba(X_test)[:, 1]
-
     threshold_grid = build_threshold_grid(args)
 
-    calibrated_threshold_result = find_best_threshold(
-        y_true=y_train,
-        proba=calibrated_proba_train,
-        threshold_grid=threshold_grid,
-    )
-
-    calibrated_threshold = calibrated_threshold_result["threshold"]
-
-    calibrated_test_metrics = evaluate_split_at_threshold(
-        y_test,
-        calibrated_proba_test,
-        calibrated_threshold,
-    )
-
     y_test_selected = y_test.iloc[sample_indices]
-    calibrated_proba_selected = calibrated_proba_test[sample_indices]
     raw_proba_selected = raw_proba_test[sample_indices]
 
     raw_selected_metrics = evaluate_split_at_threshold(
@@ -331,24 +297,16 @@ def main():
         tuned["threshold"],
     )
 
-    calibrated_selected_metrics = evaluate_split_at_threshold(
-        y_test_selected,
-        calibrated_proba_selected,
-        calibrated_threshold,
-    )
-
     confidence_df = build_confidence_dataframe(
         y_test_selected,
-        calibrated_proba_selected,
-        calibrated_threshold,
+        raw_proba_selected,
+        tuned["threshold"],
         sample_indices=sample_indices,
     )
 
     confidence_df["raw_bad_probability"] = raw_proba_selected
     confidence_df["raw_good_probability"] = 1.0 - raw_proba_selected
     confidence_df["original_threshold"] = float(tuned["threshold"])
-    confidence_df["calibrated_threshold"] = float(calibrated_threshold)
-    confidence_df["calibration_method"] = args.calibration_method
 
     confidence_df, pred_conf_stats = add_predicted_confidence_categories(
         confidence_df
@@ -386,8 +344,6 @@ def main():
         "pred_confidence_mean_minus_1sigma": pred_conf_stats["mean_minus_1sigma"],
         "accuracy": float(confidence_df["is_correct"].mean()),
         "original_threshold": float(tuned["threshold"]),
-        "calibrated_threshold": float(calibrated_threshold),
-        "calibration_method": args.calibration_method,
     }
 
     output_csv = resolve_output_path(args.output_csv)
@@ -407,11 +363,9 @@ def main():
         "tuned_params": tuned["params"],
         "cv_auc": float(tuned["cv_auc"]),
         "original_threshold": float(tuned["threshold"]),
-        "calibrated_threshold": float(calibrated_threshold),
-        "calibration_method": args.calibration_method,
         "overall": overall_summary,
         "confidence_category_summary": category_summary,
-        "raw_test_metrics_before_calibration": {
+        "raw_test_metrics": {
             "accuracy": float(raw_test_metrics["accuracy"]),
             "f1": float(raw_test_metrics["f1"]),
             "auc": float(raw_test_metrics["auc"]),
@@ -419,29 +373,13 @@ def main():
             "specificity": float(raw_test_metrics["specificity"]),
             "confusion": [int(v) for v in raw_test_metrics["confusion"]],
         },
-        "calibrated_test_metrics": {
-            "accuracy": float(calibrated_test_metrics["accuracy"]),
-            "f1": float(calibrated_test_metrics["f1"]),
-            "auc": float(calibrated_test_metrics["auc"]),
-            "sensitivity": float(calibrated_test_metrics["sensitivity"]),
-            "specificity": float(calibrated_test_metrics["specificity"]),
-            "confusion": [int(v) for v in calibrated_test_metrics["confusion"]],
-        },
-        "raw_selected_metrics_before_calibration": {
+        "raw_selected_metrics": {
             "accuracy": float(raw_selected_metrics["accuracy"]),
             "f1": float(raw_selected_metrics["f1"]),
             "auc": float(raw_selected_metrics["auc"]),
             "sensitivity": float(raw_selected_metrics["sensitivity"]),
             "specificity": float(raw_selected_metrics["specificity"]),
             "confusion": [int(v) for v in raw_selected_metrics["confusion"]],
-        },
-        "calibrated_selected_metrics": {
-            "accuracy": float(calibrated_selected_metrics["accuracy"]),
-            "f1": float(calibrated_selected_metrics["f1"]),
-            "auc": float(calibrated_selected_metrics["auc"]),
-            "sensitivity": float(calibrated_selected_metrics["sensitivity"]),
-            "specificity": float(calibrated_selected_metrics["specificity"]),
-            "confusion": [int(v) for v in calibrated_selected_metrics["confusion"]],
         },
         "by_predicted_class": predicted_summary,
         "by_predicted_class_good_probability": predicted_good_summary,
@@ -452,24 +390,15 @@ def main():
     with output_json.open("w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
 
-    print("=== Calibrated Predicted Confidence Summary ===")
+    print("=== Predicted Confidence Summary ===")
     print("Positive class         : BAD CREDIT RISK (1)")
-    print(f"Calibration method     : {args.calibration_method}")
     print(f"Original threshold     : {tuned['threshold']:.2f}")
-    print(f"Calibrated threshold   : {calibrated_threshold:.2f}")
 
     print(
-        "\nBefore calibration test metrics: "
+        "\nTest metrics: "
         f"acc={raw_test_metrics['accuracy']:.4f}, "
         f"f1={raw_test_metrics['f1']:.4f}, "
         f"auc={raw_test_metrics['auc']:.4f}"
-    )
-
-    print(
-        "After calibration test metrics : "
-        f"acc={calibrated_test_metrics['accuracy']:.4f}, "
-        f"f1={calibrated_test_metrics['f1']:.4f}, "
-        f"auc={calibrated_test_metrics['auc']:.4f}"
     )
 
     print(f"\nTest sample count: {len(confidence_df)}")

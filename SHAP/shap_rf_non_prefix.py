@@ -9,7 +9,6 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from sklearn.calibration import CalibratedClassifierCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.inspection import permutation_importance
 from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, roc_auc_score
@@ -73,7 +72,7 @@ RF_PARAM_DISTRIBUTIONS = {
 def parse_args():
     parser = argparse.ArgumentParser(
         description=(
-            "Train/evaluate RF, apply probability calibration, retune threshold, "
+            "Train/evaluate RF, tune threshold, "
             "save global SHAP importance, and export random local SHAP samples."
         )
     )
@@ -97,13 +96,6 @@ def parse_args():
     parser.add_argument("--threshold-min", type=float, default=0.20)
     parser.add_argument("--threshold-max", type=float, default=0.70)
     parser.add_argument("--threshold-step", type=float, default=0.01)
-
-    parser.add_argument(
-        "--calibration-method",
-        choices=["sigmoid", "isotonic"],
-        default="sigmoid",
-        help="Probability calibration method. sigmoid is safer for small datasets.",
-    )
 
     return parser.parse_args()
 
@@ -342,18 +334,6 @@ def tune_rf(X_train, y_train, args):
     }
 
 
-def build_calibrated_model(best_params, args):
-    base_rf = make_rf(n_jobs=1, **best_params)
-
-    calibrated_model = CalibratedClassifierCV(
-        estimator=base_rf,
-        method=args.calibration_method,
-        cv=args.cv_folds,
-    )
-
-    return calibrated_model
-
-
 def ohe_prefix(name: str) -> str:
     if "_" in name:
         return name.rsplit("_", 1)[0]
@@ -406,7 +386,6 @@ def save_shap_tuples_json(
     true_label,
     prediction_label,
     predict_proba=None,
-    calibrated_predict_proba=None,
     threshold=None,
     save_path="SHAP/shap_tuples_non_prefix.json",
 ):
@@ -416,7 +395,6 @@ def save_shap_tuples_json(
         "prediction": {
             "label": prediction_label,
             "probability": predict_proba,
-            "calibrated_probability": calibrated_predict_proba,
             "threshold": threshold,
         },
         "tuples": records,
@@ -498,65 +476,25 @@ def main():
     )
 
     print_metrics(
-        "RF before calibration",
+        "RF evaluation",
         raw_train_metrics,
         raw_test_metrics,
     )
 
-    # 3. Calibration 적용
-    calibrated_rf = build_calibrated_model(tuned["params"], args)
-    calibrated_rf.fit(X_train, y_train)
-
-    calibrated_proba_train = calibrated_rf.predict_proba(X_train)[:, 1]
-    calibrated_proba_test = calibrated_rf.predict_proba(X_test)[:, 1]
-
-    # 4. Calibration 이후 probability 기준으로 threshold 재탐색
-    threshold_grid = build_threshold_grid(args)
-
-    calibrated_threshold_result = find_best_threshold(
-        y_true=y_train,
-        proba=calibrated_proba_train,
-        threshold_grid=threshold_grid,
-    )
-
-    calibrated_threshold = calibrated_threshold_result["threshold"]
-
-    calibrated_train_metrics = evaluate_split_at_threshold(
-        y_train,
-        calibrated_proba_train,
-        calibrated_threshold,
-    )
-    calibrated_test_metrics = evaluate_split_at_threshold(
-        y_test,
-        calibrated_proba_test,
-        calibrated_threshold,
-    )
-
-    print("\n=== Calibration Result ===")
-    print(f"Calibration method          : {args.calibration_method}")
-    print(f"Original tuned threshold    : {tuned['threshold']:.2f}")
-    print(f"Calibrated tuned threshold  : {calibrated_threshold:.2f}")
-
-    print_metrics(
-        "RF after calibration + threshold retuning",
-        calibrated_train_metrics,
-        calibrated_test_metrics,
-    )
-    
-        # ==============================
+    # ==============================
     # Decision boundary ± sigma 분석
     # ==============================
 
-    decision_boundary = calibrated_threshold  # ≈ 0.56
+    decision_boundary = tuned["threshold"]  # threshold 사용
 
-    sigma = np.std(calibrated_proba_test)
+    sigma = np.std(raw_proba_test)
 
     lower_bound = decision_boundary - sigma
     upper_bound = decision_boundary + sigma
 
     near_boundary_mask = (
-        (calibrated_proba_test >= lower_bound) &
-        (calibrated_proba_test <= upper_bound)
+        (raw_proba_test >= lower_bound) &
+        (raw_proba_test <= upper_bound)
     )
 
     near_boundary_count = int(near_boundary_mask.sum())
@@ -566,8 +504,8 @@ def main():
     print(f"Sigma: {sigma:.4f}")
     print(f"범위: [{lower_bound:.4f}, {upper_bound:.4f}]")
     print(f"+- sigma 안 샘플 수: {near_boundary_count}")
-    print(f"전체 테스트 샘플 수: {len(calibrated_proba_test)}")
-    print(f"비율: {near_boundary_count / len(calibrated_proba_test):.4f}")
+    print(f"전체 테스트 샘플 수: {len(raw_proba_test)}")
+    print(f"비율: {near_boundary_count / len(raw_proba_test):.4f}")
 
     # 5. Permutation importance는 일반 RF 기준으로 유지
     X_tr, X_val, y_tr, y_val = train_test_split(
@@ -659,7 +597,7 @@ def main():
     print(f"\nSaved: {prefix_output_path}")
 
     # 7. Local SHAP JSON 저장
-    # prediction label과 probability는 calibrated probability + retuned threshold 기준 사용
+    # prediction label과 probability는 raw probability + tuned threshold 기준 사용
     top_k = 3
 
     for sample_idx in sample_indices:
@@ -672,12 +610,11 @@ def main():
 
         true_label = to_risk_label(int(y_test.iloc[sample_idx]))
 
-        calibrated_bad_proba = float(calibrated_proba_test[sample_idx])
         raw_bad_proba = float(raw_proba_test[sample_idx])
 
         prediction_label = (
             "BAD CREDIT RISK"
-            if calibrated_bad_proba >= calibrated_threshold
+            if raw_bad_proba >= tuned["threshold"]
             else "GOOD CREDIT RISK"
         )
 
@@ -687,8 +624,7 @@ def main():
             true_label=true_label,
             prediction_label=prediction_label,
             predict_proba=raw_bad_proba,
-            calibrated_predict_proba=calibrated_bad_proba,
-            threshold=float(calibrated_threshold),
+            threshold=float(tuned["threshold"]),
             save_path=output_dir / f"shap_tuples_non_prefix_{sample_idx}.json",
         )
 

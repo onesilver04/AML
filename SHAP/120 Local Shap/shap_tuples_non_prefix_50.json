@@ -4,8 +4,7 @@
   "prediction": {
     "label": "GOOD CREDIT RISK",
     "probability": 0.20403829985771008,
-    "calibrated_probability": 0.08747023314722854,
-    "threshold": 0.45
+    "threshold": 0.56
   },
   "tuples": [
     {
