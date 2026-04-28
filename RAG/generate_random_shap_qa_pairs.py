@@ -14,22 +14,38 @@ if str(REPO_ROOT) not in sys.path:
 from RAG.make_rag_query import generate_rag_queries
 
 
-DEFAULT_OUTPUT = Path("RAG/QA/random_120_local_shap_feature_qa_seed42.jsonl")
+DEFAULT_SHAP_DIR = Path("SHAP/Task/correct_102_local_shap")
+DEFAULT_OUTPUT = Path("RAG/QA/correct_102_feature_qa.jsonl")
+DEFAULT_QUERY_OUTPUT_DIR = Path("RAG/QA/Queries/correct_102")
 
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Generate query-answer pairs from random local SHAP samples."
+        description="Generate query-answer pairs from local SHAP samples."
     )
     parser.add_argument(
         "--shap-dir",
-        default="SHAP/120 Local Shap",
+        default=str(DEFAULT_SHAP_DIR),
         help="Directory containing shap_tuples_non_prefix_{sample_idx}.json files.",
     )
     parser.add_argument(
         "--sample-index-file",
         default=None,
         help="File containing sample indices separated by commas or newlines.",
+    )
+    parser.add_argument(
+        "--sample-indices-from-shap-dir",
+        action="store_true",
+        help=(
+            "Use every shap_tuples_non_prefix_{sample_idx}.json file in --shap-dir "
+            "as the sample list. This is now the default when no explicit sample "
+            "selection is provided."
+        ),
+    )
+    parser.add_argument(
+        "--random-samples",
+        action="store_true",
+        help="Use the older random sampling behavior based on --y-test and --count.",
     )
     parser.add_argument(
         "--sample-idx",
@@ -51,7 +67,7 @@ def parse_args():
     parser.add_argument("--summary-output", default=None)
     parser.add_argument(
         "--query-output-dir",
-        default="RAG/QA/Queries",
+        default=str(DEFAULT_QUERY_OUTPUT_DIR),
         help="Directory where per-sample feature query lists are saved.",
     )
     parser.add_argument("--seed", type=int, default=42)
@@ -90,6 +106,8 @@ def select_sample_indices(args):
     elif args.sample_index_file:
         with Path(args.sample_index_file).open("r", encoding="utf-8") as f:
             sample_indices = parse_index_text(f.read())
+    elif args.sample_indices_from_shap_dir or not args.random_samples:
+        sample_indices = sample_indices_from_shap_dir(Path(args.shap_dir))
     else:
         population_size = infer_population_size(Path(args.y_test))
         if args.count > population_size:
@@ -100,12 +118,36 @@ def select_sample_indices(args):
         rng = random.Random(args.seed)
         sample_indices = rng.sample(range(population_size), args.count)
 
-    if args.sample_idx is None and args.count and len(sample_indices) != args.count:
+    if (
+        args.sample_idx is None
+        and args.random_samples
+        and args.count
+        and len(sample_indices) != args.count
+    ):
         print(
             f"[WARN] selected {len(sample_indices)} indices, "
             f"but --count is {args.count}."
         )
     return sample_indices
+
+
+def sample_indices_from_shap_dir(shap_dir: Path):
+    if not shap_dir.exists():
+        raise FileNotFoundError(f"SHAP directory does not exist: {shap_dir}")
+
+    sample_indices = []
+    pattern = re.compile(r"shap_tuples_non_prefix_(\d+)\.json$")
+    for path in shap_dir.glob("shap_tuples_non_prefix_*.json"):
+        match = pattern.match(path.name)
+        if match:
+            sample_indices.append(int(match.group(1)))
+
+    if not sample_indices:
+        raise FileNotFoundError(
+            f"No shap_tuples_non_prefix_*.json files found in: {shap_dir}"
+        )
+
+    return sorted(sample_indices)
 
 
 def shap_json_path(shap_dir: Path, sample_idx: int) -> Path:

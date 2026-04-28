@@ -10,7 +10,7 @@ from langchain_community.vectorstores import Chroma
 
 # 설정값 최적화
 PDF_DIR = "papers"
-PERSIST_DIR = "RAG/rag_db"
+PERSIST_DIR = "RAG/rag_db_nomic"
 COLLECTION_NAME = "finance_papers"
 EMBED_MODEL = "nomic-embed-text"
 DOC_PREFIX = "search_document: "

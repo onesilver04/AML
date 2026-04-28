@@ -1,5 +1,0 @@
-[
-  "Empirical analysis of the relationship between present employment since less than one year and increased credit default probability.",
-  "Statistical impact of the status of existing checking account being no checking account on elevated credit risk.",
-  "Determinants of credit default associated with the status of existing checking account between 0 and 200 Deutsche Mark."
-]

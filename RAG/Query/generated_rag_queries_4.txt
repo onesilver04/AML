@@ -1,5 +1,0 @@
-[
-  "Statistical impact of lacking an existing checking account on increased credit default probability.",
-  "Empirical analysis of the relationship between savings account balances less than 100 DM and decreased credit risk exposure.",
-  "Credit risk drivers related to the duration of the credit in months and its contribution to increased default likelihood."
-]
