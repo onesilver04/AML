@@ -34,7 +34,7 @@ def parse_args():
     parser.add_argument("--threshold-step", type=float, default=0.01)
     parser.add_argument(
         "--output-csv",
-        default="SHAP/test_confidence_by_sample_bad_positive.csv",
+        default="SHAP/confidence.csv",
     )
     parser.add_argument(
         "--output-json",
@@ -114,23 +114,7 @@ def build_confidence_dataframe(y_test, proba_bad, threshold, sample_indices=None
     pred = (proba_bad >= threshold).astype(int)
     proba_good = 1.0 - proba_bad
 
-    predicted_bad_probability = np.where(pred == 1, proba_bad, np.nan)
-    predicted_good_probability = np.where(pred == 0, proba_good, np.nan)
-
     predicted_confidence = np.where(pred == 1, proba_bad, proba_good)
-    true_class_confidence = np.where(y_test_array == 1, proba_bad, proba_good)
-
-    predicted_threshold_relative_confidence = np.where(
-        pred == 1,
-        np.clip((proba_bad - threshold) / (1.0 - threshold), 0.0, 1.0),
-        np.clip((threshold - proba_bad) / threshold, 0.0, 1.0),
-    )
-
-    true_class_threshold_relative_confidence = np.where(
-        y_test_array == 1,
-        np.clip((proba_bad - threshold) / (1.0 - threshold), 0.0, 1.0),
-        np.clip((threshold - proba_bad) / threshold, 0.0, 1.0),
-    )
 
     df = pd.DataFrame(
         {
@@ -138,12 +122,7 @@ def build_confidence_dataframe(y_test, proba_bad, threshold, sample_indices=None
             "true_class": y_test_array,
             "predicted_class": pred,
             "raw_bad_probability": proba_bad,
-            "predicted_bad_probability": predicted_bad_probability,
-            "predicted_good_probability": predicted_good_probability,
             "predicted_confidence": predicted_confidence,
-            "true_class_confidence": true_class_confidence,
-            "predicted_threshold_relative_confidence": predicted_threshold_relative_confidence,
-            "true_class_threshold_relative_confidence": true_class_threshold_relative_confidence,
         }
     )
 
@@ -158,13 +137,6 @@ def add_predicted_confidence_categories(confidence_df):
     mean_conf = confidence_df["predicted_confidence"].mean()
     std_conf = confidence_df["predicted_confidence"].std(ddof=0)
     mean_minus_1sigma = mean_conf - std_conf
-
-    if std_conf == 0:
-        confidence_df["pred_confidence_z_score"] = 0.0
-    else:
-        confidence_df["pred_confidence_z_score"] = (
-            confidence_df["predicted_confidence"] - mean_conf
-        ) / std_conf
 
     confidence_df["confidence_category"] = "middle_confidence"
 
@@ -183,6 +155,36 @@ def add_predicted_confidence_categories(confidence_df):
         "std": float(std_conf),
         "mean_minus_1sigma": float(mean_minus_1sigma),
     }
+
+
+def add_class_based_confidence_categories(confidence_df):
+    """
+    Add confidence categories based on each class's own distribution.
+    - predicted_class_confidence_category: based on predicted_class's confidence distribution
+    
+    Categories (2 levels):
+    - 위험 (risk): confidence <= (class_mean - 1σ) - very low confidence
+    - 주의 (caution): confidence > (class_mean - 1σ) - below average but not very low
+    """
+    # For predicted_class only
+    for class_val in [0, 1]:
+        mask = confidence_df["predicted_class"] == class_val
+        subset = confidence_df.loc[mask, "predicted_confidence"]
+        if not subset.empty:
+            class_mean = subset.mean()
+            class_std = subset.std(ddof=0)
+            class_mean_minus_1sigma = class_mean - class_std
+
+            confidence_df.loc[
+                mask & (confidence_df["predicted_confidence"] <= class_mean_minus_1sigma),
+                "predicted_class_confidence_category",
+            ] = "위험"
+            confidence_df.loc[
+                mask & (confidence_df["predicted_confidence"] > class_mean_minus_1sigma),
+                "predicted_class_confidence_category",
+            ] = "주의"
+
+    return confidence_df
 
 
 def summarize_confidence_categories(confidence_df):
@@ -302,12 +304,11 @@ def main():
     )
 
     confidence_df["raw_bad_probability"] = raw_proba_selected
-    confidence_df["raw_good_probability"] = 1.0 - raw_proba_selected
-    confidence_df["original_threshold"] = float(tuned["threshold"])
 
     confidence_df, pred_conf_stats = add_predicted_confidence_categories(
         confidence_df
     )
+    confidence_df = add_class_based_confidence_categories(confidence_df)
     category_summary = summarize_confidence_categories(confidence_df)
 
     predicted_summary = summarize_group(
@@ -316,22 +317,10 @@ def main():
         confidence_col="predicted_confidence",
     )
 
-    predicted_good_summary = summarize_group(
-        confidence_df,
-        class_col="predicted_class",
-        confidence_col="predicted_good_probability",
-    )
-
-    predicted_bad_summary = summarize_group(
-        confidence_df,
-        class_col="predicted_class",
-        confidence_col="predicted_bad_probability",
-    )
-
     true_summary = summarize_group(
         confidence_df,
         class_col="true_class",
-        confidence_col="true_class_confidence",
+        confidence_col="predicted_confidence",
     )
 
     overall_summary = {
@@ -340,7 +329,6 @@ def main():
         "std_predicted_confidence": pred_conf_stats["std"],
         "pred_confidence_mean_minus_1sigma": pred_conf_stats["mean_minus_1sigma"],
         "accuracy": float(confidence_df["is_correct"].mean()),
-        "original_threshold": float(tuned["threshold"]),
     }
 
     output_csv = resolve_output_path(args.output_csv)
@@ -351,13 +339,22 @@ def main():
 
     confidence_df.to_csv(output_csv, index=False)
 
+    # Split by true_class and save separate CSV files
+    good_df = confidence_df[confidence_df["true_class"] == 0]
+    bad_df = confidence_df[confidence_df["true_class"] == 1]
+
+    good_csv_path = output_csv.parent / "confidence_good.csv"
+    bad_csv_path = output_csv.parent / "confidence_bad.csv"
+
+    good_df.to_csv(good_csv_path, index=False)
+    bad_df.to_csv(bad_csv_path, index=False)
+
     payload = {
         "data_path": args.data_path,
         "positive_class": {"value": 1, "label": "BAD CREDIT RISK"},
         "full_test_sample_count": int(full_test_sample_count),
         "tuned_params": tuned["params"],
         "cv_auc": float(tuned["cv_auc"]),
-        "original_threshold": float(tuned["threshold"]),
         "overall": overall_summary,
         "confidence_category_summary": category_summary,
         "raw_test_metrics": {
@@ -377,8 +374,6 @@ def main():
             "confusion": [int(v) for v in raw_selected_metrics["confusion"]],
         },
         "by_predicted_class": predicted_summary,
-        "by_predicted_class_good_probability": predicted_good_summary,
-        "by_predicted_class_bad_probability": predicted_bad_summary,
         "by_true_class": true_summary,
     }
 
@@ -387,7 +382,6 @@ def main():
 
     print("=== Predicted Confidence Summary ===")
     print("Positive class         : BAD CREDIT RISK (1)")
-    print(f"Original threshold     : {tuned['threshold']:.2f}")
 
     print(
         "\nTest metrics: "
@@ -427,30 +421,6 @@ def main():
             f"max={row['max_confidence']:.4f}"
         )
 
-    print("\nBy predicted class - good probability when predicted good:")
-    for row in predicted_good_summary:
-        print(
-            f"{row['class_label']}: "
-            f"n={row['sample_count']}, "
-            f"mean={row['mean_confidence']:.4f}, "
-            f"median={row['median_confidence']:.4f}, "
-            f"std={row['std_confidence']:.4f}, "
-            f"min={row['min_confidence']:.4f}, "
-            f"max={row['max_confidence']:.4f}"
-        )
-
-    print("\nBy predicted class - bad probability when predicted bad:")
-    for row in predicted_bad_summary:
-        print(
-            f"{row['class_label']}: "
-            f"n={row['sample_count']}, "
-            f"mean={row['mean_confidence']:.4f}, "
-            f"median={row['median_confidence']:.4f}, "
-            f"std={row['std_confidence']:.4f}, "
-            f"min={row['min_confidence']:.4f}, "
-            f"max={row['max_confidence']:.4f}"
-        )
-
     print("\nBy true class 참고용:")
     for row in true_summary:
         print(
@@ -464,6 +434,8 @@ def main():
         )
 
     print(f"\nSaved CSV : {output_csv}")
+    print(f"Saved CSV (GOOD): {good_csv_path}")
+    print(f"Saved CSV (BAD): {bad_csv_path}")
     print(f"Saved JSON: {output_json}")
 
 
