@@ -1,0 +1,27 @@
+{
+  "sample_idx": 39,
+  "shap_json_path": "SHAP/Task/wrong_18_local_shap/shap_tuples_non_prefix_39.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "credit_amount",
+      "feature_definition": "Credit amount requested by the applicant.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the requested credit amount as a determinant of credit default probability and its contribution to increased credit risk."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "increase_risk",
+      "question": "Assessment of the association between a negative checking account balance and elevated credit risk in loan default models."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Evaluation of the absence of a checking account as a significant driver of credit risk and its impact on default likelihood."
+    }
+  ]
+}

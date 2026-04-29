@@ -5,8 +5,12 @@ import re
 import sys
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
-DEFAULT_INPUT = Path("RAG/QA/Answers/sample_131_feature_qa.jsonl")
+
+DEFAULT_INPUT = Path("RAG/QA/test_correct_5.jsonl")
 DEFAULT_INPUT_DIR = Path("RAG/QA/Answers")
 DEFAULT_OUTPUT_DIR = Path("RAG/Final Summary/Results")
 DEFAULT_MODEL = "qwen3.6:35b"
@@ -35,6 +39,136 @@ Rules:
 6. If the model SHAP direction and the RAG literature direction conflict, briefly say that they differ.
 7. End by reflecting the final prediction label naturally in Korean.
 """
+
+def tokenize_for_evidence(text: str):
+    stopwords = {
+        "a", "an", "and", "are", "as", "associated", "be", "by",
+        "credit", "default", "for", "from", "in", "is", "it",
+        "of", "on", "or", "probability", "risk", "statistical",
+        "the", "to", "with",
+    }
+    return {
+        token
+        for token in re.findall(r"[A-Za-z0-9_<>/=+-]+", (text or "").lower())
+        if len(token) > 2 and token not in stopwords
+    }
+
+
+def split_sentences(text: str):
+    normalized = re.sub(r"\s+", " ", text or "").strip()
+    if not normalized:
+        return []
+    return [
+        sentence.strip()
+        for sentence in re.split(r"(?<=[.!?])\s+(?=[A-Z0-9\"'([])", normalized)
+        if sentence.strip()
+    ]
+
+
+def page_display(meta_page):
+    if isinstance(meta_page, int):
+        return meta_page + 1
+    return meta_page
+
+
+def extract_rag_core_sentences_for_record(
+    record,
+    min_docs=3,
+    max_docs=20,
+    min_gap=0.001,
+    max_chunks_per_source=2,
+    sentences_per_feature=1,
+):
+    from score_gap_nomic import ask_rag_with_score_gap
+
+    question = record.get("question", "")
+    feature_text = " ".join(
+        [
+            record.get("feature", ""),
+            record.get("feature_definition", ""),
+            record.get("feature_direction", ""),
+            question,
+        ]
+    )
+
+    answer, selected_docs, _, _, _, _ = ask_rag_with_score_gap(
+        question,
+        min_docs=min_docs,
+        max_docs=max_docs,
+        min_gap=min_gap,
+        max_chunks_per_source=max_chunks_per_source,
+        inspect_all=False,
+    )
+
+    query_terms = tokenize_for_evidence(feature_text)
+    candidate_sentences = []
+
+    for doc, score in selected_docs:
+        for sentence in split_sentences(doc.page_content):
+            sentence_terms = tokenize_for_evidence(sentence)
+            overlap = len(sentence_terms & query_terms)
+
+            if overlap == 0:
+                continue
+
+            candidate_sentences.append(
+                {
+                    "source": doc.metadata.get("source", "unknown"),
+                    "page": page_display(doc.metadata.get("page", "NA")),
+                    "score": float(score),
+                    "overlap": overlap,
+                    "sentence": sentence,
+                }
+            )
+
+    candidate_sentences = sorted(
+        candidate_sentences,
+        key=lambda item: (
+            -item["overlap"],
+            item["score"],
+            len(item["sentence"]),
+        ),
+    )
+
+    return {
+        "feature": record.get("feature", "unknown"),
+        "question": question,
+        "rag_answer_for_sentence_search": answer,
+        "core_sentences": candidate_sentences[:sentences_per_feature],
+        "selected_sources": [
+            {
+                "source": doc.metadata.get("source", "unknown"),
+                "page": page_display(doc.metadata.get("page", "NA")),
+                "score": float(score),
+            }
+            for doc, score in selected_docs
+        ],
+    }
+
+
+def build_rag_core_evidence(records):
+    core_evidence = []
+
+    for ref_number, record in enumerate(records, 1):
+        retrieval_params = record.get("retrieval_params") or {}
+
+        core = extract_rag_core_sentences_for_record(
+            record,
+            min_docs=retrieval_params.get("min_docs", 3),
+            max_docs=retrieval_params.get("max_docs", 20),
+            min_gap=retrieval_params.get("min_gap", 0.001),
+            max_chunks_per_source=retrieval_params.get("max_chunks_per_source", 2),
+            sentences_per_feature=1,
+        )
+
+        core_evidence.append(
+            {
+                "ref": ref_number,
+                **core,
+            }
+        )
+
+    return core_evidence
 
 
 def parse_args():
@@ -218,14 +352,17 @@ def build_payload(records, final_explanation):
         representative_reference(record, ref_number)
         for ref_number, record in enumerate(records, 1)
     ]
+
+    rag_core_evidence = build_rag_core_evidence(records)
+
     return {
         "sample_idx": first.get("sample_idx"),
         "prediction_label": first.get("prediction_label", "UNKNOWN"),
         "prediction_probability": first.get("prediction_probability", "UNKNOWN"),
         "final_explanation": final_explanation,
         "references": references,
+        "rag_core_evidence_sentences": rag_core_evidence,
     }
-
 
 def output_path_for_input(input_path: Path, output_dir: Path):
     match = re.search(r"sample_(\d+)_feature_qa\.jsonl$", input_path.name)
@@ -248,6 +385,7 @@ def write_csv(path: Path, payloads):
         "prediction_probability",
         "final_explanation",
         "references",
+        "rag_core_evidence_sentences",
     ]
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as f:
@@ -256,6 +394,10 @@ def write_csv(path: Path, payloads):
         for payload in payloads:
             row = payload.copy()
             row["references"] = json.dumps(row["references"], ensure_ascii=False)
+            row["rag_core_evidence_sentences"] = json.dumps(
+                row.get("rag_core_evidence_sentences", []),
+                ensure_ascii=False
+            )
             writer.writerow(row)
 
 

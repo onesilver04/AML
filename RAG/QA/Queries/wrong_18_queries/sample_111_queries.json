@@ -1,0 +1,27 @@
+{
+  "sample_idx": 111,
+  "shap_json_path": "SHAP/Task/wrong_18_local_shap/shap_tuples_non_prefix_111.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of how the absence of a checking account influences credit default probability and functions as a protective determinant in consumer loan risk assessment."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "savings_status_>=1000",
+      "feature_definition": "Savings account status: savings at least 1000 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Statistical evaluation of the relationship between maintaining savings balances of at least 1000 DM and the empirical reduction of credit risk in borrower default modeling."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "savings_status_<100",
+      "feature_definition": "Savings account status: savings below 100 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Determinants of default probability associated with minimal savings balances below 100 DM and their documented impact on mitigating credit risk exposure in lending portfolios."
+    }
+  ]
+}
