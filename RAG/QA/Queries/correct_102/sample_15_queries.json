@@ -1,0 +1,27 @@
+{
+  "sample_idx": 15,
+  "shap_json_path": "SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_15.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis demonstrates the risk-mitigating impact of extended loan duration in months on credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Determinants of default research indicates that maintaining no checking account serves as a credit risk driver that reduces borrower default likelihood."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical investigation confirms that a negative checking account balance functions as a risk-reducing factor in credit risk assessment."
+    }
+  ]
+}

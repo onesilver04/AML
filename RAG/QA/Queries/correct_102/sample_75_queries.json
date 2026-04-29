@@ -1,0 +1,27 @@
+{
+  "sample_idx": 75,
+  "shap_json_path": "SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_75.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the statistical impact of having no checking account on credit default probability and its contribution to elevated credit risk."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "purpose_used car",
+      "feature_definition": "Loan purpose: purchase of a used car.",
+      "feature_direction": "decrease_risk",
+      "question": "Determinants of default probability associated with loan purposes for the purchase of used cars and their risk-mitigating effects on credit risk drivers."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "credit_history_critical/other existing credit",
+      "feature_definition": "Credit history: critical account or other existing credits.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of credit risk drivers related to critical account statuses or existing credit obligations and their influence on reducing default likelihood."
+    }
+  ]
+}

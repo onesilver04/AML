@@ -1,0 +1,27 @@
+{
+  "sample_idx": 173,
+  "shap_json_path": "SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_173.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the risk mitigation effects associated with borrowers lacking a formal checking account status on credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "feature_definition": "Credit history: critical account or other existing credits.",
+      "feature_direction": "decrease_risk",
+      "question": "Determinants of reduced credit default probability among borrowers with critical or diversified existing credit histories."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "purpose_education",
+      "feature_definition": "Loan purpose: education.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the risk contribution associated with education loan purposes on credit default probability."
+    }
+  ]
+}

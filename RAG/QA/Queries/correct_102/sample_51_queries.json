@@ -1,0 +1,27 @@
+{
+  "sample_idx": 51,
+  "shap_json_path": "SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_51.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the impact of lacking a checking account on credit default probability and associated risk mitigation factors."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "feature_definition": "Credit history: critical account or other existing credits.",
+      "feature_direction": "decrease_risk",
+      "question": "Determinants of default: The role of critical or alternative existing credit histories in reducing overall credit risk exposure."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Credit risk drivers: Empirical evidence on how negative checking account balances correlate with lower default probability in consumer lending portfolios."
+    }
+  ]
+}

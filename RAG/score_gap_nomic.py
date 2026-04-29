@@ -14,7 +14,7 @@ PERSIST_DIR = "RAG/rag_db_nomic"
 COLLECTION_NAME = "finance_papers"
 RESULT_DIR = "RAG/Result"
 
-LLM_MODEL = "qwen3.6:35b"
+LLM_MODEL = "qwen3.6:27b"
 EMBED_MODEL = "nomic-embed-text"
 DOC_PREFIX = "search_document: "
 QUERY_PREFIX = "search_query: "
