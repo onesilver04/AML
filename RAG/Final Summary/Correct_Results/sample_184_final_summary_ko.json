@@ -1,0 +1,99 @@
+{
+  "sample_idx": 184,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.49896433623694114,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the checking account balance is negative shows a substantially higher estimated probability of default, because it functions as a significant predictor of default, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[1]\nThe fact that there is no checking account is associated with a lower estimated risk relative to the reference group, because it acts as a risk-reducing factor, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk.[2]\nThe fact that there are no known savings is associated with a higher estimated credit risk, because the absence of savings increases default exposure, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk.[3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20239049196243286
+        },
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21444332599639893
+        },
+        {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.21999192237854004
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.2137061357498169
+        },
+        {
+          "sentence": "The significant roles of credit-related and financial characteristics,Duration,Credit amount,Checking account status, andCredit historyin the models here align with that evidence. Özdemir (2008) finds that financial variables have a stronger influence on risk classification than demographic variables, which is consistent with the findings of this study.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 29,
+          "score": 0.2164711356163025
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2174135446548462
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21990668773651123
+        },
+        {
+          "sentence": "The model has shown significant advantages in adapting to individual characteristics and dealing with uncertainty.",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 4,
+          "score": 0.22598731517791748
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_no known savings",
+      "evidence_sentences": [
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.21847975254058838
+        },
+        {
+          "sentence": "Savings are also informative.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21960121393203735
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2212238907814026
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2217368483543396
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "계좌 잔액 부족은 신용 불이행 확률을 크게 높이는 중요한 예측 지표로 작용하여 신용 위험을 증가시킵니다 [1].  \n출금 계좌가 없는 것은 위험 감소 요인으로 인식되지만, 모델에서는 이를 위험 증가 요인으로 판단합니다 [2].  \n저축 내역이 확인되지 않는 것은 신용 위험을 높이는 요인으로, 저축 부족이 불이행 위험을 증가시키기 때문입니다 [3].  \n전반적으로 이 고객은 낮은 신용 불이행 위험을 가질 것으로 평가됩니다."
+}

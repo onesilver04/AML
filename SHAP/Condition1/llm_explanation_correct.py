@@ -1,3 +1,5 @@
+# boundary에서 먼 거 17, 가까운거 17
+# condition 1
 import argparse
 import csv
 import importlib.util

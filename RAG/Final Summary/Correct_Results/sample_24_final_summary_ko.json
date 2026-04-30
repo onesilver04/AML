@@ -1,0 +1,93 @@
+{
+  "sample_idx": 24,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.43907147895996645,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that having critical credit history or other existing credits is not a statistically significant driver, because it is not a statistically significant driver, is known in the literature as a signal that does not clearly decrease credit risk, but the model instead identifies it as a factor that decreases risk. [1]\nThe fact that not having a checking account is associated with more stable financial behavior, because it is associated with more stable financial behavior, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that using the loan for purchasing a radio or TV lacks specific empirical data in standard analyses, because it lacks specific empirical data in standard analyses, is known in the literature as a signal that does not significantly impact credit risk, and the model also identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "credit_history_critical/other existing credit",
+      "evidence_sentences": [
+        {
+          "sentence": "Overall, the OLS analysis serves two main roles, acting as an interpretable baseline model that explains relationships among predictors and as a tool for detecting multicollinearity, helping identify irrelevant predictors and encouraging the use of regularized and probabilistic regression models.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17993015050888062
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.18699336051940918
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20011234283447266
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2010047435760498
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2152618169784546
+        },
+        {
+          "sentence": "Even after exclusions, the reduced OLS model still shows limited explanatory power, with an R2 of 0.24 (Adj.R 2 =0.22) and a lower but still elevated condition number (=3.78×10 4).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.23385751247406006
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.24219632148742676
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.24344199895858765
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "purpose_radio/tv",
+      "evidence_sentences": [
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.18747234344482422
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.18997681140899658
+        },
+        {
+          "sentence": "2 Finance is among the sectors most impacted by AI/ML .",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.19525569677352905
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "신용 위험 분석 결과에 따르면, 신용 문제 이력이나 기존 대출이 통계적으로 중요한 요인이 아니라는 점은 문헌에서 신용 위험을 명확히 감소시키지 않는 신호로 인식되지만, 모델은 이를 위험 감소 요인으로 판단합니다 [1]. 계좌 부족은 안정적인 재정 행동과 연관되어 있어 문헌에서는 신용 위험을 낮추는 신호로 인식되지만, 모델은 이를 위험 증가 요인으로 해석합니다 [2]. 라디오나 TV 구매 목적의 대출은 표준 분석에서 구체적인 실증 데이터가 부족하여 신용 위험에 큰 영향을 미치지 않는 신호로 여겨지지만, 모델은 이를 위험 감소 요인으로 분류합니다 [3]. 전반적으로 이 고객은 낮은 신용 위험 수준을 보입니다."
+}

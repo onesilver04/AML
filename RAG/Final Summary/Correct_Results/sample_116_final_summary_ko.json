@@ -1,0 +1,69 @@
+{
+  "sample_idx": 116,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.5637517375620416,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account, because account status directly reflects financial health, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [1]\nThe fact that the loan duration is extended, because extended repayment periods elevate borrower exposure, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [2]\nThe fact that the checking account balance is negative, because negative balances are positively associated with credit risk, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "[2] utilized different machine learning techniques to predict the delinquency of credit card customers.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 5,
+          "score": 0.19247698783874512
+        },
+        {
+          "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.1924923062324524
+        },
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1955019235610962
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1652429699897766
+        },
+        {
+          "sentence": "The analysis relies on ordinary least squares (OLS) regression, which is extended to",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.19080567359924316
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.17970192432403564
+        },
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1871870756149292
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "계좌 잔액 부족 상태는 금융 건강성을 반영하여 신용 위험을 낮추는 신호로 알려져 있지만, 모델은 이를 위험 증가 요인으로 판단합니다 [1]. 대출 기간이 길어짐은 상환 기간 연장으로 인해 차입자의 위험 노출이 증가하여 신용 위험을 높이는 신호로 인식되며, 모델 역시 이를 위험 증가 요인으로 분류합니다 [2]. 계좌 잔액이 음수인 경우는 신용 위험 증가 신호로 인식되지만, 모델은 이를 신용 위험 감소 요인으로 해석합니다 [3].\n\n전반적으로 이 고객은 높은 신용 위험을 가질 가능성이 큽니다."
+}

@@ -1,0 +1,117 @@
+{
+  "sample_idx": 152,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.5455421505655388,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account, because account status is a critical determinant of creditworthiness, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that employment duration is less than one year, because short-term employment reflects financial instability, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [2]\nThe fact that the loan purpose is for purchasing a radio or TV, because consumer electronics purchases are typically associated with lower default probabilities, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.20512723922729492
+        },
+        {
+          "sentence": "Butaru et al.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 5,
+          "score": 0.20749998092651367
+        },
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21068263053894043
+        },
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.21111077070236206
+        },
+        {
+          "sentence": "Construct a Super Learner heterogeneous",
+          "source": "Personal Credit Default Discrimination Model Based on Super Learner.pdf",
+          "page": 4,
+          "score": 0.21900057792663574
+        },
+        {
+          "sentence": "Number Description Class Attribute 1 Status of existing checking account Qualitative Attribute 2 Duration in month Numerical Attribute 3 Credit history Qualitative Attribute 4 Purpose Qualitative Attribute 5 Credit amount Numerical Attribute 6 Savings account/bonds Qualitative Attribute 7 Present employment since Qualitative Attribute 8 Instalment rate in percentage of disposable income Numerical Attribute 9 Personal status and sex Qualitative Attribute 10 Other debtors/guarantors Qualitative Attribute 11 Present residence since Numerical Attribute 12 Property Qualitative Attribute 13 Age in years Numerical Attribute 14 Other instalment plans Qualitative attribute 15 Housing Qualitative",
+          "source": "Investigation and improvement of multi-layer perceptron neural.pdf",
+          "page": 4,
+          "score": 0.22036588191986084
+        },
+        {
+          "sentence": "TABLE I.",
+          "source": "Credit Scoring Using Data Mining Techniques.pdf",
+          "page": 4,
+          "score": 0.22038161754608154
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "employment_<1",
+      "evidence_sentences": [
+        {
+          "sentence": "The shocks are assumed to take place on 31 December 2016, i. e. the first financial statement that is affected is the one of 2017 .",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 6,
+          "score": 0.23198550939559937
+        },
+        {
+          "sentence": "cants are the strongest predictors of credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.2333064079284668
+        },
+        {
+          "sentence": "Nonetheless, when adding the predicted training data points to the graph it has to be noted that the PDP only partly explains the predictions by the models which cover a much broader range than the PDP indicates.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 6,
+          "score": 0.23571139574050903
+        },
+        {
+          "sentence": "Although Özdemir (2008) finds that financial variables are more important predictors than demographic characteristics in her sample, the study, together with broader credit scoring literature, highlights the value of considering both demographic and financial information when analyzing credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.23986703157424927
+        },
+        {
+          "sentence": "The year with the turning point, i. e. the last year without improvement and the following year with the improvement, shows considerable variation, reaching from immediate improvement to five years or more after the interest shock took place.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 15,
+          "score": 0.24498993158340454
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "purpose_radio/tv",
+      "evidence_sentences": [
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.1974315643310547
+        },
+        {
+          "sentence": "Machine learning is crucial in addressing these challenges, particularly in mitigating the adverse selection problem in loan applicant evaluation (Jordan & Mitchell, 2015).",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.20093035697937012
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20827102661132812
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "계좌 잔액 부족 상태는 신용 평가에서 중요한 요소로, 신용 위험 증가의 신호로 인식되며 모델에서도 위험 증가 요인으로 판단합니다 [1].  \n단기 재직 기간이 신용 불안정성을 반영하여 신용 위험 증가 요인으로 알려져 있으며, 모델 역시 이를 위험 증가 요인으로 식별합니다 [2].  \n반면에 라디오나 TV 구매 목적의 대출은 소비자 전자제품 구매와 연관되어 낮은 채무 불이행 확률을 보여 신용 위험 감소 요인으로 간주됩니다 [3].  \n전반적으로 이 고객은 낮은 채무 불이행 위험을 가질 것으로 평가됩니다."
+}

@@ -1,0 +1,93 @@
+{
+  "sample_idx": 83,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.2731496398544613,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account, because the absence of a checking account is empirically associated with a lower estimated credit risk, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [1]\nThe fact that the checking account balance is negative, because the literature does not specify its direct impact on default probability, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that the loan purpose is for a used car, because the context does not isolate loan purpose as a predictive driver, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19824689626693726
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20076602697372437
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "In addition, we see that the exposure to credit risk and to interest rate risk are negatively associated, where the coefficients vary slightly in the two different specifications, from −0.026 to −0.023.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.20785564184188843
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.21084201335906982
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.21259033679962158
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "purpose_used car",
+      "evidence_sentences": [
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20750588178634644
+        },
+        {
+          "sentence": "If credit risk is underestimated and losses are realised, these costs are passed on to the customers through higher interest",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.21954268217086792
+        },
+        {
+          "sentence": "At the same time, Lobna and Afif [8] used logistic regression and discriminant analysis methods to construct a prediction model that can distinguish between \"good\" and \"bad\" borrowers for consumer loans of",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 4,
+          "score": 0.22082364559173584
+        },
+        {
+          "sentence": "6 2.3 Experimental Design This study aims to enhance the digital economy by refining credit risk models used by financial institutions.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.22319966554641724
+        },
+        {
+          "sentence": "80 | V .",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 19,
+          "score": 0.22407525777816772
+        },
+        {
+          "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.22607684135437012
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "계좌 잔액 부족이 존재하지 않는다는 점은 신용 위험이 낮음을 나타내는 신호로 인식되며, 모델 또한 이를 위험 감소 요인으로 판단합니다. [1]\n계좌 잔액이 음수라는 사실은 직접적인 디폴트 확률 증가 요인으로 명시되지 않지만, 모델은 이를 오히려 위험 감소 요인으로 해석합니다. [2]\n대출 목적이 중고차 구매라는 점은 일반적으로 신용 위험 증가 신호로 여겨지지만, 모델은 이를 위험 감소 요인으로 분류합니다. [3]\n전반적으로 이 고객은 낮은 디폴트 위험을 가질 것으로 평가됩니다."
+}

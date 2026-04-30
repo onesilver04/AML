@@ -1,0 +1,87 @@
+{
+  "sample_idx": 3,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.6893535580959552,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the checking account balance is negative, due to existing overdraft exposure or liquidity constraints, because due to existing overdraft exposure or liquidity constraints, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that there is no checking account, due to representing a demographic or financial profile that mitigates risk, because due to representing a demographic or financial profile that mitigates risk, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that there is no prior credit history or all past debts are fully paid, due to the absence of explicit statistical outputs detailing risk impact, because due to the absence of explicit statistical outputs detailing risk impact, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21393412351608276
+        },
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21423238515853882
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.22237902879714966
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20096200704574585
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.22264385223388672
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.226373553276062
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22682571411132812
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.23795706033706665
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "credit_history_no credits/all paid",
+      "evidence_sentences": [
+        {
+          "sentence": "Nevertheless, most of the records of the dataset regarding",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.17685401439666748
+        },
+        {
+          "sentence": "Consumer ﬁnance companies may settle on choices about various credits from the collection of applications.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.18916940689086914
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "계좌 잔액 부족은 신용 위험 증가의 신호로 알려져 있으며, 모델에서도 위험 증가 요인으로 판단합니다 [1].  \n출금 계좌 부재는 위험 감소를 나타내는 지표로 인식되지만, 모델에서는 위험 증가 요인으로 분류합니다 [2].  \n이전 대출 이력이 없거나 모든 채무가 상환된 경우는 일반적으로 신용 위험 감소 신호로 여겨지지만, 모델은 이를 위험 증가 요인으로 판단합니다 [3].  \n전반적으로 이 고객은 높은 신용 위험을 가질 가능성이 큽니다."
+}

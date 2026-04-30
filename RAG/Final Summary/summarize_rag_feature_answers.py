@@ -10,22 +10,22 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 
-DEFAULT_INPUT = Path("RAG/QA/Answers/correct_102_answers/sample_62_feature_qa.jsonl")
-DEFAULT_INPUT_DIR = Path("RAG/QA/Answers")
-DEFAULT_OUTPUT_DIR = Path("RAG/Final Summary/Results")
-DEFAULT_MODEL = "qwen3.6:35b"
+DEFAULT_INPUT = Path("RAG/QA/Answers/wrong_18_answers")
+DEFAULT_INPUT_DIR = Path("RAG/QA/Answers/wrong_18_answers")
+DEFAULT_OUTPUT_DIR = Path("RAG/Final Summary/Wrong_Results")
+DEFAULT_MODEL = "qwen3.6:27b"
 EXPECTED_FEATURE_COUNT = 3
 
 
 SUMMARY_SYSTEM_PROMPT = """You are a financial risk analyst specialized in credit scoring, SHAP-based explanations, and RAG-grounded reasoning.
 
-Your job is to generate a user-friendly Korean explanation for credit risk predictions.
+Your job is to generate a user-friendly English explanation for credit risk predictions.
 
-You must transform technical financial expressions into intuitive, easy-to-understand Korean language for general users.
+You must transform technical financial expressions into intuitive, easy-to-understand English language for general users.
 
 You are NOT a translator.
-You must not directly translate encoded feature names, numeric thresholds, or technical financial expressions.
-Instead, rewrite them into natural Korean phrases that users can understand at a glance.
+You must not directly output encoded feature names or technical expressions.
+Instead, rewrite them into natural English phrases that users can easily understand.
 
 STRICT RULES:
 1. Output ONLY valid JSON.
@@ -34,10 +34,6 @@ STRICT RULES:
 4. Generate ONLY final_explanation.
 5. Do NOT generate evidence.
 6. Evidence sentences already exist in the input JSONL and will be copied by code.
-7. The final explanation must be 1 to 3 Korean sentences.
-8. The final explanation must include all three features in the same order as provided.
-9. Each feature clause must include citation markers [1], [2], and [3].
-10. If SHAP direction and RAG evidence conflict, explicitly mention the inconsistency in Korean.
 """
 
 
@@ -63,85 +59,6 @@ Step 2: Convert technical feature expressions into user-friendly Korean for fina
 - Do NOT include raw numeric thresholds such as "100 DM 미만" if they can be rewritten more naturally.
 - Rewrite technical expressions into intuitive Korean phrases.
 
-Examples:
-- "duration" -> "대출 기간"
-- "credit_amount" -> "대출 금액"
-- "installment_commitment" -> "월 상환 부담 수준"
-- "residence_since" -> "현재 거주 기간"
-- "age" -> "나이"
-- "existing_credits" -> "기존 대출 수"
-- "num_dependents" -> "부양 가족 수"
-
-- "checking_status_<0" -> "계좌 잔액 부족"
-- "checking_status_0<=X<200" -> "계좌 잔액 적음"
-- "checking_status_>=200" -> "계좌 잔액 충분"
-- "checking_status_no checking" -> "입출금 계좌 없음"
-
-- "credit_history_all paid" -> "대출 전액 상환 이력"
-- "credit_history_critical/other existing credit" -> "신용 문제 이력"
-- "credit_history_delayed previously" -> "연체 이력"
-- "credit_history_existing paid" -> "기존 대출 상환 중"
-- "credit_history_no credits/all paid" -> "대출 이력 없음 또는 전액 상환"
-
-- "purpose_business" -> "사업 자금 목적"
-- "purpose_domestic appliance" -> "가전제품 구매 목적"
-- "purpose_education" -> "교육비 목적"
-- "purpose_furniture/equipment" -> "가구 또는 장비 구매 목적"
-- "purpose_new car" -> "신차 구매 목적"
-- "purpose_used car" -> "중고차 구매 목적"
-- "purpose_radio/tv" -> "전자제품 구매 목적"
-- "purpose_repairs" -> "수리비 목적"
-- "purpose_retraining" -> "직업 재교육 목적"
-- "purpose_other" -> "기타 목적"
-
-- "savings_status_<100" or "저축 잔액 100 DM 미만" -> "저축 잔액이 거의 없음"
-- "savings_status_100<=X<500" -> "저축 잔액 적음"
-- "savings_status_500<=X<1000" -> "저축 잔액 보통"
-- "savings_status_>=1000" -> "저축 잔액 충분"
-- "savings_status_no known savings" -> "저축 내역 없음"
-
-- "employment_<1" -> "재직 기간 1년 미만"
-- "employment_1<=X<4" -> "재직 기간 1~4년"
-- "employment_4<=X<7" -> "재직 기간 4~7년"
-- "employment_>=7" -> "재직 기간 7년 이상"
-- "employment_unemployed" -> "무직"
-
-- "personal_status_female div/dep/mar" -> "여성 (이혼/별거/기혼 상태)"
-- "personal_status_male div/sep" -> "남성 (이혼 또는 별거)"
-- "personal_status_male mar/wid" -> "남성 (기혼 또는 사별)"
-- "personal_status_male single" -> "남성 (미혼)"
-
-- "other_parties_co applicant" -> ""공동 신청자 있음""
-- "other_parties_guarantor" -> "보증인 있음"
-- "other_parties_none" -> "공동 신청자, 보증인 없음"
-
-- "property_magnitude_real estate" -> "부동산 보유"
-- "property_magnitude_life insurance" -> "보험 자산 보유"
-- "property_magnitude_car" -> "차량 보유"
-- "property_magnitude_no known property" -> "보유 자산 없음"
-
-- "other_payment_plans_bank" -> "타 은행 상환 중"
-- "other_payment_plans_stores" -> "할부·외상 상환 중"
-- "other_payment_plans_none" -> "추가 상환 없음"
-
-- "housing_own" -> "자가 거주"
-- "housing_rent" -> "임차 거주"
-- "housing_for free" -> "무상 거주"
-
-- "job_high qualif/self emp/mgmt" -> "전문직, 자영업, 관리직"
-- "job_skilled" -> "숙련 기술직"
-- "job_unskilled resident" -> "단순 노무직"
-- "job_unemp/unskilled non res" -> "무직, 단순직 외국인"
-
-- "own_telephone_yes" -> "전화 보유"
-- "own_telephone_none" -> "전화 미보유"
-
-- "foreign_worker_yes" -> "외국인 근로자"
-- "foreign_worker_no" -> "내국인 근로자"
-- "class" -> "신용 등급"
-- "Sex" -> "성별"
-- "Married" -> "결혼 여부"
-
 Feature naming rule:
 - In final_explanation, you MUST use the exact Korean feature names shown in the Examples mapping.
 - Do NOT create new Korean names for features.
@@ -156,65 +73,62 @@ Step 3: Determine each feature's impact for final_explanation.
 
 Step 4: Generate final_explanation.
 
-- The explanation MUST start with the exact phrase:
-  "AI 모델이 예측한 결과,"
+- The explanation MUST start with:
+  "Based on the AI model's prediction,"
 
 - The output MUST follow this exact structure:
 
 Line 1:
-AI 모델이 예측한 결과,
+Based on the AI model's prediction,
 
 Line 2~4:
 Each feature must be written as a separate line.
 
-For each feature, you MUST:
+For each feature:
 
-1. Use the exact Korean feature name from the Examples mapping.
+1. Use the mapped English-friendly feature name (NOT raw feature name).
 
 2. Extract ONE key supporting evidence phrase from the "answer" field:
    - Use ONLY the provided answer
-   - Do NOT generate new content
-   - Convert it into a short Korean phrase
-   - 반드시 "~이기 때문에", "~때문에", "~으로 인해" 형태로 변환
+   - Convert into a short English phrase
+   - MUST include causal phrasing such as:
+     "because", "as", "due to"
 
-3. Convert feature into "~한 점은" structure:
-   - Example:
-     - "계좌 잔액 부족" → "계좌 잔액이 부족한 점은"
-     - "입출금 계좌 없음" → "입출금 계좌가 없는 점은"
-     - "신용 문제 이력" → "신용 문제 이력이 있는 점은"
+3. Convert feature into "The fact that ~" structure:
+   Example:
+   - "Low account balance" → "The fact that the account balance is low"
+   - "No checking account" → "The fact that there is no checking account"
 
 4. Determine comparison type:
-   - CASE 1: opposite
-   - CASE 2: same
-   - CASE 3: insufficient evidence
 
-5. Generate sentence using EXACTLY this unified structure:
+- CASE 1: opposite direction
+- CASE 2: same direction
 
-[CASE 1: 반대 방향]
-"{{feature 변환형}} {{이유}} 때문에, 문헌에서는 {{문헌 방향}} 신호로 알려져 있지만 이 모델에서는 {{모델 방향}} 요인으로 분석되었습니다."
+5. Generate sentence using EXACTLY this structure:
 
-[CASE 2: 같은 방향]
-"{{feature 변환형}} {{이유}} 때문에, 문헌에서 {{문헌 방향}} 신호로 알려져 있으며 이 모델에서도 {{모델 방향}} 요인으로 분석되었습니다."
+[CASE 1: opposite]
+"The fact that {{feature}} {{reason}}, because {{reason}}, is known in the literature as a signal that {{literature_direction}}, but the model instead identifies it as a factor that {{model_direction}}."
 
-[CASE 3: 증거 부족]
-"{{feature 변환형}} {{이유}} 때문에 모델에서는 {{모델 방향}} 요인으로 분류되었지만, 문헌에서는 충분히 다루어지지 않아 비교가 어렵습니다."
+[CASE 2: same]
+"The fact that {{feature}} {{reason}}, because {{reason}}, is known in the literature as a signal that {{literature_direction}}, and the model also identifies it as a factor that {{model_direction}}."
 
 6. Replace:
-   - {{feature 변환형}} → "~한 점은" 형태로 변환된 feature
-   - {{이유}} → answer 기반 근거 phrase
-   - {{문헌 방향}} → "신용 위험을 높이는" 또는 "신용 위험을 낮추는"
-   - {{모델 방향}} → "위험을 높이는" 또는 "위험을 낮추는"
+- {{feature}} → natural English feature phrase
+- {{reason}} → extracted evidence phrase
+- {{literature_direction}} → "increases credit risk" or "decreases credit risk"
+- {{model_direction}} → "increases risk" or "decreases risk"
 
-7. Rules:
-   - Include "때문에"
-   - Use "~한 점은" structure
-   - Do Not Change Sentence Structure
-   - No additional explanation
-
-8. Each line MUST end with [1], [2], [3]
+7. Each line MUST end with [1], [2], [3]
 
 Line 5:
-- Write one final summary sentence describing overall prediction.
+
+IF prediction_label == "GOOD CREDIT RISK":
+"Overall, this applicant is likely to have a low risk of default."
+
+IF prediction_label == "BAD CREDIT RISK":
+"Overall, this applicant is likely to have a high risk of default."
+
+- Do NOT paraphrase.
 
 Step 5: Do NOT generate evidence.
 - Evidence sentences already exist in the input JSONL.
@@ -231,20 +145,14 @@ Output format:
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Summarize per-feature RAG answers into a Korean UI explanation with existing JSONL evidence."
+        description="Summarize all feature QA JSONL files into final summary outputs."
     )
 
-    input_group = parser.add_mutually_exclusive_group()
-    input_group.add_argument(
-        "--input",
-        type=Path,
-        default=DEFAULT_INPUT,
-        help=f"Single feature QA JSONL file to summarize. Default: {DEFAULT_INPUT}",
-    )
-    input_group.add_argument(
+    parser.add_argument(
         "--input-dir",
         type=Path,
-        help=f"Directory of sample_*_feature_qa.jsonl files to summarize. Default batch dir: {DEFAULT_INPUT_DIR}",
+        default=DEFAULT_INPUT_DIR,
+        help=f"Directory of sample_*_feature_qa.jsonl files to summarize. Default: {DEFAULT_INPUT_DIR}",
     )
 
     parser.add_argument(
@@ -253,18 +161,14 @@ def parse_args():
         default=DEFAULT_OUTPUT_DIR,
         help=f"Directory for final summary JSON and CSV outputs. Default: {DEFAULT_OUTPUT_DIR}",
     )
-    parser.add_argument(
-        "--output",
-        type=Path,
-        default=None,
-        help="Optional output JSON path for single-file mode.",
-    )
+
     parser.add_argument(
         "--csv-output",
         type=Path,
         default=None,
         help="Optional CSV path for batch output.",
     )
+
     parser.add_argument(
         "--model",
         default=DEFAULT_MODEL,
@@ -272,7 +176,6 @@ def parse_args():
     )
 
     return parser.parse_args()
-
 
 def load_jsonl(path: Path):
     if not path.exists():
@@ -579,29 +482,25 @@ def main():
     args = parse_args()
     llm = build_llm(args.model)
 
-    if args.input_dir:
-        input_files = iter_input_files(args.input_dir)
-        payloads = []
+    input_files = iter_input_files(args.input_dir)
+    payloads = []
 
-        for input_path in input_files:
-            output_path = output_path_for_input(input_path, args.output_dir)
+    for input_path in input_files:
+        output_path = output_path_for_input(input_path, args.output_dir)
+
+        try:
             payload = summarize_file(input_path, output_path, llm)
             payloads.append(payload)
             print(f"Saved JSON: {output_path}")
 
-        csv_output = args.csv_output or args.output_dir / "final_summaries.csv"
-        write_csv(csv_output, payloads)
+        except Exception as exc:
+            print(f"SKIPPED: {input_path} / ERROR: {exc}", file=sys.stderr)
 
-        print(f"Saved CSV : {csv_output}")
-        print(f"Total summaries: {len(payloads)}")
-        return
+    csv_output = args.csv_output or args.output_dir / "final_summaries.csv"
+    write_csv(csv_output, payloads)
 
-    output_path = args.output or output_path_for_input(args.input, args.output_dir)
-    payload = summarize_file(args.input, output_path, llm)
-
-    print(f"Saved JSON: {output_path}")
-    print(json.dumps(payload, indent=2, ensure_ascii=False))
-
+    print(f"Saved CSV : {csv_output}")
+    print(f"Total summaries: {len(payloads)}")
 
 if __name__ == "__main__":
     try:

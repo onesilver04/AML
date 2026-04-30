@@ -1,0 +1,123 @@
+{
+  "sample_idx": 196,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.24642641979652438,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the applicant lacks a formal savings account, because financial capacity and credit history are critical for risk assessment, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk.[1]\nThe fact that the applicant has minimal savings, because savings balances did not exhibit a statistically significant relationship with default probability, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk.[2]\nThe fact that the applicant has a negative checking account balance, because negative balances typically signal financial strain or liquidity constraints, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk.[3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "savings_status_no known savings",
+      "evidence_sentences": [
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20112735033035278
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20379459857940674
+        },
+        {
+          "sentence": "If credit risk is underestimated and losses are realised, these costs are passed on to the customers through higher interest",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.20456939935684204
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.206123948097229
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.2141605019569397
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.21769767999649048
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.1942386031150818
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.19581454992294312
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.20006561279296875
+        },
+        {
+          "sentence": "Even after exclusions, the reduced OLS model still shows limited explanatory power, with an R2 of 0.24 (Adj.R 2 =0.22) and a lower but still elevated condition number (=3.78×10 4).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20242851972579956
+        },
+        {
+          "sentence": "As shown in Fig .",
+          "source": "German Credit Risk Prediction Using Machine Learning Models.pdf",
+          "page": 7,
+          "score": 0.20596158504486084
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.20883077383041382
+        },
+        {
+          "sentence": "Checking account status and savings categories also show meaningful associ- ations with credit risk classification.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.20953994989395142
+        },
+        {
+          "sentence": "Construct a Super Learner heterogeneous",
+          "source": "Personal Credit Default Discrimination Model Based on Super Learner.pdf",
+          "page": 4,
+          "score": 0.21136492490768433
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1958761215209961
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20554065704345703
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "고객이 정식 저축 계좌를 보유하지 않는다는 점은 금융 능력과 신용 이력이 위험 평가에 중요하기 때문에 문헌상으로는 신용 위험 증가 신호로 인식되지만, 모델은 이를 오히려 위험 감소 요인으로 판단합니다 [1].\n고객의 저축 잔액이 적다는 점은 저축 잔액과 디폴트 확률 간 통계적으로 유의미한 연관성이 없기 때문에 문헌상으로는 신용 위험 증가 신호로 여겨지지만, 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n고객의 계좌 잔액이 음수라는 사실은 일반적으로 재정적 어려움이나 유동성 제약을 나타내므로 문헌상으로는 신용 위험 증가 신호로 인식되지만, 모델은 이를 위험 감소 요인으로 판단합니다 [3].\n전반적으로 이 고객은 낮은 디폴트 위험을 가질 것으로 평가됩니다."
+}
