@@ -1,0 +1,36 @@
+{
+  "sample_idx": 110,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/wrong_18_local_shap/shap_tuples_non_prefix_110.json",
+  "true_label": "BAD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.3104395807485785,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account is identified by the model as a factor that decreases risk.[1]\nThe fact that the requested credit amount is large is identified by the model as a factor that increases risk.[2]\nThe fact that the loan duration is long is identified by the model as a factor that increases risk.[3]\nOverall, this applicant is likely to have a low risk of default.",
+  "final_explanation_ko": "계좌 잔액 부족 상태가 신용 위험을 낮추는 요인으로 분석됩니다.[1]  \n대출 금액이 큰 요청은 신용 위험을 증가시키는 요인으로 판단됩니다.[2]  \n대출 기간이 길다는 점도 신용 위험을 높이는 요인으로 인식됩니다.[3]  \n전반적으로 이 고객은 낮은 신용 불이행 위험을 가질 것으로 평가됩니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.09928334866999108,
+      "abs_shap": 0.09928334866999108,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_amount",
+      "definition": "Credit amount requested by the applicant.",
+      "shap_value": 0.05842059580593461,
+      "abs_shap": 0.05842059580593461,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": 0.04426094168141432,
+      "abs_shap": 0.04426094168141432,
+      "direction": "increase_risk"
+    }
+  ]
+}

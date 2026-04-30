@@ -1,0 +1,36 @@
+{
+  "sample_idx": 83,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_83.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.2731496398544613,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, having no checking account [1] decreases the model's risk estimate. Having a checking account balance below zero [2] decreases the model's risk estimate. Taking out a loan for a used car [3] decreases the model's risk estimate. Overall, this applicant is likely to have a low risk of default.",
+  "final_explanation_ko": "계좌 잔액이 없는 경우 [1] 신용 위험 평가가 낮아집니다. 계좌 잔액이 부족한 경우 [2] 위험 평가가 감소합니다. 중고차 구매 목적의 대출 [3] 위험 평가를 낮춥니다. 전반적으로 이 고객은 신용 불이행 위험이 낮은 수준으로 평가됩니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.10945216546551416,
+      "abs_shap": 0.10945216546551416,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.04433658683833512,
+      "abs_shap": 0.04433658683833512,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "purpose_used car",
+      "definition": "Loan purpose: purchase of a used car.",
+      "shap_value": -0.041559270085346066,
+      "abs_shap": 0.041559270085346066,
+      "direction": "decrease_risk"
+    }
+  ]
+}

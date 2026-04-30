@@ -13,7 +13,7 @@ if str(REPO_ROOT) not in sys.path:
 DEFAULT_INPUT = Path("RAG/QA/Answers/wrong_18_answers")
 DEFAULT_INPUT_DIR = Path("RAG/QA/Answers/wrong_18_answers")
 DEFAULT_OUTPUT_DIR = Path("RAG/Final Summary/Wrong_Results")
-DEFAULT_MODEL = "qwen3.6:27b"
+DEFAULT_MODEL = "qwen3.6:35b"
 EXPECTED_FEATURE_COUNT = 3
 
 

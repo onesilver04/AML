@@ -1,0 +1,36 @@
+{
+  "sample_idx": 176,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_176.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.14673353549146628,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, having no checking account decreases the model's risk estimate [1]. A credit history with critical accounts or other existing credits decreases the model's risk estimate [2]. A loan purpose for purchasing a used car decreases the model's risk estimate [3]. Overall, this applicant is likely to have a low risk of default.",
+  "final_explanation_ko": "계좌 잔액 부족은 모델의 위험 평가를 낮춥니다 [1]. 신용 이력에 중대한 계정이나 기존 대출이 포함되면 위험 평가가 낮아집니다 [2]. 중고차 구매 목적의 대출은 위험 평가를 더욱 낮춥니다 [3]. 전반적으로 이 고객은 신용 불이행 위험이 낮은 수준으로 평가됩니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.08985337769226254,
+      "abs_shap": 0.08985337769226254,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.04663077481942944,
+      "abs_shap": 0.04663077481942944,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "purpose_used car",
+      "definition": "Loan purpose: purchase of a used car.",
+      "shap_value": -0.04304677300796366,
+      "abs_shap": 0.04304677300796366,
+      "direction": "decrease_risk"
+    }
+  ]
+}

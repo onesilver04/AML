@@ -1,96 +1,72 @@
-# boundary에서 먼 거 17, 가까운거 17
-# condition 1
 import argparse
 import csv
 import importlib.util
 import json
-import random
+import os
+import re
 import sys
+import types
+import urllib.error
+import urllib.request
 from pathlib import Path
 
 
-N_SAMPLES = 17
-DEFAULT_MODEL = "qwen3.6:35b"
+DEFAULT_EXPLANATION_MODEL = "qwen3.6:35b"
+DEFAULT_OLLAMA_URL = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
 
 SHAP_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = SHAP_DIR.parent
-CLASSIFIED_DIR = SHAP_DIR / "Task" / "Classified"
-LOCAL_SHAP_DIR = SHAP_DIR / "Task" / "correct_102_local_shap"
-CORRECT_FAR_CSV = CLASSIFIED_DIR / "correct_far.csv"
-CORRECT_NEAR_CSV = CLASSIFIED_DIR / "correct_near.csv"
-RAG_SUMMARIZER_PATH = REPO_ROOT / "RAG" / "Final Summary" / "summarize_rag_feature_answers.py"
-DEFAULT_OUTPUT_DIR = SHAP_DIR / "Condition1" / "Results" / "correct_local_shap_explanations"
+TRANSLATION_PATH = REPO_ROOT / "RAG" / "Final Summary" / "translation.py"
+DEFAULT_OUTPUT_DIR = SHAP_DIR / "Condition1" / "Results" / "selected_shap_only_explanations_ko"
+DEFAULT_SHAP_SEARCH_DIRS = [
+    SHAP_DIR / "Task" / "correct_102_local_shap",
+    SHAP_DIR / "Task" / "wrong_18_local_shap",
+]
+
+TARGET_SAMPLE_IDS = [
+    123, 142, 176, 45, 81, 83, 197, 187, 100, 10, 177, 126, 136, 146, 169, 189, 194,
+    144, 14, 24, 47, 182, 172, 93, 120, 127, 135, 178, 179, 48, 63, 16, 124, 78
+]
 
 
-SHAP_SUMMARY_SYSTEM_PROMPT = """You are a financial risk analyst specialized in credit scoring and SHAP-based explanations.
+SHAP_EXPLANATION_SYSTEM_PROMPT = """You are a financial risk analyst specialized in credit scoring and SHAP-based explanations.
 
-Your job is to generate a user-friendly Korean explanation for credit risk predictions.
+Generate a user-friendly English explanation for a credit risk prediction using only the provided top-3 SHAP values.
 
-You must transform technical financial expressions into intuitive, easy-to-understand Korean language for general users.
-
-You are NOT a translator.
-You must not directly translate encoded feature names, numeric thresholds, or technical financial expressions.
-Instead, rewrite them into natural Korean phrases that users can understand at a glance.
-
-STRICT RULES:
+Rules:
 1. Output ONLY valid JSON.
-2. Do NOT include any text outside JSON.
-3. Do NOT expose reasoning steps.
-4. Generate ONLY final_explanation.
-5. The final explanation must be 1 to 3 Korean sentences.
-6. The final explanation must include all three features in the same order as provided.
-7. Do NOT add citation markers, reference numbers, or feature numbers in final_explanation.
-8. Use the provided SHAP JSON information as much as possible.
-9. Do NOT mention missing evidence or RAG.
+2. The JSON object must contain ONLY final_explanation.
+3. Do NOT use RAG, retrieved evidence, literature evidence, or external knowledge.
+4. Do NOT mention missing evidence, RAG, sources, or literature.
+5. Include the three SHAP features in the same order as provided.
+6. Use [1], [2], and [3] only as feature-rank markers.
 """
 
 
-SHAP_SUMMARY_USER_TEMPLATE = """Generate only the final Korean explanation for this credit risk prediction.
+SHAP_EXPLANATION_USER_TEMPLATE = """Generate final_explanation for this credit risk prediction using only the top-3 SHAP values.
 
 Prediction:
 - true label: {true_label}
 - predicted label: {prediction_label}
 - predicted bad-risk probability: {prediction_probability}
 - decision threshold: {prediction_threshold}
-- decision boundary group: {decision_boundary_group}
-- decision boundary absolute distance: {decision_boundary_abs_distance}
 
-Top SHAP features:
+Top-3 SHAP values:
 {feature_context}
 
 Instructions:
-
-Step 1: Interpret the input for writing the final explanation.
-- Identify the prediction label, probability, and threshold.
-- Identify whether this sample is far from or near the decision boundary.
-- Identify the three SHAP features.
-- Understand each feature's meaning, SHAP direction, and SHAP value.
-- Use this interpretation only to write final_explanation.
-
-Step 2: Convert technical feature expressions into user-friendly Korean for final_explanation.
-- Do NOT keep raw encoded feature names in final_explanation.
-- Do NOT include raw numeric thresholds if they can be rewritten more naturally.
-- Rewrite technical expressions into intuitive Korean phrases.
-
-Examples:
-- "savings_status_<100" or "저축 잔액 100 DM 미만" -> "저축 잔액이 거의 없는 상태"
-- "checking_status_no checking" -> "사용 중인 당좌예금 계좌가 없는 상태"
-- "credit_amount" -> "대출 금액"
-- "duration" -> "대출 기간"
-- "employment_unemployed" -> "현재 안정적인 고용 상태가 아닌 점"
-
-Step 3: Determine each feature's impact for final_explanation.
-- If shap_direction is "모델에서는 위험을 높이는 방향", describe the feature as increasing risk.
-- If shap_direction is "모델에서는 위험을 낮추는 방향", describe the feature as decreasing risk.
-- Use natural Korean, not literal translation.
-
-Step 4: Generate final_explanation.
-- Write 1 to 3 Korean sentences.
-- Mention all three features in the same order as provided.
-- Do NOT add citation markers, reference numbers, or feature numbers in final_explanation.
-- Make the explanation flow naturally.
-- End by reflecting the final prediction label naturally.
-- You may mention whether the sample is close to or far from the decision boundary if it helps users understand confidence.
+- Start with exactly: Based on the AI model's prediction,
+- Write one sentence for each SHAP feature.
+- Convert raw feature names into natural English phrases.
+- If shap_direction is "model increases risk", say the feature increases the model's risk estimate.
+- If shap_direction is "model decreases risk", say the feature decreases the model's risk estimate.
+- Do not claim causality beyond SHAP contribution.
+- Sentence 1 must end with [1]
+- Sentence 2 must end with [2]
+- Sentence 3 must end with [3]
+- End with exactly one of these final sentences:
+  - Overall, this applicant is likely to have a low risk of default.
+  - Overall, this applicant is likely to have a high risk of default.
 
 Output format:
 {{
@@ -102,87 +78,183 @@ Output format:
 def parse_args():
     parser = argparse.ArgumentParser(
         description=(
-            "Sample correct far/near rows, find matching local SHAP JSON files, "
-            "and summarize them into Korean user-facing explanations."
+            "Find top-3 SHAP JSON files for the specified samples, generate SHAP-only "
+            "English explanations, and translate them with translation.py's Korean prompt."
         )
     )
-    parser.add_argument("--n-samples", type=int, default=N_SAMPLES, help=f"Samples per group. Default: {N_SAMPLES}")
-    parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducible sampling. Default: 42")
-    parser.add_argument("--model", default=DEFAULT_MODEL, help=f"Ollama chat model. Default: {DEFAULT_MODEL}")
-    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR, help=f"JSON output directory. Default: {DEFAULT_OUTPUT_DIR}")
-    parser.add_argument("--csv-output", type=Path, default=None, help="Optional CSV summary output path.")
+    parser.add_argument(
+        "--sample-ids",
+        default=" ".join(str(sample_id) for sample_id in TARGET_SAMPLE_IDS),
+        help="Whitespace- or comma-separated sample_idx values. Defaults to the requested sample list.",
+    )
+    parser.add_argument(
+        "--shap-search-dirs",
+        nargs="+",
+        type=Path,
+        default=DEFAULT_SHAP_SEARCH_DIRS,
+        help="Directories to search for shap_tuples_non_prefix_<sample_idx>.json files.",
+    )
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=DEFAULT_OUTPUT_DIR,
+        help=f"Output directory. Default: {DEFAULT_OUTPUT_DIR}",
+    )
+    parser.add_argument(
+        "--model",
+        default=DEFAULT_EXPLANATION_MODEL,
+        help=f"Ollama model for SHAP-only English explanation. Default: {DEFAULT_EXPLANATION_MODEL}",
+    )
+    parser.add_argument(
+        "--translation-model",
+        default=None,
+        help="Ollama model for Korean translation. Default: translation.py MODEL_NAME.",
+    )
+    parser.add_argument(
+        "--ollama-url",
+        default=DEFAULT_OLLAMA_URL,
+        help=f"Ollama base URL. Default: {DEFAULT_OLLAMA_URL}",
+    )
+    parser.add_argument(
+        "--csv-output",
+        type=Path,
+        default=None,
+        help="Optional CSV summary output path.",
+    )
     return parser.parse_args()
 
 
-def sample_rows(csv_path: Path, group: str, n_samples: int = N_SAMPLES, seed: int | None = None) -> list[dict]:
-    """Randomly select rows and keep metadata needed in the final output."""
-    with csv_path.open(newline="") as csv_file:
-        rows = list(csv.DictReader(csv_file))
+def parse_sample_ids(text: str) -> list[int]:
+    sample_ids = [int(token) for token in re.split(r"[\s,]+", text.strip()) if token]
 
-    if not rows or "sample_idx" not in rows[0]:
-        raise ValueError(f"{csv_path} does not contain a 'sample_idx' column.")
+    if not sample_ids:
+        raise ValueError("At least one sample id is required.")
 
-    if len(rows) < n_samples:
-        raise ValueError(f"{csv_path} has only {len(rows)} rows; cannot sample {n_samples} rows.")
-
-    rng = random.Random(seed)
-    sampled_rows = rng.sample(rows, n_samples)
-
-    samples = []
-    for row in sampled_rows:
-        samples.append(
-            {
-                "sample_idx": int(row["sample_idx"]),
-                "decision_boundary_group": group,
-                "sigma_group": row.get("sigma_group", "unknown"),
-                "decision_boundary_abs_distance": row.get("decision_boundary_abs_distance", "unknown"),
-            }
-        )
-
-    return samples
+    return sample_ids
 
 
-def get_random_correct_samples(n_samples: int = N_SAMPLES, seed: int | None = None) -> dict[str, list[dict]]:
-    """Return random sample metadata from correct_far and correct_near each."""
-    return {
-        "far": sample_rows(CORRECT_FAR_CSV, "far", n_samples=n_samples, seed=seed),
-        "near": sample_rows(CORRECT_NEAR_CSV, "near", n_samples=n_samples, seed=seed),
-    }
+def unique_preserving_order(values: list[int]) -> list[int]:
+    seen = set()
+    unique = []
+
+    for value in values:
+        if value in seen:
+            continue
+        seen.add(value)
+        unique.append(value)
+
+    return unique
 
 
-def load_rag_summarizer():
-    if not RAG_SUMMARIZER_PATH.exists():
-        raise FileNotFoundError(f"RAG summarizer does not exist: {RAG_SUMMARIZER_PATH}")
+def load_translation_module():
+    if not TRANSLATION_PATH.exists():
+        raise FileNotFoundError(f"translation.py does not exist: {TRANSLATION_PATH}")
 
-    spec = importlib.util.spec_from_file_location("rag_final_summarizer", RAG_SUMMARIZER_PATH)
+    try:
+        import langchain_ollama  # noqa: F401
+    except ModuleNotFoundError:
+        stub = types.ModuleType("langchain_ollama")
+
+        class ChatOllama:  # pragma: no cover - only used to load translation.py without dependency.
+            def __init__(self, *args, **kwargs):
+                raise ModuleNotFoundError(
+                    "langchain_ollama is not installed; this script uses Ollama REST instead."
+                )
+
+        stub.ChatOllama = ChatOllama
+        sys.modules["langchain_ollama"] = stub
+
+    spec = importlib.util.spec_from_file_location("translation_prompt_module", TRANSLATION_PATH)
     if spec is None or spec.loader is None:
-        raise ImportError(f"Could not import RAG summarizer: {RAG_SUMMARIZER_PATH}")
+        raise ImportError(f"Could not import translation.py: {TRANSLATION_PATH}")
 
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
 
 
-def shap_json_path(sample_idx: int) -> Path:
-    return LOCAL_SHAP_DIR / f"shap_tuples_non_prefix_{sample_idx}.json"
+def normalize_ollama_url(base_url: str) -> str:
+    return base_url.rstrip("/")
 
 
-def load_shap_payload(sample_idx: int):
-    path = shap_json_path(sample_idx)
+def ollama_chat(model: str, messages: list[dict], base_url: str) -> str:
+    url = f"{normalize_ollama_url(base_url)}/api/chat"
+    payload = {
+        "model": model,
+        "messages": messages,
+        "stream": False,
+        "options": {"temperature": 0.0},
+    }
+    request = urllib.request.Request(
+        url,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
 
-    if not path.exists():
-        raise FileNotFoundError(f"No local SHAP JSON found for sample_idx={sample_idx}: {path}")
+    try:
+        with urllib.request.urlopen(request, timeout=600) as response:
+            data = json.loads(response.read().decode("utf-8"))
+    except urllib.error.URLError as exc:
+        raise ConnectionError(f"Could not reach Ollama at {url}: {exc}") from exc
+
+    try:
+        return data["message"]["content"].strip()
+    except KeyError as exc:
+        raise ValueError(f"Unexpected Ollama response: {data}") from exc
+
+
+def clean_llm_text(text: str) -> str:
+    cleaned = (text or "").strip()
+
+    if cleaned.startswith("```"):
+        cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned)
+        cleaned = re.sub(r"\s*```$", "", cleaned)
+
+    return cleaned.strip()
+
+
+def parse_llm_json(text: str):
+    cleaned = clean_llm_text(text)
+
+    try:
+        return json.loads(cleaned)
+    except json.JSONDecodeError:
+        match = re.search(r"\{.*\}", cleaned, flags=re.DOTALL)
+
+        if not match:
+            raise ValueError(f"LLM output is not valid JSON: {cleaned}")
+
+        try:
+            return json.loads(match.group(0))
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"LLM output JSON parsing failed: {cleaned}") from exc
+
+
+def find_shap_json(sample_idx: int, search_dirs: list[Path]) -> Path:
+    filename = f"shap_tuples_non_prefix_{sample_idx}.json"
+    matches = []
+
+    for search_dir in search_dirs:
+        candidate = search_dir / filename
+        if candidate.exists():
+            matches.append(candidate)
+
+    if not matches:
+        searched = ", ".join(str(path) for path in search_dirs)
+        raise FileNotFoundError(f"No SHAP JSON found for sample_idx={sample_idx}. Searched: {searched}")
+
+    if len(matches) > 1:
+        print(f"Multiple SHAP JSON files for sample_idx={sample_idx}; using {matches[0]}", file=sys.stderr)
+
+    return matches[0]
+
+
+def load_shap_payload(sample_idx: int, search_dirs: list[Path]):
+    path = find_shap_json(sample_idx, search_dirs)
 
     with path.open("r", encoding="utf-8") as f:
         return json.load(f), path
-
-
-def direction_label(direction: str):
-    if direction == "increase_risk":
-        return "모델에서는 위험을 높이는 방향"
-    if direction == "decrease_risk":
-        return "모델에서는 위험을 낮추는 방향"
-    return "모델 방향 미확인"
 
 
 def validate_shap_payload(payload):
@@ -197,13 +269,22 @@ def validate_shap_payload(payload):
     return tuples
 
 
-def format_feature_context(tuples):
+def direction_label(direction: str) -> str:
+    if direction == "increase_risk":
+        return "model increases risk"
+    if direction == "decrease_risk":
+        return "model decreases risk"
+    return "model direction unknown"
+
+
+def format_feature_context(tuples) -> str:
     blocks = []
 
-    for item in tuples:
+    for rank, item in enumerate(tuples, 1):
         blocks.append(
             "\n".join(
                 [
+                    f"[{rank}]",
                     f"- feature: {item.get('feature', 'unknown')}",
                     f"- definition: {item.get('definition', 'unknown')}",
                     f"- shap_direction: {direction_label(item.get('direction', 'UNKNOWN'))}",
@@ -216,50 +297,42 @@ def format_feature_context(tuples):
     return "\n\n".join(blocks)
 
 
-def validate_llm_output(payload):
-    if not isinstance(payload, dict):
-        raise ValueError("LLM output must be a JSON object.")
-
-    final_explanation = payload.get("final_explanation")
-    if not isinstance(final_explanation, str) or not final_explanation.strip():
-        raise ValueError("LLM output must contain a non-empty final_explanation.")
-
-    return payload
-
-
-def summarize_shap_payload(payload, sample_meta, llm, rag_summarizer):
-    try:
-        from langchain_core.prompts import ChatPromptTemplate
-    except ModuleNotFoundError as exc:
-        raise ModuleNotFoundError(
-            "Missing dependency 'langchain_core'. Install it with: pip install langchain-core"
-        ) from exc
-
-    tuples = validate_shap_payload(payload)
-    prediction = payload.get("prediction") or {}
-    prompt = ChatPromptTemplate.from_messages(
+def generate_shap_explanation(shap_payload, model: str, base_url: str):
+    tuples = validate_shap_payload(shap_payload)
+    prediction = shap_payload.get("prediction") or {}
+    prompt = SHAP_EXPLANATION_USER_TEMPLATE.format(
+        true_label=shap_payload.get("true_label", "UNKNOWN"),
+        prediction_label=prediction.get("label", "UNKNOWN"),
+        prediction_probability=prediction.get("probability", "UNKNOWN"),
+        prediction_threshold=prediction.get("threshold", "UNKNOWN"),
+        feature_context=format_feature_context(tuples),
+    )
+    content = ollama_chat(
+        model,
         [
-            ("system", SHAP_SUMMARY_SYSTEM_PROMPT),
-            ("user", SHAP_SUMMARY_USER_TEMPLATE),
-        ]
+            {"role": "system", "content": SHAP_EXPLANATION_SYSTEM_PROMPT},
+            {"role": "user", "content": prompt},
+        ],
+        base_url,
     )
-    chain = prompt | llm
+    payload = parse_llm_json(content)
+    final_explanation = payload.get("final_explanation")
 
-    result = chain.invoke(
-        {
-            "true_label": payload.get("true_label", "UNKNOWN"),
-            "prediction_label": prediction.get("label", "UNKNOWN"),
-            "prediction_probability": prediction.get("probability", "UNKNOWN"),
-            "prediction_threshold": prediction.get("threshold", "UNKNOWN"),
-            "decision_boundary_group": sample_meta.get("decision_boundary_group", "unknown"),
-            "decision_boundary_abs_distance": sample_meta.get("decision_boundary_abs_distance", "unknown"),
-            "feature_context": format_feature_context(tuples),
-        }
-    )
+    if not isinstance(final_explanation, str) or not final_explanation.strip():
+        raise ValueError(f"LLM output is missing final_explanation: {payload}")
 
-    llm_payload = rag_summarizer.parse_llm_json(result.content)
-    validate_llm_output(llm_payload)
-    return llm_payload
+    missing_refs = [ref for ref in ("[1]", "[2]", "[3]") if ref not in final_explanation]
+    if missing_refs:
+        raise ValueError(f"final_explanation is missing markers {missing_refs}: {final_explanation}")
+
+    return final_explanation.strip()
+
+
+def translate_with_translation_py_prompt(text: str, translation_module, model: str, base_url: str) -> str:
+    text = translation_module.force_replace_feature_names(text)
+    prompt = translation_module.build_prompt(text)
+    translated = ollama_chat(model, [{"role": "user", "content": prompt}], base_url)
+    return translation_module.force_replace_feature_names(translated.strip())
 
 
 def build_shap_features(tuples):
@@ -280,21 +353,19 @@ def build_shap_features(tuples):
     return features
 
 
-def build_output_payload(sample_meta: dict, shap_path: Path, shap_payload, llm_payload):
+def build_output_payload(shap_path: Path, shap_payload, final_explanation: str, final_explanation_ko: str):
     prediction = shap_payload.get("prediction") or {}
     tuples = validate_shap_payload(shap_payload)
 
     return {
         "sample_idx": shap_payload.get("sample_idx"),
-        "decision_boundary_group": sample_meta.get("decision_boundary_group", "unknown"),
-        "sigma_group": sample_meta.get("sigma_group", "unknown"),
-        "decision_boundary_abs_distance": sample_meta.get("decision_boundary_abs_distance", "unknown"),
         "source_shap_json": str(shap_path),
         "true_label": shap_payload.get("true_label", "UNKNOWN"),
         "prediction_label": prediction.get("label", "UNKNOWN"),
         "prediction_probability": prediction.get("probability", "UNKNOWN"),
         "prediction_threshold": prediction.get("threshold", "UNKNOWN"),
-        "final_explanation": llm_payload["final_explanation"],
+        "final_explanation": final_explanation,
+        "final_explanation_ko": final_explanation_ko,
         "shap_features": build_shap_features(tuples),
     }
 
@@ -310,15 +381,13 @@ def write_json(path: Path, payload):
 def write_csv(path: Path, payloads):
     fieldnames = [
         "sample_idx",
-        "decision_boundary_group",
-        "sigma_group",
-        "decision_boundary_abs_distance",
         "source_shap_json",
         "true_label",
         "prediction_label",
         "prediction_probability",
         "prediction_threshold",
         "final_explanation",
+        "final_explanation_ko",
         "shap_features",
     ]
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -335,35 +404,53 @@ def write_csv(path: Path, payloads):
 
 def main():
     args = parse_args()
-    rag_summarizer = load_rag_summarizer()
-    llm = rag_summarizer.build_llm(args.model)
-    selected_samples = get_random_correct_samples(n_samples=args.n_samples, seed=args.seed)
+    requested_sample_ids = parse_sample_ids(args.sample_ids)
+    sample_ids = unique_preserving_order(requested_sample_ids)
+    duplicate_count = len(requested_sample_ids) - len(sample_ids)
+    translation_module = load_translation_module()
+    translation_model = args.translation_model or translation_module.MODEL_NAME
     payloads = []
 
-    for group, samples in selected_samples.items():
-        print(f"{group} sample_idx: {[sample['sample_idx'] for sample in samples]}")
+    if duplicate_count:
+        print(f"Duplicate sample ids removed: {duplicate_count}")
 
-        for sample_meta in samples:
-            sample_idx = sample_meta["sample_idx"]
-            shap_payload, shap_path = load_shap_payload(sample_idx)
-            llm_payload = summarize_shap_payload(shap_payload, sample_meta, llm, rag_summarizer)
-            output_payload = build_output_payload(sample_meta, shap_path, shap_payload, llm_payload)
-            output_path = args.output_dir / group / f"sample_{sample_idx}_local_shap_summary.json"
-
+    for sample_idx in sample_ids:
+        try:
+            shap_payload, shap_path = load_shap_payload(sample_idx, args.shap_search_dirs)
+            final_explanation = generate_shap_explanation(shap_payload, args.model, args.ollama_url)
+            final_explanation_ko = translate_with_translation_py_prompt(
+                final_explanation,
+                translation_module,
+                translation_model,
+                args.ollama_url,
+            )
+            output_payload = build_output_payload(
+                shap_path,
+                shap_payload,
+                final_explanation,
+                final_explanation_ko,
+            )
+            output_path = args.output_dir / f"sample_{sample_idx}_shap_only_summary_ko.json"
             write_json(output_path, output_payload)
             payloads.append(output_payload)
             print(f"Saved JSON: {output_path}")
 
-    csv_output = args.csv_output or args.output_dir / "local_shap_summaries.csv"
+        except Exception as exc:
+            print(f"SKIPPED: sample_idx={sample_idx} / ERROR: {exc}", file=sys.stderr)
+
+    summary_path = args.output_dir / "selected_shap_only_summaries_ko.json"
+    csv_output = args.csv_output or args.output_dir / "selected_shap_only_summaries_ko.csv"
+    write_json(summary_path, payloads)
     write_csv(csv_output, payloads)
 
-    print(f"Saved CSV : {csv_output}")
-    print(f"Total summaries: {len(payloads)}")
+    print(f"Saved summary JSON: {summary_path}")
+    print(f"Saved CSV         : {csv_output}")
+    print(f"Total summaries   : {len(payloads)}")
 
 
 if __name__ == "__main__":
     try:
         main()
-    except (FileNotFoundError, ImportError, ModuleNotFoundError, ValueError) as exc:
+    except (ConnectionError, FileNotFoundError, ImportError, ModuleNotFoundError, ValueError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         sys.exit(1)

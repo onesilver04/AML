@@ -1,0 +1,36 @@
+{
+  "sample_idx": 123,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_123.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.25536002597359386,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, having no checking account decreases the model's risk estimate [1] The requested credit amount increases the model's risk estimate [2] A checking account balance below zero decreases the model's risk estimate [3] Overall, this applicant is likely to have a low risk of default.",
+  "final_explanation_ko": "계좌 잔액 부족은 모델의 위험 평가를 낮춥니다 [1]. 대출 금액이 증가할수록 모델의 위험 평가도 상승합니다 [2]. 계좌 잔액이 음수인 경우 위험 평가가 감소합니다 [3]. 전반적으로 이 고객은 낮은 채무 불이행 위험을 가질 것으로 예상됩니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.1008377871158497,
+      "abs_shap": 0.1008377871158497,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_amount",
+      "definition": "Credit amount requested by the applicant.",
+      "shap_value": 0.05711658646827075,
+      "abs_shap": 0.05711658646827075,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.04601723641657512,
+      "abs_shap": 0.04601723641657512,
+      "direction": "decrease_risk"
+    }
+  ]
+}

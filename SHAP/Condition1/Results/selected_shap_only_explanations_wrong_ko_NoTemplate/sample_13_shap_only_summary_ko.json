@@ -1,0 +1,36 @@
+{
+  "sample_idx": 13,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/wrong_18_local_shap/shap_tuples_non_prefix_13.json",
+  "true_label": "BAD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.43551570238667753,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, the applicant is likely to have a low risk of default. This assessment is primarily shaped by three key factors. First, not having a checking account tends to decrease the risk. Second, maintaining a negative balance in the checking account also works to lower the risk. Finally, while a longer loan duration slightly increases the risk, the combined influence of these factors points toward a favorable outcome. Consequently, the model predicts a GOOD CREDIT RISK.",
+  "final_explanation_ko": "고객은 신용 위험이 낮은 수준으로 평가되어 신용 승인 가능성이 높습니다. 주요 요인 세 가지를 바탕으로 이 예측이 이루어졌습니다. 첫째, 체크 계좌가 없는 것은 위험을 낮추는 경향이 있습니다. 둘째, 체크 계좌의 부정 잔액 유지 또한 위험 감소에 기여합니다. 셋째, 대출 기간이 길어짐에 따라 위험이 약간 증가하지만, 이러한 요인들의 복합적인 영향으로 긍정적인 결과를 예상합니다. 따라서 모델은 GOOD CREDIT RISK를 예측합니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.12585601614407854,
+      "abs_shap": 0.12585601614407854,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.04681255653478022,
+      "abs_shap": 0.04681255653478022,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": 0.03028786022165705,
+      "abs_shap": 0.03028786022165705,
+      "direction": "increase_risk"
+    }
+  ]
+}

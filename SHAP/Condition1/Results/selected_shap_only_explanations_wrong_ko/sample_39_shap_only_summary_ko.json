@@ -1,0 +1,36 @@
+{
+  "sample_idx": 39,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/wrong_18_local_shap/shap_tuples_non_prefix_39.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.7361240174472382,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the requested credit amount is large is identified by the model as a factor that increases risk.[1]\nThe fact that the checking account balance is below zero is identified by the model as a factor that increases risk.[2]\nThe fact that there is no checking account is identified by the model as a factor that increases risk.[3]\nOverall, this applicant is likely to have a high risk of default.",
+  "final_explanation_ko": "요청된 대출 금액이 큰 것은 모델이 위험 증가 요인으로 판단합니다.[1]\n계좌 잔액이 음수인 것은 모델이 위험 증가 요인으로 인식합니다.[2]\n출금 계좌가 없는 것은 모델이 위험 증가 요인으로 판단합니다.[3]\n전반적으로 이 고객은 채무 불이행 위험이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "credit_amount",
+      "definition": "Credit amount requested by the applicant.",
+      "shap_value": 0.073169164754525,
+      "abs_shap": 0.073169164754525,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": 0.05439054684576323,
+      "abs_shap": 0.05439054684576323,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.05280801255298899,
+      "abs_shap": 0.05280801255298899,
+      "direction": "increase_risk"
+    }
+  ]
+}
