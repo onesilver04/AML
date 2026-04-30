@@ -1,0 +1,59 @@
+{
+  "sample_idx": 89,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 24,
+    "credit_amount": 2032,
+    "installment": 4,
+    "age": 60,
+    "existing_credits": 2,
+    "checking_status": "no checking",
+    "credit_history": "delayed previously",
+    "purpose": "new car",
+    "savings_status": "<100",
+    "employment": ">=7",
+    "housing": "for free",
+    "job": "skilled",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 54,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.13,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.1992882490158081
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+        "page": 7,
+        "score": 0.21120715141296387
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": 0.03,
+      "evidence_sentence": {
+        "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.15710026025772095
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 27.91,
+  "decision_boundary_abs_distance": 0.1014524869866036,
+  "warning_type": "weak"
+}

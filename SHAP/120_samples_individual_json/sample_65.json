@@ -1,0 +1,59 @@
+{
+  "sample_idx": 65,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 12,
+    "credit_amount": 1330,
+    "installment": 4,
+    "age": 26,
+    "existing_credits": 1,
+    "checking_status": ">=200",
+    "credit_history": "existing paid",
+    "purpose": "new car",
+    "savings_status": "<100",
+    "employment": "<1",
+    "housing": "own",
+    "job": "skilled",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 47,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.07,
+      "evidence_sentence": {
+        "sentence": "Butaru et al.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 5,
+        "score": 0.21270817518234253
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "Longer loanDurations, higherInstallment rates, and largerCredit amountsincrease the likelihood of being classified as a bad credit risk.Agehas a negative coefficient, indicating that older applicants are, on average, less likely to be considered bad credit risks.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 27,
+        "score": 0.21973085403442383
+      }
+    },
+    {
+      "feature": "employment_<1",
+      "value": 0.03,
+      "evidence_sentence": {
+        "sentence": "Nonetheless, when adding the predicted training data points to the graph it has to be noted that the PDP only partly explains the predictions by the models which cover a much broader range than the PDP indicates.",
+        "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+        "page": 6,
+        "score": 0.2316356897354126
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 10.47,
+  "decision_boundary_abs_distance": 0.0280087683844361,
+  "warning_type": "strong"
+}

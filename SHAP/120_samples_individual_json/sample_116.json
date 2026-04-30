@@ -1,0 +1,59 @@
+{
+  "sample_idx": 116,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 45,
+    "credit_amount": 3031,
+    "installment": 4,
+    "age": 21,
+    "existing_credits": 1,
+    "checking_status": "0<=X<200",
+    "credit_history": "existing paid",
+    "purpose": "radio/tv",
+    "savings_status": "100<=X<500",
+    "employment": "1<=X<4",
+    "housing": "rent",
+    "job": "skilled",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "BAD CREDIT RISK",
+  "confidence": 56,
+  "true_label": "BAD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "[2] utilized different machine learning techniques to predict the delinquency of credit card customers.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 5,
+        "score": 0.19247698783874512
+      }
+    },
+    {
+      "feature": "duration",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.1652429699897766
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.17970192432403564
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 6.25,
+  "decision_boundary_abs_distance": 0.0037517375620413,
+  "warning_type": "strong"
+}

@@ -1,0 +1,59 @@
+{
+  "sample_idx": 132,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 39,
+    "credit_amount": 11760,
+    "installment": 2,
+    "age": 32,
+    "existing_credits": 1,
+    "checking_status": "0<=X<200",
+    "credit_history": "delayed previously",
+    "purpose": "education",
+    "savings_status": "100<=X<500",
+    "employment": "4<=X<7",
+    "housing": "rent",
+    "job": "skilled",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 47,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "credit_amount",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "Overall, the OLS analysis serves two main roles, acting as an interpretable baseline model that explains relationships among predictors and as a tool for detecting multicollinearity, helping identify irrelevant predictors and encouraging the use of regularized and probabilistic regression models.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.16381853818893433
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.20964419841766357
+      }
+    },
+    {
+      "feature": "savings_status_<100",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.1764237880706787
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 6.98,
+  "decision_boundary_abs_distance": 0.0253414865108124,
+  "warning_type": "strong"
+}

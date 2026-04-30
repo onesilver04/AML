@@ -1,0 +1,60 @@
+{
+  "sample_idx": 146,
+  "condition": 1,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 12,
+    "credit_amount": 1255,
+    "installment": 4,
+    "age": 61,
+    "existing_credits": 2,
+    "checking_status": "no checking",
+    "credit_history": "critical/other existing credit",
+    "purpose": "new car",
+    "savings_status": "<100",
+    "employment": ">=7",
+    "housing": "own",
+    "job": "unskilled resident",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 83,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.11,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.20018208026885986
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.08,
+      "evidence_sentence": {
+        "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+        "page": 7,
+        "score": 0.19940537214279175
+      }
+    },
+    {
+      "feature": "duration",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.16210085153579712
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 81.4,
+  "decision_boundary_abs_distance": 0.3911541279464368,
+  "warning_type": "none"
+}

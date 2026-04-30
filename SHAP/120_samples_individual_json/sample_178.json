@@ -1,0 +1,60 @@
+{
+  "sample_idx": 178,
+  "condition": 1,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 48,
+    "credit_amount": 6224,
+    "installment": 4,
+    "age": 50,
+    "existing_credits": 1,
+    "checking_status": "0<=X<200",
+    "credit_history": "delayed previously",
+    "purpose": "education",
+    "savings_status": "<100",
+    "employment": ">=7",
+    "housing": "for free",
+    "job": "skilled",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "BAD CREDIT RISK",
+  "confidence": 68,
+  "true_label": "BAD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.1777699589729309
+      }
+    },
+    {
+      "feature": "duration",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.18273252248764038
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.18379181623458862
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 71.88,
+  "decision_boundary_abs_distance": 0.1260642893687246,
+  "warning_type": "none"
+}

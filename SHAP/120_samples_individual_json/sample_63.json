@@ -1,0 +1,60 @@
+{
+  "sample_idx": 63,
+  "condition": 1,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 24,
+    "credit_amount": 11328,
+    "installment": 2,
+    "age": 29,
+    "existing_credits": 2,
+    "checking_status": "0<=X<200",
+    "credit_history": "existing paid",
+    "purpose": "other",
+    "savings_status": "<100",
+    "employment": "1<=X<4",
+    "housing": "own",
+    "job": "high qualif/self emp/mgmt",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "BAD CREDIT RISK",
+  "confidence": 69,
+  "true_label": "BAD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "credit_amount",
+      "value": 0.09,
+      "evidence_sentence": {
+        "sentence": "If credit risk is underestimated and losses are realised, these costs are passed on to the customers through higher interest",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 7,
+        "score": 0.19573640823364258
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.2054373025894165
+      }
+    },
+    {
+      "feature": "duration",
+      "value": 0.03,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.17566919326782227
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 75.0,
+  "decision_boundary_abs_distance": 0.126664425428034,
+  "warning_type": "none"
+}

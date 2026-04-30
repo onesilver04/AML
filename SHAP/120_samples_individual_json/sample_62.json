@@ -1,0 +1,59 @@
+{
+  "sample_idx": 62,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 30,
+    "credit_amount": 6187,
+    "installment": 1,
+    "age": 24,
+    "existing_credits": 2,
+    "checking_status": "<0",
+    "credit_history": "critical/other existing credit",
+    "purpose": "used car",
+    "savings_status": "100<=X<500",
+    "employment": "4<=X<7",
+    "housing": "rent",
+    "job": "skilled",
+    "gender": "male",
+    "married": true
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 46,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_<0",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.19210535287857056
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.22142547369003296
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "Credit risk assessment is the most basic and critical part of credit loan management.",
+        "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+        "page": 3,
+        "score": 0.16670870780944824
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 5.81,
+  "decision_boundary_abs_distance": 0.0226191923305983,
+  "warning_type": "strong"
+}

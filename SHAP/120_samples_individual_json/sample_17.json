@@ -1,0 +1,59 @@
+{
+  "sample_idx": 17,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 11,
+    "credit_amount": 1154,
+    "installment": 4,
+    "age": 57,
+    "existing_credits": 3,
+    "checking_status": "no checking",
+    "credit_history": "critical/other existing credit",
+    "purpose": "radio/tv",
+    "savings_status": "100<=X<500",
+    "employment": "unemployed",
+    "housing": "own",
+    "job": "unskilled resident",
+    "gender": "female",
+    "married": true
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 81,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.09,
+      "evidence_sentence": {
+        "sentence": "In consumer and retail lending, this uncertainty is managed using credit and be- havioural scoring systems, which predict the probability that a borrower will default on their obligations (Thomas, 2000).",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 7,
+        "score": 0.19519197940826416
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.06,
+      "evidence_sentence": {
+        "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.18634247779846191
+      }
+    },
+    {
+      "feature": "duration",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.18425363302230835
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 73.26,
+  "decision_boundary_abs_distance": 0.3738303977376599,
+  "warning_type": "none"
+}

@@ -1,0 +1,59 @@
+{
+  "sample_idx": 70,
+  "distance": "near",
+  "is_correct": false,
+  "customer_data": {
+    "duration": 6,
+    "credit_amount": 14555,
+    "installment": 1,
+    "age": 23,
+    "existing_credits": 1,
+    "checking_status": "0<=X<200",
+    "credit_history": "existing paid",
+    "purpose": "new car",
+    "savings_status": "no known savings",
+    "employment": "unemployed",
+    "housing": "own",
+    "job": "unemp/unskilled non res",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 58,
+  "true_label": "BAD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "duration",
+      "value": -0.11,
+      "evidence_sentence": {
+        "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 8,
+        "score": 0.17614662647247314
+      }
+    },
+    {
+      "feature": "credit_amount",
+      "value": 0.08,
+      "evidence_sentence": {
+        "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.18307161331176758
+      }
+    },
+    {
+      "feature": "savings_status_no known savings",
+      "value": -0.06,
+      "evidence_sentence": {
+        "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.1865859031677246
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 15.62,
+  "decision_boundary_abs_distance": 0.143781565088213,
+  "warning_type": "weak"
+}

@@ -1,0 +1,59 @@
+{
+  "sample_idx": 92,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 6,
+    "credit_amount": 1050,
+    "installment": 4,
+    "age": 35,
+    "existing_credits": 2,
+    "checking_status": "0<=X<200",
+    "credit_history": "delayed previously",
+    "purpose": "furniture/equipment",
+    "savings_status": "<100",
+    "employment": "unemployed",
+    "housing": "own",
+    "job": "high qualif/self emp/mgmt",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 58,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "duration",
+      "value": -0.14,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.16891032457351685
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "Even after exclusions, the reduced OLS model still shows limited explanatory power, with an R2 of 0.24 (Adj.R 2 =0.22) and a lower but still elevated condition number (=3.78×10 4).",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.22903382778167725
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.02,
+      "evidence_sentence": {
+        "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 27,
+        "score": 0.21319079399108887
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 34.88,
+  "decision_boundary_abs_distance": 0.1397583032253301,
+  "warning_type": "weak"
+}

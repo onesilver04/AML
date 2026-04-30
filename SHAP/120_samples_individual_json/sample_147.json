@@ -1,0 +1,59 @@
+{
+  "sample_idx": 147,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 24,
+    "credit_amount": 3488,
+    "installment": 3,
+    "age": 23,
+    "existing_credits": 1,
+    "checking_status": "no checking",
+    "credit_history": "existing paid",
+    "purpose": "used car",
+    "savings_status": "100<=X<500",
+    "employment": "4<=X<7",
+    "housing": "own",
+    "job": "skilled",
+    "gender": "female",
+    "married": true
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 80,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.12,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.1836540699005127
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+        "page": 7,
+        "score": 0.2146458625793457
+      }
+    },
+    {
+      "feature": "purpose_used car",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 2,
+        "score": 0.1844354271888733
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 70.93,
+  "decision_boundary_abs_distance": 0.3599424417122229,
+  "warning_type": "none"
+}

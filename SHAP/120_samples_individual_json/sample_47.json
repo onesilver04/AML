@@ -1,0 +1,60 @@
+{
+  "sample_idx": 47,
+  "condition": 1,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 30,
+    "credit_amount": 4280,
+    "installment": 4,
+    "age": 26,
+    "existing_credits": 2,
+    "checking_status": "0<=X<200",
+    "credit_history": "no credits/all paid",
+    "purpose": "business",
+    "savings_status": "100<=X<500",
+    "employment": "1<=X<4",
+    "housing": "rent",
+    "job": "unskilled resident",
+    "gender": "female",
+    "married": true
+  },
+  "predicted_label": "BAD CREDIT RISK",
+  "confidence": 67,
+  "true_label": "BAD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.20504045486450195
+      }
+    },
+    {
+      "feature": "savings_status_<100",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+        "page": 7,
+        "score": 0.19010323286056519
+      }
+    },
+    {
+      "feature": "credit_history_no credits/all paid",
+      "value": 0.04,
+      "evidence_sentence": {
+        "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.17679500579833984
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 65.62,
+  "decision_boundary_abs_distance": 0.10888849753959,
+  "warning_type": "none"
+}

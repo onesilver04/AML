@@ -1,0 +1,60 @@
+{
+  "sample_idx": 111,
+  "condition": 1,
+  "distance": "far",
+  "is_correct": false,
+  "customer_data": {
+    "duration": 24,
+    "credit_amount": 4591,
+    "installment": 2,
+    "age": 54,
+    "existing_credits": 3,
+    "checking_status": "no checking",
+    "credit_history": "existing paid",
+    "purpose": "business",
+    "savings_status": ">=1000",
+    "employment": "1<=X<4",
+    "housing": "own",
+    "job": "high qualif/self emp/mgmt",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 68,
+  "true_label": "BAD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.08,
+      "evidence_sentence": {
+        "sentence": "1 1 Introduction Credit risk assessment remains a central challenge in modern finance, as lenders must evalu- ate the likelihood that borrowers will meet their obligations.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 7,
+        "score": 0.20202863216400146
+      }
+    },
+    {
+      "feature": "savings_status_>=1000",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 2,
+        "score": 0.17436432838439941
+      }
+    },
+    {
+      "feature": "savings_status_<100",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.19571131467819214
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 78.12,
+  "decision_boundary_abs_distance": 0.2476481522817774,
+  "warning_type": "none"
+}

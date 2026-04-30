@@ -1,0 +1,60 @@
+{
+  "sample_idx": 176,
+  "condition": 1,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 24,
+    "credit_amount": 5804,
+    "installment": 4,
+    "age": 27,
+    "existing_credits": 2,
+    "checking_status": "no checking",
+    "credit_history": "critical/other existing credit",
+    "purpose": "used car",
+    "savings_status": ">=1000",
+    "employment": "1<=X<4",
+    "housing": "own",
+    "job": "skilled",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 86,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.09,
+      "evidence_sentence": {
+        "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 24,
+        "score": 0.17877721786499023
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.18473058938980103
+      }
+    },
+    {
+      "feature": "purpose_used car",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 8,
+        "score": 0.21064966917037964
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 87.21,
+  "decision_boundary_abs_distance": 0.4132664645085337,
+  "warning_type": "none"
+}

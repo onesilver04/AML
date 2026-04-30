@@ -1,0 +1,59 @@
+{
+  "sample_idx": 19,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 12,
+    "credit_amount": 2279,
+    "installment": 4,
+    "age": 37,
+    "existing_credits": 1,
+    "checking_status": "no checking",
+    "credit_history": "existing paid",
+    "purpose": "radio/tv",
+    "savings_status": "no known savings",
+    "employment": "1<=X<4",
+    "housing": "for free",
+    "job": "skilled",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 79,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.1,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.18870031833648682
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.2037353515625
+      }
+    },
+    {
+      "feature": "savings_status_no known savings",
+      "value": -0.03,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.20702087879180908
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 68.6,
+  "decision_boundary_abs_distance": 0.3517353910163604,
+  "warning_type": "none"
+}

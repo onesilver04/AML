@@ -1,0 +1,59 @@
+{
+  "sample_idx": 60,
+  "distance": "far",
+  "is_correct": false,
+  "customer_data": {
+    "duration": 9,
+    "credit_amount": 745,
+    "installment": 3,
+    "age": 28,
+    "existing_credits": 1,
+    "checking_status": ">=200",
+    "credit_history": "existing paid",
+    "purpose": "radio/tv",
+    "savings_status": "<100",
+    "employment": "1<=X<4",
+    "housing": "own",
+    "job": "unskilled resident",
+    "gender": "female",
+    "married": true
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 64,
+  "true_label": "BAD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "duration",
+      "value": -0.08,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.1747589111328125
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 24,
+        "score": 0.2131938338279724
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "In the credit business, the problem of credit risk assessment with the customer as the Disclaimer/Publisher’s Note: The statements, opinions, and data contained in all publications are solely those of the individual author(s) and contributor(s) and not of MDPI and/or the editor(s).",
+        "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+        "page": 3,
+        "score": 0.21825838088989258
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 46.88,
+  "decision_boundary_abs_distance": 0.1956591115881576,
+  "warning_type": "weak"
+}

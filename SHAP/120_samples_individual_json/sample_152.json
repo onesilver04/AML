@@ -1,0 +1,59 @@
+{
+  "sample_idx": 152,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 12,
+    "credit_amount": 625,
+    "installment": 4,
+    "age": 26,
+    "existing_credits": 1,
+    "checking_status": "0<=X<200",
+    "credit_history": "existing paid",
+    "purpose": "radio/tv",
+    "savings_status": "<100",
+    "employment": "<1",
+    "housing": "own",
+    "job": "unskilled resident",
+    "gender": "male",
+    "married": true
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 46,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 2,
+        "score": 0.20512723922729492
+      }
+    },
+    {
+      "feature": "employment_<1",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "The shocks are assumed to take place on 31 December 2016, i. e. the first financial statement that is affected is the one of 2017 .",
+        "source": "Interest and credit risk management in German banks.pdf",
+        "page": 6,
+        "score": 0.23198550939559937
+      }
+    },
+    {
+      "feature": "purpose_radio/tv",
+      "value": -0.03,
+      "evidence_sentence": {
+        "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+        "page": 7,
+        "score": 0.1974315643310547
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 2.33,
+  "decision_boundary_abs_distance": 0.0144578494344612,
+  "warning_type": "strong"
+}

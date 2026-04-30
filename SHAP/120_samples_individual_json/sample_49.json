@@ -1,0 +1,59 @@
+{
+  "sample_idx": 49,
+  "distance": "far",
+  "is_correct": false,
+  "customer_data": {
+    "duration": 12,
+    "credit_amount": 1484,
+    "installment": 2,
+    "age": 25,
+    "existing_credits": 1,
+    "checking_status": "0<=X<200",
+    "credit_history": "existing paid",
+    "purpose": "radio/tv",
+    "savings_status": "no known savings",
+    "employment": "1<=X<4",
+    "housing": "own",
+    "job": "skilled",
+    "gender": "male",
+    "married": true
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 65,
+  "true_label": "BAD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.1932215690612793
+      }
+    },
+    {
+      "feature": "savings_status_no known savings",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.20138347148895264
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.20196431875228882
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 53.12,
+  "decision_boundary_abs_distance": 0.2143804899448647,
+  "warning_type": "weak"
+}

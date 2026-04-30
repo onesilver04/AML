@@ -1,0 +1,59 @@
+{
+  "sample_idx": 167,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 12,
+    "credit_amount": 6199,
+    "installment": 4,
+    "age": 28,
+    "existing_credits": 2,
+    "checking_status": "<0",
+    "credit_history": "no credits/all paid",
+    "purpose": "radio/tv",
+    "savings_status": "<100",
+    "employment": "1<=X<4",
+    "housing": "rent",
+    "job": "skilled",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "BAD CREDIT RISK",
+  "confidence": 66,
+  "true_label": "BAD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_<0",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.18461501598358154
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.22185373306274414
+      }
+    },
+    {
+      "feature": "duration",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.18206942081451416
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 56.25,
+  "decision_boundary_abs_distance": 0.0948572354485004,
+  "warning_type": "weak"
+}

@@ -1,0 +1,59 @@
+{
+  "sample_idx": 56,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 6,
+    "credit_amount": 1238,
+    "installment": 4,
+    "age": 36,
+    "existing_credits": 1,
+    "checking_status": "no checking",
+    "credit_history": "existing paid",
+    "purpose": "retraining",
+    "savings_status": "no known savings",
+    "employment": "unemployed",
+    "housing": "own",
+    "job": "high qualif/self emp/mgmt",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 78,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "duration",
+      "value": -0.09,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.16955125331878662
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.08,
+      "evidence_sentence": {
+        "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.19317960739135742
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.2230725884437561
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 62.79,
+  "decision_boundary_abs_distance": 0.3384516177757631,
+  "warning_type": "none"
+}

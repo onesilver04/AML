@@ -1,0 +1,59 @@
+{
+  "sample_idx": 57,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 15,
+    "credit_amount": 2728,
+    "installment": 4,
+    "age": 35,
+    "existing_credits": 3,
+    "checking_status": "0<=X<200",
+    "credit_history": "critical/other existing credit",
+    "purpose": "radio/tv",
+    "savings_status": "no known savings",
+    "employment": "4<=X<7",
+    "housing": "own",
+    "job": "skilled",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 78,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "savings_status_no known savings",
+      "value": -0.06,
+      "evidence_sentence": {
+        "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 24,
+        "score": 0.19717371463775635
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "Alam et al.: Investigation of Credit Card Default Prediction in the Imbalanced Datasets TABLE 1.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 5,
+        "score": 0.225935697555542
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.1723567247390747
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 66.28,
+  "decision_boundary_abs_distance": 0.3430927148831696,
+  "warning_type": "none"
+}

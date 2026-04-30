@@ -1,0 +1,59 @@
+{
+  "sample_idx": 86,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 18,
+    "credit_amount": 1113,
+    "installment": 4,
+    "age": 26,
+    "existing_credits": 1,
+    "checking_status": "0<=X<200",
+    "credit_history": "existing paid",
+    "purpose": "radio/tv",
+    "savings_status": "<100",
+    "employment": "1<=X<4",
+    "housing": "own",
+    "job": "unskilled resident",
+    "gender": "female",
+    "married": true
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 50,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.17668092250823975
+      }
+    },
+    {
+      "feature": "purpose_radio/tv",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "2 Finance is among the sectors most impacted by AI/ML .",
+        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+        "page": 3,
+        "score": 0.245361328125
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "However, there are two unique features in credit evaluation analysis.",
+        "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+        "page": 3,
+        "score": 0.2026522159576416
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 18.6,
+  "decision_boundary_abs_distance": 0.0604804991213991,
+  "warning_type": "strong"
+}

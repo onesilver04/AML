@@ -1,0 +1,60 @@
+{
+  "sample_idx": 189,
+  "condition": 1,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 21,
+    "credit_amount": 3160,
+    "installment": 4,
+    "age": 41,
+    "existing_credits": 1,
+    "checking_status": "no checking",
+    "credit_history": "existing paid",
+    "purpose": "radio/tv",
+    "savings_status": "no known savings",
+    "employment": ">=7",
+    "housing": "own",
+    "job": "skilled",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 85,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.1,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.1999618411064148
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.2224305272102356
+      }
+    },
+    {
+      "feature": "savings_status_<100",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "and low-risk groups with the information like gender, age and savings account.",
+        "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+        "page": 3,
+        "score": 0.16717058420181274
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 89.53,
+  "decision_boundary_abs_distance": 0.4146508086157803,
+  "warning_type": "none"
+}

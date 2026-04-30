@@ -1,0 +1,60 @@
+{
+  "sample_idx": 177,
+  "condition": 1,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 12,
+    "credit_amount": 1963,
+    "installment": 4,
+    "age": 31,
+    "existing_credits": 2,
+    "checking_status": "no checking",
+    "credit_history": "existing paid",
+    "purpose": "radio/tv",
+    "savings_status": "<100",
+    "employment": "4<=X<7",
+    "housing": "rent",
+    "job": "high qualif/self emp/mgmt",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 75,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.11,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.2124652862548828
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.21253293752670288
+      }
+    },
+    {
+      "feature": "duration",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.20471924543380737
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 53.49,
+  "decision_boundary_abs_distance": 0.3050599728088679,
+  "warning_type": "none"
+}

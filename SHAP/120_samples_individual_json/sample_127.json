@@ -1,0 +1,60 @@
+{
+  "sample_idx": 127,
+  "condition": 1,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 21,
+    "credit_amount": 3652,
+    "installment": 2,
+    "age": 27,
+    "existing_credits": 2,
+    "checking_status": "0<=X<200",
+    "credit_history": "critical/other existing credit",
+    "purpose": "business",
+    "savings_status": "<100",
+    "employment": "4<=X<7",
+    "housing": "own",
+    "job": "skilled",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 54,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.1861259937286377
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.18464094400405884
+      }
+    },
+    {
+      "feature": "credit_amount",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.14246094226837158
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 26.74,
+  "decision_boundary_abs_distance": 0.0967894906869194,
+  "warning_type": "weak"
+}

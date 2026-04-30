@@ -1,0 +1,59 @@
+{
+  "sample_idx": 4,
+  "distance": "far",
+  "is_correct": false,
+  "customer_data": {
+    "duration": 27,
+    "credit_amount": 2520,
+    "installment": 4,
+    "age": 23,
+    "existing_credits": 2,
+    "checking_status": "0<=X<200",
+    "credit_history": "critical/other existing credit",
+    "purpose": "radio/tv",
+    "savings_status": "500<=X<1000",
+    "employment": "1<=X<4",
+    "housing": "own",
+    "job": "unskilled resident",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 62,
+  "true_label": "BAD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.19742846488952637
+      }
+    },
+    {
+      "feature": "savings_status_<100",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "Machine learning is crucial in addressing these challenges, particularly in mitigating the adverse selection problem in loan applicant evaluation (Jordan & Mitchell, 2015).",
+        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+        "page": 3,
+        "score": 0.17661678791046143
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+        "page": 7,
+        "score": 0.18186193704605103
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 37.5,
+  "decision_boundary_abs_distance": 0.1869959886677973,
+  "warning_type": "weak"
+}

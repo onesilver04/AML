@@ -1,0 +1,59 @@
+{
+  "sample_idx": 12,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 4,
+    "credit_amount": 1544,
+    "installment": 2,
+    "age": 42,
+    "existing_credits": 3,
+    "checking_status": "no checking",
+    "credit_history": "critical/other existing credit",
+    "purpose": "radio/tv",
+    "savings_status": "<100",
+    "employment": "4<=X<7",
+    "housing": "own",
+    "job": "unskilled resident",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 96,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "duration",
+      "value": -0.1,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.15949517488479614
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.08,
+      "evidence_sentence": {
+        "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.17896109819412231
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.16232669353485107
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 100.0,
+  "decision_boundary_abs_distance": 0.5152960603144052,
+  "warning_type": "none"
+}

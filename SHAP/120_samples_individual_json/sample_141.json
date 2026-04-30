@@ -1,0 +1,59 @@
+{
+  "sample_idx": 141,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 36,
+    "credit_amount": 10974,
+    "installment": 4,
+    "age": 26,
+    "existing_credits": 2,
+    "checking_status": "no checking",
+    "credit_history": "existing paid",
+    "purpose": "furniture/equipment",
+    "savings_status": "<100",
+    "employment": "unemployed",
+    "housing": "own",
+    "job": "high qualif/self emp/mgmt",
+    "gender": "female",
+    "married": true
+  },
+  "predicted_label": "BAD CREDIT RISK",
+  "confidence": 59,
+  "true_label": "BAD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.1,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.19452154636383057
+      }
+    },
+    {
+      "feature": "credit_amount",
+      "value": 0.08,
+      "evidence_sentence": {
+        "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.18086743354797363
+      }
+    },
+    {
+      "feature": "duration",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.1978645920753479
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 31.25,
+  "decision_boundary_abs_distance": 0.0298579965989745,
+  "warning_type": "strong"
+}

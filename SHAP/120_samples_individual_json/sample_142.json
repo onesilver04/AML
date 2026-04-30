@@ -1,0 +1,60 @@
+{
+  "sample_idx": 142,
+  "condition": 1,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 21,
+    "credit_amount": 3275,
+    "installment": 1,
+    "age": 36,
+    "existing_credits": 1,
+    "checking_status": "no checking",
+    "credit_history": "critical/other existing credit",
+    "purpose": "used car",
+    "savings_status": "<100",
+    "employment": ">=7",
+    "housing": "own",
+    "job": "high qualif/self emp/mgmt",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 87,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.11,
+      "evidence_sentence": {
+        "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 24,
+        "score": 0.1920955777168274
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "Construct a Super Learner heterogeneous",
+        "source": "Personal Credit Default Discrimination Model Based on Super Learner.pdf",
+        "page": 4,
+        "score": 0.21058982610702515
+      }
+    },
+    {
+      "feature": "purpose_used car",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "2 Finance is among the sectors most impacted by AI/ML .",
+        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+        "page": 3,
+        "score": 0.21490395069122314
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 91.86,
+  "decision_boundary_abs_distance": 0.431462455822538,
+  "warning_type": "none"
+}

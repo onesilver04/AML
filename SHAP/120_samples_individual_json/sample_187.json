@@ -1,0 +1,60 @@
+{
+  "sample_idx": 187,
+  "condition": 1,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 6,
+    "credit_amount": 250,
+    "installment": 2,
+    "age": 41,
+    "existing_credits": 2,
+    "checking_status": "no checking",
+    "credit_history": "critical/other existing credit",
+    "purpose": "new car",
+    "savings_status": ">=1000",
+    "employment": "1<=X<4",
+    "housing": "own",
+    "job": "unskilled resident",
+    "gender": "female",
+    "married": true
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 87,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "duration",
+      "value": -0.09,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.168409526348114
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.07,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.20773696899414062
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.1663064956665039
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 93.02,
+  "decision_boundary_abs_distance": 0.4344857517772945,
+  "warning_type": "none"
+}

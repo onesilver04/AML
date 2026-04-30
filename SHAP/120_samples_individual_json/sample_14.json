@@ -1,0 +1,60 @@
+{
+  "sample_idx": 14,
+  "condition": 1,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 18,
+    "credit_amount": 2124,
+    "installment": 4,
+    "age": 24,
+    "existing_credits": 2,
+    "checking_status": "<0",
+    "credit_history": "critical/other existing credit",
+    "purpose": "furniture/equipment",
+    "savings_status": "<100",
+    "employment": "1<=X<4",
+    "housing": "rent",
+    "job": "skilled",
+    "gender": "female",
+    "married": true
+  },
+  "predicted_label": "BAD CREDIT RISK",
+  "confidence": 59,
+  "true_label": "BAD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.07,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.1697230339050293
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "T.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 6,
+        "score": 0.19584190845489502
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.21646809577941895
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 25.0,
+  "decision_boundary_abs_distance": 0.0287777677020654,
+  "warning_type": "strong"
+}

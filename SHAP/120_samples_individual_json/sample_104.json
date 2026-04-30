@@ -1,0 +1,59 @@
+{
+  "sample_idx": 104,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 30,
+    "credit_amount": 7596,
+    "installment": 1,
+    "age": 63,
+    "existing_credits": 2,
+    "checking_status": "no checking",
+    "credit_history": "critical/other existing credit",
+    "purpose": "used car",
+    "savings_status": "no known savings",
+    "employment": ">=7",
+    "housing": "own",
+    "job": "skilled",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 87,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.08,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.1921544075012207
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.1832106113433838
+      }
+    },
+    {
+      "feature": "savings_status_no known savings",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.18031013011932373
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 90.7,
+  "decision_boundary_abs_distance": 0.4241106778223419,
+  "warning_type": "none"
+}

@@ -133,71 +133,58 @@ def build_confidence_dataframe(y_test, proba_bad, threshold, sample_indices=None
     return df
 
 
-def add_predicted_confidence_categories(confidence_df):
-    mean_conf = confidence_df["predicted_confidence"].mean()
-    std_conf = confidence_df["predicted_confidence"].std(ddof=0)
-    mean_minus_1sigma = mean_conf - std_conf
+def add_warning_type(confidence_df):
+    confidence_df = confidence_df.copy()
+    confidence_df["warning_type"] = "none"
+    class_stats = []
 
-    confidence_df["confidence_category"] = "middle_confidence"
-
-    confidence_df.loc[
-        confidence_df["predicted_confidence"] <= mean_minus_1sigma,
-        "confidence_category",
-    ] = "low_confidence"
-
-    confidence_df.loc[
-        confidence_df["predicted_confidence"] >= mean_conf,
-        "confidence_category",
-    ] = "high_confidence"
-
-    return confidence_df, {
-        "mean": float(mean_conf),
-        "std": float(std_conf),
-        "mean_minus_1sigma": float(mean_minus_1sigma),
-    }
-
-
-def add_class_based_confidence_categories(confidence_df):
-    """
-    Add confidence categories based on each class's own distribution.
-    - predicted_class_confidence_category: based on predicted_class's confidence distribution
-    
-    Categories (2 levels):
-    - 위험 (risk): confidence <= (class_mean - 1σ) - very low confidence
-    - 주의 (caution): confidence > (class_mean - 1σ) - below average but not very low
-    """
-    # For predicted_class only
-    for class_val in [0, 1]:
-        mask = confidence_df["predicted_class"] == class_val
+    for class_value in (0, 1):
+        mask = confidence_df["predicted_class"] == class_value
         subset = confidence_df.loc[mask, "predicted_confidence"]
-        if not subset.empty:
-            class_mean = subset.mean()
-            class_std = subset.std(ddof=0)
-            class_mean_minus_1sigma = class_mean - class_std
+        if subset.empty:
+            continue
 
-            confidence_df.loc[
-                mask & (confidence_df["predicted_confidence"] <= class_mean_minus_1sigma),
-                "predicted_class_confidence_category",
-            ] = "위험"
-            confidence_df.loc[
-                mask & (confidence_df["predicted_confidence"] > class_mean_minus_1sigma),
-                "predicted_class_confidence_category",
-            ] = "주의"
+        mean_conf = subset.mean()
+        std_conf = subset.std(ddof=0)
+        mean_minus_1sigma = mean_conf - std_conf
 
-    return confidence_df
+        confidence_df.loc[
+            mask
+            & (confidence_df["predicted_confidence"] <= mean_conf)
+            & (confidence_df["predicted_confidence"] > mean_minus_1sigma),
+            "warning_type",
+        ] = "weak_warning"
+
+        confidence_df.loc[
+            mask & (confidence_df["predicted_confidence"] <= mean_minus_1sigma),
+            "warning_type",
+        ] = "strong_warning"
+
+        class_stats.append(
+            {
+                "class_value": int(class_value),
+                "class_label": to_bad_positive_label(class_value),
+                "sample_count": int(len(subset)),
+                "mean": float(mean_conf),
+                "std": float(std_conf),
+                "mean_minus_1sigma": float(mean_minus_1sigma),
+            }
+        )
+
+    return confidence_df, class_stats
 
 
-def summarize_confidence_categories(confidence_df):
-    categories = ["low_confidence", "middle_confidence", "high_confidence"]
+def summarize_warning_types(confidence_df):
+    warning_types = ["strong_warning", "weak_warning", "none"]
     summary = []
 
-    for category in categories:
-        subset = confidence_df[confidence_df["confidence_category"] == category]
+    for warning_type in warning_types:
+        subset = confidence_df[confidence_df["warning_type"] == warning_type]
         misclassified = subset[subset["is_correct"] == False]
 
         summary.append(
             {
-                "category": category,
+                "warning_type": warning_type,
                 "sample_count": int(len(subset)),
                 "misclassified_count": int(len(misclassified)),
                 "misclassified_sample_indices": [
@@ -305,11 +292,8 @@ def main():
 
     confidence_df["raw_bad_probability"] = raw_proba_selected
 
-    confidence_df, pred_conf_stats = add_predicted_confidence_categories(
-        confidence_df
-    )
-    confidence_df = add_class_based_confidence_categories(confidence_df)
-    category_summary = summarize_confidence_categories(confidence_df)
+    confidence_df, warning_class_stats = add_warning_type(confidence_df)
+    warning_summary = summarize_warning_types(confidence_df)
 
     predicted_summary = summarize_group(
         confidence_df,
@@ -325,9 +309,12 @@ def main():
 
     overall_summary = {
         "sample_count": int(len(confidence_df)),
-        "mean_predicted_confidence": pred_conf_stats["mean"],
-        "std_predicted_confidence": pred_conf_stats["std"],
-        "pred_confidence_mean_minus_1sigma": pred_conf_stats["mean_minus_1sigma"],
+        "mean_predicted_confidence": float(
+            confidence_df["predicted_confidence"].mean()
+        ),
+        "std_predicted_confidence": float(
+            confidence_df["predicted_confidence"].std(ddof=0)
+        ),
         "accuracy": float(confidence_df["is_correct"].mean()),
     }
 
@@ -356,7 +343,8 @@ def main():
         "tuned_params": tuned["params"],
         "cv_auc": float(tuned["cv_auc"]),
         "overall": overall_summary,
-        "confidence_category_summary": category_summary,
+        "warning_type_class_stats": warning_class_stats,
+        "warning_type_summary": warning_summary,
         "raw_test_metrics": {
             "accuracy": float(raw_test_metrics["accuracy"]),
             "f1": float(raw_test_metrics["f1"]),
@@ -396,14 +384,18 @@ def main():
         print(f"Selected sample indices: {sample_indices}")
 
     print("\n=== Predicted confidence 기준 ===")
-    print(f"Mean predicted_confidence        : {pred_conf_stats['mean']:.4f}")
-    print(f"Std predicted_confidence         : {pred_conf_stats['std']:.4f}")
-    print(f"Mean - 1σ threshold              : {pred_conf_stats['mean_minus_1sigma']:.4f}")
-
-    print("\n=== Confidence category summary ===")
-    for row in category_summary:
+    for row in warning_class_stats:
         print(
-            f"{row['category']}: "
+            f"{row['class_label']}: "
+            f"mean={row['mean']:.4f}, "
+            f"std={row['std']:.4f}, "
+            f"mean-1σ={row['mean_minus_1sigma']:.4f}"
+        )
+
+    print("\n=== Warning type summary ===")
+    for row in warning_summary:
+        print(
+            f"{row['warning_type']}: "
             f"n={row['sample_count']}, "
             f"misclassified={row['misclassified_count']}, "
             f"misclassified_sample_indices={row['misclassified_sample_indices']}"

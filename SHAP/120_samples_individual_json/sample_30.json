@@ -1,0 +1,59 @@
+{
+  "sample_idx": 30,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 6,
+    "credit_amount": 1750,
+    "installment": 2,
+    "age": 45,
+    "existing_credits": 1,
+    "checking_status": "no checking",
+    "credit_history": "all paid",
+    "purpose": "radio/tv",
+    "savings_status": "500<=X<1000",
+    "employment": ">=7",
+    "housing": "own",
+    "job": "unskilled resident",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 83,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "duration",
+      "value": -0.09,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.1726810336112976
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.08,
+      "evidence_sentence": {
+        "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.2135254144668579
+      }
+    },
+    {
+      "feature": "credit_history_all paid",
+      "value": 0.04,
+      "evidence_sentence": {
+        "sentence": "INTRODUCTION According to the Federal Reserve economic data, the default rate on credit loans across all commercial banks is at an all-time high for the past 66 months, and it is likely to continue to climb throughout 2020.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.17587697505950928
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 77.91,
+  "decision_boundary_abs_distance": 0.3858524911674263,
+  "warning_type": "none"
+}

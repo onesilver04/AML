@@ -1,0 +1,60 @@
+{
+  "sample_idx": 100,
+  "condition": 1,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 48,
+    "credit_amount": 3578,
+    "installment": 4,
+    "age": 47,
+    "existing_credits": 1,
+    "checking_status": "no checking",
+    "credit_history": "critical/other existing credit",
+    "purpose": "radio/tv",
+    "savings_status": "no known savings",
+    "employment": ">=7",
+    "housing": "own",
+    "job": "skilled",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 91,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.09,
+      "evidence_sentence": {
+        "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 24,
+        "score": 0.18700480461120605
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.20578211545944214
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.23777121305465698
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 97.67,
+  "decision_boundary_abs_distance": 0.466422340023632,
+  "warning_type": "none"
+}

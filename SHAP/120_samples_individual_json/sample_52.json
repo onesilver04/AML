@@ -1,0 +1,59 @@
+{
+  "sample_idx": 52,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 24,
+    "credit_amount": 6615,
+    "installment": 2,
+    "age": 75,
+    "existing_credits": 2,
+    "checking_status": "<0",
+    "credit_history": "critical/other existing credit",
+    "purpose": "used car",
+    "savings_status": "<100",
+    "employment": "unemployed",
+    "housing": "for free",
+    "job": "high qualif/self emp/mgmt",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 55,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.06,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.1521046757698059
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 2,
+        "score": 0.22024142742156982
+      }
+    },
+    {
+      "feature": "purpose_used car",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "6 2.3 Experimental Design This study aims to enhance the digital economy by refining credit risk models used by financial institutions.",
+        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+        "page": 7,
+        "score": 0.19836437702178955
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 31.4,
+  "decision_boundary_abs_distance": 0.1118374385814886,
+  "warning_type": "weak"
+}

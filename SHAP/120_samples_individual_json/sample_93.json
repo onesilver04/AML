@@ -1,0 +1,60 @@
+{
+  "sample_idx": 93,
+  "condition": 1,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 36,
+    "credit_amount": 10875,
+    "installment": 2,
+    "age": 45,
+    "existing_credits": 2,
+    "checking_status": "no checking",
+    "credit_history": "delayed previously",
+    "purpose": "new car",
+    "savings_status": "<100",
+    "employment": ">=7",
+    "housing": "own",
+    "job": "skilled",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 53,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.11,
+      "evidence_sentence": {
+        "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 24,
+        "score": 0.19722944498062134
+      }
+    },
+    {
+      "feature": "credit_amount",
+      "value": 0.07,
+      "evidence_sentence": {
+        "sentence": "T.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 6,
+        "score": 0.1806233525276184
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.21262413263320923
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 25.58,
+  "decision_boundary_abs_distance": 0.0943220111003175,
+  "warning_type": "weak"
+}

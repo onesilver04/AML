@@ -1,0 +1,59 @@
+{
+  "sample_idx": 64,
+  "distance": "far",
+  "is_correct": false,
+  "customer_data": {
+    "duration": 12,
+    "credit_amount": 1386,
+    "installment": 2,
+    "age": 26,
+    "existing_credits": 1,
+    "checking_status": "no checking",
+    "credit_history": "existing paid",
+    "purpose": "new car",
+    "savings_status": "500<=X<1000",
+    "employment": "1<=X<4",
+    "housing": "own",
+    "job": "skilled",
+    "gender": "female",
+    "married": true
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 81,
+  "true_label": "BAD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.12,
+      "evidence_sentence": {
+        "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 24,
+        "score": 0.19386112689971924
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "The dataset includes 30000 observations in which 6636 are default payment observations, which also indicates an imbalance between the two classes.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 6,
+        "score": 0.18719029426574707
+      }
+    },
+    {
+      "feature": "duration",
+      "value": -0.03,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.20337700843811035
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 96.88,
+  "decision_boundary_abs_distance": 0.3696432615669061,
+  "warning_type": "none"
+}

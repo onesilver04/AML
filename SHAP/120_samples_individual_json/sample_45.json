@@ -1,0 +1,60 @@
+{
+  "sample_idx": 45,
+  "condition": 1,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 12,
+    "credit_amount": 522,
+    "installment": 4,
+    "age": 42,
+    "existing_credits": 2,
+    "checking_status": "no checking",
+    "credit_history": "critical/other existing credit",
+    "purpose": "radio/tv",
+    "savings_status": "500<=X<1000",
+    "employment": ">=7",
+    "housing": "own",
+    "job": "skilled",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 89,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.1,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.19200855493545532
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.06,
+      "evidence_sentence": {
+        "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.16958022117614746
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.03,
+      "evidence_sentence": {
+        "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+        "page": 7,
+        "score": 0.20534604787826538
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 94.19,
+  "decision_boundary_abs_distance": 0.4533771996608219,
+  "warning_type": "none"
+}

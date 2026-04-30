@@ -1,0 +1,60 @@
+{
+  "sample_idx": 172,
+  "condition": 1,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 11,
+    "credit_amount": 1577,
+    "installment": 4,
+    "age": 20,
+    "existing_credits": 1,
+    "checking_status": "0<=X<200",
+    "credit_history": "existing paid",
+    "purpose": "furniture/equipment",
+    "savings_status": ">=1000",
+    "employment": "<1",
+    "housing": "own",
+    "job": "skilled",
+    "gender": "female",
+    "married": true
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 52,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "duration",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.17289471626281738
+      }
+    },
+    {
+      "feature": "savings_status_>=1000",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+        "page": 7,
+        "score": 0.20716577768325806
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "In consumer and retail lending, this uncertainty is managed using credit and be- havioural scoring systems, which predict the probability that a borrower will default on their obligations (Thomas, 2000).",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 7,
+        "score": 0.2127211093902588
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 23.26,
+  "decision_boundary_abs_distance": 0.0810162899963345,
+  "warning_type": "strong"
+}

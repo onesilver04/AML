@@ -1,0 +1,59 @@
+{
+  "sample_idx": 196,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 18,
+    "credit_amount": 2427,
+    "installment": 4,
+    "age": 42,
+    "existing_credits": 2,
+    "checking_status": "0<=X<200",
+    "credit_history": "delayed previously",
+    "purpose": "business",
+    "savings_status": "no known savings",
+    "employment": ">=7",
+    "housing": "own",
+    "job": "skilled",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 75,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "savings_status_no known savings",
+      "value": -0.07,
+      "evidence_sentence": {
+        "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.20112735033035278
+      }
+    },
+    {
+      "feature": "savings_status_<100",
+      "value": -0.07,
+      "evidence_sentence": {
+        "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 2,
+        "score": 0.1942386031150818
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.1958761215209961
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 56.98,
+  "decision_boundary_abs_distance": 0.3135735802034757,
+  "warning_type": "none"
+}

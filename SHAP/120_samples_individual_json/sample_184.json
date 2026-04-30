@@ -1,0 +1,59 @@
+{
+  "sample_idx": 184,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 18,
+    "credit_amount": 1936,
+    "installment": 2,
+    "age": 23,
+    "existing_credits": 2,
+    "checking_status": "<0",
+    "credit_history": "existing paid",
+    "purpose": "radio/tv",
+    "savings_status": "no known savings",
+    "employment": "4<=X<7",
+    "housing": "rent",
+    "job": "unskilled resident",
+    "gender": "male",
+    "married": true
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 50,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_<0",
+      "value": 0.07,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.20239049196243286
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 2,
+        "score": 0.2137061357498169
+      }
+    },
+    {
+      "feature": "savings_status_no known savings",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.21847975254058838
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 19.77,
+  "decision_boundary_abs_distance": 0.0610356637630588,
+  "warning_type": "strong"
+}

@@ -1,0 +1,60 @@
+{
+  "sample_idx": 169,
+  "condition": 1,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 10,
+    "credit_amount": 1287,
+    "installment": 4,
+    "age": 45,
+    "existing_credits": 1,
+    "checking_status": "no checking",
+    "credit_history": "existing paid",
+    "purpose": "new car",
+    "savings_status": "no known savings",
+    "employment": ">=7",
+    "housing": "own",
+    "job": "unskilled resident",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 74,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.09,
+      "evidence_sentence": {
+        "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.19225478172302246
+      }
+    },
+    {
+      "feature": "duration",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.2045421600341797
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.2209739089012146
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 51.16,
+  "decision_boundary_abs_distance": 0.3025782442521829,
+  "warning_type": "none"
+}

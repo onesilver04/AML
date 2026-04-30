@@ -1,0 +1,60 @@
+{
+  "sample_idx": 194,
+  "condition": 1,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "duration": 12,
+    "credit_amount": 2012,
+    "installment": 4,
+    "age": 61,
+    "existing_credits": 1,
+    "checking_status": "no checking",
+    "credit_history": "critical/other existing credit",
+    "purpose": "education",
+    "savings_status": "no known savings",
+    "employment": "4<=X<7",
+    "housing": "own",
+    "job": "skilled",
+    "gender": "female",
+    "married": true
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 83,
+  "true_label": "GOOD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.1,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.19443053007125854
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 2,
+        "score": 0.1917545199394226
+      }
+    },
+    {
+      "feature": "purpose_education",
+      "value": 0.04,
+      "evidence_sentence": {
+        "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.20269811153411865
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 79.07,
+  "decision_boundary_abs_distance": 0.3900720382486219,
+  "warning_type": "none"
+}

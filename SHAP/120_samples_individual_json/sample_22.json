@@ -1,0 +1,59 @@
+{
+  "sample_idx": 22,
+  "distance": "far",
+  "is_correct": false,
+  "customer_data": {
+    "duration": 12,
+    "credit_amount": 2292,
+    "installment": 4,
+    "age": 42,
+    "existing_credits": 2,
+    "checking_status": "no checking",
+    "credit_history": "critical/other existing credit",
+    "purpose": "business",
+    "savings_status": "<100",
+    "employment": "unemployed",
+    "housing": "own",
+    "job": "high qualif/self emp/mgmt",
+    "gender": "male",
+    "married": false
+  },
+  "predicted_label": "GOOD CREDIT RISK",
+  "confidence": 80,
+  "true_label": "BAD CREDIT RISK",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.1,
+      "evidence_sentence": {
+        "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 24,
+        "score": 0.19998878240585327
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.08,
+      "evidence_sentence": {
+        "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.18082159757614136
+      }
+    },
+    {
+      "feature": "duration",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.20092594623565674
+      }
+    }
+  ],
+  "class_confidence_relative_percent": 93.75,
+  "decision_boundary_abs_distance": 0.3625604852643878,
+  "warning_type": "none"
+}
