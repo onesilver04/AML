@@ -1,29 +1,30 @@
 {
   "sample_idx": 70,
+  "condition": 2,
   "distance": "near",
   "is_correct": false,
   "customer_data": {
-    "duration": 6,
-    "credit_amount": 14555,
-    "installment": 1,
-    "age": 23,
-    "existing_credits": 1,
-    "checking_status": "0<=X<200",
-    "credit_history": "existing paid",
-    "purpose": "new car",
-    "savings_status": "no known savings",
-    "employment": "unemployed",
-    "housing": "own",
-    "job": "unemp/unskilled non res",
-    "gender": "male",
-    "married": false
+    "대출 기간": 6,
+    "대출 금액": 14555,
+    "월 상환 부담 수준": 1,
+    "나이": 23,
+    "기존 대출 수": 1,
+    "계좌 잔액": "적음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "신차 구매",
+    "저축 잔액": "없음",
+    "재직 기간": "무직",
+    "거주 상태": "자가 거주",
+    "직업": "무직, 단순직 외국인",
+    "성별": "남성",
+    "결혼 여부": "x"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 58,
-  "true_label": "BAD CREDIT RISK",
+  "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": -0.11,
       "evidence_sentence": {
         "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
@@ -33,7 +34,7 @@
       }
     },
     {
-      "feature": "credit_amount",
+      "feature": "대출 금액",
       "value": 0.08,
       "evidence_sentence": {
         "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
@@ -43,7 +44,7 @@
       }
     },
     {
-      "feature": "savings_status_no known savings",
+      "feature": "저축 내역 없음",
       "value": -0.06,
       "evidence_sentence": {
         "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
@@ -53,6 +54,7 @@
       }
     }
   ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 짧을수록 신용 위험 요인들이 완화되므로 신용 위험이 감소하는 신호로 인식되며, 본 모델도 이를 위험 감소 요인으로 판단합니다 [1].\n대출 금액이 클수록 대출 노출이 커져 상환 불확실성이 증가하므로 신용 위험이 상승하는 신호로 인식되며, 본 모델도 이를 위험 증가 요인으로 판단합니다 [2].\n저축 계좌가 없는 경우, 계좌 상태가 신용 위험 본 모델링에서 중요한 결정 요인이므로 신용 위험에 영향을 미치는 요인으로 인식되며, 본 모델도 이를 위험 감소 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
   "class_confidence_relative_percent": 15.62,
   "decision_boundary_abs_distance": 0.143781565088213,
   "warning_type": "weak"

@@ -1,29 +1,30 @@
 {
   "sample_idx": 35,
+  "condition": 3,
   "distance": "near",
   "is_correct": false,
   "customer_data": {
-    "duration": 24,
-    "credit_amount": 2384,
-    "installment": 4,
-    "age": 64,
-    "existing_credits": 1,
-    "checking_status": "<0",
-    "credit_history": "existing paid",
-    "purpose": "radio/tv",
-    "savings_status": "<100",
-    "employment": ">=7",
-    "housing": "rent",
-    "job": "unskilled resident",
-    "gender": "male",
-    "married": false
+    "대출 기간": 24,
+    "대출 금액": 2384,
+    "월 상환 부담 수준": 4,
+    "나이": 64,
+    "기존 대출 수": 1,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "7년 이상",
+    "거주 상태": "임차 거주",
+    "직업": "단순 노무직",
+    "성별": "남성",
+    "결혼 여부": "x"
   },
-  "predicted_label": "BAD CREDIT RISK",
+  "predicted_label": "높음",
   "confidence": 69,
-  "true_label": "GOOD CREDIT RISK",
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": 0.07,
       "evidence_sentence": {
         "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
@@ -33,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.06,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -43,7 +44,7 @@
       }
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": 0.03,
       "evidence_sentence": {
         "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
@@ -53,6 +54,7 @@
       }
     }
   ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 금융적 어려움이나 유동성 제약을 나타내므로 신용 위험을 증가시키는 신호로 인식되며, 본 모델은 이를 위험 증가 요인으로 판단합니다. [1]\n출금 계좌 없음은 일반적으로 신용 위험을 낮추는 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 해석합니다. [2]\n대출 기간이 길다는 것은 신용 위험을 높이는 강력한 예측 요인으로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다. [3]\n전반적으로 이 고객은 채무 불이행 위험이 높습니다.",
   "class_confidence_relative_percent": 36.05,
   "decision_boundary_abs_distance": 0.1280240101591649,
   "warning_type": "none"

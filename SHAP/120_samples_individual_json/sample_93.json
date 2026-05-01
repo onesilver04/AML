@@ -4,27 +4,27 @@
   "distance": "near",
   "is_correct": true,
   "customer_data": {
-    "duration": 36,
-    "credit_amount": 10875,
-    "installment": 2,
-    "age": 45,
-    "existing_credits": 2,
-    "checking_status": "no checking",
-    "credit_history": "delayed previously",
-    "purpose": "new car",
-    "savings_status": "<100",
-    "employment": ">=7",
-    "housing": "own",
-    "job": "skilled",
-    "gender": "male",
-    "married": false
+    "대출 기간": 36,
+    "대출 금액": 10875,
+    "월 상환 부담 수준": 2,
+    "나이": 45,
+    "기존 대출 수": 2,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "연체 이력 있음",
+    "대출 목적": "신차 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "7년 이상",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 53,
-  "true_label": "GOOD CREDIT RISK",
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": -0.11,
       "evidence_sentence": {
         "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "credit_amount",
+      "feature": "대출 금액",
       "value": 0.07,
       "evidence_sentence": {
         "sentence": "T.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
@@ -54,6 +54,7 @@
       }
     }
   ],
+  "explanation": null,
   "class_confidence_relative_percent": 25.58,
   "decision_boundary_abs_distance": 0.0943220111003175,
   "warning_type": "weak"

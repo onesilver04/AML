@@ -1,29 +1,30 @@
 {
   "sample_idx": 91,
+  "condition": 3,
   "distance": "near",
   "is_correct": true,
   "customer_data": {
-    "duration": 15,
-    "credit_amount": 1275,
-    "installment": 4,
-    "age": 24,
-    "existing_credits": 1,
-    "checking_status": "<0",
-    "credit_history": "existing paid",
-    "purpose": "domestic appliance",
-    "savings_status": "no known savings",
-    "employment": "1<=X<4",
-    "housing": "rent",
-    "job": "skilled",
-    "gender": "female",
-    "married": true
+    "대출 기간": 15,
+    "대출 금액": 1275,
+    "월 상환 부담 수준": 4,
+    "나이": 24,
+    "기존 대출 수": 1,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "가전제품 구매",
+    "저축 잔액": "없음",
+    "재직 기간": "1~4년",
+    "거주 상태": "임차 거주",
+    "직업": "숙련 기술직",
+    "성별": "여성",
+    "결혼 여부": "o"
   },
-  "predicted_label": "BAD CREDIT RISK",
+  "predicted_label": "높음",
   "confidence": 64,
-  "true_label": "BAD CREDIT RISK",
+  "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": 0.08,
       "evidence_sentence": {
         "sentence": "Number Description Class Attribute 1 Status of existing checking account Qualitative Attribute 2 Duration in month Numerical Attribute 3 Credit history Qualitative Attribute 4 Purpose Qualitative Attribute 5 Credit amount Numerical Attribute 6 Savings account/bonds Qualitative Attribute 7 Present employment since Qualitative Attribute 8 Instalment rate in percentage of disposable income Numerical Attribute 9 Personal status and sex Qualitative Attribute 10 Other debtors/guarantors Qualitative Attribute 11 Present residence since Numerical Attribute 12 Property Qualitative Attribute 13 Age in years Numerical Attribute 14 Other instalment plans Qualitative attribute 15 Housing Qualitative",
@@ -33,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.06,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -43,7 +44,7 @@
       }
     },
     {
-      "feature": "savings_status_no known savings",
+      "feature": "저축 내역 없음",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "Savings are also informative.",
@@ -53,6 +54,7 @@
       }
     }
   ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행 위험을 크게 증가시키는 신호로 알려져 있으며, 본 모델은 이를 신용 위험 증가 요인으로 판단합니다 [1].\n출금 계좌 없음은 일반적으로 신용 위험을 낮추는 요인으로 인식되지만, 본 모델은 이를 신용 위험 증가 요인으로 분류합니다 [2].\n저축 내역이 확인되지 않는 것은 채무 불이행 가능성을 높이는 요인으로 여겨지지만, 본 모델은 이를 신용 위험 감소 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높은 수준으로 평가됩니다.",
   "class_confidence_relative_percent": 43.75,
   "decision_boundary_abs_distance": 0.0744410828398919,
   "warning_type": "weak"

@@ -4,27 +4,27 @@
   "distance": "far",
   "is_correct": true,
   "customer_data": {
-    "duration": 24,
-    "credit_amount": 5804,
-    "installment": 4,
-    "age": 27,
-    "existing_credits": 2,
-    "checking_status": "no checking",
-    "credit_history": "critical/other existing credit",
-    "purpose": "used car",
-    "savings_status": ">=1000",
-    "employment": "1<=X<4",
-    "housing": "own",
-    "job": "skilled",
-    "gender": "male",
-    "married": false
+    "대출 기간": 24,
+    "대출 금액": 5804,
+    "월 상환 부담 수준": 4,
+    "나이": 27,
+    "기존 대출 수": 2,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "신용 문제 이력 있음",
+    "대출 목적": "중고차 구매",
+    "저축 잔액": "충분",
+    "재직 기간": "1~4년",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 86,
-  "true_label": "GOOD CREDIT RISK",
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": -0.09,
       "evidence_sentence": {
         "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "credit_history_critical/other existing credit",
+      "feature": "신용 문제 이력 있음",
       "value": -0.05,
       "evidence_sentence": {
         "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "purpose_used car",
+      "feature": "중고차 구매 목적",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
@@ -54,6 +54,7 @@
       }
     }
   ],
+  "explanation": null,
   "class_confidence_relative_percent": 87.21,
   "decision_boundary_abs_distance": 0.4132664645085337,
   "warning_type": "none"

@@ -4,27 +4,27 @@
   "distance": "near",
   "is_correct": true,
   "customer_data": {
-    "duration": 24,
-    "credit_amount": 11328,
-    "installment": 2,
-    "age": 29,
-    "existing_credits": 2,
-    "checking_status": "0<=X<200",
-    "credit_history": "existing paid",
-    "purpose": "other",
-    "savings_status": "<100",
-    "employment": "1<=X<4",
-    "housing": "own",
-    "job": "high qualif/self emp/mgmt",
-    "gender": "male",
-    "married": false
+    "대출 기간": 24,
+    "대출 금액": 11328,
+    "월 상환 부담 수준": 2,
+    "나이": 29,
+    "기존 대출 수": 2,
+    "계좌 잔액": "적음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "기타",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1~4년",
+    "거주 상태": "자가 거주",
+    "직업": "전문직, 자영업, 관리직",
+    "성별": "남성",
+    "결혼 여부": "x"
   },
-  "predicted_label": "BAD CREDIT RISK",
+  "predicted_label": "높음",
   "confidence": 69,
-  "true_label": "BAD CREDIT RISK",
+  "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "credit_amount",
+      "feature": "대출 금액",
       "value": 0.09,
       "evidence_sentence": {
         "sentence": "If credit risk is underestimated and losses are realised, these costs are passed on to the customers through higher interest",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.05,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": 0.03,
       "evidence_sentence": {
         "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
@@ -54,6 +54,7 @@
       }
     }
   ],
+  "explanation": null,
   "class_confidence_relative_percent": 75.0,
   "decision_boundary_abs_distance": 0.126664425428034,
   "warning_type": "none"

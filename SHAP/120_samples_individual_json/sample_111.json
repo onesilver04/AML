@@ -4,27 +4,27 @@
   "distance": "far",
   "is_correct": false,
   "customer_data": {
-    "duration": 24,
-    "credit_amount": 4591,
-    "installment": 2,
-    "age": 54,
-    "existing_credits": 3,
-    "checking_status": "no checking",
-    "credit_history": "existing paid",
-    "purpose": "business",
-    "savings_status": ">=1000",
-    "employment": "1<=X<4",
-    "housing": "own",
-    "job": "high qualif/self emp/mgmt",
-    "gender": "male",
-    "married": false
+    "대출 기간": 24,
+    "대출 금액": 4591,
+    "월 상환 부담 수준": 2,
+    "나이": 54,
+    "기존 대출 수": 3,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "사업 자금",
+    "저축 잔액": "충분",
+    "재직 기간": "1~4년",
+    "거주 상태": "자가 거주",
+    "직업": "전문직, 자영업, 관리직",
+    "성별": "남성",
+    "결혼 여부": "x"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 68,
-  "true_label": "BAD CREDIT RISK",
+  "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": -0.08,
       "evidence_sentence": {
         "sentence": "1 1 Introduction Credit risk assessment remains a central challenge in modern finance, as lenders must evalu- ate the likelihood that borrowers will meet their obligations.",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "savings_status_>=1000",
+      "feature": "저축 잔액 충분",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "savings_status_<100",
+      "feature": "저축 잔액이 거의 없음",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
@@ -54,6 +54,7 @@
       }
     }
   ],
+  "explanation": null,
   "class_confidence_relative_percent": 78.12,
   "decision_boundary_abs_distance": 0.2476481522817774,
   "warning_type": "none"

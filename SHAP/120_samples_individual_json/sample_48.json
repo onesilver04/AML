@@ -4,27 +4,27 @@
   "distance": "near",
   "is_correct": true,
   "customer_data": {
-    "duration": 12,
-    "credit_amount": 1262,
-    "installment": 2,
-    "age": 49,
-    "existing_credits": 1,
-    "checking_status": "<0",
-    "credit_history": "existing paid",
-    "purpose": "furniture/equipment",
-    "savings_status": "no known savings",
-    "employment": ">=7",
-    "housing": "own",
-    "job": "unskilled resident",
-    "gender": "male",
-    "married": false
+    "대출 기간": 12,
+    "대출 금액": 1262,
+    "월 상환 부담 수준": 2,
+    "나이": 49,
+    "기존 대출 수": 1,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "가구 또는 장비 구매",
+    "저축 잔액": "없음",
+    "재직 기간": "7년 이상",
+    "거주 상태": "자가 거주",
+    "직업": "단순 노무직",
+    "성별": "남성",
+    "결혼 여부": "x"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 57,
-  "true_label": "GOOD CREDIT RISK",
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": 0.07,
       "evidence_sentence": {
         "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.05,
       "evidence_sentence": {
         "sentence": "The performance of clas- siﬁers is compromised when good borrowers and defaulters have an imbalanced distribution of classes because classiﬁers",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "savings_status_<100",
+      "feature": "저축 잔액이 거의 없음",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "and low-risk groups with the information like gender, age and savings account.",
@@ -54,6 +54,7 @@
       }
     }
   ],
+  "explanation": null,
   "class_confidence_relative_percent": 33.72,
   "decision_boundary_abs_distance": 0.1276400116734396,
   "warning_type": "weak"

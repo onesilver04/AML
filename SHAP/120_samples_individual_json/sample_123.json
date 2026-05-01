@@ -4,27 +4,27 @@
   "distance": "far",
   "is_correct": true,
   "customer_data": {
-    "duration": 48,
-    "credit_amount": 10222,
-    "installment": 4,
-    "age": 37,
-    "existing_credits": 1,
-    "checking_status": "no checking",
-    "credit_history": "existing paid",
-    "purpose": "radio/tv",
-    "savings_status": "no known savings",
-    "employment": "4<=X<7",
-    "housing": "own",
-    "job": "skilled",
-    "gender": "male",
-    "married": false
+    "대출 기간": 48,
+    "대출 금액": 10222,
+    "월 상환 부담 수준": 4,
+    "나이": 37,
+    "기존 대출 수": 1,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "없음",
+    "재직 기간": "4~7년",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 75,
-  "true_label": "GOOD CREDIT RISK",
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": -0.1,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "credit_amount",
+      "feature": "대출 금액",
       "value": 0.06,
       "evidence_sentence": {
         "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": -0.05,
       "evidence_sentence": {
         "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
@@ -54,6 +54,7 @@
       }
     }
   ],
+  "explanation": null,
   "class_confidence_relative_percent": 52.33,
   "decision_boundary_abs_distance": 0.3046399740264061,
   "warning_type": "none"

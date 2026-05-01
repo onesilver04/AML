@@ -4,27 +4,27 @@
   "distance": "far",
   "is_correct": true,
   "customer_data": {
-    "duration": 12,
-    "credit_amount": 1503,
-    "installment": 4,
-    "age": 41,
-    "existing_credits": 1,
-    "checking_status": "no checking",
-    "credit_history": "delayed previously",
-    "purpose": "used car",
-    "savings_status": "<100",
-    "employment": "1<=X<4",
-    "housing": "rent",
-    "job": "skilled",
-    "gender": "male",
-    "married": true
+    "대출 기간": 12,
+    "대출 금액": 1503,
+    "월 상환 부담 수준": 4,
+    "나이": 41,
+    "기존 대출 수": 1,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "연체 이력 있음",
+    "대출 목적": "중고차 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1~4년",
+    "거주 상태": "임차 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "o"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 73,
-  "true_label": "GOOD CREDIT RISK",
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": -0.11,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "In addition, we see that the exposure to credit risk and to interest rate risk are negatively associated, where the coefficients vary slightly in the two different specifications, from −0.026 to −0.023.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "purpose_used car",
+      "feature": "중고차 구매 목적",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
@@ -54,6 +54,7 @@
       }
     }
   ],
+  "explanation": null,
   "class_confidence_relative_percent": 45.35,
   "decision_boundary_abs_distance": 0.2868503601455388,
   "warning_type": "none"

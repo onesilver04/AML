@@ -4,27 +4,27 @@
   "distance": "near",
   "is_correct": true,
   "customer_data": {
-    "duration": 24,
-    "credit_amount": 5152,
-    "installment": 4,
-    "age": 25,
-    "existing_credits": 1,
-    "checking_status": ">=200",
-    "credit_history": "existing paid",
-    "purpose": "radio/tv",
-    "savings_status": "<100",
-    "employment": "4<=X<7",
-    "housing": "own",
-    "job": "skilled",
-    "gender": "male",
-    "married": false
+    "대출 기간": 24,
+    "대출 금액": 5152,
+    "월 상환 부담 수준": 4,
+    "나이": 25,
+    "기존 대출 수": 1,
+    "계좌 잔액": "충분",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "4~7년",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 51,
-  "true_label": "GOOD CREDIT RISK",
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.07,
       "evidence_sentence": {
         "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": -0.05,
       "evidence_sentence": {
         "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "savings_status_<100",
+      "feature": "저축 잔액이 거의 없음",
       "value": 0.03,
       "evidence_sentence": {
         "sentence": "Even after exclusions, the reduced OLS model still shows limited explanatory power, with an R2 of 0.24 (Adj.R 2 =0.22) and a lower but still elevated condition number (=3.78×10 4).",
@@ -54,6 +54,7 @@
       }
     }
   ],
+  "explanation": null,
   "class_confidence_relative_percent": 20.93,
   "decision_boundary_abs_distance": 0.0664716764573764,
   "warning_type": "strong"

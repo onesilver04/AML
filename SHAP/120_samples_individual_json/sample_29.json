@@ -1,29 +1,30 @@
 {
   "sample_idx": 29,
+  "condition": 3,
   "distance": "far",
   "is_correct": true,
   "customer_data": {
-    "duration": 12,
-    "credit_amount": 1412,
-    "installment": 4,
-    "age": 29,
-    "existing_credits": 2,
-    "checking_status": "no checking",
-    "credit_history": "critical/other existing credit",
-    "purpose": "business",
-    "savings_status": "<100",
-    "employment": "1<=X<4",
-    "housing": "own",
-    "job": "high qualif/self emp/mgmt",
-    "gender": "female",
-    "married": true
+    "대출 기간": 12,
+    "대출 금액": 1412,
+    "월 상환 부담 수준": 4,
+    "나이": 29,
+    "기존 대출 수": 2,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "신용 문제 이력 있음",
+    "대출 목적": "사업 자금",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1~4년",
+    "거주 상태": "자가 거주",
+    "직업": "전문직, 자영업, 관리직",
+    "성별": "여성",
+    "결혼 여부": "o"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 78,
-  "true_label": "GOOD CREDIT RISK",
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": -0.1,
       "evidence_sentence": {
         "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
@@ -33,7 +34,7 @@
       }
     },
     {
-      "feature": "credit_history_critical/other existing credit",
+      "feature": "신용 문제 이력 있음",
       "value": -0.06,
       "evidence_sentence": {
         "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
@@ -43,7 +44,7 @@
       }
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": -0.05,
       "evidence_sentence": {
         "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
@@ -53,6 +54,7 @@
       }
     }
   ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n신용 문제 이력이나 다른 기존 대출이 포함된 신용 기록은 채무 불이행 예측의 표준 지표로 알려져 있어, 본 모델 역시 이를 위험 감소 요인으로 식별합니다 [2].\n대출 기간이 길수록 위험 증가 요인으로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
   "class_confidence_relative_percent": 61.63,
   "decision_boundary_abs_distance": 0.3382145768122905,
   "warning_type": "none"

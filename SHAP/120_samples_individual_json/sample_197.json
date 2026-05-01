@@ -4,27 +4,27 @@
   "distance": "far",
   "is_correct": true,
   "customer_data": {
-    "duration": 12,
-    "credit_amount": 1262,
-    "installment": 3,
-    "age": 25,
-    "existing_credits": 1,
-    "checking_status": "no checking",
-    "credit_history": "existing paid",
-    "purpose": "radio/tv",
-    "savings_status": "<100",
-    "employment": "1<=X<4",
-    "housing": "own",
-    "job": "skilled",
-    "gender": "male",
-    "married": false
+    "대출 기간": 12,
+    "대출 금액": 1262,
+    "월 상환 부담 수준": 3,
+    "나이": 25,
+    "기존 대출 수": 1,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1~4년",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 82,
-  "true_label": "GOOD CREDIT RISK",
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": -0.12,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": -0.05,
       "evidence_sentence": {
         "sentence": "Alam et al.: Investigation of Credit Card Default Prediction in the Imbalanced Datasets FIGURE 2.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
@@ -54,6 +54,7 @@
       }
     }
   ],
+  "explanation": null,
   "class_confidence_relative_percent": 76.74,
   "decision_boundary_abs_distance": 0.3820816985022567,
   "warning_type": "none"

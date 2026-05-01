@@ -4,27 +4,27 @@
   "distance": "near",
   "is_correct": true,
   "customer_data": {
-    "duration": 11,
-    "credit_amount": 1577,
-    "installment": 4,
-    "age": 20,
-    "existing_credits": 1,
-    "checking_status": "0<=X<200",
-    "credit_history": "existing paid",
-    "purpose": "furniture/equipment",
-    "savings_status": ">=1000",
-    "employment": "<1",
-    "housing": "own",
-    "job": "skilled",
-    "gender": "female",
-    "married": true
+    "대출 기간": 11,
+    "대출 금액": 1577,
+    "월 상환 부담 수준": 4,
+    "나이": 20,
+    "기존 대출 수": 1,
+    "계좌 잔액": "적음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "가구 또는 장비 구매",
+    "저축 잔액": "충분",
+    "재직 기간": "1년 미만",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "여성",
+    "결혼 여부": "o"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 52,
-  "true_label": "GOOD CREDIT RISK",
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": -0.05,
       "evidence_sentence": {
         "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "savings_status_>=1000",
+      "feature": "저축 잔액 충분",
       "value": -0.05,
       "evidence_sentence": {
         "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.05,
       "evidence_sentence": {
         "sentence": "In consumer and retail lending, this uncertainty is managed using credit and be- havioural scoring systems, which predict the probability that a borrower will default on their obligations (Thomas, 2000).",
@@ -54,6 +54,7 @@
       }
     }
   ],
+  "explanation": null,
   "class_confidence_relative_percent": 23.26,
   "decision_boundary_abs_distance": 0.0810162899963345,
   "warning_type": "strong"

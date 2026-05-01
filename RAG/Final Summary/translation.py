@@ -2,12 +2,13 @@ import argparse
 import json
 import sys
 from pathlib import Path
+import re
 
 from langchain_ollama import ChatOllama
 
 
-DEFAULT_INPUT = Path("RAG/Final Summary/Correct_Results")
-DEFAULT_OUTPUT = ("RAG/Final Summary/Correct_Results_ko")
+DEFAULT_INPUT = Path("RAG/Final Summary/Wrong_Results")
+DEFAULT_OUTPUT = ("RAG/Final Summary/Wrong_Results_ko")
 MODEL_NAME = "exaone3.5:7.8b"
 
 
@@ -134,7 +135,8 @@ FEATURE_NAME_MAP = {
     "class": "신용 등급",
     "Sex": "성별",
     "Married": "결혼 여부",
-    "신청자는":"고객은"
+    "신청자는":"고객은",
+    "default":"채무 불이행"
 }
 
 
@@ -185,6 +187,24 @@ GENERAL RULES:
 - Do NOT create extra introductory sentences.
 - Do NOT create extra follow-up sentences.
 - Do NOT split one feature explanation into multiple sentences.
+
+OPENING SENTENCE RULE (CRITICAL):
+- The FIRST sentence must ALWAYS start with:
+본 AI가 예측한 결과에 따르면,\\n
+- This prefix must appear exactly once at the very beginning.
+- Do NOT modify or paraphrase this phrase.
+- Do NOT create a separate introductory sentence.
+- The first feature explanation must come immediately after this prefix.
+
+MODEL REFERENCE RULE (CRITICAL):
+- Any expression referring to the model as a subject must use "본 모델은".
+- Do NOT use generic expressions such as "모델은", "이 모델은", "AI 모델은".
+- Replace them with "본 모델은".
+- Examples:
+  WRONG: "모델은 이를 위험 감소 요인으로 판단합니다."
+  WRONG: "이 모델은 이를 위험 감소 요인으로 판단합니다."
+  WRONG: "AI 모델은 이를 위험 감소 요인으로 판단합니다."
+  CORRECT: "본 모델은 이를 위험 감소 요인으로 판단합니다."
 
 TRANSLATION RULES:
 - Translate the entire text into natural Korean.
@@ -288,7 +308,6 @@ Text:
 Korean:
 """
 
-
 def load_model(model_name: str):
     return ChatOllama(
         model=model_name,
@@ -304,6 +323,27 @@ def translate(text: str, llm):
 
     translated = result.content.strip()
     translated = force_replace_feature_names(translated)
+
+    opening = "본 AI가 예측한 결과에 따르면,\\n"
+
+    # 1. 기존 opening 변형 전부 제거
+    translated = re.sub(
+        r"^(본\s*AI가\s*예측한\s*결과에\s*따르면,?\s*(\\n|\n)?|"
+        r"본\s*AI\s*모델의\s*예측에\s*따르면,?\s*(\\n|\n)?|"
+        r"본\s*모델의\s*예측에\s*따르면,?\s*(\\n|\n)?|"
+        r"AI\s*모델의\s*예측에\s*따르면,?\s*(\\n|\n)?)",
+        "",
+        translated
+    ).strip()
+    # 2. 모델 지칭 표현 보정
+    translated = re.sub(r"(이|AI)\s*모델", "본 모델", translated)
+    translated = re.sub(r"(?<!본\s)모델", "본 모델", translated)
+
+    # 3. 혹시 생긴 중복 제거
+    translated = translated.replace("본 본 모델", "본 모델")
+
+    # 4. opening은 마지막에 딱 한 번만 붙이기
+    translated = opening + translated
 
     return translated
 

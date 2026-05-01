@@ -1,29 +1,30 @@
 {
   "sample_idx": 141,
+  "condition": 3,
   "distance": "near",
   "is_correct": true,
   "customer_data": {
-    "duration": 36,
-    "credit_amount": 10974,
-    "installment": 4,
-    "age": 26,
-    "existing_credits": 2,
-    "checking_status": "no checking",
-    "credit_history": "existing paid",
-    "purpose": "furniture/equipment",
-    "savings_status": "<100",
-    "employment": "unemployed",
-    "housing": "own",
-    "job": "high qualif/self emp/mgmt",
-    "gender": "female",
-    "married": true
+    "대출 기간": 36,
+    "대출 금액": 10974,
+    "월 상환 부담 수준": 4,
+    "나이": 26,
+    "기존 대출 수": 2,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "가구 또는 장비 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "무직",
+    "거주 상태": "자가 거주",
+    "직업": "전문직, 자영업, 관리직",
+    "성별": "여성",
+    "결혼 여부": "o"
   },
-  "predicted_label": "BAD CREDIT RISK",
+  "predicted_label": "높음",
   "confidence": 59,
-  "true_label": "BAD CREDIT RISK",
+  "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": -0.1,
       "evidence_sentence": {
         "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
@@ -33,7 +34,7 @@
       }
     },
     {
-      "feature": "credit_amount",
+      "feature": "대출 금액",
       "value": 0.08,
       "evidence_sentence": {
         "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
@@ -43,7 +44,7 @@
       }
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": 0.05,
       "evidence_sentence": {
         "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
@@ -53,6 +54,7 @@
       }
     }
   ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 신호로 알려져 있으며, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n대출 금액이 큰 것은 금융 능력에 부담을 주어 신용 위험을 증가시키는 신호로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다 [2].\n대출 기간이 길다는 것은 상환 기간이 길어져 채무 불이행 위험 노출이 증가하는 신호로 알려져 있으며, 본 모델 또한 이를 위험 증가 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높은 수준으로 평가됩니다.",
   "class_confidence_relative_percent": 31.25,
   "decision_boundary_abs_distance": 0.0298579965989745,
   "warning_type": "strong"

@@ -1,29 +1,30 @@
 {
   "sample_idx": 18,
+  "condition": 2,
   "distance": "far",
   "is_correct": true,
   "customer_data": {
-    "duration": 30,
-    "credit_amount": 5954,
-    "installment": 3,
-    "age": 38,
-    "existing_credits": 1,
-    "checking_status": "no checking",
-    "credit_history": "critical/other existing credit",
-    "purpose": "radio/tv",
-    "savings_status": "<100",
-    "employment": "4<=X<7",
-    "housing": "own",
-    "job": "skilled",
-    "gender": "male",
-    "married": false
+    "대출 기간": 30,
+    "대출 금액": 5954,
+    "월 상환 부담 수준": 3,
+    "나이": 38,
+    "기존 대출 수": 1,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "신용 문제 이력 있음",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "4~7년",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 85,
-  "true_label": "GOOD CREDIT RISK",
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": -0.13,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -33,7 +34,7 @@
       }
     },
     {
-      "feature": "credit_history_critical/other existing credit",
+      "feature": "신용 문제 이력 있음",
       "value": -0.05,
       "evidence_sentence": {
         "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
@@ -43,7 +44,7 @@
       }
     },
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": -0.05,
       "evidence_sentence": {
         "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
@@ -53,6 +54,7 @@
       }
     }
   ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 요인으로 평가되며, 이는 문헌에서 신용 위험 감소 신호로 알려져 있으며, 본 모델 또한 이를 위험 감소 요인으로 판단합니다. [1]\n신용 문제 이력이나 기존 대출이 신용 위험 증가 요인으로 작용하지만, 본 모델은 이를 오히려 위험 감소 요인으로 인식합니다. [2]\n체크링 계좌 잔액이 음수인 경우는 신용 위험을 크게 증가시키는 요인으로 보이나, 본 모델은 이를 위험 감소 요인으로 해석합니다. [3]\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
   "class_confidence_relative_percent": 86.05,
   "decision_boundary_abs_distance": 0.4123512138459151,
   "warning_type": "none"

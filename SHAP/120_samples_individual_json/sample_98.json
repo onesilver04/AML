@@ -1,29 +1,30 @@
 {
   "sample_idx": 98,
+  "condition": 3,
   "distance": "near",
   "is_correct": true,
   "customer_data": {
-    "duration": 12,
-    "credit_amount": 7472,
-    "installment": 1,
-    "age": 24,
-    "existing_credits": 1,
-    "checking_status": "0<=X<200",
-    "credit_history": "existing paid",
-    "purpose": "new car",
-    "savings_status": "no known savings",
-    "employment": "unemployed",
-    "housing": "rent",
-    "job": "unemp/unskilled non res",
-    "gender": "female",
-    "married": true
+    "대출 기간": 12,
+    "대출 금액": 7472,
+    "월 상환 부담 수준": 1,
+    "나이": 24,
+    "기존 대출 수": 1,
+    "계좌 잔액": "적음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "신차 구매",
+    "저축 잔액": "없음",
+    "재직 기간": "무직",
+    "거주 상태": "임차 거주",
+    "직업": "무직, 단순직 외국인",
+    "성별": "여성",
+    "결혼 여부": "o"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 49,
-  "true_label": "GOOD CREDIT RISK",
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "savings_status_no known savings",
+      "feature": "저축 내역 없음",
       "value": -0.06,
       "evidence_sentence": {
         "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
@@ -33,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.05,
       "evidence_sentence": {
         "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
@@ -43,7 +44,7 @@
       }
     },
     {
-      "feature": "savings_status_<100",
+      "feature": "저축 잔액이 거의 없음",
       "value": -0.03,
       "evidence_sentence": {
         "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
@@ -53,6 +54,7 @@
       }
     }
   ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험 증가 신호로 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌 없음은 일반적으로 신용 위험 감소 신호로 인식되지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n저축 잔액이 거의 없음은 신용 위험 감소 요인으로 여겨지지만, 본 모델은 이 요인을 위험 감소에 기여하지 않는 것으로 평가합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
   "class_confidence_relative_percent": 12.79,
   "decision_boundary_abs_distance": 0.0465914679789091,
   "warning_type": "strong"

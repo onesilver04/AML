@@ -1,29 +1,30 @@
 {
   "sample_idx": 30,
+  "condition": 3,
   "distance": "far",
   "is_correct": true,
   "customer_data": {
-    "duration": 6,
-    "credit_amount": 1750,
-    "installment": 2,
-    "age": 45,
-    "existing_credits": 1,
-    "checking_status": "no checking",
-    "credit_history": "all paid",
-    "purpose": "radio/tv",
-    "savings_status": "500<=X<1000",
-    "employment": ">=7",
-    "housing": "own",
-    "job": "unskilled resident",
-    "gender": "male",
-    "married": false
+    "대출 기간": 6,
+    "대출 금액": 1750,
+    "월 상환 부담 수준": 2,
+    "나이": 45,
+    "기존 대출 수": 1,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "대출 전액 상환 이력",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "보통",
+    "재직 기간": "7년 이상",
+    "거주 상태": "자가 거주",
+    "직업": "단순 노무직",
+    "성별": "남성",
+    "결혼 여부": "x"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 83,
-  "true_label": "GOOD CREDIT RISK",
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": -0.09,
       "evidence_sentence": {
         "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
@@ -33,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": -0.08,
       "evidence_sentence": {
         "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
@@ -43,7 +44,7 @@
       }
     },
     {
-      "feature": "credit_history_all paid",
+      "feature": "대출 전액 상환 이력",
       "value": 0.04,
       "evidence_sentence": {
         "sentence": "INTRODUCTION According to the Federal Reserve economic data, the default rate on credit loans across all commercial banks is at an all-time high for the past 66 months, and it is likely to continue to climb throughout 2020.",
@@ -53,6 +54,7 @@
       }
     }
   ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 짧은 것은 일반적으로 신용 위험 증가 요인으로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌가 없는 것은 신용 위험 증가 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 간주합니다 [2].\n이전 대출이 전액 상환된 이력은 신용 위험 감소 요인으로 간주되지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
   "class_confidence_relative_percent": 77.91,
   "decision_boundary_abs_distance": 0.3858524911674263,
   "warning_type": "none"

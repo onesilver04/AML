@@ -1,29 +1,30 @@
 {
   "sample_idx": 64,
+  "condition": 2,
   "distance": "far",
   "is_correct": false,
   "customer_data": {
-    "duration": 12,
-    "credit_amount": 1386,
-    "installment": 2,
-    "age": 26,
-    "existing_credits": 1,
-    "checking_status": "no checking",
-    "credit_history": "existing paid",
-    "purpose": "new car",
-    "savings_status": "500<=X<1000",
-    "employment": "1<=X<4",
-    "housing": "own",
-    "job": "skilled",
-    "gender": "female",
-    "married": true
+    "대출 기간": 12,
+    "대출 금액": 1386,
+    "월 상환 부담 수준": 2,
+    "나이": 26,
+    "기존 대출 수": 1,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "신차 구매",
+    "저축 잔액": "보통",
+    "재직 기간": "1~4년",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "여성",
+    "결혼 여부": "o"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 81,
-  "true_label": "BAD CREDIT RISK",
+  "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": -0.12,
       "evidence_sentence": {
         "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
@@ -33,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "The dataset includes 30000 observations in which 6636 are default payment observations, which also indicates an imbalance between the two classes.",
@@ -43,7 +44,7 @@
       }
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": -0.03,
       "evidence_sentence": {
         "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
@@ -53,6 +54,7 @@
       }
     }
   ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 요인으로 판단됩니다 [1].\n체크링 계좌 잔액이 음수인 경우는 신용 평가 본 모델에서 채무 불이행 위험 감소 신호로 인식되며, 본 모델 역시 이를 위험 감소 요인으로 판단합니다 [2].\n대출 기간이 길어질수록 채무 불이행 가능성이 증가하지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
   "class_confidence_relative_percent": 96.88,
   "decision_boundary_abs_distance": 0.3696432615669061,
   "warning_type": "none"

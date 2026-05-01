@@ -4,27 +4,27 @@
   "distance": "near",
   "is_correct": true,
   "customer_data": {
-    "duration": 24,
-    "credit_amount": 1823,
-    "installment": 4,
-    "age": 30,
-    "existing_credits": 1,
-    "checking_status": "<0",
-    "credit_history": "existing paid",
-    "purpose": "radio/tv",
-    "savings_status": "<100",
-    "employment": "unemployed",
-    "housing": "own",
-    "job": "high qualif/self emp/mgmt",
-    "gender": "male",
-    "married": false
+    "대출 기간": 24,
+    "대출 금액": 1823,
+    "월 상환 부담 수준": 4,
+    "나이": 30,
+    "기존 대출 수": 1,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "무직",
+    "거주 상태": "자가 거주",
+    "직업": "전문직, 자영업, 관리직",
+    "성별": "남성",
+    "결혼 여부": "x"
   },
-  "predicted_label": "BAD CREDIT RISK",
+  "predicted_label": "높음",
   "confidence": 65,
-  "true_label": "BAD CREDIT RISK",
+  "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": 0.07,
       "evidence_sentence": {
         "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.06,
       "evidence_sentence": {
         "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": 0.03,
       "evidence_sentence": {
         "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
@@ -54,6 +54,7 @@
       }
     }
   ],
+  "explanation": null,
   "class_confidence_relative_percent": 50.0,
   "decision_boundary_abs_distance": 0.0855990876064013,
   "warning_type": "weak"

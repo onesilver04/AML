@@ -1,29 +1,30 @@
 {
   "sample_idx": 57,
+  "condition": 3,
   "distance": "far",
   "is_correct": true,
   "customer_data": {
-    "duration": 15,
-    "credit_amount": 2728,
-    "installment": 4,
-    "age": 35,
-    "existing_credits": 3,
-    "checking_status": "0<=X<200",
-    "credit_history": "critical/other existing credit",
-    "purpose": "radio/tv",
-    "savings_status": "no known savings",
-    "employment": "4<=X<7",
-    "housing": "own",
-    "job": "skilled",
-    "gender": "male",
-    "married": false
+    "대출 기간": 15,
+    "대출 금액": 2728,
+    "월 상환 부담 수준": 4,
+    "나이": 35,
+    "기존 대출 수": 3,
+    "계좌 잔액": "적음",
+    "신용 이력": "신용 문제 이력 있음",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "없음",
+    "재직 기간": "4~7년",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 78,
-  "true_label": "GOOD CREDIT RISK",
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "savings_status_no known savings",
+      "feature": "저축 내역 없음",
       "value": -0.06,
       "evidence_sentence": {
         "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
@@ -33,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.05,
       "evidence_sentence": {
         "sentence": "Alam et al.: Investigation of Credit Card Default Prediction in the Imbalanced Datasets TABLE 1.",
@@ -43,7 +44,7 @@
       }
     },
     {
-      "feature": "credit_history_critical/other existing credit",
+      "feature": "신용 문제 이력 있음",
       "value": -0.05,
       "evidence_sentence": {
         "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
@@ -53,6 +54,7 @@
       }
     }
   ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족이 신용 위험을 증가시키는 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌 부재가 일반적으로 신용 위험을 낮추는 요인으로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n신용 문제 이력이 신용 위험 상승의 주요 지표로 간주되지만, 본 모델은 이를 위험 감소 요인으로 평가합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
   "class_confidence_relative_percent": 66.28,
   "decision_boundary_abs_distance": 0.3430927148831696,
   "warning_type": "none"

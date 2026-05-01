@@ -1,29 +1,30 @@
 {
   "sample_idx": 67,
+  "condition": 2,
   "distance": "far",
   "is_correct": true,
   "customer_data": {
-    "duration": 6,
-    "credit_amount": 1554,
-    "installment": 1,
-    "age": 24,
-    "existing_credits": 2,
-    "checking_status": "no checking",
-    "credit_history": "critical/other existing credit",
-    "purpose": "radio/tv",
-    "savings_status": "<100",
-    "employment": "4<=X<7",
-    "housing": "rent",
-    "job": "skilled",
-    "gender": "female",
-    "married": true
+    "대출 기간": 6,
+    "대출 금액": 1554,
+    "월 상환 부담 수준": 1,
+    "나이": 24,
+    "기존 대출 수": 2,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "신용 문제 이력 있음",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "4~7년",
+    "거주 상태": "임차 거주",
+    "직업": "숙련 기술직",
+    "성별": "여성",
+    "결혼 여부": "o"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 85,
-  "true_label": "GOOD CREDIT RISK",
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": -0.1,
       "evidence_sentence": {
         "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
@@ -33,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": -0.1,
       "evidence_sentence": {
         "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
@@ -43,7 +44,7 @@
       }
     },
     {
-      "feature": "credit_history_critical/other existing credit",
+      "feature": "신용 문제 이력 있음",
       "value": -0.05,
       "evidence_sentence": {
         "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
@@ -53,6 +54,7 @@
       }
     }
   ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 비교적 짧은 것은 채무 불이행 가능성이 낮아져 신용 위험을 감소시키는 요인으로 판단됩니다. [1]\n입출금 계좌가 없는 것은 신용 위험을 낮추는 요인으로 인식되지만, 본 모델은 이를 신용 위험 감소 요인으로 식별합니다. [2]\n기존 대출 노출이 적은 것은 신용 위험을 증가시키는 요인으로 여겨지지만, 본 모델은 이를 신용 위험 감소 요인으로 분류합니다. [3]\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
   "class_confidence_relative_percent": 88.37,
   "decision_boundary_abs_distance": 0.4133833188739996,
   "warning_type": "none"

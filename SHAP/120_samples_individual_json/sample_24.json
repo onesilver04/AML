@@ -4,27 +4,27 @@
   "distance": "near",
   "is_correct": true,
   "customer_data": {
-    "duration": 18,
-    "credit_amount": 1795,
-    "installment": 3,
-    "age": 48,
-    "existing_credits": 2,
-    "checking_status": "0<=X<200",
-    "credit_history": "critical/other existing credit",
-    "purpose": "radio/tv",
-    "savings_status": "<100",
-    "employment": ">=7",
-    "housing": "rent",
-    "job": "unskilled resident",
-    "gender": "female",
-    "married": true
+    "대출 기간": 18,
+    "대출 금액": 1795,
+    "월 상환 부담 수준": 3,
+    "나이": 48,
+    "기존 대출 수": 2,
+    "계좌 잔액": "적음",
+    "신용 이력": "신용 문제 이력 있음",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "7년 이상",
+    "거주 상태": "임차 거주",
+    "직업": "단순 노무직",
+    "성별": "여성",
+    "결혼 여부": "o"
   },
-  "predicted_label": "GOOD CREDIT RISK",
+  "predicted_label": "낮음",
   "confidence": 56,
-  "true_label": "GOOD CREDIT RISK",
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "credit_history_critical/other existing credit",
+      "feature": "신용 문제 이력 있음",
       "value": -0.06,
       "evidence_sentence": {
         "sentence": "Overall, the OLS analysis serves two main roles, acting as an interpretable baseline model that explains relationships among predictors and as a tool for detecting multicollinearity, helping identify irrelevant predictors and encouraging the use of regularized and probabilistic regression models.",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.06,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "purpose_radio/tv",
+      "feature": "전자제품 구매 목적",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
@@ -54,6 +54,7 @@
       }
     }
   ],
+  "explanation": null,
   "class_confidence_relative_percent": 32.56,
   "decision_boundary_abs_distance": 0.1209285210400336,
   "warning_type": "weak"

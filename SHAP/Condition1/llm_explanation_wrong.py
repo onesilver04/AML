@@ -11,20 +11,20 @@ import urllib.request
 from pathlib import Path
 
 
-DEFAULT_EXPLANATION_MODEL = "qwen3.6:35b"
+DEFAULT_EXPLANATION_MODEL = "qwen3.5:27b"
 DEFAULT_OLLAMA_URL = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
 
 SHAP_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = SHAP_DIR.parent
 TRANSLATION_PATH = REPO_ROOT / "RAG" / "Final Summary" / "translation.py"
-DEFAULT_OUTPUT_DIR = SHAP_DIR / "Condition1" / "Results" / "selected_shap_only_explanations_wrong_ko_NoTemplate"
+DEFAULT_OUTPUT_DIR = SHAP_DIR / "Condition1" / "Results" / "selected_shap_only_explanations_wrong_ko"
 DEFAULT_SHAP_SEARCH_DIRS = [
     SHAP_DIR / "Task" / "correct_102_local_shap",
     SHAP_DIR / "Task" / "wrong_18_local_shap",
 ]
 
 TARGET_SAMPLE_IDS = [
-    13, 39, 77, 110, 111, 183
+    13, 39, 77, 110, 111, 183, 
 ]
 
 # 번역 프롬프트
@@ -36,45 +36,79 @@ def build_shap_only_translation_prompt(text: str, translation_module):
 Translate the following English explanation into natural Korean.
 
 GENERAL RULES:
+- The first sentence MUST start with: "본 AI가 예측한 결과에 따르면, \n"
+- After the first sentence, immediately start the feature explanations.
+- Do NOT generate a separate overall prediction sentence before the feature explanations.
+- Do NOT include the phrase "분석 결과" anywhere in the output.
+- Do NOT translate "default" as "디폴트".
+- Instead, translate it into natural Korean financial terms such as:
+  - "신용 위험"
+  - "상환 위험"
+  - "대출 상환 가능성"
+- Prefer "신용 위험" in most cases.
 - Output ONLY Korean.
 - Preserve the meaning and tone.
 - Do NOT use markdown.
 - Do NOT add new information.
+- Keep the translated result as connected prose.
+- Use the newline character "\n" to separate sentences.
+- Insert a newline after each feature explanation ends.
 - Do NOT force citation markers such as [1], [2], [3].
+- Separate each feature explanation with the newline character "\n".
 - If citation markers exist in the input, preserve them.
 - If citation markers do not exist in the input, do NOT add them.
-- Keep the sentence structure natural.
 - Do NOT force exactly 4 sentences.
 - Translate all sentences normally EXCEPT the final sentence.
 
 FEATURE NAME RULE:
 - Feature names are fixed terms.
 - You MUST follow FEATURE_NAME_MAP exactly.
+- When translating a feature, use the Korean feature name exactly as written in FEATURE_NAME_MAP.
 - Do NOT create your own Korean feature names.
+- Do NOT paraphrase the mapped Korean feature names.
 - Do NOT translate feature terms word-by-word.
 - Do NOT produce terms like "체크 계좌", "체크링 계좌", or "체킹 계좌".
 - If a feature appears in the input, replace it with the exact Korean value from FEATURE_NAME_MAP.
 - If a feature is not in FEATURE_NAME_MAP, translate it naturally.
 
-FINAL SENTENCE OVERRIDE RULE:
-- Ignore the wording of the original English final sentence.
-- Use the original final sentence only to decide whether the result is LOW risk or HIGH risk.
+LINE BREAK RULE:
+- Each feature explanation MUST be a separate sentence.
+- After each feature explanation sentence, insert the newline character "\n".
+- **CRITICAL: Do NOT generate any intermediate summary or concluding remarks (e.g., "따라서...", "이러한 이유로...") between the feature explanations and the final sentence.**
+- **CRITICAL: Do NOT summarize the findings before the final fixed sentence.**
+- The output should only consist of:
+  1. The opening sentence.
+  2. Individual feature explanation sentences.
+  3. The exact final sentence required below.
+  
+- The output must separate feature explanations by "\n".
+- Do NOT combine multiple feature explanations into one sentence.
+- Do NOT explain two or more features in the same sentence.
+- The final overall sentence must appear on the next line after all feature explanations.
+- Do NOT use bullet points or numbering.
+
+FINAL SENTENCE RULE:
+- Ignore the original final sentence completely.
+- The explanation MUST end with exactly this sentence:
+
+전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.
+
 
 If the original final sentence contains:
 - "low risk"
 - "low risk of default"
 - "GOOD CREDIT RISK"
-
 Then end with this sentence exactly:
-전반적으로 신용 위험이 낮은 수준으로 평가되어 신용 승인 가능성이 높습니다.
+전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.
 
 If the original final sentence contains:
 - "high risk"
 - "high risk of default"
 - "BAD CREDIT RISK"
-
 Then end with this sentence exactly:
-전반적으로 신용 위험이 높은 수준으로 평가되어 신용 승인 가능성이 낮습니다.
+전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.
+
+- **Do NOT add any text, words, or sentences after or before this final sentence.**
 
 FEATURE_NAME_MAP:
 {feature_mapping_text}
@@ -90,8 +124,38 @@ def translate_with_shap_only_prompt(text: str, translation_module, model: str, b
     text = translation_module.force_replace_feature_names(text)
     prompt = build_shap_only_translation_prompt(text, translation_module)
     translated = ollama_chat(model, [{"role": "user", "content": prompt}], base_url)
-    return translation_module.force_replace_feature_names(translated.strip())
 
+    result = translated.strip()
+
+    # 기존 시작 문구 제거
+    result = re.sub(r"^본 AI 모델의 예측에 따르면[,\s\n]*", "", result)
+    result = re.sub(r"^본 AI가 예측한 결과에 따르면[,\s\n]*", "", result)
+    result = re.sub(r"^본 AI 모델의 예측 결과[,\s\n]*", "", result)
+
+    # 결론성/전체 예측 요약 문장 제거
+    remove_patterns = [
+        r"고객은.*?신용 위험이 낮은 수준으로.*?판단됩니다\.",
+        r"고객은.*?신용 위험이 높은 수준으로.*?판단됩니다\.",
+        r"이 신청은.*?신용 위험이 낮은 수준으로.*?평가됩니다\.",
+        r"이 신청은.*?신용 위험이 높은 수준으로.*?평가됩니다\.",
+        r"결과적으로.*?예측합니다\.?",
+        r"전반적으로.*?대출 승인 가능성이.*?습니다\.?",
+        r"Overall.*?\.?"
+    ]
+
+    for pattern in remove_patterns:
+        result = re.sub(pattern, "", result, flags=re.DOTALL)
+
+    # 줄바꿈 정리
+    result = re.sub(r"\n\s*\n", "\n", result).strip()
+
+    # 시작 문구 강제 삽입
+    result = "본 AI가 예측한 결과에 따르면,\n" + result
+
+    # 마지막 문장 강제 삽입
+    result = result.rstrip() + "\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+
+    return result
 
 SHAP_EXPLANATION_SYSTEM_PROMPT = """You are a financial risk analyst specialized in credit scoring and SHAP-based explanations.
 
@@ -122,47 +186,26 @@ Top-3 SHAP features:
 {feature_evidence}
 
 Instructions:
-
-Step 1: Interpret the input for writing the final explanation.
-- Identify the prediction label and probability.
-- Identify the three SHAP features.
-- Understand each feature's meaning and SHAP direction.
-- Use ONLY the top-3 SHAP features to write final_explanation.
-
-Step 2: Convert technical feature expressions into user-friendly English for final_explanation.
-- Do NOT keep raw encoded feature names in final_explanation.
-- Do NOT include raw numeric thresholds if they can be rewritten more naturally.
-- Rewrite technical expressions into intuitive English phrases.
-
-Step 3: Determine each feature's impact using ONLY SHAP direction.
+- Use ONLY the provided top-3 SHAP features and their SHAP directions.
+- Do NOT use RAG, evidence, papers, studies, literature comparisons, or SHAP values in the final explanation.
+- Do NOT keep raw encoded feature names; rewrite them into intuitive English phrases.
 - If shap_direction is "increases risk" or "increase_risk", describe the feature as increasing risk.
 - If shap_direction is "decreases risk" or "decrease_risk", describe the feature as decreasing risk.
-- Do NOT compare with literature.
-- Do NOT mention evidence, papers, studies, or RAG.
-
-Step 4: Generate final_explanation.
-
-- The explanation MUST start with:
-  "Based on the AI model's prediction,"
-
-- Write a concise, user-friendly English explanation.
-- Use ONLY the top-3 SHAP features and their SHAP directions.
 - Mention all three features in the same order as provided.
-- Do NOT follow a fixed sentence template.
-- Do NOT use the phrase "The fact that" unless it sounds natural.
-- Do NOT compare with literature.
-- Do NOT mention evidence, papers, studies, or RAG.
-- End with the final prediction naturally.
+- Keep the explanation natural, concise, non-redundant, and analytical.
+- Do NOT use explicit numbering such as [1], [2], [3].
 
-If prediction_label == "GOOD CREDIT RISK", explain that the applicant is likely to have a low risk of default.
-If prediction_label == "BAD CREDIT RISK", explain that the applicant is likely to have a high risk of default.
+Required flow:
+1. Start with exactly: "Based on the AI model's prediction,"
+2. State whether the prediction indicates low or high credit risk.
+3. Explain how the three SHAP features contributed to the prediction.
+4. End by reflecting the final prediction naturally.
 
 Output format:
 {{
   "final_explanation": "..."
 }}
 """
-
 
 def parse_args():
     parser = argparse.ArgumentParser(

@@ -22,11 +22,152 @@ DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "SHAP/120_samples_individual_json"
 FEATURE_PREFIX = "feature_"
 SHAP_FILE_PATTERN = "shap_tuples_non_prefix_*.json"
 CUSTOMER_FIELD_RENAMES = {
-    "credit": "credit_amount",
-    "Sex": "gender",
-    "Married": "married",
-    "existing": "existing_credits",
+    "duration": "대출 기간",
+    "credit_amount": "대출 금액",
+    "credit": "대출 금액",
+    "installment_commitment": "월 상환 부담 수준",
+    "installment": "월 상환 부담 수준",
+    "residence_since": "현재 거주 기간",
+    "age": "나이",
+    "existing_credits": "기존 대출 수",
+    "existing": "기존 대출 수",
+    "num_dependents": "부양 가족 수",
+
+    "checking_status_<0": "부족",
+    "checking_status_0<=X<200": "적음",
+    "checking_status_>=200": "충분",
+    "checking_status_no checking": "입출금 계좌 없음",
+    "checking_status": "계좌 잔액",
+
+    "credit_history_all paid": "대출 전액 상환 이력",
+    "credit_history_critical/other existing credit": "신용 문제 이력 있음",
+    "credit_history_delayed previously": "연체 이력 있음",
+    "credit_history_existing paid": "기존 대출 상환 중",
+    "credit_history_no credits/all paid": "대출 이력 없음 또는 전액 상환",
+    "credit_history": "신용 이력",
+
+    "purpose_business": "사업 자금",
+    "purpose_domestic appliance": "가전제품 구매",
+    "purpose_education": "교육비 목적",
+    "purpose_furniture/equipment": "가구 또는 장비 구매",
+    "purpose_new car": "신차 구매",
+    "purpose_used car": "중고차 구매",
+    "purpose_radio/tv": "전자제품 구매",
+    "purpose_repairs": "수리비",
+    "purpose_retraining": "직업 재교육",
+    "purpose_other": "기타",
+    "purpose": "대출 목적",
+
+    "savings_status_<100": "거의 없음",
+    "savings_status_100<=X<500": "적음",
+    "savings_status_500<=X<1000": "보통",
+    "savings_status_>=1000": "충분",
+    "savings_status_no known savings": "없음",
+    "savings_status": "저축 잔액",
+
+    "employment_<1": "1년 미만",
+    "employment_1<=X<4": "1~4년",
+    "employment_4<=X<7": "4~7년",
+    "employment_>=7": "7년 이상",
+    "employment_unemployed": "무직",
+    "employment": "재직 기간",
+
+    "housing_own": "자가 거주",
+    "housing_rent": "임차 거주",
+    "housing_for free": "무상 거주",
+    "housing": "거주 상태",
+
+    "job_high qualif/self emp/mgmt": "전문직, 자영업, 관리직",
+    "job_skilled": "숙련 기술직",
+    "job_unskilled resident": "단순 노무직",
+    "job_unemp/unskilled non res": "무직, 단순직 외국인",
+    "job": "직업",
+
+    "Sex": "성별",
+    "Married": "결혼 여부",
 }
+SHAP_FEATURE_RENAMES = {
+    "duration": "대출 기간",
+    "credit_amount": "대출 금액",
+    "installment_commitment": "월 상환 부담 수준",
+    "residence_since": "현재 거주 기간",
+    "age": "나이",
+    "existing_credits": "기존 대출 수",
+    "num_dependents": "부양 가족 수",
+
+    "checking_status_<0": "계좌 잔액 부족",
+    "checking_status_0<=X<200": "계좌 잔액 적음",
+    "checking_status_>=200": "계좌 잔액 충분",
+    "checking_status_no checking": "입출금 계좌 없음",
+
+    "credit_history_all paid": "대출 전액 상환 이력",
+    "credit_history_critical/other existing credit": "신용 문제 이력 있음",
+    "credit_history_delayed previously": "연체 이력",
+    "credit_history_existing paid": "기존 대출 상환 중",
+    "credit_history_no credits/all paid": "대출 이력 없음 또는 전액 상환",
+
+    "purpose_business": "사업 자금 목적",
+    "purpose_domestic appliance": "가전제품 구매 목적",
+    "purpose_education": "교육비 목적",
+    "purpose_furniture/equipment": "가구 또는 장비 구매 목적",
+    "purpose_new car": "신차 구매 목적",
+    "purpose_used car": "중고차 구매 목적",
+    "purpose_radio/tv": "전자제품 구매 목적",
+    "purpose_repairs": "수리비 목적",
+    "purpose_retraining": "직업 재교육 목적",
+    "purpose_other": "기타 목적",
+
+    "savings_status_<100": "저축 잔액이 거의 없음",
+    "저축 잔액 100 DM 미만": "저축 잔액이 거의 없음",
+    "savings_status_100<=X<500": "저축 잔액 적음",
+    "savings_status_500<=X<1000": "저축 잔액 보통",
+    "savings_status_>=1000": "저축 잔액 충분",
+    "savings_status_no known savings": "저축 내역 없음",
+
+    "employment_<1": "재직 기간 1년 미만",
+    "employment_1<=X<4": "재직 기간 1~4년",
+    "employment_4<=X<7": "재직 기간 4~7년",
+    "employment_>=7": "재직 기간 7년 이상",
+    "employment_unemployed": "무직",
+
+    "personal_status_female div/dep/mar": "여성 (이혼/별거/기혼 상태)",
+    "personal_status_male div/sep": "남성 (이혼 또는 별거)",
+    "personal_status_male mar/wid": "남성 (기혼 또는 사별)",
+    "personal_status_male single": "남성 (미혼)",
+
+    "other_parties_co applicant": "공동 신청자 있음",
+    "other_parties_guarantor": "보증인 있음",
+    "other_parties_none": "공동 신청자, 보증인 없음",
+
+    "property_magnitude_real estate": "부동산 보유",
+    "property_magnitude_life insurance": "보험 자산 보유",
+    "property_magnitude_car": "차량 보유",
+    "property_magnitude_no known property": "보유 자산 없음",
+
+    "other_payment_plans_bank": "타 은행 상환 중",
+    "other_payment_plans_stores": "할부·외상 상환 중",
+    "other_payment_plans_none": "추가 상환 없음",
+
+    "housing_own": "자가 거주",
+    "housing_rent": "임차 거주",
+    "housing_for free": "무상 거주",
+
+    "job_high qualif/self emp/mgmt": "전문직, 자영업, 관리직",
+    "job_skilled": "숙련 기술직",
+    "job_unskilled resident": "단순 노무직",
+    "job_unemp/unskilled non res": "무직, 단순직 외국인",
+
+    "own_telephone_yes": "전화 보유",
+    "own_telephone_none": "전화 미보유",
+
+    "foreign_worker_yes": "외국인 근로자",
+    "foreign_worker_no": "내국인 근로자",
+
+    "class": "신용 등급",
+    "Sex": "성별",
+    "Married": "결혼 여부",
+}
+
 CONDITION_1_SAMPLE_INDICES = {
     123,
     142,
@@ -68,6 +209,92 @@ CONDITION_1_SAMPLE_INDICES = {
     110,
     111,
     183,
+}
+
+CONDITION_2_SAMPLE_INDICES = {
+    97,
+    40,
+    116,
+    152,
+    138,
+    25,
+    62,
+    92,
+    33,
+    145,
+    90,
+    52,
+    7,
+    143,
+    89,
+    191,
+    167,
+    121,
+    70,
+    175,
+    12,
+    163,
+    26,
+    66,
+    113,
+    104,
+    67,
+    18,
+    20,
+    165,
+    199,
+    158,
+    180,
+    21,
+    150,
+    174,
+    196,
+    64,
+    22,
+    4,
+}
+
+CONDITION_3_SAMPLE_INDICES = {
+    132,
+    139,
+    65,
+    53,
+    58,
+    141,
+    5,
+    98,
+    128,
+    155,
+    6,
+    129,
+    86,
+    184,
+    115,
+    91,
+    188,
+    3,
+    149,
+    35,
+    15,
+    173,
+    72,
+    75,
+    29,
+    56,
+    51,
+    57,
+    161,
+    19,
+    50,
+    147,
+    17,
+    102,
+    148,
+    30,
+    87,
+    109,
+    49,
+    60,
 }
 
 
@@ -162,6 +389,14 @@ def warning_type_from_confidence(value: str | None) -> str:
     raise ValueError(f"Unexpected warning_type: {value}")
 
 
+def display_predicted_label(value: str) -> str:
+    if value == "GOOD CREDIT RISK":
+        return "낮음"
+    if value == "BAD CREDIT RISK":
+        return "높음"
+    return value
+
+
 def load_confidence_by_sample(path: Path) -> dict[int, dict[str, str]]:
     confidence_by_sample: dict[int, dict[str, str]] = {}
     for row in read_csv_rows(path):
@@ -193,8 +428,9 @@ def load_shap_top3_by_sample(shap_dirs: list[Path]) -> dict[int, list[dict[str, 
             tuples = payload.get("tuples", [])
             top3_by_sample[sample_idx] = [
                 {
-                    "feature": item["feature"],
+                    "feature": SHAP_FEATURE_RENAMES.get(item["feature"], item["feature"]),
                     "value": round(float(item["shap_value"]), 2),
+                    "_raw_feature": item["feature"],
                 }
                 for item in tuples[:3]
             ]
@@ -203,7 +439,7 @@ def load_shap_top3_by_sample(shap_dirs: list[Path]) -> dict[int, list[dict[str, 
 
 
 def sample_idx_from_rag_path(path: Path) -> int:
-    match = re.search(r"sample_(\d+)_final_summary\.json$", path.name)
+    match = re.search(r"sample_(\d+)_final_summary(?:_ko)?\.json$", path.name)
     if not match:
         raise ValueError(f"Unexpected RAG summary file name: {path.name}")
     return int(match.group(1))
@@ -247,18 +483,47 @@ def load_rag_evidence_by_sample(
     return evidence_by_sample
 
 
+def load_rag_explanations_by_sample(rag_dirs: list[Path]) -> dict[int, str]:
+    explanations_by_sample: dict[int, str] = {}
+
+    for rag_dir in rag_dirs:
+        rag_dir = resolve_path(rag_dir)
+        if not rag_dir.exists():
+            raise FileNotFoundError(f"RAG directory does not exist: {rag_dir}")
+
+        for path in sorted(rag_dir.glob("sample_*_final_summary_ko.json")):
+            sample_idx = sample_idx_from_rag_path(path)
+            with path.open(encoding="utf-8") as f:
+                payload = json.load(f)
+
+            explanation = payload.get("final_explanation_ko")
+            if isinstance(explanation, str) and explanation.strip():
+                explanations_by_sample[sample_idx] = explanation.strip()
+
+    return explanations_by_sample
+
+
+def rename_customer_value(raw_customer_key: str, parsed_value: Any) -> Any:
+    if raw_customer_key == "Sex" and isinstance(parsed_value, bool):
+        return "남성" if parsed_value else "여성"
+    if raw_customer_key == "Married" and isinstance(parsed_value, bool):
+        return "o" if parsed_value else "x"
+    if not isinstance(parsed_value, str):
+        return parsed_value
+
+    mapped_value_key = f"{raw_customer_key}_{parsed_value}"
+    return CUSTOMER_FIELD_RENAMES.get(mapped_value_key, parsed_value)
+
+
 def build_customer_data(row: dict[str, str]) -> dict[str, Any]:
     customer_data: dict[str, Any] = {}
     for key, value in row.items():
         if not key.startswith(FEATURE_PREFIX):
             continue
 
-        customer_key = key.removeprefix(FEATURE_PREFIX)
-        customer_key = CUSTOMER_FIELD_RENAMES.get(customer_key, customer_key)
-        parsed_value = parse_value(value)
-
-        if customer_key == "gender":
-            parsed_value = "male" if parsed_value is True else "female"
+        raw_customer_key = key.removeprefix(FEATURE_PREFIX)
+        customer_key = CUSTOMER_FIELD_RENAMES.get(raw_customer_key, raw_customer_key)
+        parsed_value = rename_customer_value(raw_customer_key, parse_value(value))
 
         customer_data[customer_key] = parsed_value
 
@@ -270,6 +535,7 @@ def build_sample_payload(
     confidence_by_sample: dict[int, dict[str, str]],
     shap_top3_by_sample: dict[int, list[dict[str, Any]]],
     rag_evidence_by_sample: dict[int, dict[str, dict[str, Any]]],
+    rag_explanations_by_sample: dict[int, str],
 ) -> dict[str, Any]:
     sample_idx = int(row["sample_idx"])
     if sample_idx not in shap_top3_by_sample:
@@ -289,7 +555,8 @@ def build_sample_payload(
     rag_evidence_by_feature = rag_evidence_by_sample.get(sample_idx, {})
     for shap_feature in shap_top3_by_sample[sample_idx]:
         feature_payload = dict(shap_feature)
-        evidence = rag_evidence_by_feature.get(shap_feature["feature"])
+        raw_feature = feature_payload.pop("_raw_feature", feature_payload["feature"])
+        evidence = rag_evidence_by_feature.get(raw_feature)
         if evidence:
             feature_payload["evidence_sentence"] = evidence
         local_shap_top3_features.append(feature_payload)
@@ -299,16 +566,25 @@ def build_sample_payload(
     }
     if sample_idx in CONDITION_1_SAMPLE_INDICES:
         payload["condition"] = 1
+    elif sample_idx in CONDITION_2_SAMPLE_INDICES:
+        payload["condition"] = 2
+    elif sample_idx in CONDITION_3_SAMPLE_INDICES:
+        payload["condition"] = 3
 
     payload.update(
         {
             "distance": distance_from_sigma_group(row["sigma_group"]),
             "is_correct": parse_bool(row["is_correct"]),
             "customer_data": build_customer_data(row),
-            "predicted_label": row["predicted_label"],
+            "predicted_label": display_predicted_label(row["predicted_label"]),
             "confidence": round(float(confidence_row["predicted_confidence"]) * 100),
-            "true_label": row["true_label"],
+            "true_label": display_predicted_label(row["true_label"]),
             "local_shap_top3_features": local_shap_top3_features,
+            "explanation": (
+                rag_explanations_by_sample.get(sample_idx)
+                if sample_idx in CONDITION_2_SAMPLE_INDICES or sample_idx in CONDITION_3_SAMPLE_INDICES
+                else None
+            ),
             "class_confidence_relative_percent": round(
                 float(row["class_confidence_relative_percent"]), 2
             ),
@@ -343,6 +619,9 @@ def main() -> None:
     rag_evidence_by_sample = load_rag_evidence_by_sample(
         [args.correct_rag_dir, args.wrong_rag_dir]
     )
+    rag_explanations_by_sample = load_rag_explanations_by_sample(
+        [args.correct_rag_dir, args.wrong_rag_dir]
+    )
 
     payloads = [
         build_sample_payload(
@@ -350,6 +629,7 @@ def main() -> None:
             confidence_by_sample,
             shap_top3_by_sample,
             rag_evidence_by_sample,
+            rag_explanations_by_sample,
         )
         for row in selected_rows
     ]

@@ -1,29 +1,30 @@
 {
   "sample_idx": 97,
+  "condition": 2,
   "distance": "near",
   "is_correct": true,
   "customer_data": {
-    "duration": 27,
-    "credit_amount": 3915,
-    "installment": 4,
-    "age": 36,
-    "existing_credits": 1,
-    "checking_status": "0<=X<200",
-    "credit_history": "existing paid",
-    "purpose": "business",
-    "savings_status": "<100",
-    "employment": "1<=X<4",
-    "housing": "own",
-    "job": "skilled",
-    "gender": "male",
-    "married": false
+    "대출 기간": 27,
+    "대출 금액": 3915,
+    "월 상환 부담 수준": 4,
+    "나이": 36,
+    "기존 대출 수": 1,
+    "계좌 잔액": "적음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "사업 자금",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1~4년",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
   },
-  "predicted_label": "BAD CREDIT RISK",
+  "predicted_label": "높음",
   "confidence": 56,
-  "true_label": "BAD CREDIT RISK",
+  "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.06,
       "evidence_sentence": {
         "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
@@ -33,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
@@ -43,7 +44,7 @@
       }
     },
     {
-      "feature": "savings_status_<100",
+      "feature": "저축 잔액이 거의 없음",
       "value": 0.04,
       "evidence_sentence": {
         "sentence": "and low-risk groups with the information like gender, age and savings account.",
@@ -53,6 +54,7 @@
       }
     }
   ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험 감소 요인으로 인식되지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n체크링 계좌 잔액이 음수인 경우는 일반적으로 신용 위험 증가 신호로 해석되지만, 본 모델은 이를 위험 감소 요인으로 보지 않고 위험 증가 요인으로 분류합니다 [2].\n저축 잔액이 적음은 신용 위험 증가 신호로 알려져 있으나, 본 모델은 이 요인을 신용 위험 증가 요인으로 식별합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높은 수준으로 평가됩니다.",
   "class_confidence_relative_percent": 0.0,
   "decision_boundary_abs_distance": 0.0032412578469666,
   "warning_type": "strong"
