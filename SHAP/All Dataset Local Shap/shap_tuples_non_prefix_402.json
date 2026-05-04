@@ -1,0 +1,32 @@
+{
+  "sample_idx": 402,
+  "true_label": "BAD CREDIT RISK",
+  "prediction": {
+    "label": "BAD CREDIT RISK",
+    "probability": 0.6091803436196499,
+    "threshold": 0.56
+  },
+  "tuples": [
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.08014763444187524,
+      "abs_shap": 0.08014763444187524,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "credit_amount",
+      "definition": "Credit amount requested by the applicant.",
+      "shap_value": 0.06699674209225598,
+      "abs_shap": 0.06699674209225598,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "employment_<1",
+      "definition": "Present employment duration: less than 1 year.",
+      "shap_value": 0.051370497937786246,
+      "abs_shap": 0.051370497937786246,
+      "direction": "increase_risk"
+    }
+  ]
+}

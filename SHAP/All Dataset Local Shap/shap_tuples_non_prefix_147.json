@@ -1,0 +1,32 @@
+{
+  "sample_idx": 147,
+  "true_label": "GOOD CREDIT RISK",
+  "prediction": {
+    "label": "GOOD CREDIT RISK",
+    "probability": 0.1435391910364436,
+    "threshold": 0.56
+  },
+  "tuples": [
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.11880104764389379,
+      "abs_shap": 0.11880104764389379,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.056036636089101956,
+      "abs_shap": 0.056036636089101956,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "age",
+      "definition": "Applicant age in years.",
+      "shap_value": -0.03768518332534763,
+      "abs_shap": 0.03768518332534763,
+      "direction": "decrease_risk"
+    }
+  ]
+}

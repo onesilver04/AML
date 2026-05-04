@@ -1,0 +1,32 @@
+{
+  "sample_idx": 301,
+  "true_label": "BAD CREDIT RISK",
+  "prediction": {
+    "label": "BAD CREDIT RISK",
+    "probability": 0.6535255877335352,
+    "threshold": 0.56
+  },
+  "tuples": [
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.06064190676246437,
+      "abs_shap": 0.06064190676246437,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": 0.054404331764669994,
+      "abs_shap": 0.054404331764669994,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "credit_history_no credits/all paid",
+      "definition": "Credit history: no credits taken or all previous credits paid back duly.",
+      "shap_value": 0.0431622808671015,
+      "abs_shap": 0.0431622808671015,
+      "direction": "increase_risk"
+    }
+  ]
+}

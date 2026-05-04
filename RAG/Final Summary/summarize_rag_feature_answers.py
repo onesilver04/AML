@@ -10,9 +10,9 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 
-DEFAULT_INPUT = Path("RAG/QA/Answers/wrong_18_answers")
-DEFAULT_INPUT_DIR = Path("RAG/QA/Answers/wrong_18_answers")
-DEFAULT_OUTPUT_DIR = Path("RAG/Final Summary/Wrong_Results")
+DEFAULT_INPUT = Path("RAG/QA/Answers/correct_102_answers")
+DEFAULT_INPUT_DIR = Path("RAG/QA/Answers/correct_102_answers")
+DEFAULT_OUTPUT_DIR = Path("RAG/Final Summary/Correct_Results")
 DEFAULT_MODEL = "qwen3.6:35b"
 EXPECTED_FEATURE_COUNT = 3
 
@@ -466,23 +466,28 @@ def summarize_file(input_path: Path, output_path: Path, llm):
     return payload
 
 
-def iter_input_files(input_dir: Path):
+def iter_input_files(input_dir: Path, target_indices=None):
     if not input_dir.exists():
         raise FileNotFoundError(f"Input directory does not exist: {input_dir}")
 
     files = sorted(input_dir.glob("sample_*_feature_qa.jsonl"))
 
+    if target_indices:
+        files = [
+            f for f in files
+            if any(f"sample_{idx}_" in f.name for idx in target_indices)
+        ]
+
     if not files:
-        raise FileNotFoundError(f"No sample_*_feature_qa.jsonl files found in: {input_dir}")
+        raise FileNotFoundError("No matching JSONL files found.")
 
     return files
-
 
 def main():
     args = parse_args()
     llm = build_llm(args.model)
 
-    input_files = iter_input_files(args.input_dir)
+    input_files = iter_input_files(args.input_dir, target_indices=[24, 48, 78, 93, 127, 135])
     payloads = []
 
     for input_path in input_files:

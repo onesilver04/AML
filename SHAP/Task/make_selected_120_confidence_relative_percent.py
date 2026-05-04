@@ -176,8 +176,8 @@ def main():
 
     selected = pd.concat(
         [
-            load_selected_samples(args.correct_input),
-            load_selected_samples(args.wrong_input),
+            load_selected_samples(args.correct_input, "correct_102"),
+            load_selected_samples(args.wrong_input, "wrong_18"),
         ],
         ignore_index=True,
     )

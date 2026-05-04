@@ -1,0 +1,32 @@
+{
+  "sample_idx": 732,
+  "true_label": "GOOD CREDIT RISK",
+  "prediction": {
+    "label": "GOOD CREDIT RISK",
+    "probability": 0.27722714584039737,
+    "threshold": 0.56
+  },
+  "tuples": [
+    {
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.14137083244548407,
+      "abs_shap": 0.14137083244548407,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.050383373545512325,
+      "abs_shap": 0.050383373545512325,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "purpose_radio/tv",
+      "definition": "Loan purpose: purchase of radio or TV.",
+      "shap_value": -0.04166737253957128,
+      "abs_shap": 0.04166737253957128,
+      "direction": "decrease_risk"
+    }
+  ]
+}

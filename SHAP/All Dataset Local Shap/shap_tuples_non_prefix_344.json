@@ -1,0 +1,32 @@
+{
+  "sample_idx": 344,
+  "true_label": "GOOD CREDIT RISK",
+  "prediction": {
+    "label": "GOOD CREDIT RISK",
+    "probability": 0.3648165180378495,
+    "threshold": 0.56
+  },
+  "tuples": [
+    {
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.07503012174557215,
+      "abs_shap": 0.07503012174557215,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "installment_commitment",
+      "definition": "Installment rate as a percentage of disposable income.",
+      "shap_value": -0.048676603173548286,
+      "abs_shap": 0.048676603173548286,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.04646799429672016,
+      "abs_shap": 0.04646799429672016,
+      "direction": "increase_risk"
+    }
+  ]
+}

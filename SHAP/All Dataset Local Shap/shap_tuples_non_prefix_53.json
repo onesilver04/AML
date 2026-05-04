@@ -1,0 +1,32 @@
+{
+  "sample_idx": 53,
+  "true_label": "GOOD CREDIT RISK",
+  "prediction": {
+    "label": "GOOD CREDIT RISK",
+    "probability": 0.12461612013617757,
+    "threshold": 0.56
+  },
+  "tuples": [
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.08909655656913879,
+      "abs_shap": 0.08909655656913879,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "purpose_used car",
+      "definition": "Loan purpose: purchase of a used car.",
+      "shap_value": -0.05376385062924131,
+      "abs_shap": 0.05376385062924131,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.04389538602968876,
+      "abs_shap": 0.04389538602968876,
+      "direction": "decrease_risk"
+    }
+  ]
+}

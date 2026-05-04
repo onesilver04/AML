@@ -1,0 +1,32 @@
+{
+  "sample_idx": 687,
+  "true_label": "GOOD CREDIT RISK",
+  "prediction": {
+    "label": "GOOD CREDIT RISK",
+    "probability": 0.49050585833911137,
+    "threshold": 0.56
+  },
+  "tuples": [
+    {
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.0621953646886603,
+      "abs_shap": 0.0621953646886603,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.05359015113735537,
+      "abs_shap": 0.05359015113735537,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.03664561436336351,
+      "abs_shap": 0.03664561436336351,
+      "direction": "decrease_risk"
+    }
+  ]
+}

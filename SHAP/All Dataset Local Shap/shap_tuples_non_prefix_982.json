@@ -1,0 +1,32 @@
+{
+  "sample_idx": 982,
+  "true_label": "GOOD CREDIT RISK",
+  "prediction": {
+    "label": "GOOD CREDIT RISK",
+    "probability": 0.40752429108853994,
+    "threshold": 0.56
+  },
+  "tuples": [
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.05481666960513191,
+      "abs_shap": 0.05481666960513191,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "installment_commitment",
+      "definition": "Installment rate as a percentage of disposable income.",
+      "shap_value": -0.03692684423471811,
+      "abs_shap": 0.03692684423471811,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.03231503338334729,
+      "abs_shap": 0.03231503338334729,
+      "direction": "decrease_risk"
+    }
+  ]
+}

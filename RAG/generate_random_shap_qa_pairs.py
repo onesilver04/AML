@@ -29,6 +29,12 @@ def parse_args():
         help="Directory containing shap_tuples_non_prefix_{sample_idx}.json files.",
     )
     parser.add_argument(
+        "--input-json",
+        type=str,
+        required=True,
+        help="Single JSONL file to process"
+    )
+    parser.add_argument(
         "--sample-index-file",
         default=None,
         help="File containing sample indices separated by commas or newlines.",
@@ -162,6 +168,14 @@ def load_shap_json(path: Path):
         )
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
+    
+def load_jsonl_file(path: Path):
+    records = []
+    with path.open("r", encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                records.append(json.loads(line))
+    return records    
 
 
 def top_feature_payload(shap_data, top_k: int = 3):
@@ -344,10 +358,9 @@ def summary_output_path(output_path: Path, explicit_path: str | None) -> Path:
 def resolve_output_path(args) -> Path:
     if args.output != str(DEFAULT_OUTPUT):
         return Path(args.output)
-    if args.sample_idx is not None:
-        return Path("RAG/QA") / f"sample_{args.sample_idx}_feature_qa.jsonl"
-    return Path(args.output)
 
+    sample_idx = load_shap_json(args.input_json).get("sample_idx", "unknown")
+    return Path("RAG/QA") / f"sample_{sample_idx}_feature_qa.jsonl"
 
 def uses_manual_sample_selection(args) -> bool:
     return (
@@ -407,13 +420,24 @@ def write_sample_queries(path: Path, sample_idx: int, shap_path: Path, queries):
 
 def main():
     args = parse_args()
-    from score_gap_nomic import ask_rag_with_score_gap # 지연 임포트로 RAG 관련 의존성 최소화
+    from score_gap_nomic import ask_rag_with_score_gap
 
-    shap_dir = Path(args.shap_dir)
+    input_json_path = Path(args.input_json)
     output_path = resolve_output_path(args)
+    summary_path = summary_output_path(output_path, args.summary_output)
     query_output_dir = Path(args.query_output_dir)
 
-    sample_indices = select_sample_indices(args)
+    shap_data = load_shap_json(input_json_path)
+    sample_idx = shap_data.get("sample_idx", "unknown")
+    pred = shap_data.get("prediction", {})
+
+    top_features = top_feature_payload(shap_data, top_k=3)
+
+    generated_queries, feature_queries = generated_queries_by_feature(
+        shap_data,
+        top_features,
+    )
+
     retrieval_params = {
         "min_docs": args.min_docs,
         "max_docs": args.max_docs,
@@ -421,114 +445,83 @@ def main():
         "max_chunks_per_source": args.max_chunks_per_source,
         "inspect_all": False,
     }
-    use_per_sample_outputs = (
-        args.output == str(DEFAULT_OUTPUT) and uses_manual_sample_selection(args)
-    )
 
+    sample_queries = []
     all_records = []
 
-    def process_sample(sample_idx: int, sample_position: int, total_samples: int):
-        path = shap_json_path(shap_dir, sample_idx)
-        shap_data = load_shap_json(path)
-        top_features = top_feature_payload(shap_data, top_k=3)
-        pred = shap_data.get("prediction", {})
-        sample_queries = []
-        _, feature_queries = generated_queries_by_feature(
-            shap_data,
-            top_features,
-        )
-        sample_records = []
+    for feature_rank, feature_info in enumerate(top_features, 1):
+        question = feature_queries[feature_info["feature"]]
 
-        for feature_rank, feature_info in enumerate(top_features, 1):
-            question = feature_queries[feature_info["feature"]]
-            sample_queries.append(
-                {
-                    "feature_rank": feature_rank,
-                    "feature": feature_info["feature"],
-                    "feature_definition": feature_info["definition"],
-                    "feature_direction": feature_info["direction"],
-                    "question": question,
-                }
-            )
-
-            print(
-                f"[sample {sample_position}/{total_samples} | "
-                f"feature {feature_rank}/{len(top_features)}] "
-                f"sample_idx={sample_idx} feature={feature_info['feature']}"
-            )
-            answer, selected_docs, _, _, _, _ = ask_rag_with_score_gap(
-                question,
-                min_docs=args.min_docs,
-                max_docs=args.max_docs,
-                min_gap=args.min_gap,
-                max_chunks_per_source=args.max_chunks_per_source,
-                inspect_all=False,
-            )
-            evidence_sentences = evidence_sentences_payload(
-                selected_docs,
-                question=question,
-                feature_info=feature_info,
-                sentences_per_source=args.evidence_sentences_per_source,
-            )
-
-            record = {
-                "sample_idx": sample_idx,
-                "shap_json_path": str(path),
-                "prediction_label": pred.get("label", "UNKNOWN"),
-                "prediction_probability": pred.get("probability", "UNKNOWN"),
+        sample_queries.append(
+            {
                 "feature_rank": feature_rank,
                 "feature": feature_info["feature"],
                 "feature_definition": feature_info["definition"],
                 "feature_direction": feature_info["direction"],
-                "feature_shap_value": feature_info["shap_value"],
-                "feature_abs_shap": feature_info["abs_shap"],
                 "question": question,
-                "answer": answer,
-                "selected_sources": selected_sources_payload(selected_docs),
-                "evidence_sentences": evidence_sentences,
-                "retrieval_params": retrieval_params,
             }
-            sample_records.append(record)
-
-        write_sample_queries(
-            query_output_dir / f"sample_{sample_idx}_queries.json",
-            sample_idx,
-            path,
-            sample_queries,
         )
-        return sample_records
 
-    if use_per_sample_outputs:
-        for idx, sample_idx in enumerate(sample_indices, 1):
-            sample_records = process_sample(sample_idx, idx, len(sample_indices))
-            sample_output_path = per_sample_output_path(sample_idx)
-            sample_summary_path = summary_output_path(sample_output_path, None)
-            sample_output_path.parent.mkdir(parents=True, exist_ok=True)
-            with sample_output_path.open("w", encoding="utf-8") as jsonl_file:
-                for record in sample_records:
-                    jsonl_file.write(json.dumps(record, ensure_ascii=False) + "\n")
-            write_summary_csv(sample_summary_path, sample_records)
-            all_records.extend(sample_records)
-            print(f"\nSaved JSONL: {sample_output_path}")
-            print(f"Saved CSV  : {sample_summary_path}")
-    else:
-        summary_path = summary_output_path(output_path, args.summary_output)
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        with output_path.open("w", encoding="utf-8") as jsonl_file:
-            for idx, sample_idx in enumerate(sample_indices, 1):
-                sample_records = process_sample(sample_idx, idx, len(sample_indices))
-                all_records.extend(sample_records)
-                for record in sample_records:
-                    jsonl_file.write(json.dumps(record, ensure_ascii=False) + "\n")
-                    jsonl_file.flush()
+        print(
+            f"[sample_idx={sample_idx} | feature {feature_rank}/{len(top_features)}] "
+            f"feature={feature_info['feature']}"
+        )
 
-        write_summary_csv(summary_path, all_records)
-        print(f"\nSaved JSONL: {output_path}")
-        print(f"Saved CSV  : {summary_path}")
+        answer, selected_docs, _, _, _, _ = ask_rag_with_score_gap(
+            question,
+            min_docs=args.min_docs,
+            max_docs=args.max_docs,
+            min_gap=args.min_gap,
+            max_chunks_per_source=args.max_chunks_per_source,
+            inspect_all=False,
+        )
 
-    print(f"Saved per-sample queries to: {query_output_dir}")
+        evidence_sentences = evidence_sentences_payload(
+            selected_docs,
+            question=question,
+            feature_info=feature_info,
+            sentences_per_source=args.evidence_sentences_per_source,
+        )
+
+        record = {
+            "sample_idx": sample_idx,
+            "shap_json_path": str(input_json_path),
+            "prediction_label": pred.get("label", "UNKNOWN"),
+            "prediction_probability": pred.get("probability", "UNKNOWN"),
+            "feature_rank": feature_rank,
+            "feature": feature_info["feature"],
+            "feature_definition": feature_info["definition"],
+            "feature_direction": feature_info["direction"],
+            "feature_shap_value": feature_info["shap_value"],
+            "feature_abs_shap": feature_info["abs_shap"],
+            "question": question,
+            "answer": answer,
+            "selected_sources": selected_sources_payload(selected_docs),
+            "evidence_sentences": evidence_sentences,
+            "retrieval_params": retrieval_params,
+        }
+
+        all_records.append(record)
+
+    write_sample_queries(
+        query_output_dir / f"sample_{sample_idx}_queries.json",
+        sample_idx,
+        input_json_path,
+        sample_queries,
+    )
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    with output_path.open("w", encoding="utf-8") as jsonl_file:
+        for record in all_records:
+            jsonl_file.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+    write_summary_csv(summary_path, all_records)
+
+    print(f"\nSaved JSONL: {output_path}")
+    print(f"Saved CSV  : {summary_path}")
+    print(f"Saved queries: {query_output_dir / f'sample_{sample_idx}_queries.json'}")
     print(f"Total QA pairs: {len(all_records)}")
-
-
+    
 if __name__ == "__main__":
     main()

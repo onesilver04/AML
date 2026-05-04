@@ -82,6 +82,16 @@ def parse_args():
     parser.add_argument("--sample-indices", type=str, default=None)
     parser.add_argument("--sample-index-file", type=str, default=None)
     parser.add_argument("--output-dir", default="SHAP/120 Local Shap")
+    parser.add_argument(
+        "--all-output-dir",
+        default="SHAP/All Dataset Local Shap",
+        help="Directory for local SHAP JSON files for the full dataset.",
+    )
+    parser.add_argument(
+        "--no-all-json",
+        action="store_true",
+        help="Skip saving local SHAP JSON files for the full dataset.",
+    )
     parser.add_argument("--x-test-output", default="X_test.csv")
     parser.add_argument("--y-test-output", default="y_test.csv")
     parser.add_argument("--skip-plots", action="store_true")
@@ -409,10 +419,58 @@ def save_shap_tuples_json(
     print(f"Saved JSON: {save_path}")
 
 
+def save_local_shap_jsons(
+    sv: np.ndarray,
+    feature_names: list[str],
+    y_values: pd.Series,
+    raw_proba: np.ndarray,
+    threshold: float,
+    sample_positions,
+    output_dir: Path,
+    top_k: int = 3,
+    sample_ids=None,
+):
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    if sample_ids is None:
+        sample_ids = sample_positions
+
+    saved_count = 0
+    for sample_position, sample_id in zip(sample_positions, sample_ids):
+        sample_records = build_raw_shap_records(
+            sv=sv,
+            feature_names=feature_names,
+            sample_idx=sample_position,
+            top_k=top_k,
+        )
+
+        true_label = to_risk_label(int(y_values.iloc[sample_position]))
+        raw_bad_proba = float(raw_proba[sample_position])
+        prediction_label = (
+            "BAD CREDIT RISK"
+            if raw_bad_proba >= threshold
+            else "GOOD CREDIT RISK"
+        )
+
+        save_shap_tuples_json(
+            sample_records,
+            int(sample_id),
+            true_label=true_label,
+            prediction_label=prediction_label,
+            predict_proba=raw_bad_proba,
+            threshold=float(threshold),
+            save_path=output_dir / f"shap_tuples_non_prefix_{int(sample_id)}.json",
+        )
+        saved_count += 1
+
+    return saved_count
+
+
 def main():
     args = parse_args()
     output_dir = resolve_output_path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
+    all_output_dir = resolve_output_path(args.all_output_dir)
 
     df = pd.read_csv(args.data_path)
     df = df.drop(columns=DROP_COLUMNS, errors="ignore")
@@ -600,33 +658,42 @@ def main():
     # prediction label과 probability는 raw probability + tuned threshold 기준 사용
     top_k = 3
 
-    for sample_idx in sample_indices:
-        sample_records = build_raw_shap_records(
-            sv=sv,
+    selected_saved_count = save_local_shap_jsons(
+        sv=sv,
+        feature_names=feature_names,
+        y_values=y_test,
+        raw_proba=raw_proba_test,
+        threshold=float(tuned["threshold"]),
+        sample_positions=sample_indices,
+        output_dir=output_dir,
+        top_k=top_k,
+    )
+    print(f"\nSaved selected local SHAP JSON files: {selected_saved_count}")
+    print(f"Selected local SHAP output dir: {output_dir}")
+
+    if not args.no_all_json:
+        print("\n=== Saving full-dataset local SHAP JSON files ===")
+        shap_exp_all = explainer(X)
+        if len(shap_exp_all.values.shape) == 3:
+            shap_exp_all = shap_exp_all[:, :, 1]
+
+        raw_proba_all = rf_for_shap.predict_proba(X)[:, 1]
+        full_sample_positions = list(range(len(X)))
+        full_sample_ids = [int(idx) for idx in X.index.tolist()]
+
+        all_saved_count = save_local_shap_jsons(
+            sv=shap_exp_all.values,
             feature_names=feature_names,
-            sample_idx=sample_idx,
+            y_values=y.reset_index(drop=True),
+            raw_proba=raw_proba_all,
+            threshold=float(tuned["threshold"]),
+            sample_positions=full_sample_positions,
+            sample_ids=full_sample_ids,
+            output_dir=all_output_dir,
             top_k=top_k,
         )
-
-        true_label = to_risk_label(int(y_test.iloc[sample_idx]))
-
-        raw_bad_proba = float(raw_proba_test[sample_idx])
-
-        prediction_label = (
-            "BAD CREDIT RISK"
-            if raw_bad_proba >= tuned["threshold"]
-            else "GOOD CREDIT RISK"
-        )
-
-        save_shap_tuples_json(
-            sample_records,
-            sample_idx,
-            true_label=true_label,
-            prediction_label=prediction_label,
-            predict_proba=raw_bad_proba,
-            threshold=float(tuned["threshold"]),
-            save_path=output_dir / f"shap_tuples_non_prefix_{sample_idx}.json",
-        )
+        print(f"Saved full-dataset local SHAP JSON files: {all_saved_count}")
+        print(f"Full-dataset local SHAP output dir: {all_output_dir}")
 
 
 if __name__ == "__main__":

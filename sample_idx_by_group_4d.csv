@@ -1,0 +1,23 @@
+﻿condition,warning_type,distance,is_correct,sample_indices
+1,none,far,False,"[77, 110, 111]"
+1,none,far,True,"[10, 45, 81, 83, 100, 123, 126, 136, 142, 146, 169, 176, 177, 187, 189, 194, 197]"
+1,none,near,False,"[39, 183]"
+1,none,near,True,"[47, 63, 178]"
+1,strong,near,True,"[14, 16, 120, 124, 144, 172, 179, 182]"
+1,weak,near,False,[13]
+1,weak,near,True,"[24, 48, 78, 93, 127, 135]"
+2,none,far,False,"[22, 64]"
+2,none,far,True,"[12, 18, 20, 21, 26, 66, 67, 104, 113, 150, 158, 163, 165, 174, 180, 196, 199]"
+2,none,near,False,[175]
+2,none,near,True,"[33, 90, 145]"
+2,strong,near,True,"[25, 40, 62, 97, 116, 138, 152]"
+2,weak,far,False,[4]
+2,weak,near,False,"[70, 121]"
+2,weak,near,True,"[7, 52, 89, 92, 143, 167, 191]"
+3,none,far,False,[109]
+3,none,far,True,"[15, 17, 19, 29, 30, 50, 51, 56, 57, 72, 75, 87, 102, 147, 148, 161, 173]"
+3,none,near,False,"[3, 35]"
+3,strong,near,True,"[5, 6, 53, 58, 65, 86, 98, 128, 132, 139, 141, 155, 184]"
+3,weak,far,False,"[49, 60]"
+3,weak,near,False,[149]
+3,weak,near,True,"[91, 115, 129, 188]"
