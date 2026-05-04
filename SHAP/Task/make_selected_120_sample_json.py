@@ -173,134 +173,170 @@ SHAP_FEATURE_RENAMES = {
 }
 
 CONDITION_1_SAMPLE_INDICES = {
-    123,
-    142,
-    176,
+    # True: none=26, strong=8 / False: none=5, weak=1
+    10,
+    13,
+    14,
+    16,
+    30,
+    39,
     45,
+    47,
+    50,
+    51,
+    56,
+    57,
+    63,
+    72,
+    77,
     81,
     83,
-    197,
-    187,
     100,
-    10,
-    177,
-    126,
-    136,
-    146,
-    169,
-    189,
-    194,
-    144,
-    14,
-    24,
-    47,
-    182,
-    172,
-    93,
-    120,
-    127,
-    135,
-    178,
-    179,
-    48,
-    63,
-    16,
-    124,
-    78,
-    13,
-    39,
-    77,
     110,
     111,
+    120,
+    123,
+    124,
+    126,
+    136,
+    142,
+    144,
+    146,
+    169,
+    172,
+    176,
+    177,
+    178,
+    179,
+    182,
     183,
+    187,
+    189,
+    194,
+    197,
 }
-
 CONDITION_2_SAMPLE_INDICES = {
-    97,
-    40,
-    116,
-    152,
-    138,
-    25,
-    62,
-    92,
-    33,
-    145,
-    90,
-    52,
-    7,
-    143,
-    89,
-    191,
-    167,
-    121,
-    70,
-    175,
-    12,
-    163,
-    26,
-    66,
-    113,
-    104,
-    67,
-    18,
-    20,
-    165,
-    199,
-    158,
-    180,
-    21,
-    150,
-    174,
-    196,
-    64,
-    22,
+    # True: none=31, strong=3 / False: none=3, weak=3
     4,
+    12,
+    15,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    26,
+    29,
+    33,
+    64,
+    66,
+    67,
+    70,
+    75,
+    87,
+    90,
+    102,
+    104,
+    113,
+    116,
+    121,
+    138,
+    145,
+    147,
+    148,
+    150,
+    152,
+    158,
+    161,
+    163,
+    165,
+    173,
+    174,
+    175,
+    180,
+    196,
+    199,
 }
-
 CONDITION_3_SAMPLE_INDICES = {
-    132,
-    139,
-    65,
+    # True: weak=17, strong=17 / False: none=3, weak=3
+    3,
+    5,
+    6,
+    7,
+    24,
+    25,
+    35,
+    40,
+    48,
+    49,
+    52,
     53,
     58,
-    141,
-    5,
-    98,
-    128,
-    155,
-    6,
-    129,
-    86,
-    184,
-    115,
-    91,
-    188,
-    3,
-    149,
-    35,
-    15,
-    173,
-    72,
-    75,
-    29,
-    56,
-    51,
-    57,
-    161,
-    19,
-    50,
-    147,
-    17,
-    102,
-    148,
-    30,
-    87,
-    109,
-    49,
     60,
+    62,
+    65,
+    78,
+    86,
+    89,
+    91,
+    92,
+    93,
+    97,
+    98,
+    109,
+    115,
+    127,
+    128,
+    129,
+    132,
+    135,
+    139,
+    141,
+    143,
+    149,
+    155,
+    167,
+    184,
+    188,
+    191,
 }
 
+
+def build_condition_by_sample() -> dict[int, int]:
+    condition_sets = {
+        1: CONDITION_1_SAMPLE_INDICES,
+        2: CONDITION_2_SAMPLE_INDICES,
+        3: CONDITION_3_SAMPLE_INDICES,
+    }
+
+    for condition, sample_indices in condition_sets.items():
+        if len(sample_indices) != 40:
+            raise ValueError(
+                f"Condition {condition} must contain 40 samples, "
+                f"got {len(sample_indices)}."
+            )
+
+    condition_by_sample: dict[int, int] = {}
+    for condition, sample_indices in condition_sets.items():
+        for sample_idx in sample_indices:
+            if sample_idx in condition_by_sample:
+                raise ValueError(
+                    f"sample_idx={sample_idx} appears in both condition "
+                    f"{condition_by_sample[sample_idx]} and {condition}."
+                )
+            condition_by_sample[sample_idx] = condition
+
+    if len(condition_by_sample) != 120:
+        raise ValueError(
+            f"Condition mapping must contain 120 unique samples, "
+            f"got {len(condition_by_sample)}."
+        )
+
+    return condition_by_sample
+
+
+CONDITION_BY_SAMPLE = build_condition_by_sample()
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -616,15 +652,13 @@ def build_sample_payload(
             feature_payload["evidence_sentence"] = evidence
         local_shap_top3_features.append(feature_payload)
 
+    if sample_idx not in CONDITION_BY_SAMPLE:
+        raise ValueError(f"No condition mapping for sample_idx={sample_idx}")
+
     payload = {
         "sample_idx": sample_idx,
+        "condition": CONDITION_BY_SAMPLE[sample_idx],
     }
-    if sample_idx in CONDITION_1_SAMPLE_INDICES:
-        payload["condition"] = 1
-    elif sample_idx in CONDITION_2_SAMPLE_INDICES:
-        payload["condition"] = 2
-    elif sample_idx in CONDITION_3_SAMPLE_INDICES:
-        payload["condition"] = 3
 
     payload.update(
         {

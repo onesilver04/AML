@@ -62,7 +62,7 @@
   },
   {
     "sample_idx": 97,
-    "condition": 2,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -184,7 +184,7 @@
   },
   {
     "sample_idx": 40,
-    "condition": 2,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -428,7 +428,7 @@
   },
   {
     "sample_idx": 25,
-    "condition": 2,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -489,7 +489,7 @@
   },
   {
     "sample_idx": 62,
-    "condition": 2,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -1892,7 +1892,7 @@
   },
   {
     "sample_idx": 78,
-    "condition": 1,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -2014,7 +2014,7 @@
   },
   {
     "sample_idx": 93,
-    "condition": 1,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -2075,7 +2075,7 @@
   },
   {
     "sample_idx": 167,
-    "condition": 2,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -2136,7 +2136,7 @@
   },
   {
     "sample_idx": 127,
-    "condition": 1,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -2197,7 +2197,7 @@
   },
   {
     "sample_idx": 191,
-    "condition": 2,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -2258,7 +2258,7 @@
   },
   {
     "sample_idx": 89,
-    "condition": 2,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -2319,7 +2319,7 @@
   },
   {
     "sample_idx": 135,
-    "condition": 1,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -2380,7 +2380,7 @@
   },
   {
     "sample_idx": 143,
-    "condition": 2,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -2441,7 +2441,7 @@
   },
   {
     "sample_idx": 7,
-    "condition": 2,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -2563,7 +2563,7 @@
   },
   {
     "sample_idx": 52,
-    "condition": 2,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -2685,7 +2685,7 @@
   },
   {
     "sample_idx": 24,
-    "condition": 1,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -2868,7 +2868,7 @@
   },
   {
     "sample_idx": 48,
-    "condition": 1,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -3051,7 +3051,7 @@
   },
   {
     "sample_idx": 92,
-    "condition": 2,
+    "condition": 3,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
@@ -3905,7 +3905,7 @@
   },
   {
     "sample_idx": 15,
-    "condition": 3,
+    "condition": 2,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
@@ -3966,7 +3966,7 @@
   },
   {
     "sample_idx": 173,
-    "condition": 3,
+    "condition": 2,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
@@ -4149,7 +4149,7 @@
   },
   {
     "sample_idx": 87,
-    "condition": 3,
+    "condition": 2,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
@@ -4271,7 +4271,7 @@
   },
   {
     "sample_idx": 30,
-    "condition": 3,
+    "condition": 1,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
@@ -4393,7 +4393,7 @@
   },
   {
     "sample_idx": 148,
-    "condition": 3,
+    "condition": 2,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
@@ -4454,7 +4454,7 @@
   },
   {
     "sample_idx": 102,
-    "condition": 3,
+    "condition": 2,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
@@ -4515,7 +4515,7 @@
   },
   {
     "sample_idx": 17,
-    "condition": 3,
+    "condition": 2,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
@@ -4637,7 +4637,7 @@
   },
   {
     "sample_idx": 147,
-    "condition": 3,
+    "condition": 2,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
@@ -4698,7 +4698,7 @@
   },
   {
     "sample_idx": 50,
-    "condition": 3,
+    "condition": 1,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
@@ -4759,7 +4759,7 @@
   },
   {
     "sample_idx": 19,
-    "condition": 3,
+    "condition": 2,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
@@ -4820,7 +4820,7 @@
   },
   {
     "sample_idx": 161,
-    "condition": 3,
+    "condition": 2,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
@@ -4881,7 +4881,7 @@
   },
   {
     "sample_idx": 57,
-    "condition": 3,
+    "condition": 1,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
@@ -4942,7 +4942,7 @@
   },
   {
     "sample_idx": 51,
-    "condition": 3,
+    "condition": 1,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
@@ -5064,7 +5064,7 @@
   },
   {
     "sample_idx": 56,
-    "condition": 3,
+    "condition": 1,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
@@ -5125,7 +5125,7 @@
   },
   {
     "sample_idx": 29,
-    "condition": 3,
+    "condition": 2,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
@@ -5186,7 +5186,7 @@
   },
   {
     "sample_idx": 75,
-    "condition": 3,
+    "condition": 2,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
@@ -5247,7 +5247,7 @@
   },
   {
     "sample_idx": 72,
-    "condition": 3,
+    "condition": 1,
     "distance": "far",
     "is_correct": true,
     "customer_data": {

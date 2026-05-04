@@ -14,9 +14,9 @@ if str(REPO_ROOT) not in sys.path:
 from RAG.make_rag_query import generate_rag_queries
 
 
-DEFAULT_SHAP_DIR = Path("SHAP/Task/wrong_18_local_shap")
-DEFAULT_OUTPUT = Path("RAG/QA/wrong_18_feature_qa.jsonl")
-DEFAULT_QUERY_OUTPUT_DIR = Path("RAG/QA/Queries/wrong_18")
+DEFAULT_SHAP_DIR = Path("SHAP/Task/wrong_18_local_shap/SHAP/Task/wrong_41_local_shap/shap_tuples_non_prefix_8.json")
+DEFAULT_OUTPUT = Path("RAG/QA/wrong_41_feature_qa.jsonl")
+DEFAULT_QUERY_OUTPUT_DIR = Path("RAG/QA/Queries/additional_3")
 
 
 def parse_args():

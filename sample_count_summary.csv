@@ -1,0 +1,15 @@
+﻿condition,warning_type,distance,count
+1,none,far,20
+1,none,near,5
+1,strong,near,8
+1,weak,near,7
+2,none,far,19
+2,none,near,4
+2,strong,near,7
+2,weak,far,1
+2,weak,near,9
+3,none,far,18
+3,none,near,2
+3,strong,near,13
+3,weak,far,2
+3,weak,near,5
