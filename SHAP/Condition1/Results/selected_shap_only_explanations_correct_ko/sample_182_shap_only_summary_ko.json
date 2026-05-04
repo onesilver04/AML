@@ -1,0 +1,36 @@
+{
+  "sample_idx": 182,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_182.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.5575487082996187,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The absence of a checking account and the intention to use the loan for educational purposes both contribute to a higher risk profile. However, having a negative account balance works to lower the overall risk assessment. Ultimately, these combined factors lead the model to classify this application as a good credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n대출 기간\n대출 금액이 명시되지 않았습니다.\n월 상환 부담 수준\n상환 계획이 명확하지 않습니다.\n현재 거주 기간\n거주 기간이 명시되지 않았습니다.\n나이\n나이 정보가 제공되지 않았습니다.\n기존 대출 수\n기존 대출 이력이 명시되지 않았습니다.\n부양 가족 수\n부양 가족 수가 명시되지 않았습니다.\n계좌 잔액 부족\n계좌 잔액 부족이 신용 위험을 증가시킵니다.\n계좌 잔액 적음\n계좌 잔액이 적음에도 불구하고, 이는 위험을 일부 완화합니다.\n계좌 잔액 충분\n저축 잔액이 충분한 것으로 보이지만, 대출 목적에 따라 영향이 다릅니다.\n대출 이력 없음 또는 전액 상환\n대출 이력이 없거나 전액 상환된 이력이 신용 위험을 낮춥니다.\n교육비 목적\n교육 목적의 대출은 신용 위험을 낮추는 요인입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.05778058230237468,
+      "abs_shap": 0.05778058230237468,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "purpose_education",
+      "definition": "Loan purpose: education.",
+      "shap_value": 0.03698261153696969,
+      "abs_shap": 0.03698261153696969,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.036791256803941644,
+      "abs_shap": 0.036791256803941644,
+      "direction": "decrease_risk"
+    }
+  ]
+}

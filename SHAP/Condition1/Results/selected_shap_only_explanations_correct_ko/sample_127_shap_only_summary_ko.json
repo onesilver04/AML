@@ -1,0 +1,36 @@
+{
+  "sample_idx": 127,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_127.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.46321050931308044,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The absence of a checking account slightly increases the perceived risk, but this is offset by a financial background that includes critical accounts or other existing credits, which decreases the risk. Additionally, the specific loan amount requested further reduces the overall risk. Ultimately, these combined factors lead to a good credit risk assessment.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족이 약간의 위험 요소로 작용하지만, 중요한 신용 이력이나 기존 대출이 이를 상쇄하여 위험을 감소시킵니다. 또한 요청된 대출 금액이 추가적으로 위험을 낮춥니다. 이러한 요인들이 결합되어 우수한 신용 위험 평가를 이끌어냅니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.05890314480319833,
+      "abs_shap": 0.05890314480319833,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.04129391342901092,
+      "abs_shap": 0.04129391342901092,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "credit_amount",
+      "definition": "Credit amount requested by the applicant.",
+      "shap_value": -0.03534475453446534,
+      "abs_shap": 0.03534475453446534,
+      "direction": "decrease_risk"
+    }
+  ]
+}

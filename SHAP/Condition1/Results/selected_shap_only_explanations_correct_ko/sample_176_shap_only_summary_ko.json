@@ -5,8 +5,8 @@
   "prediction_label": "GOOD CREDIT RISK",
   "prediction_probability": 0.14673353549146628,
   "prediction_threshold": 0.56,
-  "final_explanation": "Based on the AI model's prediction, having no checking account decreases the model's risk estimate [1]. A credit history with critical accounts or other existing credits decreases the model's risk estimate [2]. A loan purpose for purchasing a used car decreases the model's risk estimate [3]. Overall, this applicant is likely to have a low risk of default.",
-  "final_explanation_ko": "계좌 잔액 부족은 모델의 위험 평가를 낮춥니다 [1]. 신용 이력에 중대한 계정이나 기존 대출이 포함되면 위험 평가가 낮아집니다 [2]. 중고차 구매 목적의 대출은 위험 평가를 더욱 낮춥니다 [3]. 전반적으로 이 고객은 신용 불이행 위험이 낮은 수준으로 평가됩니다.",
+  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The absence of a checking account, along with a history of critical accounts or other existing credits, both work to lower the overall risk profile. Furthermore, the loan purpose of purchasing a used car contributes to this reduced risk. Together, these elements align with the final assessment of a good credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족과 신용 문제 이력이 위험 프로파일을 낮추는 요인으로 작용합니다. \n중고차량 구매 목적의 대출은 이러한 위험 감소에 기여합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "shap_features": [
     {
       "rank": 1,

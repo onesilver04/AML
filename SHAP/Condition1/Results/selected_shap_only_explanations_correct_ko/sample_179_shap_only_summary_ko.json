@@ -1,0 +1,36 @@
+{
+  "sample_idx": 179,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_179.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.49169782403502865,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, the application indicates a low credit risk. This assessment is shaped by three key factors. The absence of a checking account slightly increases the perceived risk, while having a critical account or other existing credits actually decreases the overall risk. Additionally, a longer loan duration moderately increases the risk. Despite these risk-increasing influences, the combined effect of these factors leads to a final classification of good credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족이 신용 위험을 약간 상승시키지만, 중요한 계좌나 기존 대출의 존재는 위험을 오히려 감소시킵니다. \n대출 기간이 길어질수록 위험이 중간 정도로 증가하는 경향이 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.06719795452916866,
+      "abs_shap": 0.06719795452916866,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.056641433034372676,
+      "abs_shap": 0.056641433034372676,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": 0.04523862833685771,
+      "abs_shap": 0.04523862833685771,
+      "direction": "increase_risk"
+    }
+  ]
+}

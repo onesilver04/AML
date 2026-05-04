@@ -1,0 +1,36 @@
+{
+  "sample_idx": 194,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_194.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.16992796175137814,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The absence of a checking account and the presence of a critical account or other existing credits both work to decrease the overall risk. However, the fact that the loan is intended for educational purposes slightly increases the risk. Ultimately, these combined factors support the conclusion that this is a good credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족과 신용 문제 이력이 위험을 감소시키는 요인으로 작용하고 있습니다. 그러나 교육 목적의 대출 신청이 위험을 약간 증가시키는 요인입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.09506088955737033,
+      "abs_shap": 0.09506088955737033,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.05133532525773713,
+      "abs_shap": 0.05133532525773713,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "purpose_education",
+      "definition": "Loan purpose: education.",
+      "shap_value": 0.0410681432585449,
+      "abs_shap": 0.0410681432585449,
+      "direction": "increase_risk"
+    }
+  ]
+}

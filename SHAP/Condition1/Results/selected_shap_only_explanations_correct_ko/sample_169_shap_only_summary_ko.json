@@ -1,0 +1,36 @@
+{
+  "sample_idx": 169,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_169.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.25742175574781717,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, this case indicates a low credit risk. The absence of a checking account, a longer loan duration, and a negative account balance each contribute to decreasing risk. These factors collectively align with the final assessment of good credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n이 사례는 신용 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족과 함께 대출 기간이 길고 계좌 잔액이 부정적인 상태가 위험을 감소시키는 요인으로 작용합니다. 이러한 요소들이 종합적으로 우수한 신용 위험 평가와 일치합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.09321996364656301,
+      "abs_shap": 0.09321996364656301,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.04451249589234468,
+      "abs_shap": 0.04451249589234468,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.038142113849171905,
+      "abs_shap": 0.038142113849171905,
+      "direction": "decrease_risk"
+    }
+  ]
+}

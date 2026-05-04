@@ -1,0 +1,36 @@
+{
+  "sample_idx": 111,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/wrong_18_local_shap/shap_tuples_non_prefix_111.json",
+  "true_label": "BAD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.3123518477182227,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The assessment is primarily driven by three key factors that are each decreasing risk: not having a checking account, maintaining savings of at least 1000, and having savings under 100. Together, these financial characteristics lower the overall risk profile, ultimately supporting the conclusion that this represents a good credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n계좌 잔액 부족이 신용 위험을 증가시키는 요인으로 작용하지 않습니다.\n저축 잔액이 최소 1000 이상으로 유지되어 재정적 안정성이 높게 평가됩니다.\n저축 잔액이 100 미만인 경우에도 신용 위험이 크게 증가하지 않는 것으로 나타났습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.07668759555461717,
+      "abs_shap": 0.07668759555461717,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "savings_status_>=1000",
+      "definition": "Savings account status: savings at least 1000 DM.",
+      "shap_value": -0.04095263620016703,
+      "abs_shap": 0.04095263620016703,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.03755436562193055,
+      "abs_shap": 0.03755436562193055,
+      "direction": "decrease_risk"
+    }
+  ]
+}

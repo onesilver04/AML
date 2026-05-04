@@ -1,0 +1,36 @@
+{
+  "sample_idx": 100,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_100.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.09357765997636806,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, the applicant is assessed as having a good credit risk, indicating a low credit risk. This favorable outcome is primarily driven by three key factors. Not having a checking account decreases the overall risk, while having a critical credit history or other existing credits also decreases the risk. Additionally, maintaining a negative balance in a checking account further decreases the risk. Together, these factors lower the likelihood of default, leading the model to conclude that the credit risk is low and aligning with the final good credit risk assessment.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 신용 위험이 낮은 수준으로 평가되어 채무 불이행 가능성이 적습니다.\n대출 금액이 적고, 월 상환 부담 수준이 낮으며, 이는 신용 위험을 더욱 감소시킵니다.\n신용 이력에 연체 기록이 없거나 기존 대출 상환 이력이 양호하여 신용 신뢰성이 높아졌습니다.\n계좌 잔액이 충분하지 않지만, 이는 신용 위험에 큰 영향을 미치지 않습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.09081593175643134,
+      "abs_shap": 0.09081593175643134,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.054006962043685505,
+      "abs_shap": 0.054006962043685505,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.0426491915181276,
+      "abs_shap": 0.0426491915181276,
+      "direction": "decrease_risk"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "sample_idx": 135,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_135.json",
+  "true_label": "BAD CREDIT RISK",
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.661599729071055,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, the outcome indicates a high credit risk. The absence of a checking account and a negative bank balance both contribute to increasing the likelihood of default. Meanwhile, the percentage of disposable income already committed to installment payments works to decrease the overall risk. These combined factors lead to the final assessment of a bad credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족과 부정적인 은행 잔액이 채무 불이행 위험을 증가시키는 주요 요인입니다.\n월 상환 부담 수준이 가처분 소득의 상당 부분을 차지함으로써 전체 위험은 감소하는 경향을 보입니다.\n이러한 요인들이 복합적으로 작용하여 신용 위험이 나쁜 수준으로 평가됩니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.052989912971654424,
+      "abs_shap": 0.052989912971654424,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": 0.0514758375790086,
+      "abs_shap": 0.0514758375790086,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "installment_commitment",
+      "definition": "Installment rate as a percentage of disposable income.",
+      "shap_value": -0.04168747550605019,
+      "abs_shap": 0.04168747550605019,
+      "direction": "decrease_risk"
+    }
+  ]
+}

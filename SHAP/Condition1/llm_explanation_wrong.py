@@ -11,7 +11,7 @@ import urllib.request
 from pathlib import Path
 
 
-DEFAULT_EXPLANATION_MODEL = "qwen3.5:27b"
+DEFAULT_EXPLANATION_MODEL = "qwen3.6:35b"
 DEFAULT_OLLAMA_URL = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
 
 SHAP_DIR = Path(__file__).resolve().parents[1]

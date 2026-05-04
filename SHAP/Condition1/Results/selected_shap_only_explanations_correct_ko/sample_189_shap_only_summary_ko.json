@@ -1,0 +1,36 @@
+{
+  "sample_idx": 189,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_189.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.1453491913842197,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, this applicant presents a low credit risk. The absence of a checking account, a checking balance below zero, and a savings balance under 100 each contribute to decreasing the risk. These financial indicators collectively reinforce the final prediction of good credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족과 저축 잔액이 거의 없는 상태는 신용 위험을 감소시키는 요인입니다. 이러한 재무 지표들은 신용 위험이 우수하다는 최종 평가를 뒷받침합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.0955039815536459,
+      "abs_shap": 0.0955039815536459,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.0487520522938275,
+      "abs_shap": 0.0487520522938275,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.03897079221783866,
+      "abs_shap": 0.03897079221783866,
+      "direction": "decrease_risk"
+    }
+  ]
+}

@@ -17,7 +17,7 @@ DEFAULT_OLLAMA_URL = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
 SHAP_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = SHAP_DIR.parent
 TRANSLATION_PATH = REPO_ROOT / "RAG" / "Final Summary" / "translation.py"
-DEFAULT_OUTPUT_DIR = SHAP_DIR / "Condition1" / "Results" / "selected_shap_only_explanations_ko"
+DEFAULT_OUTPUT_DIR = SHAP_DIR / "Condition1" / "Results" / "selected_shap_only_explanations_correct_ko"
 DEFAULT_SHAP_SEARCH_DIRS = [
     SHAP_DIR / "Task" / "correct_102_local_shap",
     SHAP_DIR / "Task" / "wrong_18_local_shap",
@@ -28,52 +28,185 @@ TARGET_SAMPLE_IDS = [
     144, 14, 24, 47, 182, 172, 93, 120, 127, 135, 178, 179, 48, 63, 16, 124, 78
 ]
 
+# 번역 프롬프트
+def build_shap_only_translation_prompt(text: str, translation_module):
+    feature_mapping_text = translation_module.build_feature_mapping_text()
 
-SHAP_EXPLANATION_SYSTEM_PROMPT = """You are a financial risk analyst specialized in credit scoring and SHAP-based explanations.
+    return f"""You are a professional Korean translator for financial risk explanations.
 
-Generate a user-friendly English explanation for a credit risk prediction using only the provided top-3 SHAP values.
+Translate the following English explanation into natural Korean.
 
-Rules:
-1. Output ONLY valid JSON.
-2. The JSON object must contain ONLY final_explanation.
-3. Do NOT use RAG, retrieved evidence, literature evidence, or external knowledge.
-4. Do NOT mention missing evidence, RAG, sources, or literature.
-5. Include the three SHAP features in the same order as provided.
-6. Use [1], [2], and [3] only as feature-rank markers.
+GENERAL RULES:
+- The first sentence MUST start with: "본 AI가 예측한 결과에 따르면, \n"
+- After the first sentence, immediately start the feature explanations.
+- Do NOT generate a separate overall prediction sentence before the feature explanations.
+- Do NOT include the phrase "분석 결과" anywhere in the output.
+- Do NOT translate "default" as "디폴트".
+- Instead, translate it into natural Korean financial terms such as:
+  - "신용 위험"
+  - "상환 위험"
+  - "대출 상환 가능성"
+- Prefer "신용 위험" in most cases.
+- Output ONLY Korean.
+- Preserve the meaning and tone.
+- Do NOT use markdown.
+- Do NOT add new information.
+- Keep the translated result as connected prose.
+- Use the newline character "\n" to separate sentences.
+- Insert a newline after each feature explanation ends.
+- Do NOT force citation markers such as [1], [2], [3].
+- Separate each feature explanation with the newline character "\n".
+- If citation markers exist in the input, preserve them.
+- If citation markers do not exist in the input, do NOT add them.
+- Do NOT force exactly 4 sentences.
+- Translate all sentences normally EXCEPT the final sentence.
+
+FEATURE NAME RULE:
+- Feature names are fixed terms.
+- You MUST follow FEATURE_NAME_MAP exactly.
+- When translating a feature, use the Korean feature name exactly as written in FEATURE_NAME_MAP.
+- Do NOT create your own Korean feature names.
+- Do NOT paraphrase the mapped Korean feature names.
+- Do NOT translate feature terms word-by-word.
+- Do NOT produce terms like "체크 계좌", "체크링 계좌", or "체킹 계좌".
+- If a feature appears in the input, replace it with the exact Korean value from FEATURE_NAME_MAP.
+- If a feature is not in FEATURE_NAME_MAP, translate it naturally.
+
+LINE BREAK RULE:
+- Each feature explanation MUST be a separate sentence.
+- After each feature explanation sentence, insert the newline character "\n".
+- **CRITICAL: Do NOT generate any intermediate summary or concluding remarks (e.g., "따라서...", "이러한 이유로...") between the feature explanations and the final sentence.**
+- **CRITICAL: Do NOT summarize the findings before the final fixed sentence.**
+- The output should only consist of:
+  1. The opening sentence.
+  2. Individual feature explanation sentences.
+  3. The exact final sentence required below.
+  
+- The output must separate feature explanations by "\n".
+- Do NOT combine multiple feature explanations into one sentence.
+- Do NOT explain two or more features in the same sentence.
+- The final overall sentence must appear on the next line after all feature explanations.
+- Do NOT use bullet points or numbering.
+
+FINAL SENTENCE RULE:
+- Ignore the original final sentence completely.
+- The explanation MUST end with exactly this sentence:
+
+전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.
+
+
+If the original final sentence contains:
+- "low risk"
+- "low risk of default"
+- "GOOD CREDIT RISK"
+Then end with this sentence exactly:
+전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.
+
+If the original final sentence contains:
+- "high risk"
+- "high risk of default"
+- "BAD CREDIT RISK"
+Then end with this sentence exactly:
+전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.
+
+- **Do NOT add any text, words, or sentences after or before this final sentence.**
+
+FEATURE_NAME_MAP:
+{feature_mapping_text}
+
+Text:
+{text}
+
+Korean:
 """
 
 
-SHAP_EXPLANATION_USER_TEMPLATE = """Generate final_explanation for this credit risk prediction using only the top-3 SHAP values.
+def translate_with_shap_only_prompt(text: str, translation_module, model: str, base_url: str) -> str:
+    text = translation_module.force_replace_feature_names(text)
+    prompt = build_shap_only_translation_prompt(text, translation_module)
+    translated = ollama_chat(model, [{"role": "user", "content": prompt}], base_url)
+
+    result = translated.strip()
+
+    # 기존 시작 문구 제거
+    result = re.sub(r"^본 AI 모델의 예측에 따르면[,\s\n]*", "", result)
+    result = re.sub(r"^본 AI가 예측한 결과에 따르면[,\s\n]*", "", result)
+    result = re.sub(r"^본 AI 모델의 예측 결과[,\s\n]*", "", result)
+
+    # 결론성/전체 예측 요약 문장 제거
+    remove_patterns = [
+        r"고객은.*?신용 위험이 낮은 수준으로.*?판단됩니다\.",
+        r"고객은.*?신용 위험이 높은 수준으로.*?판단됩니다\.",
+        r"이 신청은.*?신용 위험이 낮은 수준으로.*?평가됩니다\.",
+        r"이 신청은.*?신용 위험이 높은 수준으로.*?평가됩니다\.",
+        r"결과적으로.*?예측합니다\.?",
+        r"전반적으로.*?대출 승인 가능성이.*?습니다\.?",
+        r"Overall.*?\.?"
+    ]
+
+    for pattern in remove_patterns:
+        result = re.sub(pattern, "", result, flags=re.DOTALL)
+
+    # 줄바꿈 정리
+    result = re.sub(r"\n\s*\n", "\n", result).strip()
+
+    # 시작 문구 강제 삽입
+    result = "본 AI가 예측한 결과에 따르면,\n" + result
+
+    # 마지막 문장 강제 삽입
+    result = result.rstrip() + "\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+
+    return result
+
+SHAP_EXPLANATION_SYSTEM_PROMPT = """You are a financial risk analyst specialized in credit scoring and SHAP-based explanations.
+
+Your job is to generate a user-friendly English explanation for credit risk predictions using ONLY the top-3 SHAP features.
+
+You must transform technical financial expressions into intuitive, easy-to-understand English language for general users.
+
+You are NOT a translator.
+You must not directly output encoded feature names or technical expressions.
+Instead, rewrite them into natural English phrases that users can easily understand.
+
+STRICT RULES:
+1. Output ONLY valid JSON.
+2. Do NOT include any text outside JSON.
+3. Do NOT expose reasoning steps.
+4. Generate ONLY final_explanation.
+5. Use ONLY the provided top-3 SHAP feature information.
+"""
+
+
+SHAP_EXPLANATION_USER_TEMPLATE = """Generate only the final English explanation for this credit risk prediction.
 
 Prediction:
-- true label: {true_label}
-- predicted label: {prediction_label}
-- predicted bad-risk probability: {prediction_probability}
-- decision threshold: {prediction_threshold}
+- label: {prediction_label}
+- probability: {prediction_probability}
 
-Top-3 SHAP values:
-{feature_context}
+Top-3 SHAP features:
+{feature_evidence}
 
 Instructions:
-- Start with exactly: Based on the AI model's prediction,
-- Write one sentence for each SHAP feature.
-- Convert raw feature names into natural English phrases.
-- If shap_direction is "model increases risk", say the feature increases the model's risk estimate.
-- If shap_direction is "model decreases risk", say the feature decreases the model's risk estimate.
-- Do not claim causality beyond SHAP contribution.
-- Sentence 1 must end with [1]
-- Sentence 2 must end with [2]
-- Sentence 3 must end with [3]
-- End with exactly one of these final sentences:
-  - Overall, this applicant is likely to have a low risk of default.
-  - Overall, this applicant is likely to have a high risk of default.
+- Use ONLY the provided top-3 SHAP features and their SHAP directions.
+- Do NOT use RAG, evidence, papers, studies, literature comparisons, or SHAP values in the final explanation.
+- Do NOT keep raw encoded feature names; rewrite them into intuitive English phrases.
+- If shap_direction is "increases risk" or "increase_risk", describe the feature as increasing risk.
+- If shap_direction is "decreases risk" or "decrease_risk", describe the feature as decreasing risk.
+- Mention all three features in the same order as provided.
+- Keep the explanation natural, concise, non-redundant, and analytical.
+- Do NOT use explicit numbering such as [1], [2], [3].
+
+Required flow:
+1. Start with exactly: "Based on the AI model's prediction,"
+2. State whether the prediction indicates low or high credit risk.
+3. Explain how the three SHAP features contributed to the prediction.
+4. End by reflecting the final prediction naturally.
 
 Output format:
 {{
   "final_explanation": "..."
 }}
 """
-
 
 def parse_args():
     parser = argparse.ArgumentParser(
@@ -301,11 +434,10 @@ def generate_shap_explanation(shap_payload, model: str, base_url: str):
     tuples = validate_shap_payload(shap_payload)
     prediction = shap_payload.get("prediction") or {}
     prompt = SHAP_EXPLANATION_USER_TEMPLATE.format(
-        true_label=shap_payload.get("true_label", "UNKNOWN"),
         prediction_label=prediction.get("label", "UNKNOWN"),
         prediction_probability=prediction.get("probability", "UNKNOWN"),
         prediction_threshold=prediction.get("threshold", "UNKNOWN"),
-        feature_context=format_feature_context(tuples),
+        feature_evidence=format_feature_context(tuples),
     )
     content = ollama_chat(
         model,
@@ -321,16 +453,12 @@ def generate_shap_explanation(shap_payload, model: str, base_url: str):
     if not isinstance(final_explanation, str) or not final_explanation.strip():
         raise ValueError(f"LLM output is missing final_explanation: {payload}")
 
-    missing_refs = [ref for ref in ("[1]", "[2]", "[3]") if ref not in final_explanation]
-    if missing_refs:
-        raise ValueError(f"final_explanation is missing markers {missing_refs}: {final_explanation}")
-
     return final_explanation.strip()
 
 
 def translate_with_translation_py_prompt(text: str, translation_module, model: str, base_url: str) -> str:
     text = translation_module.force_replace_feature_names(text)
-    prompt = translation_module.build_prompt(text)
+    prompt = translation_module.build_prompt(text) # translation.py의 LG Exaone 모델 사용
     translated = ollama_chat(model, [{"role": "user", "content": prompt}], base_url)
     return translation_module.force_replace_feature_names(translated.strip())
 
@@ -418,7 +546,7 @@ def main():
         try:
             shap_payload, shap_path = load_shap_payload(sample_idx, args.shap_search_dirs)
             final_explanation = generate_shap_explanation(shap_payload, args.model, args.ollama_url)
-            final_explanation_ko = translate_with_translation_py_prompt(
+            final_explanation_ko = translate_with_shap_only_prompt(
                 final_explanation,
                 translation_module,
                 translation_model,

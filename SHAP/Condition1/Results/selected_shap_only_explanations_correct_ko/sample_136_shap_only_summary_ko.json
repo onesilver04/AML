@@ -1,0 +1,36 @@
+{
+  "sample_idx": 136,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_136.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.27989350344215674,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, this case indicates a good credit risk. The assessment is primarily influenced by three financial factors: not maintaining a checking account, keeping savings below a minimal threshold, and carrying a negative checking balance. Each of these conditions works to decrease the overall risk, collectively suggesting a more stable financial profile. Consequently, the final prediction reflects a favorable credit risk outcome.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n이 사례는 신용 위험이 낮은 수준으로 평가됩니다. 주요 금융 요인들로는 다음과 같은 것들이 있습니다:\n입출금 계좌 미보유\n저축 잔액이 최소 임계치 미만\n부정적인 계좌 잔액 보유\n이러한 조건들은\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.11230555431291335,
+      "abs_shap": 0.11230555431291335,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.048915178801068535,
+      "abs_shap": 0.048915178801068535,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.045326859273892225,
+      "abs_shap": 0.045326859273892225,
+      "direction": "decrease_risk"
+    }
+  ]
+}

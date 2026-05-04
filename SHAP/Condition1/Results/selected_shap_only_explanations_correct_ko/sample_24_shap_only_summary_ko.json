@@ -1,0 +1,36 @@
+{
+  "sample_idx": 24,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_24.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.43907147895996645,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The history of a critical account or other existing credits contributes to lowering the risk, whereas not having a checking account slightly increases it. Furthermore, the loan purpose of purchasing a radio or television helps decrease the overall risk. Together, these factors lead to a favorable credit risk assessment.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 신용 문제 이력이 없는 것이 위험을 낮추는 데 기여하고 있으며, 입출금 계좌의 부재는 약간의 위험 증가 요인입니다. 또한, 라디오나 텔레비전 구매를 목적으로 하는 대출은 전체 위험을 감소시키는 요인입니다. 이러한 요소들이 결합되어 신용 위험 평가가 긍정적으로 이루어집니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.06177239763723159,
+      "abs_shap": 0.06177239763723159,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.056643486056063806,
+      "abs_shap": 0.056643486056063806,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "purpose_radio/tv",
+      "definition": "Loan purpose: purchase of radio or TV.",
+      "shap_value": -0.04113687649268446,
+      "abs_shap": 0.04113687649268446,
+      "direction": "decrease_risk"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "sample_idx": 142,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_142.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.128537544177462,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The assessment is primarily driven by three key factors that collectively decrease risk. First, not having a checking account decreases risk by reflecting a more conservative financial stance. Second, maintaining a critical credit history or other existing credits decreases risk by demonstrating experience in managing multiple financial obligations. Third, planning to purchase a used car decreases risk by aligning with a tangible asset that typically supports stable repayment. Together, these factors strongly support a favorable credit risk assessment.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족은 신용 위험을 낮추는 요인 중 하나로, 보수적인 재정 관리 태도를 반영합니다. \n신용 문제 이력이나 기존 대출 관리 경험은 여러 금융 의무를 다루는 능력을 보여주어 신용 위험을 감소시킵니다. \n중고차량 구매 계획은 안정적인 상환을 뒷받침하는 실질적인 자산과 연관되어 있어 신용 위험을 더욱 낮춥니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.1095708947331542,
+      "abs_shap": 0.1095708947331542,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.05303747321464805,
+      "abs_shap": 0.05303747321464805,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "purpose_used car",
+      "definition": "Loan purpose: purchase of a used car.",
+      "shap_value": -0.047267416516175706,
+      "abs_shap": 0.047267416516175706,
+      "direction": "decrease_risk"
+    }
+  ]
+}
