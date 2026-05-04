@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n이 사례는 신용 위험이 낮은 수준으로 평가됩니다. 주요 금융 요인들로는 다음과 같은 것들이 있습니다:\n입출금 계좌 미보유\n저축 잔액이 최소 임계치 미만\n부정적인 계좌 잔액 보유\n이러한 조건들은\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": null,
   "class_confidence_relative_percent": 40.7,
   "decision_boundary_abs_distance": 0.2801064965578433,
   "warning_type": "none"

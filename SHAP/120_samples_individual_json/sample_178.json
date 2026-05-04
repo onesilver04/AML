@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족은 채무 불이행 위험을 증가시키며, 대출 상환 기간의 연장은 전체 위험을 더욱 높입니다. \n부정적인 계좌 잔액은 이 우려를 약간 완화시키지만, 이러한 요인들의 복합적인 영향으로 인해 모델은 신용 위험을 나쁜 수준으로 분류합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": null,
   "class_confidence_relative_percent": 71.88,
   "decision_boundary_abs_distance": 0.1260642893687246,
   "warning_type": "none"

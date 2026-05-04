@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족이 신용 위험을 약간 증가시키지만, 중요한 계좌나 기존 대출이 이를 완화시킵니다. \n또한, 계좌 잔액이 0에서 200 단위 사이일 때 위험이 약간 상승하는 경향이 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": null,
   "class_confidence_relative_percent": 17.44,
   "decision_boundary_abs_distance": 0.0583847160627419,
   "warning_type": "strong"

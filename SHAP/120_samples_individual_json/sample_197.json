@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n신청자는 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n계좌 잔액 부족으로 인해 신용 위험이 감소하였습니다.\n부정 잔액 보유는 채무 불이행 가능성을 더욱 낮추고 있습니다.\n대출 기간이 짧아 전체 신용 위험을 감소시키는 요인으로 작용하고 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": null,
   "class_confidence_relative_percent": 76.74,
   "decision_boundary_abs_distance": 0.3820816985022567,
   "warning_type": "none"
