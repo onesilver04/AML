@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": null,
+  "explanation": "본 AI가 예측한 결과에 따르면,\n이 사례는 신용 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족과 함께 대출 기간이 길고 계좌 잔액이 부정적인 상태가 위험을 감소시키는 요인으로 작용합니다. 이러한 요소들이 종합적으로 우수한 신용 위험 평가와 일치합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "class_confidence_relative_percent": 51.16,
   "decision_boundary_abs_distance": 0.3025782442521829,
   "warning_type": "none"

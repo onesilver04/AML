@@ -18,6 +18,10 @@ DEFAULT_CORRECT_RAG_DIR = PROJECT_ROOT / "RAG/Final Summary/Correct_Results"
 DEFAULT_WRONG_RAG_DIR = PROJECT_ROOT / "RAG/Final Summary/Wrong_Results"
 DEFAULT_OUTPUT = PROJECT_ROOT / "SHAP/Task/selected_120_samples.json"
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "SHAP/120_samples_individual_json"
+DEFAULT_EXPLANATION_DIRS = [
+    PROJECT_ROOT / "SHAP/Condition1/Results/selected_shap_only_explanations_wrong_ko",
+    PROJECT_ROOT / "SHAP/Condition1/Results/selected_shap_only_explanations_correct_ko",
+]
 
 FEATURE_PREFIX = "feature_"
 SHAP_FILE_PATTERN = "shap_tuples_non_prefix_*.json"
@@ -311,6 +315,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--wrong-shap-dir", type=Path, default=DEFAULT_WRONG_SHAP_DIR)
     parser.add_argument("--correct-rag-dir", type=Path, default=DEFAULT_CORRECT_RAG_DIR)
     parser.add_argument("--wrong-rag-dir", type=Path, default=DEFAULT_WRONG_RAG_DIR)
+    parser.add_argument(
+        "--explanation-dirs",
+        nargs="+",
+        type=Path,
+        default=DEFAULT_EXPLANATION_DIRS,
+        help="Directories of sample_*_shap_only_summary_ko.json files for explanation.",
+    )
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument(
@@ -483,16 +494,23 @@ def load_rag_evidence_by_sample(
     return evidence_by_sample
 
 
-def load_rag_explanations_by_sample(rag_dirs: list[Path]) -> dict[int, str]:
+def sample_idx_from_explanation_path(path: Path) -> int:
+    match = re.search(r"sample_(\d+)_shap_only_summary_ko\.json$", path.name)
+    if not match:
+        raise ValueError(f"Unexpected explanation file name: {path.name}")
+    return int(match.group(1))
+
+
+def load_explanations_by_sample(explanation_dirs: list[Path]) -> dict[int, str]:
     explanations_by_sample: dict[int, str] = {}
 
-    for rag_dir in rag_dirs:
-        rag_dir = resolve_path(rag_dir)
-        if not rag_dir.exists():
-            raise FileNotFoundError(f"RAG directory does not exist: {rag_dir}")
+    for explanation_dir in explanation_dirs:
+        explanation_dir = resolve_path(explanation_dir)
+        if not explanation_dir.exists():
+            raise FileNotFoundError(f"Explanation directory does not exist: {explanation_dir}")
 
-        for path in sorted(rag_dir.glob("sample_*_final_summary_ko.json")):
-            sample_idx = sample_idx_from_rag_path(path)
+        for path in sorted(explanation_dir.glob("sample_*_shap_only_summary_ko.json")):
+            sample_idx = sample_idx_from_explanation_path(path)
             with path.open(encoding="utf-8") as f:
                 payload = json.load(f)
 
@@ -502,6 +520,43 @@ def load_rag_explanations_by_sample(rag_dirs: list[Path]) -> dict[int, str]:
 
     return explanations_by_sample
 
+
+def load_rag_explanations_by_sample(
+    rag_dirs: list[Path],
+    existing_explanations: dict[int, str],
+) -> dict[int, str]:
+    rag_explanations_by_sample: dict[int, str] = {}
+
+    for rag_dir in rag_dirs:
+        rag_dir = resolve_path(rag_dir)
+        if not rag_dir.exists():
+            raise FileNotFoundError(f"RAG directory does not exist: {rag_dir}")
+
+        for path in sorted(rag_dir.glob("*.json")):
+            with path.open(encoding="utf-8") as f:
+                payload = json.load(f)
+
+            if not isinstance(payload, dict):
+                continue
+            if "explanation" in payload:
+                continue
+
+            sample_idx = payload.get("sample_idx")
+            if sample_idx is None:
+                try:
+                    sample_idx = sample_idx_from_rag_path(path)
+                except ValueError:
+                    continue
+            sample_idx = int(sample_idx)
+
+            if sample_idx in existing_explanations:
+                continue
+
+            explanation = payload.get("final_explanation_ko")
+            if isinstance(explanation, str) and explanation.strip():
+                rag_explanations_by_sample[sample_idx] = explanation.strip()
+
+    return rag_explanations_by_sample
 
 def rename_customer_value(raw_customer_key: str, parsed_value: Any) -> Any:
     if raw_customer_key == "Sex" and isinstance(parsed_value, bool):
@@ -535,7 +590,7 @@ def build_sample_payload(
     confidence_by_sample: dict[int, dict[str, str]],
     shap_top3_by_sample: dict[int, list[dict[str, Any]]],
     rag_evidence_by_sample: dict[int, dict[str, dict[str, Any]]],
-    rag_explanations_by_sample: dict[int, str],
+    explanations_by_sample: dict[int, str],
 ) -> dict[str, Any]:
     sample_idx = int(row["sample_idx"])
     if sample_idx not in shap_top3_by_sample:
@@ -580,11 +635,7 @@ def build_sample_payload(
             "confidence": round(float(confidence_row["predicted_confidence"]) * 100),
             "true_label": display_predicted_label(row["true_label"]),
             "local_shap_top3_features": local_shap_top3_features,
-            "explanation": (
-                rag_explanations_by_sample.get(sample_idx)
-                if sample_idx in CONDITION_2_SAMPLE_INDICES or sample_idx in CONDITION_3_SAMPLE_INDICES
-                else None
-            ),
+            "explanation": explanations_by_sample.get(sample_idx),
             "class_confidence_relative_percent": round(
                 float(row["class_confidence_relative_percent"]), 2
             ),
@@ -619,8 +670,12 @@ def main() -> None:
     rag_evidence_by_sample = load_rag_evidence_by_sample(
         [args.correct_rag_dir, args.wrong_rag_dir]
     )
-    rag_explanations_by_sample = load_rag_explanations_by_sample(
-        [args.correct_rag_dir, args.wrong_rag_dir]
+    explanations_by_sample = load_explanations_by_sample(args.explanation_dirs)
+    explanations_by_sample.update(
+        load_rag_explanations_by_sample(
+            [args.correct_rag_dir, args.wrong_rag_dir],
+            explanations_by_sample,
+        )
     )
 
     payloads = [
@@ -629,7 +684,7 @@ def main() -> None:
             confidence_by_sample,
             shap_top3_by_sample,
             rag_evidence_by_sample,
-            rag_explanations_by_sample,
+            explanations_by_sample,
         )
         for row in selected_rows
     ]

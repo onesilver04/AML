@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": null,
+  "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮게 평가됩니다. \n대출 금액의 크기는 신용 위험을 증가시키지만, \n계좌 잔액 부족이라는 요인은 위험을 약간 감소시킵니다. \n또한 부정적인 계좌 잔액은 전체 위험을 더욱 낮춥니다. \n이러한 요소들을 고려할 때, 신용 위험 평가는 긍정적입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "class_confidence_relative_percent": 25.58,
   "decision_boundary_abs_distance": 0.0943220111003175,
   "warning_type": "weak"
