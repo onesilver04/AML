@@ -1,0 +1,43 @@
+{
+  "sample_idx": 70,
+  "condition": 2,
+  "distance": "near",
+  "is_correct": false,
+  "customer_data": {
+    "대출 기간": 6,
+    "대출 금액": 14555,
+    "월 상환 부담 수준": 1,
+    "나이": 23,
+    "기존 대출 수": 1,
+    "계좌 잔액": "적음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "신차 구매",
+    "저축 잔액": "없음",
+    "재직 기간": "무직",
+    "거주 상태": "자가 거주",
+    "직업": "무직, 단순직 외국인",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "낮음",
+  "confidence": 58,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.11
+    },
+    {
+      "feature": "credit_amount",
+      "value": 0.06
+    },
+    {
+      "feature": "purpose_used car",
+      "value": -0.05
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 짧을수록 신용 위험 요인들이 완화되므로 신용 위험이 감소하는 신호로 인식되며, 본 모델 역시 이를 위험 감소 요인으로 판단합니다 [1].\n대출 금액이 클수록 대출 노출이 커져 상환 불확실성이 증가하므로 신용 위험이 상승하는 신호로 인식되며, 본 모델 또한 이를 위험 증가 요인으로 식별합니다 [2].\n저축 계좌가 없는 경우, 계좌 상태가 신용 위험 본 모델링에서 중요한 결정 요인이므로 신용 위험에 영향을 미치는 요인으로 간주되며, 본 모델 역시 이를 위험 감소 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+  "class_confidence_relative_percent": 0.5815,
+  "decision_boundary_abs_distance": 0.143781565088213,
+  "warning_type": "weak"
+}

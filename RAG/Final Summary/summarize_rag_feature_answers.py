@@ -12,8 +12,8 @@ if str(REPO_ROOT) not in sys.path:
 
 DEFAULT_INPUT = Path("RAG/QA/Answers/correct_102_answers")
 DEFAULT_INPUT_DIR = Path("RAG/QA/Answers/correct_102_answers")
-DEFAULT_OUTPUT_DIR = Path("RAG/Final Summary/New_Correct_Results")
-DEFAULT_MODEL = "qwen3.6:35b"
+DEFAULT_OUTPUT_DIR = Path("RAG/Final Summary/Correct_Results")
+DEFAULT_MODEL = "qwen3.6:27b"
 EXPECTED_FEATURE_COUNT = 3
 
 
@@ -487,7 +487,7 @@ def main():
     args = parse_args()
     llm = build_llm(args.model)
 
-    input_files = iter_input_files(args.input_dir, target_indices=[1, 2, 23, 27, 54, 59, 68, 99, 193])
+    input_files = iter_input_files(args.input_dir, target_indices=[1, 54, 23, 2, 193, 59, 0, 68, 162, 99, 27])
     payloads = []
 
     for input_path in input_files:

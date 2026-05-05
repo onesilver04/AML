@@ -1,0 +1,93 @@
+{
+  "sample_idx": 4,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.37300401133220246,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account, because applicants without a checking account are associated with a lower estimated risk, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [1]\nThe fact that the savings balance is low, because the literature does not clearly establish its impact on default likelihood, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [2]\nThe fact that there is a critical credit history or other existing credits, because financial capacity indicators typically function as risk amplifiers, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19742846488952637
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20306605100631714
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.20926958322525024
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.2178499698638916
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.22050166130065918
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "Machine learning is crucial in addressing these challenges, particularly in mitigating the adverse selection problem in loan applicant evaluation (Jordan & Mitchell, 2015).",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.17661678791046143
+        },
+        {
+          "sentence": "All stages, including data preparation, preprocessing, model fitting, and evaluation, were conducted using RStudio, a popular Integrated Development",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.18439888954162598
+        },
+        {
+          "sentence": "1 1 Introduction Credit risk assessment remains a central challenge in modern finance, as lenders must evalu- ate the likelihood that borrowers will meet their obligations.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.18542158603668213
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "credit_history_critical/other existing credit",
+      "evidence_sentences": [
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.18186193704605103
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.18607932329177856
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.18943077325820923
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 증가시키는 요인으로 판단됩니다 [1].\n저축 잔액이 적음 또한 신용 위험을 낮추는 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석하지 않습니다 [2].\n신용 문제 이력이나 기존 대출이 있음은 일반적으로 위험을 증가시키는 신호로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 평가합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다."
+}

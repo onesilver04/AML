@@ -1,0 +1,43 @@
+{
+  "sample_idx": 25,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 18,
+    "대출 금액": 3872,
+    "월 상환 부담 수준": 2,
+    "나이": 67,
+    "기존 대출 수": 1,
+    "계좌 잔액": "적음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "수리비",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "무직",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "여성",
+    "결혼 여부": "o"
+  },
+  "predicted_label": "낮음",
+  "confidence": 46,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "duration",
+      "value": -0.15
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": 0.05
+    },
+    {
+      "feature": "installment_commitment",
+      "value": -0.04
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행 위험을 낮추는 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n체크링 계좌 잔액이 음수인 경우는 신용 위험을 크게 증가시키는 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n대출 금액이 큰 경우 신용 위험이 높아지는 것으로 일반적으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 평가합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가되어 신용 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 0.4576,
+  "decision_boundary_abs_distance": 0.0205414549294182,
+  "warning_type": "strong"
+}

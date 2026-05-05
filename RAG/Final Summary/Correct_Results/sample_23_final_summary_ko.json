@@ -1,0 +1,87 @@
+{
+  "sample_idx": 23,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.29845541604509385,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the applicant has a critical credit history or other existing credits, because critical history alone is not a deterministic predictor of bad credit risk, because critical history alone is not a deterministic predictor of bad credit risk, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [1]\nThe fact that there is no checking account, because the absence of a checking account is associated with a lower estimated risk, because the absence of a checking account is associated with a lower estimated risk, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that the loan purpose is for a used car, because broad criteria such as the credit object are evaluated to prevent non-performing loans, because broad criteria such as the credit object are evaluated to prevent non-performing loans, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "credit_history_critical/other existing credit",
+      "evidence_sentences": [
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1618504524230957
+        },
+        {
+          "sentence": "Although some customers have bad credit history or risky credit experience, which is categorized as critical or delay on attribute credit-history, it is found that it is still possible for them to obtain the credit, as they can be included into the good class.",
+          "source": "DATA PREPARATION FOR DATA MINING BASED ON NEURAL NETWORK- A CASE STUDY ON GERMAN CREDIT CLASSIFICATION DATASET.pdf",
+          "page": 14,
+          "score": 0.1757906675338745
+        },
+        {
+          "sentence": "The analysis uses the Statlog German Credit Data, which contains 1000 credit applicants described by their demographic, financial, and credit-related variables",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.17615103721618652
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.23432767391204834
+        },
+        {
+          "sentence": "assessed [2].",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.2460172176361084
+        },
+        {
+          "sentence": "Even after exclusions, the reduced OLS model still shows limited explanatory power, with an R2 of 0.24 (Adj.R 2 =0.22) and a lower but still elevated condition number (=3.78×10 4).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.25114309787750244
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "purpose_used car",
+      "evidence_sentences": [
+        {
+          "sentence": "This choice is essential due to the fact that a bank marketer must be capable of safeguarding his clients against non-performing loans, which frequently constitute the primary risk in each loan distribution [2].",
+          "source": "Comparative_Analysis_of_Machine_Learning.pdf",
+          "page": 2,
+          "score": 0.22014260292053223
+        },
+        {
+          "sentence": "which requires the borrower to pay off the loan at a certain time [1].",
+          "source": "South German Credit Data Classification Using Random Forest Algorithm to Predict Bank Credit Receipts.pdf",
+          "page": 2,
+          "score": 0.2234460711479187
+        },
+        {
+          "sentence": "go ahead with the loan approval or not.",
+          "source": "Comparative_Analysis_of_Machine_Learning.pdf",
+          "page": 4,
+          "score": 0.22609299421310425
+        },
+        {
+          "sentence": "assessed [2].",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.22824382781982422
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n신용 이력에 중대한 문제나 기존 대출이 있음에도 불구하고, 중대한 이력만으로는 부정적 신용 위험을 단정 짓기 어렵다는 점에서, 이는 문헌에서 신용 위험 감소 신호로 인식되며, 본 모델 또한 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌가 없는 것은 계좌 부족으로 인해 위험이 높아질 것으로 예상되지만, 실제로는 문헌에서 신용 위험 감소 신호로 인식되며, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n신차 대신 중고차 구매 목적은 넓은 기준에 따라 신용 위험을 낮추는 신호로 인식되며, 본 모델 또한 이를 신용 위험 감소 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가되어 신용 승인 가능성이 높습니다."
+}

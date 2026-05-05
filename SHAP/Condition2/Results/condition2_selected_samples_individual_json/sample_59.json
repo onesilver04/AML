@@ -1,0 +1,43 @@
+{
+  "sample_idx": 59,
+  "condition": 2,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 36,
+    "대출 금액": 5179,
+    "월 상환 부담 수준": 4,
+    "나이": 29,
+    "기존 대출 수": 1,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "가구 또는 장비 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "4~7년",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "높음",
+  "confidence": 73,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "duration",
+      "value": 0.07
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.05
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.04
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길어질수록 상환 불확실성이 증가하여 신용 위험이 상승한다는 점은 문헌에서도 잘 알려진 신호이며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다 [1].\n중요한 신용 기록이나 기존 대출이 존재한다는 사실은 채무 불이행 확률에 대한 명확한 위험 방향을 나타내지 않지만, 본 모델은 이를 위험 감소 요인이 아닌 위험 증가 요인으로 해석합니다 [2].\n입출금 계좌가 없는 경우, 채무 불이행 확률이 낮게 추정되는 경향이 있으나, 본 모델은 이를 위험 증가 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높은 수준으로 평가됩니다.",
+  "class_confidence_relative_percent": 0.727,
+  "decision_boundary_abs_distance": 0.1682564464673048,
+  "warning_type": "none"
+}

@@ -1,0 +1,147 @@
+{
+  "sample_idx": 41,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.5214820180706671,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the loan term is long, because longer repayment periods consistently increase the likelihood of credit risk, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that there is no checking account, because the absence of a checking account is associated with a lower estimated credit risk, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that the checking account balance is negative, because a negative checking account balance exhibits substantially higher estimated risk, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.171272873878479
+        },
+        {
+          "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.1717073917388916
+        },
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.18301063776016235
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.23434734344482422
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.24834084510803223
+        },
+        {
+          "sentence": "Even after exclusions, the reduced OLS model still shows limited explanatory power, with an R2 of 0.24 (Adj.R 2 =0.22) and a lower but still elevated condition number (=3.78×10 4).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.252591609954834
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.25484657287597656
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.2565668821334839
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.2571173906326294
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.1861816644668579
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.20456081628799438
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.21302682161331177
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2138286828994751
+        },
+        {
+          "sentence": "The sign of the respective coefficients remains negative although",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 17,
+          "score": 0.21703553199768066
+        },
+        {
+          "sentence": "Construct a Super Learner heterogeneous",
+          "source": "Personal Credit Default Discrimination Model Based on Super Learner.pdf",
+          "page": 4,
+          "score": 0.2188504934310913
+        },
+        {
+          "sentence": "3, the ratio between low-risk samples and high-risk samples of",
+          "source": "German Credit Risk Prediction Using Machine Learning Models.pdf",
+          "page": 7,
+          "score": 0.21943408250808716
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.2201187014579773
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.22095751762390137
+        },
+        {
+          "sentence": "Value of gain ratio 1 Status of checking account 0.052573 20 Foreign worker 0.025499 3 Credit history 0.02548 2 Duration in month 0.025458 5 Credit amount 0.022629 6 Savings account 0.016658 13 Age in years 0.016078 15 Housing 0.011197 14 Other installment plans 0.010507 4 Purpose 0.009335 10 Others debtors 0.008909 12 Property 0.00872 7 Present employment since 0.006079 9 Personal status and sex 0.004445 19 Telephone 0.00099 17 Job 0.000946 16 Number of existing credits at bank 0 8 Installment rate in percentage 0 11 Present residence since 0 18 Number of people being liable to provide maintenance 0 The chi-square statistics is a correlation method used to",
+          "source": "Analysis_of_feature_selection_techniques_in_credit_risk_assessment.pdf",
+          "page": 5,
+          "score": 0.22216320037841797
+        },
+        {
+          "sentence": "In this study, machine learning methods used in credit risk assessment were investigated.",
+          "source": "Comparison of the impact of dimensionality reduction and data splitting on classification performance in credit risk assessment .pdf",
+          "page": 16,
+          "score": 0.2247304916381836
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길다는 것은 신용 위험을 증가시키는 요인으로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다 [1].\n입출금 계좌가 없다는 것은 일반적으로 신용 위험을 낮추는 신호로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n체크링 계좌 잔액이 부족하다는 것은 높은 위험 신호로 간주되지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다."
+}

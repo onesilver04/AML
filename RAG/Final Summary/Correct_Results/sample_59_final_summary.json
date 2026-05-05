@@ -1,0 +1,110 @@
+{
+  "sample_idx": 59,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.7313603819535089,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the loan duration is extended, because longer maturity periods increase exposure to repayment uncertainty, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that critical accounts or other existing credits are present, because the provided data does not quantify its specific impact on default probability, is known in the literature as a signal that does not clearly indicate a specific risk direction, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that there is no checking account, because empirical results associate this category with a lower estimated probability of default, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.16279464960098267
+        },
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.1881624460220337
+        },
+        {
+          "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.1914656162261963
+        },
+        {
+          "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.1944393515586853
+        },
+        {
+          "sentence": "(i.e. the default probability) increases for longer maturity time, whereas from roughly four years (45 months) onwards the risk stays constantly high.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 6,
+          "score": 0.19980210065841675
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "evidence_sentences": [
+        {
+          "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2022964358329773
+        },
+        {
+          "sentence": "XAI techniques like Shapley Values can help in identifying which variables (e.g., income, credit history) are most influential in assessing creditworthiness.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 13,
+          "score": 0.21546804904937744
+        },
+        {
+          "sentence": "• A32 : existing credits paid back duly till now • A 3 3: delay in paying off in the past • A34 : critical account/other credits existing (not at this bank), o Attribut e 4: purpose • A40 : car (new) • A46 : education • A41 : car (used) • A47 : vacation • A42 : furniture/equipment • A48 : retraining • A43 : radio/television • A49 : business • A44 : domestic appliances • A410 : others • A45 : repairs o Attribut e 5: credit amount o Attribut e 6: savings account/bonds • A61 : .. . < 10 0 DM 135",
+          "source": "DATA PREPARATION FOR DATA MINING BASED ON NEURAL NETWORK- A CASE STUDY ON GERMAN CREDIT CLASSIFICATION DATASET.pdf",
+          "page": 6,
+          "score": 0.2171621322631836
+        },
+        {
+          "sentence": "Machine learning is crucial in addressing these challenges, particularly in mitigating the adverse selection problem in loan applicant evaluation (Jordan & Mitchell, 2015).",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.2209639549255371
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.22115623950958252
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "In the credit business, the problem of credit risk assessment with the customer as the Disclaimer/Publisher’s Note: The statements, opinions, and data contained in all publications are solely those of the individual author(s) and contributor(s) and not of MDPI and/or the editor(s).",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.20063680410385132
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22591793537139893
+        },
+        {
+          "sentence": "Even after exclusions, the reduced OLS model still shows limited explanatory power, with an R2 of 0.24 (Adj.R 2 =0.22) and a lower but still elevated condition number (=3.78×10 4).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2355976700782776
+        },
+        {
+          "sentence": "Credit risk assessment is the most basic and critical part of credit loan management.",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.23675298690795898
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "sample_idx": 184,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 18,
+    "대출 금액": 1936,
+    "월 상환 부담 수준": 2,
+    "나이": 23,
+    "기존 대출 수": 2,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "없음",
+    "재직 기간": "4~7년",
+    "거주 상태": "임차 거주",
+    "직업": "단순 노무직",
+    "성별": "남성",
+    "결혼 여부": "o"
+  },
+  "predicted_label": "낮음",
+  "confidence": 50,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.08
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.05
+    },
+    {
+      "feature": "checking_status_0<=X<200",
+      "value": 0.04
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행 위험이 크게 증가하는 중요한 예측 지표로 작용하여 신용 위험을 높이는 요인으로 판단됩니다 [1].\n출금 계좌가 없는 경우는 일반적으로 위험 감소 요인으로 인식되지만, 본 모델은 이를 신용 위험 증가 요인으로 평가합니다 [2].\n저축 내역이 확인되지 않는 경우는 신용 위험이 증가하는 신호로 알려져 있으나, 본 모델은 이를 신용 위험 감소 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+  "class_confidence_relative_percent": 0.4997,
+  "decision_boundary_abs_distance": 0.0610356637630588,
+  "warning_type": "strong"
+}

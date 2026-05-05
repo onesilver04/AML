@@ -1,0 +1,87 @@
+{
+  "sample_idx": 1,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.5845525138076809,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the loan duration is longer, because longer repayment terms significantly increase the likelihood of default, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that there is no checking account, because applicants without a checking account are classified as having reduced credit risk, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that the checking account balance is negative, because a negative checking account balance acts as a clear financial distress indicator, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1664164662361145
+        },
+        {
+          "sentence": "between attributes, as exemplified by the correlation between the duration of loan and the credit amount.",
+          "source": "DATA PREPARATION FOR DATA MINING BASED ON NEURAL NETWORK- A CASE STUDY ON GERMAN CREDIT CLASSIFICATION DATASET.pdf",
+          "page": 14,
+          "score": 0.1681506633758545
+        },
+        {
+          "sentence": "This strong positive correlation between loan amount and loan term suggests that when the loan amount is larger, the loan term tends to be longer, and vice versa.",
+          "source": "German Credit Risk Prediction Using Machine Learning Models.pdf",
+          "page": 5,
+          "score": 0.17414474487304688
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.18763750791549683
+        },
+        {
+          "sentence": "Even after exclusions, the reduced OLS model still shows limited explanatory power, with an R2 of 0.24 (Adj.R 2 =0.22) and a lower but still elevated condition number (=3.78×10 4).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21155071258544922
+        },
+        {
+          "sentence": "Number Description Class Attribute 1 Status of existing checking account Qualitative Attribute 2 Duration in month Numerical Attribute 3 Credit history Qualitative Attribute 4 Purpose Qualitative Attribute 5 Credit amount Numerical Attribute 6 Savings account/bonds Qualitative Attribute 7 Present employment since Qualitative Attribute 8 Instalment rate in percentage of disposable income Numerical Attribute 9 Personal status and sex Qualitative Attribute 10 Other debtors/guarantors Qualitative Attribute 11 Present residence since Numerical Attribute 12 Property Qualitative Attribute 13 Age in years Numerical Attribute 14 Other instalment plans Qualitative attribute 15 Housing Qualitative",
+          "source": "Investigation and improvement of multi-layer perceptron neural.pdf",
+          "page": 4,
+          "score": 0.2243809700012207
+        },
+        {
+          "sentence": "2D PDP for the variables status account and duration.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 11,
+          "score": 0.2296445369720459
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "for all status levels of the account, but an observable interaction exists for existing accounts with a low or negative balance where the increase in risk is stronger.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 11,
+          "score": 0.20054316520690918
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20972222089767456
+        },
+        {
+          "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.20977580547332764
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길수록 채무 불이행 가능성이 높아져 신용 위험이 증가한다는 점은 문헌에서 위험 증가 신호로 인식되지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n입출금 계좌가 없는 경우, 일반적으로 신용 위험이 낮아지는 신호로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n체크링 계좌 잔액이 부족한 상태는 재정적 어려움의 명확한 지표로 인식되어 신용 위험 증가 신호로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높은 수준으로 평가됩니다."
+}

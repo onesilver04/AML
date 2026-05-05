@@ -1,0 +1,104 @@
+{
+  "sample_idx": 2,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.1654604762307098,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account lowers default probability, because it correlates with more favorable credit outcomes, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk.[1]\nThe fact that there is a critical credit history or other existing credits raises default probability, because they correspond to a higher likelihood of default, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk.[2]\nThe fact that the loan purpose is for education lacks clear predictive value, because there is no statistical evidence evaluating it as a determinant, is known in the literature as a signal that does not significantly impact credit risk, but the model instead identifies it as a factor that increases risk.[3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1712663769721985
+        },
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19259119033813477
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.22227859497070312
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "evidence_sentences": [
+        {
+          "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17072510719299316
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19124066829681396
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.19649040699005127
+        },
+        {
+          "sentence": "Consumer ﬁnance companies may settle on choices about various credits from the collection of applications.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.19667452573776245
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "purpose_education",
+      "evidence_sentences": [
+        {
+          "sentence": "Credit risk assessment is the most basic and critical part of credit loan management.",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.19205260276794434
+        },
+        {
+          "sentence": "Vol.:(0123456789) Artificial Intelligence Review (2024) 57:252 https://doi.org/10.1007/s10462-024-10904-1 Comparison of the impact of dimensionality reduction and data splitting on classification performance in credit risk assessment Cem Bulut1 · Emel Arslan1 Published online: 13 August 2024 © The Author(s) 2024 Abstract Credit risk assessment (CRA) plays an important role in credit decision-making process of financial institutions.",
+          "source": "Comparison of the impact of dimensionality reduction and data splitting on classification performance in credit risk assessment .pdf",
+          "page": 2,
+          "score": 0.19960486888885498
+        },
+        {
+          "sentence": "With the growth of the credit sector, the importance of different risk assessment mod- els has increased in the sector.",
+          "source": "Comparison of the impact of dimensionality reduction and data splitting on classification performance in credit risk assessment .pdf",
+          "page": 3,
+          "score": 0.20065611600875854
+        },
+        {
+          "sentence": "go ahead with the loan approval or not.",
+          "source": "Comparative_Analysis_of_Machine_Learning.pdf",
+          "page": 4,
+          "score": 0.2016262412071228
+        },
+        {
+          "sentence": "1 1 Introduction Credit risk assessment remains a central challenge in modern finance, as lenders must evalu- ate the likelihood that borrowers will meet their obligations.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.2034347653388977
+        },
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20425790548324585
+        }
+      ]
+    }
+  ]
+}

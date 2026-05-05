@@ -1,0 +1,43 @@
+{
+  "sample_idx": 78,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 24,
+    "대출 금액": 1823,
+    "월 상환 부담 수준": 4,
+    "나이": 30,
+    "기존 대출 수": 1,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "무직",
+    "거주 상태": "자가 거주",
+    "직업": "전문직, 자영업, 관리직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "높음",
+  "confidence": 65,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.08
+    },
+    {
+      "feature": "purpose_used car",
+      "value": -0.05
+    },
+    {
+      "feature": "savings_status_no known savings",
+      "value": -0.05
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 통계적으로 채무 불이행 확률을 높이는 중요한 예측 변수로 알려져 있으며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다 [1].\n출금 계좌 없음은 채무 불이행 확률과의 연관성이 보고되지 않아 신용 위험 감소 신호로 인식되지만, 본 모델은 이를 위험 증가 요인으로 분류합니다 [2].\n대출 기간이 길어짐은 신용 위험을 증가시키는 중요한 요인으로 실증적으로 확인되어 있으며, 본 모델 또한 이를 위험 증가 요인으로 인식합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높은 수준으로 평가됩니다.",
+  "class_confidence_relative_percent": 0.6491,
+  "decision_boundary_abs_distance": 0.0855990876064013,
+  "warning_type": "weak"
+}

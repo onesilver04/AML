@@ -1,0 +1,43 @@
+{
+  "sample_idx": 11,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": false,
+  "customer_data": {
+    "대출 기간": 12,
+    "대출 금액": 4843,
+    "월 상환 부담 수준": 3,
+    "나이": 43,
+    "기존 대출 수": 2,
+    "계좌 잔액": "부족",
+    "신용 이력": "신용 문제 이력 있음",
+    "대출 목적": "신차 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "7년 이상",
+    "거주 상태": "임차 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "낮음",
+  "confidence": 46,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "duration",
+      "value": 0.07
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": 0.06
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n고객이 기존 대출을 보유하고 있다는 사실은, 높은 미상환 잔액이 대출자의 채무 불이행 가능성을 증가시키는 신호로 알려져 있으나, 본 모델은 이를 오히려 위험 감소 요인으로 판단합니다 [1].\n계좌 잔액이 부족한 상태는, 불리한 계좌 조건이 채무 불이행 확률을 높이는 신호로 인식되지만, 본 모델은 이를 위험 증가 요인으로 식별합니다 [2].\n입출금 계좌가 없는 경우는, 계좌가 없는 신청자가 채무 불이행 가능성이 낮은 신호로 해석되지만, 본 모델은 이를 위험 증가 요인으로 분류합니다 [3].\n전반적으로 이 고객의 신용 위험은 낮은 수준으로 평가되어 신용 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 0.4613,
+  "decision_boundary_abs_distance": 0.0212446606419109,
+  "warning_type": "strong"
+}

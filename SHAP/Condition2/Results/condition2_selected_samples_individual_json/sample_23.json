@@ -1,0 +1,43 @@
+{
+  "sample_idx": 23,
+  "condition": 2,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 24,
+    "대출 금액": 3234,
+    "월 상환 부담 수준": 4,
+    "나이": 23,
+    "기존 대출 수": 1,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "가구 또는 장비 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1년 미만",
+    "거주 상태": "임차 거주",
+    "직업": "단순 노무직",
+    "성별": "여성",
+    "결혼 여부": "o"
+  },
+  "predicted_label": "높음",
+  "confidence": 71,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.06
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05
+    },
+    {
+      "feature": "purpose_used car",
+      "value": -0.04
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n신용 이력에 중대한 문제나 기존 대출이 있음에도 불구하고, 중대한 이력만으로는 부정적 신용 위험을 단정 짓기 어렵다는 점에서, 이는 문헌에서 신용 위험 감소 신호로 인식되며, 본 모델 또한 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌가 없는 것은 계좌 부족으로 인해 위험이 높아질 것으로 예상되지만, 실제로는 문헌에서 신용 위험 감소 신호로 인식되며, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n신차 대신 중고차 구매 목적은 넓은 기준에 따라 신용 위험을 낮추는 신호로 인식되며, 본 모델 또한 이를 신용 위험 감소 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가되어 신용 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 0.7128,
+  "decision_boundary_abs_distance": 0.1511562263338733,
+  "warning_type": "none"
+}

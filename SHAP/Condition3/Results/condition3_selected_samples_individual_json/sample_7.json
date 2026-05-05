@@ -1,0 +1,43 @@
+{
+  "sample_idx": 7,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 6,
+    "대출 금액": 1352,
+    "월 상환 부담 수준": 1,
+    "나이": 23,
+    "기존 대출 수": 1,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "중고차 구매",
+    "저축 잔액": "보통",
+    "재직 기간": "무직",
+    "거주 상태": "임차 거주",
+    "직업": "무직, 단순직 외국인",
+    "성별": "여성",
+    "결혼 여부": "o"
+  },
+  "predicted_label": "낮음",
+  "confidence": 55,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "purpose_used car",
+      "value": -0.05
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05
+    },
+    {
+      "feature": "duration",
+      "value": 0.04
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길어짐에 따라 채무 불이행 위험이 증가한다는 일반적인 인식에도 불구하고, 본 모델은 이를 신용 위험 감소 요인으로 판단합니다 [1].\n체크링 계좌 잔액이 부족한 경우, 금융 안정성 저하의 신호로 해석되지만, 본 모델은 이를 신용 위험 증가 요인으로 분류합니다 [2].\n출금 계좌가 없는 경우, 금융 관리 능력의 부족을 시사할 수 있으나, 본 모델은 이를 신용 위험 증가 요인으로 인식합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+  "class_confidence_relative_percent": 0.5463,
+  "decision_boundary_abs_distance": 0.10525959940877,
+  "warning_type": "weak"
+}

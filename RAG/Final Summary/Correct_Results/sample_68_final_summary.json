@@ -1,0 +1,86 @@
+{
+  "sample_idx": 68,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.5114943100483245,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account shows a lower estimated risk, because the absence of a checking account correlates with reduced risk, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk.[1]\nThe fact that the loan duration is extended increases exposure to uncertainty, because extended loan terms directly contribute to a higher likelihood of credit risk, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[2]\nThe fact that the checking account balance is negative shows no clear impact, because the provided context does not quantify its impact on default probability, is known in the literature as a signal that lacks statistical evidence, and the model also identifies it as a factor that decreases risk.[3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.18439018726348877
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.216924786567688
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22126024961471558
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.22840559482574463
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.23024451732635498
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.19870400428771973
+        },
+        {
+          "sentence": "exposure at default secured by residential mortgages.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 13,
+          "score": 0.2037496566772461
+        },
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20622557401657104
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.21528130769729614
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.22314906120300293
+        }
+      ]
+    }
+  ]
+}

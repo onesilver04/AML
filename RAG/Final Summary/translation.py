@@ -7,8 +7,8 @@ import re
 from langchain_ollama import ChatOllama
 
 
-DEFAULT_INPUT = Path("RAG/Final Summary/New_correct_Results")
-DEFAULT_OUTPUT = ("RAG/Final Summary/New_correct_Results_ko")
+DEFAULT_INPUT = Path("RAG/Final Summary/Correct_Results")
+DEFAULT_OUTPUT = ("RAG/Final Summary/Correct_Results_ko")
 MODEL_NAME = "exaone3.5:7.8b"
 
 
@@ -16,23 +16,14 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description="Translate final_explanation using Ollama EXAONE"
     )
+    parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
     parser.add_argument(
-        "--input",
-        type=Path,
-        default=DEFAULT_INPUT,
-        help=f"Input JSON path. Default: {DEFAULT_INPUT}",
+        "--sample-indices",
+        default=None,
+        help="Comma-separated sample indices. Example: 32,160,153",
     )
-    parser.add_argument(
-        "--output",
-        type=Path,
-        default=DEFAULT_OUTPUT,
-        help="Output JSON path. Default: input filename + _ko.json",
-    )
-    parser.add_argument(
-        "--model",
-        default=MODEL_NAME,
-        help=f"Ollama model name. Default: {MODEL_NAME}",
-    )
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--model", default=MODEL_NAME)
     return parser.parse_args()
 
 
@@ -42,6 +33,36 @@ def load_json(path: Path):
 
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
+
+
+def parse_index_text(text: str):
+    if not text:
+        return None
+
+    return [
+        int(part.strip())
+        for part in text.replace("\n", ",").split(",")
+        if part.strip()
+    ]
+
+
+def get_sample_idx_from_filename(path: Path):
+    match = re.search(r"sample_(\d+)(?:_|\.|$)", path.name)
+    if not match:
+        return None
+    return int(match.group(1))
+
+
+def filter_json_files_by_sample_indices(json_files, target_indices):
+    if not target_indices:
+        return json_files
+
+    target_set = set(target_indices)
+
+    return [
+        f for f in json_files
+        if get_sample_idx_from_filename(f) in target_set
+    ]
 
 
 def write_json(path: Path, payload):
@@ -146,19 +167,20 @@ def force_replace_feature_names(text: str):
     for raw_name, korean_name in sorted(
         FEATURE_NAME_MAP.items(),
         key=lambda x: len(x[0]),
-        reverse=True
+        reverse=True,
     ):
         replaced = replaced.replace(f"[{raw_name}]", korean_name)
         replaced = replaced.replace(raw_name, korean_name)
 
     return replaced
 
+
 def build_feature_mapping_text():
     return "\n".join(
         f'- "{raw}" -> "{ko}"'
         for raw, ko in FEATURE_NAME_MAP.items()
     )
-
+    
 def build_prompt(text: str):
     feature_mapping_text = build_feature_mapping_text()
 
@@ -326,46 +348,49 @@ def translate(text: str, llm):
 
     opening = "본 AI가 예측한 결과에 따르면,\\n"
 
-    # 1. 기존 opening 변형 전부 제거
     translated = re.sub(
         r"^(본\s*AI가\s*예측한\s*결과에\s*따르면,?\s*(\\n|\n)?|"
         r"본\s*AI\s*모델의\s*예측에\s*따르면,?\s*(\\n|\n)?|"
         r"본\s*모델의\s*예측에\s*따르면,?\s*(\\n|\n)?|"
         r"AI\s*모델의\s*예측에\s*따르면,?\s*(\\n|\n)?)",
         "",
-        translated
+        translated,
     ).strip()
-    # 2. 모델 지칭 표현 보정
+
     translated = re.sub(r"(이|AI)\s*모델", "본 모델", translated)
     translated = re.sub(r"(?<!본\s)모델", "본 모델", translated)
-
-    # 3. 혹시 생긴 중복 제거
     translated = translated.replace("본 본 모델", "본 모델")
 
-    # 4. opening은 마지막에 딱 한 번만 붙이기
     translated = opening + translated
 
     return translated
 
-def collect_final_explanations_ko(input_dir: Path, output_path: Path):
+
+def collect_final_explanations_ko(input_dir: Path, output_path: Path, target_indices):
     results = []
 
     json_files = sorted(input_dir.glob("*.json"))
+    json_files = [
+        f for f in json_files
+        if f.stem.endswith("_ko")
+    ]
+
+    json_files = filter_json_files_by_sample_indices(json_files, target_indices)
 
     for json_path in json_files:
-        if not json_path.stem.endswith("_ko"):
-            continue
-
         data = load_json(json_path)
 
         if "final_explanation_ko" in data:
-            results.append({
-                "file": json_path.name,
-                "final_explanation_ko": data["final_explanation_ko"]
-            })
+            results.append(
+                {
+                    "file": json_path.name,
+                    "final_explanation_ko": data["final_explanation_ko"],
+                }
+            )
 
     write_json(output_path, results)
     print(f"Collected file saved: {output_path}")
+
 
 def main():
     args = parse_args()
@@ -373,18 +398,25 @@ def main():
     llm = load_model(args.model)
 
     input_path = args.input
+    target_indices = parse_index_text(args.sample_indices)
 
     if input_path.is_dir():
         json_files = sorted(input_path.glob("*.json"))
 
+        json_files = [
+            f for f in json_files
+            if not f.stem.endswith("_ko")
+        ]
+
+        json_files = filter_json_files_by_sample_indices(
+            json_files,
+            target_indices,
+        )
+
         if not json_files:
-            raise FileNotFoundError(f"No JSON files found in: {input_path}")
+            raise FileNotFoundError(f"No matching JSON files found in: {input_path}")
 
         for json_path in json_files:
-            # 이미 번역된 결과 파일은 다시 처리하지 않음
-            if json_path.stem.endswith("_ko"):
-                continue
-
             payload = load_json(json_path)
 
             if "final_explanation" not in payload:
@@ -398,12 +430,23 @@ def main():
             write_json(output_path, payload)
 
             print(f"Saved: {output_path}")
-            
+
         collect_output_path = input_path / "final_explanations_ko.json"
-        collect_final_explanations_ko(input_path, collect_output_path)
+        collect_final_explanations_ko(
+            input_path,
+            collect_output_path,
+            target_indices,
+        )
 
     else:
         payload = load_json(input_path)
+
+        sample_idx = get_sample_idx_from_filename(input_path)
+
+        if target_indices and sample_idx not in set(target_indices):
+            raise ValueError(
+                f"Input file sample_idx={sample_idx} is not in --sample-indices."
+            )
 
         if "final_explanation" not in payload:
             raise ValueError("final_explanation field missing.")
@@ -416,6 +459,7 @@ def main():
 
         print(f"Saved: {output_path}")
         print(json.dumps(payload, indent=2, ensure_ascii=False))
+
 
 if __name__ == "__main__":
     try:

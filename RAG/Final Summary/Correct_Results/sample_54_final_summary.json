@@ -1,0 +1,80 @@
+{
+  "sample_idx": 54,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.7264906756715288,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account, because lacking a checking account is associated with lower estimated risk, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [1]\nThe fact that the loan duration is long, because longer loan terms increase the probability of default, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [2]\nThe fact that the checking account balance is negative, because negative balances signal liquidity constraints, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.17810750007629395
+        },
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19919276237487793
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "Longer loan durations, larger credit amounts, and higher installment rates are associated with a higher likelihood of being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.1921805739402771
+        },
+        {
+          "sentence": "between attributes, as exemplified by the correlation between the duration of loan and the credit amount.",
+          "source": "DATA PREPARATION FOR DATA MINING BASED ON NEURAL NETWORK- A CASE STUDY ON GERMAN CREDIT CLASSIFICATION DATASET.pdf",
+          "page": 14,
+          "score": 0.19902151823043823
+        },
+        {
+          "sentence": "Among them, the correlation between Credit amount and Duration is the highest, reaching 0.62.",
+          "source": "German Credit Risk Prediction Using Machine Learning Models.pdf",
+          "page": 5,
+          "score": 0.20337635278701782
+        },
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20354688167572021
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1968555450439453
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22212308645248413
+        },
+        {
+          "sentence": "In Table 8, first column, we find evidence for the reasoning according to which banks try to stabilize their net interest margin: The coefficient in front ofθ is highly positively significant.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.24178361892700195
+        }
+      ]
+    }
+  ]
+}

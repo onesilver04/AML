@@ -1,0 +1,1722 @@
+[
+  {
+    "sample_idx": 116,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 45,
+      "대출 금액": 3031,
+      "월 상환 부담 수준": 4,
+      "나이": 21,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "적음",
+      "재직 기간": "1~4년",
+      "거주 상태": "임차 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 56,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_<0",
+        "value": 0.08
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05
+      },
+      {
+        "feature": "duration",
+        "value": 0.05
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 재정 건전성을 반영하므로 일반적으로 신용 위험을 감소시키는 신호로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n대출 기간이 길어질수록 상환 기간이 길어져 대출자의 위험 노출이 증가하므로, 이는 신용 위험을 높이는 요인으로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 분류합니다 [2].\n체크링 계좌 잔액이 음수인 경우는 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 신용 위험 감소 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높습니다.",
+    "class_confidence_relative_percent": 0.564,
+    "decision_boundary_abs_distance": 0.0037517375620413,
+    "warning_type": "strong"
+  },
+  {
+    "sample_idx": 152,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 625,
+      "월 상환 부담 수준": 4,
+      "나이": 26,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "남성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 46,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      },
+      {
+        "feature": "duration",
+        "value": 0.06
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.05
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 평가에서 중요한 결정 요인으로, 신용 위험 증가 신호로 인식되며 본 모델도 이를 위험 증가 요인으로 판단합니다. [1]\n대출 기간이 1년 미만인 단기 재직은 금융 불안정성을 반영하여 신용 위험 증가 신호로 알려져 있으며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다. [2]\n대출 목적이 라디오나 TV 구매인 경우, 소비자 전자제품 구매는 일반적으로 채무 불이행 확률이 낮아 신용 위험 감소 요인으로 해석되며, 본 모델 또한 이를 위험 감소 요인으로 판단합니다. [3]\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.4561,
+    "decision_boundary_abs_distance": 0.0144578494344612,
+    "warning_type": "strong"
+  },
+  {
+    "sample_idx": 138,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 20,
+      "대출 금액": 4272,
+      "월 상환 부담 수준": 1,
+      "나이": 24,
+      "기존 대출 수": 2,
+      "계좌 잔액": "부족",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 45,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "savings_status_no known savings",
+        "value": -0.06
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.05
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n신용 문제 이력이나 기존 대출이 존재하는 것은 대출 규모가 커지면서 신용 위험이 증가하는 신호로 알려져 있지만, 본 모델은 이를 오히려 위험 감소 요인으로 판단합니다 [1].\n계좌 잔액이 부족한 상태는 오버드래프트나 부정 잔액과 연관되어 재정 불안정성을 나타내므로 신용 위험 증가 요인으로 인식되지만, 본 모델은 이를 위험 증가 요인으로 분류합니다 [2].\n입출금 계좌가 없는 것은 계좌 부재가 낮은 신용 위험을 추정하는 요인으로 알려져 있으나, 본 모델은 이를 위험 증가 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.4545,
+    "decision_boundary_abs_distance": 0.0159280806317334,
+    "warning_type": "strong"
+  },
+  {
+    "sample_idx": 90,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 60,
+      "대출 금액": 6288,
+      "월 상환 부담 수준": 4,
+      "나이": 42,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "교육비 목적",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "무상 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 68,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.12
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.06
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길어짐에 따라 상환 기간 동안의 재정 불안정 노출이 증가하여 신용 위험이 상승하는 요인으로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다 [1].\n입출금 계좌가 없는 경우, 계좌 관리 부족이 위험 감소 요인으로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n계좌 잔액이 부족한 상태는 재무 건전성 지표로 작용하여 신용 위험 감소 요인으로 간주되지만, 본 모델은 이를 위험 감소 요인으로 보는 대신 위험 증가 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높습니다.",
+    "class_confidence_relative_percent": 0.6785,
+    "decision_boundary_abs_distance": 0.1161763620670236,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 145,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 759,
+      "월 상환 부담 수준": 4,
+      "나이": 26,
+      "기존 대출 수": 1,
+      "계좌 잔액": "부족",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "4~7년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 69,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "savings_status_<100",
+        "value": -0.06
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05
+      },
+      {
+        "feature": "duration",
+        "value": 0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 심각한 유동성 제약을 나타내므로 신용 위험을 증가시키는 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 판단합니다. [1]\n출금 계좌 없음은 보호 요인으로 작용하여 신용 위험을 감소시키는 신호로 알려져 있으나, 본 모델은 이를 위험 증가 요인으로 분류합니다. [2]\n대출 기간이 연장되면 잠재적인 재정 악화의 기간이 늘어나므로 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다. [3]\n전반적으로 이 고객은 채무 불이행 위험이 높습니다.",
+    "class_confidence_relative_percent": 0.6924,
+    "decision_boundary_abs_distance": 0.1324508194177749,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 33,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 48,
+      "대출 금액": 15672,
+      "월 상환 부담 수준": 2,
+      "나이": 23,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "사업 자금",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 69,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.09
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.06
+      },
+      {
+        "feature": "savings_status_no known savings",
+        "value": -0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n요청된 대출 금액이 높다는 것은 대출 기간이 길어져 상환 부담이 커지므로 신용 위험을 증가시키는 신호로 알려져 있으며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다[1].\n대출 기간이 길다는 것은 상환 기간이 연장되어 시간이 지남에 따라 차입자의 불확실성이 커지므로 신용 위험을 높이는 신호로 인식되며, 본 모델 또한 이를 위험 증가 요인으로 식별합니다[2].\n입출금 계좌가 없다는 것은 금융 구조에 대한 의존도가 높아질 수 있어 신용 위험을 감소시키는 신호로 여겨지지만, 본 모델은 이를 오히려 위험 증가 요인으로 분류합니다[3].\n전반적으로 이 고객은 채무 불이행 위험이 높은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.6941,
+    "decision_boundary_abs_distance": 0.1360049674783777,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 1,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 1860,
+      "월 상환 부담 수준": 4,
+      "나이": 34,
+      "기존 대출 수": 2,
+      "계좌 잔액": "적음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "중고차 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "무직",
+      "거주 상태": "자가 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 59,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "duration",
+        "value": 0.07
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길수록 채무 불이행 가능성이 높아져 신용 위험이 증가한다는 점은 문헌에서 위험 증가 신호로 인식되지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n입출금 계좌가 없는 경우, 일반적으로 신용 위험이 낮아지는 신호로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n체크링 계좌 잔액이 부족한 상태는 재정적 어려움의 명확한 지표로 인식되어 신용 위험 증가 신호로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.59,
+    "decision_boundary_abs_distance": 0.1497521969142579,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 54,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 18,
+      "대출 금액": 1131,
+      "월 상환 부담 수준": 4,
+      "나이": 33,
+      "기존 대출 수": 1,
+      "계좌 잔액": "부족",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "무직",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "높음",
+    "confidence": 71,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      },
+      {
+        "feature": "duration",
+        "value": 0.05
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험 감소 요인으로 인식되지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n대출 기간이 길다는 것은 채무 불이행 가능성 증가를 의미하며, 이 역시 본 모델은 신용 위험 상승 요인으로 분석합니다 [2].\n체크링 계좌 잔액이 음수라는 것은 일반적으로 신용 위험 증가 신호이지만, 본 모델은 이를 신용 위험 감소 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.7112,
+    "decision_boundary_abs_distance": 0.1503046784524141,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 23,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 3234,
+      "월 상환 부담 수준": 4,
+      "나이": 23,
+      "기존 대출 수": 1,
+      "계좌 잔액": "부족",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "임차 거주",
+      "직업": "단순 노무직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "높음",
+    "confidence": 71,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.06
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05
+      },
+      {
+        "feature": "purpose_used car",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n신용 이력에 중대한 문제나 기존 대출이 있음에도 불구하고, 중대한 이력만으로는 부정적 신용 위험을 단정 짓기 어렵다는 점에서, 이는 문헌에서 신용 위험 감소 신호로 인식되며, 본 모델 또한 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌가 없는 것은 계좌 부족으로 인해 위험이 높아질 것으로 예상되지만, 실제로는 문헌에서 신용 위험 감소 신호로 인식되며, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n신차 대신 중고차 구매 목적은 넓은 기준에 따라 신용 위험을 낮추는 신호로 인식되며, 본 모델 또한 이를 신용 위험 감소 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가되어 신용 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 0.7128,
+    "decision_boundary_abs_distance": 0.1511562263338733,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 193,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 937,
+      "월 상환 부담 수준": 4,
+      "나이": 27,
+      "기존 대출 수": 2,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "직업 재교육",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "남성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 60,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.11
+      },
+      {
+        "feature": "duration",
+        "value": -0.1
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.05
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n대출 기간이 길수록 채무 불이행 위험이 증가한다는 점은 신용 위험 증가 신호로 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 해석합니다. [2]\n체크링 계좌 잔액이 음수인 경우 일반적으로 저축이 적어 위험이 높아지지만, 본 모델은 이를 위험 감소 요인으로 분류합니다. [3]\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.6039,
+    "decision_boundary_abs_distance": 0.1617537737878233,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 2,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 1024,
+      "월 상환 부담 수준": 4,
+      "나이": 48,
+      "기존 대출 수": 1,
+      "계좌 잔액": "부족",
+      "신용 이력": "연체 이력 있음",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "높음",
+    "confidence": 72,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.11
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.06
+      },
+      {
+        "feature": "purpose_education",
+        "value": 0.05
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행 가능성을 낮추는 요인으로 인식되며, 이는 신용 위험을 감소시키는 신호로 알려져 있고, 본 모델 역시 이를 위험 감소 요인으로 판단합니다 [1].\n신용 문제 이력이나 기존 대출이 존재하는 경우 채무 불이행 가능성이 증가하지만, 문헌에서는 이를 신용 위험 증가 신호로 보는 반면, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n대출 목적이 교육비인 경우 명확한 예측 가치가 부족하여 신용 위험에 큰 영향을 미치지 않는 것으로 문헌에서 설명되지만, 본 모델은 이를 위험 증가 요인으로 분류합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.7222,
+    "decision_boundary_abs_distance": 0.1625380431945685,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 59,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 36,
+      "대출 금액": 5179,
+      "월 상환 부담 수준": 4,
+      "나이": 29,
+      "기존 대출 수": 1,
+      "계좌 잔액": "부족",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "4~7년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 73,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "duration",
+        "value": 0.07
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.05
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길어질수록 상환 불확실성이 증가하여 신용 위험이 상승한다는 점은 문헌에서도 잘 알려진 신호이며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다 [1].\n중요한 신용 기록이나 기존 대출이 존재한다는 사실은 채무 불이행 확률에 대한 명확한 위험 방향을 나타내지 않지만, 본 모델은 이를 위험 감소 요인이 아닌 위험 증가 요인으로 해석합니다 [2].\n입출금 계좌가 없는 경우, 채무 불이행 확률이 낮게 추정되는 경향이 있으나, 본 모델은 이를 위험 증가 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.727,
+    "decision_boundary_abs_distance": 0.1682564464673048,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 68,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 48,
+      "대출 금액": 18424,
+      "월 상환 부담 수준": 1,
+      "나이": 32,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "대출 이력 없음 또는 전액 상환",
+      "대출 목적": "기타",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "높음",
+    "confidence": 74,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.12
+      },
+      {
+        "feature": "duration",
+        "value": 0.05
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n대출 기간이 길어질수록 불확실성 노출이 증가하여 신용 위험이 상승하는 요인으로 분석되며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다 [2].\n체크링 계좌 잔액의 부정적 상태는 채무 불이행 확률에 명확한 영향을 미치지 않는 것으로 보이며, 본 모델은 이를 위험 감소 요인으로 간주합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.7359,
+    "decision_boundary_abs_distance": 0.1754877513066061,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 0,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 18,
+      "대출 금액": 1913,
+      "월 상환 부담 수준": 3,
+      "나이": 36,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "사업 자금",
+      "저축 잔액": "충분",
+      "재직 기간": "1년 미만",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 61,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "duration",
+        "value": -0.12
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.08
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": 0.05
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 비교적 짧다는 것은, 장기 상환이 신용 위험을 증가시키는 요인으로 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n신용 이력에 중요한 계정이나 기존 대출이 포함되어 있다는 것은, 중요한 계정이 신용 이력의 핵심 요소로 인식되므로, 문헌에서는 신용 위험 증가 신호로 보지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n계좌 잔액이 부족하다는 것은, 부정적인 유동성이 재정적 어려움과 상환 능력 저하를 반영하므로 문헌에서는 신용 위험 증가 요인으로 보지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.6148,
+    "decision_boundary_abs_distance": 0.1760350678947355,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 99,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 18,
+      "대출 금액": 1445,
+      "월 상환 부담 수준": 4,
+      "나이": 49,
+      "기존 대출 수": 1,
+      "계좌 잔액": "충분",
+      "신용 이력": "대출 전액 상환 이력",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "4~7년",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 63,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "savings_status_no known savings",
+        "value": -0.07
+      },
+      {
+        "feature": "savings_status_<100",
+        "value": -0.05
+      },
+      {
+        "feature": "purpose_used car",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 증가시키는 신호로 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n저축 잔액이 100 DM 미만인 경우는 신용 위험을 낮추는 지표로 인식되며, 본 모델 역시 이를 위험 감소 요인으로 분류합니다 [2].\n중고차량 구매 목적은 채무 불이행 위험을 줄이기 위한 금융 기준에 따라 대출 결정에 영향을 미치므로, 본 모델은 이를 신용 위험 감소 요인으로 인식합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가되어 신용 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 0.6255,
+    "decision_boundary_abs_distance": 0.1857417353774176,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 162,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 45,
+      "대출 금액": 1845,
+      "월 상환 부담 수준": 4,
+      "나이": 23,
+      "기존 대출 수": 1,
+      "계좌 잔액": "부족",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "무상 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 74,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.12
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.04
+      },
+      {
+        "feature": "employment_4<=X<7",
+        "value": -0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌가 없는 경우는 채무 불이행 가능성이 낮아 신용 위험이 감소하는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n계좌 잔액이 마이너스인 경우는 채무 불이행 위험이 증가하는 신호로 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 해석합니다. [2]\n재직 기간이 4년에서 7년 사이인 경우는 직접적인 위험 변화와의 연관성이 명확하지 않으나, 본 모델은 이를 위험 감소 요인으로 분류합니다. [3]\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.7446,
+    "decision_boundary_abs_distance": 0.1857601925000279,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 12,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 4,
+      "대출 금액": 1544,
+      "월 상환 부담 수준": 2,
+      "나이": 42,
+      "기존 대출 수": 3,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "4~7년",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 96,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      },
+      {
+        "feature": "duration",
+        "value": -0.05
+      },
+      {
+        "feature": "purpose_radio/tv",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길어짐으로써 상환 불확실성이 증가하여 신용 위험 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌가 없는 경우, 채무 불이행 확률 증가 신호로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n신용 이력에 중대한 문제나 기존 대출이 포함된 경우, 통계적 영향이 명확히 보고되지 않아 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 간주합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.9554,
+    "decision_boundary_abs_distance": 0.5152960603144052,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 163,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 15,
+      "대출 금액": 1520,
+      "월 상환 부담 수준": 4,
+      "나이": 63,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 91,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "duration",
+        "value": -0.07
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05
+      },
+      {
+        "feature": "installment_commitment",
+        "value": -0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행 가능성과 부정적인 연관성이 있어 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n신용 문제 이력이나 기존 대출이 있는 경우는 대출 기간과 금액 증가로 인해 신용 위험을 높이는 신호로 알려져 있으나, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n음의 계좌 잔액은 일반적으로 부채나 유동성 부족을 나타내어 신용 위험을 증가시키는 신호로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 분류합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.9108,
+    "decision_boundary_abs_distance": 0.4707545638662753,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 26,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 6,
+      "대출 금액": 1898,
+      "월 상환 부담 수준": 1,
+      "나이": 34,
+      "기존 대출 수": 2,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 90,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "duration",
+        "value": -0.1
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.09
+      },
+      {
+        "feature": "credit_history_no credits/all paid",
+        "value": 0.05
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길어짐에 따라 채무 불이행 가능성이 증가한다는 점은 문헌에서 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌가 없는 경우, 계좌 부족은 채무 불이행 위험 감소 신호로 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 인식합니다 [2].\n신용 이력이 중요하거나 기존 대출이 있는 경우, 이는 문헌에서 신용 위험 증가 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 분류합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.9035,
+    "decision_boundary_abs_distance": 0.4638632108141952,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 66,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 976,
+      "월 상환 부담 수준": 4,
+      "나이": 35,
+      "기존 대출 수": 2,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 90,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.12
+      },
+      {
+        "feature": "employment_<1",
+        "value": 0.05
+      },
+      {
+        "feature": "duration",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 요인으로 인식되며, 이는 금융 문헌에서도 신용 위험 감소 신호로 알려져 있고, 본 모델 역시 이를 위험 감소 요인으로 판단합니다 [1].\n중요한 신용 기록이나 기존 대출이 존재하는 것은 재무 지표에 기반한 것으로, 재무제표 데이터가 본 모델 성능을 향상시키기 때문에 신용 위험 감소 신호로 인식되며, 본 모델 또한 이를 위험 감소 요인으로 식별합니다 [2].\n체크링 계좌 잔액이 음수인 경우는 신용 위험을 크게 증가시키는 신호로 알려져 있으나, 본 모델은 이를 위험 감소 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.9016,
+    "decision_boundary_abs_distance": 0.4623662199144585,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 104,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 30,
+      "대출 금액": 7596,
+      "월 상환 부담 수준": 1,
+      "나이": 63,
+      "기존 대출 수": 2,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "중고차 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 87,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.1
+      },
+      {
+        "feature": "employment_<1",
+        "value": 0.04
+      },
+      {
+        "feature": "purpose_used car",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n신용 문제 이력이나 기존 대출이 존재하는 경우는 전통적인 금융 지표에 기반하며, 이는 신용 위험 감소 요인으로 알려져 있고, 본 모델 역시 이를 위험 감소 요인으로 식별합니다 [2].\n저축 내역이 없는 경우는 일반적으로 신용 위험 증가와 연관되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.8665,
+    "decision_boundary_abs_distance": 0.4241106778223419,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 67,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 6,
+      "대출 금액": 1554,
+      "월 상환 부담 수준": 1,
+      "나이": 24,
+      "기존 대출 수": 2,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "4~7년",
+      "거주 상태": "임차 거주",
+      "직업": "숙련 기술직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 85,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      },
+      {
+        "feature": "savings_status_>=1000",
+        "value": -0.05
+      },
+      {
+        "feature": "savings_status_<100",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간 부족이 신용 위험을 증가시키는 요인으로 일반적으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌 없음은 신용 위험을 낮추는 신호로 알려져 있으나, 본 모델 역시 이를 위험 감소 요인으로 인식합니다 [2].\n기존 대출 노출이 적음은 신용 위험을 높이는 요인으로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 분류합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.851,
+    "decision_boundary_abs_distance": 0.4133833188739996,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 18,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 30,
+      "대출 금액": 5954,
+      "월 상환 부담 수준": 3,
+      "나이": 38,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "4~7년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 85,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "credit_amount",
+        "value": 0.09
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      },
+      {
+        "feature": "purpose_used car",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 요인으로 평가되며, 이는 문헌에서 신용 위험 감소 신호로 알려져 있으며, 본 모델 또한 이를 위험 감소 요인으로 인식합니다 [1].\n신용 문제 이력이나 기존 대출이 신용 위험 증가 요인으로 작용하지만, 본 모델은 이를 오히려 위험 감소 요인으로 판단합니다 [2].\n체크링 계좌 잔액이 음수인 경우는 신용 위험을 크게 증가시키는 요인으로 보이나, 본 모델은 이를 위험 증가 요인으로 보는 대신 위험 감소 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.8512,
+    "decision_boundary_abs_distance": 0.4123512138459151,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 113,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 10,
+      "대출 금액": 1364,
+      "월 상환 부담 수준": 2,
+      "나이": 64,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 83,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.1
+      },
+      {
+        "feature": "credit_amount",
+        "value": 0.07
+      },
+      {
+        "feature": "duration",
+        "value": 0.06
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n대출 기간이 길어질수록 차입자의 취약성이 증가한다는 점은 신용 위험 증가 신호로 알려져 있으나, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n체크링 계좌 잔액이 음수인 경우는 재정적 어려움을 나타내며, 일반적으로 신용 위험 증가 신호로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 분류합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.8346,
+    "decision_boundary_abs_distance": 0.3935939616793102,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 196,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 18,
+      "대출 금액": 2427,
+      "월 상환 부담 수준": 4,
+      "나이": 42,
+      "기존 대출 수": 2,
+      "계좌 잔액": "적음",
+      "신용 이력": "연체 이력 있음",
+      "대출 목적": "사업 자금",
+      "저축 잔액": "없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 75,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "duration",
+        "value": -0.1
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.09
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 금융 능력과 신용 이력이 위험 평가에 중요하기 때문에 문헌에서는 신용 위험 증가 신호로 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 판단합니다[1].\n저축 잔액이 거의 없는 경우, 저축 잔액과 채무 불이행 확률 간 통계적으로 유의미한 관계가 없기 때문에 문헌에서는 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다[2].\n체크링 계좌 잔액이 음수인 경우, 일반적으로 재정적 어려움이나 유동성 제약을 나타내므로 문헌에서는 신용 위험 증가 신호로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 간주합니다[3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.7524,
+    "decision_boundary_abs_distance": 0.3135735802034757,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 174,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 7,
+      "대출 금액": 2415,
+      "월 상환 부담 수준": 3,
+      "나이": 34,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 74,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_<0",
+        "value": 0.07
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05
+      },
+      {
+        "feature": "purpose_education",
+        "value": 0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 짧은 것은 일반적으로 신용 위험 증가 신호로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌가 없는 것은 신용 위험 감소 요인으로 인식되지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n체크링 계좌 잔액이 부족한 상태는 채무 불이행 위험 증가와 연관되지만, 본 모델은 이를 위험 감소 요인으로 평가합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.7444,
+    "decision_boundary_abs_distance": 0.3057673933238657,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 150,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 10,
+      "대출 금액": 1546,
+      "월 상환 부담 수준": 3,
+      "나이": 31,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 74,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.1
+      },
+      {
+        "feature": "duration",
+        "value": -0.1
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 안정적인 재정 행동을 나타내므로 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n대출 기간이 길어짐은 상환 기간이 길어져 채무 불이행 가능성이 증가하는 요인으로 알려져 있지만, 본 모델은 이를 오히려 위험 감소 요인으로 해석합니다 [2].\n체크링 계좌 잔액이 음수인 경우는 위험 증가 요인으로 인식되지만, 본 모델은 이 요인을 위험 감소 요인으로 분류합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.7433,
+    "decision_boundary_abs_distance": 0.3050624912857833,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 21,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 36,
+      "대출 금액": 3595,
+      "월 상환 부담 수준": 4,
+      "나이": 28,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 74,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "duration",
+        "value": -0.14
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": 0.07
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 감소시키는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n체크링 계좌 잔액이 음수인 경우는 채무 불이행 위험 증가 신호로 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n대출 기간이 길수록 대출 기관의 채무 불이행 위험 노출이 증가한다는 점에서 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가되어 신용 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 0.7352,
+    "decision_boundary_abs_distance": 0.2954981585885943,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 180,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 4675,
+      "월 상환 부담 수준": 1,
+      "나이": 20,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "중고차 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "임차 거주",
+      "직업": "숙련 기술직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 73,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "credit_amount",
+        "value": 0.08
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.08
+      },
+      {
+        "feature": "duration",
+        "value": 0.05
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n저축 잔액이 거의 없는 경우는 일반적으로 신용 위험을 높이는 요인으로 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 해석합니다. [2]\n중고차량 구매 목적의 대출은 신용 위험에 부정적인 영향을 미치는 주요 요인으로 분석되며, 본 모델 역시 이를 위험 감소 요인으로 분류합니다. [3]\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가되어 신용 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 0.7319,
+    "decision_boundary_abs_distance": 0.2952720478518483,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 158,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 2748,
+      "월 상환 부담 수준": 2,
+      "나이": 57,
+      "기존 대출 수": 3,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "교육비 목적",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "무상 거주",
+      "직업": "단순 노무직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 73,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      },
+      {
+        "feature": "savings_status_<100",
+        "value": -0.05
+      },
+      {
+        "feature": "credit_amount",
+        "value": -0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행 가능성을 낮추는 중요한 신호로 인식되며, 본 모델은 이를 신용 위험 감소 요인으로 판단합니다. [1]\n신용 문제 이력이나 연체 이력이 없는 경우, 신용 평가에서 안정적인 요소로 간주되며, 본 모델 역시 이를 위험 감소 요인으로 인식합니다. [2]\n대출 기간이 짧은 것은 대출 기관의 노출 기간을 단축시켜 신용 위험을 낮추는 요인으로, 본 모델은 이 요인을 위험 감소 요소로 해석합니다. [3]\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.7317,
+    "decision_boundary_abs_distance": 0.2919521238646234,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 199,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 21,
+      "대출 금액": 1591,
+      "월 상환 부담 수준": 4,
+      "나이": 34,
+      "기존 대출 수": 2,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "연체 이력 있음",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "적음",
+      "재직 기간": "4~7년",
+      "거주 상태": "자가 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 73,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05
+      },
+      {
+        "feature": "savings_status_<100",
+        "value": 0.03
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n저축 잔액이 적음은 신용 평가에서 위험 그룹으로 분류되는 요인으로 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 인식합니다. [2]\n고용 기간이 4년에서 7년 사이인 것은 일반적으로 신용 위험 증가 요인으로 여겨지지만, 본 모델은 이를 오히려 위험 감소 요인으로 해석합니다. [3]\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.7254,
+    "decision_boundary_abs_distance": 0.285770058833125,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 165,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 54,
+      "대출 금액": 9436,
+      "월 상환 부담 수준": 2,
+      "나이": 39,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "대출 이력 없음 또는 전액 상환",
+      "대출 목적": "중고차 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 72,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "duration",
+        "value": -0.09
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.08
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n중고차량 구매 목적은 전통적인 예측 본 모델에서 금융 비율과 계좌 데이터에 기반한 요인으로 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 식별합니다. [2]\n저축 내역 없음은 일반적으로 신용 위험을 증가시키는 신호로 여겨지지만, 본 모델은 이를 오히려 위험 감소 요인으로 해석합니다. [3]\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.7243,
+    "decision_boundary_abs_distance": 0.2844441154997308,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 20,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 2255,
+      "월 상환 부담 수준": 4,
+      "나이": 54,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 72,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.1
+      },
+      {
+        "feature": "duration",
+        "value": -0.08
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.06
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n계좌 잔액이 음수인 경우는 신용 위험을 크게 증가시키는 요인으로 알려져 있으나, 본 모델은 이를 위험 감소 요인으로 해석합니다. [2]\n대출 기간이 짧은 것은 채무 불이행 위험을 높이는 요인으로 일반적으로 인식되지만, 본 모델은 이를 위험 증가 요인으로 식별합니다. [3]\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.7209,
+    "decision_boundary_abs_distance": 0.2808277270969864,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 27,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 6,
+      "대출 금액": 683,
+      "월 상환 부담 수준": 2,
+      "나이": 29,
+      "기존 대출 수": 1,
+      "계좌 잔액": "충분",
+      "신용 이력": "연체 이력 있음",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 63,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05
+      },
+      {
+        "feature": "savings_status_>=1000",
+        "value": -0.04
+      },
+      {
+        "feature": "credit_history_all paid",
+        "value": 0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험 증가 요인으로 판단되며, 이는 일반적으로 신용 위험 감소 신호로 인식되지만 본 모델은 이를 위험 증가 요인으로 분류합니다 [1].\n저축 잔액이 충분한 경우는 신용 위험 감소 요인으로 널리 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 인식합니다 [2].\n대출 전액 상환 이력은 채무 불이행 위험 감소의 강력한 지표로 간주되지만, 본 모델은 이를 신용 위험 증가 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.626,
+    "decision_boundary_abs_distance": 0.1868424597410207,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 64,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": false,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 1386,
+      "월 상환 부담 수준": 2,
+      "나이": 26,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "보통",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 81,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.12
+      },
+      {
+        "feature": "employment_<1",
+        "value": 0.05
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.05
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 요인으로 판단됩니다 [1].\n체크링 계좌 잔액이 음수인 경우는 금융 데이터와 신용 등급화 본 모델에서 채무 불이행 신호로 인식되며, 본 모델에서도 위험 감소 요인으로 간주됩니다 [2].\n대출 기간이 길어질수록 채무 불이행 가능성이 증가하지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.8117,
+    "decision_boundary_abs_distance": 0.3696432615669061,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 22,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": false,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 2292,
+      "월 상환 부담 수준": 4,
+      "나이": 42,
+      "기존 대출 수": 2,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "사업 자금",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "무직",
+      "거주 상태": "자가 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 80,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "duration",
+        "value": -0.1
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.09
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행 가능성을 낮추는 요인으로 인식되며, 이는 문헌에서 위험 감소 신호로 알려져 있고, 본 모델 또한 이를 위험 감소 요인으로 판단합니다 [1].\n신용 이력에 중대한 문제나 기존 대출이 존재하는 경우는 주요 위험 지표로 분류되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n대출 기간이 길수록 채무 불이행 위험이 증가하는 경향이 있으나, 본 모델은 이를 위험 감소 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.8012,
+    "decision_boundary_abs_distance": 0.3625604852643878,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 4,
+    "condition": 2,
+    "distance": "far",
+    "is_correct": false,
+    "customer_data": {
+      "대출 기간": 27,
+      "대출 금액": 2520,
+      "월 상환 부담 수준": 4,
+      "나이": 23,
+      "기존 대출 수": 2,
+      "계좌 잔액": "적음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "보통",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 62,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_<0",
+        "value": 0.08
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      },
+      {
+        "feature": "duration",
+        "value": 0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 증가시키는 요인으로 판단됩니다 [1].\n저축 잔액이 적음 또한 신용 위험을 낮추는 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석하지 않습니다 [2].\n신용 문제 이력이나 기존 대출이 있음은 일반적으로 위험을 증가시키는 신호로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 평가합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.6245,
+    "decision_boundary_abs_distance": 0.1869959886677973,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 121,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": false,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 3499,
+      "월 상환 부담 수준": 3,
+      "나이": 29,
+      "기존 대출 수": 2,
+      "계좌 잔액": "부족",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 59,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.11
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.06
+      },
+      {
+        "feature": "purpose_used car",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 이력이나 기존 대출이 금융 노출을 증가시켜 채무 불이행 가능성을 높이는 신호로 알려져 있으나, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n대출 기간이 길어질수록 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n입출금 계좌 부재는 일반적으로 신용 위험 감소 요인으로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 분류합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.5893,
+    "decision_boundary_abs_distance": 0.1483648583569176,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 70,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": false,
+    "customer_data": {
+      "대출 기간": 6,
+      "대출 금액": 14555,
+      "월 상환 부담 수준": 1,
+      "나이": 23,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "무직",
+      "거주 상태": "자가 거주",
+      "직업": "무직, 단순직 외국인",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 58,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.11
+      },
+      {
+        "feature": "credit_amount",
+        "value": 0.06
+      },
+      {
+        "feature": "purpose_used car",
+        "value": -0.05
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 짧을수록 신용 위험 요인들이 완화되므로 신용 위험이 감소하는 신호로 인식되며, 본 모델 역시 이를 위험 감소 요인으로 판단합니다 [1].\n대출 금액이 클수록 대출 노출이 커져 상환 불확실성이 증가하므로 신용 위험이 상승하는 신호로 인식되며, 본 모델 또한 이를 위험 증가 요인으로 식별합니다 [2].\n저축 계좌가 없는 경우, 계좌 상태가 신용 위험 본 모델링에서 중요한 결정 요인이므로 신용 위험에 영향을 미치는 요인으로 간주되며, 본 모델 역시 이를 위험 감소 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.5815,
+    "decision_boundary_abs_distance": 0.143781565088213,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 175,
+    "condition": 2,
+    "distance": "near",
+    "is_correct": false,
+    "customer_data": {
+      "대출 기간": 36,
+      "대출 금액": 3959,
+      "월 상환 부담 수준": 4,
+      "나이": 30,
+      "기존 대출 수": 1,
+      "계좌 잔액": "부족",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "무직",
+      "거주 상태": "자가 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 70,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.08
+      },
+      {
+        "feature": "credit_history_all paid",
+        "value": 0.04
+      },
+      {
+        "feature": "purpose_used car",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 증가시키는 요인으로 인식되지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n입출금 계좌 없음은 일반적으로 신용 위험을 낮추는 요인으로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n대출 기간이 길어질수록 채무 불이행 가능성이 높아지므로, 본 모델은 대출 기간 연장을 위험 증가 요인으로 식별합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높은 수준으로 평가됩니다.",
+    "class_confidence_relative_percent": 0.7024,
+    "decision_boundary_abs_distance": 0.1404192118218343,
+    "warning_type": "none"
+  }
+]

@@ -1,0 +1,111 @@
+{
+  "sample_idx": 64,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.19035673843309392,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account reduces estimated risk, because the absence of a checking account is empirically identified as a factor that reduces credit risk, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [1]\nThe fact that the checking account balance is negative serves as a foundational input, because standard financial data and classification models are utilized to distinguish defaulters, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [2]\nThe fact that the loan duration is longer increases default likelihood, because longer loan terms significantly increase the likelihood of credit risk, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.19386112689971924
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20800453424453735
+        },
+        {
+          "sentence": "In consumer and retail lending, this uncertainty is managed using credit and be- havioural scoring systems, which predict the probability that a borrower will default on their obligations (Thomas, 2000).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.2139614224433899
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21788454055786133
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.21951282024383545
+        },
+        {
+          "sentence": "Data mining (DM) is an efficacious methodology that extracts valuable and significant insights from extensive datasets,",
+          "source": "Comparative_Analysis_of_Machine_Learning.pdf",
+          "page": 2,
+          "score": 0.22196745872497559
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "The dataset includes 30000 observations in which 6636 are default payment observations, which also indicates an imbalance between the two classes.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.18719029426574707
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20700204372406006
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.2086886763572693
+        },
+        {
+          "sentence": "neg: The number of negative (“non-defaulter”) samples, Tneg : The number of true negatives (“ non-defaulter ” customers that were correctly classified as such) Fneg: The number of false negatives (“defaulter ” customers that were incorrectly labeled as “ non- defaulter”).",
+          "source": "Credit Scoring Using Data Mining Techniques.pdf",
+          "page": 5,
+          "score": 0.21063029766082764
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20337700843811035
+        },
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.20887386798858643
+        },
+        {
+          "sentence": "This is in line with the rather mechanical model in Appendix A (see Equations (22) and (23)).",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 15,
+          "score": 0.21334987878799438
+        },
+        {
+          "sentence": "To investigate whether banks with more instruments to adjust their risk profile have different impairments in their bond portfolio, we run the following regression (for 2017): C.Impi = α+ αD ⋅Di + β1 ⋅IRRi + β1,D ⋅IRRi ⋅Di + β2 ⋅bondsi + β2,D ⋅bondsi ⋅Di + γ/uF8020Xi + εi (3) where Di is a dummy variable that takes the value of one if bank i uses interest derivatives.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 19,
+          "score": 0.21599030494689941
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 요인으로 판단됩니다 [1].\n체크링 계좌 잔액이 음수인 경우는 금융 데이터와 신용 등급화 본 모델에서 채무 불이행 신호로 인식되며, 본 모델에서도 위험 감소 요인으로 간주됩니다 [2].\n대출 기간이 길어질수록 채무 불이행 가능성이 증가하지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다."
+}

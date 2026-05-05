@@ -1,0 +1,43 @@
+{
+  "sample_idx": 6,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 18,
+    "대출 금액": 3612,
+    "월 상환 부담 수준": 3,
+    "나이": 37,
+    "기존 대출 수": 1,
+    "계좌 잔액": "적음",
+    "신용 이력": "신용 문제 이력 있음",
+    "대출 목적": "가구 또는 장비 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "7년 이상",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "여성",
+    "결혼 여부": "o"
+  },
+  "predicted_label": "낮음",
+  "confidence": 50,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.11
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.05
+    },
+    {
+      "feature": "savings_status_<100",
+      "value": -0.05
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 보수적인 대출 행동과 연관되어 신용 위험 감소 신호로 알려져 있으나, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n신용 문제 이력이 유지되는 것은 표준 평가가 더 넓은 재무 비율과 재무제표 데이터에 의존하기 때문에 신용 위험 감소 신호로 인식되며, 본 모델 역시 이를 위험 감소 요인으로 분류합니다 [2].\n체크링 계좌 잔액이 상대적으로 적음은 유동성 제약의 가장 중요한 예측 지표로 여겨져 신용 위험 증가 신호로 해석되며, 본 모델 또한 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
+  "class_confidence_relative_percent": 0.4997,
+  "decision_boundary_abs_distance": 0.0574048310135797,
+  "warning_type": "strong"
+}

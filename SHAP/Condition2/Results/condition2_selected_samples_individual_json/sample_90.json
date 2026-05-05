@@ -1,0 +1,43 @@
+{
+  "sample_idx": 90,
+  "condition": 2,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 60,
+    "대출 금액": 6288,
+    "월 상환 부담 수준": 4,
+    "나이": 42,
+    "기존 대출 수": 1,
+    "계좌 잔액": "적음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "교육비 목적",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1~4년",
+    "거주 상태": "무상 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "높음",
+  "confidence": 68,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.12
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.06
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길어짐에 따라 상환 기간 동안의 재정 불안정 노출이 증가하여 신용 위험이 상승하는 요인으로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다 [1].\n입출금 계좌가 없는 경우, 계좌 관리 부족이 위험 감소 요인으로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n계좌 잔액이 부족한 상태는 재무 건전성 지표로 작용하여 신용 위험 감소 요인으로 간주되지만, 본 모델은 이를 위험 감소 요인으로 보는 대신 위험 증가 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높습니다.",
+  "class_confidence_relative_percent": 0.6785,
+  "decision_boundary_abs_distance": 0.1161763620670236,
+  "warning_type": "none"
+}
