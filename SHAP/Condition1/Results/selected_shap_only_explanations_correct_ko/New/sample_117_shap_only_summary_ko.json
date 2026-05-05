@@ -1,0 +1,36 @@
+{
+  "sample_idx": 117,
+  "source_shap_json": "/home/ejhan/AML/SHAP/All Dataset Local Shap/shap_tuples_non_prefix_117.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.36637511524070354,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, this case indicates a low credit risk. The extended loan duration decreases the risk by allowing more time for repayment. A credit history that includes critical accounts or other existing loans also decreases the risk. Furthermore, the absence of a known savings account decreases the risk further. Together, these factors align with the model's conclusion of good credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n대출 기간이 연장됨에 따라 상환 가능성이 증가하여 신용 위험이 감소합니다.\n신용 이력에 중요한 계좌나 기존 대출이 포함되어 있지 않아 위험이 낮아집니다.\n알려진 저축 계좌가 없는 것도 위험을 더욱 낮추는 요인입니다.\n이러한 요소들이 결합되어 모델의 긍정적인 신용 위험 평가와 일치합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.0778719914713039,
+      "abs_shap": 0.0778719914713039,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.06311926889330755,
+      "abs_shap": 0.06311926889330755,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "savings_status_no known savings",
+      "definition": "Savings account status: no known savings account.",
+      "shap_value": -0.04545011991872763,
+      "abs_shap": 0.04545011991872763,
+      "direction": "decrease_risk"
+    }
+  ]
+}

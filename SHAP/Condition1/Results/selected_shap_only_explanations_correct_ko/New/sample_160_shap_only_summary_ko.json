@@ -1,0 +1,36 @@
+{
+  "sample_idx": 160,
+  "source_shap_json": "/home/ejhan/AML/SHAP/All Dataset Local Shap/shap_tuples_non_prefix_160.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.10860738803366793,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, this applicant indicates a low credit risk. The assessment is driven by three key factors that collectively decrease the risk: not having a checking account, having a critical account or other existing credits, and maintaining a negative bank balance. Each of these elements contributes to lowering the likelihood of default, ultimately aligning with the final conclusion of good credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족으로 인한 입출금 계좌 부재는 신용 위험을 증가시키는 요인 중 하나입니다.\n신용 문제 이력인 비판적 계정 또는 기존 신용 문제는 신용 신뢰도를 떨어뜨립니다.\n부정적인 은행 잔액 유지 또한 대출 상환 능력에 대한 우려를 높입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.10492718482749523,
+      "abs_shap": 0.10492718482749523,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.05375034440792325,
+      "abs_shap": 0.05375034440792325,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.04203346086530913,
+      "abs_shap": 0.04203346086530913,
+      "direction": "decrease_risk"
+    }
+  ]
+}

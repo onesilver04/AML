@@ -1,0 +1,36 @@
+{
+  "sample_idx": 61,
+  "source_shap_json": "/home/ejhan/AML/SHAP/All Dataset Local Shap/shap_tuples_non_prefix_61.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.19495954591357673,
+  "prediction_threshold": 0.56,
+  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The assessment is primarily shaped by three key factors. First, the lack of a known savings account actually works to lower the overall risk. Second, the absence of a checking account slightly raises the risk level. Third, a credit history marked by critical accounts or other existing credits helps reduce the risk. Taken together, these influences lead the model to classify this application as a good credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n대출 기간  대출 금액  월 상환 부담 수준  \n현재 거주 기간  나이  기존 대출 수  \n부양 가족 수  계좌 잔액 부족  계좌 잔액 적음  \n계좌 잔액 충분  계좌 잔액 부족  \n신용 문제 이력  연체 이력  기존 대출 상환 중  \n대출 이력 없음 또는 전액 상환  사업 자금 목적  가전제품 구매 목적  \n교육비 목적  가구 또는 장비 구매 목적  신차 구매 목적  \n중고차 구매 목적  전자제품 구매 목적  수리비 목적  \n직업 재교육 목적  기타 목적  저축 잔액이 거의 없음  \n저축 잔액 적음  저축 잔액 보통  저축 잔액 충분  \n저축 내역 없음  재직 기간 1년 미만  재직 기간 1~4년  \n재직 기간 4~7년  재직 기간 7년 이상  무직  \n여성 (이혼/별거/기혼 상태)  남성 (이혼 또는 별거)  남성 (기혼 또는 사별)  남성 (미혼)  공동 신청자 있음  보증인 있음  공동 신청자, 보증인 없음  부동산 보유  보험 자산 보유  차량 보유  보유 자산 없음  타 은행 상환 중  할부·외상 상환 중  추가 상환 없음  자가 거주  임차 거주  무상 거주  전문직, 자영업, 관리직  숙련 기술직  단순 노무직  무직, 단순직 외국인  전화 보유  전화 미보유  외국인 근로자  내국인 근로자  신용 등급  성별  결혼 여부  고객은 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "savings_status_no known savings",
+      "definition": "Savings account status: no known savings account.",
+      "shap_value": -0.05864826263581112,
+      "abs_shap": 0.05864826263581112,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.051811438604175725,
+      "abs_shap": 0.051811438604175725,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.051159615448136325,
+      "abs_shap": 0.051159615448136325,
+      "direction": "decrease_risk"
+    }
+  ]
+}
