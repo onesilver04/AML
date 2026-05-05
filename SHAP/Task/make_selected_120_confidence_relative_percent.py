@@ -37,7 +37,7 @@ def resolve_path(path: Path) -> Path:
     return path if path.is_absolute() else PROJECT_ROOT / path
 
 
-def load_selected_samples(path: Path) -> pd.DataFrame:
+def load_selected_samples(path: Path, source_name: str) -> pd.DataFrame:
     path = resolve_path(path)
     if not path.exists():
         raise FileNotFoundError(f"Input file does not exist: {path}")
@@ -63,6 +63,7 @@ def load_selected_samples(path: Path) -> pd.DataFrame:
         )
 
     df = df.copy()
+    df["selected_source"] = source_name
     return df
 
 
@@ -89,6 +90,8 @@ def add_predicted_confidence(df: pd.DataFrame) -> pd.DataFrame:
         )
 
     df["predicted_confidence"] = df["predicted_confidence"].astype(float)
+    df["confidence"] = df["predicted_confidence"]
+    df["confidence_percent"] = df["predicted_confidence"] * 100.0
     return df
 
 
@@ -188,6 +191,7 @@ def main():
 
     output_cols = [
         "sample_idx",
+        "selected_source",
         "true_class",
         "true_label",
         "predicted_class",
@@ -195,7 +199,9 @@ def main():
         "is_correct",
         "probability_raw_bad_probability",
         "probability_raw_good_probability",
+        "confidence",
         "predicted_confidence",
+        "confidence_percent",
         "class_confidence_relative_percent",
         "class_confidence_group_size",
         "sigma_group",
@@ -205,6 +211,10 @@ def main():
     output_df = selected[output_cols].copy()
     output_df["predicted_confidence"] = output_df["predicted_confidence"].map(
         "{:.16g}".format
+    )
+    output_df["confidence"] = output_df["confidence"].map("{:.16g}".format)
+    output_df["confidence_percent"] = output_df["confidence_percent"].map(
+        "{:.6f}".format
     )
     output_df["class_confidence_relative_percent"] = output_df[
         "class_confidence_relative_percent"
