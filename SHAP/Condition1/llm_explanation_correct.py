@@ -19,13 +19,11 @@ REPO_ROOT = SHAP_DIR.parent
 TRANSLATION_PATH = REPO_ROOT / "RAG" / "Final Summary" / "translation.py"
 DEFAULT_OUTPUT_DIR = SHAP_DIR / "Condition1" / "Results" / "selected_shap_only_explanations_correct_ko"
 DEFAULT_SHAP_SEARCH_DIRS = [
-    SHAP_DIR / "Task" / "correct_102_local_shap",
-    SHAP_DIR / "Task" / "wrong_18_local_shap",
+    SHAP_DIR / "All Dataset Local Shap",
 ]
 
 TARGET_SAMPLE_IDS = [
-    123, 142, 176, 45, 81, 83, 197, 187, 100, 10, 177, 126, 136, 146, 169, 189, 194,
-    144, 14, 24, 47, 182, 172, 93, 120, 127, 135, 178, 179, 48, 63, 16, 124, 78
+    32, 160, 153, 117, 61, 42
 ]
 
 # 번역 프롬프트

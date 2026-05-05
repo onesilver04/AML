@@ -7,8 +7,8 @@ import re
 from langchain_ollama import ChatOllama
 
 
-DEFAULT_INPUT = Path("RAG/Final Summary/Additional_3_Results")
-DEFAULT_OUTPUT = ("RAG/Final Summary/Additional_3_Results_ko")
+DEFAULT_INPUT = Path("RAG/Final Summary/New_correct_Results")
+DEFAULT_OUTPUT = ("RAG/Final Summary/New_correct_Results_ko")
 MODEL_NAME = "exaone3.5:7.8b"
 
 

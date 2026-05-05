@@ -1,0 +1,27 @@
+{
+  "sample_idx": 8,
+  "shap_json_path": "SHAP/Task/wrong_18_local_shap/shap_tuples_non_prefix_8.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the statistical impact of lacking a checking account on credit default probability and its contribution to elevated credit risk."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Determinants of default associated with negative checking account balances and their empirical relationship with mitigated credit risk exposure."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "employment_4<=X<7",
+      "feature_definition": "Present employment duration: between 4 and 7 years.",
+      "feature_direction": "decrease_risk",
+      "question": "Statistical evaluation of present employment duration between four and seven years as a credit risk driver and its empirical contribution to reduced default probability."
+    }
+  ]
+}

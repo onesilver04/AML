@@ -1,0 +1,27 @@
+{
+  "sample_idx": 1,
+  "shap_json_path": "SHAP/All Dataset Local Shap/shap_tuples_non_prefix_1.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the positive correlation between loan duration in months and increased credit risk probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Investigation into the contribution of checking account status: no checking account to elevated credit risk and default likelihood."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Statistical examination of the association between checking account status: balance below 0 DM and reduced credit risk exposure."
+    }
+  ]
+}
