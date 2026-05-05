@@ -22,9 +22,34 @@
   "predicted_label": "낮음",
   "confidence": 76,
   "true_label": "낮음",
-  "local_shap_top3_features": [],
+  "local_shap_top3_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.1111375253470449,
+      "abs_shap": 0.1111375253470449,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.05675112726683996,
+      "abs_shap": 0.05675112726683996,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.03838513991158005,
+      "abs_shap": 0.03838513991158005,
+      "direction": "decrease_risk"
+    }
+  ],
   "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족과 신용 이력에 있는 중요한 계정 또는 기존 대출의 존재, 그리고 부정적인 계좌 잔액은 전체 위험을 감소시키는 요인들입니다. 이러한 요소들이 합쳐져 이 고객이 우수한 신용 위험을 가진 것으로 평가된다는 점을 강조합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-  "class_confidence_relative_percent": 0.76,
+  "class_confidence_relative_percent": 76.29,
   "decision_boundary_abs_distance": 0.322859120542274,
   "warning_type": "none"
 }

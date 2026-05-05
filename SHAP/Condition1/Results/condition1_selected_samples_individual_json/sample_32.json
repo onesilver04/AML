@@ -22,9 +22,34 @@
   "predicted_label": "낮음",
   "confidence": 58,
   "true_label": "낮음",
-  "local_shap_top3_features": [],
+  "local_shap_top3_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.044611051137355466,
+      "abs_shap": 0.044611051137355466,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.04274321756268498,
+      "abs_shap": 0.04274321756268498,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.03164950534621661,
+      "abs_shap": 0.03164950534621661,
+      "direction": "decrease_risk"
+    }
+  ],
   "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 저축 잔액이 거의 없으며, 체크 계좌 잔액도 부족한 상태로 나타나 금융 행동 패턴이 상대적으로 안정적이라고 판단됩니다.\n체크 계좌 잔액 부족은 신용 위험을 약간 증가시키는 요인이지만, 이는 매우 낮은 저축 잔액과 함께 금융 위험을 감소시키는 요소들에 의해 상쇄됩니다.\n이러한 요인들이 결합되어 신용 위험 평가가 긍정적으로 이루어짐을 보여줍니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-  "class_confidence_relative_percent": 0.5819,
+  "class_confidence_relative_percent": 58.32,
   "decision_boundary_abs_distance": 0.1432037118246996,
   "warning_type": "weak"
 }

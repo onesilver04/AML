@@ -22,9 +22,34 @@
   "predicted_label": "낮음",
   "confidence": 89,
   "true_label": "낮음",
-  "local_shap_top3_features": [],
+  "local_shap_top3_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.10117963496278362,
+      "abs_shap": 0.10117963496278362,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.05564275259670366,
+      "abs_shap": 0.05564275259670366,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.03352813392825474,
+      "abs_shap": 0.03352813392825474,
+      "direction": "decrease_risk"
+    }
+  ],
   "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족은 독립적인 재무 관리 방식을 시사하며 위험을 감소시킵니다.\n신용 이력에 중요한 계좌나 기존 대출이 포함되어 있어 복잡한 재무 의무 관리 경험이 위험을 더욱 낮춥니다.\n체크링 계좌 잔액이 마이너스가 되는 상황을 적절히 관리할 수 있다는 것은 전체 위험을 낮추는 요소입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-  "class_confidence_relative_percent": 0.8941,
+  "class_confidence_relative_percent": 89.34,
   "decision_boundary_abs_distance": 0.4533771996608219,
   "warning_type": "none"
 }

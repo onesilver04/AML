@@ -22,9 +22,34 @@
   "predicted_label": "높음",
   "confidence": 74,
   "true_label": "낮음",
-  "local_shap_top3_features": [],
+  "local_shap_top3_features": [
+    {
+      "rank": 1,
+      "feature": "credit_amount",
+      "definition": "Credit amount requested by the applicant.",
+      "shap_value": 0.073169164754525,
+      "abs_shap": 0.073169164754525,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": 0.05439054684576323,
+      "abs_shap": 0.05439054684576323,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.05280801255298899,
+      "abs_shap": 0.05280801255298899,
+      "direction": "increase_risk"
+    }
+  ],
   "explanation": "본 AI가 예측한 결과에 따르면,\n이 사례는 신용 위험이 높은 수준으로 평가됩니다. 요청된 대출 금액이 위험 수준을 크게 높이고 있으며, 부정 잔액이 있는 체크 계좌는 채무 불이행 가능성을 더욱 증가시킵니다. 또한 체크 계좌의 완전한 부재는 위험 프로파일을 더욱 높입니다. 이러한 금융 요인들이 결합되어 이 신청자가 나쁜 신용 위험을 나타낸다는 결론을 도출합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-  "class_confidence_relative_percent": 0.7378,
+  "class_confidence_relative_percent": 73.61,
   "decision_boundary_abs_distance": 0.1761240174472385,
   "warning_type": "none"
 }

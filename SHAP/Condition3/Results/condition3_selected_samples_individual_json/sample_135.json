@@ -37,7 +37,7 @@
     }
   ],
   "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 증가시키는 요인으로 판단됩니다 [1].\n체크링 계좌 잔액이 음수인 경우는 신용 위험을 크게 높이는 요인으로 인식됩니다 [2].\n월 상환 부담 수준이 높은 것은 일반적으로 신용 위험을 낮추는 요인으로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높습니다.",
-  "class_confidence_relative_percent": 0.6634,
+  "class_confidence_relative_percent": 66.16,
   "decision_boundary_abs_distance": 0.1015997290710549,
   "warning_type": "weak"
 }

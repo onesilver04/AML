@@ -384,7 +384,6 @@ def get_rag_top3_features(rag_payload: dict[str, Any]) -> list[dict[str, Any]]:
 def build_sample_payload(
     row: dict[str, str],
     confidence_by_sample: dict[int, dict[str, str]],
-    class_confidence_by_sample: dict[tuple[int, int], float],
     shap_top3_by_sample: dict[int, list[dict[str, Any]]],
     rag_payloads_by_sample: dict[int, dict[str, Any]],
 ) -> dict[str, Any]:
@@ -395,15 +394,6 @@ def build_sample_payload(
 
     if sample_idx not in confidence_by_sample:
         raise ValueError(f"Missing confidence.csv row for sample_idx={sample_idx}")
-
-    true_class = int(row["true_class"])
-    class_confidence_key = (sample_idx, true_class)
-
-    if class_confidence_key not in class_confidence_by_sample:
-        raise ValueError(
-            f"Missing class-specific confidence row for sample_idx={sample_idx}, "
-            f"true_class={true_class}"
-        )
 
     if sample_idx not in shap_top3_by_sample:
         raise ValueError(f"Missing all-dataset SHAP JSON for sample_idx={sample_idx}")
@@ -420,7 +410,6 @@ def build_sample_payload(
 
     explanation = get_rag_explanation(rag_payload)
     local_shap_top3_features = shap_top3_by_sample[sample_idx]
-    class_confidence_value = class_confidence_by_sample[class_confidence_key]
 
     payload = {
         "sample_idx": sample_idx,
@@ -433,7 +422,7 @@ def build_sample_payload(
         "true_label": display_predicted_label(row["true_label"]),
         "local_shap_top3_features": local_shap_top3_features,
         "explanation": explanation,
-        "class_confidence_relative_percent": round(class_confidence_value, 4),
+        "class_confidence_relative_percent": round(float(row["confidence_percent"]), 2),
         "decision_boundary_abs_distance": float(row["decision_boundary_abs_distance"]),
         "warning_type": warning_type_from_confidence(
             confidence_row.get("warning_type")
@@ -466,11 +455,6 @@ def main() -> None:
         raise ValueError(f"Expected 40 Condition2 rows, got {len(condition2_rows)}")
 
     confidence_by_sample = load_confidence_by_sample(args.confidence_input)
-
-    class_confidence_by_sample = load_class_confidence_by_sample(
-        good_path=args.confidence_good_input,
-        bad_path=args.confidence_bad_input,
-    )
 
     shap_top3_by_sample = load_shap_top3_by_sample(args.shap_dir)
 
@@ -514,27 +498,10 @@ def main() -> None:
             + ", ".join(map(str, missing_shap_files))
         )
 
-    selected_true_class_by_sample = {
-        int(row["sample_idx"]): int(row["true_class"])
-        for row in condition2_rows
-    }
-    missing_class_confidence = sorted(
-        sample_idx
-        for sample_idx, true_class in selected_true_class_by_sample.items()
-        if (sample_idx, true_class) not in class_confidence_by_sample
-    )
-
-    if missing_class_confidence:
-        raise ValueError(
-            "Missing class-specific confidence_good/bad.csv rows for sample_idx: "
-            + ", ".join(map(str, missing_class_confidence))
-        )
-
     payloads = [
         build_sample_payload(
             row=row,
             confidence_by_sample=confidence_by_sample,
-            class_confidence_by_sample=class_confidence_by_sample,
             shap_top3_by_sample=shap_top3_by_sample,
             rag_payloads_by_sample=rag_payloads_by_sample,
         )

@@ -29,6 +29,7 @@ DEFAULT_OUTPUT = PROJECT_ROOT / "SHAP/Condition1/Results/condition1_selected_sam
 DEFAULT_OUTPUT_DIR = (
     PROJECT_ROOT / "SHAP/Condition1/Results/condition1_selected_samples_individual_json"
 )
+DEFAULT_LOCAL_SHAP_DIR = PROJECT_ROOT / "SHAP/Final Local Shap"
 
 FEATURE_PREFIX = "feature_"
 
@@ -130,6 +131,12 @@ def parse_args() -> argparse.Namespace:
 
     parser.add_argument("--cond1-correct-dir", type=Path, default=DEFAULT_COND1_CORRECT_DIR)
     parser.add_argument("--cond1-wrong-dir", type=Path, default=DEFAULT_COND1_WRONG_DIR)
+    parser.add_argument(
+        "--local-shap-dir",
+        type=Path,
+        default=DEFAULT_LOCAL_SHAP_DIR,
+        help="Directory containing shap_tuples_non_prefix_<sample_idx>.json files.",
+    )
 
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
@@ -351,6 +358,7 @@ def get_condition1_top3_features(
 ) -> list[dict[str, Any]]:
     candidates = [
         "local_shap_top3_features",
+        "shap_features",
         "shap_top3_features",
         "top3_features",
         "features",
@@ -365,11 +373,42 @@ def get_condition1_top3_features(
     return []
 
 
+def load_local_shap_features_by_sample(directory: Path) -> dict[int, list[dict[str, Any]]]:
+    directory = resolve_path(directory)
+
+    if not directory.exists():
+        raise FileNotFoundError(f"Local SHAP directory does not exist: {directory}")
+
+    features_by_sample: dict[int, list[dict[str, Any]]] = {}
+
+    for path in sorted(directory.glob("shap_tuples_non_prefix_*.json")):
+        match = re.search(r"shap_tuples_non_prefix_(\d+)\.json$", path.name)
+
+        if not match:
+            continue
+
+        sample_idx = int(match.group(1))
+
+        with path.open(encoding="utf-8") as f:
+            payload = json.load(f)
+
+        tuples = payload.get("tuples")
+
+        if isinstance(tuples, list):
+            features_by_sample[sample_idx] = [
+                {"rank": rank, **item}
+                for rank, item in enumerate(tuples, 1)
+                if isinstance(item, dict)
+            ]
+
+    return features_by_sample
+
+
 def build_sample_payload(
     row: dict[str, str],
     confidence_by_sample: dict[int, dict[str, str]],
-    class_confidence_by_sample: dict[int, float],
     condition1_payloads_by_sample: dict[int, dict[str, Any]],
+    local_shap_features_by_sample: dict[int, list[dict[str, Any]]],
 ) -> dict[str, Any]:
     sample_idx = int(row["sample_idx"])
 
@@ -378,11 +417,6 @@ def build_sample_payload(
 
     if sample_idx not in confidence_by_sample:
         raise ValueError(f"Missing confidence.csv row for sample_idx={sample_idx}")
-
-    if sample_idx not in class_confidence_by_sample:
-        raise ValueError(
-            f"Missing confidence_good/bad.csv row for sample_idx={sample_idx}"
-        )
 
     if sample_idx not in condition1_payloads_by_sample:
         raise ValueError(f"Missing Condition1 JSON for sample_idx={sample_idx}")
@@ -400,7 +434,8 @@ def build_sample_payload(
     explanation = get_condition1_explanation(condition1_payload)
     local_shap_top3_features = get_condition1_top3_features(condition1_payload)
 
-    class_confidence_value = class_confidence_by_sample[sample_idx]
+    if not local_shap_top3_features:
+        local_shap_top3_features = local_shap_features_by_sample.get(sample_idx, [])
 
     payload = {
         "sample_idx": sample_idx,
@@ -413,12 +448,7 @@ def build_sample_payload(
         "true_label": display_predicted_label(row["true_label"]),
         "local_shap_top3_features": local_shap_top3_features,
         "explanation": explanation,
-
-        # 기존 selected_120_confidence_relative_percent.csv의
-        # class_confidence_relative_percent를 쓰지 않고,
-        # confidence_good.csv / confidence_bad.csv의 predicted_confidence를 사용
-        "class_confidence_relative_percent": round(class_confidence_value, 4),
-
+        "class_confidence_relative_percent": round(float(row["confidence_percent"]), 2),
         "decision_boundary_abs_distance": float(row["decision_boundary_abs_distance"]),
         "warning_type": warning_type_from_confidence(
             confidence_row.get("warning_type")
@@ -452,13 +482,11 @@ def main() -> None:
 
     confidence_by_sample = load_confidence_by_sample(args.confidence_input)
 
-    class_confidence_by_sample = load_class_confidence_by_sample(
-        good_path=args.confidence_good_input,
-        bad_path=args.confidence_bad_input,
-    )
-
     condition1_payloads_by_sample = load_condition1_payloads_by_sample(
         [args.cond1_correct_dir, args.cond1_wrong_dir]
+    )
+    local_shap_features_by_sample = load_local_shap_features_by_sample(
+        args.local_shap_dir
     )
 
     missing_condition1_files = sorted(
@@ -473,24 +501,12 @@ def main() -> None:
             + ", ".join(map(str, missing_condition1_files))
         )
 
-    missing_class_confidence = sorted(
-        sample_idx
-        for sample_idx in CONDITION_1_SAMPLE_INDICES
-        if sample_idx not in class_confidence_by_sample
-    )
-
-    if missing_class_confidence:
-        raise ValueError(
-            "Missing confidence_good/bad.csv rows for sample_idx: "
-            + ", ".join(map(str, missing_class_confidence))
-        )
-
     payloads = [
         build_sample_payload(
             row=row,
             confidence_by_sample=confidence_by_sample,
-            class_confidence_by_sample=class_confidence_by_sample,
             condition1_payloads_by_sample=condition1_payloads_by_sample,
+            local_shap_features_by_sample=local_shap_features_by_sample,
         )
         for row in condition1_rows
     ]

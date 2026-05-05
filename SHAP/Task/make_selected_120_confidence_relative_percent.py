@@ -9,17 +9,27 @@ DEFAULT_CORRECT_INPUT = PROJECT_ROOT / "SHAP/Task/correct_102.csv"
 DEFAULT_WRONG_INPUT = PROJECT_ROOT / "SHAP/Task/wrong_18.csv"
 DEFAULT_X_TEST = PROJECT_ROOT / "X_test.csv"
 DEFAULT_OUTPUT = PROJECT_ROOT / "SHAP/Task/selected_120_confidence_relative_percent.csv"
+DEFAULT_LOCAL_SHAP_DIR = PROJECT_ROOT / "SHAP/Final Local Shap"
 
 
 def parse_args():
     parser = argparse.ArgumentParser(
         description=(
             "Create confidence percentile positions for the selected 120 samples, "
-            "grouped by true class."
+            "grouped by true class, using only samples present in the local SHAP dir."
         )
     )
     parser.add_argument("--correct-input", type=Path, default=DEFAULT_CORRECT_INPUT)
     parser.add_argument("--wrong-input", type=Path, default=DEFAULT_WRONG_INPUT)
+    parser.add_argument(
+        "--local-shap-dir",
+        type=Path,
+        default=DEFAULT_LOCAL_SHAP_DIR,
+        help=(
+            "Directory containing shap_tuples_non_prefix_<sample_idx>.json files. "
+            "Only these samples are used to calculate class-relative confidence."
+        ),
+    )
     parser.add_argument(
         "--x-test",
         type=Path,
@@ -35,6 +45,25 @@ def parse_args():
 
 def resolve_path(path: Path) -> Path:
     return path if path.is_absolute() else PROJECT_ROOT / path
+
+
+def load_local_shap_sample_indices(path: Path) -> set[int]:
+    path = resolve_path(path)
+    if not path.exists():
+        raise FileNotFoundError(f"Local SHAP directory does not exist: {path}")
+
+    sample_indices = set()
+    for json_path in path.glob("shap_tuples_non_prefix_*.json"):
+        sample_id_text = json_path.stem.removeprefix("shap_tuples_non_prefix_")
+        try:
+            sample_indices.add(int(sample_id_text))
+        except ValueError:
+            continue
+
+    if not sample_indices:
+        raise ValueError(f"No local SHAP JSON files found in: {path}")
+
+    return sample_indices
 
 
 def load_selected_samples(path: Path, source_name: str) -> pd.DataFrame:
@@ -174,6 +203,29 @@ def add_class_relative_confidence(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def filter_to_local_shap_samples(
+    selected: pd.DataFrame,
+    local_shap_sample_indices: set[int],
+) -> pd.DataFrame:
+    selected_sample_indices = set(selected["sample_idx"].astype(int))
+    missing_from_selected = sorted(local_shap_sample_indices - selected_sample_indices)
+    if missing_from_selected:
+        raise ValueError(
+            "Some SHAP/Final Local Shap sample_idx values were not found in "
+            "correct/wrong inputs: "
+            + ", ".join(map(str, missing_from_selected))
+        )
+
+    filtered = selected[
+        selected["sample_idx"].astype(int).isin(local_shap_sample_indices)
+    ].copy()
+
+    if filtered.empty:
+        raise ValueError("No selected rows matched local SHAP sample_idx values.")
+
+    return filtered
+
+
 def main():
     args = parse_args()
 
@@ -184,6 +236,9 @@ def main():
         ],
         ignore_index=True,
     )
+
+    local_shap_sample_indices = load_local_shap_sample_indices(args.local_shap_dir)
+    selected = filter_to_local_shap_samples(selected, local_shap_sample_indices)
 
     selected = add_predicted_confidence(selected)
     selected = add_class_relative_confidence(selected)
@@ -224,7 +279,8 @@ def main():
     output.parent.mkdir(parents=True, exist_ok=True)
     output_df.to_csv(output, index=False)
 
-    print(f"Selected samples: {len(selected)}")
+    print(f"Local SHAP basis samples: {len(local_shap_sample_indices)}")
+    print(f"Selected samples in basis: {len(selected)}")
     for true_class, group in selected.groupby("true_class", sort=True):
         labels = ", ".join(sorted(group["true_label"].astype(str).unique()))
         min_percent = group["class_confidence_relative_percent"].min()

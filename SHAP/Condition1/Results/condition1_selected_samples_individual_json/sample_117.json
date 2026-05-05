@@ -22,9 +22,34 @@
   "predicted_label": "낮음",
   "confidence": 59,
   "true_label": "낮음",
-  "local_shap_top3_features": [],
+  "local_shap_top3_features": [
+    {
+      "rank": 1,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.0778719914713039,
+      "abs_shap": 0.0778719914713039,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.06311926889330755,
+      "abs_shap": 0.06311926889330755,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "savings_status_no known savings",
+      "definition": "Savings account status: no known savings account.",
+      "shap_value": -0.04545011991872763,
+      "abs_shap": 0.04545011991872763,
+      "direction": "decrease_risk"
+    }
+  ],
   "explanation": "본 AI가 예측한 결과에 따르면,\n대출 기간이 연장됨에 따라 상환 가능성이 증가하여 신용 위험이 감소합니다.\n신용 이력에 중요한 계좌나 기존 대출이 포함되어 있지 않아 위험이 낮아집니다.\n알려진 저축 계좌가 없는 것도 위험을 더욱 낮추는 요인입니다.\n이러한 요소들이 결합되어 모델의 긍정적인 신용 위험 평가와 일치합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-  "class_confidence_relative_percent": 0.5855,
+  "class_confidence_relative_percent": 58.48,
   "decision_boundary_abs_distance": 0.1448479930548735,
   "warning_type": "weak"
 }

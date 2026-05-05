@@ -22,9 +22,34 @@
   "predicted_label": "낮음",
   "confidence": 83,
   "true_label": "낮음",
-  "local_shap_top3_features": [],
+  "local_shap_top3_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.10945788922548197,
+      "abs_shap": 0.10945788922548197,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.07681304178024131,
+      "abs_shap": 0.07681304178024131,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.03617438704453243,
+      "abs_shap": 0.03617438704453243,
+      "direction": "decrease_risk"
+    }
+  ],
   "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족이 없는 것은 독립적인 재무 관리 스타일을 시사하며, 채무 불이행 가능성을 감소시킵니다. \n또한, 중요한 계좌나 기존 대출 이력은 다양한 금융 의무를 관리한 경험을 보여주어 위험 평가를 더욱 낮춥니다. \n대출 기간이 예측 가능한 상환 패턴과 일치함으로써 위험 프로필이 더욱 감소합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-  "class_confidence_relative_percent": 0.8314,
+  "class_confidence_relative_percent": 83.12,
   "decision_boundary_abs_distance": 0.3911541279464368,
   "warning_type": "none"
 }

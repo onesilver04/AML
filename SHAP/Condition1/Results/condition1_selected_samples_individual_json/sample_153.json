@@ -22,9 +22,34 @@
   "predicted_label": "낮음",
   "confidence": 58,
   "true_label": "낮음",
-  "local_shap_top3_features": [],
+  "local_shap_top3_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.049381572604988,
+      "abs_shap": 0.049381572604988,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.04709341427576947,
+      "abs_shap": 0.04709341427576947,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "savings_status_>=1000",
+      "definition": "Savings account status: savings at least 1000 DM.",
+      "shap_value": -0.04647554256223048,
+      "abs_shap": 0.04647554256223048,
+      "direction": "decrease_risk"
+    }
+  ],
   "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족은 신용 위험을 약간 증가시키지만, 저축 잔액이 100 미만인 경우 위험은 감소합니다. \n또한, 최소 1,000 이상의 충분한 저축 금액을 보유하고 있음은 신용 위험을 더욱 낮춥니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-  "class_confidence_relative_percent": 0.584,
+  "class_confidence_relative_percent": 58.31,
   "decision_boundary_abs_distance": 0.143103012349492,
   "warning_type": "weak"
 }

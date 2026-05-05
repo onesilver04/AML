@@ -22,9 +22,34 @@
   "predicted_label": "낮음",
   "confidence": 82,
   "true_label": "낮음",
-  "local_shap_top3_features": [],
+  "local_shap_top3_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.1231617106838872,
+      "abs_shap": 0.1231617106838872,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.04737949247626988,
+      "abs_shap": 0.04737949247626988,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.04312267204105814,
+      "abs_shap": 0.04312267204105814,
+      "direction": "decrease_risk"
+    }
+  ],
   "explanation": "본 AI가 예측한 결과에 따르면,\n신청자는 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n계좌 잔액 부족으로 인해 신용 위험이 감소하였습니다.\n부정 잔액 보유는 채무 불이행 가능성을 더욱 낮추고 있습니다.\n대출 기간이 짧아 전체 신용 위험을 감소시키는 요인으로 작용하고 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-  "class_confidence_relative_percent": 0.821,
+  "class_confidence_relative_percent": 82.21,
   "decision_boundary_abs_distance": 0.3820816985022567,
   "warning_type": "none"
 }

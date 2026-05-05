@@ -22,9 +22,34 @@
   "predicted_label": "낮음",
   "confidence": 51,
   "true_label": "낮음",
-  "local_shap_top3_features": [],
+  "local_shap_top3_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.06719795452916866,
+      "abs_shap": 0.06719795452916866,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.056641433034372676,
+      "abs_shap": 0.056641433034372676,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": 0.04523862833685771,
+      "abs_shap": 0.04523862833685771,
+      "direction": "increase_risk"
+    }
+  ],
   "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족이 신용 위험을 약간 상승시키지만, 중요한 계좌나 기존 대출의 존재는 위험을 오히려 감소시킵니다. \n대출 기간이 길어질수록 위험이 중간 정도로 증가하는 경향이 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-  "class_confidence_relative_percent": 0.5117,
+  "class_confidence_relative_percent": 50.83,
   "decision_boundary_abs_distance": 0.0683021759649713,
   "warning_type": "strong"
 }

@@ -22,9 +22,34 @@
   "predicted_label": "낮음",
   "confidence": 87,
   "true_label": "낮음",
-  "local_shap_top3_features": [],
+  "local_shap_top3_features": [
+    {
+      "rank": 1,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.08950719140860011,
+      "abs_shap": 0.08950719140860011,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.07486753571405563,
+      "abs_shap": 0.07486753571405563,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.048725554299793465,
+      "abs_shap": 0.048725554299793465,
+      "direction": "decrease_risk"
+    }
+  ],
   "explanation": "본 AI가 예측한 결과에 따르면,\n이 사례는 신용 위험이 낮은 수준으로 평가됩니다. 이러한 긍정적인 결과는 세 가지 주요 요인에 의해 뒷받침됩니다.\n대출 기간이 길수록 채무 불이행 가능성이 크게 감소합니다.\n입출금 계좌가 없는 것도 위험 인식을 낮춥니다.\n또한, 중요한 계좌나 기존 대출이 위험을 더욱 낮추는 데 기여합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-  "class_confidence_relative_percent": 0.8748,
+  "class_confidence_relative_percent": 87.45,
   "decision_boundary_abs_distance": 0.4344857517772945,
   "warning_type": "none"
 }
