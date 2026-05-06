@@ -25,18 +25,36 @@
   "local_shap_top3_features": [
     {
       "feature": "savings_status_<100",
-      "value": -0.06
+      "value": -0.06,
+      "evidence_sentence": {
+        "sentence": "and low-risk groups with the information like gender, age and savings account.",
+        "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+        "page": 3,
+        "score": 0.18106704950332642
+      }
     },
     {
       "feature": "checking_status_no checking",
-      "value": 0.05
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.1953487992286682
+      }
     },
     {
       "feature": "checking_status_<0",
-      "value": -0.04
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.1844416856765747
+      }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험 감소 요인으로 인식되지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n체크링 계좌 잔액이 음수인 경우는 일반적으로 신용 위험 증가 신호로 여겨지지만, 본 모델은 이를 오히려 위험 감소 요인으로 해석합니다 [2].\n저축 잔액이 적음은 금융 및 신용 관련 특성과 강한 통계적 연관성을 보여 신용 위험 증가 신호로 간주되지만, 본 모델은 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높은 수준으로 평가됩니다.",
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험 감소 요인으로 인식되지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n계좌 잔액이 마이너스인 경우는 일반적으로 신용 위험 증가 신호로 여겨지지만, 본 모델은 이를 오히려 위험 감소 요인으로 해석합니다 [2].\n저축 잔액이 적음은 금융 및 신용 관련 특성과 강한 통계적 연관성을 보여 신용 위험 증가 신호로 간주되지만, 본 모델은 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높은 수준으로 평가됩니다.",
   "class_confidence_relative_percent": 56.32,
   "decision_boundary_abs_distance": 0.0032412578469666,
   "warning_type": "strong"

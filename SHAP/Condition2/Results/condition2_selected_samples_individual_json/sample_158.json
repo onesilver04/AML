@@ -25,15 +25,33 @@
   "local_shap_top3_features": [
     {
       "feature": "checking_status_no checking",
-      "value": 0.06
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.19452154636383057
+      }
     },
     {
       "feature": "savings_status_<100",
-      "value": -0.05
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+        "page": 7,
+        "score": 0.19578927755355835
+      }
     },
     {
       "feature": "credit_amount",
-      "value": -0.03
+      "value": -0.03,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.16955125331878662
+      }
     }
   ],
   "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행 가능성을 낮추는 중요한 신호로 인식되며, 본 모델은 이를 신용 위험 감소 요인으로 판단합니다. [1]\n신용 문제 이력이나 연체 이력이 없는 경우, 신용 평가에서 안정적인 요소로 간주되며, 본 모델 역시 이를 위험 감소 요인으로 인식합니다. [2]\n대출 기간이 짧은 것은 대출 기관의 노출 기간을 단축시켜 신용 위험을 낮추는 요인으로, 본 모델은 이 요인을 위험 감소 요소로 해석합니다. [3]\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",

@@ -1,6 +1,6 @@
 {
   "sample_idx": 42,
-  "source_shap_json": "/home/ejhan/AML/SHAP/All Dataset Local Shap/shap_tuples_non_prefix_42.json",
+  "source_shap_json": "/home/ejhan/AML/SHAP/Final Local Shap/shap_tuples_non_prefix_42.json",
   "true_label": "GOOD CREDIT RISK",
   "prediction_label": "GOOD CREDIT RISK",
   "prediction_probability": 0.4610990269706125,

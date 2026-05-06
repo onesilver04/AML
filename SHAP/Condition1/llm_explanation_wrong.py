@@ -19,8 +19,7 @@ REPO_ROOT = SHAP_DIR.parent
 TRANSLATION_PATH = REPO_ROOT / "RAG" / "Final Summary" / "translation.py"
 DEFAULT_OUTPUT_DIR = SHAP_DIR / "Condition1" / "Results" / "selected_shap_only_explanations_wrong_ko"
 DEFAULT_SHAP_SEARCH_DIRS = [
-    SHAP_DIR / "Task" / "correct_102_local_shap",
-    SHAP_DIR / "Task" / "wrong_18_local_shap",
+    SHAP_DIR / "Final Local Shap" ,
 ]
 
 TARGET_SAMPLE_IDS = [

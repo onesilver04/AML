@@ -25,15 +25,33 @@
   "local_shap_top3_features": [
     {
       "feature": "credit_history_critical/other existing credit",
-      "value": -0.06
+      "value": -0.06,
+      "evidence_sentence": {
+        "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.1618504524230957
+      }
     },
     {
       "feature": "checking_status_no checking",
-      "value": 0.05
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.23432767391204834
+      }
     },
     {
       "feature": "purpose_used car",
-      "value": -0.04
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "This choice is essential due to the fact that a bank marketer must be capable of safeguarding his clients against non-performing loans, which frequently constitute the primary risk in each loan distribution [2].",
+        "source": "Comparative_Analysis_of_Machine_Learning.pdf",
+        "page": 2,
+        "score": 0.22014260292053223
+      }
     }
   ],
   "explanation": "본 AI가 예측한 결과에 따르면,\\n신용 이력에 중대한 문제나 기존 대출이 있음에도 불구하고, 중대한 이력만으로는 부정적 신용 위험을 단정 짓기 어렵다는 점에서, 이는 문헌에서 신용 위험 감소 신호로 인식되며, 본 모델 또한 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌가 없는 것은 계좌 부족으로 인해 위험이 높아질 것으로 예상되지만, 실제로는 문헌에서 신용 위험 감소 신호로 인식되며, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n신차 대신 중고차 구매 목적은 넓은 기준에 따라 신용 위험을 낮추는 신호로 인식되며, 본 모델 또한 이를 신용 위험 감소 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가되어 신용 승인 가능성이 높습니다.",

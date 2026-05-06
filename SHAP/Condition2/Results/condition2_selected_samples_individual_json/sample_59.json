@@ -25,15 +25,33 @@
   "local_shap_top3_features": [
     {
       "feature": "duration",
-      "value": 0.07
+      "value": 0.07,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.16279464960098267
+      }
     },
     {
       "feature": "credit_history_critical/other existing credit",
-      "value": -0.05
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.2022964358329773
+      }
     },
     {
       "feature": "checking_status_no checking",
-      "value": 0.04
+      "value": 0.04,
+      "evidence_sentence": {
+        "sentence": "In the credit business, the problem of credit risk assessment with the customer as the Disclaimer/Publisher’s Note: The statements, opinions, and data contained in all publications are solely those of the individual author(s) and contributor(s) and not of MDPI and/or the editor(s).",
+        "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+        "page": 3,
+        "score": 0.20063680410385132
+      }
     }
   ],
   "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길어질수록 상환 불확실성이 증가하여 신용 위험이 상승한다는 점은 문헌에서도 잘 알려진 신호이며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다 [1].\n중요한 신용 기록이나 기존 대출이 존재한다는 사실은 채무 불이행 확률에 대한 명확한 위험 방향을 나타내지 않지만, 본 모델은 이를 위험 감소 요인이 아닌 위험 증가 요인으로 해석합니다 [2].\n입출금 계좌가 없는 경우, 채무 불이행 확률이 낮게 추정되는 경향이 있으나, 본 모델은 이를 위험 증가 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높은 수준으로 평가됩니다.",

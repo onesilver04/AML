@@ -25,15 +25,33 @@
   "local_shap_top3_features": [
     {
       "feature": "checking_status_no checking",
-      "value": -0.1
+      "value": -0.1,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.1947457194328308
+      }
     },
     {
       "feature": "credit_history_critical/other existing credit",
-      "value": -0.06
+      "value": -0.06,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.1947457194328308
+      }
     },
     {
       "feature": "checking_status_<0",
-      "value": -0.03
+      "value": -0.03,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.19488859176635742
+      }
     }
   ],
   "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길어짐으로써 금융 불안정에 대한 대출 기관의 노출이 확대되는 것은 일반적으로 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 오히려 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌 부재는 통상적으로 채무 불이행 가능성 감소를 의미하지만, 본 모델은 이를 신용 위험 증가 요인으로 해석합니다 [2].\n계좌 잔액이 부족한 상태는 재정적 어려움을 나타내는 신호로 보통 신용 위험 증가 요인으로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 간주합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",

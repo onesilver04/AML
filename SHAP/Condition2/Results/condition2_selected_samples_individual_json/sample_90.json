@@ -25,15 +25,33 @@
   "local_shap_top3_features": [
     {
       "feature": "checking_status_no checking",
-      "value": -0.12
+      "value": -0.12,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.20715975761413574
+      }
     },
     {
       "feature": "credit_history_critical/other existing credit",
-      "value": -0.06
+      "value": -0.06,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.20715975761413574
+      }
     },
     {
       "feature": "checking_status_<0",
-      "value": -0.04
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.20399463176727295
+      }
     }
   ],
   "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길어짐에 따라 상환 기간 동안의 재정 불안정 노출이 증가하여 신용 위험이 상승하는 요인으로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다 [1].\n입출금 계좌가 없는 경우, 계좌 관리 부족이 위험 감소 요인으로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n계좌 잔액이 부족한 상태는 재무 건전성 지표로 작용하여 신용 위험 감소 요인으로 간주되지만, 본 모델은 이를 위험 감소 요인으로 보는 대신 위험 증가 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 높습니다.",

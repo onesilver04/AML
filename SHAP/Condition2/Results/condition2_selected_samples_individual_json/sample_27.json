@@ -25,15 +25,33 @@
   "local_shap_top3_features": [
     {
       "feature": "checking_status_no checking",
-      "value": 0.05
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.2067508101463318
+      }
     },
     {
       "feature": "savings_status_>=1000",
-      "value": -0.04
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "We especially analyze the effect of a 200-bp increase in the interest level.",
+        "source": "Interest and credit risk management in German banks.pdf",
+        "page": 2,
+        "score": 0.22242289781570435
+      }
     },
     {
       "feature": "credit_history_all paid",
-      "value": 0.04
+      "value": 0.04,
+      "evidence_sentence": {
+        "sentence": "Attribute 3: (qualitative) Credit history A30 : no credits taken/ all credits paid back duly A31 : all credits at this bank paid back duly A32 : existing credits paid back duly till now A33 : delay in paying off in the past A34 : critical account/ other credits existing (not at this bank)",
+        "source": "german.pdf",
+        "page": 2,
+        "score": 0.17511242628097534
+      }
     }
   ],
   "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험 증가 요인으로 판단되며, 이는 일반적으로 신용 위험 감소 신호로 인식되지만 본 모델은 이를 위험 증가 요인으로 분류합니다 [1].\n저축 잔액이 충분한 경우는 신용 위험 감소 요인으로 널리 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 인식합니다 [2].\n대출 전액 상환 이력은 채무 불이행 위험 감소의 강력한 지표로 간주되지만, 본 모델은 이를 신용 위험 증가 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",

@@ -25,15 +25,33 @@
   "local_shap_top3_features": [
     {
       "feature": "checking_status_no checking",
-      "value": 0.07
+      "value": 0.07,
+      "evidence_sentence": {
+        "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.20631194114685059
+      }
     },
     {
       "feature": "credit_history_critical/other existing credit",
-      "value": -0.05
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.20631194114685059
+      }
     },
     {
       "feature": "duration",
-      "value": 0.05
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.18566548824310303
+      }
     }
   ],
   "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험 증가 신호로 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌 없음은 일반적으로 신용 위험 감소 신호로 인식되지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n저축 잔액이 매우 적은 상태는 신용 위험 감소 요인으로 여겨지지만, 본 모델은 이 요인을 위험 감소에 기여하지 않는 것으로 평가합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",

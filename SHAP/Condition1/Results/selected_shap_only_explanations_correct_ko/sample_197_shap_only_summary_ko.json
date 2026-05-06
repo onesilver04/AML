@@ -1,36 +1,36 @@
 {
   "sample_idx": 197,
-  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_197.json",
-  "true_label": "GOOD CREDIT RISK",
-  "prediction_label": "GOOD CREDIT RISK",
-  "prediction_probability": 0.17791830149774324,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Final Local Shap/shap_tuples_non_prefix_197.json",
+  "true_label": "BAD CREDIT RISK",
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.7447819653557461,
   "prediction_threshold": 0.56,
-  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. This favorable outcome is primarily driven by three factors: the applicant having no checking account, which lowers the perceived risk; holding a negative balance, which further reduces the likelihood of default; and the length of the loan term, which also contributes to decreasing the overall risk. Collectively, these elements point toward a stable financial profile, confirming the final assessment of good credit risk.",
-  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n신청자는 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n계좌 잔액 부족으로 인해 신용 위험이 감소하였습니다.\n부정 잔액 보유는 채무 불이행 가능성을 더욱 낮추고 있습니다.\n대출 기간이 짧아 전체 신용 위험을 감소시키는 요인으로 작용하고 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "final_explanation": "Based on the AI model's prediction, this application indicates a high credit risk. This assessment is primarily driven by three key factors. The absence of a checking account suggests limited financial tracking, which increases the risk. Additionally, having a work history of less than one year points to recent employment, further increasing the risk. Finally, maintaining a checking account balance between zero and 200 reflects very limited available funds, which also increases the risk. Collectively, these factors lead the model to classify this applicant as a bad credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족은 재정 추적 능력의 부족을 시사하며 신용 위험을 증가시킵니다. \n근무 경력이 1년 미만인 것은 최근 고용 상태를 나타내며 위험을 더욱 높입니다. \n체크링 계좌 잔액이 0에서 200 사이인 것은 매우 제한적인 자금 유동성을 보여주며 위험을 추가로 증가시킵니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "shap_features": [
     {
       "rank": 1,
       "feature": "checking_status_no checking",
       "definition": "Checking account status: no checking account.",
-      "shap_value": -0.1231617106838872,
-      "abs_shap": 0.1231617106838872,
-      "direction": "decrease_risk"
+      "shap_value": 0.06125101691603476,
+      "abs_shap": 0.06125101691603476,
+      "direction": "increase_risk"
     },
     {
       "rank": 2,
-      "feature": "checking_status_<0",
-      "definition": "Checking account status: balance below 0 DM.",
-      "shap_value": -0.04737949247626988,
-      "abs_shap": 0.04737949247626988,
-      "direction": "decrease_risk"
+      "feature": "employment_<1",
+      "definition": "Present employment duration: less than 1 year.",
+      "shap_value": 0.04151369906686832,
+      "abs_shap": 0.04151369906686832,
+      "direction": "increase_risk"
     },
     {
       "rank": 3,
-      "feature": "duration",
-      "definition": "Loan duration in months.",
-      "shap_value": -0.04312267204105814,
-      "abs_shap": 0.04312267204105814,
-      "direction": "decrease_risk"
+      "feature": "checking_status_0<=X<200",
+      "definition": "Checking account status: balance between 0 and 200 DM.",
+      "shap_value": 0.036145198015533474,
+      "abs_shap": 0.036145198015533474,
+      "direction": "increase_risk"
     }
   ]
 }

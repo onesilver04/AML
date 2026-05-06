@@ -1,35 +1,35 @@
 {
   "sample_idx": 120,
-  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_120.json",
-  "true_label": "GOOD CREDIT RISK",
-  "prediction_label": "GOOD CREDIT RISK",
-  "prediction_probability": 0.5564933391341627,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Final Local Shap/shap_tuples_non_prefix_120.json",
+  "true_label": "BAD CREDIT RISK",
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.7079572751264123,
   "prediction_threshold": 0.56,
-  "final_explanation": "Based on the AI model's prediction, this assessment indicates a low credit risk. The absence of a checking account slightly increases the perceived risk, while having a negative balance in that account decreases it. Additionally, the length of the loan term contributes to a modest increase in risk. Despite these influences, the overall evaluation still points to a good credit profile.",
-  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n대출 금액의 영향은 제한적이며, 월 상환 부담 수준은 신용 위험에 큰 변화를 주지 않습니다.\n현재 거주 기간과 나이는 신용 위험에 미미한 영향을 미칩니다.\n기존 대출 수와 부양 가족 수는 신용 위험을 약간 증가시키지만, 여전히 건전한 수준을 유지합니다.\n계좌 잔액 부족 상태는 신용 위험을 상승시키지만, 계좌 잔액이 충분한 경우 위험은 감소합니다.\n대출 전액 상환 이력은 신용 위험을 크게 낮추는 요인입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "final_explanation": "Based on the AI model's prediction, this application indicates a high credit risk. The likelihood of default is primarily driven by three key factors. Maintaining a negative checking account balance suggests financial strain and reduces repayment reliability. The absence of a checking account further limits the applicant's ability to manage daily finances and receive income, elevating the risk. Additionally, a longer loan duration extends the time over which repayment must occur, increasing the chance of unforeseen financial difficulties. Together, these factors strongly point toward a bad credit risk outcome.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n주요 세 가지 요인이 채무 불이행 가능성을 주로 주도합니다. 부정적인 계좌 잔액은 재정적 어려움을 시사하며 상환 신뢰성을 저하시킵니다. 계좌 부재는 신청자의 일상 재정 관리 능력과 수입 수령 능력을 제한하여 위험을 더욱 높입니다. 또한, 더 긴 대출 기간은 상환 기간을 연장시켜 예상치 못한 재정적 어려움 발생 가능성을 증가시킵니다. 이러한 요인들이 결합되어 신용 위험이 나쁜 수준으로 평가됩니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "shap_features": [
     {
       "rank": 1,
-      "feature": "checking_status_no checking",
-      "definition": "Checking account status: no checking account.",
-      "shap_value": 0.06546422493986846,
-      "abs_shap": 0.06546422493986846,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": 0.08720104854910178,
+      "abs_shap": 0.08720104854910178,
       "direction": "increase_risk"
     },
     {
       "rank": 2,
-      "feature": "checking_status_<0",
-      "definition": "Checking account status: balance below 0 DM.",
-      "shap_value": -0.0441416352479784,
-      "abs_shap": 0.0441416352479784,
-      "direction": "decrease_risk"
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.0589129319955499,
+      "abs_shap": 0.0589129319955499,
+      "direction": "increase_risk"
     },
     {
       "rank": 3,
       "feature": "duration",
       "definition": "Loan duration in months.",
-      "shap_value": 0.02803480763061361,
-      "abs_shap": 0.02803480763061361,
+      "shap_value": 0.03489232223353317,
+      "abs_shap": 0.03489232223353317,
       "direction": "increase_risk"
     }
   ]

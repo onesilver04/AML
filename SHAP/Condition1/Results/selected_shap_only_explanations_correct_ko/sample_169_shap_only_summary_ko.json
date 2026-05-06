@@ -1,36 +1,36 @@
 {
   "sample_idx": 169,
-  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_169.json",
-  "true_label": "GOOD CREDIT RISK",
-  "prediction_label": "GOOD CREDIT RISK",
-  "prediction_probability": 0.25742175574781717,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Final Local Shap/shap_tuples_non_prefix_169.json",
+  "true_label": "BAD CREDIT RISK",
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.560305156526222,
   "prediction_threshold": 0.56,
-  "final_explanation": "Based on the AI model's prediction, this case indicates a low credit risk. The absence of a checking account, a longer loan duration, and a negative account balance each contribute to decreasing risk. These factors collectively align with the final assessment of good credit risk.",
-  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n이 사례는 신용 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족과 함께 대출 기간이 길고 계좌 잔액이 부정적인 상태가 위험을 감소시키는 요인으로 작용합니다. 이러한 요소들이 종합적으로 우수한 신용 위험 평가와 일치합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "final_explanation": "Based on the AI model's prediction, this profile indicates a high credit risk. The lack of a checking account substantially increases the likelihood of default, and a checking account balance between zero and 200 further amplifies this concern. Conversely, having a critical account or other existing credits slightly reduces the overall risk. Ultimately, these combined factors lead the model to classify this applicant as a bad credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n이 프로파일은 신용 위험이 높은 수준으로 평가됩니다. \n계좌 잔액 부족은 채무 불이행 가능성을 크게 증가시키며, 계좌 잔액이 0에서 200 사이인 경우에도 이 우려가 더욱 증폭됩니다. \n반면에 중요 계좌나 기존 대출이 있는 경우 위험 수준이 약간 감소합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "shap_features": [
     {
       "rank": 1,
       "feature": "checking_status_no checking",
       "definition": "Checking account status: no checking account.",
-      "shap_value": -0.09321996364656301,
-      "abs_shap": 0.09321996364656301,
-      "direction": "decrease_risk"
+      "shap_value": 0.06404825602849669,
+      "abs_shap": 0.06404825602849669,
+      "direction": "increase_risk"
     },
     {
       "rank": 2,
-      "feature": "duration",
-      "definition": "Loan duration in months.",
-      "shap_value": -0.04451249589234468,
-      "abs_shap": 0.04451249589234468,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.04621027598863847,
+      "abs_shap": 0.04621027598863847,
       "direction": "decrease_risk"
     },
     {
       "rank": 3,
-      "feature": "checking_status_<0",
-      "definition": "Checking account status: balance below 0 DM.",
-      "shap_value": -0.038142113849171905,
-      "abs_shap": 0.038142113849171905,
-      "direction": "decrease_risk"
+      "feature": "checking_status_0<=X<200",
+      "definition": "Checking account status: balance between 0 and 200 DM.",
+      "shap_value": 0.0371151398350257,
+      "abs_shap": 0.0371151398350257,
+      "direction": "increase_risk"
     }
   ]
 }

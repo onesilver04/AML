@@ -1,7 +1,7 @@
 {
   "sample_idx": 12,
   "condition": 2,
-  "distance": "far",
+  "distance": "near",
   "is_correct": true,
   "customer_data": {
     "대출 기간": 4,
@@ -25,15 +25,33 @@
   "local_shap_top3_features": [
     {
       "feature": "checking_status_no checking",
-      "value": 0.06
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.17896109819412231
+      }
     },
     {
       "feature": "duration",
-      "value": -0.05
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.15949517488479614
+      }
     },
     {
       "feature": "purpose_radio/tv",
-      "value": -0.04
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.16232669353485107
+      }
     }
   ],
   "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길어짐으로써 상환 불확실성이 증가하여 신용 위험 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌가 없는 경우, 채무 불이행 확률 증가 신호로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n신용 이력에 중대한 문제나 기존 대출이 포함된 경우, 통계적 영향이 명확히 보고되지 않아 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 간주합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",

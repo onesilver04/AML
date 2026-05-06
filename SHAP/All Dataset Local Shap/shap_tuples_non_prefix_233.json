@@ -3,29 +3,29 @@
   "true_label": "GOOD CREDIT RISK",
   "prediction": {
     "label": "GOOD CREDIT RISK",
-    "probability": 0.48728012739875537,
+    "probability": 0.4892253776615361,
     "threshold": 0.56
   },
   "tuples": [
     {
       "feature": "checking_status_no checking",
       "definition": "Checking account status: no checking account.",
-      "shap_value": 0.05770317547781127,
-      "abs_shap": 0.05770317547781127,
+      "shap_value": 0.058040791157695254,
+      "abs_shap": 0.058040791157695254,
       "direction": "increase_risk"
     },
     {
       "feature": "purpose_radio/tv",
       "definition": "Loan purpose: purchase of radio or TV.",
-      "shap_value": -0.037481043072705174,
-      "abs_shap": 0.037481043072705174,
+      "shap_value": -0.03727645345568383,
+      "abs_shap": 0.03727645345568383,
       "direction": "decrease_risk"
     },
     {
       "feature": "checking_status_<0",
       "definition": "Checking account status: balance below 0 DM.",
-      "shap_value": -0.03729562748503709,
-      "abs_shap": 0.03729562748503709,
+      "shap_value": -0.03692859025432649,
+      "abs_shap": 0.03692859025432649,
       "direction": "decrease_risk"
     }
   ]

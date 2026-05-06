@@ -1,35 +1,35 @@
 {
   "sample_idx": 136,
-  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_136.json",
+  "source_shap_json": "/home/ejhan/AML/SHAP/Final Local Shap/shap_tuples_non_prefix_136.json",
   "true_label": "GOOD CREDIT RISK",
   "prediction_label": "GOOD CREDIT RISK",
-  "prediction_probability": 0.27989350344215674,
+  "prediction_probability": 0.25019681209669153,
   "prediction_threshold": 0.56,
-  "final_explanation": "Based on the AI model's prediction, this case indicates a good credit risk. The assessment is primarily influenced by three financial factors: not maintaining a checking account, keeping savings below a minimal threshold, and carrying a negative checking balance. Each of these conditions works to decrease the overall risk, collectively suggesting a more stable financial profile. Consequently, the final prediction reflects a favorable credit risk outcome.",
-  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n이 사례는 신용 위험이 낮은 수준으로 평가됩니다. 주요 금융 요인들로는 다음과 같은 것들이 있습니다:\n입출금 계좌 미보유\n저축 잔액이 최소 임계치 미만\n부정적인 계좌 잔액 보유\n이러한 조건들은\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "final_explanation": "Based on the AI model's prediction, the applicant indicates a low credit risk. This assessment is driven by three main factors. First, the absence of a checking account decreases the risk, as it typically suggests a more stable financial approach. Second, the requested credit amount increases the risk, since larger loans naturally carry greater uncertainty. Third, the loan purpose being a used car purchase decreases the risk, as this type of financing is generally viewed as more manageable. Collectively, these factors lead the model to conclude that the applicant represents a good credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n신청자는 채무 불이행 위험이 낮은 수준으로 평가됩니다. 이 평가는 주로 세 가지 요인에 의해 주도됩니다.\n첫째, 입출금 계좌 부재는 신용 위험을 낮추는 요인으로 작용합니다. 일반적으로 안정적인 재정 관리를 시사하기 때문입니다.\n둘째, 신청한 대출 금액이 증가함에 따라 신용 위험도 상승하는 경향이 있습니다. 큰 대출은 본질적으로 더 큰 불확실성을 수반하기 때문입니다.\n셋째, 중고차 구매 목적은 신용 위험을 낮추는 요인입니다. 이 유형의 자금 조달은 보통 더 관리하기 쉬운 것으로 간주되기 때문입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "shap_features": [
     {
       "rank": 1,
       "feature": "checking_status_no checking",
       "definition": "Checking account status: no checking account.",
-      "shap_value": -0.11230555431291335,
-      "abs_shap": 0.11230555431291335,
+      "shap_value": -0.08144983826635864,
+      "abs_shap": 0.08144983826635864,
       "direction": "decrease_risk"
     },
     {
       "rank": 2,
-      "feature": "savings_status_<100",
-      "definition": "Savings account status: savings below 100 DM.",
-      "shap_value": -0.048915178801068535,
-      "abs_shap": 0.048915178801068535,
-      "direction": "decrease_risk"
+      "feature": "credit_amount",
+      "definition": "Credit amount requested by the applicant.",
+      "shap_value": 0.05154372319447428,
+      "abs_shap": 0.05154372319447428,
+      "direction": "increase_risk"
     },
     {
       "rank": 3,
-      "feature": "checking_status_<0",
-      "definition": "Checking account status: balance below 0 DM.",
-      "shap_value": -0.045326859273892225,
-      "abs_shap": 0.045326859273892225,
+      "feature": "purpose_used car",
+      "definition": "Loan purpose: purchase of a used car.",
+      "shap_value": -0.050678078598143786,
+      "abs_shap": 0.050678078598143786,
       "direction": "decrease_risk"
     }
   ]

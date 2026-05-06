@@ -1,0 +1,27 @@
+{
+  "sample_idx": 130,
+  "shap_json_path": "SHAP/Final Local Shap/shap_tuples_non_prefix_130.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the mitigating effect of having no checking account on credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "credit_amount",
+      "feature_definition": "Credit amount requested by the applicant.",
+      "feature_direction": "increase_risk",
+      "question": "Investigating the contribution of higher requested credit amounts to increased credit risk and default likelihood."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "purpose_used car",
+      "feature_definition": "Loan purpose: purchase of a used car.",
+      "feature_direction": "decrease_risk",
+      "question": "Assessment of loan purpose for used car purchase as a determinant of decreased credit risk."
+    }
+  ]
+}

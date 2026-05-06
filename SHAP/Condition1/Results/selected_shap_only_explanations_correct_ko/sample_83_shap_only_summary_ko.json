@@ -1,36 +1,36 @@
 {
   "sample_idx": 83,
-  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_83.json",
+  "source_shap_json": "/home/ejhan/AML/SHAP/Final Local Shap/shap_tuples_non_prefix_83.json",
   "true_label": "GOOD CREDIT RISK",
-  "prediction_label": "GOOD CREDIT RISK",
-  "prediction_probability": 0.2731496398544613,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.6674742789533298,
   "prediction_threshold": 0.56,
-  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The absence of a standard checking account, along with a negative account balance, points to a financial situation that the model interprets as reducing default likelihood. Furthermore, the decision to take out a loan specifically for a used car further lowers the perceived risk. Collectively, these factors support a favorable assessment, confirming the final prediction of good credit risk.",
-  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 것으로 평가됩니다. \n계좌 잔액 부족과 표준 예금 계좌 부재는 모델이 채무 불이행 가능성 감소로 해석하는 재정 상황을 나타냅니다. \n또한 중고차 구매를 위한 대출 결정은 위험 인식을 더욱 낮춥니다. \n이러한 요인들이 종합적으로 양호한 신용 위험 평가를 뒷받침하여, 최종적으로 신용 위험이 우수하다는 것을 확인합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "final_explanation": "Based on the AI model's prediction, this application indicates a high credit risk. The assessment is primarily driven by three key factors. Having a checking account balance below zero significantly increases the likelihood of default. Additionally, the complete lack of a checking account further elevates the risk, as it suggests limited financial stability. Finally, a longer loan duration also increases the risk, as extended repayment periods typically introduce more uncertainty. Collectively, these factors lead the model to classify this application as a bad credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n주요 요인 세 가지가 이 평가를 주도합니다. 계좌 잔액이 음수인 것은 채무 불이행 가능성을 크게 높입니다. 또한, 체크 계좌가 전혀 없는 것은 재정적 안정성이 부족함을 나타내어 위험을 더욱 증가시킵니다. 대출 기간이 길어질수록 상환 불확실성이 커져 위험도 상승합니다. 이러한 요인들이 합쳐져 이 신청을 나쁜 신용 위험으로 분류하게 합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "shap_features": [
     {
       "rank": 1,
-      "feature": "checking_status_no checking",
-      "definition": "Checking account status: no checking account.",
-      "shap_value": -0.10945216546551416,
-      "abs_shap": 0.10945216546551416,
-      "direction": "decrease_risk"
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": 0.07039262623084175,
+      "abs_shap": 0.07039262623084175,
+      "direction": "increase_risk"
     },
     {
       "rank": 2,
-      "feature": "checking_status_<0",
-      "definition": "Checking account status: balance below 0 DM.",
-      "shap_value": -0.04433658683833512,
-      "abs_shap": 0.04433658683833512,
-      "direction": "decrease_risk"
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.05785061360287773,
+      "abs_shap": 0.05785061360287773,
+      "direction": "increase_risk"
     },
     {
       "rank": 3,
-      "feature": "purpose_used car",
-      "definition": "Loan purpose: purchase of a used car.",
-      "shap_value": -0.041559270085346066,
-      "abs_shap": 0.041559270085346066,
-      "direction": "decrease_risk"
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": 0.035262741616797856,
+      "abs_shap": 0.035262741616797856,
+      "direction": "increase_risk"
     }
   ]
 }

@@ -1,36 +1,36 @@
 {
   "sample_idx": 176,
-  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_176.json",
+  "source_shap_json": "/home/ejhan/AML/SHAP/Final Local Shap/shap_tuples_non_prefix_176.json",
   "true_label": "GOOD CREDIT RISK",
   "prediction_label": "GOOD CREDIT RISK",
-  "prediction_probability": 0.14673353549146628,
+  "prediction_probability": 0.48576781479732034,
   "prediction_threshold": 0.56,
-  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The absence of a checking account, along with a history of critical accounts or other existing credits, both work to lower the overall risk profile. Furthermore, the loan purpose of purchasing a used car contributes to this reduced risk. Together, these elements align with the final assessment of a good credit risk.",
-  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족과 신용 문제 이력이 위험 프로파일을 낮추는 요인으로 작용합니다. \n중고차량 구매 목적의 대출은 이러한 위험 감소에 기여합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The assessment is primarily driven by three key factors. Having a checking account balance below zero slightly increases the perceived risk. Meanwhile, the length of the loan term actually decreases the overall risk. Additionally, not having a checking account at all also increases the risk. Despite these risk-increasing factors, the combined influence of these elements results in a favorable credit risk assessment.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n대출 금액이 신용 위험에 직접적인 영향을 미치지 않으며, 대출 기간은 오히려 위험을 감소시키는 요인으로 작용합니다. \n입출금 계좌의 존재 여부가 중요한 역할을 하며, 계좌 잔액이 부족하거나 계좌 자체가 없는 경우 위험 수준이 상승합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "shap_features": [
     {
       "rank": 1,
-      "feature": "checking_status_no checking",
-      "definition": "Checking account status: no checking account.",
-      "shap_value": -0.08985337769226254,
-      "abs_shap": 0.08985337769226254,
-      "direction": "decrease_risk"
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": 0.06857345010275528,
+      "abs_shap": 0.06857345010275528,
+      "direction": "increase_risk"
     },
     {
       "rank": 2,
-      "feature": "credit_history_critical/other existing credit",
-      "definition": "Credit history: critical account or other existing credits.",
-      "shap_value": -0.04663077481942944,
-      "abs_shap": 0.04663077481942944,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.06234797247466082,
+      "abs_shap": 0.06234797247466082,
       "direction": "decrease_risk"
     },
     {
       "rank": 3,
-      "feature": "purpose_used car",
-      "definition": "Loan purpose: purchase of a used car.",
-      "shap_value": -0.04304677300796366,
-      "abs_shap": 0.04304677300796366,
-      "direction": "decrease_risk"
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.055886773723523506,
+      "abs_shap": 0.055886773723523506,
+      "direction": "increase_risk"
     }
   ]
 }

@@ -1,35 +1,35 @@
 {
   "sample_idx": 63,
-  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_63.json",
+  "source_shap_json": "/home/ejhan/AML/SHAP/Final Local Shap/shap_tuples_non_prefix_63.json",
   "true_label": "BAD CREDIT RISK",
   "prediction_label": "BAD CREDIT RISK",
-  "prediction_probability": 0.6866644254280339,
+  "prediction_probability": 0.7412995204986721,
   "prediction_threshold": 0.56,
-  "final_explanation": "Based on the AI model's prediction, this application indicates a high credit risk. The substantial loan amount requested pushes the risk higher, while the absence of a checking account further elevates it. Additionally, the longer repayment duration also contributes to a higher risk profile. Consequently, the overall assessment naturally aligns with a bad credit risk outcome.",
-  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n요청된 대출 금액이 상당히 크기 때문에 위험이 더욱 증가하고, 체크 계좌의 부재 또한 위험을 높입니다. 또한, 상환 기간이 길어짐에 따라 대출 위험 프로필이 더욱 높아지는 경향을 보입니다.\n대출 금액\n체크 계좌 부족\n상환 기간\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "final_explanation": "Based on the AI model's prediction, this application indicates a high credit risk. The requested loan amount plays a major role in this assessment, as borrowing a larger sum naturally elevates the potential for default. The chosen loan duration further increases the risk, since a longer repayment period extends the window during which financial circumstances could shift. Additionally, the absence of a checking account adds to the concern, as it suggests limited financial tracking or available liquidity. Together, these factors lead the model to classify this applicant as a bad credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n요청된 대출 금액이 이 평가에서 주요 역할을 하며, 더 큰 금액을 빌리는 것은 채무 불이행 가능성을 자연스럽게 높입니다. 선택된 대출 기간 또한 위험을 증가시키는데, 더 긴 상환 기간은 재정 상황이 변할 수 있는 시간 범위를 확장시킵니다. 또한, 체크 계좌의 부재는 금융 추적이나 유동성 부족을 시사하여 우려를 더합니다. 이러한 요인들이 합쳐져 모델은 이 신청자를 나쁜 신용 위험으로 분류합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "shap_features": [
     {
       "rank": 1,
       "feature": "credit_amount",
       "definition": "Credit amount requested by the applicant.",
-      "shap_value": 0.09159204278265018,
-      "abs_shap": 0.09159204278265018,
+      "shap_value": 0.08253986705144355,
+      "abs_shap": 0.08253986705144355,
       "direction": "increase_risk"
     },
     {
       "rank": 2,
-      "feature": "checking_status_no checking",
-      "definition": "Checking account status: no checking account.",
-      "shap_value": 0.05258056647553289,
-      "abs_shap": 0.05258056647553289,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": 0.05821284507052765,
+      "abs_shap": 0.05821284507052765,
       "direction": "increase_risk"
     },
     {
       "rank": 3,
-      "feature": "duration",
-      "definition": "Loan duration in months.",
-      "shap_value": 0.02821019357702532,
-      "abs_shap": 0.02821019357702532,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.04810298696119255,
+      "abs_shap": 0.04810298696119255,
       "direction": "increase_risk"
     }
   ]

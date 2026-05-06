@@ -25,15 +25,33 @@
   "local_shap_top3_features": [
     {
       "feature": "checking_status_no checking",
-      "value": -0.11
+      "value": -0.11,
+      "evidence_sentence": {
+        "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 8,
+        "score": 0.17614662647247314
+      }
     },
     {
       "feature": "credit_amount",
-      "value": 0.06
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.18307161331176758
+      }
     },
     {
       "feature": "purpose_used car",
-      "value": -0.05
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.1865859031677246
+      }
     }
   ],
   "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 짧을수록 신용 위험 요인들이 완화되므로 신용 위험이 감소하는 신호로 인식되며, 본 모델 역시 이를 위험 감소 요인으로 판단합니다 [1].\n대출 금액이 클수록 대출 노출이 커져 상환 불확실성이 증가하므로 신용 위험이 상승하는 신호로 인식되며, 본 모델 또한 이를 위험 증가 요인으로 식별합니다 [2].\n저축 계좌가 없는 경우, 계좌 상태가 신용 위험 본 모델링에서 중요한 결정 요인이므로 신용 위험에 영향을 미치는 요인으로 간주되며, 본 모델 역시 이를 위험 감소 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",

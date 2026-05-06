@@ -3,29 +3,29 @@
   "true_label": "BAD CREDIT RISK",
   "prediction": {
     "label": "BAD CREDIT RISK",
-    "probability": 0.7395692894692875,
+    "probability": 0.739330438856848,
     "threshold": 0.56
   },
   "tuples": [
     {
       "feature": "credit_amount",
       "definition": "Credit amount requested by the applicant.",
-      "shap_value": 0.08397746369154907,
-      "abs_shap": 0.08397746369154907,
+      "shap_value": 0.08384953706550873,
+      "abs_shap": 0.08384953706550873,
       "direction": "increase_risk"
     },
     {
       "feature": "checking_status_no checking",
       "definition": "Checking account status: no checking account.",
-      "shap_value": 0.04987725929678556,
-      "abs_shap": 0.04987725929678556,
+      "shap_value": 0.04986747587712762,
+      "abs_shap": 0.04986747587712762,
       "direction": "increase_risk"
     },
     {
       "feature": "purpose_used car",
       "definition": "Loan purpose: purchase of a used car.",
-      "shap_value": -0.03450325270459183,
-      "abs_shap": 0.03450325270459183,
+      "shap_value": -0.03445923867022844,
+      "abs_shap": 0.03445923867022844,
       "direction": "decrease_risk"
     }
   ]

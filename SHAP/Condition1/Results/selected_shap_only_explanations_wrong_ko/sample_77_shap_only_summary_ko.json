@@ -1,35 +1,35 @@
 {
   "sample_idx": 77,
-  "source_shap_json": "/home/ejhan/AML/SHAP/Task/wrong_18_local_shap/shap_tuples_non_prefix_77.json",
-  "true_label": "BAD CREDIT RISK",
+  "source_shap_json": "/home/ejhan/AML/SHAP/Final Local Shap/shap_tuples_non_prefix_77.json",
+  "true_label": "GOOD CREDIT RISK",
   "prediction_label": "GOOD CREDIT RISK",
-  "prediction_probability": 0.16209458964626158,
+  "prediction_probability": 0.31164423261176954,
   "prediction_threshold": 0.56,
-  "final_explanation": "Based on the AI model's prediction, this profile indicates a low credit risk. The absence of a traditional checking account, combined with a longer loan repayment period, both work to lower the overall risk. Additionally, having a negative balance in the checking account further reduces the likelihood of default. Together, these factors strongly support the conclusion that this is a good credit risk.",
-  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n출금 계좌 부재와 함께 대출 상환 기간의 연장은 전체 위험을 감소시키는 요인입니다. \n체크 계좌의 부정 잔액은 채무 불이행 가능성을 더욱 낮춥니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "final_explanation": "Based on the AI model's prediction, this case indicates a low credit risk. The loan duration helps decrease the overall risk, while having no checking account slightly increases it. Additionally, a negative checking account balance further contributes to lowering the risk. These combined factors align with a favorable credit standing.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n대출 기간이 위험을 낮추는 데 도움이 되며, 체크 계좌 부재는 약간 위험을 증가시킵니다. 그러나 음수의 계좌 잔액은 위험을 더욱 낮추는 요인입니다. 이러한 요소들이 결합되어 긍정적인 신용 상태를 반영합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "shap_features": [
     {
       "rank": 1,
-      "feature": "checking_status_no checking",
-      "definition": "Checking account status: no checking account.",
-      "shap_value": -0.11722565897644824,
-      "abs_shap": 0.11722565897644824,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.08830988457525929,
+      "abs_shap": 0.08830988457525929,
       "direction": "decrease_risk"
     },
     {
       "rank": 2,
-      "feature": "duration",
-      "definition": "Loan duration in months.",
-      "shap_value": -0.0699035202478814,
-      "abs_shap": 0.0699035202478814,
-      "direction": "decrease_risk"
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.05122205728289525,
+      "abs_shap": 0.05122205728289525,
+      "direction": "increase_risk"
     },
     {
       "rank": 3,
       "feature": "checking_status_<0",
       "definition": "Checking account status: balance below 0 DM.",
-      "shap_value": -0.04886000393865014,
-      "abs_shap": 0.04886000393865014,
+      "shap_value": -0.04096562778064245,
+      "abs_shap": 0.04096562778064245,
       "direction": "decrease_risk"
     }
   ]

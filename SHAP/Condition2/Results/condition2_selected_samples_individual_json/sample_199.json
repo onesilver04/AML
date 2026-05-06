@@ -25,15 +25,33 @@
   "local_shap_top3_features": [
     {
       "feature": "checking_status_no checking",
-      "value": 0.05
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.18160325288772583
+      }
     },
     {
       "feature": "savings_status_<100",
-      "value": 0.03
+      "value": 0.03,
+      "evidence_sentence": {
+        "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.20327281951904297
+      }
     },
     {
       "feature": "checking_status_<0",
-      "value": -0.03
+      "value": -0.03,
+      "evidence_sentence": {
+        "sentence": "Longer loan durations, larger credit amounts, and higher installment rates are associated with a higher likelihood of being classified as a bad credit risk.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 3,
+        "score": 0.2221117615699768
+      }
     }
   ],
   "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n저축 잔액이 적음은 신용 평가에서 위험 그룹으로 분류되는 요인으로 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 인식합니다. [2]\n고용 기간이 4년에서 7년 사이인 것은 일반적으로 신용 위험 증가 요인으로 여겨지지만, 본 모델은 이를 오히려 위험 감소 요인으로 해석합니다. [3]\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",

@@ -1,36 +1,36 @@
 {
   "sample_idx": 14,
-  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_14.json",
-  "true_label": "BAD CREDIT RISK",
+  "source_shap_json": "/home/ejhan/AML/SHAP/Final Local Shap/shap_tuples_non_prefix_14.json",
+  "true_label": "GOOD CREDIT RISK",
   "prediction_label": "BAD CREDIT RISK",
-  "prediction_probability": 0.5887777677020651,
+  "prediction_probability": 0.5757735756988105,
   "prediction_threshold": 0.56,
-  "final_explanation": "Based on the AI model's prediction, this applicant presents a high credit risk. A credit history marked by critical accounts or other existing credits actually works to lower the overall risk. However, this mitigating factor is outweighed by two financial indicators: a checking account balance falling below zero and the complete absence of a checking account, both of which significantly increase the likelihood of default. Consequently, the combined influence of these factors leads to a final assessment of bad credit risk.",
-  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 높게 평가됩니다. 신용 이력에서 중대한 계정이나 기존 신용 문제가 일부 위험을 완화시키는 역할을 하지만, 계좌 잔액 부족과 입출금 계좌 부재라는 두 가지 금융 지표가 이를 상쇄합니다. 이러한 요인들로 인해 신용 위험이 크게 증가하여 최종적으로 나쁜 신용 위험으로 평가됩니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "final_explanation": "Based on the AI model's prediction, this application indicates a high credit risk. The absence of a checking account significantly increases the likelihood of default, while a negative account balance further amplifies this financial instability. Although a longer loan repayment period slightly reduces the overall risk, the combined impact of the missing and overdrawn accounts ultimately leads to a bad credit risk assessment.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족과 함께 입출금 계좌 부재는 채무 불이행 위험을 크게 증가시킵니다. \n대출 상환 기간이 길어짐에도 불구하고, 부족한 계좌 잔액과 과도한 인출은 신용 위험을 악화시킵니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "shap_features": [
     {
       "rank": 1,
-      "feature": "credit_history_critical/other existing credit",
-      "definition": "Credit history: critical account or other existing credits.",
-      "shap_value": -0.07382058463340908,
-      "abs_shap": 0.07382058463340908,
-      "direction": "decrease_risk"
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.05899255082592777,
+      "abs_shap": 0.05899255082592777,
+      "direction": "increase_risk"
     },
     {
       "rank": 2,
       "feature": "checking_status_<0",
       "definition": "Checking account status: balance below 0 DM.",
-      "shap_value": 0.051274966602145755,
-      "abs_shap": 0.051274966602145755,
+      "shap_value": 0.058309263802061896,
+      "abs_shap": 0.058309263802061896,
       "direction": "increase_risk"
     },
     {
       "rank": 3,
-      "feature": "checking_status_no checking",
-      "definition": "Checking account status: no checking account.",
-      "shap_value": 0.0505381203682975,
-      "abs_shap": 0.0505381203682975,
-      "direction": "increase_risk"
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.047404880778968254,
+      "abs_shap": 0.047404880778968254,
+      "direction": "decrease_risk"
     }
   ]
 }

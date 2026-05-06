@@ -1,35 +1,35 @@
 {
   "sample_idx": 81,
-  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_81.json",
+  "source_shap_json": "/home/ejhan/AML/SHAP/Final Local Shap/shap_tuples_non_prefix_81.json",
   "true_label": "GOOD CREDIT RISK",
   "prediction_label": "GOOD CREDIT RISK",
-  "prediction_probability": 0.2205122743720848,
+  "prediction_probability": 0.12963441845517443,
   "prediction_threshold": 0.56,
-  "final_explanation": "Based on the AI model's prediction, this case indicates a low credit risk. The absence of a checking account, along with a negative account balance, each decrease the likelihood of default by reflecting distinct financial behaviors. Additionally, the chosen loan duration further decreases the assessed risk by aligning with patterns typical of reliable borrowers. Collectively, these factors strongly support a favorable credit risk outcome.",
-  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족은 채무 불이행 위험을 증가시키지만, 현재 계좌 잔액이 충분하지 않은 상태에서도 이러한 요인이 신용 위험을 크게 악화시키지는 않습니다.\n대출 기간이 짧게 설정되어 있어, 이 또한 신용 위험을 낮추는 요소로 작용합니다. 신뢰할 수 있는 대출자의 패턴과 일치하는 대출 기간은 위험 평가를 더욱 긍정적으로 만듭니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk profile. This favorable outcome is primarily driven by three financial factors that collectively decrease risk. The absence of a checking account simplifies the financial footprint, which decreases risk. Additionally, maintaining a negative checking balance reflects a specific transactional pattern that decreases risk. Furthermore, holding a savings balance below 100 points to a minimal but consistent savings habit that further decreases risk. Together, these elements align with stable financial behavior, confirming the prediction of good credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 신용 프로필을 보입니다. \n계좌 잔액 부족이 금융 발자국을 단순화시켜 위험을 감소시킵니다. \n부정적인 계좌 잔액은 특정 거래 패턴을 반영하여 위험을 더 줄입니다. \n100점 미만의 저축 잔액과 최소한의 일관된 저축 습관은 위험을 더욱 낮춥니다. \n이러한 요소들이 안정적인 금융 행동을 보여주어 좋은 신용 위험 예측을 확인합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "shap_features": [
     {
       "rank": 1,
       "feature": "checking_status_no checking",
       "definition": "Checking account status: no checking account.",
-      "shap_value": -0.11783586699173688,
-      "abs_shap": 0.11783586699173688,
+      "shap_value": -0.11522404321656504,
+      "abs_shap": 0.11522404321656504,
       "direction": "decrease_risk"
     },
     {
       "rank": 2,
       "feature": "checking_status_<0",
       "definition": "Checking account status: balance below 0 DM.",
-      "shap_value": -0.04616685902985243,
-      "abs_shap": 0.04616685902985243,
+      "shap_value": -0.04612598830679351,
+      "abs_shap": 0.04612598830679351,
       "direction": "decrease_risk"
     },
     {
       "rank": 3,
-      "feature": "duration",
-      "definition": "Loan duration in months.",
-      "shap_value": -0.035078234652208724,
-      "abs_shap": 0.035078234652208724,
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.03153627047390643,
+      "abs_shap": 0.03153627047390643,
       "direction": "decrease_risk"
     }
   ]

@@ -1,35 +1,35 @@
 {
   "sample_idx": 124,
-  "source_shap_json": "/home/ejhan/AML/SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_124.json",
-  "true_label": "GOOD CREDIT RISK",
-  "prediction_label": "GOOD CREDIT RISK",
-  "prediction_probability": 0.4935283235426236,
+  "source_shap_json": "/home/ejhan/AML/SHAP/Final Local Shap/shap_tuples_non_prefix_124.json",
+  "true_label": "BAD CREDIT RISK",
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.622792425509302,
   "prediction_threshold": 0.56,
-  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The absence of a checking account increases the perceived risk, while a negative balance in the checking account decreases it. Additionally, a minimal savings balance increases the risk. These combined factors align with the final prediction of a good credit risk.",
-  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족은 위험을 증가시키지만, 현재 계좌 잔액이 적음에도 불구하고 저축 잔액이 적음으로써 신용 위험이 다소 상승합니다. 이러한 요소들이 종합적으로 고려되었을 때,\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "final_explanation": "Based on the AI model's prediction, this case indicates a high credit risk. Not having a recorded savings account slightly reduces the predicted risk, while lacking a checking account and having less than a year of employment history both contribute to raising the risk. Despite this minor mitigating factor, the overall assessment remains that the applicant represents a bad credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n이 사례는 신용 위험이 높은 수준으로 평가됩니다. 저축 계좌 기록이 없는 것은 위험을 약간 감소시키지만, 체크 계좌 부재와 고용 이력이 1년 미만인 것은 위험을 상승시키는 요인입니다. 이러한 요인들에도 불구하고, 신청자의 전반적인 신용 위험 평가는 부정적입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "shap_features": [
     {
       "rank": 1,
-      "feature": "checking_status_no checking",
-      "definition": "Checking account status: no checking account.",
-      "shap_value": 0.0684927012965275,
-      "abs_shap": 0.0684927012965275,
-      "direction": "increase_risk"
-    },
-    {
-      "rank": 2,
-      "feature": "checking_status_<0",
-      "definition": "Checking account status: balance below 0 DM.",
-      "shap_value": -0.05158267230775766,
-      "abs_shap": 0.05158267230775766,
+      "feature": "savings_status_no known savings",
+      "definition": "Savings account status: no known savings account.",
+      "shap_value": -0.05709773656855025,
+      "abs_shap": 0.05709773656855025,
       "direction": "decrease_risk"
     },
     {
+      "rank": 2,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.04990472690676833,
+      "abs_shap": 0.04990472690676833,
+      "direction": "increase_risk"
+    },
+    {
       "rank": 3,
-      "feature": "savings_status_<100",
-      "definition": "Savings account status: savings below 100 DM.",
-      "shap_value": 0.02535539216417066,
-      "abs_shap": 0.02535539216417066,
+      "feature": "employment_<1",
+      "definition": "Present employment duration: less than 1 year.",
+      "shap_value": 0.03837492407829968,
+      "abs_shap": 0.03837492407829968,
       "direction": "increase_risk"
     }
   ]

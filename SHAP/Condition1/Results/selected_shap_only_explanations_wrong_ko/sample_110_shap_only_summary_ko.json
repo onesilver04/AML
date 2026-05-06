@@ -1,35 +1,35 @@
 {
   "sample_idx": 110,
-  "source_shap_json": "/home/ejhan/AML/SHAP/Task/wrong_18_local_shap/shap_tuples_non_prefix_110.json",
-  "true_label": "BAD CREDIT RISK",
+  "source_shap_json": "/home/ejhan/AML/SHAP/Final Local Shap/shap_tuples_non_prefix_110.json",
+  "true_label": "GOOD CREDIT RISK",
   "prediction_label": "GOOD CREDIT RISK",
-  "prediction_probability": 0.3104395807485785,
+  "prediction_probability": 0.24528610755028338,
   "prediction_threshold": 0.56,
-  "final_explanation": "Based on the AI model's prediction, the applicant is assessed as having a low credit risk profile. This conclusion is primarily driven by three factors. First, not having a checking account decreases the overall risk. Second, the amount of credit requested increases the risk. Third, the length of the loan term also increases the risk. While the borrowing amount and duration raise the risk level, the combined influence of these factors still leads to a positive credit assessment.",
-  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 프로파일로 평가됩니다. 이 결론은 주로 세 가지 요인에 의해 주도됩니다.\n첫째, 입출금 계좌가 없는 것은 전체 위험을 감소시킵니다.\n둘째, 요청한 대출 금액이 증가할수록 위험도 상승합니다.\n셋째, 대출 기간의 길이 또한 위험을 증가시킵니다.\n대출 금액과 대출 기간의 상승 요인에도 불구하고, 이러한 요인들의 복합적인 영향은 여전히 긍정적인 신용 평가로 이어집니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The assessment is primarily driven by a longer loan term, which significantly reduces the overall risk, followed by maintaining minimal savings, which further lowers the risk. Although not holding a checking account slightly increases the risk, the combined effect of these factors still points toward a favorable credit standing.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n대출 기간이 길어 신용 위험이 낮게 평가됩니다. 대출 금액이 상대적으로 적고 저축 잔액이 적어 위험이 더욱 감소합니다. \n체크 계좌 보유 여부가 약간의 위험 증가 요인이지만, 이러한 요소들이 합쳐져 신용 상태가 긍정적으로 평가됩니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "shap_features": [
     {
       "rank": 1,
-      "feature": "checking_status_no checking",
-      "definition": "Checking account status: no checking account.",
-      "shap_value": -0.09928334866999108,
-      "abs_shap": 0.09928334866999108,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.11360813670263689,
+      "abs_shap": 0.11360813670263689,
       "direction": "decrease_risk"
     },
     {
       "rank": 2,
-      "feature": "credit_amount",
-      "definition": "Credit amount requested by the applicant.",
-      "shap_value": 0.05842059580593461,
-      "abs_shap": 0.05842059580593461,
-      "direction": "increase_risk"
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.040088523984618256,
+      "abs_shap": 0.040088523984618256,
+      "direction": "decrease_risk"
     },
     {
       "rank": 3,
-      "feature": "duration",
-      "definition": "Loan duration in months.",
-      "shap_value": 0.04426094168141432,
-      "abs_shap": 0.04426094168141432,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.038400539673052174,
+      "abs_shap": 0.038400539673052174,
       "direction": "increase_risk"
     }
   ]

@@ -1,36 +1,36 @@
 {
   "sample_idx": 183,
-  "source_shap_json": "/home/ejhan/AML/SHAP/Task/wrong_18_local_shap/shap_tuples_non_prefix_183.json",
+  "source_shap_json": "/home/ejhan/AML/SHAP/Final Local Shap/shap_tuples_non_prefix_183.json",
   "true_label": "GOOD CREDIT RISK",
-  "prediction_label": "BAD CREDIT RISK",
-  "prediction_probability": 0.7116459758965058,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.10958424167098249,
   "prediction_threshold": 0.56,
-  "final_explanation": "Based on the AI model's prediction, this application indicates a high credit risk. The assessment is primarily driven by three key factors. Having a negative balance in your checking account signals financial strain and significantly raises the likelihood of default. Additionally, not maintaining a checking account at all removes a standard layer of financial stability, further increasing the risk. Finally, a longer loan duration extends the repayment timeline, which also contributes to a higher risk profile. Consequently, the model concludes that this applicant represents a bad credit risk.",
-  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n주요 요인 세 가지가 이 평가를 주도합니다.\n계좌 잔액 부족은 재정적 어려움을 나타내며 채무 불이행 가능성을 크게 높입니다.\n출금 계좌가 전혀 없는 것은 일반적인 재정 안정성의 층을 제거하여 위험을 더욱 증가시킵니다.\n또한, 대출 기간이 길어질수록 상환 기간이 연장되어 위험 프로필이 높아집니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "final_explanation": "Based on the AI model's prediction, this case indicates a low credit risk. The absence of a standard checking account, combined with a history of critical or multiple existing credit accounts, points to a cautious financial approach that reduces the likelihood of default. Furthermore, holding a very low savings balance suggests limited available funds for new debt, which further lowers the overall risk. These factors collectively align with the final assessment of a good credit risk profile.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족으로 인한 표준 예금 계좌 부재  \n신용 문제 이력이 있는 여러 기존 대출 기록의 존재  \n매우 낮은 저축 잔액으로 인한 신규 부채에 대한 자금 부족 가능성  \n이러한 요소들이 결합되어 신용 위험이 양호한 프로파일로 평가됩니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "shap_features": [
     {
       "rank": 1,
-      "feature": "checking_status_<0",
-      "definition": "Checking account status: balance below 0 DM.",
-      "shap_value": 0.061974576611424095,
-      "abs_shap": 0.061974576611424095,
-      "direction": "increase_risk"
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.0975598246725216,
+      "abs_shap": 0.0975598246725216,
+      "direction": "decrease_risk"
     },
     {
       "rank": 2,
-      "feature": "checking_status_no checking",
-      "definition": "Checking account status: no checking account.",
-      "shap_value": 0.05215010396324036,
-      "abs_shap": 0.05215010396324036,
-      "direction": "increase_risk"
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.05848197075251256,
+      "abs_shap": 0.05848197075251256,
+      "direction": "decrease_risk"
     },
     {
       "rank": 3,
-      "feature": "duration",
-      "definition": "Loan duration in months.",
-      "shap_value": 0.027915762115008288,
-      "abs_shap": 0.027915762115008288,
-      "direction": "increase_risk"
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.0402869428880107,
+      "abs_shap": 0.0402869428880107,
+      "direction": "decrease_risk"
     }
   ]
 }

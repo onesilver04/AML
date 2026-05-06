@@ -1,12 +1,12 @@
 {
   "sample_idx": 32,
-  "source_shap_json": "/home/ejhan/AML/SHAP/All Dataset Local Shap/shap_tuples_non_prefix_32.json",
+  "source_shap_json": "/home/ejhan/AML/SHAP/Final Local Shap/shap_tuples_non_prefix_32.json",
   "true_label": "GOOD CREDIT RISK",
   "prediction_label": "GOOD CREDIT RISK",
   "prediction_probability": 0.4474621121704952,
   "prediction_threshold": 0.56,
-  "final_explanation": "Based on the AI model's prediction, this case indicates a low credit risk. The absence of a checking account slightly increases the perceived risk due to limited financial history. However, this is outweighed by two factors that decrease the overall risk: holding a very low savings balance and maintaining a negative checking account balance, which together signal a financial behavior pattern the model views as less risky. Consequently, these combined factors support a positive credit risk evaluation.",
-  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 저축 잔액이 거의 없으며, 체크 계좌 잔액도 부족한 상태로 나타나 금융 행동 패턴이 상대적으로 안정적이라고 판단됩니다.\n체크 계좌 잔액 부족은 신용 위험을 약간 증가시키는 요인이지만, 이는 매우 낮은 저축 잔액과 함께 금융 위험을 감소시키는 요소들에 의해 상쇄됩니다.\n이러한 요인들이 결합되어 신용 위험 평가가 긍정적으로 이루어짐을 보여줍니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "final_explanation": "Based on the AI model's prediction, this applicant is assessed as having a low credit risk. While the absence of a checking account slightly increases the perceived risk, this is outweighed by two mitigating factors: maintaining a savings account with a balance under 100 and holding a checking account balance in the negative, both of which decrease the overall risk. Consequently, the final evaluation points to a favorable credit profile.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족이 약간의 위험을 증가시키지만, 저축 계좌 잔액이 100 미만이고 체크 계좌 잔액이 마이너스인 두 가지 완화 요인에 의해 상쇄됩니다. \n대출 금액이 상대적으로 적고, 월 상환 부담 수준이 적절하며, 현재 거주 기간이 길고 나이 또한 안정적입니다. 기존 대출 수가 적고 부양 가족 수도 적어 신용 위험이 더욱 감소합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "shap_features": [
     {
       "rank": 1,

@@ -381,6 +381,67 @@ def get_rag_top3_features(rag_payload: dict[str, Any]) -> list[dict[str, Any]]:
     return []
 
 
+def get_rag_top3_evidence_sentences(
+    rag_payload: dict[str, Any],
+) -> list[dict[str, Any] | None]:
+    evidence_items = rag_payload.get("evidence")
+    if not isinstance(evidence_items, list):
+        return []
+
+    evidence_sentences: list[dict[str, Any] | None] = []
+
+    for evidence_item in evidence_items[:3]:
+        if not isinstance(evidence_item, dict):
+            evidence_sentences.append(None)
+            continue
+
+        sentences = evidence_item.get("evidence_sentences")
+        if isinstance(sentences, list) and sentences and isinstance(sentences[0], dict):
+            evidence_sentences.append(sentences[0])
+        else:
+            evidence_sentences.append(None)
+
+    return evidence_sentences
+
+
+def attach_evidence_sentences_to_shap_features(
+    shap_features: list[dict[str, Any]],
+    rag_payload: dict[str, Any],
+) -> list[dict[str, Any]]:
+    evidence_items = rag_payload.get("evidence")
+    evidence_sentences = get_rag_top3_evidence_sentences(rag_payload)
+    evidence_by_feature: dict[str, dict[str, Any]] = {}
+
+    if isinstance(evidence_items, list):
+        for evidence_item, evidence_sentence in zip(
+            evidence_items[:3],
+            evidence_sentences,
+            strict=False,
+        ):
+            if not isinstance(evidence_item, dict) or evidence_sentence is None:
+                continue
+
+            feature_name = evidence_item.get("feature")
+            if isinstance(feature_name, str):
+                evidence_by_feature[feature_name] = evidence_sentence
+
+    features_with_evidence: list[dict[str, Any]] = []
+
+    for index, feature in enumerate(shap_features):
+        feature_payload = dict(feature)
+        evidence_sentence = evidence_by_feature.get(str(feature.get("feature")))
+
+        if evidence_sentence is None and index < len(evidence_sentences):
+            evidence_sentence = evidence_sentences[index]
+
+        if evidence_sentence is not None:
+            feature_payload["evidence_sentence"] = evidence_sentence
+
+        features_with_evidence.append(feature_payload)
+
+    return features_with_evidence
+
+
 def build_sample_payload(
     row: dict[str, str],
     confidence_by_sample: dict[int, dict[str, str]],
@@ -409,7 +470,10 @@ def build_sample_payload(
             )
 
     explanation = get_rag_explanation(rag_payload)
-    local_shap_top3_features = shap_top3_by_sample[sample_idx]
+    local_shap_top3_features = attach_evidence_sentences_to_shap_features(
+        shap_top3_by_sample[sample_idx],
+        rag_payload,
+    )
 
     payload = {
         "sample_idx": sample_idx,

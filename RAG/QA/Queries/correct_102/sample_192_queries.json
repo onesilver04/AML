@@ -1,0 +1,27 @@
+{
+  "sample_idx": 192,
+  "shap_json_path": "SHAP/Final Local Shap/shap_tuples_non_prefix_192.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "decrease_risk",
+      "question": "Statistical impact of loan duration in months on the reduction of credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "feature_definition": "Credit history: critical account or other existing credits.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of credit history involving critical accounts or other existing credits on the mitigation of credit risk."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Statistical impact of checking account status with no checking account on increased credit default probability."
+    }
+  ]
+}

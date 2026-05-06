@@ -1,0 +1,27 @@
+{
+  "sample_idx": 157,
+  "shap_json_path": "SHAP/Final Local Shap/shap_tuples_non_prefix_157.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis investigates the impact of having no checking account on the reduction of credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "credit_amount",
+      "feature_definition": "Credit amount requested by the applicant.",
+      "feature_direction": "increase_risk",
+      "question": "Statistical analysis investigates the impact of the requested credit amount on the contribution to increased credit risk."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "increase_risk",
+      "question": "Credit risk research investigates the influence of loan duration in months on the likelihood of credit default."
+    }
+  ]
+}

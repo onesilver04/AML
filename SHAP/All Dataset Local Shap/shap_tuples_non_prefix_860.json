@@ -3,29 +3,29 @@
   "true_label": "GOOD CREDIT RISK",
   "prediction": {
     "label": "GOOD CREDIT RISK",
-    "probability": 0.14458853167689656,
+    "probability": 0.14673353549146628,
     "threshold": 0.56
   },
   "tuples": [
     {
       "feature": "checking_status_no checking",
       "definition": "Checking account status: no checking account.",
-      "shap_value": -0.08964335622327631,
-      "abs_shap": 0.08964335622327631,
+      "shap_value": -0.08985337769226254,
+      "abs_shap": 0.08985337769226254,
       "direction": "decrease_risk"
     },
     {
       "feature": "credit_history_critical/other existing credit",
       "definition": "Credit history: critical account or other existing credits.",
-      "shap_value": -0.047208359178142284,
-      "abs_shap": 0.047208359178142284,
+      "shap_value": -0.04663077481942944,
+      "abs_shap": 0.04663077481942944,
       "direction": "decrease_risk"
     },
     {
       "feature": "purpose_used car",
       "definition": "Loan purpose: purchase of a used car.",
-      "shap_value": -0.0431323624296819,
-      "abs_shap": 0.0431323624296819,
+      "shap_value": -0.04304677300796366,
+      "abs_shap": 0.04304677300796366,
       "direction": "decrease_risk"
     }
   ]

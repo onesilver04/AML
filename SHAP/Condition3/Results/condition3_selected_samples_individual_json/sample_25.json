@@ -25,15 +25,33 @@
   "local_shap_top3_features": [
     {
       "feature": "duration",
-      "value": -0.15
+      "value": -0.15,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.22002893686294556
+      }
     },
     {
       "feature": "checking_status_<0",
-      "value": 0.05
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.21820902824401855
+      }
     },
     {
       "feature": "installment_commitment",
-      "value": -0.04
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "All stages, including data preparation, preprocessing, model fitting, and evaluation, were conducted using RStudio, a popular Integrated Development",
+        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+        "page": 7,
+        "score": 0.16704905033111572
+      }
     }
   ],
   "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행 위험을 낮추는 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n체크링 계좌 잔액이 음수인 경우는 신용 위험을 크게 증가시키는 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n대출 금액이 큰 경우 신용 위험이 높아지는 것으로 일반적으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 평가합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가되어 신용 승인 가능성이 높습니다.",

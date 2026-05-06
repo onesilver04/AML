@@ -3,29 +3,29 @@
   "true_label": "BAD CREDIT RISK",
   "prediction": {
     "label": "BAD CREDIT RISK",
-    "probability": 0.7274789960209731,
+    "probability": 0.7309037753598776,
     "threshold": 0.56
   },
   "tuples": [
     {
       "feature": "checking_status_no checking",
       "definition": "Checking account status: no checking account.",
-      "shap_value": 0.06300913552226492,
-      "abs_shap": 0.06300913552226492,
+      "shap_value": 0.063513204604468,
+      "abs_shap": 0.063513204604468,
       "direction": "increase_risk"
     },
     {
       "feature": "credit_history_all paid",
       "definition": "Credit history: all previous credits at this bank paid back duly.",
-      "shap_value": 0.03325696012676433,
-      "abs_shap": 0.03325696012676433,
+      "shap_value": 0.033506916254477985,
+      "abs_shap": 0.033506916254477985,
       "direction": "increase_risk"
     },
     {
       "feature": "employment_4<=X<7",
       "definition": "Present employment duration: between 4 and 7 years.",
-      "shap_value": -0.03039293617378296,
-      "abs_shap": 0.03039293617378296,
+      "shap_value": -0.03007446658209393,
+      "abs_shap": 0.03007446658209393,
       "direction": "decrease_risk"
     }
   ]

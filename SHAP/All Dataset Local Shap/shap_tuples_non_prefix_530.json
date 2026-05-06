@@ -3,29 +3,29 @@
   "true_label": "GOOD CREDIT RISK",
   "prediction": {
     "label": "GOOD CREDIT RISK",
-    "probability": 0.5326394709357474,
+    "probability": 0.5346679582369771,
     "threshold": 0.56
   },
   "tuples": [
     {
       "feature": "checking_status_no checking",
       "definition": "Checking account status: no checking account.",
-      "shap_value": 0.06224535006263957,
-      "abs_shap": 0.06224535006263957,
+      "shap_value": 0.06290073609138422,
+      "abs_shap": 0.06290073609138422,
       "direction": "increase_risk"
     },
     {
       "feature": "duration",
       "definition": "Loan duration in months.",
-      "shap_value": 0.045559005633474696,
-      "abs_shap": 0.045559005633474696,
+      "shap_value": 0.04616761140480494,
+      "abs_shap": 0.04616761140480494,
       "direction": "increase_risk"
     },
     {
       "feature": "checking_status_<0",
       "definition": "Checking account status: balance below 0 DM.",
-      "shap_value": -0.04378083828980362,
-      "abs_shap": 0.04378083828980362,
+      "shap_value": -0.04354950582407127,
+      "abs_shap": 0.04354950582407127,
       "direction": "decrease_risk"
     }
   ]
