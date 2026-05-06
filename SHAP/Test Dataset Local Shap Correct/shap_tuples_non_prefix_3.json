@@ -1,0 +1,31 @@
+{
+  "sample_idx": 3,
+  "true_label": "GOOD CREDIT RISK",
+  "prediction": {
+    "predict_label": "GOOD CREDIT RISK",
+    "calibrated_confidence": 0.9201456789917672
+  },
+  "tuples": [
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.06035081008975167,
+      "abs_shap": 0.06035081008975167,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.03274093561473293,
+      "abs_shap": 0.03274093561473293,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.03257004627925888,
+      "abs_shap": 0.03257004627925888,
+      "direction": "decrease_risk"
+    }
+  ]
+}

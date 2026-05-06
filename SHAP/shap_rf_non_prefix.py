@@ -1,5 +1,9 @@
 # prefix 없는 원본 RF 학습/평가 및 글로벌 SHAP 저장
-# + calibrated probability 기반 threshold 재탐색 추가
+# + calibrated probability 기반 confidence 저장 추가
+# 핵심:
+# - SHAP은 원래 RF(rf_for_shap) 기준
+# - prediction label은 원래 RF raw_proba + threshold 기준
+# - confidence/probability는 calibration된 확률 기준
 
 import argparse
 import json
@@ -9,9 +13,10 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from sklearn.calibration import CalibratedClassifierCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.inspection import permutation_importance
-from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, roc_auc_score
+from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, roc_auc_score, precision_score, recall_score
 from sklearn.model_selection import (
     RandomizedSearchCV,
     StratifiedKFold,
@@ -72,8 +77,8 @@ RF_PARAM_DISTRIBUTIONS = {
 def parse_args():
     parser = argparse.ArgumentParser(
         description=(
-            "Train/evaluate RF, tune threshold, "
-            "save global SHAP importance, and export random local SHAP samples."
+            "Train/evaluate RF, tune threshold, calibrate confidence, "
+            "save global SHAP importance, and export local SHAP samples."
         )
     )
     parser.add_argument("--data-path", default="german21_ohe.csv")
@@ -82,30 +87,22 @@ def parse_args():
     parser.add_argument("--sample-indices", type=str, default=None)
     parser.add_argument("--sample-index-file", type=str, default=None)
     parser.add_argument("--output-dir", default="SHAP/120 Local Shap")
-    parser.add_argument(
-        "--all-output-dir",
-        default="SHAP/All Dataset Local Shap",
-        help="Directory for local SHAP JSON files for the full dataset.",
-    )
-    parser.add_argument(
-        "--no-all-json",
-        action="store_true",
-        help="Skip saving local SHAP JSON files for the full dataset.",
-    )
     parser.add_argument("--x-test-output", default="X_test.csv")
     parser.add_argument("--y-test-output", default="y_test.csv")
     parser.add_argument("--skip-plots", action="store_true")
     parser.add_argument("--search-iter", type=int, default=32)
     parser.add_argument("--cv-folds", type=int, default=5)
-    parser.add_argument(
-        "--test-size",
-        type=float,
-        default=0.2,
-        help="Hold-out test set ratio. Default: 0.20.",
-    )
+    parser.add_argument("--test-size", type=float, default=0.20)
     parser.add_argument("--threshold-min", type=float, default=0.20)
     parser.add_argument("--threshold-max", type=float, default=0.70)
     parser.add_argument("--threshold-step", type=float, default=0.01)
+
+    parser.add_argument(
+        "--calibration-method",
+        choices=["sigmoid", "isotonic"],
+        default="sigmoid",
+        help="Calibration method. sigmoid is safer for small data; isotonic can overfit.",
+    )
 
     return parser.parse_args()
 
@@ -162,7 +159,6 @@ def load_target(df: pd.DataFrame) -> pd.Series:
         raise ValueError("타깃 컬럼 'class'를 찾지 못했습니다.")
 
     if df["class"].dtype == bool:
-        # german21_ohe.csv: True=good, False=bad. Use BAD as positive class.
         return (~df["class"]).astype(int)
 
     lowered = pd.Series(df["class"]).dropna().astype(str).str.lower()
@@ -171,10 +167,8 @@ def load_target(df: pd.DataFrame) -> pd.Series:
 
     vals = set(pd.Series(df["class"]).dropna().unique())
     if vals.issubset({1, 2}):
-        # Statlog convention: 1=good, 2=bad.
         return (df["class"] == 2).astype(int)
     if vals.issubset({0, 1}):
-        # Existing project convention for numeric binary files: 1=bad, 0=good.
         return df["class"].astype(int)
 
     raise ValueError(f"예상치 못한 class 값들: {vals}")
@@ -189,14 +183,15 @@ def evaluate_split_at_threshold(y_true, proba, threshold):
 
     return {
         "accuracy": accuracy_score(y_true, pred),
-        "f1": f1_score(y_true, pred),
+        "precision": precision_score(y_true, pred, zero_division=0),
+        "recall": recall_score(y_true, pred, zero_division=0),
+        "f1": f1_score(y_true, pred, zero_division=0),
         "auc": roc_auc_score(y_true, proba),
         "sensitivity": sensitivity,
         "specificity": specificity,
         "confusion": (tn, fp, fn, tp),
         "threshold": threshold,
     }
-
 
 def print_metrics(title: str, train_metrics: dict, test_metrics: dict):
     print(f"\n=== {title} ===")
@@ -207,6 +202,14 @@ def print_metrics(title: str, train_metrics: dict, test_metrics: dict):
     print(
         f"Train Accuracy : {train_metrics['accuracy']:.4f} | "
         f"Test Accuracy : {test_metrics['accuracy']:.4f}"
+    )
+    print(
+        f"Train Precision: {train_metrics['precision']:.4f} | "
+        f"Test Precision : {test_metrics['precision']:.4f}"
+    )
+    print(
+        f"Train Recall   : {train_metrics['recall']:.4f} | "
+        f"Test Recall    : {test_metrics['recall']:.4f}"
     )
     print(
         f"Train F1       : {train_metrics['f1']:.4f} | "
@@ -344,6 +347,105 @@ def tune_rf(X_train, y_train, args):
     }
 
 
+def train_calibrated_model(X_train, y_train, best_params, args):
+    calibration_cv = StratifiedKFold(
+        n_splits=args.cv_folds,
+        shuffle=True,
+        random_state=42,
+    )
+
+    calibrated_model = CalibratedClassifierCV(
+        estimator=make_rf(n_jobs=1, **best_params),
+        method=args.calibration_method,
+        cv=calibration_cv,
+        n_jobs=-1,
+    )
+
+    calibrated_model.fit(X_train, y_train)
+    return calibrated_model
+
+
+def get_predicted_class_confidence(raw_bad_proba, calibrated_bad_proba, threshold):
+    """
+    prediction label은 raw_bad_proba + threshold 기준으로 정한다.
+    confidence는 calibration된 확률에서 predicted class 기준으로 계산한다.
+
+    BAD로 예측한 경우:
+        confidence = calibrated P(BAD)
+
+    GOOD으로 예측한 경우:
+        confidence = calibrated P(GOOD) = 1 - calibrated P(BAD)
+    """
+    raw_pred = (raw_bad_proba >= threshold).astype(int)
+
+    calibrated_confidence = np.where(
+        raw_pred == 1,
+        calibrated_bad_proba,
+        1.0 - calibrated_bad_proba,
+    )
+
+    return raw_pred, calibrated_confidence
+
+
+def confidence_group_by_quantile(confidence_values):
+    q25 = np.quantile(confidence_values, 0.25)
+    q75 = np.quantile(confidence_values, 0.75)
+
+    groups = []
+    for value in confidence_values:
+        if value <= q25:
+            groups.append("low_confidence")
+        elif value >= q75:
+            groups.append("high_confidence")
+        else:
+            groups.append("medium_confidence")
+
+    return np.array(groups), q25, q75
+
+
+def print_confidence_summary(y_true, raw_pred, calibrated_confidence):
+    print("\n=== Calibrated Confidence Summary ===")
+
+    for label_value, label_name in [(0, "GOOD CREDIT RISK"), (1, "BAD CREDIT RISK")]:
+        mask_by_pred = raw_pred == label_value
+        if mask_by_pred.sum() > 0:
+            print(
+                f"예측 클래스 기준 평균 confidence - {label_name}: "
+                f"{calibrated_confidence[mask_by_pred].mean():.4f} "
+                f"(n={mask_by_pred.sum()})"
+            )
+
+    print()
+
+    for label_value, label_name in [(0, "GOOD CREDIT RISK"), (1, "BAD CREDIT RISK")]:
+        mask_by_true = np.asarray(y_true) == label_value
+        if mask_by_true.sum() > 0:
+            print(
+                f"실제 클래스 기준 평균 confidence - {label_name}: "
+                f"{calibrated_confidence[mask_by_true].mean():.4f} "
+                f"(n={mask_by_true.sum()})"
+            )
+
+    groups, q25, q75 = confidence_group_by_quantile(calibrated_confidence)
+
+    print("\n=== Confidence Group by Quantile ===")
+    print(f"Low 기준  <= Q25: {q25:.4f}")
+    print(f"High 기준 >= Q75: {q75:.4f}")
+    print(pd.Series(groups).value_counts())
+
+    wrong_mask = raw_pred != np.asarray(y_true)
+
+    print("\n=== Confidence Group별 오분류 개수 ===")
+    for group_name in ["low_confidence", "medium_confidence", "high_confidence"]:
+        group_mask = groups == group_name
+        total_count = int(group_mask.sum())
+        wrong_count = int((group_mask & wrong_mask).sum())
+
+        print(
+            f"{group_name}: 전체 {total_count}개 / 오분류 {wrong_count}개"
+        )
+
+
 def ohe_prefix(name: str) -> str:
     if "_" in name:
         return name.rsplit("_", 1)[0]
@@ -395,20 +497,25 @@ def save_shap_tuples_json(
     sample_idx,
     true_label,
     prediction_label,
-    predict_proba=None,
+    raw_bad_probability=None,
+    calibrated_bad_probability=None,
+    calibrated_confidence=None,
     threshold=None,
+    calibration_method=None,
     save_path="SHAP/shap_tuples_non_prefix.json",
 ):
     data = {
         "sample_idx": sample_idx,
+
         "true_label": true_label,
+
         "prediction": {
-            "label": prediction_label,
-            "probability": predict_proba,
-            "threshold": threshold,
+            "predict_label": prediction_label,
+            "calibrated_confidence": calibrated_confidence,
         },
+
         "tuples": records,
-    }
+    }   
 
     save_path = Path(save_path)
     save_path.parent.mkdir(parents=True, exist_ok=True)
@@ -423,12 +530,15 @@ def save_local_shap_jsons(
     sv: np.ndarray,
     feature_names: list[str],
     y_values: pd.Series,
-    raw_proba: np.ndarray,
+    raw_bad_proba: np.ndarray,
+    calibrated_bad_proba: np.ndarray,
+    calibrated_confidence: np.ndarray,
     threshold: float,
     sample_positions,
     output_dir: Path,
     top_k: int = 3,
     sample_ids=None,
+    calibration_method=None,
 ):
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -436,6 +546,7 @@ def save_local_shap_jsons(
         sample_ids = sample_positions
 
     saved_count = 0
+
     for sample_position, sample_id in zip(sample_positions, sample_ids):
         sample_records = build_raw_shap_records(
             sv=sv,
@@ -445,10 +556,14 @@ def save_local_shap_jsons(
         )
 
         true_label = to_risk_label(int(y_values.iloc[sample_position]))
-        raw_bad_proba = float(raw_proba[sample_position])
+
+        raw_bad = float(raw_bad_proba[sample_position])
+        calibrated_bad = float(calibrated_bad_proba[sample_position])
+        confidence = float(calibrated_confidence[sample_position])
+
         prediction_label = (
             "BAD CREDIT RISK"
-            if raw_bad_proba >= threshold
+            if raw_bad >= threshold
             else "GOOD CREDIT RISK"
         )
 
@@ -457,10 +572,14 @@ def save_local_shap_jsons(
             int(sample_id),
             true_label=true_label,
             prediction_label=prediction_label,
-            predict_proba=raw_bad_proba,
+            raw_bad_probability=raw_bad,
+            calibrated_bad_probability=calibrated_bad,
+            calibrated_confidence=confidence,
             threshold=float(threshold),
+            calibration_method=calibration_method,
             save_path=output_dir / f"shap_tuples_non_prefix_{int(sample_id)}.json",
         )
+
         saved_count += 1
 
     return saved_count
@@ -468,9 +587,9 @@ def save_local_shap_jsons(
 
 def main():
     args = parse_args()
+
     output_dir = resolve_output_path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-    all_output_dir = resolve_output_path(args.all_output_dir)
 
     df = pd.read_csv(args.data_path)
     df = df.drop(columns=DROP_COLUMNS, errors="ignore")
@@ -491,10 +610,13 @@ def main():
 
     x_test_output = resolve_output_path(args.x_test_output)
     y_test_output = resolve_output_path(args.y_test_output)
+
     x_test_output.parent.mkdir(parents=True, exist_ok=True)
     y_test_output.parent.mkdir(parents=True, exist_ok=True)
+
     X_test.to_csv(x_test_output, index=False)
     y_test.rename("class").to_csv(y_test_output, index=False)
+
     print(f"\nSaved X_test: {x_test_output} ({len(X_test)} rows)")
     print(f"Saved y_test: {y_test_output} ({len(y_test)} rows)")
 
@@ -513,59 +635,116 @@ def main():
     tuned = tune_rf(X_train, y_train, args)
     print_tuning_result(tuned)
 
-    # 2. SHAP 계산용 일반 RF
-    # CalibratedClassifierCV는 TreeExplainer에 바로 쓰기 애매하므로
-    # SHAP은 일반 RF 기준으로 계산한다.
+    # 2. SHAP 계산용 원본 RF
     rf_for_shap = make_rf(**tuned["params"])
     rf_for_shap.fit(X_train, y_train)
 
-    raw_proba_train = rf_for_shap.predict_proba(X_train)[:, 1]
-    raw_proba_test = rf_for_shap.predict_proba(X_test)[:, 1]
+    # 3. Confidence 보정용 calibration 모델
+    calibrated_rf = train_calibrated_model(
+        X_train=X_train,
+        y_train=y_train,
+        best_params=tuned["params"],
+        args=args,
+    )
 
+    print("\n=== Calibration ===")
+    print(f"Calibration method: {args.calibration_method}")
+    print("SHAP 기준 모델: original RF")
+    print("Confidence 기준 모델: calibrated RF")
+
+    # 4. 원본 RF probability
+    raw_bad_proba_train = rf_for_shap.predict_proba(X_train)[:, 1]
+    raw_bad_proba_test = rf_for_shap.predict_proba(X_test)[:, 1]
+
+    # 5. Calibrated probability
+    calibrated_bad_proba_train = calibrated_rf.predict_proba(X_train)[:, 1]
+    calibrated_bad_proba_test = calibrated_rf.predict_proba(X_test)[:, 1]
+
+    # 6. Prediction label은 raw RF 기준
+    raw_pred_train, calibrated_confidence_train = get_predicted_class_confidence(
+        raw_bad_proba=raw_bad_proba_train,
+        calibrated_bad_proba=calibrated_bad_proba_train,
+        threshold=tuned["threshold"],
+    )
+
+    raw_pred_test, calibrated_confidence_test = get_predicted_class_confidence(
+        raw_bad_proba=raw_bad_proba_test,
+        calibrated_bad_proba=calibrated_bad_proba_test,
+        threshold=tuned["threshold"],
+    )
+
+    # 7. 기존 RF 성능 평가
     raw_train_metrics = evaluate_split_at_threshold(
         y_train,
-        raw_proba_train,
+        raw_bad_proba_train,
         tuned["threshold"],
     )
     raw_test_metrics = evaluate_split_at_threshold(
         y_test,
-        raw_proba_test,
+        raw_bad_proba_test,
         tuned["threshold"],
     )
 
     print_metrics(
-        "RF evaluation",
+        "Original RF evaluation",
         raw_train_metrics,
         raw_test_metrics,
+    )
+
+    # 8. Calibrated probability 기준 AUC 참고 출력
+    # label 판단은 raw RF 기준을 유지하지만,
+    # calibration이 probability 분포를 어떻게 바꾸는지 확인하기 위한 참고값
+    calibrated_train_metrics = evaluate_split_at_threshold(
+        y_train,
+        calibrated_bad_proba_train,
+        tuned["threshold"],
+    )
+    calibrated_test_metrics = evaluate_split_at_threshold(
+        y_test,
+        calibrated_bad_proba_test,
+        tuned["threshold"],
+    )
+
+    print_metrics(
+        "Calibrated probability reference evaluation",
+        calibrated_train_metrics,
+        calibrated_test_metrics,
+    )
+
+    # 9. Confidence summary
+    print_confidence_summary(
+        y_true=y_test,
+        raw_pred=raw_pred_test,
+        calibrated_confidence=calibrated_confidence_test,
     )
 
     # ==============================
     # Decision boundary ± sigma 분석
     # ==============================
+    # 교수님이 말한 confidence 경고문 기준은 calibrated confidence로 보는 것이 자연스러움
+    decision_boundary = tuned["threshold"]
 
-    decision_boundary = tuned["threshold"]  # threshold 사용
-
-    sigma = np.std(raw_proba_test)
+    sigma = np.std(calibrated_bad_proba_test)
 
     lower_bound = decision_boundary - sigma
     upper_bound = decision_boundary + sigma
 
     near_boundary_mask = (
-        (raw_proba_test >= lower_bound) &
-        (raw_proba_test <= upper_bound)
+        (calibrated_bad_proba_test >= lower_bound) &
+        (calibrated_bad_proba_test <= upper_bound)
     )
 
     near_boundary_count = int(near_boundary_mask.sum())
 
-    print("\n=== Decision Boundary 주변 샘플 분석 ===")
+    print("\n=== Calibrated Probability 기준 Decision Boundary 주변 샘플 분석 ===")
     print(f"Decision boundary: {decision_boundary:.4f}")
     print(f"Sigma: {sigma:.4f}")
     print(f"범위: [{lower_bound:.4f}, {upper_bound:.4f}]")
     print(f"+- sigma 안 샘플 수: {near_boundary_count}")
-    print(f"전체 테스트 샘플 수: {len(raw_proba_test)}")
-    print(f"비율: {near_boundary_count / len(raw_proba_test):.4f}")
+    print(f"전체 테스트 샘플 수: {len(calibrated_bad_proba_test)}")
+    print(f"비율: {near_boundary_count / len(calibrated_bad_proba_test):.4f}")
 
-    # 5. Permutation importance는 일반 RF 기준으로 유지
+    # 10. Permutation importance는 원본 RF 기준 유지
     X_tr, X_val, y_tr, y_val = train_test_split(
         X_train,
         y_train,
@@ -595,7 +774,7 @@ def main():
     print("\nTop 15 importances:")
     print(importances.head(15))
 
-    # 6. SHAP은 일반 RF 기준으로 계산
+    # 11. SHAP은 원본 RF 기준
     explainer = shap.TreeExplainer(rf_for_shap)
     shap_exp = explainer(X_test)
 
@@ -654,46 +833,27 @@ def main():
     group_imp_df.to_csv(prefix_output_path, index=False)
     print(f"\nSaved: {prefix_output_path}")
 
-    # 7. Local SHAP JSON 저장
-    # prediction label과 probability는 raw probability + tuned threshold 기준 사용
+    # 12. Local SHAP JSON 저장
+    # label은 raw RF 기준
+    # confidence/probability는 calibrated 기준
     top_k = 3
 
     selected_saved_count = save_local_shap_jsons(
         sv=sv,
         feature_names=feature_names,
         y_values=y_test,
-        raw_proba=raw_proba_test,
+        raw_bad_proba=raw_bad_proba_test,
+        calibrated_bad_proba=calibrated_bad_proba_test,
+        calibrated_confidence=calibrated_confidence_test,
         threshold=float(tuned["threshold"]),
         sample_positions=sample_indices,
         output_dir=output_dir,
         top_k=top_k,
+        calibration_method=args.calibration_method,
     )
+
     print(f"\nSaved selected local SHAP JSON files: {selected_saved_count}")
     print(f"Selected local SHAP output dir: {output_dir}")
-
-    if not args.no_all_json:
-        print("\n=== Saving full-dataset local SHAP JSON files ===")
-        shap_exp_all = explainer(X)
-        if len(shap_exp_all.values.shape) == 3:
-            shap_exp_all = shap_exp_all[:, :, 1]
-
-        raw_proba_all = rf_for_shap.predict_proba(X)[:, 1]
-        full_sample_positions = list(range(len(X)))
-        full_sample_ids = [int(idx) for idx in X.index.tolist()]
-
-        all_saved_count = save_local_shap_jsons(
-            sv=shap_exp_all.values,
-            feature_names=feature_names,
-            y_values=y.reset_index(drop=True),
-            raw_proba=raw_proba_all,
-            threshold=float(tuned["threshold"]),
-            sample_positions=full_sample_positions,
-            sample_ids=full_sample_ids,
-            output_dir=all_output_dir,
-            top_k=top_k,
-        )
-        print(f"Saved full-dataset local SHAP JSON files: {all_saved_count}")
-        print(f"Full-dataset local SHAP output dir: {all_output_dir}")
 
 
 if __name__ == "__main__":

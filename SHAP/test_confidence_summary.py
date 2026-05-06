@@ -1,37 +1,29 @@
 import argparse
 import json
+import re
+from pathlib import Path
 
-import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
-
-from shap_rf_non_prefix import (
-    DROP_COLUMNS,
-    evaluate_split_at_threshold,
-    make_rf,
-    resolve_output_path,
-    select_sample_indices,
-    tune_rf,
-)
 
 
 def parse_args():
     parser = argparse.ArgumentParser(
         description=(
-            "Compute test-set confidence summaries using "
-            "predicted_confidence as the main confidence criterion."
+            "Read existing local SHAP JSON files and compute confidence summaries "
+            "without retraining the model. Warning type is computed using "
+            "the full test-set reference SHAP JSON files."
         )
     )
-    parser.add_argument("--data-path", default="german21_ohe.csv")
-    parser.add_argument("--search-iter", type=int, default=32)
-    parser.add_argument("--cv-folds", type=int, default=5)
-    parser.add_argument("--random-samples", type=int, default=None)
-    parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--sample-indices", type=str, default=None)
-    parser.add_argument("--sample-index-file", type=str, default=None)
-    parser.add_argument("--threshold-min", type=float, default=0.20)
-    parser.add_argument("--threshold-max", type=float, default=0.70)
-    parser.add_argument("--threshold-step", type=float, default=0.01)
+    parser.add_argument(
+        "--shap-dir",
+        default="SHAP/SHAP/Test Dataset Local Shap 25",
+        help="Directory containing selected shap_tuples_non_prefix_*.json files.",
+    )
+    parser.add_argument(
+        "--reference-shap-dir",
+        default="SHAP/Test Dataset Local Shap",
+        help="Directory containing full test-set shap_tuples_non_prefix_*.json files.",
+    )
     parser.add_argument(
         "--output-csv",
         default="SHAP/confidence.csv",
@@ -43,120 +35,142 @@ def parse_args():
     return parser.parse_args()
 
 
-def load_bad_positive_target(df: pd.DataFrame) -> pd.Series:
-    if "class" not in df.columns:
-        raise ValueError("타깃 컬럼 'class'를 찾지 못했습니다.")
+def resolve_output_path(path_str: str) -> Path:
+    path = Path(path_str)
+    if path.is_absolute():
+        return path
+    return Path.cwd() / path
 
-    if df["class"].dtype == bool:
-        return (~df["class"]).astype(int)
 
-    lowered = pd.Series(df["class"]).dropna().astype(str).str.lower()
-    if set(lowered.unique()).issubset({"good", "bad"}):
-        return (df["class"].astype(str).str.lower() == "bad").astype(int)
+def label_to_class(label: str) -> int:
+    label = str(label).strip().upper()
 
-    vals = set(pd.Series(df["class"]).dropna().unique())
-    if vals.issubset({1, 2}):
-        return (df["class"] == 2).astype(int)
-    if vals.issubset({0, 1}):
-        return df["class"].astype(int)
+    if label == "BAD CREDIT RISK":
+        return 1
+    if label == "GOOD CREDIT RISK":
+        return 0
 
-    raise ValueError(f"예상치 못한 class 값들: {vals}")
+    raise ValueError(f"Unknown label: {label}")
 
 
 def to_bad_positive_label(value: int) -> str:
     return "BAD CREDIT RISK" if int(value) == 1 else "GOOD CREDIT RISK"
 
 
-def build_threshold_grid(args):
-    if args.threshold_step <= 0:
-        raise ValueError("--threshold-step must be > 0.")
-    if args.threshold_min >= args.threshold_max:
-        raise ValueError("--threshold-min must be smaller than --threshold-max.")
+def extract_sample_idx_from_filename(path: Path) -> int:
+    match = re.search(r"shap_tuples_non_prefix_(\d+)\.json$", path.name)
 
-    return np.round(
-        np.arange(
-            args.threshold_min,
-            args.threshold_max + args.threshold_step / 2,
-            args.threshold_step,
-        ),
-        4,
+    if not match:
+        raise ValueError(f"Cannot extract sample_idx from filename: {path.name}")
+
+    return int(match.group(1))
+
+
+def load_shap_confidence_records(shap_dir: Path) -> pd.DataFrame:
+    json_paths = sorted(
+        shap_dir.glob("shap_tuples_non_prefix_*.json"),
+        key=extract_sample_idx_from_filename,
     )
 
-
-def find_best_threshold(y_true, proba, threshold_grid):
-    best_threshold_metrics = None
-
-    for threshold in threshold_grid:
-        metrics = evaluate_split_at_threshold(y_true, proba, threshold)
-
-        score = (
-            metrics["accuracy"],
-            metrics["f1"],
-            metrics["sensitivity"],
-            -abs(threshold - 0.5),
+    if not json_paths:
+        raise FileNotFoundError(
+            f"No shap_tuples_non_prefix_*.json files found in: {shap_dir}"
         )
 
-        if best_threshold_metrics is None or score > best_threshold_metrics["score"]:
-            best_threshold_metrics = {
-                "score": score,
-                "threshold": threshold,
-                "metrics": metrics,
+    rows = []
+
+    for path in json_paths:
+        with path.open("r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        sample_idx = int(data.get("sample_idx", extract_sample_idx_from_filename(path)))
+
+        true_label = data.get("true_label")
+        if true_label is None:
+            raise KeyError(f"{path} does not contain 'true_label'.")
+
+        prediction = data.get("prediction", {})
+
+        predicted_label = prediction.get("predict_label")
+        if predicted_label is None:
+            predicted_label = prediction.get("label")
+
+        if predicted_label is None:
+            raise KeyError(
+                f"{path} does not contain prediction.predict_label or prediction.label."
+            )
+
+        confidence = prediction.get("calibrated_confidence")
+        if confidence is None:
+            confidence = prediction.get("predicted_confidence")
+
+        if confidence is None:
+            raise KeyError(
+                f"{path} does not contain prediction.calibrated_confidence."
+            )
+
+        true_class = label_to_class(true_label)
+        predicted_class = label_to_class(predicted_label)
+
+        rows.append(
+            {
+                "sample_idx": sample_idx,
+                "true_class": true_class,
+                "predicted_class": predicted_class,
+                "predicted_confidence": float(confidence),
+                "true_label": to_bad_positive_label(true_class),
+                "predicted_label": to_bad_positive_label(predicted_class),
+                "is_correct": true_class == predicted_class,
+                "source_json": str(path),
             }
+        )
 
-    return best_threshold_metrics
-
-
-def build_confidence_dataframe(y_test, proba_bad, threshold, sample_indices=None):
-    y_test_array = np.asarray(y_test, dtype=int)
-    if sample_indices is None:
-        sample_indices = np.arange(len(y_test_array))
-
-    pred = (proba_bad >= threshold).astype(int)
-    proba_good = 1.0 - proba_bad
-
-    predicted_confidence = np.where(pred == 1, proba_bad, proba_good)
-
-    df = pd.DataFrame(
-        {
-            "sample_idx": np.asarray(sample_indices, dtype=int),
-            "true_class": y_test_array,
-            "predicted_class": pred,
-            "raw_bad_probability": proba_bad,
-            "predicted_confidence": predicted_confidence,
-        }
-    )
-
-    df["true_label"] = df["true_class"].map(to_bad_positive_label)
-    df["predicted_label"] = df["predicted_class"].map(to_bad_positive_label)
-    df["is_correct"] = df["true_class"] == df["predicted_class"]
-
-    return df
+    confidence_df = pd.DataFrame(rows)
+    confidence_df = confidence_df.sort_values("sample_idx").reset_index(drop=True)
+    return confidence_df
 
 
-def add_warning_type(confidence_df):
+def add_warning_type_by_reference(
+    confidence_df: pd.DataFrame,
+    reference_df: pd.DataFrame,
+):
+    """
+    warning_type은 confidence_df 내부 120개가 아니라,
+    reference_df 전체 테스트셋 기준 calibrated confidence 분포로 계산한다.
+
+    predicted_class별 기준:
+    - confidence > mean: none
+    - mean - 1σ < confidence <= mean: weak_warning
+    - confidence <= mean - 1σ: strong_warning
+    """
+
     confidence_df = confidence_df.copy()
     confidence_df["warning_type"] = "none"
     class_stats = []
 
     for class_value in (0, 1):
-        mask = confidence_df["predicted_class"] == class_value
-        subset = confidence_df.loc[mask, "predicted_confidence"]
-        if subset.empty:
+        ref_mask = reference_df["predicted_class"] == class_value
+        ref_subset = reference_df.loc[ref_mask, "predicted_confidence"]
+
+        if ref_subset.empty:
             continue
 
-        mean_conf = subset.mean()
-        std_conf = subset.std(ddof=0)
+        mean_conf = ref_subset.mean()
+        std_conf = ref_subset.std(ddof=0)
         mean_minus_1sigma = mean_conf - std_conf
 
+        target_mask = confidence_df["predicted_class"] == class_value
+
         confidence_df.loc[
-            mask
+            target_mask
             & (confidence_df["predicted_confidence"] <= mean_conf)
             & (confidence_df["predicted_confidence"] > mean_minus_1sigma),
             "warning_type",
         ] = "weak_warning"
 
         confidence_df.loc[
-            mask & (confidence_df["predicted_confidence"] <= mean_minus_1sigma),
+            target_mask
+            & (confidence_df["predicted_confidence"] <= mean_minus_1sigma),
             "warning_type",
         ] = "strong_warning"
 
@@ -164,17 +178,17 @@ def add_warning_type(confidence_df):
             {
                 "class_value": int(class_value),
                 "class_label": to_bad_positive_label(class_value),
-                "sample_count": int(len(subset)),
-                "mean": float(mean_conf),
-                "std": float(std_conf),
-                "mean_minus_1sigma": float(mean_minus_1sigma),
+                "reference_sample_count": int(len(ref_subset)),
+                "reference_mean": float(mean_conf),
+                "reference_std": float(std_conf),
+                "reference_mean_minus_1sigma": float(mean_minus_1sigma),
             }
         )
 
     return confidence_df, class_stats
 
 
-def summarize_warning_types(confidence_df):
+def summarize_warning_types(confidence_df: pd.DataFrame):
     warning_types = ["strong_warning", "weak_warning", "none"]
     summary = []
 
@@ -211,7 +225,7 @@ def summarize_warning_types(confidence_df):
     return summary
 
 
-def summarize_group(df, class_col, confidence_col):
+def summarize_group(df: pd.DataFrame, class_col: str, confidence_col: str):
     summary_rows = []
 
     for class_value in (0, 1):
@@ -223,7 +237,7 @@ def summarize_group(df, class_col, confidence_col):
 
         summary_rows.append(
             {
-                "class_value": class_value,
+                "class_value": int(class_value),
                 "class_label": to_bad_positive_label(class_value),
                 "sample_count": int(len(confidence_values)),
                 "mean_confidence": float(confidence_values.mean()),
@@ -240,59 +254,20 @@ def summarize_group(df, class_col, confidence_col):
 def main():
     args = parse_args()
 
-    df = pd.read_csv(args.data_path)
-    df = df.drop(columns=DROP_COLUMNS, errors="ignore")
+    shap_dir = resolve_output_path(args.shap_dir)
+    reference_shap_dir = resolve_output_path(args.reference_shap_dir)
 
-    y = load_bad_positive_target(df)
-    X = df.drop(columns=["class"], errors="ignore")
+    output_csv = resolve_output_path(args.output_csv)
+    output_json = resolve_output_path(args.output_json)
 
-    X_train, X_test, y_train, y_test = train_test_split(
-        X,
-        y,
-        test_size=0.2,
-        random_state=42,
-        stratify=y,
+    confidence_df = load_shap_confidence_records(shap_dir)
+    reference_df = load_shap_confidence_records(reference_shap_dir)
+
+    confidence_df, warning_class_stats = add_warning_type_by_reference(
+        confidence_df=confidence_df,
+        reference_df=reference_df,
     )
 
-    full_test_sample_count = len(X_test)
-
-    if args.random_samples is not None or args.sample_indices or args.sample_index_file:
-        sample_indices = select_sample_indices(args, full_test_sample_count)
-    else:
-        sample_indices = list(range(full_test_sample_count))
-
-    tuned = tune_rf(X_train, y_train, args)
-
-    raw_rf = make_rf(**tuned["params"])
-    raw_rf.fit(X_train, y_train)
-
-    raw_proba_test = raw_rf.predict_proba(X_test)[:, 1]
-
-    raw_test_metrics = evaluate_split_at_threshold(
-        y_test,
-        raw_proba_test,
-        tuned["threshold"],
-    )
-
-    y_test_selected = y_test.iloc[sample_indices]
-    raw_proba_selected = raw_proba_test[sample_indices]
-
-    raw_selected_metrics = evaluate_split_at_threshold(
-        y_test_selected,
-        raw_proba_selected,
-        tuned["threshold"],
-    )
-
-    confidence_df = build_confidence_dataframe(
-        y_test_selected,
-        raw_proba_selected,
-        tuned["threshold"],
-        sample_indices=sample_indices,
-    )
-
-    confidence_df["raw_bad_probability"] = raw_proba_selected
-
-    confidence_df, warning_class_stats = add_warning_type(confidence_df)
     warning_summary = summarize_warning_types(confidence_df)
 
     predicted_summary = summarize_group(
@@ -309,6 +284,7 @@ def main():
 
     overall_summary = {
         "sample_count": int(len(confidence_df)),
+        "reference_sample_count": int(len(reference_df)),
         "mean_predicted_confidence": float(
             confidence_df["predicted_confidence"].mean()
         ),
@@ -318,15 +294,11 @@ def main():
         "accuracy": float(confidence_df["is_correct"].mean()),
     }
 
-    output_csv = resolve_output_path(args.output_csv)
-    output_json = resolve_output_path(args.output_json)
-
     output_csv.parent.mkdir(parents=True, exist_ok=True)
     output_json.parent.mkdir(parents=True, exist_ok=True)
 
     confidence_df.to_csv(output_csv, index=False)
 
-    # Split by true_class and save separate CSV files
     good_df = confidence_df[confidence_df["true_class"] == 0]
     bad_df = confidence_df[confidence_df["true_class"] == 1]
 
@@ -337,30 +309,16 @@ def main():
     bad_df.to_csv(bad_csv_path, index=False)
 
     payload = {
-        "data_path": args.data_path,
+        "input_shap_dir": str(shap_dir),
+        "reference_shap_dir": str(reference_shap_dir),
         "positive_class": {"value": 1, "label": "BAD CREDIT RISK"},
-        "full_test_sample_count": int(full_test_sample_count),
-        "tuned_params": tuned["params"],
-        "cv_auc": float(tuned["cv_auc"]),
+        "warning_reference": (
+            "warning_type is computed using calibrated_confidence distribution "
+            "from reference_shap_dir, grouped by predicted_class."
+        ),
         "overall": overall_summary,
         "warning_type_class_stats": warning_class_stats,
         "warning_type_summary": warning_summary,
-        "raw_test_metrics": {
-            "accuracy": float(raw_test_metrics["accuracy"]),
-            "f1": float(raw_test_metrics["f1"]),
-            "auc": float(raw_test_metrics["auc"]),
-            "sensitivity": float(raw_test_metrics["sensitivity"]),
-            "specificity": float(raw_test_metrics["specificity"]),
-            "confusion": [int(v) for v in raw_test_metrics["confusion"]],
-        },
-        "raw_selected_metrics": {
-            "accuracy": float(raw_selected_metrics["accuracy"]),
-            "f1": float(raw_selected_metrics["f1"]),
-            "auc": float(raw_selected_metrics["auc"]),
-            "sensitivity": float(raw_selected_metrics["sensitivity"]),
-            "specificity": float(raw_selected_metrics["specificity"]),
-            "confusion": [int(v) for v in raw_selected_metrics["confusion"]],
-        },
         "by_predicted_class": predicted_summary,
         "by_true_class": true_summary,
     }
@@ -368,28 +326,20 @@ def main():
     with output_json.open("w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
 
-    print("=== Predicted Confidence Summary ===")
-    print("Positive class         : BAD CREDIT RISK (1)")
+    print("=== Confidence Summary from SHAP JSON files ===")
+    print(f"Input SHAP dir     : {shap_dir}")
+    print(f"Reference SHAP dir : {reference_shap_dir}")
+    print(f"Loaded input samples     : {len(confidence_df)}")
+    print(f"Loaded reference samples : {len(reference_df)}")
 
-    print(
-        "\nTest metrics: "
-        f"acc={raw_test_metrics['accuracy']:.4f}, "
-        f"f1={raw_test_metrics['f1']:.4f}, "
-        f"auc={raw_test_metrics['auc']:.4f}"
-    )
-
-    print(f"\nTest sample count: {len(confidence_df)}")
-    if len(confidence_df) != full_test_sample_count:
-        print(f"Full test sample count: {full_test_sample_count}")
-        print(f"Selected sample indices: {sample_indices}")
-
-    print("\n=== Predicted confidence 기준 ===")
+    print("\n=== Reference calibrated confidence 기준 ===")
     for row in warning_class_stats:
         print(
             f"{row['class_label']}: "
-            f"mean={row['mean']:.4f}, "
-            f"std={row['std']:.4f}, "
-            f"mean-1σ={row['mean_minus_1sigma']:.4f}"
+            f"reference_n={row['reference_sample_count']}, "
+            f"mean={row['reference_mean']:.4f}, "
+            f"std={row['reference_std']:.4f}, "
+            f"mean-1σ={row['reference_mean_minus_1sigma']:.4f}"
         )
 
     print("\n=== Warning type summary ===")
@@ -425,10 +375,10 @@ def main():
             f"max={row['max_confidence']:.4f}"
         )
 
-    print(f"\nSaved CSV : {output_csv}")
-    print(f"Saved CSV (GOOD): {good_csv_path}")
-    print(f"Saved CSV (BAD): {bad_csv_path}")
-    print(f"Saved JSON: {output_json}")
+    print(f"\nSaved CSV       : {output_csv}")
+    print(f"Saved CSV GOOD  : {good_csv_path}")
+    print(f"Saved CSV BAD   : {bad_csv_path}")
+    print(f"Saved JSON      : {output_json}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,31 @@
+{
+  "sample_idx": 39,
+  "true_label": "BAD CREDIT RISK",
+  "prediction": {
+    "predict_label": "BAD CREDIT RISK",
+    "calibrated_confidence": 0.5470726573990548
+  },
+  "tuples": [
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.05585311794201759,
+      "abs_shap": 0.05585311794201759,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.03993098732904914,
+      "abs_shap": 0.03993098732904914,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "purpose_new car",
+      "definition": "Loan purpose: purchase of a new car.",
+      "shap_value": 0.029125554940048346,
+      "abs_shap": 0.029125554940048346,
+      "direction": "increase_risk"
+    }
+  ]
+}

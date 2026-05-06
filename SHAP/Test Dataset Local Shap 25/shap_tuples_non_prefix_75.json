@@ -1,0 +1,31 @@
+{
+  "sample_idx": 75,
+  "true_label": "GOOD CREDIT RISK",
+  "prediction": {
+    "predict_label": "GOOD CREDIT RISK",
+    "calibrated_confidence": 0.7711723911315433
+  },
+  "tuples": [
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.05669583028864866,
+      "abs_shap": 0.05669583028864866,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.03777274183566865,
+      "abs_shap": 0.03777274183566865,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "housing_own",
+      "definition": "Housing status: owns housing.",
+      "shap_value": 0.030473068565444045,
+      "abs_shap": 0.030473068565444045,
+      "direction": "increase_risk"
+    }
+  ]
+}

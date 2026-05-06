@@ -1,0 +1,31 @@
+{
+  "sample_idx": 56,
+  "true_label": "BAD CREDIT RISK",
+  "prediction": {
+    "predict_label": "GOOD CREDIT RISK",
+    "calibrated_confidence": 0.65070030968435
+  },
+  "tuples": [
+    {
+      "feature": "credit_amount",
+      "definition": "Credit amount requested by the applicant.",
+      "shap_value": 0.08791559289393307,
+      "abs_shap": 0.08791559289393307,
+      "direction": "increase_risk"
+    },
+    {
+      "feature": "savings_status_no known savings",
+      "definition": "Savings account status: no known savings account.",
+      "shap_value": -0.07486049947186178,
+      "abs_shap": 0.07486049947186178,
+      "direction": "decrease_risk"
+    },
+    {
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.045347922406794396,
+      "abs_shap": 0.045347922406794396,
+      "direction": "increase_risk"
+    }
+  ]
+}

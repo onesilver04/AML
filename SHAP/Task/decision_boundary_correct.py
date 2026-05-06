@@ -1,368 +1,294 @@
-# 정상 분류된 샘플 중에서 decision boundary 기준 거리 구분
-
 import argparse
 import json
+import re
 from pathlib import Path
 
 import pandas as pd
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_INPUT = "SHAP/Task/Classified/correct_classified_test_samples.csv"
-DEFAULT_SIGMA_INPUT = "SHAP/test_confidence_by_sample_bad_positive.csv"
-DEFAULT_X_TEST = PROJECT_ROOT / "X_test.csv"
-DEFAULT_WITHIN_OUTPUT = PROJECT_ROOT / "SHAP/Task/Classified/decision_boundary_within_1sigma.csv"
-DEFAULT_OUTSIDE_OUTPUT = PROJECT_ROOT / "SHAP/Task/Classified/decision_boundary_outside_1sigma.csv"
-DEFAULT_SUMMARY_OUTPUT = PROJECT_ROOT / "SHAP/Task/Classified/decision_boundary_summary.json"
-DEFAULT_CLOSE_JSON_OUTPUT = PROJECT_ROOT / "SHAP/Task/Classified/decision_boundary_closest_51.json"
-DEFAULT_FAR_JSON_OUTPUT = PROJECT_ROOT / "SHAP/Task/Classified/decision_boundary_farthest_51.json"
-DEFAULT_CLOSE_CSV_OUTPUT = PROJECT_ROOT / "SHAP/Task/Classified/decision_boundary_closest_51.csv"
-DEFAULT_FAR_CSV_OUTPUT = PROJECT_ROOT / "SHAP/Task/Classified/decision_boundary_farthest_51.csv"
+
+FEATURE_COLUMNS = [
+    "duration",
+    "credit_amount",
+    "installment_commitment",
+    "age",
+    "existing_credits",
+    "checking_status_0<=X<200",
+    "checking_status_<0",
+    "checking_status_>=200",
+    "checking_status_no checking",
+    "credit_history_all paid",
+    "credit_history_critical/other existing credit",
+    "credit_history_delayed previously",
+    "credit_history_existing paid",
+    "credit_history_no credits/all paid",
+    "purpose_business",
+    "purpose_domestic appliance",
+    "purpose_education",
+    "purpose_furniture/equipment",
+    "purpose_new car",
+    "purpose_other",
+    "purpose_radio/tv",
+    "purpose_repairs",
+    "purpose_retraining",
+    "purpose_used car",
+    "savings_status_100<=X<500",
+    "savings_status_500<=X<1000",
+    "savings_status_<100",
+    "savings_status_>=1000",
+    "savings_status_no known savings",
+    "employment_1<=X<4",
+    "employment_4<=X<7",
+    "employment_<1",
+    "employment_>=7",
+    "employment_unemployed",
+    "housing_for free",
+    "housing_own",
+    "housing_rent",
+    "job_high qualif/self emp/mgmt",
+    "job_skilled",
+    "job_unemp/unskilled non res",
+    "job_unskilled resident",
+    "Sex",
+    "Married",
+]
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(
-        description=(
-            "Split test samples by whether raw_bad_probability falls within "
-            "decision_boundary +/- sigma."
-        )
-    )
-    parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
+    parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--sigma-input",
-        type=Path,
-        default=DEFAULT_SIGMA_INPUT,
-        help=(
-            "CSV used to calculate sigma. Defaults to the full test confidence "
-            "file; --input defaults to the correctly classified samples file."
-        ),
+        "--shap-dir",
+        default="SHAP/Test Dataset Local Shap 25",
     )
-    parser.add_argument("--x-test", type=Path, default=DEFAULT_X_TEST)
-    parser.add_argument("--decision-boundary", type=float, default=0.56)
+    parser.add_argument(
+        "--confidence-csv",
+        default="SHAP/confidence.csv",
+    )
+    parser.add_argument(
+        "--x-test",
+        default="X_test.csv",
+    )
+    parser.add_argument(
+        "--decision-boundary",
+        type=float,
+        default=0.4,
+    )
     parser.add_argument(
         "--sigma-multiplier",
         type=float,
         default=1.0,
-        help="Multiplier applied to the raw_bad_probability standard deviation.",
     )
-    parser.add_argument("--within-output", type=Path, default=DEFAULT_WITHIN_OUTPUT)
-    parser.add_argument("--outside-output", type=Path, default=DEFAULT_OUTSIDE_OUTPUT)
-    parser.add_argument("--summary-output", type=Path, default=DEFAULT_SUMMARY_OUTPUT)
-    parser.add_argument("--close-json-output", type=Path, default=DEFAULT_CLOSE_JSON_OUTPUT)
-    parser.add_argument("--far-json-output", type=Path, default=DEFAULT_FAR_JSON_OUTPUT)
-    parser.add_argument("--close-csv-output", type=Path, default=DEFAULT_CLOSE_CSV_OUTPUT)
-    parser.add_argument("--far-csv-output", type=Path, default=DEFAULT_FAR_CSV_OUTPUT)
-    parser.add_argument("--selection-count", type=int, default=51)
+    parser.add_argument(
+        "--output",
+        default="SHAP/test_dataset_decision_boundary_features.csv",
+    )
     return parser.parse_args()
 
 
-def resolve_path(path: Path) -> Path:
-    return path if path.is_absolute() else PROJECT_ROOT / path
+def resolve_path(path_str: str) -> Path:
+    path = Path(path_str)
+    if path.is_absolute():
+        return path
+    return PROJECT_ROOT / path
 
 
-def load_predictions(path: Path) -> pd.DataFrame:
-    path = resolve_path(path)
+def extract_sample_idx(path: Path) -> int:
+    match = re.search(r"shap_tuples_non_prefix_(\d+)\.json$", path.name)
+    if not match:
+        raise ValueError(f"Invalid filename: {path.name}")
+    return int(match.group(1))
+
+
+def label_to_class(label: str) -> int:
+    label = str(label).strip().upper()
+    if label == "BAD CREDIT RISK":
+        return 1
+    if label == "GOOD CREDIT RISK":
+        return 0
+    raise ValueError(f"Unknown label: {label}")
+
+def load_confidence_csv(path: Path) -> pd.DataFrame:
     if not path.exists():
-        raise FileNotFoundError(f"Input file does not exist: {path}")
+        raise FileNotFoundError(f"confidence CSV not found: {path}")
 
     df = pd.read_csv(path)
-    required_cols = {"sample_idx", "raw_bad_probability"}
-    missing_cols = required_cols - set(df.columns)
-    if missing_cols:
+
+    required_cols = {
+        "sample_idx",
+        "warning_type",
+    }
+
+    missing = required_cols - set(df.columns)
+
+    if missing:
         raise ValueError(
-            "input file is missing required columns: "
-            + ", ".join(sorted(missing_cols))
+            f"confidence CSV missing columns: {sorted(missing)}"
         )
-    return df
+
+    return df[["sample_idx", "warning_type"]].copy()
 
 
-def load_x_test(path: Path) -> pd.DataFrame:
-    path = resolve_path(path)
-    if not path.exists():
-        raise FileNotFoundError(f"X_test file does not exist: {path}")
+def load_shap_jsons(shap_dir: Path) -> pd.DataFrame:
+    json_paths = sorted(
+        shap_dir.glob("shap_tuples_non_prefix_*.json"),
+        key=extract_sample_idx,
+    )
 
-    x_test = pd.read_csv(path)
-    x_test = x_test.copy()
+    if not json_paths:
+        raise FileNotFoundError(
+            f"No shap_tuples_non_prefix_*.json found in: {shap_dir}"
+        )
+
+    rows = []
+
+    for path in json_paths:
+        with path.open("r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        sample_idx = int(data.get("sample_idx", extract_sample_idx(path)))
+
+        true_label = data["true_label"]
+        prediction = data["prediction"]
+        predicted_label = prediction["predict_label"]
+
+        confidence = float(prediction["calibrated_confidence"])
+
+        true_class = label_to_class(true_label)
+        predicted_class = label_to_class(predicted_label)
+
+        # JSON에는 raw_bad_probability가 없으므로
+        # calibrated_confidence에서 calibrated bad probability를 복원함.
+        if predicted_class == 1:
+            bad_probability = confidence
+        else:
+            bad_probability = 1.0 - confidence
+
+        good_probability = 1.0 - bad_probability
+
+        rows.append(
+            {
+                "sample_idx": sample_idx,
+                "true_class": true_class,
+                "true_label": true_label,
+                "predicted_class": predicted_class,
+                "predicted_label": predicted_label,
+                "is_correct": true_class == predicted_class,
+                "probability_raw_bad_probability": bad_probability,
+                "probability_raw_good_probability": good_probability,
+                "bad_prediction_confidence": confidence,
+            }
+        )
+
+    return pd.DataFrame(rows).sort_values("sample_idx").reset_index(drop=True)
+
+
+def load_x_test(x_test_path: Path) -> pd.DataFrame:
+    if not x_test_path.exists():
+        raise FileNotFoundError(f"X_test file not found: {x_test_path}")
+
+    x_test = pd.read_csv(x_test_path).copy()
     x_test.insert(0, "sample_idx", range(len(x_test)))
     return x_test
 
 
-def clean_json_value(value):
-    if pd.isna(value):
-        return None
-    if hasattr(value, "item"):
-        return value.item()
-    return value
-
-
-def row_to_clean_dict(row: pd.Series) -> dict:
-    return {key: clean_json_value(value) for key, value in row.items()}
-
-
-def build_sample_records(samples_df: pd.DataFrame, x_test: pd.DataFrame) -> list[dict]:
-    feature_lookup = x_test.set_index("sample_idx")
-    probability_cols = [
-        "raw_bad_probability",
-        "raw_good_probability",
-        "predicted_bad_probability",
-        "predicted_good_probability",
-        "predicted_confidence",
-        "true_class_confidence",
-        "predicted_threshold_relative_confidence",
-        "true_class_threshold_relative_confidence",
-    ]
-
-    records = []
-    for _, row in samples_df.iterrows():
-        sample_idx = int(row["sample_idx"])
-        if sample_idx not in feature_lookup.index:
-            raise ValueError(f"sample_idx not found in X_test: {sample_idx}")
-
-        probability_values = {
-            col: clean_json_value(row[col])
-            for col in probability_cols
-            if col in samples_df.columns
-        }
-
-        records.append(
-            {
-                "sample_idx": sample_idx,
-                "selection_group": clean_json_value(row["selection_group"]),
-                "sigma_group": clean_json_value(row["decision_boundary_sigma_group"]),
-                "decision_boundary_distance": clean_json_value(
-                    row["decision_boundary_distance"]
-                ),
-                "decision_boundary_abs_distance": clean_json_value(
-                    row["decision_boundary_abs_distance"]
-                ),
-                "true_class": clean_json_value(row.get("true_class")),
-                "true_label": clean_json_value(row.get("true_label")),
-                "predicted_class": clean_json_value(row.get("predicted_class")),
-                "predicted_label": clean_json_value(row.get("predicted_label")),
-                "is_correct": clean_json_value(row.get("is_correct")),
-                "confidence_category": clean_json_value(
-                    row.get("confidence_category")
-                ),
-                "prediction_probabilities": probability_values,
-                "original_features": row_to_clean_dict(feature_lookup.loc[sample_idx]),
-            }
-        )
-
-    return records
-
-
-def flatten_sample_records(records: list[dict]) -> pd.DataFrame:
-    rows = []
-    for record in records:
-        row = {}
-        for key, value in record.items():
-            if key == "prediction_probabilities":
-                row.update(
-                    {
-                        f"probability_{prob_key}": prob_value
-                        for prob_key, prob_value in value.items()
-                    }
-                )
-            elif key == "original_features":
-                row.update(
-                    {
-                        f"feature_{feature_key}": feature_value
-                        for feature_key, feature_value in value.items()
-                    }
-                )
-            else:
-                row[key] = value
-        rows.append(row)
-    return pd.DataFrame(rows)
-
-
-def write_selection_outputs(
-    records: list[dict],
-    output_json: Path,
-    output_csv: Path,
-    metadata: dict,
-):
-    output_json.parent.mkdir(parents=True, exist_ok=True)
-    output_csv.parent.mkdir(parents=True, exist_ok=True)
-
-    payload = {
-        **metadata,
-        "selected_count": int(len(records)),
-        "samples": records,
-    }
-
-    with output_json.open("w", encoding="utf-8") as f:
-        json.dump(payload, f, ensure_ascii=False, indent=2)
-
-    flatten_sample_records(records).to_csv(output_csv, index=False)
-
-
-def summarize_split(name: str, df: pd.DataFrame) -> dict:
-    summary = {
-        "group": name,
-        "sample_count": int(len(df)),
-        "sample_indices": [int(idx) for idx in df["sample_idx"].tolist()],
-    }
-
-    if "is_correct" in df.columns:
-        misclassified = df[df["is_correct"] == False]
-        summary["misclassified_count"] = int(len(misclassified))
-        summary["misclassified_sample_indices"] = [
-            int(idx) for idx in misclassified["sample_idx"].tolist()
-        ]
-
-    return summary
-
-
 def main():
     args = parse_args()
-    if args.sigma_multiplier <= 0:
-        raise ValueError("--sigma-multiplier must be > 0.")
-    if args.selection_count < 1:
-        raise ValueError("--selection-count must be >= 1.")
 
-    predictions = load_predictions(args.input)
-    sigma_source = load_predictions(args.sigma_input)
-    x_test = load_x_test(args.x_test)
+    shap_dir = resolve_path(args.shap_dir)
+    x_test_path = resolve_path(args.x_test)
+    output_path = resolve_path(args.output)
 
-    proba = sigma_source["raw_bad_probability"]
-    sigma = float(proba.std(ddof=0))
+    confidence_df = load_shap_jsons(shap_dir)
+
+    warning_df = load_confidence_csv(
+        resolve_path(args.confidence_csv)
+    )
+
+    x_test = load_x_test(x_test_path)
+
+    merged = confidence_df.merge(
+        x_test,
+        on="sample_idx",
+        how="left",
+        validate="one_to_one",
+    )
+    
+    merged = merged.merge(
+        warning_df,
+        on="sample_idx",
+        how="left",
+    )
+
+    if merged[FEATURE_COLUMNS].isna().any().any():
+        missing = [
+            col for col in FEATURE_COLUMNS
+            if col not in merged.columns or merged[col].isna().any()
+        ]
+        print("Warning: some requested feature columns are missing or contain NaN:")
+        print(missing)
+
+    sigma = merged["probability_raw_bad_probability"].std(ddof=0)
     margin = sigma * args.sigma_multiplier
+
     lower_bound = args.decision_boundary - margin
     upper_bound = args.decision_boundary + margin
 
-    result = predictions.copy()
-    result["decision_boundary"] = float(args.decision_boundary)
-    result["raw_bad_probability_sigma"] = sigma
-    result["decision_boundary_lower_bound"] = lower_bound
-    result["decision_boundary_upper_bound"] = upper_bound
-    result["decision_boundary_distance"] = (
-        result["raw_bad_probability"] - args.decision_boundary
+    merged["decision_boundary_distance"] = (
+        merged["probability_raw_bad_probability"] - args.decision_boundary
     )
-    result["decision_boundary_abs_distance"] = result[
-        "decision_boundary_distance"
-    ].abs()
-    sigma_label = f"{args.sigma_multiplier:g}".replace(".", "_")
-    within_group = f"within_{sigma_label}sigma"
-    outside_group = f"outside_{sigma_label}sigma"
 
-    result["decision_boundary_sigma_group"] = outside_group
+    merged["decision_boundary_abs_distance"] = (
+        merged["decision_boundary_distance"].abs()
+    )
 
-    within_mask = result["raw_bad_probability"].between(
+    within_mask = merged["probability_raw_bad_probability"].between(
         lower_bound,
         upper_bound,
         inclusive="both",
     )
-    result.loc[within_mask, "decision_boundary_sigma_group"] = within_group
 
-    within = result[within_mask].copy()
-    outside = result[~within_mask].copy()
+    merged["distance"] = "far"
+    merged.loc[within_mask, "distance"] = "near"
 
-    within_output = resolve_path(args.within_output)
-    outside_output = resolve_path(args.outside_output)
-    summary_output = resolve_path(args.summary_output)
-    close_json_output = resolve_path(args.close_json_output)
-    far_json_output = resolve_path(args.far_json_output)
-    close_csv_output = resolve_path(args.close_csv_output)
-    far_csv_output = resolve_path(args.far_csv_output)
-
-    within_output.parent.mkdir(parents=True, exist_ok=True)
-    outside_output.parent.mkdir(parents=True, exist_ok=True)
-    summary_output.parent.mkdir(parents=True, exist_ok=True)
-
-    within.to_csv(within_output, index=False)
-    outside.to_csv(outside_output, index=False)
-
-    closest = result.sort_values(
+    output_cols = [
+        "sample_idx",
+        "distance",
+        "warning_type",
         "decision_boundary_abs_distance",
-        ascending=True,
-    ).head(args.selection_count).copy()
-    closest["selection_group"] = "closest_to_decision_boundary"
+        "true_class",
+        "true_label",
+        "predicted_class",
+        "predicted_label",
+        "is_correct",
+        "probability_raw_bad_probability",
+        "probability_raw_good_probability",
+        "bad_prediction_confidence",
+    ]
 
-    farthest = result.sort_values(
-        "decision_boundary_abs_distance",
-        ascending=False,
-    ).head(args.selection_count).copy()
-    farthest["selection_group"] = "farthest_from_decision_boundary"
+    output_cols += [f"feature_{col}" for col in FEATURE_COLUMNS]
 
-    selection_metadata = {
-        "input": str(resolve_path(args.input)),
-        "sigma_input": str(resolve_path(args.sigma_input)),
-        "x_test": str(resolve_path(args.x_test)),
-        "decision_boundary": float(args.decision_boundary),
-        "sigma_source_column": "raw_bad_probability",
-        "sigma_ddof": 0,
-        "sigma_multiplier": float(args.sigma_multiplier),
-        "sigma": sigma,
-        "lower_bound": lower_bound,
-        "upper_bound": upper_bound,
-        "selection_count": int(args.selection_count),
-        "total_sample_count": int(len(result)),
+    rename_map = {
+        col: f"feature_{col}"
+        for col in FEATURE_COLUMNS
     }
 
-    closest_records = build_sample_records(closest, x_test)
-    farthest_records = build_sample_records(farthest, x_test)
+    final_df = merged.rename(columns=rename_map)
 
-    write_selection_outputs(
-        closest_records,
-        close_json_output,
-        close_csv_output,
-        {
-            **selection_metadata,
-            "selection_rule": (
-                f"closest {args.selection_count} correctly classified samples "
-                "to the decision boundary"
-            ),
-        },
-    )
-    write_selection_outputs(
-        farthest_records,
-        far_json_output,
-        far_csv_output,
-        {
-            **selection_metadata,
-            "selection_rule": (
-                f"farthest {args.selection_count} correctly classified samples "
-                "from the decision boundary"
-            ),
-        },
-    )
+    final_df = final_df[output_cols]
 
-    summary = {
-        "input": str(resolve_path(args.input)),
-        "sigma_input": str(resolve_path(args.sigma_input)),
-        "decision_boundary": float(args.decision_boundary),
-        "sigma_source_column": "raw_bad_probability",
-        "sigma_ddof": 0,
-        "sigma_multiplier": float(args.sigma_multiplier),
-        "sigma": sigma,
-        "lower_bound": lower_bound,
-        "upper_bound": upper_bound,
-        "total_sample_count": int(len(result)),
-        "sigma_source_sample_count": int(len(sigma_source)),
-        within_group: summarize_split(within_group, within),
-        outside_group: summarize_split(outside_group, outside),
-    }
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    final_df.to_csv(output_path, index=False)
 
-    with summary_output.open("w", encoding="utf-8") as f:
-        json.dump(summary, f, ensure_ascii=False, indent=2)
-
-    print(f"Decision boundary: {args.decision_boundary:.4f}")
-    print(f"Sigma: {sigma:.4f}")
-    print(f"Sigma source samples: {len(sigma_source)}")
-    print(f"Split target samples: {len(result)}")
-    print(f"Within range: {lower_bound:.4f} ~ {upper_bound:.4f}")
-    print(f"Within +/- {args.sigma_multiplier:g} sigma: {len(within)}")
-    print(f"Outside +/- {args.sigma_multiplier:g} sigma: {len(outside)}")
-    print(f"Closest selected: {len(closest_records)}")
-    print(f"Farthest selected: {len(farthest_records)}")
-    print(f"Saved within CSV : {within_output}")
-    print(f"Saved outside CSV: {outside_output}")
-    print(f"Saved summary    : {summary_output}")
-    print(f"Saved closest JSON: {close_json_output}")
-    print(f"Saved closest CSV : {close_csv_output}")
-    print(f"Saved farthest JSON: {far_json_output}")
-    print(f"Saved farthest CSV : {far_csv_output}")
+    print("=== Saved decision boundary feature file ===")
+    print(f"Input SHAP dir: {shap_dir}")
+    print(f"X_test: {x_test_path}")
+    print(f"Output: {output_path}")
+    print(f"Total samples: {len(final_df)}")
+    print(f"Decision boundary: {args.decision_boundary}")
+    print(f"Sigma: {sigma:.6f}")
+    print(f"Near range: {lower_bound:.6f} ~ {upper_bound:.6f}")
+    print(final_df["distance"].value_counts())
 
 
 if __name__ == "__main__":
