@@ -16,7 +16,7 @@ from RAG.make_rag_query import generate_rag_queries
 
 DEFAULT_SHAP_DIR = Path("SHAP/Test Dataset Local Shap 25")
 DEFAULT_OUTPUT = Path("RAG/QA/true_102_feature_qa.jsonl")
-DEFAULT_QUERY_OUTPUT_DIR = Path("RAG/QA/Queries/True")
+DEFAULT_QUERY_OUTPUT_DIR = Path("RAG/QA/Queries/250 Queries")
 
 
 def parse_args():
@@ -368,13 +368,13 @@ def resolve_output_path(args, sample_idx=None) -> Path:
         return output_path
 
     if sample_idx is not None:
-        return Path("RAG/QA") / f"sample_{sample_idx}_feature_qa.jsonl"
+        return Path("RAG/QA/Summary") / f"sample_{sample_idx}_feature_qa.jsonl"
 
     if args.input_json:
         sample_idx = load_shap_json(Path(args.input_json)).get("sample_idx", "unknown")
-        return Path("RAG/QA") / f"sample_{sample_idx}_feature_qa.jsonl"
+        return Path("RAG/QA/Summary") / f"sample_{sample_idx}_feature_qa.jsonl"
 
-    return Path(args.output)
+    return Path("RAG/QA/Summary") / "default_output.jsonl"
 
 def uses_manual_sample_selection(args) -> bool:
     return (
@@ -450,14 +450,22 @@ def main():
     # 입력 파일 목록 만들기
     if args.sample_indices or args.sample_index_file:
         sample_indices = select_sample_indices(args)
+
         input_json_paths = [
             shap_json_path(shap_dir, sample_idx)
             for sample_idx in sample_indices
         ]
+
     elif args.input_json:
         input_json_paths = [Path(args.input_json)]
+
     else:
-        raise ValueError("Either --input-json or --sample-indices must be provided.")
+        sample_indices = sample_indices_from_shap_dir(shap_dir)
+
+        input_json_paths = [
+            shap_json_path(shap_dir, sample_idx)
+            for sample_idx in sample_indices
+        ]
 
     total_records = 0
 

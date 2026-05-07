@@ -1,0 +1,27 @@
+{
+  "sample_idx": 79,
+  "shap_json_path": "SHAP/Test Dataset Local Shap Correct/shap_tuples_non_prefix_79.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "credit_history_no credits/all paid",
+      "feature_definition": "Credit history: no credits taken or all previous credits paid back duly.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the contribution of a credit history characterized by no credits taken or all previous credits paid back duly to elevated credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Statistical impact of a checking account status indicating no checking account on the likelihood of credit risk realization."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "savings_status_<100",
+      "feature_definition": "Savings account status: savings below 100 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Investigation into the relationship between savings account balances below 100 DM and the reduction of credit risk exposure."
+    }
+  ]
+}

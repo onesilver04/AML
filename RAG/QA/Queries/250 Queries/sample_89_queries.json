@@ -1,0 +1,27 @@
+{
+  "sample_idx": 89,
+  "shap_json_path": "SHAP/Test Dataset Local Shap Correct/shap_tuples_non_prefix_89.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the mitigating effect of loan duration in months on credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Statistical impact of having no checking account status on increasing credit risk."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "checking_status_0<=X<200",
+      "feature_definition": "Checking account status: balance between 0 and 200 DM.",
+      "feature_direction": "increase_risk",
+      "question": "Determinants of credit risk: The association between a checking account balance between 0 and 200 DM and heightened default probability."
+    }
+  ]
+}

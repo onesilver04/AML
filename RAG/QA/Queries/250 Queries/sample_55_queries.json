@@ -1,0 +1,27 @@
+{
+  "sample_idx": 55,
+  "shap_json_path": "SHAP/Test Dataset Local Shap Correct/shap_tuples_non_prefix_55.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "credit_amount",
+      "feature_definition": "Credit amount requested by the applicant.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the relationship between credit amount requested by the applicant and increased credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Investigation into the association between checking account status: no checking account and reduced credit risk exposure."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "increase_risk",
+      "question": "Statistical impact of loan duration in months on elevated credit risk drivers."
+    }
+  ]
+}

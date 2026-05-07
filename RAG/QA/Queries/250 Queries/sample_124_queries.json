@@ -1,0 +1,27 @@
+{
+  "sample_idx": 124,
+  "shap_json_path": "SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_124.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis examines the statistical impact of lacking a checking account on credit default probability and loan repayment behavior."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Research investigates the determinants of reduced credit risk associated with maintaining a negative checking account balance in consumer lending portfolios."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "savings_status_<100",
+      "feature_definition": "Savings account status: savings below 100 DM.",
+      "feature_direction": "increase_risk",
+      "question": "Studies evaluate the contribution of minimal savings account balances as a credit risk driver to elevated default probability and financial distress."
+    }
+  ]
+}

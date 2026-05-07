@@ -1,0 +1,27 @@
+{
+  "sample_idx": 73,
+  "shap_json_path": "SHAP/Test Dataset Local Shap Correct/shap_tuples_non_prefix_73.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "savings_status_no known savings",
+      "feature_definition": "Savings account status: no known savings account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the association between the absence of a known savings account and reduced credit risk."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Statistical investigation into the contribution of lacking a checking account towards increased credit default probability."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "savings_status_<100",
+      "feature_definition": "Savings account status: savings below 100 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Determinants of credit stability regarding savings balances below 100 DM and their impact on decreasing risk exposure."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "sample_idx": 67,
+  "shap_json_path": "SHAP/Test Dataset Local Shap Correct/shap_tuples_non_prefix_67.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the impact of having no checking account on increased credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "feature_definition": "Credit history: critical account or other existing credits.",
+      "feature_direction": "decrease_risk",
+      "question": "Investigation into the association between critical account or other existing credits and decreased credit risk exposure."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "housing_own",
+      "feature_definition": "Housing status: owns housing.",
+      "feature_direction": "increase_risk",
+      "question": "Statistical analysis of the relationship between owning housing and elevated credit risk levels."
+    }
+  ]
+}

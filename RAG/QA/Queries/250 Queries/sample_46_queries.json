@@ -1,0 +1,27 @@
+{
+  "sample_idx": 46,
+  "shap_json_path": "SHAP/Test Dataset Local Shap Correct/shap_tuples_non_prefix_46.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the contribution of having no checking account to increased credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "savings_status_<100",
+      "feature_definition": "Savings account status: savings below 100 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Statistical impact of savings balances below 100 DM on the reduction of credit risk."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "credit_history_critical/other existing credit",
+      "feature_definition": "Credit history: critical account or other existing credits.",
+      "feature_direction": "decrease_risk",
+      "question": "Determinants of credit risk mitigation associated with critical credit history or other existing credits."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "sample_idx": 41,
+  "shap_json_path": "SHAP/Test Dataset Local Shap Correct/shap_tuples_non_prefix_41.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the impact of having no checking account on reducing credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Statistical investigation into the relationship between a negative checking account balance and mitigated credit risk."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "housing_own",
+      "feature_definition": "Housing status: owns housing.",
+      "feature_direction": "increase_risk",
+      "question": "Determinants of elevated credit risk associated with home ownership status."
+    }
+  ]
+}

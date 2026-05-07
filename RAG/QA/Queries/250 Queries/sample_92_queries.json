@@ -1,0 +1,27 @@
+{
+  "sample_idx": 92,
+  "shap_json_path": "SHAP/Test Dataset Local Shap Correct/shap_tuples_non_prefix_92.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "savings_status_no known savings",
+      "feature_definition": "Savings account status: no known savings account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis investigates the relationship between no known savings account status and decreased credit risk."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Research examines the determinants of credit risk associated with the absence of a checking account and its contribution to loan default."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "purpose_education",
+      "feature_definition": "Loan purpose: education.",
+      "feature_direction": "increase_risk",
+      "question": "Studies explore the statistical impact of education as a loan purpose on credit risk drivers and default likelihood."
+    }
+  ]
+}

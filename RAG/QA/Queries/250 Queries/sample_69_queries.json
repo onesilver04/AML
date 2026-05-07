@@ -1,0 +1,27 @@
+{
+  "sample_idx": 69,
+  "shap_json_path": "SHAP/Test Dataset Local Shap Correct/shap_tuples_non_prefix_69.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the impact of having no checking account on reduced credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "decrease_risk",
+      "question": "Statistical investigation into loan duration in months as a driver for decreased credit risk."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "credit_history_all paid",
+      "feature_definition": "Credit history: all previous credits at this bank paid back duly.",
+      "feature_direction": "increase_risk",
+      "question": "Assessment of the association between a history of all previous credits paid back duly and increased credit risk."
+    }
+  ]
+}

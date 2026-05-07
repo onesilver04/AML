@@ -1,0 +1,27 @@
+{
+  "sample_idx": 68,
+  "shap_json_path": "SHAP/Test Dataset Local Shap Correct/shap_tuples_non_prefix_68.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the relationship between the absence of a checking account and reduced credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "decrease_risk",
+      "question": "Statistical investigation into the impact of loan duration on credit risk drivers and default mitigation."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "credit_history_critical/other existing credit",
+      "feature_definition": "Credit history: critical account or other existing credits.",
+      "feature_direction": "decrease_risk",
+      "question": "Determinants of default: examining the influence of critical credit history on lowering credit risk."
+    }
+  ]
+}
