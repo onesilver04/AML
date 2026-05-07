@@ -1,0 +1,86 @@
+{
+  "sample_idx": 171,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.83109725204528,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account, because it is associated with a lower estimated credit risk, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [1]\nThe fact that savings are very low, because it serves as a foundational feature in personal credit assessments, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that the checking account is overdrawn, because it exhibits a substantially higher estimated risk, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20002210140228271
+        },
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20521336793899536
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.20815563201904297
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.18864846229553223
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 5,
+          "score": 0.19100713729858398
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.20293015241622925
+        },
+        {
+          "sentence": "(2024).",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 17,
+          "score": 0.2048214077949524
+        },
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21034693717956543
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.18692100048065186
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1906377673149109
+        }
+      ]
+    }
+  ]
+}

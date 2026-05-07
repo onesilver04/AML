@@ -1,0 +1,87 @@
+{
+  "sample_idx": 81,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.8725079601537743,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account exhibits a clear negative association with credit risk, because it correlates with a lower estimated probability of default, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk.[1]\nThe fact that the checking account balance is below zero is statistically associated with an increase in default probability, because it indicates a liquidity shortfall that elevates default likelihood, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk.[2]\nThe fact that the savings account balance is below 100 DM has no empirical evidence linking it to credit risk exposure, because the provided analysis focuses exclusively on interest rate risk rather than deposit thresholds, is known in the literature as a signal that has no clear impact on credit risk, but the model instead identifies it as a factor that decreases risk.[3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.18163317441940308
+        },
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2052597999572754
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.22016656398773193
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.22498780488967896
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.22997498512268066
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "for all status levels of the account, but an observable interaction exists for existing accounts with a low or negative balance where the increase in risk is stronger.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 11,
+          "score": 0.23488324880599976
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.24039441347122192
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.24667221307754517
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "there is only a weak link between a bank’s exposure to interest rate risk and the change in its net interest income given an interest rate shock, which may be due to relatively low interest rate risk exposure of the banks in the sample.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.18284213542938232
+        },
+        {
+          "sentence": "Note that the exposures to interest rate risk and the exposure to credit risk are measured relative to the shock sizes of different stress tests so that the size of the coefficient cannot be interpreted, only its sign.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.18792736530303955
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험과 명확한 부정적 연관성을 보이며, 이는 채무 불이행 가능성을 낮추는 신호로 알려져 있으며, 본 모델 역시 위험 감소 요인으로 판단합니다 [1].\n체크링 계좌 잔액이 음수인 경우는 채무 불이행 확률 증가와 통계적으로 연관되어 있으나, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n저축 잔액이 100 DM 미만인 경우는 신용 위험 노출과의 연관성이 실증적으로 입증되지 않았으며, 본 모델은 이를 위험 감소 요인으로 간주합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

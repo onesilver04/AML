@@ -1,0 +1,122 @@
+{
+  "sample_idx": 176,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.8865782715228899,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account because the literature does not contain empirical analysis regarding its impact, because the literature does not contain empirical analysis regarding its impact, is known in the literature as a signal that has an unclear impact on credit risk, and the model also identifies it as a factor that decreases risk. [1]\nThe fact that the applicant has critical or other existing credits because the literature does not contain empirical evidence specifically linking these portfolios to credit risk, because the literature does not contain empirical evidence specifically linking these portfolios to credit risk, is known in the literature as a signal that has an unclear impact on credit risk, and the model also identifies it as a factor that decreases risk. [2]\nThe fact that the loan is for purchasing a used car because the literature does not contain any empirical data regarding vehicle financing, because the literature does not contain any empirical data regarding vehicle financing, is known in the literature as a signal that has an unclear impact on credit risk, and the model also identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.17877721786499023
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.18715381622314453
+        },
+        {
+          "sentence": "Traditional credit risk prediction techniques utilized a bal- anced dataset, but it is more typical to handle imbalanced datasets.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.19197142124176025
+        },
+        {
+          "sentence": "In consumer and retail lending, this uncertainty is managed using credit and be- havioural scoring systems, which predict the probability that a borrower will default on their obligations (Thomas, 2000).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.19507020711898804
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1979008913040161
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.2015078067779541
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "evidence_sentences": [
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.18473058938980103
+        },
+        {
+          "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.19236183166503906
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.1958324909210205
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "purpose_used car",
+      "evidence_sentences": [
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.21064966917037964
+        },
+        {
+          "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.22084832191467285
+        },
+        {
+          "sentence": "6 2.3 Experimental Design This study aims to enhance the digital economy by refining credit risk models used by financial institutions.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.2278372049331665
+        },
+        {
+          "sentence": "The dataset used in their study was acquired from a bank in Taiwan to examine this task.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 5,
+          "score": 0.23018020391464233
+        },
+        {
+          "sentence": "At the same time, Lobna and Afif [8] used logistic regression and discriminant analysis methods to construct a prediction model that can distinguish between \"good\" and \"bad\" borrowers for consumer loans of",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 4,
+          "score": 0.23087859153747559
+        },
+        {
+          "sentence": "By applying the chosen methods to the dataset and comparing the results across different methods, the study aims to contribute to the discussion surrounding credit risk modeling by exploring the factors that affect the likelihood of being classified as a bad credit risk in an interpretable way.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 9,
+          "score": 0.2318788766860962
+        },
+        {
+          "sentence": "Conclusion This study concludes that XGBoost and Random Forest perform comparably in credit risk prediction on the German dataset.",
+          "source": "Comparison Between XGBoost and Random Forest in Credit Risk Assessment Using the German Credit Dataset.pdf",
+          "page": 5,
+          "score": 0.23528426885604858
+        }
+      ]
+    }
+  ]
+}

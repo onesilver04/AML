@@ -1,0 +1,86 @@
+{
+  "sample_idx": 212,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.5731992940975996,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the checking account balance is negative due to standard financial models considering account status, because due to standard financial models considering account status, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that there is no checking account due to broader accounting-based features being used, because due to broader accounting-based features being used, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [2]\nThe fact that the loan purpose is education due to standard financial models relying on general financial metrics, because due to standard financial models relying on general financial metrics, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.21211540699005127
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21496164798736572
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "In consumer and retail lending, this uncertainty is managed using credit and be- havioural scoring systems, which predict the probability that a borrower will default on their obligations (Thomas, 2000).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.21451520919799805
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.22403663396835327
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.229417085647583
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.2339245080947876
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "purpose_education",
+      "evidence_sentences": [
+        {
+          "sentence": "As financial institutions provide loans and other forms of credit, they face uncertainty about whether borrowers will repay as agreed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.2095319628715515
+        },
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2159494161605835
+        },
+        {
+          "sentence": "Credit risk appears when wrong decisions associated with the approval of the loan application are taken.",
+          "source": "Credit Scoring Using Data Mining Techniques.pdf",
+          "page": 2,
+          "score": 0.21685069799423218
+        },
+        {
+          "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.2214890718460083
+        }
+      ]
+    }
+  ]
+}

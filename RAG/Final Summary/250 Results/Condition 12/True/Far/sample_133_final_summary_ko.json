@@ -1,0 +1,81 @@
+{
+  "sample_idx": 133,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.6825871023583661,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the loan duration is longer because of extended repayment periods, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [1]\nThe fact that the checking account balance is negative because of insufficient funds, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [2]\nThe fact that there is no checking account because of lacking banking infrastructure, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.17052781581878662
+        },
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17332422733306885
+        },
+        {
+          "sentence": "For example, Chang et al. applied SHAP values to credit risk models to measure the interaction effects of key features like “credit amount ” and “loan duration” [10].",
+          "source": "German Credit Risk Prediction Using Machine Learning Models.pdf",
+          "page": 10,
+          "score": 0.197554349899292
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.20489025115966797
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.20544636249542236
+        },
+        {
+          "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.20556771755218506
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1852821707725525
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.20661187171936035
+        },
+        {
+          "sentence": "Even after exclusions, the reduced OLS model still shows limited explanatory power, with an R2 of 0.24 (Adj.R 2 =0.22) and a lower but still elevated condition number (=3.78×10 4).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21548348665237427
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길어짐으로써 상환 기간이 연장된 것은 일반적으로 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 오히려 위험 감소 요인으로 판단합니다 [1].\n계좌 잔액이 부족하여 음수 상태인 것은 신용 위험 증가 요인으로 알려져 있으며, 본 모델 역시 이를 위험 증가 요인으로 분류합니다 [2].\n입출금 계좌가 없는 것은 금융 인프라 부족을 의미하여 신용 위험 감소 요인으로 해석되지만, 본 모델은 이를 위험 증가 요인으로 평가합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

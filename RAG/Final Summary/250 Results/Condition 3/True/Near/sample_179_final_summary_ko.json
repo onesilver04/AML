@@ -1,0 +1,75 @@
+{
+  "sample_idx": 179,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.43670692753244544,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that having no checking account is associated with a decrease in estimated credit risk, because it correlates with financial stability, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [1]\nThe fact that having a critical credit history or other existing credits is identified as a key risk indicator alongside other financial variables, because it serves as a standard positive predictor for default probability, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that taking a longer loan duration is empirically identified as a key risk indicator that positively contributes to elevated credit risk, because prolonged repayment periods amplify lender exposure to borrower non-payment, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1921241283416748
+        },
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19742536544799805
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.15863656997680664
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.1737518310546875
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.17420554161071777
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19060778617858887
+        },
+        {
+          "sentence": "The analysis relies on ordinary least squares (OLS) regression, which is extended to",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.191808819770813
+        },
+        {
+          "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.19382303953170776
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 재정적 안정성과 연관되어 신용 위험 감소 신호로 인식되지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n신용 문제 이력이나 기존 대출은 채무 불이행 가능성을 높이는 주요 위험 지표로 알려져 있으나, 본 모델은 이를 신용 위험 감소 요인으로 해석합니다 [2].\n대출 기간이 길어질수록 상환 기간이 연장되어 대출자의 미납 위험 노출이 증가함으로써 신용 위험이 상승하는 것으로 알려져 있으나, 본 모델 역시 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다."
+}

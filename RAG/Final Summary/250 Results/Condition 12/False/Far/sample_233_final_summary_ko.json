@@ -1,0 +1,135 @@
+{
+  "sample_idx": 233,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.6859848082647875,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the savings balance is low, because minimal savings are empirically associated with higher default probability, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [1]\nThe fact that there is no checking account, because the absence of a checking account is associated with a lower estimated risk in the dataset, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that the loan duration is extended, because longer repayment periods are explicitly linked to an increased likelihood of credit risk, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19820207357406616
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.19871556758880615
+        },
+        {
+          "sentence": "There is often a signiﬁcant difference between the minimum and maximum values in different features, so Min-Max normalization is used to scale the features within one range.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.21203768253326416
+        },
+        {
+          "sentence": "Savings are also informative.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21566438674926758
+        },
+        {
+          "sentence": "He further assumes that banks try to stabilize their future net interest income, i. e. to minimize the variance of C.NIMt,i, min IRRi var /parenleft.vsize1C.NIMt,i/parenright.vsize1= /parenleft.vsize1β1,t ⋅ θi + β2,t ⋅ IRRi/parenright.vsize12 var(ΔR) + σ2 ε (8) Taking θi as given and only being able to vary the exposure to interest rate risk IRRi, he obtains a relationship between θi and IRRi, namely that these two variables are associated in a positive way.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 24,
+          "score": 0.21633762121200562
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2165822982788086
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 5,
+          "score": 0.22114700078964233
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.22499042749404907
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.22910857200622559
+        },
+        {
+          "sentence": "Even after exclusions, the reduced OLS model still shows limited explanatory power, with an R2 of 0.24 (Adj.R 2 =0.22) and a lower but still elevated condition number (=3.78×10 4).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.23145973682403564
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.23274868726730347
+        },
+        {
+          "sentence": "SHAP analysis conﬁrmed the primacy of features like 'Duration' and 'Credit Amount' while also uncovering subtle distinctions in feature interaction between the models.",
+          "source": "Comparison Between XGBoost and Random Forest in Credit Risk Assessment Using the German Credit Dataset.pdf",
+          "page": 3,
+          "score": 0.2371387481689453
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.2382407784461975
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.201227605342865
+        },
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.20266032218933105
+        },
+        {
+          "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.21185541152954102
+        },
+        {
+          "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.21410083770751953
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.2175363302230835
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 저축이 적어 채무 불이행 가능성이 높다는 연구 결과와 대조적으로, 본 모델은 이를 신용 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌 없음은 일반적으로 신용 위험을 낮추는 요인으로 인식되지만, 본 모델은 이를 신용 위험 증가 요인으로 해석합니다 [2].\n대출 기간이 길다는 것은 통상적으로 신용 위험 증가 요인으로 여겨지지만, 본 모델은 이 요인을 신용 위험 감소 요인으로 평가합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

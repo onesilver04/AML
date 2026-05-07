@@ -1,0 +1,104 @@
+{
+  "sample_idx": 41,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.7859522467016066,
+  "final_explanation": "Based on the AI model's prediction,\n계좌 없음의 경우 데이터셋에서 낮은 위험과 연관되어 있기 때문에, 문헌에서는 신용 위험을 낮추는 신호로 알려져 있으며, 모델 또한 이를 위험을 낮추는 요인으로 식별합니다. [1]\n마이너스 잔액의 경우 기준 그룹보다 상대적으로 높은 위험을 보이기 때문에, 문헌에서는 신용 위험을 높이는 신호로 알려져 있지만, 모델은 이를 위험을 낮추는 요인으로 식별합니다. [2]\n주택 소유의 경우 통계적 관련성이 부족하기 때문에, 문헌에서는 신용 위험에 뚜렷한 영향을 미치지 않는 요인으로 알려져 있지만, 모델은 이를 위험을 높이는 요인으로 식별합니다. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20823585987091064
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20985448360443115
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.21372973918914795
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "The intuition behind this relationship is that a bank’s net interest margin (NIM) usually benefits from a higher interest level (see Busch and Memmel (2017) and Claessens et al.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 22,
+          "score": 0.2377249002456665
+        },
+        {
+          "sentence": "He further assumes that banks try to stabilize their future net interest income, i. e. to minimize the variance of C.NIMt,i, min IRRi var /parenleft.vsize1C.NIMt,i/parenright.vsize1= /parenleft.vsize1β1,t ⋅ θi + β2,t ⋅ IRRi/parenright.vsize12 var(ΔR) + σ2 ε (8) Taking θi as given and only being able to vary the exposure to interest rate risk IRRi, he obtains a relationship between θi and IRRi, namely that these two variables are associated in a positive way.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 24,
+          "score": 0.24199777841567993
+        },
+        {
+          "sentence": "Therefore, it is crucial to conduct an effective credit risk assessment before entering into a lending relationship.",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.2502989172935486
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.25209736824035645
+        },
+        {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.2549968361854553
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "housing_own",
+      "evidence_sentences": [
+        {
+          "sentence": "exposure at default secured by residential mortgages.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 13,
+          "score": 0.22605448961257935
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2387845516204834
+        },
+        {
+          "sentence": "property_magnitude Categorical String Property ownership status Age Discrete Number Age other_{p}ayment_{p}lans Categorical String Other installment plans Housing Categorical String Whether or not you own a house existing_credits Discrete Number Number of credits available Job Categorical String Whether or not you have a job num_dependents Discrete Number Number of dependents own_telephone Categorical String Whether or not you have a phone foreign_worker Categorical String Whether there are foreign employees Class Categorical String Whether or not it is suitable for credit",
+          "source": "Comparison of the impact of dimensionality reduction and data splitting on classification performance in credit risk assessment .pdf",
+          "page": 10,
+          "score": 0.23933279514312744
+        },
+        {
+          "sentence": "The significant roles of credit-related and financial characteristics,Duration,Credit amount,Checking account status, andCredit historyin the models here align with that evidence. Özdemir (2008) finds that financial variables have a stronger influence on risk classification than demographic variables, which is consistent with the findings of this study.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 29,
+          "score": 0.2432270646095276
+        },
+        {
+          "sentence": "assessed [2].",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.24831503629684448
+        }
+      ]
+    }
+  ]
+}

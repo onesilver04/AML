@@ -1,0 +1,93 @@
+{
+  "sample_idx": 32,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.8356529280346641,
+  "final_explanation": "Based on the AI model's prediction,\n계좌가 없는 경우, 신용 위험이 낮게 추정되기 때문에 문헌에서는 신용 위험을 낮추는 신호로 알려져 있지만, 모델은 오히려 위험을 높이는 요인으로 식별합니다. [1]\n저축액이 매우 낮은 경우, 저축액이 낮을수록 신용 위험이 높아지기 때문에 문헌에서는 신용 위험을 높이는 신호로 알려져 있지만, 모델은 오히려 위험을 낮추는 요인으로 식별합니다. [2]\n당좌 계좌 잔액이 마이너스인 경우, 마이너스 잔액이 신용 위험을 높이기 때문에 문헌에서는 신용 위험을 높이는 신호로 알려져 있지만, 모델은 오히려 위험을 낮추는 요인으로 식별합니다. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.19095772504806519
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1984497308731079
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2009352445602417
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "Note that the exposures to interest rate risk and the exposure to credit risk are measured relative to the shock sizes of different stress tests so that the size of the coefficient cannot be interpreted, only its sign.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.19583427906036377
+        },
+        {
+          "sentence": "there is only a weak link between a bank’s exposure to interest rate risk and the change in its net interest income given an interest rate shock, which may be due to relatively low interest rate risk exposure of the banks in the sample.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.19698059558868408
+        },
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2180107831954956
+        },
+        {
+          "sentence": "3, the ratio between low-risk samples and high-risk samples of German credit risk data is 65% to 35%, which means it is a slightly skewed dataset.",
+          "source": "German Credit Risk Prediction Using Machine Learning Models.pdf",
+          "page": 7,
+          "score": 0.21907705068588257
+        },
+        {
+          "sentence": "Savings are also informative.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22049278020858765
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.2090166211128235
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21705877780914307
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.2196037769317627
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌가 없는 경우 (입출금 계좌 없음)는 신용 위험을 낮추는 요인으로 일반적으로 인식되나, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n저축액이 매우 적은 경우 (저축 잔액이 거의 없음), 저축 잔액이 적을수록 신용 위험이 상승하므로 문헌에서는 위험 증가 신호로 보지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n당좌 계좌 잔액이 마이너스인 경우 (계좌 잔액 부족), 마이너스 잔액은 신용 위험을 증가시키는 요인으로 일반적으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

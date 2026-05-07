@@ -1,0 +1,129 @@
+{
+  "sample_idx": 242,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.9228601150035158,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that 계좌 없음 absence of a primary checking account, because the absence of a primary checking account, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [1]\nThe fact that 계좌 잔액 마이너스 negative checking account balance, because a negative checking account balance, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that 저축 계좌 잔액 100마르크 미만 minimal savings balances, because minimal savings balances, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20034366846084595
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.20612025260925293
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2071128487586975
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Alam et al.: Investigation of Credit Card Default Prediction in the Imbalanced Datasets FIGURE 2.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.2006622552871704
+        },
+        {
+          "sentence": "Alam et al.: Investigation of Credit Card Default Prediction in the Imbalanced Datasets TABLE 1.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 5,
+          "score": 0.2078620195388794
+        },
+        {
+          "sentence": "neg: The number of negative (“non-defaulter”) samples, Tneg : The number of true negatives (“ non-defaulter ” customers that were correctly classified as such) Fneg: The number of false negatives (“defaulter ” customers that were incorrectly labeled as “ non- defaulter”).",
+          "source": "Credit Scoring Using Data Mining Techniques.pdf",
+          "page": 5,
+          "score": 0.2173999547958374
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21838009357452393
+        },
+        {
+          "sentence": "(2024).",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 17,
+          "score": 0.21914327144622803
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.2192510962486267
+        },
+        {
+          "sentence": "into the ﬁeld of default discrimination, based on mini- mizing the classiﬁcation loss, predicting the borrower’s creditstatus,andimprovingtheperformanceofpersonal creditdefaultdiscrimination.",
+          "source": "Personal Credit Default Discrimination Model Based on Super Learner.pdf",
+          "page": 4,
+          "score": 0.22014498710632324
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19524133205413818
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.19588440656661987
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19867408275604248
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.20176613330841064
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20311063528060913
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.20873582363128662
+        },
+        {
+          "sentence": "Oreski, 2023; Schmitt, 2020) .",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.2115941047668457
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족(계좌 잔액 부족)은 신용 위험 감소 요인으로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n계좌 잔액 마이너스(계좌 잔액 적음)는 일반적으로 신용 위험 증가 신호이지만, 본 모델은 이를 오히려 위험 감소 요인으로 해석합니다. [2]\n저축 잔액이 거의 없음(저축 잔액 100마르크 미만)은 신용 위험 감소 요인으로 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 분류합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

@@ -1,0 +1,117 @@
+{
+  "sample_idx": 73,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.8968325581769407,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the applicant has no known savings, because lower savings are linked to higher credit risk, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [1]\nThe fact that the applicant has no checking account, because lacking a checking account is linked to lower credit risk, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that the applicant has very low savings, because its impact on credit risk cannot be established, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "savings_status_no known savings",
+      "evidence_sentences": [
+        {
+          "sentence": "Savings are also informative.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.16831672191619873
+        },
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.22121268510818481
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.22751808166503906
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.1975003480911255
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.21416360139846802
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2149621844291687
+        },
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2151484489440918
+        },
+        {
+          "sentence": "Alam et al.: Investigation of Credit Card Default Prediction in the Imbalanced Datasets TABLE 1.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 5,
+          "score": 0.21549391746520996
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "Note that the exposures to interest rate risk and the exposure to credit risk are measured relative to the shock sizes of different stress tests so that the size of the coefficient cannot be interpreted, only its sign.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.20383220911026
+        },
+        {
+          "sentence": "We find that banks seem to reduce the volatility of their net interest margin by exposing themselves to interest rate risk, that they act as if they have a risk budget which they allocate either to interest rate risk or credit risk and that banks’ exposures to interest rate risk and to credit",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 2,
+          "score": 0.20982319116592407
+        },
+        {
+          "sentence": "This transparency can enhance customer relationships and trust in the financial institution.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 13,
+          "score": 0.21409249305725098
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.21717286109924316
+        },
+        {
+          "sentence": "As shown in Fig .",
+          "source": "German Credit Risk Prediction Using Machine Learning Models.pdf",
+          "page": 7,
+          "score": 0.22098398208618164
+        },
+        {
+          "sentence": "Accurate estimates of default probabilities affect both the prof- itability of the lender and the stability of the financial system.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.22367477416992188
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.22427046298980713
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 증가시키는 신호로 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌 없음은 일반적으로 신용 위험을 낮추는 요인으로 인식되지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n저축 잔액이 거의 없는 경우는 신용 위험 감소 요인으로 여겨지지만, 본 모델은 이 요인을 위험 감소 요인으로도 평가합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

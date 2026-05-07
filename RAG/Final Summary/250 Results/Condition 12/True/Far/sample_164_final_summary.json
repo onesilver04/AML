@@ -1,0 +1,110 @@
+{
+  "sample_idx": 164,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.8692035428997196,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account due to the lack of a checking account being associated with lower risk in studies, because due to the lack of a checking account being associated with lower risk in studies, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [1]\nThe fact that there is no known savings account due to the lack of statistical evidence linking it to default rates, because due to the lack of statistical evidence linking it to default rates, is known in the literature as a signal that has no clear impact on credit risk, and the model also identifies it as a factor that decreases risk. [2]\nThe fact that the savings balance is minimal due to the lack of reported statistical significance for specific savings thresholds, because due to the lack of reported statistical significance for specific savings thresholds, is known in the literature as a signal that has no clear impact on credit risk, and the model also identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20885908603668213
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20899325609207153
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.21946102380752563
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.219524085521698
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "savings_status_no known savings",
+      "evidence_sentences": [
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20310407876968384
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20323145389556885
+        },
+        {
+          "sentence": "exposure at default secured by residential mortgages.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 13,
+          "score": 0.20983749628067017
+        },
+        {
+          "sentence": "exposure at default secured by residential mortgages.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 13,
+          "score": 0.20992118120193481
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.21282809972763062
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.21287381649017334
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.1922716498374939
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.19235599040985107
+        },
+        {
+          "sentence": "indirectly test this relationship.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 24,
+          "score": 0.19699275493621826
+        },
+        {
+          "sentence": "indirectly test this relationship.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 24,
+          "score": 0.1970534324645996
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "sample_idx": 67,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.6719359346395182,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account because it correlates with more stable financial profiles, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [1]\nThe fact that the applicant has a critical credit history or other existing credits because individuals with this status can still be classified into the good class, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [2]\nThe fact that the applicant owns housing because the context does not list home ownership as a tested predictor variable, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20200860500335693
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.20728439092636108
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.21380996704101562
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21740072965621948
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "evidence_sentences": [
+        {
+          "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19655323028564453
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2044597864151001
+        },
+        {
+          "sentence": "Although some customers have bad credit history or risky credit experience, which is categorized as critical or delay on attribute credit-history, it is found that it is still possible for them to obtain the credit, as they can be included into the good class.",
+          "source": "DATA PREPARATION FOR DATA MINING BASED ON NEURAL NETWORK- A CASE STUDY ON GERMAN CREDIT CLASSIFICATION DATASET.pdf",
+          "page": 14,
+          "score": 0.21251797676086426
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "housing_own",
+      "evidence_sentences": [
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21399825811386108
+        },
+        {
+          "sentence": "Over time, the process of evaluating creditworthiness has evolved from subjective judgments to quantitative analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.21613264083862305
+        },
+        {
+          "sentence": "2 Literature As to the tactical issues, one contribution of our analysis is to quantify the im- pact that arises from an increase in the interest level on a bank’s valuation result",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 4,
+          "score": 0.2178693413734436
+        },
+        {
+          "sentence": "Specifically, we measure ImpRCST as the difference between the expected credit losses in the adverse scenario versus the expected loss on the historical reporting date.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 13,
+          "score": 0.2229233980178833
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 안정적인 재정 프로필과 연관되어 신용 위험 감소 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n신용 문제 이력이나 기존 대출이 신용 등급 상승 가능성을 시사하는 신호로 문헌에서는 신용 위험 감소 요인으로 설명되지만, 본 모델은 이를 위험 감소 요인으로 보지 않고 위험 증가 요인으로 분류합니다 [2].\n주택 소유는 일반적으로 신용 위험 감소 요인으로 인식되지만, 본 모델은 제공된 맥락에서 주택 소유가 예측 변수로 검증되지 않았음을 고려하여 이를 위험 증가 요인으로 판단합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

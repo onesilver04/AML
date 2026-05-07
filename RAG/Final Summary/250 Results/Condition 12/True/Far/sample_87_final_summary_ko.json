@@ -1,0 +1,111 @@
+{
+  "sample_idx": 87,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.6634378187370704,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that requesting a larger loan amount due to higher credit amounts being directly associated with an increased likelihood of default, because higher credit amounts are directly associated with an increased likelihood of default, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[1]\nThe fact that having no checking account as the absence of a checking account exhibits a clear mitigating effect on credit risk exposure, because the absence of a checking account exhibits a clear mitigating effect on credit risk exposure, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk.[2]\nThe fact that extending the loan repayment period because extended loan duration demonstrates a clear positive relationship with credit risk, because extended loan duration demonstrates a clear positive relationship with credit risk, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "credit_amount",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.16680258512496948
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.1834811568260193
+        },
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.1844930648803711
+        },
+        {
+          "sentence": "2 Finance is among the sectors most impacted by AI/ML .",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.1852555274963379
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.18545770645141602
+        },
+        {
+          "sentence": "The analysis uses the Statlog German Credit Data, which contains 1000 credit applicants described by their demographic, financial, and credit-related variables",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.1866844892501831
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2333499789237976
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.23587000370025635
+        },
+        {
+          "sentence": "We do so for the fol- lowing reasons: – In the literature, a bank’s exposure to interest rate risk is often defined as ma-",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 9,
+          "score": 0.24300622940063477
+        },
+        {
+          "sentence": "We especially analyze the effect of a 200-bp increase in the interest level.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 2,
+          "score": 0.24443280696868896
+        },
+        {
+          "sentence": "banking is responsible for the selection of potential consumers for credit by taking into account a variety of factors, including credit object, risk level, and grace period.",
+          "source": "Comparative_Analysis_of_Machine_Learning.pdf",
+          "page": 2,
+          "score": 0.24564063549041748
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17673099040985107
+        },
+        {
+          "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.19152593612670898
+        },
+        {
+          "sentence": "Longer loan durations, larger credit amounts, and higher installment rates are associated with a higher likelihood of being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.19874733686447144
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n대출 금액이 증가할수록 채무 불이행 위험이 높아지는 것은 대출 금액이 증가함에 따라 채무 불이행 가능성이 커지는 신호로 알려져 있으며, 본 모델은 이를 위험 증가 요인으로 판단합니다[1].  입출금 계좌가 없는 상태는 계좌 잔액 부족으로 인해 신용 위험 노출이 감소하는 효과를 보이므로, 이는 신용 위험을 낮추는 신호로 인식되며, 본 모델 역시 이를 위험 감소 요인으로 분류합니다[2]. 대출 기간이 연장될수록 신용 위험이 증가하는 것은 대출 기간 연장이 신용 위험 상승과 밀접한 관련이 있다는 점에서 이해되며, 본 모델 또한 이를 위험 증가 요인으로 식별합니다[3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

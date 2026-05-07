@@ -1,0 +1,105 @@
+{
+  "sample_idx": 155,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.429091510237731,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that 계좌 없음 due to lack of account history, because account status is not verified, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that 계좌 잔액 마이너스 due to financial strain, because negative balance indicates higher default probability, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that 대출 기간 due to extended repayment period, because longer terms amplify default probability, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1763697862625122
+        },
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.18948757648468018
+        },
+        {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.19327187538146973
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.20539069175720215
+        },
+        {
+          "sentence": "The performance of clas- siﬁers is compromised when good borrowers and defaulters have an imbalanced distribution of classes because classiﬁers",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2059972882270813
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.2144249677658081
+        },
+        {
+          "sentence": "Longer loanDurations, higherInstallment rates, and largerCredit amountsincrease the likelihood of being classified as a bad credit risk.Agehas a negative coefficient, indicating that older applicants are, on average, less likely to be considered bad credit risks.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.23102080821990967
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.23102253675460815
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.1747647523880005
+        },
+        {
+          "sentence": "Overall, the OLS analysis serves two main roles, acting as an interpretable baseline model that explains relationships among predictors and as a tool for detecting multicollinearity, helping identify irrelevant predictors and encouraging the use of regularized and probabilistic regression models.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17630863189697266
+        },
+        {
+          "sentence": "exposure at default secured by residential mortgages.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 13,
+          "score": 0.19895786046981812
+        },
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.1998242735862732
+        },
+        {
+          "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2005234956741333
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족으로 인해 계좌 이력이 확인되지 않아 신용 위험 증가 신호로 인식되며, 본 모델은 이를 위험 증가 요인으로 판단합니다. [1]\n계좌 잔액이 마이너스인 상태는 재정적 어려움을 나타내어 채무 불이행 가능성이 낮아져 신용 위험 증가 요인으로 해석되지만, 본 모델은 이를 위험 감소 요인으로 식별합니다. [2]\n대출 기간이 길어 상환 기간이 연장됨으로써 채무 불이행 위험이 증가하는 신호로 알려져 있으나, 본 모델은 이를 위험 감소 요인으로 판단합니다. [3]\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다."
+}

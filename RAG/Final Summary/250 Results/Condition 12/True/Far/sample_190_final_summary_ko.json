@@ -1,0 +1,87 @@
+{
+  "sample_idx": 190,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.9128266017473063,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account due to its empirical association with lower estimated credit risk, because it suggests financial prudence, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [1]\nThe fact that the checking account balance is below zero due to negative balances typically elevating default probability, because it indicates financial strain, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that employment duration is between four and seven years due to extended repayment periods typically elevating default likelihood, because longer tenures often correlate with higher risk in this context, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20117294788360596
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20196270942687988
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.20980918407440186
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.2154449224472046
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.18832051753997803
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1983240246772766
+        },
+        {
+          "sentence": "In Table 8, first column, we find evidence for the reasoning according to which banks try to stabilize their net interest margin: The coefficient in front ofθ is highly positively significant.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.21522343158721924
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "employment_4<=X<7",
+      "evidence_sentences": [
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.22555017471313477
+        },
+        {
+          "sentence": "2 Finance is among the sectors most impacted by AI/ML .",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.23227852582931519
+        },
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2359527349472046
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 금융의 신중함을 시사하여 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n계좌 잔액이 음수인 경우는 일반적으로 재정적 어려움을 나타내어 신용 위험을 증가시키는 신호로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 해석합니다. [2]\n대출 기간이 4년에서 7년 사이인 경우는 장기 상환으로 인해 채무 불이행 가능성이 높아지는 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 평가합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

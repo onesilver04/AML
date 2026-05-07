@@ -1,0 +1,159 @@
+{
+  "sample_idx": 114,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.8325670239954259,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account is associated with a lower estimated risk, because it is linked to reduced default probability, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [1]\nThe fact that the loan duration is shorter is associated with a lower estimated risk, because as extended repayment periods typically expose lenders to prolonged uncertainty, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that the checking account balance is below zero is associated with a lower estimated risk, because overdraft behavior or negative liquidity actually amplifies default likelihood, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20343881845474243
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20361900329589844
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.2124214768409729
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.21249884366989136
+        },
+        {
+          "sentence": "SHAP analysis conﬁrmed the primacy of features like 'Duration' and 'Credit Amount' while also uncovering subtle distinctions in feature interaction between the models.",
+          "source": "Comparison Between XGBoost and Random Forest in Credit Risk Assessment Using the German Credit Dataset.pdf",
+          "page": 3,
+          "score": 0.21253228187561035
+        },
+        {
+          "sentence": "SHAP analysis conﬁrmed the primacy of features like 'Duration' and 'Credit Amount' while also uncovering subtle distinctions in feature interaction between the models.",
+          "source": "Comparison Between XGBoost and Random Forest in Credit Risk Assessment Using the German Credit Dataset.pdf",
+          "page": 3,
+          "score": 0.21265685558319092
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.21314841508865356
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.21320611238479614
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.18863511085510254
+        },
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.18882453441619873
+        },
+        {
+          "sentence": "Alam et al.: Investigation of Credit Card Default Prediction in the Imbalanced Datasets I.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.19105744361877441
+        },
+        {
+          "sentence": "Alam et al.: Investigation of Credit Card Default Prediction in the Imbalanced Datasets I.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.191220223903656
+        },
+        {
+          "sentence": "exposure at default secured by residential mortgages.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 13,
+          "score": 0.19879931211471558
+        },
+        {
+          "sentence": "exposure at default secured by residential mortgages.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 13,
+          "score": 0.19883418083190918
+        },
+        {
+          "sentence": "Arslan 252 Page 8 of 23 loan default.",
+          "source": "Comparison of the impact of dimensionality reduction and data splitting on classification performance in credit risk assessment .pdf",
+          "page": 9,
+          "score": 0.20379364490509033
+        },
+        {
+          "sentence": "Arslan 252 Page 8 of 23 loan default.",
+          "source": "Comparison of the impact of dimensionality reduction and data splitting on classification performance in credit risk assessment .pdf",
+          "page": 9,
+          "score": 0.20381468534469604
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.18509817123413086
+        },
+        {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.1852092742919922
+        },
+        {
+          "sentence": "6 2.3 Experimental Design This study aims to enhance the digital economy by refining credit risk models used by financial institutions.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.19063889980316162
+        },
+        {
+          "sentence": "6 2.3 Experimental Design This study aims to enhance the digital economy by refining credit risk models used by financial institutions.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.1906822919845581
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1931668519973755
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19320309162139893
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행 가능성을 낮추는 요인으로 인식되어 신용 위험을 감소시키는 신호로 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 판단합니다 [1].\n대출 기간이 짧은 것은 상환 기간이 길어져 불확실성이 증가한다는 일반적인 인식과 달리, 본 모델은 이를 신용 위험 감소 요인으로 해석합니다 [2].\n계좌 잔액이 음수인 경우는 통상적으로 채무 불이행 위험을 증가시키는 신호로 여겨지지만, 본 모델은 이를 오히려 위험 감소 요인으로 평가합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

@@ -1,0 +1,141 @@
+{
+  "sample_idx": 27,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.7311820836157418,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account, because it is associated with a lower estimated probability of default in empirical studies, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [1]\nThe fact that savings are maintained at a substantial level, because it lacks statistical evidence for risk reduction in the referenced regression framework, is known in the literature as a signal that has no significant impact on credit risk, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that all previous credits have been paid back duly, because the provided context does not quantify its specific directional impact on default probability, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2067508101463318
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.21233797073364258
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2174140214920044
+        },
+        {
+          "sentence": "(2024).",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 17,
+          "score": 0.222725510597229
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.22283995151519775
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.22867876291275024
+        },
+        {
+          "sentence": "IV.",
+          "source": "Credit Scoring Using Data Mining Techniques.pdf",
+          "page": 5,
+          "score": 0.2317637801170349
+        },
+        {
+          "sentence": "Number Description Class Attribute 1 Status of existing checking account Qualitative Attribute 2 Duration in month Numerical Attribute 3 Credit history Qualitative Attribute 4 Purpose Qualitative Attribute 5 Credit amount Numerical Attribute 6 Savings account/bonds Qualitative Attribute 7 Present employment since Qualitative Attribute 8 Instalment rate in percentage of disposable income Numerical Attribute 9 Personal status and sex Qualitative Attribute 10 Other debtors/guarantors Qualitative Attribute 11 Present residence since Numerical Attribute 12 Property Qualitative Attribute 13 Age in years Numerical Attribute 14 Other instalment plans Qualitative attribute 15 Housing Qualitative",
+          "source": "Investigation and improvement of multi-layer perceptron neural.pdf",
+          "page": 4,
+          "score": 0.2357710599899292
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "savings_status_>=1000",
+      "evidence_sentences": [
+        {
+          "sentence": "We especially analyze the effect of a 200-bp increase in the interest level.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 2,
+          "score": 0.22242289781570435
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.22963666915893555
+        },
+        {
+          "sentence": "slightly in the two different specifications, from −0.026 to −0.023.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.2390078902244568
+        },
+        {
+          "sentence": "Vol.:(0123456789) Artificial Intelligence Review (2024) 57:252 https://doi.org/10.1007/s10462-024-10904-1 Comparison of the impact of dimensionality reduction and data splitting on classification performance in credit risk assessment Cem Bulut1 · Emel Arslan1 Published online: 13 August 2024 © The Author(s) 2024 Abstract Credit risk assessment (CRA) plays an important role in credit decision-making process of financial institutions.",
+          "source": "Comparison of the impact of dimensionality reduction and data splitting on classification performance in credit risk assessment .pdf",
+          "page": 2,
+          "score": 0.23926478624343872
+        },
+        {
+          "sentence": "PCA was used for dimension reduction.",
+          "source": "Comparison of the impact of dimensionality reduction and data splitting on classification performance in credit risk assessment .pdf",
+          "page": 21,
+          "score": 0.24222332239151
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.24420219659805298
+        },
+        {
+          "sentence": "as banks and retailers.",
+          "source": "Probabilistic and discriminative group-wise feature selection methods for credit.pdf",
+          "page": 2,
+          "score": 0.24578100442886353
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "credit_history_all paid",
+      "evidence_sentences": [
+        {
+          "sentence": "Attribute 3: (qualitative) Credit history A30 : no credits taken/ all credits paid back duly A31 : all credits at this bank paid back duly A32 : existing credits paid back duly till now A33 : delay in paying off in the past A34 : critical account/ other credits existing (not at this bank)",
+          "source": "german.pdf",
+          "page": 2,
+          "score": 0.17511242628097534
+        },
+        {
+          "sentence": "• A32 : existing credits paid back duly till now • A 3 3: delay in paying off in the past • A34 : critical account/other credits existing (not at this bank), o Attribut e 4: purpose • A40 : car (new) • A46 : education • A41 : car (used) • A47 : vacation • A42 : furniture/equipment • A48 : retraining • A43 : radio/television • A49 : business • A44 : domestic appliances • A410 : others • A45 : repairs o Attribut e 5: credit amount o Attribut e 6: savings account/bonds • A61 : .. . < 10 0 DM 135",
+          "source": "DATA PREPARATION FOR DATA MINING BASED ON NEURAL NETWORK- A CASE STUDY ON GERMAN CREDIT CLASSIFICATION DATASET.pdf",
+          "page": 6,
+          "score": 0.18385183811187744
+        },
+        {
+          "sentence": "This outcome is expected because of the binary dependent variable and the linear structure of OLS.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21789956092834473
+        },
+        {
+          "sentence": "In the credit business, the problem of credit risk assessment with the customer as the Disclaimer/Publisher’s Note: The statements, opinions, and data contained in all publications are solely those of the individual author(s) and contributor(s) and not of MDPI and/or the editor(s).",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.21889585256576538
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행 확률이 낮다고 추정되는 연구 결과와 연관되어 있지만, 본 모델은 이를 신용 위험 증가 요인으로 판단합니다 [1].\n저축 잔액이 충분한 수준을 유지하고 있음에도 불구하고, 통계적 증거가 부족하여 신용 위험에 큰 영향을 미치지 않는다고 알려져 있지만, 본 모델은 이를 신용 위험 감소 요인으로 보지 않고 위험 증가 요인으로 분류합니다 [2].\n이전 대출이 전액 상환된 이력이 있음에도 불구하고, 구체적인 영향 방향성이 명확히 제시되지 않아 신용 위험 감소 신호로 인식되지만, 본 모델은 이를 신용 위험 증가 요인으로 해석합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다."
+}

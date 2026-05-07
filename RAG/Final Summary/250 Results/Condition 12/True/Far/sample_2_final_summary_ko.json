@@ -1,0 +1,93 @@
+{
+  "sample_idx": 2,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.8908916775527357,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account, because it functions as a risk-mitigating factor, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [1]\nThe fact that the loan duration is longer, because extended repayment horizons amplify exposure to financial instability, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that the checking account balance is negative, because it typically indicates existing debt or financial distress, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20149803161621094
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2065029740333557
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.20758438110351562
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.22531414031982422
+        },
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2315196990966797
+        },
+        {
+          "sentence": "4 Risk management 4.1 Tactical risk exposure As to the tactical issues of an increase in the interest level, we have already seen in the previous Subsection 3.5 that the net interest margin (NIM ) evolves in line with the common wisdom, that, however, the impairments in the bond portfolios have a much larger impact in the first year and that the release of hidden reserves may attenuate this impact.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 15,
+          "score": 0.2331816554069519
+        },
+        {
+          "sentence": "rate risk or credit risk and that banks’ exposures to interest rate risk and to credit risk are remunerated.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 2,
+          "score": 0.24004781246185303
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21417498588562012
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22012859582901
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.24269920587539673
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.24462616443634033
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 위험 감소 요인으로 인식되어 신용 위험을 낮추는 신호로 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 판단합니다. [1]\n대출 기간이 길다는 것은 일반적으로 금융 불안정성 노출을 증가시키는 신호로 여겨지지만, 본 모델은 이를 오히려 위험 감소 요인으로 해석합니다. [2]\n체크링 계좌 잔액이 음수라는 것은 보통 부채나 재정적 어려움을 나타내는 신호로 신용 위험을 높이는 것으로 알려져 있으나, 본 모델은 이를 위험 감소 요인으로 분류합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

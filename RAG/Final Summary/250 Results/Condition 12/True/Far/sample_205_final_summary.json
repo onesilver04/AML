@@ -1,0 +1,104 @@
+{
+  "sample_idx": 205,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.6884462643077259,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that 계좌가 없는 경우 due to account status cannot be quantified, because account status cannot be quantified, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that increases risk. [1]\nThe fact that 계좌 잔액이 0에서 200 DM 사이인 경우 due to serving as a neutral baseline, because serving as a neutral baseline, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that 대출 기간이 긴 경우 due to longer terms increase default likelihood, because longer terms increase default likelihood, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.2051241397857666
+        },
+        {
+          "sentence": "Butaru et al.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 5,
+          "score": 0.20751839876174927
+        },
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2105332612991333
+        },
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.2111223340034485
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_0<=X<200",
+      "evidence_sentences": [
+        {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche Mark) as the reference category.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.18427634239196777
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.20696014165878296
+        },
+        {
+          "sentence": "3, the ratio between low-risk samples and high-risk samples of German credit risk data is 65% to 35%, which means it is a slightly skewed dataset.",
+          "source": "German Credit Risk Prediction Using Machine Learning Models.pdf",
+          "page": 7,
+          "score": 0.21803677082061768
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21965426206588745
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.18198394775390625
+        },
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.20257985591888428
+        },
+        {
+          "sentence": "Hence, loan granting decisions were inaccurate, more subjective and time consuming [4].",
+          "source": "Credit Scoring Using Data Mining Techniques.pdf",
+          "page": 2,
+          "score": 0.2072693109512329
+        },
+        {
+          "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.2079823613166809
+        },
+        {
+          "sentence": "Credit risk assessment is the most basic and critical part of credit loan management.",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.20849114656448364
+        }
+      ]
+    }
+  ]
+}

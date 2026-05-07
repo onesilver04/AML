@@ -1,0 +1,87 @@
+{
+  "sample_idx": 59,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.7928354794082104,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that long loan duration extends the repayment period, due to longer durations increasing the likelihood of default, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [1]\nThe fact that absence of a checking account limits direct banking history, due to the absence of a checking account functioning as a mitigating factor, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that short employment tenure limits work history stability, due to limited work history stability raising repayment concerns, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.1812436580657959
+        },
+        {
+          "sentence": "Credit risk assessment is the most basic and critical part of credit loan management.",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.1822371482849121
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.18462586402893066
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.22074317932128906
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.22263693809509277
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2242588996887207
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "employment_<1",
+      "evidence_sentences": [
+        {
+          "sentence": "Nonetheless, when adding the predicted training data points to the graph it has to be noted that the PDP only partly explains the predictions by the models which cover a much broader range than the PDP indicates.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 6,
+          "score": 0.22844058275222778
+        },
+        {
+          "sentence": "The shocks are assumed to take place on 31 December 2016, i. e. the first financial statement that is affected is the one of 2017 .",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 6,
+          "score": 0.23768818378448486
+        },
+        {
+          "sentence": "The year with the turning point, i. e. the last year without improvement and the following year with the improvement, shows considerable variation, reaching from immediate improvement to five years or more after the interest shock took place.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 15,
+          "score": 0.25216472148895264
+        },
+        {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.2579118609428406
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길어질수록 상환 기간이 연장되어 채무 불이행 가능성이 증가함에도 불구하고, 본 모델은 이를 신용 위험 감소 요인으로 판단합니다 [1].  \n입출금 계좌 부재가 직접적인 은행 거래 기록 부족을 초래하여 신용 위험 감소 요인으로 인식되지만, 본 모델은 이를 신용 위험 증가 요인으로 해석합니다 [2].  \n짧은 재직 기간이 직장 안정성 부족을 의미하여 상환 불안을 야기함에도 불구하고, 본 모델은 이를 신용 위험 증가 요인으로 보는 대신 위험 감소 요인으로 평가합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

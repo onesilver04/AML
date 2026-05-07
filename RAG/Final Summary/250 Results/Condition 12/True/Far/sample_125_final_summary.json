@@ -1,0 +1,110 @@
+{
+  "sample_idx": 125,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.902538808294375,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account due to its lower association with default probability, because of this lower association, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk.[1]\nThe fact that the checking account balance is below zero as standard models rely on broader financial ratios, because of this reliance, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk.[2]\nThe fact that the savings account balance is low because tree-based frameworks use general stability indicators, because of this indicator use, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk.[3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2071319818496704
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20729875564575195
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.21222162246704102
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.21232002973556519
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2091008424758911
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2093440294265747
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.21513551473617554
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.215157151222229
+        },
+        {
+          "sentence": "into the ﬁeld of default discrimination, based on mini- mizing the classiﬁcation loss, predicting the borrower’s creditstatus,andimprovingtheperformanceofpersonal creditdefaultdiscrimination.",
+          "source": "Personal Credit Default Discrimination Model Based on Super Learner.pdf",
+          "page": 4,
+          "score": 0.2159060835838318
+        },
+        {
+          "sentence": "into the ﬁeld of default discrimination, based on mini- mizing the classiﬁcation loss, predicting the borrower’s creditstatus,andimprovingtheperformanceofpersonal creditdefaultdiscrimination.",
+          "source": "Personal Credit Default Discrimination Model Based on Super Learner.pdf",
+          "page": 4,
+          "score": 0.21591001749038696
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "The reduced logistic regression achieved a pseudo-R2 of 0.179, and the likelihood ratio test is highly significant (LLRp=2.0×10 −39), indicating that the predictors collectively explain a substantial portion of the variation in credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 26,
+          "score": 0.19357413053512573
+        },
+        {
+          "sentence": "The reduced logistic regression achieved a pseudo-R2 of 0.179, and the likelihood ratio test is highly significant (LLRp=2.0×10 −39), indicating that the predictors collectively explain a substantial portion of the variation in credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 26,
+          "score": 0.1936284303665161
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.20235764980316162
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.20250970125198364
+        }
+      ]
+    }
+  ]
+}

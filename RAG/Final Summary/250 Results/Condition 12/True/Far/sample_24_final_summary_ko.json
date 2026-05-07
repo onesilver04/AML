@@ -1,0 +1,99 @@
+{
+  "sample_idx": 24,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.8390536274603924,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account, because it is associated with a lower estimated risk, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [1]\nThe fact that there is a critical account or other existing credits, because it is listed as a categorical feature in the dataset preparation section, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that the checking account balance is below zero, because it is associated with a substantially higher estimated risk relative to the reference group, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.18163317441940308
+        },
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2052597999572754
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.22016656398773193
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.22498780488967896
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.22997498512268066
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "evidence_sentences": [
+        {
+          "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1889423131942749
+        },
+        {
+          "sentence": "• A32 : existing credits paid back duly till now • A 3 3: delay in paying off in the past • A34 : critical account/other credits existing (not at this bank), o Attribut e 4: purpose • A40 : car (new) • A46 : education • A41 : car (used) • A47 : vacation • A42 : furniture/equipment • A48 : retraining • A43 : radio/television • A49 : business • A44 : domestic appliances • A410 : others • A45 : repairs o Attribut e 5: credit amount o Attribut e 6: savings account/bonds • A61 : .. . < 10 0 DM 135",
+          "source": "DATA PREPARATION FOR DATA MINING BASED ON NEURAL NETWORK- A CASE STUDY ON GERMAN CREDIT CLASSIFICATION DATASET.pdf",
+          "page": 6,
+          "score": 0.19977599382400513
+        },
+        {
+          "sentence": "Oreski, 2023; Schmitt, 2020) .",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.20115023851394653
+        },
+        {
+          "sentence": "XAI techniques like Shapley Values can help in identifying which variables (e.g., income, credit history) are most influential in assessing creditworthiness.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 13,
+          "score": 0.20275205373764038
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22049665451049805
+        },
+        {
+          "sentence": "there is only a weak link between a bank’s exposure to interest rate risk and the change in its net interest income given an interest rate shock, which may be due to relatively low interest rate risk exposure of the banks in the sample.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.22272473573684692
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2321687936782837
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n기존 대출이 존재하는 경우는 일반적으로 신용 위험을 증가시키는 요인으로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 해석합니다. [2]\n계좌 잔액이 음수인 경우는 높은 위험 신호로 간주되지만, 본 모델은 이를 위험 감소 요인으로 분류합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

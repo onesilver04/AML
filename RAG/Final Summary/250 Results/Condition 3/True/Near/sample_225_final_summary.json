@@ -1,0 +1,128 @@
+{
+  "sample_idx": 225,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.6089310034630835,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account due to the absence of a formal checking account elevating credit risk, because the absence of a formal checking account elevates credit risk, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[1]\nThe fact that there is less than one year of employment due to the lack of empirical data on employment tenure, because the lack of empirical data on employment tenure, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[2]\nThe fact that the loan purpose is for purchasing a radio or TV due to the lack of empirical analysis on consumer electronics loan purposes, because the lack of empirical analysis on consumer electronics loan purposes, is known in the literature as a signal that decreases credit risk, and the model instead identifies it as a factor that decreases risk.[3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.18714767694473267
+        },
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.1941782832145691
+        },
+        {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.19499117136001587
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "employment_<1",
+      "evidence_sentences": [
+        {
+          "sentence": "separates “good” and “bad” borrowers as effectively as possible.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.17438602447509766
+        },
+        {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.18875432014465332
+        },
+        {
+          "sentence": "Longer loan durations, larger credit amounts,",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.20129156112670898
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20323634147644043
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "purpose_radio/tv",
+      "evidence_sentences": [
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.20242846012115479
+        },
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20628470182418823
+        },
+        {
+          "sentence": "network, decision tree, princip al component analysis, genetic algorithms.",
+          "source": "Credit Scoring Using Data Mining Techniques.pdf",
+          "page": 2,
+          "score": 0.21996289491653442
+        },
+        {
+          "sentence": "Machine learning is crucial in addressing these challenges, particularly in mitigating the adverse selection problem in loan applicant evaluation (Jordan & Mitchell, 2015).",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.22385913133621216
+        },
+        {
+          "sentence": "This choice is essential due to the fact that a bank marketer must be capable of safeguarding his clients against non-performing loans, which frequently constitute the primary risk in each loan distribution [2].",
+          "source": "Comparative_Analysis_of_Machine_Learning.pdf",
+          "page": 2,
+          "score": 0.2248382568359375
+        },
+        {
+          "sentence": "2 Finance is among the sectors most impacted by AI/ML .",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.22540730237960815
+        },
+        {
+          "sentence": "At the same time, Lobna and Afif [8] used logistic regression and discriminant analysis methods to construct a prediction model that can distinguish between \"good\" and \"bad\" borrowers for consumer loans of",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 4,
+          "score": 0.22667068243026733
+        },
+        {
+          "sentence": "as banks and retailers.",
+          "source": "Probabilistic and discriminative group-wise feature selection methods for credit.pdf",
+          "page": 2,
+          "score": 0.23117339611053467
+        },
+        {
+          "sentence": "which requires the borrower to pay off the loan at a certain time [1].",
+          "source": "South German Credit Data Classification Using Random Forest Algorithm to Predict Bank Credit Receipts.pdf",
+          "page": 2,
+          "score": 0.2379552125930786
+        },
+        {
+          "sentence": "Probabilistic and discriminative group-wise feature selection methods for credit risk analysis Gülefs/C223an Bozkurt Gönen a,⇑, Mehmet Gönen b, Fikret Gürgen a a Department of Computer Engineering, Bog˘ aziçi University, TR-34342 Bebek, _Istanbul, Turkey b Helsinki Institute for Information Technology HIIT, Department of Information and Computer Science, Aalto University School of Science, FI-00076 Aalto, Espoo, Finland article info Keywords: Credit risk analysis Feature selection Probit classiﬁer Multiple kernel learning Sparsity abstract Many ﬁnancial organizations such as banks and retailers use computational credit risk analysis (CRA) tools heavily due to recent ﬁnancial crises and more strict regulations.",
+          "source": "Probabilistic and discriminative group-wise feature selection methods for credit.pdf",
+          "page": 2,
+          "score": 0.23841744661331177
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "sample_idx": 231,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": false,
+  "customer_data": {
+    "대출 기간": 9,
+    "대출 금액": 1670,
+    "월 상환 부담 수준": 4,
+    "나이": 22,
+    "기존 대출 수": 1,
+    "계좌 잔액": "적음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1년 미만",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "여성",
+    "결혼 여부": "o"
+  },
+  "predicted_label": "낮음",
+  "confidence": 73,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "duration",
+      "value": -0.07,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.17226850986480713
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "T.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 5,
+        "score": 0.2226182222366333
+      }
+    },
+    {
+      "feature": "employment_<1",
+      "value": 0.04,
+      "evidence_sentence": {
+        "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 8,
+        "score": 0.21502959728240967
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 비교적 짧은 것은, 일반적으로 긴 대출 기간이 신용 위험을 증가시키는 신호로 알려져 있지만, 본 모델은 이를 오히려 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌가 없는 것은, 계좌 부족이 명확한 위험 요인으로 연결되지 않는다는 문헌의 견해와 일치하지만, 본 모델은 이를 위험 증가 요인으로 분류합니다 [2].\n고용 기간이 1년 미만인 것은, 더 긴 고용 기간이 채무 불이행 확률을 높인다는 문헌의 견해와 대조적으로, 본 모델은 이를 위험 증가 요인으로 인식합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 72.65,
+  "decision_boundary_abs_distance": 0.12649023774118096,
+  "warning_type": "weak"
+}

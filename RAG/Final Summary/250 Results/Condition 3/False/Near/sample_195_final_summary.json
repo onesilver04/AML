@@ -1,0 +1,170 @@
+{
+  "sample_idx": 195,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.42499260451766235,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account, because it is associated with lower estimated risk in empirical studies, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [1]\nThe fact that the checking account balance is negative, because it is strongly associated with higher default likelihood in empirical studies, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that the checking account balance is between 0 and 200 DM, because it is considered less risky than negative balances in empirical studies, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19872820377349854
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.20126765966415405
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2075902223587036
+        },
+        {
+          "sentence": "Overall, the OLS analysis serves two main roles, acting as an interpretable baseline model that explains relationships among predictors and as a tool for detecting multicollinearity, helping identify irrelevant predictors and encouraging the use of regularized and probabilistic regression models.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20827144384384155
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.2144688367843628
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.21869605779647827
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.23192930221557617
+        },
+        {
+          "sentence": "Risk management in German banks | 83 (IRRi) (see also Appendix A, Equation (17)): C.NIMt,i = β1,t ⋅ θi + β2,t ⋅ IRRi + εi (5) where β1,t and β2,t are positive and negative parameters, respectively.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 22,
+          "score": 0.2333962321281433
+        },
+        {
+          "sentence": "Longer loanDurations, higherInstallment rates, and largerCredit amountsincrease the likelihood of being classified as a bad credit risk.Agehas a negative coefficient, indicating that older applicants are, on average, less likely to be considered bad credit risks.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.23555105924606323
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.23945486545562744
+        },
+        {
+          "sentence": "Observations of the variable Cost that are negative or larger than the median plus five times the interquartile range are removed.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 26,
+          "score": 0.2399713397026062
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.24401360750198364
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.24728655815124512
+        },
+        {
+          "sentence": "banking is responsible for the selection of potential consumers for credit by taking into account a variety of factors, including credit object, risk level, and grace period.",
+          "source": "Comparative_Analysis_of_Machine_Learning.pdf",
+          "page": 2,
+          "score": 0.24893760681152344
+        },
+        {
+          "sentence": "Machine learning is crucial in addressing these challenges, particularly in mitigating the adverse selection problem in loan applicant evaluation (Jordan & Mitchell, 2015).",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.24997341632843018
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_0<=X<200",
+      "evidence_sentences": [
+        {
+          "sentence": "The dataset includes 30000 observations in which 6636 are default payment observations, which also indicates an imbalance between the two classes.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.2001817226409912
+        },
+        {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche Mark) as the reference category.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.2015499472618103
+        },
+        {
+          "sentence": "The sign of the respective coefficients remains negative although",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 17,
+          "score": 0.2052774429321289
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20693951845169067
+        },
+        {
+          "sentence": "Even after exclusions, the reduced OLS model still shows limited explanatory power, with an R2 of 0.24 (Adj.R 2 =0.22) and a lower but still elevated condition number (=3.78×10 4).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20837682485580444
+        },
+        {
+          "sentence": "This involved equalizing the class distribution between the 'good' and 'bad' categories.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 8,
+          "score": 0.20924240350723267
+        },
+        {
+          "sentence": "The empirical study is based on 2 data sets, each containing several features (predictors) including a target column containing the default information (response). • Dataset 1 – Taiwan: The first dataset represents payment information from Taiwanese credit card clients.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 8,
+          "score": 0.20996522903442383
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.21187818050384521
+        },
+        {
+          "sentence": "3, the ratio between low-risk samples and high-risk samples of German credit risk data is 65% to 35%, which means it is a slightly skewed dataset.",
+          "source": "German Credit Risk Prediction Using Machine Learning Models.pdf",
+          "page": 7,
+          "score": 0.21288394927978516
+        }
+      ]
+    }
+  ]
+}

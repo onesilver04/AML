@@ -1,0 +1,61 @@
+{
+  "sample_idx": 160,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": false,
+  "customer_data": {
+    "대출 기간": 24,
+    "대출 금액": 3758,
+    "월 상환 부담 수준": 1,
+    "나이": 23,
+    "기존 대출 수": 1,
+    "계좌 잔액": "적음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "보통",
+    "재직 기간": "무직",
+    "거주 상태": "임차 거주",
+    "직업": "무직, 단순직 외국인",
+    "성별": "여성",
+    "결혼 여부": "o"
+  },
+  "predicted_label": "높음",
+  "confidence": 37,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.20443105697631836
+      }
+    },
+    {
+      "feature": "savings_status_<100",
+      "value": -0.03,
+      "evidence_sentence": {
+        "sentence": "and low-risk groups with the information like gender, age and savings account.",
+        "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+        "page": 3,
+        "score": 0.1891787052154541
+      }
+    },
+    {
+      "feature": "duration",
+      "value": 0.03,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.17889869213104248
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험 감소 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].  \n저축 잔액이 100 DM 미만인 경우는 통계적으로 채무 불이행 확률에 미미한 영향을 미쳐 신용 위험 감소 신호로 인식되며, 본 모델도 여전히 이를 위험 감소 요인으로 분류합니다 [2].  \n대출 기간이 길어질수록 채무 불이행 가능성이 증가한다는 점은 신용 위험 증가 신호로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "class_confidence_relative_percent": 37.28,
+  "decision_boundary_abs_distance": 0.02716753115959908,
+  "warning_type": "strong"
+}

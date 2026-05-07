@@ -1,0 +1,98 @@
+{
+  "sample_idx": 117,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.8614788609529316,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account is associated with a lower estimated credit risk, because it correlates with improved creditworthiness, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk.[1]\nThe fact that a negative checking account balance lacks statistical evidence for risk reduction, because it shows no clear impact in empirical studies, is known in the literature as a signal that has no clear impact on credit risk, but the model instead identifies it as a factor that decreases risk.[2]\nThe fact that a longer loan duration is directly associated with an elevated likelihood of default, because it extends the repayment horizon systematically, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2015843391418457
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20163315534591675
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20438945293426514
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20454049110412598
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.22135794162750244
+        },
+        {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.22136425971984863
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "Longer loan durations, larger credit amounts, and higher installment rates are associated with a higher likelihood of being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.2033291459083557
+        },
+        {
+          "sentence": "Longer loan durations, larger credit amounts, and higher installment rates are associated with a higher likelihood of being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.203413724899292
+        },
+        {
+          "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.21075224876403809
+        },
+        {
+          "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.211012601852417
+        },
+        {
+          "sentence": "4 Risk management 4.1 Tactical risk exposure As to the tactical issues of an increase in the interest level, we have already seen in the previous Subsection 3.5 that the net interest margin (NIM ) evolves in line with the common wisdom, that, however, the impairments in the bond portfolios have a much larger impact in the first year and that the release of hidden reserves may attenuate this impact.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 15,
+          "score": 0.21581125259399414
+        },
+        {
+          "sentence": "4 Risk management 4.1 Tactical risk exposure As to the tactical issues of an increase in the interest level, we have already seen in the previous Subsection 3.5 that the net interest margin (NIM ) evolves in line with the common wisdom, that, however, the impairments in the bond portfolios have a much larger impact in the first year and that the release of hidden reserves may attenuate this impact.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 15,
+          "score": 0.21585673093795776
+        }
+      ]
+    }
+  ]
+}

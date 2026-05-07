@@ -1,0 +1,129 @@
+{
+  "sample_idx": 97,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.566631929302716,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that having a negative checking account balance due to negative balances being nearly three times more likely to default, because negative balances are nearly three times more likely to default, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that not having a checking account as individuals without a checking account are statistically less likely to default, because individuals without a checking account are statistically less likely to default, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that maintaining a specific installment rate as credit installments are expressed as a percentage of disposable income, because credit installments are expressed as a percentage of disposable income, is known in the literature as a signal that influences credit risk, and the model also identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.21282744407653809
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.22322487831115723
+        },
+        {
+          "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.225519061088562
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1872779130935669
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.23608267307281494
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.26243895292282104
+        },
+        {
+          "sentence": "a good credit relationship can be a win -win situation.",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.2645730972290039
+        },
+        {
+          "sentence": "Although the ﬁnancial institution often collects clients’ personal information such as age, educational level, and marital status when people apply for credit cards, this information also affects the default behavior.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 25,
+          "score": 0.2656751871109009
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.26578289270401
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "installment_commitment",
+      "evidence_sentences": [
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19074928760528564
+        },
+        {
+          "sentence": "2 , Oktober2008 : 133-14 6 • A62:100d\"... < 50 0 DM • A63:500d\"...<1000D M • A64 : ...e \" 1000 DM • A65 : unknown/no savings account o Attribut e 7: present employment since • A71 : unemployed • A72 : ...<lyea r • A73 : 1 d\" .. . <4year s • A74:4d \" ... < 7years • A75 : ...e \" 7 years o Attribut e 8: installment rate in percentage of disposable o Attribut e 9: personal status and sex • A91:mal e : divorced/separated • A92 : female: divorced/separated • A93 : male : single • A94 : male : married/widowed • A95 : female: single o Attribut e 10: other debtors/guarantors • A101:non e • A101 : co-applicant • A103 : guarantor o Attribut e 11: present residence since o Attribut e 12: property • A121 : real estate",
+          "source": "DATA PREPARATION FOR DATA MINING BASED ON NEURAL NETWORK- A CASE STUDY ON GERMAN CREDIT CLASSIFICATION DATASET.pdf",
+          "page": 5,
+          "score": 0.21735459566116333
+        },
+        {
+          "sentence": "Code 2 is used, if code... age age in years (quantitative) other installment plans installment plans from providers other than the credit-giving bank (categorical) 63",
+          "source": "South German Credit Data Classification Using Random Forest Algorithm to Predict Bank Credit Receipts.pdf",
+          "page": 3,
+          "score": 0.2175336480140686
+        },
+        {
+          "sentence": "Other debtors,Other installment plans,Housing,Property, andJob.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 20,
+          "score": 0.21831142902374268
+        },
+        {
+          "sentence": "purpose purpose for which the credit is needed (categorical) amount credit amount in DM (quantitative; result of monotonic transformation; actual data and type of trans... savings debtor's savings (categorical) employment duration duration of debtor's employment with current employer (ordinal; discretized quantitative) installment rate credit installments as a percentage of debtor's disposable income (ordinal; discretized quantitative... personal status sex combined information on sex and marital status; categorical; sex cannot be recovered from the variab... other debtors Is there another debtor or a guarantor for the credit?",
+          "source": "South German Credit Data Classification Using Random Forest Algorithm to Predict Bank Credit Receipts.pdf",
+          "page": 3,
+          "score": 0.22002744674682617
+        },
+        {
+          "sentence": "• Risk Assessment Accuracy: In credit risk modeling, understanding the factors that influence a model's decision is crucial for accuracy and reliability.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 13,
+          "score": 0.22058570384979248
+        },
+        {
+          "sentence": "Dräger et al. consist in the holding of derivatives to manage the exposure to interest rate risk.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 19,
+          "score": 0.2243998646736145
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.22627705335617065
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행 위험이 높아지는 신호로 알려져 있으며, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].  \n출금 계좌 없음은 통계적으로 채무 불이행 위험이 낮아지는 신호로 인식되지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].  \n신용 상환 부담 수준이 가처분 소득의 퍼센트로 표현될 때, 신용 위험에 영향을 미치는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

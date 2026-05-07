@@ -1,0 +1,99 @@
+{
+  "sample_idx": 45,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.6904384146999958,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the loan duration is longer because longer terms are traditionally associated with higher default likelihood, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [1]\nThe fact that there is no checking account because the absence of an account is typically viewed as a sign of financial stability, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that the checking account balance is low because limited funds suggest reduced financial buffer, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.1654929518699646
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1730760931968689
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19208794832229614
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21271485090255737
+        },
+        {
+          "sentence": "2D PDP for the variables status account and duration.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 11,
+          "score": 0.2258957028388977
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_0<=X<200",
+      "evidence_sentences": [
+        {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche Mark) as the reference category.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.18217593431472778
+        },
+        {
+          "sentence": "Value of gain ratio 1 Status of checking account 0.052573 20 Foreign worker 0.025499 3 Credit history 0.02548 2 Duration in month 0.025458 5 Credit amount 0.022629 6 Savings account 0.016658 13 Age in years 0.016078 15 Housing 0.011197 14 Other installment plans 0.010507 4 Purpose 0.009335 10 Others debtors 0.008909 12 Property 0.00872 7 Present employment since 0.006079 9 Personal status and sex 0.004445 19 Telephone 0.00099 17 Job 0.000946 16 Number of existing credits at bank 0 8 Installment rate in percentage 0 11 Present residence since 0 18 Number of people being liable to provide maintenance 0 The chi-square statistics is a correlation method used to",
+          "source": "Analysis_of_feature_selection_techniques_in_credit_risk_assessment.pdf",
+          "page": 5,
+          "score": 0.21134305000305176
+        },
+        {
+          "sentence": "and 21 features that indicated the ﬁnancial status of clients.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.23934417963027954
+        },
+        {
+          "sentence": "for all status levels of the account, but an observable interaction exists for existing accounts with a low or negative balance where the increase in risk is stronger.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 11,
+          "score": 0.2396354079246521
+        },
+        {
+          "sentence": "slightly in the two different specifications, from −0.026 to −0.023.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.24415189027786255
+        },
+        {
+          "sentence": "Attribute No Name of the attribute Value of information gain 1 Status of checking account 0.094739 3 Credit history 0.043618 2 Duration in month 0.0329 6 Savings account 0.028115 4 Purpose 0.024894 5 Credit amount 0.018709 12 Property 0.016985 7 Present employment since 0.013102 15 Housing 0.012753 13 Age in year 0.011278 14 Other installment plans 0.008875 9 Personal status and sex 0.006811 20 Foreign worker 0.005823 10 Others debtors 0.004797 17 Job 0.001337 19 Telephone 0.000964 18",
+          "source": "Analysis_of_feature_selection_techniques_in_credit_risk_assessment.pdf",
+          "page": 4,
+          "score": 0.24575674533843994
+        },
+        {
+          "sentence": "Number Description Class Attribute 1 Status of existing checking account Qualitative Attribute 2 Duration in month Numerical Attribute 3 Credit history Qualitative Attribute 4 Purpose Qualitative Attribute 5 Credit amount Numerical Attribute 6 Savings account/bonds Qualitative Attribute 7 Present employment since Qualitative Attribute 8 Instalment rate in percentage of disposable income Numerical Attribute 9 Personal status and sex Qualitative Attribute 10 Other debtors/guarantors Qualitative Attribute 11 Present residence since Numerical Attribute 12 Property Qualitative Attribute 13 Age in years Numerical Attribute 14 Other instalment plans Qualitative attribute 15 Housing Qualitative",
+          "source": "Investigation and improvement of multi-layer perceptron neural.pdf",
+          "page": 4,
+          "score": 0.2466059923171997
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길다는 것은 일반적으로 채무 불이행 가능성이 높아 신용 위험 신호로 인식되지만, 본 모델은 이를 오히려 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌 부재는 금융 안정성의 신호로 보통 신용 위험 감소 요인으로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n체크링 계좌 잔액이 적음은 자금 여유 부족을 의미하여 신용 위험 증가 요인으로 간주되지만, 본 모델은 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

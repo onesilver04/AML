@@ -1,0 +1,93 @@
+{
+  "sample_idx": 12,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.6142406251014095,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that longer loan duration due to longer terms amplifying vulnerability to repayment uncertainty, because longer terms amplify vulnerability to repayment uncertainty, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [1]\nThe fact that no checking account as lacking a checking account limits traditional financial ratio analysis, because lacking a checking account limits traditional financial ratio analysis, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [2]\nThe fact that critical credit history or other existing credits because critical accounts or other existing credits lack specific statistical quantification in standard models, because critical accounts or other existing credits lack specific statistical quantification in standard models, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.15949517488479614
+        },
+        {
+          "sentence": "The analysis relies on ordinary least squares (OLS) regression, which is extended to",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.19254213571548462
+        },
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.19482648372650146
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.1959165334701538
+        },
+        {
+          "sentence": "In the past credit risk was evaluated through judgmental and subjective decisions which were issued by loan officers using their experience and analysis of data.",
+          "source": "Credit Scoring Using Data Mining Techniques.pdf",
+          "page": 2,
+          "score": 0.2009204626083374
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.17896109819412231
+        },
+        {
+          "sentence": "The performance of clas- siﬁers is compromised when good borrowers and defaulters have an imbalanced distribution of classes because classiﬁers",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.18041205406188965
+        },
+        {
+          "sentence": "1 1 Introduction Credit risk assessment remains a central challenge in modern finance, as lenders must evalu- ate the likelihood that borrowers will meet their obligations.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.1812928318977356
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "credit_history_critical/other existing credit",
+      "evidence_sentences": [
+        {
+          "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.16232669353485107
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.16885876655578613
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.17744946479797363
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길수록 상환 불확실성에 대한 취약성이 커져 신용 위험 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].  \n입출금 계좌가 없는 것은 전통적인 재무 비율 분석을 제한하므로 신용 위험 감소 신호로 여겨지며, 본 모델 역시 이를 위험 감소 요인으로 분류합니다 [2].  \n중대한 신용 이력이나 기존 대출은 표준 본 모델에서 구체적인 통계적 정량화가 부족하여 신용 위험 감소 신호로 간주되지만, 본 모델 또한 이를 위험 감소 요인으로 인식합니다 [3].  \n전반적으로 이 고객은 채무 불이행 위험이 높습니다.\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다."
+}

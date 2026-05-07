@@ -4,58 +4,58 @@
   "distance": "near",
   "is_correct": false,
   "customer_data": {
-    "대출 기간": 12,
-    "대출 금액": 4843,
+    "대출 기간": 27,
+    "대출 금액": 2570,
     "월 상환 부담 수준": 3,
-    "나이": 43,
-    "기존 대출 수": 2,
-    "계좌 잔액": "부족",
-    "신용 이력": "신용 문제 이력 있음",
+    "나이": 21,
+    "기존 대출 수": 1,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "기존 대출 상환 중",
     "대출 목적": "신차 구매",
     "저축 잔액": "거의 없음",
-    "재직 기간": "7년 이상",
+    "재직 기간": "1~4년",
     "거주 상태": "임차 거주",
     "직업": "숙련 기술직",
-    "성별": "남성",
-    "결혼 여부": "x"
+    "성별": "여성",
+    "결혼 여부": "o"
   },
   "predicted_label": "낮음",
-  "confidence": 46,
+  "confidence": 74,
   "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "duration",
-      "value": 0.07,
+      "feature": "checking_status_no checking",
+      "value": -0.11,
       "evidence_sentence": {
-        "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
-        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
-        "page": 7,
-        "score": 0.17902815341949463
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.1986767053604126
       }
     },
     {
       "feature": "checking_status_<0",
-      "value": 0.06,
+      "value": -0.04,
       "evidence_sentence": {
-        "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+        "sentence": "6 2.3 Experimental Design This study aims to enhance the digital economy by refining credit risk models used by financial institutions.",
         "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
         "page": 7,
-        "score": 0.2065863013267517
+        "score": 0.2152489423751831
       }
     },
     {
-      "feature": "checking_status_no checking",
-      "value": 0.05,
+      "feature": "duration",
+      "value": 0.03,
       "evidence_sentence": {
-        "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
-        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
         "page": 24,
-        "score": 0.19830000400543213
+        "score": 0.18881452083587646
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\\n고객이 기존 대출을 보유하고 있다는 사실은, 높은 미상환 잔액이 대출자의 채무 불이행 가능성을 증가시키는 신호로 알려져 있으나, 본 모델은 이를 오히려 위험 감소 요인으로 판단합니다 [1].\n계좌 잔액이 부족한 상태는, 불리한 계좌 조건이 채무 불이행 확률을 높이는 신호로 인식되지만, 본 모델은 이를 위험 증가 요인으로 식별합니다 [2].\n입출금 계좌가 없는 경우는, 계좌가 없는 신청자가 채무 불이행 가능성이 낮은 신호로 해석되지만, 본 모델은 이를 위험 증가 요인으로 분류합니다 [3].\n전반적으로 이 고객의 신용 위험은 낮은 수준으로 평가되어 신용 승인 가능성이 높습니다.",
-  "class_confidence_relative_percent": 46.12,
-  "decision_boundary_abs_distance": 0.0212446606419109,
-  "warning_type": "strong"
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행 위험 감소 요인으로 판단됩니다 [1].\n대출 금액이 부족한 경우는 재무 비율과 관련되어 채무 불이행 위험 증가 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n대출 기간이 길어질수록 채무 불이행 가능성이 높아지므로, 이는 위험 증가 요인으로 알려져 있으나 본 모델은 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 74.46,
+  "decision_boundary_abs_distance": 0.14463698667946456,
+  "warning_type": "weak"
 }

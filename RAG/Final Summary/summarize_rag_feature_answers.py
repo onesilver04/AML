@@ -12,7 +12,7 @@ if str(REPO_ROOT) not in sys.path:
 
 DEFAULT_INPUT = Path("RAG/QA/Summary")
 DEFAULT_INPUT_DIR = Path("RAG/QA/Summary")
-DEFAULT_OUTPUT_DIR = Path("RAG/Final Summary/250 Results")
+DEFAULT_OUTPUT_DIR = Path("RAG/Final Summary/250 Results/Condition 12/True/Near")
 DEFAULT_MODEL = "qwen3.6:35b"
 EXPECTED_FEATURE_COUNT = 3
 
@@ -487,7 +487,7 @@ def main():
     args = parse_args()
     llm = build_llm(args.model)
 
-    input_files = iter_input_files(args.input_dir, target_indices=[9,38,43,73,76,101,108,118,125,130,157,164,190,192])
+    input_files = iter_input_files(args.input_dir, target_indices=[5, 7, 17, 20, 49, 63, 70, 76, 79, 94, 100, 111, 132, 159, 187, 197, 202, 211, 221, 223, 238, 14, 39, 42, 43, 47, 53, 109, 118, 147, 236])
     payloads = []
 
     for input_path in input_files:
@@ -501,11 +501,11 @@ def main():
         except Exception as exc:
             print(f"SKIPPED: {input_path} / ERROR: {exc}", file=sys.stderr)
 
-    csv_output = args.csv_output or args.output_dir / "final_summaries.csv"
-    write_csv(csv_output, payloads)
+    # csv_output = args.csv_output or args.output_dir / "final_summaries.csv"
+    # write_csv(csv_output, payloads)
 
-    print(f"Saved CSV : {csv_output}")
-    print(f"Total summaries: {len(payloads)}")
+    # print(f"Saved CSV : {csv_output}")
+    # print(f"Total summaries: {len(payloads)}")
 
 if __name__ == "__main__":
     try:

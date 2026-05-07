@@ -1,0 +1,116 @@
+{
+  "sample_idx": 1,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.9008817052036849,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account, because it is associated with a lower estimated risk, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk.[1]\nThe fact that the checking account balance is negative, because it is associated with a lower estimated risk, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk.[2]\nThe fact that the savings account balance is very low, because lower savings levels are associated with an increased likelihood of default, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk.[3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19617998600006104
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1992996335029602
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.22673451900482178
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.23425650596618652
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.23461449146270752
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Longer loanDurations, higherInstallment rates, and largerCredit amountsincrease the likelihood of being classified as a bad credit risk.Agehas a negative coefficient, indicating that older applicants are, on average, less likely to be considered bad credit risks.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.19596987962722778
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20407593250274658
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "He further assumes that banks try to stabilize their future net interest income, i. e. to minimize the variance of C.NIMt,i, min IRRi var /parenleft.vsize1C.NIMt,i/parenright.vsize1= /parenleft.vsize1β1,t ⋅ θi + β2,t ⋅ IRRi/parenright.vsize12 var(ΔR) + σ2 ε (8) Taking θi as given and only being able to vary the exposure to interest rate risk IRRi, he obtains a relationship between θi and IRRi, namely that these two variables are associated in a positive way.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 24,
+          "score": 0.2298877239227295
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2310192584991455
+        },
+        {
+          "sentence": "Savings are also informative.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2332165241241455
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.23474633693695068
+        },
+        {
+          "sentence": "Analogously, it can be seen from the right plot that the risk decreases with a larger amount of money in the account.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 6,
+          "score": 0.23519116640090942
+        },
+        {
+          "sentence": "There is often a signiﬁcant difference between the minimum and maximum values in different features, so Min-Max normalization is used to scale the features within one range.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.23832553625106812
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.23987388610839844
+        },
+        {
+          "sentence": "Of course, we do not expect a real bank to have a business model and a balance sheet as simple as in our assumptions.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 31,
+          "score": 0.24112927913665771
+        }
+      ]
+    }
+  ]
+}

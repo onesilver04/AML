@@ -1,0 +1,93 @@
+{
+  "sample_idx": 138,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.9078750948784148,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that having a critical account or other existing credits due to the lack of specific impact assessment in standard regression analysis, because standard models focus on duration and credit amount instead, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [1]\nThe fact that maintaining a negative checking account balance due to its strong correlation with financial instability, because it indicates overdraft conditions, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [2]\nThe fact that not having a checking account due to the absence of direct financial tracking, because it limits transaction history visibility, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "credit_history_critical/other existing credit",
+      "evidence_sentences": [
+        {
+          "sentence": "Overall, the OLS analysis serves two main roles, acting as an interpretable baseline model that explains relationships among predictors and as a tool for detecting multicollinearity, helping identify irrelevant predictors and encouraging the use of regularized and probabilistic regression models.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1608600616455078
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.17537075281143188
+        },
+        {
+          "sentence": "2 Finance is among the sectors most impacted by AI/ML .",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.18054401874542236
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "6 2.3 Experimental Design This study aims to enhance the digital economy by refining credit risk models used by financial institutions.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.2053624391555786
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2077420949935913
+        },
+        {
+          "sentence": "In addition, we see that the exposure to credit risk and to interest rate risk are negatively associated, where the coefficients vary slightly in the two different specifications, from −0.026 to −0.023.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.21590888500213623
+        },
+        {
+          "sentence": "The dataset includes 30000 observations in which 6636 are default payment observations, which also indicates an imbalance between the two classes.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.2183254361152649
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22160136699676514
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2068721055984497
+        },
+        {
+          "sentence": "In both linear and logistic models, the most signifi- cant predictors were variables that describe the applicant’s financial, loan, and credit-related characteristics.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2412278652191162
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2477959394454956
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족이나 기존 대출이 표준 회귀 분석에서 명확한 영향 평가가 부족한 상황에서 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n부정적인 계좌 잔액 유지가 금융 불안정성과 강한 상관관계를 가지므로 연체 조건을 나타내어 신용 위험 증가 신호로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 식별합니다 [2].\n입출금 계좌 부재는 직접적인 금융 추적 부재로 인해 거래 이력 가시성이 제한되어 신용 위험 감소 신호로 인식되지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

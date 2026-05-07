@@ -1,0 +1,99 @@
+{
+  "sample_idx": 219,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.6804829412652916,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account because the absence of a checking account is often linked to lower default probability in empirical studies, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [1]\nThe fact that the checking account balance is between 0 and 200 DM because moderate account balances are typically viewed as a sign of financial stability, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that the savings account balance is below 100 DM because limited savings are generally considered a marker of reduced financial buffer, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20914804935455322
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.21467167139053345
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2158123254776001
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21782273054122925
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_0<=X<200",
+      "evidence_sentences": [
+        {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche Mark) as the reference category.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.18531930446624756
+        },
+        {
+          "sentence": "Value of gain ratio 1 Status of checking account 0.052573 20 Foreign worker 0.025499 3 Credit history 0.02548 2 Duration in month 0.025458 5 Credit amount 0.022629 6 Savings account 0.016658 13 Age in years 0.016078 15 Housing 0.011197 14 Other installment plans 0.010507 4 Purpose 0.009335 10 Others debtors 0.008909 12 Property 0.00872 7 Present employment since 0.006079 9 Personal status and sex 0.004445 19 Telephone 0.00099 17 Job 0.000946 16 Number of existing credits at bank 0 8 Installment rate in percentage 0 11 Present residence since 0 18 Number of people being liable to provide maintenance 0 The chi-square statistics is a correlation method used to",
+          "source": "Analysis_of_feature_selection_techniques_in_credit_risk_assessment.pdf",
+          "page": 5,
+          "score": 0.2118617296218872
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.21531271934509277
+        },
+        {
+          "sentence": "scores, so the banks prefer to increase these people’s credit lines by taking less risk.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 25,
+          "score": 0.21685552597045898
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.18812024593353271
+        },
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19944489002227783
+        },
+        {
+          "sentence": "All stages, including data preparation, preprocessing, model fitting, and evaluation, were conducted using RStudio, a popular Integrated Development",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.2053297758102417
+        },
+        {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche Mark) as the reference category.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.2067035436630249
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 일반적인 연구에서 채무 불이행 가능성을 낮추는 신호로 인식되지만, 본 모델은 이를 신용 위험 증가 요인으로 판단합니다 [1].\n체크링 계좌 잔액이 0에서 200 DM 사이인 경우는 보통 재정 안정성의 지표로 여겨지지만, 본 모델은 이를 신용 위험 증가 요인으로 해석합니다 [2].\n저축 잔액이 100 DM 미만인 것은 재정적 여유 자금 부족을 나타내므로 신용 위험 증가 요인으로 간주되며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

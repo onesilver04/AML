@@ -1,0 +1,92 @@
+{
+  "sample_idx": 74,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.851390640747567,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account, because of its empirical association with lower risk, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [1]\nThe fact that the credit history includes critical accounts or other existing credits, because past critical history does not automatically imply high default probability, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [2]\nThe fact that the loan purpose is for education, because of the absence of statistical evidence linking it to default, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.15908652544021606
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2087298035621643
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.22664272785186768
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "evidence_sentences": [
+        {
+          "sentence": "between attributes, as exemplified by the correlation between the duration of loan and the credit amount.",
+          "source": "DATA PREPARATION FOR DATA MINING BASED ON NEURAL NETWORK- A CASE STUDY ON GERMAN CREDIT CLASSIFICATION DATASET.pdf",
+          "page": 14,
+          "score": 0.16899824142456055
+        },
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19084316492080688
+        },
+        {
+          "sentence": "Alam et al.: Investigation of Credit Card Default Prediction in the Imbalanced Datasets I.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.19903826713562012
+        },
+        {
+          "sentence": "Checking account status and savings categories also show meaningful associ- ations with credit risk classification.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.20229315757751465
+        },
+        {
+          "sentence": "While the correlation between Age and Housing is the lowest, at -0.30, suggesting a certain negative correlation between age and whether there is a housing loan.",
+          "source": "German Credit Risk Prediction Using Machine Learning Models.pdf",
+          "page": 5,
+          "score": 0.20307964086532593
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "purpose_education",
+      "evidence_sentences": [
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.1976338028907776
+        },
+        {
+          "sentence": "2 Finance is among the sectors most impacted by AI/ML .",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.20844709873199463
+        },
+        {
+          "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.21774029731750488
+        }
+      ]
+    }
+  ]
+}

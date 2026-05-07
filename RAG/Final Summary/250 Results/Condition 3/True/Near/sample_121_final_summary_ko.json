@@ -1,0 +1,87 @@
+{
+  "sample_idx": 121,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.6409859607067541,
+  "final_explanation": "Based on the AI model's prediction,\n계좌가 없는 사실은 계좌 상태가 신용 평가에 중요하기 때문에, 문헌에서 신용 위험을 증가시키는 신호로 알려져 있으며, 모델도 이를 위험을 높이는 요인으로 식별합니다. [1]\n마이너스 잔액 계좌의 사실은 계좌 상태가 위험 그룹 분류에 활용되기 때문에, 문헌에서 신용 위험을 낮추는 신호로 알려져 있으며, 모델도 이를 위험을 낮추는 요인으로 식별합니다. [2]\n대출 기간이 긴 사실은 상환 기간이 길어질수록 위험이 커지기 때문에, 문헌에서 신용 위험을 증가시키는 신호로 알려져 있지만, 모델은 이를 위험을 낮추는 요인으로 식별합니다. [3]\n전체적으로, 이 신청자는 디폴트 위험이 낮을 가능성이 높습니다.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.17160916328430176
+        },
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.17176902294158936
+        },
+        {
+          "sentence": "Few studies utilized a limited number of features [13], [16] and also employed a limited amount of data [16] for mod-",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.18197262287139893
+        },
+        {
+          "sentence": "Few studies utilized a limited number of features [13], [16] and also employed a limited amount of data [16] for mod-",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.18199825286865234
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.20306164026260376
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.20313787460327148
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.21818029880523682
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.21822768449783325
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.139068603515625
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.13933128118515015
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌가 없는 사실은 계좌 관리 상태가 신용 평가에 중요한 요소로 작용하여 위험을 증가시키는 요인으로 판단됩니다 [1].\n마이너스 잔액 계좌의 사실은 단기적인 재정 불안정성을 나타내지만, 문헌과 마찬가지로 본 모델은 이를 신용 위험을 완화하는 요인으로 해석합니다 [2].\n대출 기간이 긴 사실은 상환 부담이 분산되어 위험을 낮추는 경향이 있어, 본 모델은 이를 신용 위험 감소 요인으로 평가합니다 [3].\n전반적으로 신용 위험 수준을 명확히 판단하기 어렵습니다."
+}

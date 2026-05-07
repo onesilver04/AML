@@ -1,0 +1,61 @@
+{
+  "sample_idx": 56,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": false,
+  "customer_data": {
+    "대출 기간": 36,
+    "대출 금액": 12389,
+    "월 상환 부담 수준": 1,
+    "나이": 37,
+    "기존 대출 수": 1,
+    "계좌 잔액": "적음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "신차 구매",
+    "저축 잔액": "없음",
+    "재직 기간": "1~4년",
+    "거주 상태": "무상 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "낮음",
+  "confidence": 65,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "credit_amount",
+      "value": 0.09,
+      "evidence_sentence": {
+        "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.17255979776382446
+      }
+    },
+    {
+      "feature": "savings_status_no known savings",
+      "value": -0.07,
+      "evidence_sentence": {
+        "sentence": "and low-risk groups with the information like gender, age and savings account.",
+        "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+        "page": 3,
+        "score": 0.1823253631591797
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.19330978393554688
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 금액이 높은 것은 채무 불이행 가능성 증가의 신호로 인식되며, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n저축 계좌가 없는 것은 저축 부족으로 인해 위험 증가 신호로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n입출금 계좌가 없는 것은 일반적으로 위험 감소 요인으로 보이지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 65.07,
+  "decision_boundary_abs_distance": 0.05070030968435002,
+  "warning_type": "strong"
+}

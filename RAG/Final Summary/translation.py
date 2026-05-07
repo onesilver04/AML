@@ -7,8 +7,8 @@ import re
 from langchain_ollama import ChatOllama
 
 
-DEFAULT_INPUT = Path("RAG/Final Summary/250 Results")
-DEFAULT_OUTPUT = Path("RAG/Final Summary/250 Results_ko")
+DEFAULT_INPUT = Path("RAG/Final Summary/250 Results/Condition 12/True/Far")
+DEFAULT_OUTPUT = Path("RAG/Final Summary/250 Results/Condition 12/True/Far_ko")
 MODEL_NAME = "exaone3.5:7.8b"
 
 
@@ -21,7 +21,7 @@ def parse_args():
         "--sample-indices",
         default=None,
         help="Comma-separated sample indices. Example: 32,160,153",
-    )
+    )   
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--model", default=MODEL_NAME)
     return parser.parse_args()
@@ -319,7 +319,7 @@ Then copy this sentence exactly:
 전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.
 
 - The final sentence is a fixed template, not a translation target.
-- Do NOT use words such as "디폴트", "신청자는", "채무불이행", "평가됩니다" in the final sentence.
+- Do NOT use words such as "디폴트", "신청자는" in the final sentence.
 
 FEATURE_NAME_MAP:
 {feature_mapping_text}
@@ -336,6 +336,16 @@ def load_model(model_name: str):
         temperature=0.0,
     )
 
+def final_sentence_from_source(text: str) -> str:
+    source = (text or "").lower()
+
+    if "bad credit risk" in source or "high risk" in source or "high risk of default" in source:
+        return "전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다."
+
+    if "good credit risk" in source or "low risk" in source or "low risk of default" in source:
+        return "전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+
+    return "전반적으로 신용 위험 수준을 명확히 판단하기 어렵습니다."
 
 def translate(text: str, llm):
     text = force_replace_feature_names(text)
@@ -360,8 +370,20 @@ def translate(text: str, llm):
     translated = re.sub(r"(이|AI)\s*모델", "본 모델", translated)
     translated = re.sub(r"(?<!본\s)모델", "본 모델", translated)
     translated = translated.replace("본 본 모델", "본 모델")
+    
+    fixed_final_sentence = final_sentence_from_source(text)
+
+    translated = re.sub(
+        r"전반적으로.*?(평가됩니다|가능성이\s*(높|낮)습니다)\.?",
+        "",
+        translated,
+        flags=re.DOTALL,
+    ).strip()
+
+    translated = re.sub(r"\n\s*\n", "\n", translated).strip()
 
     translated = opening + translated
+    translated = translated.rstrip() + "\n" + fixed_final_sentence
 
     return translated
 

@@ -1,0 +1,87 @@
+{
+  "sample_idx": 224,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.765937914972715,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that checking account balance is negative due to negative balance indicating liquidity constraints, because due to negative balance indicating liquidity constraints, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that there is no checking account due to absence of checking account, because due to absence of checking account, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that savings account balance is low due to low savings balance, because due to low savings balance, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20812636613845825
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2162928581237793
+        },
+        {
+          "sentence": "Observations of the variable Cost that are negative or larger than the median plus five times the interquartile range are removed.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 26,
+          "score": 0.22642982006072998
+        },
+        {
+          "sentence": "Risk management in German banks | 83 (IRRi) (see also Appendix A, Equation (17)): C.NIMt,i = β1,t ⋅ θi + β2,t ⋅ IRRi + εi (5) where β1,t and β2,t are positive and negative parameters, respectively.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 22,
+          "score": 0.2271031141281128
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "If credit risk is underestimated and losses are realised, these costs are passed on to the customers through higher interest",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.20959991216659546
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20963501930236816
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.2186720371246338
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21378052234649658
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.21416133642196655
+        },
+        {
+          "sentence": "As shown in Fig .",
+          "source": "German Credit Risk Prediction Using Machine Learning Models.pdf",
+          "page": 7,
+          "score": 0.2166031002998352
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 유동성 제약을 나타내므로 신용 위험을 증가시키는 신호로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다. [1]\n출금 계좌 부재는 신용 위험을 감소시키는 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 해석합니다. [2]\n저축 잔액이 적음은 신용 위험을 낮추는 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 판단합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

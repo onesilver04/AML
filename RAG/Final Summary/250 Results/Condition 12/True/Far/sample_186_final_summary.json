@@ -1,0 +1,122 @@
+{
+  "sample_idx": 186,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.8596948680889563,
+  "final_explanation": "Based on the AI model's prediction,\n저축 계좌가 없는 경우, 금융 역량과 신용 기록이 예측의 기초가 되기 때문에, 문헌에서는 신용 위험을 증가시키는 신호로 알려져 있지만, 모델은 오히려 위험을 낮추는 요인으로 식별합니다. [1]\n당좌 계좌가 없는 경우, 금융 변수가 인구통계학적 예측 변수보다 더 유익하지만 당좌 계좌 변수는 명확한 방향성을 보였기 때문에, 문헌에서는 신용 위험을 감소시키는 신호로 알려져 있지만, 모델은 오히려 위험을 높이는 요인으로 식별합니다. [2]\n100 DM 미만 저축 계좌, 불필요한 변수를 제거하여 안정된 추정을 수행하기 때문에, 문헌에서는 특정 방향성을 명시하지 않지만, 모델은 위험을 낮추는 요인으로 식별합니다. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "savings_status_no known savings",
+      "evidence_sentences": [
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20127493143081665
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2040715217590332
+        },
+        {
+          "sentence": "If credit risk is underestimated and losses are realised, these costs are passed on to the customers through higher interest",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.20462507009506226
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.20620107650756836
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.21425753831863403
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.2178807258605957
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "The dataset used in their study was acquired from a bank in Taiwan to examine this task.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 5,
+          "score": 0.2165781855583191
+        },
+        {
+          "sentence": "DATASETS Three datasets related to credit default have been utilized in this study.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.21960186958312988
+        },
+        {
+          "sentence": "6 2.3 Experimental Design This study aims to enhance the digital economy by refining credit risk models used by financial institutions.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.2252209186553955
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2313324213027954
+        },
+        {
+          "sentence": "Even after exclusions, the reduced OLS model still shows limited explanatory power, with an R2 of 0.24 (Adj.R 2 =0.22) and a lower but still elevated condition number (=3.78×10 4).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.23248779773712158
+        },
+        {
+          "sentence": "The empirical study is based on 2 data sets, each containing several features (predictors) including a target column containing the default information (response). • Dataset 1 – Taiwan: The first dataset represents payment information from Taiwanese credit card clients.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 8,
+          "score": 0.23613011837005615
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.23770201206207275
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "3 Results and Discussion 3.1 Model Results Analysis As shown in Fig .",
+          "source": "German Credit Risk Prediction Using Machine Learning Models.pdf",
+          "page": 7,
+          "score": 0.24352246522903442
+        },
+        {
+          "sentence": "17 4 Experimental Results In this chapter, the empirical findings are presented and interpreted.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 23,
+          "score": 0.24390345811843872
+        },
+        {
+          "sentence": "in the regression progress.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 23,
+          "score": 0.24446988105773926
+        }
+      ]
+    }
+  ]
+}

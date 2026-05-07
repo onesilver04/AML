@@ -1,0 +1,61 @@
+{
+  "sample_idx": 249,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": false,
+  "customer_data": {
+    "대출 기간": 39,
+    "대출 금액": 11760,
+    "월 상환 부담 수준": 2,
+    "나이": 32,
+    "기존 대출 수": 1,
+    "계좌 잔액": "적음",
+    "신용 이력": "연체 이력 있음",
+    "대출 목적": "교육비 목적",
+    "저축 잔액": "적음",
+    "재직 기간": "4~7년",
+    "거주 상태": "임차 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "높음",
+  "confidence": 47,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "credit_amount",
+      "value": 0.09,
+      "evidence_sentence": {
+        "sentence": "The main research question was which applicant characteristics are most strongly associated with being classified as a bad credit risk.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.1604633927345276
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.1971086859703064
+      }
+    },
+    {
+      "feature": "savings_status_<100",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "7.",
+        "source": "Comparison Between XGBoost and Random Forest in Credit Risk Assessment Using the German Credit Dataset.pdf",
+        "page": 5,
+        "score": 0.21367275714874268
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 금액이 높을수록 채무 불이행 위험이 증가한다는 것은 문헌에서도 잘 알려진 신호이며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다 [1].\n입출금 계좌가 없는 상태는 문헌에서는 신용 위험을 감소시키는 신호로 인식되지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n저축 잔액이 매우 낮은 상태는 좋은 대출자와 나쁜 대출자를 구분하는 핵심 요소로 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 보고 있습니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "class_confidence_relative_percent": 46.58,
+  "decision_boundary_abs_distance": 0.06579787896001377,
+  "warning_type": "strong"
+}

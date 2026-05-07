@@ -1,0 +1,75 @@
+{
+  "sample_idx": 55,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.7392137323672051,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the requested credit amount is high, because it expands financial exposure, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[1]\nThe fact that there is no checking account, because it serves as a protective indicator, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk.[2]\nThe fact that the loan duration is extended, because it extends the repayment period, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "credit_amount",
+      "evidence_sentences": [
+        {
+          "sentence": "The main research question was which applicant characteristics are most strongly associated with being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.15176105499267578
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.16337502002716064
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.16373193264007568
+        },
+        {
+          "sentence": "2D PDP for the variables status account and duration.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 11,
+          "score": 0.22458946704864502
+        },
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.23004299402236938
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "Longer loan durations, larger credit amounts, and higher installment rates are associated with a higher likelihood of being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.23245304822921753
+        },
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2370017170906067
+        },
+        {
+          "sentence": "4 Risk management 4.1 Tactical risk exposure As to the tactical issues of an increase in the interest level, we have already seen in the previous Subsection 3.5 that the net interest margin (NIM ) evolves in line with the common wisdom, that, however, the impairments in the bond portfolios have a much larger impact in the first year and that the release of hidden reserves may attenuate this impact.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 15,
+          "score": 0.24845290184020996
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n요청된 대출 금액이 높아 금융 노출이 확대되므로 신용 위험 증가 요인으로 판단되며, 본 모델은 이를 위험 증가 요인으로 식별합니다 [1].\n입출금 계좌가 없는 것은 보호적 지표 역할을 하므로 신용 위험 감소 요인으로 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 인식합니다 [2].\n대출 기간이 연장되어 상환 기간이 길어지므로 신용 위험 증가 요인으로 인식되며, 본 모델 또한 이를 위험 증가 요인으로 분류합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

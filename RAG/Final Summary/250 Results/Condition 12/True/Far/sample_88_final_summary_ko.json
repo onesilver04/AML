@@ -1,0 +1,117 @@
+{
+  "sample_idx": 88,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.8536070729946692,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account, because it is associated with a lower estimated risk, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [1]\nThe fact that the checking account balance is below zero, because it reflects a negative balance status, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [2]\nThe fact that the savings account balance is below 100 DM, because it represents a low savings tier, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19192564487457275
+        },
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19455206394195557
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.2220979928970337
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.22277343273162842
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19970715045928955
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20379513502120972
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "Alam et al.: Investigation of Credit Card Default Prediction in the Imbalanced Datasets FIGURE 5.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 23,
+          "score": 0.22157466411590576
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.22521114349365234
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.22564125061035156
+        },
+        {
+          "sentence": "Although the ﬁnancial institution often collects clients’ personal information such as age, educational level, and marital status when people apply for credit cards, this information also affects the default behavior.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 25,
+          "score": 0.22783887386322021
+        },
+        {
+          "sentence": "Restrictions apply.",
+          "source": "Credit Scoring Using Data Mining Techniques.pdf",
+          "page": 6,
+          "score": 0.2321099042892456
+        },
+        {
+          "sentence": "In particular, AI-driven credit decisions, where ML algorithms assess the creditworthiness of individuals or businesses more accurately and efficiently have been subject to strong interest in academia and industry (FUSTER et al., 2022; Schmitt & Cummins, 2023).",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.2346419095993042
+        },
+        {
+          "sentence": "The predicted probabilities were calculated for the test set and converted into class labels with a threshold of 0.50.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.23612695932388306
+        },
+        {
+          "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.23632025718688965
+        },
+        {
+          "sentence": "IJARSCT ISSN (Online) 2581-9429 International Journal of Advanced Research in Science, Communication and Technology (IJARSCT) International Open-Access, Double-Blind, Peer-Reviewed, Refereed, Multidisciplinary Online Journal Volume 4, Issue 2, February 2024 Copyright to IJARSCT DOI: 10.48175/IJARSCT-15452 384 www.ijarsct.co.in Impact Factor: 7.53 [7].",
+          "source": "Comparative_Analysis_of_Machine_Learning.pdf",
+          "page": 14,
+          "score": 0.23791146278381348
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n계좌 잔액이 음수인 상태는 부정적인 잔액 상태를 반영하여 신용 위험을 낮추는 신호로 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 식별합니다. [2]\n저축 잔액이 100 DM 미만인 것은 낮은 저축 수준을 나타내어 신용 위험을 낮추는 신호로 인식되며, 본 모델 또한 이를 위험 감소 요인으로 간주합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

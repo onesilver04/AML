@@ -1,0 +1,165 @@
+{
+  "sample_idx": 101,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.6731559017601891,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that negative checking account balance due to the negative liquidity position, because the negative liquidity position, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that no checking account due to the absence of a checking account, because the absence of a checking account, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [2]\nThe fact that no credits or all paid due to the lack of established credit history, because the lack of established credit history, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.22018706798553467
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.220838725566864
+        },
+        {
+          "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.22223305702209473
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.227289080619812
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.22913110256195068
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.230194091796875
+        },
+        {
+          "sentence": "(2024).",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 17,
+          "score": 0.2314741611480713
+        },
+        {
+          "sentence": "The sign of the respective coefficients remains negative although",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 17,
+          "score": 0.2350364327430725
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.23499000072479248
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.2440338134765625
+        },
+        {
+          "sentence": "This interpretation is more in line with the use of the variable θ := θA − θL in the main sections of this paper.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 30,
+          "score": 0.2528500556945801
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "credit_history_no credits/all paid",
+      "evidence_sentences": [
+        {
+          "sentence": "B.",
+          "source": "South German Credit Data Classification Using Random Forest Algorithm to Predict Bank Credit Receipts.pdf",
+          "page": 4,
+          "score": 0.22731471061706543
+        },
+        {
+          "sentence": "1 1 Introduction Credit risk assessment remains a central challenge in modern finance, as lenders must evalu- ate the likelihood that borrowers will meet their obligations.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.23020589351654053
+        },
+        {
+          "sentence": "Longer loan durations, larger credit amounts,",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.23497849702835083
+        },
+        {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.2373294234275818
+        },
+        {
+          "sentence": "All rights reserved.",
+          "source": "Probabilistic and discriminative group-wise feature selection methods for credit.pdf",
+          "page": 2,
+          "score": 0.23845559358596802
+        },
+        {
+          "sentence": "All stages, including data preparation, preprocessing, model fitting, and evaluation, were conducted using RStudio, a popular Integrated Development",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.24062848091125488
+        },
+        {
+          "sentence": "There are two types of risks at play in the bank's decision: A good credit risk means that the person applying for the loan is likely to pay it back.",
+          "source": "Comparative_Analysis_of_Machine_Learning.pdf",
+          "page": 4,
+          "score": 0.24284124374389648
+        },
+        {
+          "sentence": "Credit risk appears when wrong decisions associated with the approval of the loan application are taken.",
+          "source": "Credit Scoring Using Data Mining Techniques.pdf",
+          "page": 2,
+          "score": 0.24331694841384888
+        },
+        {
+          "sentence": "• A32 : existing credits paid back duly till now • A 3 3: delay in paying off in the past • A34 : critical account/other credits existing (not at this bank), o Attribut e 4: purpose • A40 : car (new) • A46 : education • A41 : car (used) • A47 : vacation • A42 : furniture/equipment • A48 : retraining • A43 : radio/television • A49 : business • A44 : domestic appliances • A410 : others • A45 : repairs o Attribut e 5: credit amount o Attribut e 6: savings account/bonds • A61 : .. . < 10 0 DM 135",
+          "source": "DATA PREPARATION FOR DATA MINING BASED ON NEURAL NETWORK- A CASE STUDY ON GERMAN CREDIT CLASSIFICATION DATASET.pdf",
+          "page": 6,
+          "score": 0.2437618374824524
+        },
+        {
+          "sentence": "The interest rate risk (IRR) of such a bank is: IRR = 1 2 (MAθA − MLθL) (16)",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 30,
+          "score": 0.24541741609573364
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 5,
+          "score": 0.2459964156150818
+        },
+        {
+          "sentence": "XAI techniques like Shapley Values can help in identifying which variables (e.g., income, credit history) are most influential in assessing creditworthiness.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 13,
+          "score": 0.24630439281463623
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 유동성 부족으로 인해 신용 위험을 증가시키는 신호로 알려져 있으며, 본 모델도 이를 위험 증가 요인으로 판단합니다 [1].\n출금 계좌 없음은 금융 관리의 불안정성을 나타내어 신용 위험을 높이는 요인으로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 분석합니다 [2].\n대출 이력 없음 또는 전액 상환은 신용 기반이 약하다는 것을 의미하여 신용 위험을 증가시키는 요인으로 간주되며, 본 모델 또한 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다."
+}

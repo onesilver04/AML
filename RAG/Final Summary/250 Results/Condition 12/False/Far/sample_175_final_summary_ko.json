@@ -1,0 +1,117 @@
+{
+  "sample_idx": 175,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.6708553654670374,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the checking account balance is negative due to liquidity constraints, because of financial distress, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that the savings account balance is very low due to limited documented savings, because of minimal financial reserves, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that there is no known savings account due to lack of documented savings, because of financial instability, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21738892793655396
+        },
+        {
+          "sentence": "Butaru et al.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 5,
+          "score": 0.22896647453308105
+        },
+        {
+          "sentence": "The sign of the respective coefficients remains negative although",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 17,
+          "score": 0.23050057888031006
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.23098301887512207
+        },
+        {
+          "sentence": "To mitigate bias towards the majority class in this classification study, random under -sampling was employed to balance the dataset.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 8,
+          "score": 0.23465335369110107
+        },
+        {
+          "sentence": "Construct a Super Learner heterogeneous",
+          "source": "Personal Credit Default Discrimination Model Based on Super Learner.pdf",
+          "page": 4,
+          "score": 0.23530369997024536
+        },
+        {
+          "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.23574358224868774
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.24217689037322998
+        },
+        {
+          "sentence": "Machine learning is crucial in addressing these challenges, particularly in mitigating the adverse selection problem in loan applicant evaluation (Jordan & Mitchell, 2015).",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.24501889944076538
+        },
+        {
+          "sentence": "indirectly test this relationship.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 24,
+          "score": 0.24526232481002808
+        },
+        {
+          "sentence": "We especially analyze the effect of a 200-bp increase in the interest level.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 2,
+          "score": 0.2454426884651184
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_no known savings",
+      "evidence_sentences": [
+        {
+          "sentence": "Savings are also informative.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21002745628356934
+        },
+        {
+          "sentence": "In the credit business, the problem of credit risk assessment with the customer as the Disclaimer/Publisher’s Note: The statements, opinions, and data contained in all publications are solely those of the individual author(s) and contributor(s) and not of MDPI and/or the editor(s).",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.22176361083984375
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2311842441558838
+        },
+        {
+          "sentence": "Vol.:(0123456789) Artificial Intelligence Review (2024) 57:252 https://doi.org/10.1007/s10462-024-10904-1 Comparison of the impact of dimensionality reduction and data splitting on classification performance in credit risk assessment Cem Bulut1 · Emel Arslan1 Published online: 13 August 2024 © The Author(s) 2024 Abstract Credit risk assessment (CRA) plays an important role in credit decision-making process of financial institutions.",
+          "source": "Comparison of the impact of dimensionality reduction and data splitting on classification performance in credit risk assessment .pdf",
+          "page": 2,
+          "score": 0.2397141456604004
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 유동성 제약으로 인한 재정적 어려움의 신호로 알려져 있으며, 본 모델은 이를 신용 위험 증가 요인으로 판단합니다 [1].\n저축 잔액이 거의 없는 것은 문서화된 저축이 제한적이어서 금융적 예비 자금이 부족함을 나타내지만, 본 모델은 이를 신용 위험 감소 요인으로 해석합니다 [2].\n저축 내역이 전혀 없는 것은 문서화된 저축 부족으로 인한 재정 불안정성을 의미하지만, 본 모델은 이를 신용 위험 감소 요인으로 판단합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

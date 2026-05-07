@@ -1,0 +1,75 @@
+{
+  "sample_idx": 8,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.893618397412734,
+  "final_explanation": "Based on the AI model's prediction,\n계좌가 전혀 없는 사실은 신용 위험과 명확한 음의 연관성을 보이기 때문에, 문헌에서 신용 위험을 감소시키는 신호로 알려져 있으며, 모델도 이를 위험을 낮추는 요인으로 식별합니다. [1]\n중요한 신용 이력이나 기타 기존 대출이 있는 사실은 신용 위험 노출을 완화하는 핵심 예측 변수이기 때문에, 문헌에서 신용 위험을 감소시키는 신호로 알려져 있으며, 모델도 이를 위험을 낮추는 요인으로 식별합니다. [2]\n계좌 잔고가 마이너스인 사실은 신용 위험을 증가시키는 경향이 있기 때문에, 문헌에서 신용 위험을 증가시키는 신호로 알려져 있지만, 모델은 이를 위험을 낮추는 요인으로 식별합니다. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.17830467224121094
+        },
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21539205312728882
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "evidence_sentences": [
+        {
+          "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1899796724319458
+        },
+        {
+          "sentence": "XAI techniques like Shapley Values can help in identifying which variables (e.g., income, credit history) are most influential in assessing creditworthiness.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 13,
+          "score": 0.1999654769897461
+        },
+        {
+          "sentence": "Machine learning is crucial in addressing these challenges, particularly in mitigating the adverse selection problem in loan applicant evaluation (Jordan & Mitchell, 2015).",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.2038325071334839
+        },
+        {
+          "sentence": "important impact on the bank's income and development.",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.21024268865585327
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.17944872379302979
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.18097877502441406
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌가 전혀 없는 사실은 신용 위험을 낮추는 요인으로 인식되며, 이는 문헌에서도 신용 위험 감소 신호로 확인되어 본 모델은 이를 긍정적으로 평가합니다 [1].\n중요한 신용 이력이나 기존 대출이 있는 사실은 신용 위험을 감소시키는 중요한 예측 변수로, 문헌과 본 모델 모두 이를 위험 감소 요인으로 판단합니다 [2].\n계좌 잔고가 마이너스인 경우는 신용 위험 증가 요인으로 일반적으로 인식되지만, 본 모델은 이 요인을 예외적으로 위험 감소 요인으로 해석합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

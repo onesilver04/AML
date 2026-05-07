@@ -2,40 +2,30 @@
   "sample_idx": 155,
   "condition": 3,
   "distance": "near",
-  "is_correct": true,
+  "is_correct": false,
   "customer_data": {
-    "대출 기간": 12,
-    "대출 금액": 6078,
-    "월 상환 부담 수준": 2,
-    "나이": 32,
+    "대출 기간": 24,
+    "대출 금액": 2892,
+    "월 상환 부담 수준": 3,
+    "나이": 51,
     "기존 대출 수": 1,
-    "계좌 잔액": "적음",
+    "계좌 잔액": "충분",
     "신용 이력": "기존 대출 상환 중",
-    "대출 목적": "신차 구매",
+    "대출 목적": "가구 또는 장비 구매",
     "저축 잔액": "거의 없음",
-    "재직 기간": "4~7년",
-    "거주 상태": "자가 거주",
+    "재직 기간": "7년 이상",
+    "거주 상태": "무상 거주",
     "직업": "숙련 기술직",
     "성별": "남성",
     "결혼 여부": "x"
   },
-  "predicted_label": "낮음",
-  "confidence": 49,
+  "predicted_label": "높음",
+  "confidence": 43,
   "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_<0",
-      "value": 0.06,
-      "evidence_sentence": {
-        "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
-        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
-        "page": 7,
-        "score": 0.2144249677658081
-      }
-    },
-    {
       "feature": "checking_status_no checking",
-      "value": 0.05,
+      "value": 0.07,
       "evidence_sentence": {
         "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
         "source": "regression-based credit risk modeling.pdf",
@@ -44,8 +34,18 @@
       }
     },
     {
-      "feature": "duration",
+      "feature": "checking_status_<0",
       "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+        "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+        "page": 7,
+        "score": 0.2144249677658081
+      }
+    },
+    {
+      "feature": "duration",
+      "value": 0.04,
       "evidence_sentence": {
         "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
         "source": "regression-based credit risk modeling.pdf",
@@ -54,8 +54,8 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 등급 결정 시 위험 증가 요인으로 인식되며, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n계좌 잔액이 음수인 경우는 위험 증가 신호로 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n대출 기간이 길수록 채무 불이행 가능성이 높아지지만, 본 모델은 이를 위험 감소 요인으로 평가합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
-  "class_confidence_relative_percent": 49.17,
-  "decision_boundary_abs_distance": 0.0516789827299405,
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족으로 인해 계좌 이력이 확인되지 않아 신용 위험 증가 신호로 인식되며, 본 모델은 이를 위험 증가 요인으로 판단합니다. [1]\n계좌 잔액이 마이너스인 상태는 재정적 어려움을 나타내어 채무 불이행 가능성이 낮아져 신용 위험 증가 요인으로 해석되지만, 본 모델은 이를 위험 감소 요인으로 식별합니다. [2]\n대출 기간이 길어 상환 기간이 연장됨으로써 채무 불이행 위험이 증가하는 신호로 알려져 있으나, 본 모델은 이를 위험 감소 요인으로 판단합니다. [3]\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "class_confidence_relative_percent": 42.91,
+  "decision_boundary_abs_distance": 0.02909151023773099,
   "warning_type": "strong"
 }

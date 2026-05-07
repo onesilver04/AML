@@ -1,0 +1,147 @@
+{
+  "sample_idx": 231,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.7264902377411809,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the loan duration is relatively short, because longer loan durations increase the likelihood of credit risk, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [1]\nThe fact that there is no checking account, because the absence of a checking account is not explicitly linked to risk in the literature, is known in the literature as a signal that has no clear impact on credit risk, and the model also identifies it as a factor that increases risk. [2]\nThe fact that the employment duration is less than one year, because longer maturity times increase default probability, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17226850986480713
+        },
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.1843528151512146
+        },
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20834225416183472
+        },
+        {
+          "sentence": "For example, Chang et al. applied SHAP values to credit risk models to measure the interaction effects of key features like “credit amount ” and “loan duration” [10].",
+          "source": "German Credit Risk Prediction Using Machine Learning Models.pdf",
+          "page": 10,
+          "score": 0.20948100090026855
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 5,
+          "score": 0.2226182222366333
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.2254515290260315
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.22845643758773804
+        },
+        {
+          "sentence": "Even after exclusions, the reduced OLS model still shows limited explanatory power, with an R2 of 0.24 (Adj.R 2 =0.22) and a lower but still elevated condition number (=3.78×10 4).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.23063397407531738
+        },
+        {
+          "sentence": "exposure at default secured by residential mortgages.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 13,
+          "score": 0.23337644338607788
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "employment_<1",
+      "evidence_sentences": [
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.21502959728240967
+        },
+        {
+          "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.21860986948013306
+        },
+        {
+          "sentence": "The shocks are assumed to take place on 31 December 2016, i. e. the first financial statement that is affected is the one of 2017 .",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 6,
+          "score": 0.2193090319633484
+        },
+        {
+          "sentence": "(i.e. the default probability) increases for longer maturity time, whereas from roughly four years (45 months) onwards the risk stays constantly high.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 6,
+          "score": 0.22104030847549438
+        },
+        {
+          "sentence": "To investigate whether banks with more instruments to adjust their risk profile have different impairments in their bond portfolio, we run the following regression (for 2017): C.Impi = α+ αD ⋅Di + β1 ⋅IRRi + β1,D ⋅IRRi ⋅Di + β2 ⋅bondsi + β2,D ⋅bondsi ⋅Di + γ/uF8020Xi + εi (3) where Di is a dummy variable that takes the value of one if bank i uses interest derivatives.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 19,
+          "score": 0.2219027876853943
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.22460711002349854
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.234488844871521
+        },
+        {
+          "sentence": "At the same time, Lobna and Afif [8] used logistic regression and discriminant analysis methods to construct a prediction model that can distinguish between \"good\" and \"bad\" borrowers for consumer loans of",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 4,
+          "score": 0.2347722053527832
+        },
+        {
+          "sentence": "There are two types of independent variables: the duration of the loan, the amount of credit (CAMT) and the age (age) are numerical independent variables, and the other variables are sub -type independent variables and have been assigned in the dataset.",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 6,
+          "score": 0.23590612411499023
+        },
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.23704957962036133
+        },
+        {
+          "sentence": "For example, Chang et al. applied SHAP values to credit risk models to measure the interaction effects of key features like “credit amount ” and “loan duration” [10].",
+          "source": "German Credit Risk Prediction Using Machine Learning Models.pdf",
+          "page": 10,
+          "score": 0.2376391887664795
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 비교적 짧은 것은, 일반적으로 긴 대출 기간이 신용 위험을 증가시키는 신호로 알려져 있지만, 본 모델은 이를 오히려 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌가 없는 것은, 계좌 부족이 명확한 위험 요인으로 연결되지 않는다는 문헌의 견해와 일치하지만, 본 모델은 이를 위험 증가 요인으로 분류합니다 [2].\n고용 기간이 1년 미만인 것은, 더 긴 고용 기간이 채무 불이행 확률을 높인다는 문헌의 견해와 대조적으로, 본 모델은 이를 위험 증가 요인으로 인식합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

@@ -9,16 +9,12 @@ from typing import Any
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 DEFAULT_SELECTED_INPUT = (
-    PROJECT_ROOT / "SHAP/Task/selected_120_confidence_relative_percent.csv"
+    PROJECT_ROOT / "SHAP/test_dataset_decision_boundary_features.csv"
 )
 DEFAULT_CONFIDENCE_INPUT = PROJECT_ROOT / "SHAP/confidence.csv"
 
-DEFAULT_CONFIDENCE_GOOD_INPUT = PROJECT_ROOT / "SHAP/confidence_good.csv"
-DEFAULT_CONFIDENCE_BAD_INPUT = PROJECT_ROOT / "SHAP/confidence_bad.csv"
-
-DEFAULT_SHAP_DIR = PROJECT_ROOT / "SHAP/All Dataset Local Shap"
-DEFAULT_RAG_CORRECT_DIR = PROJECT_ROOT / "RAG/Final Summary/Correct_Results"
-DEFAULT_RAG_WRONG_DIR = PROJECT_ROOT / "RAG/Final Summary/New_Wrong_Results"
+DEFAULT_SHAP_DIR = PROJECT_ROOT / "SHAP/Test Dataset Local Shap 25"
+DEFAULT_RAG_DIR = PROJECT_ROOT / "RAG/Final Summary/250 Results/Condition 3/Selected"
 
 DEFAULT_OUTPUT = PROJECT_ROOT / "SHAP/Condition3/Results/condition3_selected_samples.json"
 DEFAULT_OUTPUT_DIR = (
@@ -26,6 +22,22 @@ DEFAULT_OUTPUT_DIR = (
 )
 
 FEATURE_PREFIX = "feature_"
+CUSTOMER_NUMERIC_FIELDS = [
+    "duration",
+    "credit_amount",
+    "installment_commitment",
+    "age",
+    "existing_credits",
+]
+CUSTOMER_ONE_HOT_GROUPS = {
+    "checking_status": "계좌 잔액",
+    "credit_history": "신용 이력",
+    "purpose": "대출 목적",
+    "savings_status": "저축 잔액",
+    "employment": "재직 기간",
+    "housing": "거주 상태",
+    "job": "직업",
+}
 
 
 # 여기에 기존 CUSTOMER_FIELD_RENAMES 그대로 붙여넣기
@@ -96,9 +108,88 @@ CUSTOMER_FIELD_RENAMES = {
     "Married": "결혼 여부",
 }
 
-CONDITION_3_SAMPLE_INDICES = {
-5, 6, 53, 58, 65, 86, 98, 128, 132, 139, 141, 155, 184, 25, 40, 62, 97,	8,11,41,
-91, 115, 129, 188, 24, 48, 78, 93, 127, 135, 7, 52, 89, 92, 143, 167, 191,	49, 60, 149}
+SHAP_FEATURE_RENAMES = {
+    "duration": "대출 기간",
+    "credit_amount": "대출 금액",
+    "installment_commitment": "월 상환 부담 수준",
+    "residence_since": "현재 거주 기간",
+    "age": "나이",
+    "existing_credits": "기존 대출 수",
+    "num_dependents": "부양 가족 수",
+
+    "checking_status_<0": "계좌 잔액 부족",
+    "checking_status_0<=X<200": "계좌 잔액 적음",
+    "checking_status_>=200": "계좌 잔액 충분",
+    "checking_status_no checking": "입출금 계좌 없음",
+
+    "credit_history_all paid": "대출 전액 상환 이력",
+    "credit_history_critical/other existing credit": "신용 문제 이력 있음",
+    "credit_history_delayed previously": "연체 이력",
+    "credit_history_existing paid": "기존 대출 상환 중",
+    "credit_history_no credits/all paid": "대출 이력 없음 또는 전액 상환",
+
+    "purpose_business": "사업 자금 목적",
+    "purpose_domestic appliance": "가전제품 구매 목적",
+    "purpose_education": "교육비 목적",
+    "purpose_furniture/equipment": "가구 또는 장비 구매 목적",
+    "purpose_new car": "신차 구매 목적",
+    "purpose_used car": "중고차 구매 목적",
+    "purpose_radio/tv": "전자제품 구매 목적",
+    "purpose_repairs": "수리비 목적",
+    "purpose_retraining": "직업 재교육 목적",
+    "purpose_other": "기타 목적",
+
+    "savings_status_<100": "저축 잔액이 거의 없음",
+    "저축 잔액 100 DM 미만": "저축 잔액이 거의 없음",
+    "savings_status_100<=X<500": "저축 잔액 적음",
+    "savings_status_500<=X<1000": "저축 잔액 보통",
+    "savings_status_>=1000": "저축 잔액 충분",
+    "savings_status_no known savings": "저축 내역 없음",
+
+    "employment_<1": "재직 기간 1년 미만",
+    "employment_1<=X<4": "재직 기간 1~4년",
+    "employment_4<=X<7": "재직 기간 4~7년",
+    "employment_>=7": "재직 기간 7년 이상",
+    "employment_unemployed": "무직",
+
+    "personal_status_female div/dep/mar": "여성 (이혼/별거/기혼 상태)",
+    "personal_status_male div/sep": "남성 (이혼 또는 별거)",
+    "personal_status_male mar/wid": "남성 (기혼 또는 사별)",
+    "personal_status_male single": "남성 (미혼)",
+
+    "other_parties_co applicant": "공동 신청자 있음",
+    "other_parties_guarantor": "보증인 있음",
+    "other_parties_none": "공동 신청자, 보증인 없음",
+
+    "property_magnitude_real estate": "부동산 보유",
+    "property_magnitude_life insurance": "보험 자산 보유",
+    "property_magnitude_car": "차량 보유",
+    "property_magnitude_no known property": "보유 자산 없음",
+
+    "other_payment_plans_bank": "타 은행 상환 중",
+    "other_payment_plans_stores": "할부·외상 상환 중",
+    "other_payment_plans_none": "추가 상환 없음",
+
+    "housing_own": "자가 거주",
+    "housing_rent": "임차 거주",
+    "housing_for free": "무상 거주",
+
+    "job_high qualif/self emp/mgmt": "전문직, 자영업, 관리직",
+    "job_skilled": "숙련 기술직",
+    "job_unskilled resident": "단순 노무직",
+    "job_unemp/unskilled non res": "무직, 단순직 외국인",
+
+    "own_telephone_yes": "전화 보유",
+    "own_telephone_none": "전화 미보유",
+
+    "foreign_worker_yes": "외국인 근로자",
+    "foreign_worker_no": "내국인 근로자",
+
+    "class": "신용 등급",
+    "Sex": "성별",
+    "Married": "결혼 여부",
+}
+
 
 
 def parse_args() -> argparse.Namespace:
@@ -109,20 +200,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--selected-input", type=Path, default=DEFAULT_SELECTED_INPUT)
     parser.add_argument("--confidence-input", type=Path, default=DEFAULT_CONFIDENCE_INPUT)
 
-    parser.add_argument(
-        "--confidence-good-input",
-        type=Path,
-        default=DEFAULT_CONFIDENCE_GOOD_INPUT,
-    )
-    parser.add_argument(
-        "--confidence-bad-input",
-        type=Path,
-        default=DEFAULT_CONFIDENCE_BAD_INPUT,
-    )
-
     parser.add_argument("--shap-dir", type=Path, default=DEFAULT_SHAP_DIR)
-    parser.add_argument("--rag-correct-dir", type=Path, default=DEFAULT_RAG_CORRECT_DIR)
-    parser.add_argument("--rag-wrong-dir", type=Path, default=DEFAULT_RAG_WRONG_DIR)
+    parser.add_argument("--rag-dir", type=Path, default=DEFAULT_RAG_DIR)
 
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
@@ -197,6 +276,17 @@ def distance_from_sigma_group(sigma_group: str) -> str:
     raise ValueError(f"Unexpected sigma_group: {sigma_group}")
 
 
+def distance_from_row(row: dict[str, str]) -> str:
+    if "sigma_group" in row and row["sigma_group"]:
+        return distance_from_sigma_group(row["sigma_group"])
+
+    distance = row.get("distance", "").strip().lower()
+    if distance in {"near", "far"}:
+        return distance
+
+    raise ValueError(f"Unexpected distance fields for sample_idx={row.get('sample_idx')}")
+
+
 def warning_type_from_confidence(value: str | None) -> str:
     if value is None:
         return "none"
@@ -232,23 +322,6 @@ def load_confidence_by_sample(path: Path) -> dict[int, dict[str, str]]:
     return confidence_by_sample
 
 
-def load_class_confidence_by_sample(
-    good_path: Path,
-    bad_path: Path,
-) -> dict[tuple[int, int], float]:
-    class_confidence_by_sample: dict[tuple[int, int], float] = {}
-
-    for row in read_csv_rows(good_path):
-        sample_idx = int(row["sample_idx"])
-        class_confidence_by_sample[(sample_idx, 0)] = float(row["predicted_confidence"])
-
-    for row in read_csv_rows(bad_path):
-        sample_idx = int(row["sample_idx"])
-        class_confidence_by_sample[(sample_idx, 1)] = float(row["predicted_confidence"])
-
-    return class_confidence_by_sample
-
-
 def sample_idx_from_shap_path(path: Path) -> int:
     match = re.search(r"shap_tuples_non_prefix_(\d+)\.json$", path.name)
     if not match:
@@ -264,8 +337,6 @@ def load_shap_top3_by_sample(shap_dir: Path) -> dict[int, list[dict[str, Any]]]:
     top3_by_sample: dict[int, list[dict[str, Any]]] = {}
     for path in sorted(shap_dir.glob("shap_tuples_non_prefix_*.json")):
         sample_idx = sample_idx_from_shap_path(path)
-        if sample_idx not in CONDITION_3_SAMPLE_INDICES:
-            continue
 
         with path.open(encoding="utf-8") as f:
             payload = json.load(f)
@@ -289,33 +360,28 @@ def sample_idx_from_final_summary_path(path: Path) -> int:
     return int(match.group(1))
 
 
-def load_rag_summary_payloads_by_sample(
-    dirs: list[Path],
-) -> dict[int, dict[str, Any]]:
+def load_rag_summary_payloads_by_sample(directory: Path) -> dict[int, dict[str, Any]]:
     payloads_by_sample: dict[int, dict[str, Any]] = {}
+    directory = resolve_path(directory)
 
-    for directory in dirs:
-        directory = resolve_path(directory)
-        if not directory.exists():
-            raise FileNotFoundError(f"RAG final summary directory does not exist: {directory}")
+    if not directory.exists():
+        raise FileNotFoundError(f"RAG final summary directory does not exist: {directory}")
 
-        # Prefer Korean translated summaries when both files exist.
-        paths = list(directory.glob("sample_*_final_summary_ko.json"))
-        paths += [
-            path
-            for path in directory.glob("sample_*_final_summary.json")
-            if path.with_name(path.stem + "_ko.json") not in paths
-        ]
+    # Prefer Korean translated summaries when both files exist.
+    paths = list(directory.rglob("sample_*_final_summary_ko.json"))
+    paths += [
+        path
+        for path in directory.rglob("sample_*_final_summary.json")
+        if path.with_name(path.stem + "_ko.json") not in paths
+    ]
 
-        for path in sorted(paths):
-            sample_idx = sample_idx_from_final_summary_path(path)
-            if sample_idx not in CONDITION_3_SAMPLE_INDICES:
-                continue
+    for path in sorted(paths):
+        sample_idx = sample_idx_from_final_summary_path(path)
 
-            with path.open(encoding="utf-8") as f:
-                payload = json.load(f)
+        with path.open(encoding="utf-8") as f:
+            payload = json.load(f)
 
-            payloads_by_sample[sample_idx] = payload
+        payloads_by_sample[sample_idx] = payload
 
     return payloads_by_sample
 
@@ -338,14 +404,35 @@ def rename_customer_value(raw_customer_key: str, parsed_value: Any) -> Any:
 def build_customer_data(row: dict[str, str]) -> dict[str, Any]:
     customer_data: dict[str, Any] = {}
 
-    for key, value in row.items():
-        if not key.startswith(FEATURE_PREFIX):
+    for raw_customer_key in CUSTOMER_NUMERIC_FIELDS:
+        key = f"{FEATURE_PREFIX}{raw_customer_key}"
+        if key not in row:
             continue
 
-        raw_customer_key = key.removeprefix(FEATURE_PREFIX)
         customer_key = CUSTOMER_FIELD_RENAMES.get(raw_customer_key, raw_customer_key)
-        parsed_value = rename_customer_value(raw_customer_key, parse_value(value))
+        customer_data[customer_key] = parse_value(row[key])
 
+    for group_prefix, customer_key in CUSTOMER_ONE_HOT_GROUPS.items():
+        selected_value = None
+
+        for key, value in row.items():
+            if not key.startswith(f"{FEATURE_PREFIX}{group_prefix}_"):
+                continue
+
+            if parse_value(value) is True:
+                raw_value_key = key.removeprefix(FEATURE_PREFIX)
+                selected_value = CUSTOMER_FIELD_RENAMES.get(raw_value_key, raw_value_key)
+                break
+
+        customer_data[customer_key] = selected_value
+
+    for raw_customer_key in ("Sex", "Married"):
+        key = f"{FEATURE_PREFIX}{raw_customer_key}"
+        if key not in row:
+            continue
+
+        customer_key = CUSTOMER_FIELD_RENAMES.get(raw_customer_key, raw_customer_key)
+        parsed_value = rename_customer_value(raw_customer_key, parse_value(row[key]))
         customer_data[customer_key] = parsed_value
 
     return customer_data
@@ -447,9 +534,6 @@ def build_sample_payload(
 ) -> dict[str, Any]:
     sample_idx = int(row["sample_idx"])
 
-    if sample_idx not in CONDITION_3_SAMPLE_INDICES:
-        raise ValueError(f"sample_idx={sample_idx} is not a Condition3 sample.")
-
     if sample_idx not in confidence_by_sample:
         raise ValueError(f"Missing confidence.csv row for sample_idx={sample_idx}")
 
@@ -475,7 +559,7 @@ def build_sample_payload(
     payload = {
         "sample_idx": sample_idx,
         "condition": 3,
-        "distance": distance_from_sigma_group(row["sigma_group"]),
+        "distance": distance_from_row(row),
         "is_correct": parse_bool(row["is_correct"]),
         "customer_data": build_customer_data(row),
         "predicted_label": display_predicted_label(row["predicted_label"]),
@@ -483,7 +567,10 @@ def build_sample_payload(
         "true_label": display_predicted_label(row["true_label"]),
         "local_shap_top3_features": local_shap_top3_features,
         "explanation": explanation,
-        "class_confidence_relative_percent": round(float(row["confidence_percent"]), 2),
+        "class_confidence_relative_percent": round(
+            float(confidence_row["predicted_confidence"]) * 100,
+            2,
+        ),
         "decision_boundary_abs_distance": float(row["decision_boundary_abs_distance"]),
         "warning_type": warning_type_from_confidence(
             confidence_row.get("warning_type")
@@ -506,38 +593,19 @@ def main() -> None:
     args = parse_args()
 
     selected_rows = read_csv_rows(args.selected_input)
-
-    condition3_rows = [
-        row for row in selected_rows
-        if int(row["sample_idx"]) in CONDITION_3_SAMPLE_INDICES
-    ]
-
-    if len(condition3_rows) != 40:
-        raise ValueError(f"Expected 40 Condition3 rows, got {len(condition3_rows)}")
-
+    selected_by_sample = {int(row["sample_idx"]): row for row in selected_rows}
     confidence_by_sample = load_confidence_by_sample(args.confidence_input)
-
     shap_top3_by_sample = load_shap_top3_by_sample(args.shap_dir)
+    rag_payloads_by_sample = load_rag_summary_payloads_by_sample(args.rag_dir)
 
-    rag_payloads_by_sample = load_rag_summary_payloads_by_sample(
-        [args.rag_correct_dir, args.rag_wrong_dir]
-    )
+    if not rag_payloads_by_sample:
+        raise ValueError(f"No RAG final summary JSON files found in: {resolve_path(args.rag_dir)}")
 
-    missing_rag_files = sorted(
-        sample_idx
-        for sample_idx in CONDITION_3_SAMPLE_INDICES
-        if sample_idx not in rag_payloads_by_sample
-    )
-
-    if missing_rag_files:
-        print(
-            "WARNING: Missing RAG final summary JSON files for Condition3 sample_idx: "
-            + ", ".join(map(str, missing_rag_files))
-        )
+    sample_indices = sorted(rag_payloads_by_sample)
 
     missing_korean_explanations = sorted(
         sample_idx
-        for sample_idx in CONDITION_3_SAMPLE_INDICES
+        for sample_idx in sample_indices
         if get_rag_explanation(rag_payloads_by_sample.get(sample_idx, {})) is None
     )
 
@@ -549,7 +617,7 @@ def main() -> None:
 
     missing_shap_files = sorted(
         sample_idx
-        for sample_idx in CONDITION_3_SAMPLE_INDICES
+        for sample_idx in sample_indices
         if sample_idx not in shap_top3_by_sample
     )
 
@@ -559,14 +627,26 @@ def main() -> None:
             + ", ".join(map(str, missing_shap_files))
         )
 
+    missing_selected_rows = sorted(
+        sample_idx
+        for sample_idx in sample_indices
+        if sample_idx not in selected_by_sample
+    )
+
+    if missing_selected_rows:
+        raise ValueError(
+            "Missing selected input CSV rows for sample_idx: "
+            + ", ".join(map(str, missing_selected_rows))
+        )
+
     payloads = [
         build_sample_payload(
-            row=row,
+            row=selected_by_sample[sample_idx],
             confidence_by_sample=confidence_by_sample,
             shap_top3_by_sample=shap_top3_by_sample,
             rag_payloads_by_sample=rag_payloads_by_sample,
         )
-        for row in condition3_rows
+        for sample_idx in sample_indices
     ]
 
     write_json(args.output, payloads)
@@ -578,7 +658,7 @@ def main() -> None:
         for payload in payloads:
             write_json(output_dir / f"sample_{payload['sample_idx']}.json", payload)
 
-    print(f"Selected Condition3 samples : {len(payloads)}")
+    print(f"Selected samples            : {len(payloads)}")
     print(f"Combined output             : {resolve_path(args.output)}")
 
     if not args.no_individual:

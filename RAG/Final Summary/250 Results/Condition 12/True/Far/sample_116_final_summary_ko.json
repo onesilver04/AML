@@ -1,0 +1,93 @@
+{
+  "sample_idx": 116,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.9326412993188473,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account, because it correlates with a lower estimated risk, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk.[1]\nThe fact that the applicant has critical or other existing credits, because they are strong predictors of creditworthiness, is known in the literature as a signal that influences credit risk, and the model also identifies it as a factor that decreases risk.[2]\nThe fact that the checking account balance is negative, because it correlates with a substantially higher estimated risk, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk.[3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.21611124277114868
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21624767780303955
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 5,
+          "score": 0.22471904754638672
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "evidence_sentences": [
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.18699252605438232
+        },
+        {
+          "sentence": "The importance of reliable credit risk assessment became especially clear during the global financial crisis of 2008, when poor risk management contributed to widespread instability (Mian & Sufi, 2009).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.18710243701934814
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.1881433129310608
+        },
+        {
+          "sentence": "Longer loan durations, larger credit amounts,",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.18927538394927979
+        },
+        {
+          "sentence": "• Risk Assessment Accuracy: In credit risk modeling, understanding the factors that influence a model's decision is crucial for accuracy and reliability.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 13,
+          "score": 0.19161653518676758
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20917564630508423
+        },
+        {
+          "sentence": "Longer loanDurations, higherInstallment rates, and largerCredit amountsincrease the likelihood of being classified as a bad credit risk.Agehas a negative coefficient, indicating that older applicants are, on average, less likely to be considered bad credit risks.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.21179676055908203
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.21429938077926636
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n기존 대출이 있는 경우, 신용 능력의 강력한 예측 지표로 알려져 있어 본 모델 역시 이를 위험 감소 요인으로 식별합니다 [2].\n반면, 계좌 잔액이 음수인 경우는 높은 위험 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

@@ -1,0 +1,104 @@
+{
+  "sample_idx": 120,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.8228010730101186,
+  "final_explanation": "Based on the AI model's prediction,\n계좌가 없는 경우 문헌 분석에서 계좌 부재가 낮은 디폴트 추정 위험과 연관된다고 언급했기 때문에, 문헌에서는 신용 위험을 낮추는 신호로 알려져 있지만, 모델은 오히려 위험을 높이는 요인으로 식별합니다. [1]\n계좌 잔고가 마이너스인 경우 문헌 연구에서 마이너스 잔고가 디폴트 확률이 높다고 나타냈기 때문에, 문헌에서는 신용 위험을 높이는 신호로 알려져 있지만, 모델은 오히려 위험을 낮추는 요인으로 식별합니다. [2]\n대출 기간이 긴 경우 문헌 분석에서 긴 대출 기간이 디폴트 가능성을 직접 증가시킨다고 밝혔기 때문에, 문헌에서는 신용 위험을 높이는 신호로 알려져 있으며, 모델도 위험을 높이는 요인으로 식별합니다. [3]\n전반적으로 이 신청자는 디폴트 위험이 낮을 가능성이 높습니다.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "Number Description Class Attribute 1 Status of existing checking account Qualitative Attribute 2 Duration in month Numerical Attribute 3 Credit history Qualitative Attribute 4 Purpose Qualitative Attribute 5 Credit amount Numerical Attribute 6 Savings account/bonds Qualitative Attribute 7 Present employment since Qualitative Attribute 8 Instalment rate in percentage of disposable income Numerical Attribute 9 Personal status and sex Qualitative Attribute 10 Other debtors/guarantors Qualitative Attribute 11 Present residence since Numerical Attribute 12 Property Qualitative Attribute 13 Age in years Numerical Attribute 14 Other instalment plans Qualitative attribute 15 Housing Qualitative",
+          "source": "Investigation and improvement of multi-layer perceptron neural.pdf",
+          "page": 4,
+          "score": 0.20253348350524902
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22055786848068237
+        },
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22181063890457153
+        },
+        {
+          "sentence": "Butaru et al.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 5,
+          "score": 0.22312688827514648
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.2262939214706421
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2249683141708374
+        },
+        {
+          "sentence": "Risk management in German banks | 83 (IRRi) (see also Appendix A, Equation (17)): C.NIMt,i = β1,t ⋅ θi + β2,t ⋅ IRRi + εi (5) where β1,t and β2,t are positive and negative parameters, respectively.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 22,
+          "score": 0.23065704107284546
+        },
+        {
+          "sentence": "for all status levels of the account, but an observable interaction exists for existing accounts with a low or negative balance where the increase in risk is stronger.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 11,
+          "score": 0.23634082078933716
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.23972707986831665
+        },
+        {
+          "sentence": "indirectly test this relationship.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 24,
+          "score": 0.24394822120666504
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1624150276184082
+        },
+        {
+          "sentence": "The analysis relies on ordinary least squares (OLS) regression, which is extended to",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.18168652057647705
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.19739854335784912
+        }
+      ]
+    }
+  ]
+}

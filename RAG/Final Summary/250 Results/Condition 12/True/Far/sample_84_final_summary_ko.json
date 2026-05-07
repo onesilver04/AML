@@ -1,0 +1,99 @@
+{
+  "sample_idx": 84,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.8793320704719545,
+  "final_explanation": "Based on the AI model's prediction,\n계좌 없음인 사실은 계좌 부재가 신용 위험 감소와 연관되기 때문에 문헌에서 신용 위험을 낮추는 신호로 알려져 있으며, 모델도 이를 위험을 낮추는 요인으로 식별합니다. [1]\n대출 기간이 긴 사실은 긴 대출 기간이 신용 위험 증가와 연관되기 때문에 문헌에서 신용 위험을 높이는 신호로 알려져 있지만, 모델은 이를 위험을 낮추는 요인으로 식별합니다. [2]\n마이너스 잔액 계좌인 사실은 마이너스 잔액이 부실 확률의 긍정적 예측 변수로 작용하기 때문에 문헌에서 신용 위험을 높이는 신호로 알려져 있지만, 모델은 이를 위험을 낮추는 요인으로 식별합니다. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.15950989723205566
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2167627215385437
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20494765043258667
+        },
+        {
+          "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20783603191375732
+        },
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.21780270338058472
+        },
+        {
+          "sentence": "Comparison of the impact of dimensionality reduction and data… Page 9 of 23 252 3.1 Dataset Within the scope of this study, the publicly available German Credit Scoring dataset, which is one of the most used datasets in the literature, was selected (Hofmann 1994).",
+          "source": "Comparison of the impact of dimensionality reduction and data splitting on classification performance in credit risk assessment .pdf",
+          "page": 10,
+          "score": 0.22160911560058594
+        },
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.22293049097061157
+        },
+        {
+          "sentence": "Arslan 252 Page 8 of 23 loan default.",
+          "source": "Comparison of the impact of dimensionality reduction and data splitting on classification performance in credit risk assessment .pdf",
+          "page": 9,
+          "score": 0.22465860843658447
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21037966012954712
+        },
+        {
+          "sentence": "there is only a weak link between a bank’s exposure to interest rate risk and the change in its net interest income given an interest rate shock, which may be due to relatively low interest rate risk exposure of the banks in the sample.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.216927170753479
+        },
+        {
+          "sentence": "Note that the exposures to interest rate risk and the exposure to credit risk are measured relative to the shock sizes of different stress tests so that the size of the coefficient cannot be interpreted, only its sign.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.22041183710098267
+        },
+        {
+          "sentence": "for all status levels of the account, but an observable interaction exists for existing accounts with a low or negative balance where the increase in risk is stronger.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 11,
+          "score": 0.22258824110031128
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 부재인 사실은 계좌 부족이 신용 위험을 낮추는 요인으로 인식되므로 문헌에서도 위험 감소 신호로 보고되며, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n대출 기간이 긴 사실은 긴 대출 기간이 일반적으로 신용 위험을 증가시키는 요인으로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 해석합니다. [2]\n마이너스 잔액 계좌인 사실은 마이너스 잔액이 신용 위험 증가 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 분류합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}
