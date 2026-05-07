@@ -1,0 +1,27 @@
+{
+  "sample_idx": 232,
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_232.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of negative checking account balances as a credit risk driver contributing to elevated determinants of default."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Statistical evaluation of the absence of a checking account as a credit risk driver contributing to elevated determinants of default."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "purpose_used car",
+      "feature_definition": "Loan purpose: purchase of a used car.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical assessment of loan purposes for used vehicle acquisitions as a mitigating factor in credit risk drivers and determinants of default."
+    }
+  ]
+}

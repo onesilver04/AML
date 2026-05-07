@@ -1,0 +1,27 @@
+{
+  "sample_idx": 215,
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_215.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of how the absence of a checking account functions as a credit risk driver that reduces default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "credit_amount",
+      "feature_definition": "Credit amount requested by the applicant.",
+      "feature_direction": "increase_risk",
+      "question": "Determinants of default probability associated with the magnitude of the requested credit amount and its contribution to increased credit risk exposure."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of how extended loan duration in months serves as a credit risk driver that elevates the likelihood of borrower default."
+    }
+  ]
+}

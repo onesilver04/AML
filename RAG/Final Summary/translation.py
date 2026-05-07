@@ -7,8 +7,8 @@ import re
 from langchain_ollama import ChatOllama
 
 
-DEFAULT_INPUT = Path("RAG/Final Summary/Correct_Results")
-DEFAULT_OUTPUT = ("RAG/Final Summary/Correct_Results_ko")
+DEFAULT_INPUT = Path("RAG/Final Summary/250 Results")
+DEFAULT_OUTPUT = Path("RAG/Final Summary/250 Results_ko")
 MODEL_NAME = "exaone3.5:7.8b"
 
 
@@ -308,7 +308,7 @@ If the original final sentence contains:
 - "GOOD CREDIT RISK"
 
 Then copy this sentence exactly:
-전반적으로 신용 위험이 낮은 수준으로 평가되어 신용 승인 가능성이 높습니다.
+전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.
 
 If the original final sentence contains:
 - "high risk"
@@ -316,7 +316,7 @@ If the original final sentence contains:
 - "BAD CREDIT RISK"
 
 Then copy this sentence exactly:
-전반적으로 신용 위험이 높은 수준으로 평가되어 신용 승인 가능성이 낮습니다.
+전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.
 
 - The final sentence is a fixed template, not a translation target.
 - Do NOT use words such as "디폴트", "신청자는", "채무불이행", "평가됩니다" in the final sentence.

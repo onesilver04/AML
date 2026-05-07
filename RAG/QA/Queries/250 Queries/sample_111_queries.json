@@ -1,0 +1,27 @@
+{
+  "sample_idx": 111,
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_111.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of loan duration in months as a significant credit risk driver contributing to determinants of default."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical investigation into the impact of lacking a checking account as a primary credit risk driver and determinant of default."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "savings_status_<100",
+      "feature_definition": "Savings account status: savings below 100 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of savings balances below 100 DM as a mitigating factor in credit risk drivers and determinants of default."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "sample_idx": 131,
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_131.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the determinants of credit default probability associated with borrowers lacking a checking account."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the risk-mitigating determinants of credit default probability associated with extended loan duration in months."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "employment_<1",
+      "feature_definition": "Present employment duration: less than 1 year.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the contribution of short-term employment tenure to credit risk drivers and default probability."
+    }
+  ]
+}

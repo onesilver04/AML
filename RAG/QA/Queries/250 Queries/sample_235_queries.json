@@ -1,0 +1,27 @@
+{
+  "sample_idx": 235,
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_235.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "savings_status_<100",
+      "feature_definition": "Savings account status: savings below 100 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of how savings account balances below 100 DM function as credit risk drivers that correlate with reduced default probability and enhanced borrower stability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "savings_status_no known savings",
+      "feature_definition": "Savings account status: no known savings account.",
+      "feature_direction": "decrease_risk",
+      "question": "Investigating the determinants of default associated with having no known savings account and their risk-mitigating effects in consumer lending portfolios."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Assessing the protective impact of checking account balances below 0 DM on the likelihood of loan default and credit risk deterioration."
+    }
+  ]
+}

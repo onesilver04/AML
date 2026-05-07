@@ -1,0 +1,27 @@
+{
+  "sample_idx": 118,
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_118.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "credit_amount",
+      "feature_definition": "Credit amount requested by the applicant.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the determinants of credit default probability associated with the requested credit amount."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the risk-mitigating determinants associated with loan duration in months."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the credit risk drivers linked to checking account balances below zero."
+    }
+  ]
+}

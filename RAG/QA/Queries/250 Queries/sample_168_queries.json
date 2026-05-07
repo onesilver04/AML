@@ -1,0 +1,27 @@
+{
+  "sample_idx": 168,
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_168.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the impact of lacking a checking account on credit default probability and its role as a credit risk driver."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "credit_history_no credits/all paid",
+      "feature_definition": "Credit history: no credits taken or all previous credits paid back duly.",
+      "feature_direction": "increase_risk",
+      "question": "Determinants of default associated with borrowers having no prior credit history or exclusively fully repaid loans and their contribution to increased credit risk."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the relationship between loan duration in months and its contribution to elevated credit risk and default probability."
+    }
+  ]
+}

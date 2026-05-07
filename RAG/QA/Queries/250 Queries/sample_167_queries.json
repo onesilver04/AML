@@ -1,0 +1,27 @@
+{
+  "sample_idx": 167,
+  "shap_json_path": "SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_167.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of negative checking account balances as a significant determinant of default in credit risk modeling."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "The impact of lacking a checking account on credit risk drivers and the probability of loan default."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical evaluation of extended loan durations as a mitigating determinant of default in credit risk assessment."
+    }
+  ]
+}

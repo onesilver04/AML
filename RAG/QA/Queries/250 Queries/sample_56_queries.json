@@ -1,0 +1,27 @@
+{
+  "sample_idx": 56,
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_56.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "credit_amount",
+      "feature_definition": "Credit amount requested by the applicant.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the determinants of default probability associated with higher requested credit amounts and their contribution to elevated credit risk."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "savings_status_no known savings",
+      "feature_definition": "Savings account status: no known savings account.",
+      "feature_direction": "decrease_risk",
+      "question": "An empirical analysis of the risk-mitigating determinants linked to applicants lacking a known savings account and their influence on reduced credit default probability."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of credit risk drivers associated with the absence of a checking account and their contribution to elevated default probability."
+    }
+  ]
+}

@@ -1,27 +1,27 @@
 {
   "sample_idx": 129,
-  "shap_json_path": "SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_129.json",
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_129.json",
   "queries": [
     {
       "feature_rank": 1,
-      "feature": "checking_status_<0",
-      "feature_definition": "Checking account status: balance below 0 DM.",
-      "feature_direction": "increase_risk",
-      "question": "Empirical analysis of negative checking account balances as a credit risk driver contributing to increased default probability."
-    },
-    {
-      "feature_rank": 2,
       "feature": "checking_status_no checking",
       "feature_definition": "Checking account status: no checking account.",
       "feature_direction": "increase_risk",
-      "question": "Determinants of default associated with the absence of a checking account and their contribution to elevated credit risk."
+      "question": "Empirical analysis of how the absence of a checking account influences credit default probability and serves as a determinant of elevated credit risk."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "increase_risk",
+      "question": "Investigating the contribution of negative checking account balances to borrower default likelihood as a significant credit risk driver."
     },
     {
       "feature_rank": 3,
-      "feature": "duration",
-      "feature_definition": "Loan duration in months.",
+      "feature": "credit_history_critical/other existing credit",
+      "feature_definition": "Credit history: critical account or other existing credits.",
       "feature_direction": "decrease_risk",
-      "question": "Empirical analysis of extended loan durations in months as a mitigating factor in reducing credit default probability."
+      "question": "Empirical evaluation of how maintaining critical accounts or holding other existing credit obligations mitigates default probability and reduces overall credit risk exposure."
     }
   ]
 }

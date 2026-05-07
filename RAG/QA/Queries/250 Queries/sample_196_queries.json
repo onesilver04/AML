@@ -1,0 +1,27 @@
+{
+  "sample_idx": 196,
+  "shap_json_path": "SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_196.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "savings_status_no known savings",
+      "feature_definition": "Savings account status: no known savings account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the impact of lacking a formal savings account on credit default probability and risk mitigation."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "savings_status_<100",
+      "feature_definition": "Savings account status: savings below 100 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Determinants of default: How minimal savings balances below 100 DM influence credit risk drivers and lower default likelihood."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Credit risk drivers: The relationship between negative checking account balances and reduced probability of loan default."
+    }
+  ]
+}

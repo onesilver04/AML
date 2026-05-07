@@ -1,0 +1,27 @@
+{
+  "sample_idx": 217,
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_217.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the risk-mitigating impact of lacking a checking account on credit default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "savings_status_no known savings",
+      "feature_definition": "Savings account status: no known savings account.",
+      "feature_direction": "decrease_risk",
+      "question": "Determinants of default: the risk-reducing influence of having no known savings account on borrower creditworthiness."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the risk-amplifying effect of extended loan duration on credit default probability."
+    }
+  ]
+}

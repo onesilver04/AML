@@ -1,0 +1,27 @@
+{
+  "sample_idx": 175,
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_175.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of negative checking account balances as a primary determinant of default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "savings_status_<100",
+      "feature_definition": "Savings account status: savings below 100 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Investigating the mitigating impact of minimal savings account balances on credit risk drivers."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "savings_status_no known savings",
+      "feature_definition": "Savings account status: no known savings account.",
+      "feature_direction": "decrease_risk",
+      "question": "Analytical assessment of the absence of documented savings accounts as a credit risk reduction indicator."
+    }
+  ]
+}

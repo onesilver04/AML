@@ -1,0 +1,27 @@
+{
+  "sample_idx": 183,
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_183.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "credit_amount",
+      "feature_definition": "Credit amount requested by the applicant.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the determinants of default associated with higher requested credit amounts and their contribution to increased credit risk."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of credit risk drivers related to loan duration in months and their mitigating effect on default probability."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "savings_status_no known savings",
+      "feature_definition": "Savings account status: no known savings account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the risk-mitigating impact of lacking a recorded savings account status on credit default probability and borrower financial behavior."
+    }
+  ]
+}

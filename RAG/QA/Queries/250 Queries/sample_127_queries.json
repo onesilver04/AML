@@ -1,27 +1,27 @@
 {
   "sample_idx": 127,
-  "shap_json_path": "SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_127.json",
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_127.json",
   "queries": [
     {
       "feature_rank": 1,
       "feature": "checking_status_no checking",
       "feature_definition": "Checking account status: no checking account.",
-      "feature_direction": "increase_risk",
-      "question": "Empirical analysis of the determinants of default probability associated with applicants lacking a checking account."
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of how the absence of a checking account correlates with reduced default probability in consumer credit risk assessment."
     },
     {
       "feature_rank": 2,
-      "feature": "credit_history_critical/other existing credit",
-      "feature_definition": "Credit history: critical account or other existing credits.",
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
       "feature_direction": "decrease_risk",
-      "question": "Investigating the risk-mitigating determinants of default associated with critical or alternative existing credit histories."
+      "question": "Determinants of default: investigating how negative checking account balances function as a credit risk driver associated with lower borrower risk."
     },
     {
       "feature_rank": 3,
       "feature": "credit_amount",
       "feature_definition": "Credit amount requested by the applicant.",
       "feature_direction": "decrease_risk",
-      "question": "Empirical analysis of the credit risk drivers related to the magnitude of requested credit amounts and their impact on reduced default probability."
+      "question": "Statistical impact of the requested credit amount on default probability and its role as a credit risk driver in decreasing overall portfolio risk."
     }
   ]
 }

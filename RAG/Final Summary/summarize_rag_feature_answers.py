@@ -10,10 +10,10 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 
-DEFAULT_INPUT = Path("RAG/QA/Answers/correct_102_answers")
-DEFAULT_INPUT_DIR = Path("RAG/QA/Answers/correct_102_answers")
-DEFAULT_OUTPUT_DIR = Path("RAG/Final Summary/Correct_Results")
-DEFAULT_MODEL = "qwen3.6:27b"
+DEFAULT_INPUT = Path("RAG/QA/Summary")
+DEFAULT_INPUT_DIR = Path("RAG/QA/Summary")
+DEFAULT_OUTPUT_DIR = Path("RAG/Final Summary/250 Results")
+DEFAULT_MODEL = "qwen3.6:35b"
 EXPECTED_FEATURE_COUNT = 3
 
 

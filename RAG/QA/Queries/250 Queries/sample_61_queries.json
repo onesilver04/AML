@@ -1,0 +1,27 @@
+{
+  "sample_idx": 61,
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_61.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "credit_history_critical/other existing credit",
+      "feature_definition": "Credit history: critical account or other existing credits.",
+      "feature_direction": "decrease_risk",
+      "question": "• Empirical analysis of the risk-mitigating impact of critical accounts or other existing credits on the probability of consumer loan default."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "decrease_risk",
+      "question": "• Determinants of default: empirical analysis of how extended loan duration in months reduces the likelihood of credit default in consumer lending."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "increase_risk",
+      "question": "• Credit risk drivers: empirical analysis of the risk-amplifying effect of negative checking account balances on the determinants of consumer credit default."
+    }
+  ]
+}

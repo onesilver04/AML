@@ -1,0 +1,27 @@
+{
+  "sample_idx": 231,
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_231.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the impact of loan duration in months on credit risk mitigation and default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Determinants of default: empirical analysis of how the absence of a checking account contributes to elevated credit risk exposure."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "employment_<1",
+      "feature_definition": "Present employment duration: less than 1 year.",
+      "feature_direction": "increase_risk",
+      "question": "Credit risk drivers: empirical analysis of how a present employment duration of less than one year increases the likelihood of loan default."
+    }
+  ]
+}

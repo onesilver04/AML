@@ -13,7 +13,7 @@ from prompts import RAG_SYSTEM, RAG_USER_TEMPLATE
 PERSIST_DIR = "RAG/rag_db"
 COLLECTION_NAME = "finance_papers"
 
-LLM_MODEL = "qwen3.6:27b" # 모델 변경해가면서 시도 -- qwen2.5:14b, qwen3.5:27b, glm-5:cloud, gemma3:latest, deepseek-r1:latest
+LLM_MODEL = "qwen3.6:35b" # 모델 변경해가면서 시도 -- qwen2.5:14b, qwen3.5:27b, glm-5:cloud, gemma3:latest, deepseek-r1:latest
 EMBED_MODEL = "nomic-embed-text"
 
 

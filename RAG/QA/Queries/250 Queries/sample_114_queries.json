@@ -1,0 +1,27 @@
+{
+  "sample_idx": 114,
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_114.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the risk-mitigating impact of a checking account status indicating no checking account on consumer loan default probability."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "duration",
+      "feature_definition": "Loan duration in months.",
+      "feature_direction": "decrease_risk",
+      "question": "Determinants of default: empirical investigation into how loan duration in months correlates with reduced credit risk and lower default likelihood."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Credit risk drivers: empirical study on how a checking account status with a balance below zero DM influences borrower default probability and serves as a protective factor in lending."
+    }
+  ]
+}

@@ -392,6 +392,7 @@ def write_summary_csv(path: Path, records):
     fieldnames = [
         "sample_idx",
         "shap_json_path",
+        "true_label",   # ✅ 추가
         "prediction_label",
         "prediction_probability",
         "feature_rank",
@@ -526,8 +527,9 @@ def main():
             record = {
                 "sample_idx": sample_idx,
                 "shap_json_path": str(input_json_path),
-                "prediction_label": pred.get("label", "UNKNOWN"),
-                "prediction_probability": pred.get("probability", "UNKNOWN"),
+                "true_label": shap_data.get("true_label", "UNKNOWN"),
+                "prediction_label": pred.get("predict_label", "UNKNOWN"),
+                "prediction_probability": pred.get("calibrated_confidence", "UNKNOWN"),
                 "feature_rank": feature_rank,
                 "feature": feature_info["feature"],
                 "feature_definition": feature_info["definition"],

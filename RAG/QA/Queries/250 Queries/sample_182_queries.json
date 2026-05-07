@@ -1,0 +1,27 @@
+{
+  "sample_idx": 182,
+  "shap_json_path": "SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_182.json",
+  "queries": [
+    {
+      "feature_rank": 1,
+      "feature": "checking_status_no checking",
+      "feature_definition": "Checking account status: no checking account.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical analysis of the determinants of default associated with borrowers lacking a primary checking account."
+    },
+    {
+      "feature_rank": 2,
+      "feature": "purpose_education",
+      "feature_definition": "Loan purpose: education.",
+      "feature_direction": "increase_risk",
+      "question": "Empirical evaluation of education-directed loan purposes as credit risk drivers contributing to elevated default probability."
+    },
+    {
+      "feature_rank": 3,
+      "feature": "checking_status_<0",
+      "feature_definition": "Checking account status: balance below 0 DM.",
+      "feature_direction": "decrease_risk",
+      "question": "Empirical assessment of the determinants of default mitigated by maintaining a negative checking account balance in consumer lending."
+    }
+  ]
+}

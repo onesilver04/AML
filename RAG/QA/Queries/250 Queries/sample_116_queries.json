@@ -1,27 +1,27 @@
 {
   "sample_idx": 116,
-  "shap_json_path": "SHAP/Task/correct_102_local_shap/shap_tuples_non_prefix_116.json",
+  "shap_json_path": "SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_116.json",
   "queries": [
     {
       "feature_rank": 1,
       "feature": "checking_status_no checking",
       "feature_definition": "Checking account status: no checking account.",
-      "feature_direction": "increase_risk",
-      "question": "Empirical analysis of the determinants of credit default associated with borrowers lacking a checking account and their contribution to increased loan delinquency."
+      "feature_direction": "decrease_risk",
+      "question": "Empirical analysis of the risk-mitigating impact of maintaining no checking account on consumer default probability."
     },
     {
       "feature_rank": 2,
-      "feature": "duration",
-      "feature_definition": "Loan duration in months.",
-      "feature_direction": "increase_risk",
-      "question": "Empirical analysis of the credit risk drivers associated with extended loan duration in months and their contribution to increased default probability."
+      "feature": "credit_history_critical/other existing credit",
+      "feature_definition": "Credit history: critical account or other existing credits.",
+      "feature_direction": "decrease_risk",
+      "question": "Determinants of default associated with critical credit history or multiple existing credits as protective factors in credit risk assessment."
     },
     {
       "feature_rank": 3,
       "feature": "checking_status_<0",
       "feature_definition": "Checking account status: balance below 0 DM.",
       "feature_direction": "decrease_risk",
-      "question": "Empirical analysis of the determinants of credit risk drivers associated with negative checking account balances and their mitigating effect on loan default probability."
+      "question": "Empirical analysis of how negative checking account balances function as credit risk drivers that reduce the likelihood of loan default."
     }
   ]
 }
