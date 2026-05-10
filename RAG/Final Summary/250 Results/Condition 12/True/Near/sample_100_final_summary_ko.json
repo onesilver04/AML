@@ -1,0 +1,111 @@
+{
+  "sample_idx": 100,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.6352321550249808,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account due to its negative association with credit risk in the dataset, because it is linked to a lower estimated probability of default, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk.[1]\nThe fact that employment duration is between four and seven years due to the absence of direct statistical evidence in the literature, because the provided excerpts do not contain risk classifications for this tenure, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that decreases risk.[2]\nThe fact that the checking account balance is negative due to the positive correlation with default probability in the dataset, because it is statistically associated with an increased probability of default, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk.[3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19685685634613037
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.21680617332458496
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.21914434432983398
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "employment_4<=X<7",
+      "evidence_sentences": [
+        {
+          "sentence": "cants are the strongest predictors of credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.22528588771820068
+        },
+        {
+          "sentence": "separates “good” and “bad” borrowers as effectively as possible.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.2376386523246765
+        },
+        {
+          "sentence": "there are banks that have lower net interest margins (relative to the baseline sce- nario) even after five years (62 banks).",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 15,
+          "score": 0.23988646268844604
+        },
+        {
+          "sentence": "The first part of the survey, i. e. the low-interest rate environ- ment survey in the narrow sense, has a horizon of five years (from 2017 to 2021) and banks had to quantify many positions of their financial statements for the",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 6,
+          "score": 0.2407943606376648
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21165424585342407
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21366888284683228
+        },
+        {
+          "sentence": "for all status levels of the account, but an observable interaction exists for existing accounts with a low or negative balance where the increase in risk is stronger.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 11,
+          "score": 0.21626245975494385
+        },
+        {
+          "sentence": "There are good reasons to measure a bank’s exposure to interest rate risk with re- spect to the impact on its earnings, especially as our sample is composed of small and medium banks for which the two arguments from above are relevant.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 9,
+          "score": 0.21976619958877563
+        },
+        {
+          "sentence": "We do so because these variables are found in the literature to impact the net interest margin (see, for instance, Saunders and Schu- macher (2000) and Busch and Memmel (2016)).",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 26,
+          "score": 0.2281169891357422
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.23248445987701416
+        },
+        {
+          "sentence": "7.",
+          "source": "Comparison Between XGBoost and Random Forest in Credit Risk Assessment Using the German Credit Dataset.pdf",
+          "page": 5,
+          "score": 0.23392844200134277
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험 증가 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n대출 기간이 4~7년인 경우 일반적으로 위험 감소 신호로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 보지 않고 위험 증가 요인으로 분류합니다 [2].\n계좌 잔액 부족은 채무 불이행 확률 증가와 연관되어 있어 위험 증가 신호로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 해석하지 않습니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다."
+}

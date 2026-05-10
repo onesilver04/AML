@@ -1,0 +1,93 @@
+{
+  "sample_idx": 211,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.6974498871945425,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the checking account balance is negative due to it acting as a significant predictor of default, because it acts as a significant predictor of default, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[1]\nThe fact that the loan duration is extended due to extended tenors acting as a significant positive driver of default, because extended tenors act as a significant positive driver of default, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[2]\nThe fact that there is no checking account due to the absence of a checking account being noted in credit card default prediction, because the absence of a checking account is noted in credit card default prediction, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21208876371383667
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.21455276012420654
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.22010552883148193
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2204669713973999
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.1986844539642334
+        },
+        {
+          "sentence": "1 1 Introduction Credit risk assessment remains a central challenge in modern finance, as lenders must evalu- ate the likelihood that borrowers will meet their obligations.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.2011246681213379
+        },
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20714670419692993
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.20966166257858276
+        },
+        {
+          "sentence": "2 Finance is among the sectors most impacted by AI/ML .",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.21009594202041626
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "Subsequently, the proposed model can anticipate the default prediction of credit cards based on their previous data.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.20502305030822754
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.21578431129455566
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행의 중요한 예측 지표로 알려져 있으며, 본 모델은 이를 신용 위험 증가 요인으로 판단합니다[1]. 대출 기간이 길어질수록 채무 불이행 위험이 증가한다는 점도 문헌에서 확인되며, 본 모델 역시 이를 위험 증가 요인으로 인식합니다[2]. 입출금 계좌가 없는 경우 채무 불이행 예측에서 부정적 요인으로 작용한다는 점도 알려져 있으며, 본 모델 또한 이를 위험 증가 요인으로 분류합니다[3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다."
+}

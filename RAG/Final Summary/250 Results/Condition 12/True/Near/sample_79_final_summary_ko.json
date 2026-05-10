@@ -1,0 +1,81 @@
+{
+  "sample_idx": 79,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.6772763209442967,
+  "final_explanation": "Based on the AI model's prediction,\n\"The fact that there is no credit history or all previous credits were paid back duly, because credit history functions as a general predictor class within regression-based risk models, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.\" [1]\n\"The fact that there is no checking account, because applicants classified under the 'no checking account' status are associated with a lower estimated risk compared to the reference group, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk.\" [2]\n\"The fact that the savings account balance is below 100 DM, because the Savings variable was explicitly excluded from the final regression model due to a lack of statistical relevance, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk.\" [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "credit_history_no credits/all paid",
+      "evidence_sentences": [
+        {
+          "sentence": "Attribute 3: (qualitative) Credit history A30 : no credits taken/ all credits paid back duly A31 : all credits at this bank paid back duly A32 : existing credits paid back duly till now A33 : delay in paying off in the past A34 : critical account/ other credits existing (not at this bank)",
+          "source": "german.pdf",
+          "page": 2,
+          "score": 0.18062114715576172
+        },
+        {
+          "sentence": "By using the approach of [26], default payment was designed as (yes= 1 and no= 0) as all the rest of the variables are described as shown in Table 2.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.18916308879852295
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19068914651870728
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20023036003112793
+        },
+        {
+          "sentence": "2D PDP for the variables status account and duration.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 11,
+          "score": 0.21583372354507446
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21944093704223633
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "Note that the exposures to interest rate risk and the exposure to credit risk are measured relative to the shock sizes of different stress tests so that the size of the coefficient cannot be interpreted, only its sign.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.20261549949645996
+        },
+        {
+          "sentence": "there is only a weak link between a bank’s exposure to interest rate risk and the change in its net interest income given an interest rate shock, which may be due to relatively low interest rate risk exposure of the banks in the sample.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.2091243863105774
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.22379553318023682
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n대출 이력이 없거나 모든 이전 대출이 정상 상환되었다는 사실은 신용 등급 예측 본 모델에서 일반적인 위험 지표로 작용하기 때문에 문헌에서는 신용 위험 증가 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].  \n입출금 계좌가 없다는 사실은 신용 등급이 낮은 그룹에 비해 위험이 낮은 신호로 문헌에서 인식되지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].  \n저축 계좌 잔액이 100 DM 미만이라는 사실은 통계적 유의성이 부족하여 최종 회귀 본 모델에서 제외되었음에도 불구하고 문헌에서는 신용 위험 감소 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 보지 않습니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다."
+}

@@ -1,0 +1,116 @@
+{
+  "sample_idx": 197,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.7522866283730384,
+  "final_explanation": "Based on the AI model's prediction,\n\"The fact that there is no checking account, because it is associated with a lower estimated risk, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk.\" [1]\n\"The fact that the checking account balance is negative, because it reflects a specific account status that influences risk assessment, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk.\" [2]\n\"The fact that the loan duration is extended, because longer repayment periods prolong exposure to financial instability, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk.\" [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19660252332687378
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20529776811599731
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.21251392364501953
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21471107006072998
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.21771109104156494
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.22651243209838867
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Alam et al.: Investigation of Credit Card Default Prediction in the Imbalanced Datasets FIGURE 2.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.20330554246902466
+        },
+        {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.20757907629013062
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.20800811052322388
+        },
+        {
+          "sentence": "Observations of the variable Cost that are negative or larger than the median plus five times the interquartile range are removed.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 26,
+          "score": 0.21647602319717407
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.15949517488479614
+        },
+        {
+          "sentence": "The analysis relies on ordinary least squares (OLS) regression, which is extended to",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.19254213571548462
+        },
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.19482648372650146
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.1959165334701538
+        },
+        {
+          "sentence": "In the past credit risk was evaluated through judgmental and subjective decisions which were issued by loan officers using their experience and analysis of data.",
+          "source": "Credit Scoring Using Data Mining Techniques.pdf",
+          "page": 2,
+          "score": 0.2009204626083374
+        }
+      ]
+    }
+  ]
+}

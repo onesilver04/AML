@@ -1,0 +1,93 @@
+{
+  "sample_idx": 63,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.7112861092079535,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the requested credit amount is high, because larger loan sizes elevate default probability, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[1]\nThe fact that the loan duration is extended, because extended loan durations are statistically associated with a higher probability of bad credit risk, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[2]\nThe fact that there is no checking account, because the absence of a checking account is associated with a lower estimated risk of defaulting, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk.[3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "credit_amount",
+      "evidence_sentences": [
+        {
+          "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.15619134902954102
+        },
+        {
+          "sentence": "The main research question was which applicant characteristics are most strongly associated with being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.17788195610046387
+        },
+        {
+          "sentence": "We tried our best to make a thorough analysis, and there are still a few possible",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 25,
+          "score": 0.1878443956375122
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.19081485271453857
+        },
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.19118905067443848
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.19325554370880127
+        },
+        {
+          "sentence": "SHAP analysis conﬁrmed the primacy of features like 'Duration' and 'Credit Amount' while also uncovering subtle distinctions in feature interaction between the models.",
+          "source": "Comparison Between XGBoost and Random Forest in Credit Risk Assessment Using the German Credit Dataset.pdf",
+          "page": 3,
+          "score": 0.1946786642074585
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21200597286224365
+        },
+        {
+          "sentence": "Longer loan durations, larger credit amounts, and higher installment rates are associated with a higher likelihood of being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.21950674057006836
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19826781749725342
+        },
+        {
+          "sentence": "In consumer and retail lending, this uncertainty is managed using credit and be- havioural scoring systems, which predict the probability that a borrower will default on their obligations (Thomas, 2000).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.20321905612945557
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n대출 금액이 큰 것은 대출 규모가 커질수록 채무 불이행 가능성이 증가하여 신용 위험을 높이는 요인으로 알려져 있으며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다[1].\n대출 기간이 긴 것은 연장된 대출 기간이 부정적 신용 위험 확률 증가와 통계적으로 연관되어 있어 신용 위험 증가 요인으로 인식되며, 본 모델 또한 이를 위험 증가 요인으로 식별합니다[2].\n입출금 계좌가 없는 것은 계좌 부재가 채무 불이행 위험 감소와 연관되어 있으나, 본 모델은 이를 오히려 위험 증가 요인으로 판단합니다[3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다."
+}

@@ -1,0 +1,86 @@
+{
+  "sample_idx": 118,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.49340603796753085,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the requested loan amount is large due to financial and credit-related variables being primary determinants, because financial metrics are prioritized in risk assessment, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[1]\nThe fact that the loan duration is long due to extended repayment periods amplifying default exposure, because longer tenors typically increase default likelihood, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk.[2]\nThe fact that the checking account balance is negative due to liquidity constraints affecting repayment capacity, because negative account status amplifies default likelihood, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "credit_amount",
+      "evidence_sentences": [
+        {
+          "sentence": "The main research question was which applicant characteristics are most strongly associated with being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.15650683641433716
+        },
+        {
+          "sentence": "The analysis uses the Statlog German Credit Data, which contains 1000 credit applicants described by their demographic, financial, and credit-related variables",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.1715746521949768
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.1726360321044922
+        },
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.17694014310836792
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.18786221742630005
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21038508415222168
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22014564275741577
+        },
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2234777808189392
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.2301204800605774
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.230194091796875
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "sample_idx": 5,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.7381148789891544,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the checking account balance is below zero because negative checking account balances significantly increase the probability of credit default, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that the loan duration is longer because longer loan duration demonstrates a statistically significant positive relationship with credit risk, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [2]\nThe fact that there is no checking account because absence of a checking account is associated with a lower estimated credit risk, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.21076446771621704
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21442294120788574
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.21710532903671265
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.21883505582809448
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.22305482625961304
+        },
+        {
+          "sentence": "The sign of the respective coefficients remains negative although",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 17,
+          "score": 0.22324669361114502
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.22344565391540527
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.18090176582336426
+        },
+        {
+          "sentence": "Longer loan durations, larger credit amounts, and higher installment rates are associated with a higher likelihood of being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.19618844985961914
+        },
+        {
+          "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.19777578115463257
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19034504890441895
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2461458444595337
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행 위험을 크게 증가시키는 신호로 알려져 있으며, 본 모델도 이를 위험 증가 요인으로 판단합니다 [1].\n대출 기간이 길수록 신용 위험과 통계적으로 유의미한 긍정적 상관관계가 있다는 것은 알려진 사실이며, 본 모델 역시 이를 위험 증가 요인으로 인식합니다 [2].\n출금 계좌 부재는 일반적으로 신용 위험을 낮추는 요인으로 인식되지만, 본 모델은 이를 위험 증가 요인으로 분류합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다."
+}

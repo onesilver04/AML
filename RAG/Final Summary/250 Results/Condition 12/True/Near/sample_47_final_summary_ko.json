@@ -1,0 +1,105 @@
+{
+  "sample_idx": 47,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.5995675139930288,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the checking account balance is below zero, because of negative balances reflecting adverse financial characteristics, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that there is no checking account, because of the absence of a formal checking account being associated with lower risk, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that the installment rate is high, because of higher installment commitments relative to income constraining borrower liquidity, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2186102271080017
+        },
+        {
+          "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.2205052375793457
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.23008298873901367
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19358623027801514
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22687113285064697
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.24247515201568604
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "installment_commitment",
+      "evidence_sentences": [
+        {
+          "sentence": "Code 2 is used, if code... age age in years (quantitative) other installment plans installment plans from providers other than the credit-giving bank (categorical) 63",
+          "source": "South German Credit Data Classification Using Random Forest Algorithm to Predict Bank Credit Receipts.pdf",
+          "page": 3,
+          "score": 0.21907669305801392
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.22406387329101562
+        },
+        {
+          "sentence": "Moreover, we find that interest rate risk and credit risk are remunerated in the sense that banks with more exposure to these risks (ceteris paribus) have higher net interest margins.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 29,
+          "score": 0.23052000999450684
+        },
+        {
+          "sentence": "2 , Oktober2008 : 133-14 6 • A62:100d\"... < 50 0 DM • A63:500d\"...<1000D M • A64 : ...e \" 1000 DM • A65 : unknown/no savings account o Attribut e 7: present employment since • A71 : unemployed • A72 : ...<lyea r • A73 : 1 d\" .. . <4year s • A74:4d \" ... < 7years • A75 : ...e \" 7 years o Attribut e 8: installment rate in percentage of disposable o Attribut e 9: personal status and sex • A91:mal e : divorced/separated • A92 : female: divorced/separated • A93 : male : single • A94 : male : married/widowed • A95 : female: single o Attribut e 10: other debtors/guarantors • A101:non e • A101 : co-applicant • A103 : guarantor o Attribut e 11: present residence since o Attribut e 12: property • A121 : real estate",
+          "source": "DATA PREPARATION FOR DATA MINING BASED ON NEURAL NETWORK- A CASE STUDY ON GERMAN CREDIT CLASSIFICATION DATASET.pdf",
+          "page": 5,
+          "score": 0.23356354236602783
+        },
+        {
+          "sentence": "Savings Nominal 1 5 2.1 1.0 0 Employment duration Ordinal 1 5 3.4 3.0 0 Installment rate Ordinal 1 4 3.0 3.0 0 Personal status Nominal 1 4 2.7 3.0 0 Other debtors Nominal 1 3 1.1 1.0 0 Present residence Ordinal 1 4 2.8 3.0 0 Property Nominal 1 4 2.4 2.0 0 Age Numeric 19 75 35.5 33.0 0 Other installment plans Nominal 1 3 2.7 3.0 0 Housing Nominal 1 3 1.9 2.0 0 Number of credits Ordinal 1 4 1.4 1.0 0 Job Nominal 1 4 2.9 3.0 0 People liable Binary 1 2 1.8 2.0 0 Telephone Binary 1 2 1.4 1.0 0 Foreign worker Binary 1 2 2.0 2.0 0 Risk Binary target (0 = good, 1 = bad) 0 1 0.3 0.0 0",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 19,
+          "score": 0.23400843143463135
+        },
+        {
+          "sentence": "purpose purpose for which the credit is needed (categorical) amount credit amount in DM (quantitative; result of monotonic transformation; actual data and type of trans... savings debtor's savings (categorical) employment duration duration of debtor's employment with current employer (ordinal; discretized quantitative) installment rate credit installments as a percentage of debtor's disposable income (ordinal; discretized quantitative... personal status sex combined information on sex and marital status; categorical; sex cannot be recovered from the variab... other debtors Is there another debtor or a guarantor for the credit?",
+          "source": "South German Credit Data Classification Using Random Forest Algorithm to Predict Bank Credit Receipts.pdf",
+          "page": 3,
+          "score": 0.23652338981628418
+        },
+        {
+          "sentence": "Installment rate in percentage 4 Numerical 9.",
+          "source": "Analysis_of_feature_selection_techniques_in_credit_risk_assessment.pdf",
+          "page": 3,
+          "score": 0.2373775839805603
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 재정적 어려움을 반영하여 신용 위험을 증가시키는 신호로 알려져 있으며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다 [1].\n출금 계좌 부재는 일반적으로 위험을 낮추는 요인으로 인식되지만, 본 모델은 이를 위험 증가 요인으로 분류합니다 [2].\n월 상환 부담 수준이 높은 것은 소득 대비 상환 부담이 커져 유동성을 제약하기 때문에 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 오히려 위험 감소 요인으로 해석합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다."
+}

@@ -4,12 +4,12 @@ import sys
 from pathlib import Path
 import re
 
-from langchain_ollama import ChatOllama
+from langchain_openai import ChatOpenAI
 
 
 DEFAULT_INPUT = Path("RAG/Final Summary/250 Results/Condition 12/True/Near")
 DEFAULT_OUTPUT = Path("RAG/Final Summary/250 Results/Condition 12/True/Near_ko")
-MODEL_NAME = "exaone3.5:7.8b"
+MODEL_NAME = "LGAI-EXAONE/EXAONE-4.5-32B-Instruct"
 
 
 def parse_args():
@@ -331,11 +331,14 @@ Korean:
 """
 
 def load_model(model_name: str):
-    return ChatOllama(
+    return ChatOpenAI(
         model=model_name,
+        openai_api_base="http://localhost:8000/v1",
+        openai_api_key="EMPTY",          # vLLM은 키 불필요, 아무 값이나 가능
         temperature=0.0,
+        max_tokens=1024,
     )
-
+    
 def final_sentence_from_source(text: str) -> str:
     source = (text or "").lower()
 

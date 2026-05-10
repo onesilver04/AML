@@ -1,0 +1,93 @@
+{
+  "sample_idx": 187,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.6621073027155657,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the loan duration is longer, because extended repayment periods amplify exposure to uncertainty, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [1]\nThe fact that there is no checking account, because a lack of checking accounts is traditionally viewed as a sign of financial instability, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that the credit history includes critical accounts, because critical credit history is traditionally associated with higher default probability, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.168409526348114
+        },
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.18438708782196045
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20773696899414062
+        },
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2110643982887268
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.21125894784927368
+        },
+        {
+          "sentence": "(2024).",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 17,
+          "score": 0.21209919452667236
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21946567296981812
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "credit_history_critical/other existing credit",
+      "evidence_sentences": [
+        {
+          "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1663064956665039
+        },
+        {
+          "sentence": "Checking account status and savings categories also show meaningful associ- ations with credit risk classification.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.18252938985824585
+        },
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.18889915943145752
+        },
+        {
+          "sentence": "First, by improving the accuracy of these models in assessing client default risk, we can better guide decisions related to loans and credit card approvals.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.18918120861053467
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길수록 불확실성 노출이 확대되어 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌 부재는 전통적으로 재정 불안정성의 신호로 여겨져 신용 위험 증가 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n중요 신용 이력이 포함되어 있음은 일반적으로 채무 불이행 확률 상승과 연관되어 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 간주합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다."
+}

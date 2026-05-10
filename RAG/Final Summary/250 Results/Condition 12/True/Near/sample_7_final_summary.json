@@ -1,0 +1,104 @@
+{
+  "sample_idx": 7,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.6534274535732298,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the checking account balance is negative, because of the substantial elevation in default probability associated with insufficient liquid assets, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that there is no checking account, as the absence of a checking account typically correlates with reduced financial exposure, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that the savings account balance is minimal, due to the established link between lower savings tiers and higher estimated credit risk, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.21398043632507324
+        },
+        {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.2174290418624878
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.2260836362838745
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.22858774662017822
+        },
+        {
+          "sentence": "The sign of the respective coefficients remains negative although",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 17,
+          "score": 0.23043406009674072
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22251760959625244
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.23488664627075195
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.24510735273361206
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.24906563758850098
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "He further assumes that banks try to stabilize their future net interest income, i. e. to minimize the variance of C.NIMt,i, min IRRi var /parenleft.vsize1C.NIMt,i/parenright.vsize1= /parenleft.vsize1β1,t ⋅ θi + β2,t ⋅ IRRi/parenright.vsize12 var(ΔR) + σ2 ε (8) Taking θi as given and only being able to vary the exposure to interest rate risk IRRi, he obtains a relationship between θi and IRRi, namely that these two variables are associated in a positive way.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 24,
+          "score": 0.23129069805145264
+        },
+        {
+          "sentence": "there is only a weak link between a bank’s exposure to interest rate risk and the change in its net interest income given an interest rate shock, which may be due to relatively low interest rate risk exposure of the banks in the sample.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.24020487070083618
+        },
+        {
+          "sentence": "Savings are also informative.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.24558627605438232
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.25547659397125244
+        }
+      ]
+    }
+  ]
+}

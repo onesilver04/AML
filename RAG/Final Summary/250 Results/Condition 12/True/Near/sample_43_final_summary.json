@@ -1,0 +1,110 @@
+{
+  "sample_idx": 43,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.5328702217929253,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that negative checking account balance is due to liquidity deficits, because liquidity deficits, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that absence of a checking account is due to lack of formal banking history, because lack of formal banking history, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [2]\nThe fact that fully settled past credits is due to no active credit history, because no active credit history, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.21076446771621704
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21442294120788574
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.21710532903671265
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.21883505582809448
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.22305482625961304
+        },
+        {
+          "sentence": "The sign of the respective coefficients remains negative although",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 17,
+          "score": 0.22324669361114502
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.22344565391540527
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.2348737120628357
+        },
+        {
+          "sentence": "Arslan 252 Page 8 of 23 loan default.",
+          "source": "Comparison of the impact of dimensionality reduction and data splitting on classification performance in credit risk assessment .pdf",
+          "page": 9,
+          "score": 0.24347925186157227
+        },
+        {
+          "sentence": "Number Description Class Attribute 1 Status of existing checking account Qualitative Attribute 2 Duration in month Numerical Attribute 3 Credit history Qualitative Attribute 4 Purpose Qualitative Attribute 5 Credit amount Numerical Attribute 6 Savings account/bonds Qualitative Attribute 7 Present employment since Qualitative Attribute 8 Instalment rate in percentage of disposable income Numerical Attribute 9 Personal status and sex Qualitative Attribute 10 Other debtors/guarantors Qualitative Attribute 11 Present residence since Numerical Attribute 12 Property Qualitative Attribute 13 Age in years Numerical Attribute 14 Other instalment plans Qualitative attribute 15 Housing Qualitative",
+          "source": "Investigation and improvement of multi-layer perceptron neural.pdf",
+          "page": 4,
+          "score": 0.2446569800376892
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "credit_history_no credits/all paid",
+      "evidence_sentences": [
+        {
+          "sentence": "cants are the strongest predictors of credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.18908071517944336
+        },
+        {
+          "sentence": "Even after exclusions, the reduced OLS model still shows limited explanatory power, with an R2 of 0.24 (Adj.R 2 =0.22) and a lower but still elevated condition number (=3.78×10 4).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1952122449874878
+        },
+        {
+          "sentence": "We tried our best to make a thorough analysis, and there are still a few possible",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 25,
+          "score": 0.1997707486152649
+        },
+        {
+          "sentence": "Simply speaking, we want to build a model to classify clients into high-risk groups who are more likely to default or low-risk groups who are more reliable, with some available information data in banking system.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.2009732723236084
+        }
+      ]
+    }
+  ]
+}

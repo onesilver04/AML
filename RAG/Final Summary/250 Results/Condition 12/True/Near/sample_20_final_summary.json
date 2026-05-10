@@ -1,0 +1,68 @@
+{
+  "sample_idx": 20,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.6593604906183115,
+  "final_explanation": "Based on the AI model's prediction,\n\"The fact that there is no checking account, because it correlates with reduced risk, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [1]\"\n\"The fact that the account balance is negative, because it correlates with elevated default probability, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [2]\"\n\"The fact that the loan duration is long, because it correlates with higher default probability, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [3]\"\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.2076757550239563
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20836341381072998
+        },
+        {
+          "sentence": "Even after exclusions, the reduced OLS model still shows limited explanatory power, with an R2 of 0.24 (Adj.R 2 =0.22) and a lower but still elevated condition number (=3.78×10 4).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21171581745147705
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.23605412244796753
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.24367773532867432
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.16543316841125488
+        },
+        {
+          "sentence": "Longer loan durations, larger credit amounts, and higher installment rates are associated with a higher likelihood of being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.17572933435440063
+        }
+      ]
+    }
+  ]
+}

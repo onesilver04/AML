@@ -1,0 +1,152 @@
+{
+  "sample_idx": 202,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.6735323620994362,
+  "final_explanation": "Based on the AI model's prediction,\n대출 기간이 길수록 상환 기간이 체계적으로 연장되어 디폴트 확률이 높아지기 때문에, 문헌에서는 이를 신용 위험을 증가시키는 신호로 알려져 있으며, 모델도 이를 위험을 높이는 요인으로 식별합니다[1].\n당좌예금 계좌가 없으면 해당 데이터셋에서 추정된 신용 위험이 낮게 나타나기 때문에, 문헌에서는 이를 신용 위험을 감소시키는 신호로 알려져 있지만, 모델은 이를 위험을 높이는 요인으로 식별합니다[2].\n당좌예금 잔액이 마이너스일 경우 디폴트 확률이 약 3배 높아지기 때문에, 문헌에서는 이를 신용 위험을 증가시키는 신호로 알려져 있지만, 모델은 이를 위험을 낮추는 요인으로 식별합니다[3].\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.16827392578125
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1716994047164917
+        },
+        {
+          "sentence": "(i.e. the default probability) increases for longer maturity time, whereas from roughly four years (45 months) onwards the risk stays constantly high.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 6,
+          "score": 0.19494009017944336
+        },
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.19549810886383057
+        },
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.1998070478439331
+        },
+        {
+          "sentence": "exposure at default secured by residential mortgages.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 13,
+          "score": 0.20657187700271606
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.1973441243171692
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20368993282318115
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.21469885110855103
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21670788526535034
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.19857889413833618
+        },
+        {
+          "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.20250624418258667
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20956313610076904
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.2101927399635315
+        },
+        {
+          "sentence": "The sign of the respective coefficients remains negative although",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 17,
+          "score": 0.21201038360595703
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.21460527181625366
+        },
+        {
+          "sentence": "3 Results and Discussion 3.1 Model Results Analysis As shown in Fig .",
+          "source": "German Credit Risk Prediction Using Machine Learning Models.pdf",
+          "page": 7,
+          "score": 0.21747124195098877
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21855640411376953
+        },
+        {
+          "sentence": "Construct a Super Learner heterogeneous",
+          "source": "Personal Credit Default Discrimination Model Based on Super Learner.pdf",
+          "page": 4,
+          "score": 0.22003042697906494
+        },
+        {
+          "sentence": "(2018)).",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 22,
+          "score": 0.220120370388031
+        },
+        {
+          "sentence": "To mitigate bias towards the majority class in this classification study, random under -sampling was employed to balance the dataset.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 8,
+          "score": 0.22339856624603271
+        }
+      ]
+    }
+  ]
+}

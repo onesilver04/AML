@@ -1,0 +1,123 @@
+{
+  "sample_idx": 76,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.7289818363068694,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the checking account balance is negative, because of a negative checking account balance, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that there is no checking account, because of the absence of an account, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that the loan duration is extended, because of the extended loan duration, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.21093255281448364
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2192555069923401
+        },
+        {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.22248023748397827
+        },
+        {
+          "sentence": "Observations of the variable Cost that are negative or larger than the median plus five times the interquartile range are removed.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 26,
+          "score": 0.2229442596435547
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19576680660247803
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22678369283676147
+        },
+        {
+          "sentence": "slightly in the two different specifications, from −0.026 to −0.023.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.24181973934173584
+        },
+        {
+          "sentence": "Taking into account that the pass-through to the corresponding interest rates is likely to be incomplete,",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 5,
+          "score": 0.2439122200012207
+        },
+        {
+          "sentence": "a good credit relationship can be a win -win situation.",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.24504029750823975
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.2472078800201416
+        },
+        {
+          "sentence": "Although the ﬁnancial institution often collects clients’ personal information such as age, educational level, and marital status when people apply for credit cards, this information also affects the default behavior.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 25,
+          "score": 0.2509169578552246
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "The interest rate risk (IRR) of such a bank is: IRR = 1 2 (MAθA − MLθL) (16)",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 30,
+          "score": 0.2441897988319397
+        },
+        {
+          "sentence": "This is in line with the rather mechanical model in Appendix A (see Equations (22) and (23)).",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 15,
+          "score": 0.24850744009017944
+        },
+        {
+          "sentence": "Longer loan durations, larger credit amounts, and higher installment rates are associated with a higher likelihood of being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.24857556819915771
+        },
+        {
+          "sentence": "The analysis relies on ordinary least squares (OLS) regression, which is extended to",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.25036561489105225
+        },
+        {
+          "sentence": "There are two types of independent variables: the duration of the loan, the amount of credit (CAMT) and the age (age) are numerical independent variables, and the other variables are sub -type independent variables and have been assigned in the dataset.",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 6,
+          "score": 0.2613745927810669
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험 증가의 신호로 알려져 있으며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다. [1]\n출금 계좌 없음은 일반적으로 신용 위험 감소 요인으로 인식되지만, 본 모델은 이를 위험 증가 요인으로 분류합니다. [2]\n대출 기간이 길어질수록 신용 위험이 증가한다는 것이 학계의 공통된 견해이며, 본 모델 또한 이를 위험 증가 요인으로 분석합니다. [3]\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다."
+}
