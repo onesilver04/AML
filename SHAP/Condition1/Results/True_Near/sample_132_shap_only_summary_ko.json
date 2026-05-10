@@ -1,0 +1,36 @@
+{
+  "sample_idx": 132,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_132.json",
+  "true_label": "BAD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, the assessment indicates a high credit risk. This outcome is primarily driven by the loan duration, which contributes to an elevated risk level. Furthermore, the absence of a checking account further increases the perceived risk. Conversely, a checking account balance falling below zero acts as a mitigating factor that slightly lowers the overall risk. Ultimately, these combined factors lead the model to conclude that the applicant presents a high credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n대출 기간이 길어짐에 따라 신용 위험이 증가하고 있습니다.\n입출금 계좌의 부재는 신용 위험을 더욱 높이는 요인입니다.\n반면에 계좌 잔액이 부족한 상태는 위험을 약간 완화시키는 역할을 합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": 0.07162245319895981,
+      "abs_shap": 0.07162245319895981,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.06134505695299631,
+      "abs_shap": 0.06134505695299631,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.04516859376600779,
+      "abs_shap": 0.04516859376600779,
+      "direction": "decrease_risk"
+    }
+  ]
+}

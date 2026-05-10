@@ -1,31 +1,31 @@
 {
   "sample_idx": 104,
-  "condition": 2,
+  "condition": 3,
   "distance": "far",
-  "is_correct": true,
+  "is_correct": false,
   "customer_data": {
-    "대출 기간": 30,
-    "대출 금액": 7596,
-    "월 상환 부담 수준": 1,
-    "나이": 63,
-    "기존 대출 수": 2,
+    "대출 기간": 48,
+    "대출 금액": 10127,
+    "월 상환 부담 수준": 2,
+    "나이": 44,
+    "기존 대출 수": 1,
     "계좌 잔액": "입출금 계좌 없음",
     "신용 이력": "신용 문제 이력 있음",
-    "대출 목적": "중고차 구매",
-    "저축 잔액": "없음",
-    "재직 기간": "7년 이상",
-    "거주 상태": "자가 거주",
+    "대출 목적": "신차 구매",
+    "저축 잔액": "보통",
+    "재직 기간": "1~4년",
+    "거주 상태": "무상 거주",
     "직업": "숙련 기술직",
     "성별": "남성",
     "결혼 여부": "x"
   },
   "predicted_label": "낮음",
-  "confidence": 87,
-  "true_label": "낮음",
+  "confidence": 84,
+  "true_label": "높음",
   "local_shap_top3_features": [
     {
       "feature": "checking_status_no checking",
-      "value": -0.1,
+      "value": -0.08,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
         "source": "regression-based credit risk modeling.pdf",
@@ -34,8 +34,8 @@
       }
     },
     {
-      "feature": "employment_<1",
-      "value": 0.04,
+      "feature": "credit_amount",
+      "value": 0.06,
       "evidence_sentence": {
         "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
         "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
@@ -44,8 +44,8 @@
       }
     },
     {
-      "feature": "purpose_used car",
-      "value": -0.04,
+      "feature": "duration",
+      "value": 0.05,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
         "source": "regression-based credit risk modeling.pdf",
@@ -54,8 +54,8 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n신용 문제 이력이나 기존 대출이 존재하는 경우는 전통적인 금융 지표에 기반하며, 이는 신용 위험 감소 요인으로 알려져 있고, 본 모델 역시 이를 위험 감소 요인으로 식별합니다 [2].\n저축 내역이 없는 경우는 일반적으로 신용 위험 증가와 연관되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
-  "class_confidence_relative_percent": 86.41,
-  "decision_boundary_abs_distance": 0.4241106778223419,
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n신용 문제 이력이 있음에도 불구하고, 본 모델은 이를 위험 감소 요인으로 해석하여 신용 위험을 낮게 평가합니다 [2].\n저축 내역이 없는 경우 문헌에서는 신용 위험이 증가한다고 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 간주합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 84.25,
+  "decision_boundary_abs_distance": 0.2424727667752008,
   "warning_type": "none"
 }

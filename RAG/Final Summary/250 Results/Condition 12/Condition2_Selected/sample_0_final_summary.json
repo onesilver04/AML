@@ -1,0 +1,128 @@
+{
+  "sample_idx": 0,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.8014434544460315,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the checking account balance is negative, because the applicant maintains a balance below zero, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[1]\nThe fact that the loan duration is extended, because the repayment term is longer, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk.[2]\nThe fact that there is no checking account, because the applicant lacks a checking account, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk.[3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.20876556634902954
+        },
+        {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.2099856734275818
+        },
+        {
+          "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.21270513534545898
+        },
+        {
+          "sentence": "The stan- dard model depends on the ﬁnancial ratios, income account, and data on the balance sheet [6], [7].",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.21592450141906738
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1961599588394165
+        },
+        {
+          "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.21141177415847778
+        },
+        {
+          "sentence": "Longer loan durations, larger credit amounts, and higher installment rates are associated with a higher likelihood of being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.21838653087615967
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19407016038894653
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.23099154233932495
+        },
+        {
+          "sentence": "assessed [2].",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.2441602349281311
+        },
+        {
+          "sentence": "Number Description Class Attribute 1 Status of existing checking account Qualitative Attribute 2 Duration in month Numerical Attribute 3 Credit history Qualitative Attribute 4 Purpose Qualitative Attribute 5 Credit amount Numerical Attribute 6 Savings account/bonds Qualitative Attribute 7 Present employment since Qualitative Attribute 8 Instalment rate in percentage of disposable income Numerical Attribute 9 Personal status and sex Qualitative Attribute 10 Other debtors/guarantors Qualitative Attribute 11 Present residence since Numerical Attribute 12 Property Qualitative Attribute 13 Age in years Numerical Attribute 14 Other instalment plans Qualitative attribute 15 Housing Qualitative",
+          "source": "Investigation and improvement of multi-layer perceptron neural.pdf",
+          "page": 4,
+          "score": 0.25529414415359497
+        },
+        {
+          "sentence": "IEEE (2024) 9.",
+          "source": "German Credit Risk Prediction Using Machine Learning Models.pdf",
+          "page": 11,
+          "score": 0.25778770446777344
+        },
+        {
+          "sentence": "banking is responsible for the selection of potential consumers for credit by taking into account a variety of factors, including credit object, risk level, and grace period.",
+          "source": "Comparative_Analysis_of_Machine_Learning.pdf",
+          "page": 2,
+          "score": 0.25839436054229736
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.26052093505859375
+        },
+        {
+          "sentence": "Section 5 con- cludes.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 4,
+          "score": 0.26190829277038574
+        },
+        {
+          "sentence": "This transparency can enhance customer relationships and trust in the financial institution.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 13,
+          "score": 0.2626441717147827
+        },
+        {
+          "sentence": "We expect β1 and β2 to be posi- tive and negative, respectively.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.2642480134963989
+        }
+      ]
+    }
+  ]
+}

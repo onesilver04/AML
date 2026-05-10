@@ -1,0 +1,36 @@
+{
+  "sample_idx": 79,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_79.json",
+  "true_label": "BAD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, this application indicates a high credit risk. The absence of prior borrowing experience or a record of fully settled loans increases the risk by offering less historical data to assess reliability. Furthermore, not maintaining a primary checking account further increases the risk by reducing visibility into your everyday financial activity. On the other hand, having very little money saved actually decreases the risk, which may reflect a lighter existing debt load. Together, these factors lead the model to conclude that the overall credit risk is high.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n대출 이력의 부재 또는 전액 상환 이력의 부족은 신뢰성을 평가할 역사적 데이터가 부족해 위험을 증가시킵니다.  \n또한 주요 입출금 계좌를 유지하지 않는 것은 일상적인 금융 활동에 대한 가시성을 감소시켜 위험을 더욱 높입니다.  \n반면에 저축 금액이 매우 적은 것은 위험을 낮추는 요인으로 작용할 수 있으나, 이 요인들을 종합하면\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "credit_history_no credits/all paid",
+      "definition": "Credit history: no credits taken or all previous credits paid back duly.",
+      "shap_value": 0.05365177412511077,
+      "abs_shap": 0.05365177412511077,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.05324249941458303,
+      "abs_shap": 0.05324249941458303,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.041870611856524555,
+      "abs_shap": 0.041870611856524555,
+      "direction": "decrease_risk"
+    }
+  ]
+}

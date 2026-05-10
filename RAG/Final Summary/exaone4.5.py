@@ -7,9 +7,9 @@ import re
 from langchain_openai import ChatOpenAI
 
 
-DEFAULT_INPUT = Path("RAG/Final Summary/250 Results/Condition 12/True/Near")
-DEFAULT_OUTPUT = Path("RAG/Final Summary/250 Results/Condition 12/True/Near_ko")
-MODEL_NAME = "LGAI-EXAONE/EXAONE-4.5-32B-Instruct"
+DEFAULT_INPUT = Path("RAG/Final Summary/250 Results/Condition 3/False/Far")
+DEFAULT_OUTPUT = Path("RAG/Final Summary/250 Results/Condition 3/False/Far_ko")
+MODEL_NAME = "LGAI-EXAONE/EXAONE-4.5-33B-Instruct"
 
 
 def parse_args():

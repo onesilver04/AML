@@ -1,0 +1,61 @@
+{
+  "sample_idx": 75,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 12,
+    "대출 금액": 1480,
+    "월 상환 부담 수준": 2,
+    "나이": 66,
+    "기존 대출 수": 3,
+    "계좌 잔액": "충분",
+    "신용 이력": "신용 문제 이력 있음",
+    "대출 목적": "신차 구매",
+    "저축 잔액": "보통",
+    "재직 기간": "무직",
+    "거주 상태": "무상 거주",
+    "직업": "무직, 단순직 외국인",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "낮음",
+  "confidence": 77,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.22044169902801514
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.18680667877197266
+      }
+    },
+    {
+      "feature": "housing_own",
+      "value": 0.03,
+      "evidence_sentence": {
+        "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.2029362916946411
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n문헌에서 계좌 잔액 부족은 채무 불이행 가능성 감소와 연관되어 있으나, 본 모델은 이를 신용 위험 증가 요인으로 판단합니다 [1].\n기존 대출 상환 이력이 신용 등급으로 평가될 경우 신용 위험 감소 신호로 인식되며, 본 모델은 이를 신용 위험 감소 요인으로 식별합니다 [2].\n자가 소유는 높은 신용 위험과 약한 통계적 연관성을 보이므로, 본 모델은 이를 신용 위험 증가 요인으로 해석합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "class_confidence_relative_percent": 77.12,
+  "decision_boundary_abs_distance": 0.17117239113154337,
+  "warning_type": "weak"
+}

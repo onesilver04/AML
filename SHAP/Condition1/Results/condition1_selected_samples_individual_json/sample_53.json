@@ -1,0 +1,43 @@
+{
+  "sample_idx": 53,
+  "condition": 1,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 36,
+    "대출 금액": 2820,
+    "월 상환 부담 수준": 4,
+    "나이": 27,
+    "기존 대출 수": 2,
+    "계좌 잔액": "적음",
+    "신용 이력": "신용 문제 이력 있음",
+    "대출 목적": "신차 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1년 미만",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "높음",
+  "confidence": 53,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "duration",
+      "value": 0.06
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.06
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.04
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\n대출 기간이 길어짐에 따라 채무 불이행 가능성이 증가하여 신용 위험이 상승했습니다.\n출금 계좌 부재는 금융 관리 능력의 제한을 시사하며 신용 위험을 더욱 높입니다.\n반면에 신용 이력에 중요한 계정이나 기존 대출이 포함되어 있어 신용 위험을 약간 완화시키는 효과가 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 52.91,
+  "decision_boundary_abs_distance": 0.12914939650937762,
+  "warning_type": "weak"
+}

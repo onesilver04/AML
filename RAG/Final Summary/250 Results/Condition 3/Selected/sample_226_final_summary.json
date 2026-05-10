@@ -1,0 +1,128 @@
+{
+  "sample_idx": 226,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.7975591714085423,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account, due to lower financial strain, because it indicates stable financial habits, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [1]\nThe fact that the account balance is negative, due to lower financial strain, because it indicates stable financial habits, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [2]\nThe fact that employment duration is less than one year, due to limited income stability, because it indicates unstable financial habits, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.1900404691696167
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1914767026901245
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.19487136602401733
+        },
+        {
+          "sentence": "If credit risk is underestimated and losses are realised, these costs are passed on to the customers through higher interest",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.19842326641082764
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.20263129472732544
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.20920825004577637
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21393918991088867
+        },
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21570760011672974
+        },
+        {
+          "sentence": "Observations of the variable Cost that are negative or larger than the median plus five times the interquartile range are removed.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 26,
+          "score": 0.2336369752883911
+        },
+        {
+          "sentence": "Risk management in German banks | 83 (IRRi) (see also Appendix A, Equation (17)): C.NIMt,i = β1,t ⋅ θi + β2,t ⋅ IRRi + εi (5) where β1,t and β2,t are positive and negative parameters, respectively.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 22,
+          "score": 0.23635172843933105
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "employment_<1",
+      "evidence_sentences": [
+        {
+          "sentence": "Nonetheless, when adding the predicted training data points to the graph it has to be noted that the PDP only partly explains the predictions by the models which cover a much broader range than the PDP indicates.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 6,
+          "score": 0.22418248653411865
+        },
+        {
+          "sentence": "The analysis relies on ordinary least squares (OLS) regression, which is extended to",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.23350626230239868
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.23407912254333496
+        },
+        {
+          "sentence": "3.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 8,
+          "score": 0.23452913761138916
+        },
+        {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.2369009256362915
+        },
+        {
+          "sentence": "However, these outliers can be treated either by deleting the objects present in only one attribute, or by deleting the attributes.",
+          "source": "DATA PREPARATION FOR DATA MINING BASED ON NEURAL NETWORK- A CASE STUDY ON GERMAN CREDIT CLASSIFICATION DATASET.pdf",
+          "page": 14,
+          "score": 0.2395525574684143
+        },
+        {
+          "sentence": "between attributes, as exemplified by the correlation between the duration of loan and the credit amount.",
+          "source": "DATA PREPARATION FOR DATA MINING BASED ON NEURAL NETWORK- A CASE STUDY ON GERMAN CREDIT CLASSIFICATION DATASET.pdf",
+          "page": 14,
+          "score": 0.2432476282119751
+        }
+      ]
+    }
+  ]
+}

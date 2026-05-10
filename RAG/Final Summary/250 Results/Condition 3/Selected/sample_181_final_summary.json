@@ -1,0 +1,68 @@
+{
+  "sample_idx": 181,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.44311974764418416,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the checking account balance is negative due to negative liquidity, because due to negative liquidity, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that there is no checking account as the absence may serve as a protective indicator, because as the absence may serve as a protective indicator, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that the loan duration is extended because prolonged repayment periods expose lenders to uncertainty, because because prolonged repayment periods expose lenders to uncertainty, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19103902578353882
+        },
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2009599804878235
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20279043912887573
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21582841873168945
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "The analysis relies on ordinary least squares (OLS) regression, which is extended to",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.17882394790649414
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1810286045074463
+        },
+        {
+          "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.19492292404174805
+        }
+      ]
+    }
+  ]
+}

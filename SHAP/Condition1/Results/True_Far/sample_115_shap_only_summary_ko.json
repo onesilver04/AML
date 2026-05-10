@@ -1,0 +1,36 @@
+{
+  "sample_idx": 115,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_115.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The absence of a checking account decreases the overall risk assessment. However, the intention to borrow funds for educational purposes increases the predicted risk. Additionally, having a history of critical accounts or other existing credits further decreases the risk. Collectively, these factors point toward a favorable credit profile with manageable risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n대출 기간 및 대출 금액이 짧고 적어 위험이 감소합니다.\n월 상환 부담 수준  월 상환 부담 수준이 적절하여 상환 능력이 확인됩니다.\n현재 거주 기간  거주 기간이 길어 안정성이 높습니다.\n나이  고객의 나이가 상환 능력에 긍정적인 영향을 미칩니다.\n기존 대출 수  기존 대출 수가 적어 신용 부담이 낮습니다.\n부양 가족 수  부양 가족 수가 적어 경제적 부담이 적습니다.\n계좌 잔액 충분  계좌 잔액이 충분하여 유동성 위험이 낮습니다.\n대출 전액 상환 이력  대출 전액 상환 이력이 있어 신용 신뢰성이 높습니다.\n신용 문제 이력  신용 문제 이력이 없어 위험이 감소합니다.\n대출 목적  교육비 목적으로 대출을 신청하여 긍정적인 요인이 됩니다.\n저축 잔액 충분  저축 잔액이 충분하여 경제적 안정성이 높습니다.\n재직 기간 7년 이상  장기간 재직으로 안정적인 수입이 예상됩니다.\n성별  성별에 따른 특별한 위험 요인은 없습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.06305953436226064,
+      "abs_shap": 0.06305953436226064,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "purpose_education",
+      "definition": "Loan purpose: education.",
+      "shap_value": 0.039525203962096946,
+      "abs_shap": 0.039525203962096946,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.03829652950118428,
+      "abs_shap": 0.03829652950118428,
+      "direction": "decrease_risk"
+    }
+  ]
+}

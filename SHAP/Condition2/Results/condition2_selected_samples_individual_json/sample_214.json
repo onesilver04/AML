@@ -1,0 +1,61 @@
+{
+  "sample_idx": 214,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": false,
+  "customer_data": {
+    "대출 기간": 27,
+    "대출 금액": 3416,
+    "월 상환 부담 수준": 3,
+    "나이": 27,
+    "기존 대출 수": 1,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1~4년",
+    "거주 상태": "자가 거주",
+    "직업": "전문직, 자영업, 관리직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "높음",
+  "confidence": 60,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_<0",
+      "value": 0.09,
+      "evidence_sentence": {
+        "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 27,
+        "score": 0.21444010734558105
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 24,
+        "score": 0.23499000072479248
+      }
+    },
+    {
+      "feature": "duration",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 8,
+        "score": 0.1671733856201172
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 유동성 제약으로 인해 신용 위험을 증가시키는 신호로 알려져 있으며, 본 모델도 이를 위험 증가 요인으로 판단합니다 [1].\n출금 계좌 부재는 계정 상태 부재로 인해 신용 위험을 높이는 신호로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다 [2].\n대출 기간이 연장되면 상환 기간이 길어져 신용 위험이 증가하는 신호로 이해되며, 본 모델 또한 이를 위험 증가 요인으로 분석합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "class_confidence_relative_percent": 60.15,
+  "decision_boundary_abs_distance": 0.2014678992335468,
+  "warning_type": "weak"
+}

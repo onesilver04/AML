@@ -1,0 +1,36 @@
+{
+  "sample_idx": 70,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_70.json",
+  "true_label": "BAD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, the assessment indicates a high credit risk. This elevated risk is primarily driven by three key factors. First, maintaining a negative balance in your checking account suggests financial strain and increases the likelihood of default. Second, the absence of a checking account altogether limits your ability to manage daily transactions smoothly, further raising the risk. Third, your homeownership status is also flagged as increasing risk in this evaluation, as it may reflect reduced financial flexibility. Together, these factors shape the model's final conclusion, pointing toward a high credit risk outcome.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.\n계좌 잔액 부족은 재정적 어려움을 시사하며 채무 불이행 가능성을 높입니다.\n출금 계좌의 부재는 일상적인 거래를 원활하게 수행하는 능력을 제한하여 위험을 더욱 증가시킵니다.\n주택 소유 상태는 이 평가에서 위험 증가 요인으로 지목되며, 재정적 유연성 감소를 반영할 수 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": 0.07424275952241383,
+      "abs_shap": 0.07424275952241383,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.06370958625475824,
+      "abs_shap": 0.06370958625475824,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "housing_own",
+      "definition": "Housing status: owns housing.",
+      "shap_value": 0.03334174771065254,
+      "abs_shap": 0.03334174771065254,
+      "direction": "increase_risk"
+    }
+  ]
+}

@@ -1,61 +1,61 @@
 {
   "sample_idx": 162,
-  "condition": 2,
-  "distance": "near",
+  "condition": 3,
+  "distance": "far",
   "is_correct": true,
   "customer_data": {
-    "대출 기간": 45,
-    "대출 금액": 1845,
-    "월 상환 부담 수준": 4,
-    "나이": 23,
-    "기존 대출 수": 1,
-    "계좌 잔액": "부족",
-    "신용 이력": "기존 대출 상환 중",
+    "대출 기간": 4,
+    "대출 금액": 1544,
+    "월 상환 부담 수준": 2,
+    "나이": 42,
+    "기존 대출 수": 3,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "신용 문제 이력 있음",
     "대출 목적": "전자제품 구매",
     "저축 잔액": "거의 없음",
-    "재직 기간": "1~4년",
-    "거주 상태": "무상 거주",
-    "직업": "숙련 기술직",
+    "재직 기간": "4~7년",
+    "거주 상태": "자가 거주",
+    "직업": "단순 노무직",
     "성별": "남성",
     "결혼 여부": "x"
   },
-  "predicted_label": "높음",
-  "confidence": 74,
-  "true_label": "높음",
+  "predicted_label": "낮음",
+  "confidence": 95,
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
       "feature": "checking_status_no checking",
-      "value": -0.12,
+      "value": -0.06,
       "evidence_sentence": {
-        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
-        "source": "regression-based credit risk modeling.pdf",
-        "page": 30,
-        "score": 0.18985342979431152
-      }
-    },
-    {
-      "feature": "checking_status_<0",
-      "value": -0.04,
-      "evidence_sentence": {
-        "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
         "source": "regression-based credit risk modeling.pdf",
         "page": 24,
-        "score": 0.24402308464050293
+        "score": 0.19400465488433838
       }
     },
     {
-      "feature": "employment_4<=X<7",
+      "feature": "duration",
+      "value": -0.06,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.17981082201004028
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
       "value": -0.03,
       "evidence_sentence": {
-        "sentence": "The first part of the survey, i. e. the low-interest rate environ- ment survey in the narrow sense, has a horizon of five years (from 2017 to 2021) and banks had to quantify many positions of their financial statements for the",
-        "source": "Interest and credit risk management in German banks.pdf",
-        "page": 6,
-        "score": 0.22899079322814941
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.17625045776367188
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌가 없는 경우는 채무 불이행 가능성이 낮아 신용 위험이 감소하는 신호로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n계좌 잔액이 마이너스인 경우는 채무 불이행 위험이 증가하는 신호로 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 해석합니다. [2]\n재직 기간이 4년에서 7년 사이인 경우는 직접적인 위험 변화와의 연관성이 명확하지 않으나, 본 모델은 이를 위험 감소 요인으로 분류합니다. [3]\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
-  "class_confidence_relative_percent": 74.58,
-  "decision_boundary_abs_distance": 0.1857601925000279,
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 금융 역량 지표로 주요 위험 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n대출 기간이 긴 경우는 일반적으로 신용 위험을 증가시키는 요인으로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 해석합니다. [2]\n중요한 신용 이력이나 기타 기존 신용 상태는 대출자의 신용 위험 가능성 예측에 중요한 가치를 지니지만, 본 모델은 이를 통해 위험을 낮추는 요인으로 평가합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 94.62,
+  "decision_boundary_abs_distance": 0.3461527248372037,
   "warning_type": "none"
 }

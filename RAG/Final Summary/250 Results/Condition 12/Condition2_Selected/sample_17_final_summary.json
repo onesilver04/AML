@@ -1,0 +1,116 @@
+{
+  "sample_idx": 17,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.6534593804891817,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that negative checking account balance due to the strong positive relationship with elevated credit risk, because due to the strong positive relationship with elevated credit risk, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that absence of a checking account because it is statistically associated with a lower estimated credit risk, because because it is statistically associated with a lower estimated credit risk, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that longer loan duration due to longer loan terms corresponding to a higher probability of default, because due to longer loan terms corresponding to a higher probability of default, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.22267115116119385
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22704565525054932
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.22873729467391968
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2330799102783203
+        },
+        {
+          "sentence": "are not suitable to deal with imbalanced data.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.23908591270446777
+        },
+        {
+          "sentence": "The sign of the respective coefficients remains negative although",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 17,
+          "score": 0.2411341667175293
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.2427520751953125
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.177720308303833
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.18171805143356323
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "The analysis relies on ordinary least squares (OLS) regression, which is extended to",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.1760963797569275
+        },
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.1914581060409546
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19237947463989258
+        },
+        {
+          "sentence": "Machine learning is crucial in addressing these challenges, particularly in mitigating the adverse selection problem in loan applicant evaluation (Jordan & Mitchell, 2015).",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.19443929195404053
+        },
+        {
+          "sentence": "This transparency can enhance customer relationships and trust in the financial institution.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 13,
+          "score": 0.19913983345031738
+        },
+        {
+          "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.19947832822799683
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "sample_idx": 73,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_73.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, the assessment indicates a low credit risk. This outcome is primarily influenced by the absence of a known savings account, which lowers the overall risk, followed by the lack of a checking account, which slightly increases the perceived risk. Additionally, having savings below 100 further reduces the likelihood of default. Ultimately, these combined factors point toward a favorable credit standing.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족으로 인한 저축 내역 부족이 신용 위험을 낮추는 주요 요인입니다.\n체크 계좌 부재가 위험 인식을 약간 상승시키지만, 이 영향은 제한적입니다.\n저축 잔액이 100 미만인 상태는 채무 불이행 가능성을 더욱 감소시킵니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "savings_status_no known savings",
+      "definition": "Savings account status: no known savings account.",
+      "shap_value": -0.04807282726378488,
+      "abs_shap": 0.04807282726378488,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.045607193213150855,
+      "abs_shap": 0.045607193213150855,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.03345226145892736,
+      "abs_shap": 0.03345226145892736,
+      "direction": "decrease_risk"
+    }
+  ]
+}

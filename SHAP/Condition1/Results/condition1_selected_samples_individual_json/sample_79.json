@@ -1,0 +1,43 @@
+{
+  "sample_idx": 79,
+  "condition": 1,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 30,
+    "대출 금액": 4280,
+    "월 상환 부담 수준": 4,
+    "나이": 26,
+    "기존 대출 수": 2,
+    "계좌 잔액": "적음",
+    "신용 이력": "대출 이력 없음 또는 전액 상환",
+    "대출 목적": "사업 자금",
+    "저축 잔액": "적음",
+    "재직 기간": "1~4년",
+    "거주 상태": "임차 거주",
+    "직업": "단순 노무직",
+    "성별": "여성",
+    "결혼 여부": "o"
+  },
+  "predicted_label": "높음",
+  "confidence": 68,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "credit_history_no credits/all paid",
+      "value": 0.05
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05
+    },
+    {
+      "feature": "savings_status_<100",
+      "value": -0.04
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\n대출 이력의 부재 또는 전액 상환 이력의 부족은 신뢰성을 평가할 역사적 데이터가 부족해 위험을 증가시킵니다.  \n또한 주요 입출금 계좌를 유지하지 않는 것은 일상적인 금융 활동에 대한 가시성을 감소시켜 위험을 더욱 높입니다.  \n반면에 저축 금액이 매우 적은 것은 위험을 낮추는 요인으로 작용할 수 있으나, 이 요인들을 종합하면\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 67.73,
+  "decision_boundary_abs_distance": 0.27727632094429666,
+  "warning_type": "none"
+}

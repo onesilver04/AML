@@ -1,61 +1,61 @@
 {
   "sample_idx": 0,
-  "condition": 2,
-  "distance": "near",
+  "condition": 3,
+  "distance": "far",
   "is_correct": true,
   "customer_data": {
-    "대출 기간": 18,
-    "대출 금액": 1913,
+    "대출 기간": 48,
+    "대출 금액": 7119,
     "월 상환 부담 수준": 3,
-    "나이": 36,
-    "기존 대출 수": 1,
-    "계좌 잔액": "적음",
-    "신용 이력": "기존 대출 상환 중",
-    "대출 목적": "사업 자금",
-    "저축 잔액": "충분",
-    "재직 기간": "1년 미만",
-    "거주 상태": "자가 거주",
+    "나이": 53,
+    "기존 대출 수": 2,
+    "계좌 잔액": "부족",
+    "신용 이력": "대출 이력 없음 또는 전액 상환",
+    "대출 목적": "가구 또는 장비 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1~4년",
+    "거주 상태": "무상 거주",
     "직업": "숙련 기술직",
     "성별": "남성",
-    "결혼 여부": "o"
+    "결혼 여부": "x"
   },
-  "predicted_label": "낮음",
-  "confidence": 61,
-  "true_label": "낮음",
+  "predicted_label": "높음",
+  "confidence": 80,
+  "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "duration",
-      "value": -0.12,
-      "evidence_sentence": {
-        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
-        "source": "regression-based credit risk modeling.pdf",
-        "page": 24,
-        "score": 0.1747589111328125
-      }
-    },
-    {
-      "feature": "credit_history_critical/other existing credit",
-      "value": -0.08,
-      "evidence_sentence": {
-        "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
-        "source": "regression-based credit risk modeling.pdf",
-        "page": 24,
-        "score": 0.19574934244155884
-      }
-    },
-    {
       "feature": "checking_status_<0",
-      "value": 0.05,
+      "value": 0.08,
       "evidence_sentence": {
-        "sentence": "for all status levels of the account, but an observable interaction exists for existing accounts with a low or negative balance where the increase in risk is stronger.",
-        "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
-        "page": 11,
-        "score": 0.20205211639404297
+        "sentence": "T.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 6,
+        "score": 0.20876556634902954
+      }
+    },
+    {
+      "feature": "duration",
+      "value": 0.07,
+      "evidence_sentence": {
+        "sentence": "These effects correspond to the- oretical expectations, indicating that longer durations and higher credit amounts increase the likelihood of credit risk.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.1961599588394165
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.19407016038894653
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 비교적 짧다는 것은, 장기 상환이 신용 위험을 증가시키는 요인으로 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n신용 이력에 중요한 계정이나 기존 대출이 포함되어 있다는 것은, 중요한 계정이 신용 이력의 핵심 요소로 인식되므로, 문헌에서는 신용 위험 증가 신호로 보지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n계좌 잔액이 부족하다는 것은, 부정적인 유동성이 재정적 어려움과 상환 능력 저하를 반영하므로 문헌에서는 신용 위험 증가 요인으로 보며, 본 모델도 이를 위험 증가 요인으로 판단합니다 [3].\n전반적으로 이 고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.",
-  "class_confidence_relative_percent": 61.6,
-  "decision_boundary_abs_distance": 0.1760350678947355,
-  "warning_type": "weak"
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 증가시키는 신호로 알려져 있으며, 본 모델도 이를 위험 증가 요인으로 판단합니다 [1].\n대출 기간이 길어짐은 신용 위험 증가 신호로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 분석합니다 [2].\n입출금 계좌 부재는 신용 위험 감소 요인으로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 평가합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "class_confidence_relative_percent": 80.14,
+  "decision_boundary_abs_distance": 0.40144345444603147,
+  "warning_type": "none"
 }

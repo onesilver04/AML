@@ -1,0 +1,36 @@
+{
+  "sample_idx": 223,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_223.json",
+  "true_label": "BAD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, this indicates a high credit risk. The requested credit amount, the length of the loan term, and the absence of a checking account all contribute to elevating this risk. Consequently, the overall assessment points to a higher likelihood of default.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.\n대출 금액과 대출 기간이 신용 위험을 증가시키는 주요 요인입니다.\n계좌의 부재 또한 상환 능력에 대한 불확실성을 높여 신용 위험을 더욱 상승시킵니다.\n전반적으로 채무 불이행 위험이 높아 대출 승인 가능성이 제한적입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "credit_amount",
+      "definition": "Credit amount requested by the applicant.",
+      "shap_value": 0.11494968321998146,
+      "abs_shap": 0.11494968321998146,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": 0.06292131401410124,
+      "abs_shap": 0.06292131401410124,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.05477785416915912,
+      "abs_shap": 0.05477785416915912,
+      "direction": "increase_risk"
+    }
+  ]
+}

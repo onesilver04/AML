@@ -1,0 +1,43 @@
+{
+  "sample_idx": 102,
+  "condition": 1,
+  "distance": "far",
+  "is_correct": false,
+  "customer_data": {
+    "대출 기간": 24,
+    "대출 금액": 4169,
+    "월 상환 부담 수준": 4,
+    "나이": 28,
+    "기존 대출 수": 1,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "가구 또는 장비 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1~4년",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "높음",
+  "confidence": 63,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_<0",
+      "value": 0.09
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.06
+    },
+    {
+      "feature": "duration",
+      "value": 0.05
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\n신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.\n계좌 잔액이 부족한 상태는 재정적 어려움을 나타내며 신용 위험을 증가시킵니다.\n입출금 계좌가 없는 것은 재정 투명성을 저해하고 위험을 더욱 높입니다.\n대출 기간이 길어짐에 따라 상환 기간이 연장되어 자연스럽게 위험이 증가합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 62.54,
+  "decision_boundary_abs_distance": 0.22537338098412785,
+  "warning_type": "none"
+}

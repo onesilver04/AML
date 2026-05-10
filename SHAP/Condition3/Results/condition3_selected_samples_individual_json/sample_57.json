@@ -1,0 +1,61 @@
+{
+  "sample_idx": 57,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 36,
+    "대출 금액": 8133,
+    "월 상환 부담 수준": 1,
+    "나이": 30,
+    "기존 대출 수": 1,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "중고차 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1~4년",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "여성",
+    "결혼 여부": "o"
+  },
+  "predicted_label": "낮음",
+  "confidence": 78,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.07,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.18163317441940308
+      }
+    },
+    {
+      "feature": "credit_amount",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.19696295261383057
+      }
+    },
+    {
+      "feature": "duration",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.2072630524635315
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌가 없는 사실은 신용 위험을 낮추는 요인으로 식별되며, 문헌에서도 이를 신용 위험 감소 신호로 보고하고 있습니다 [1].\n대출 금액이 증가할수록 신용 위험은 상승하는 것으로 나타나, 문헌에서는 이를 위험 증가 요인으로 설명하고 있으며, 본 모델도 동일하게 판단합니다 [2].\n대출 기간이 길어질수록 신용 위험도 함께 증가하는 경향을 보여, 문헌에서는 이를 위험 상승 요인으로 해석하고 있으며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 77.66,
+  "decision_boundary_abs_distance": 0.1766437206403927,
+  "warning_type": "weak"
+}

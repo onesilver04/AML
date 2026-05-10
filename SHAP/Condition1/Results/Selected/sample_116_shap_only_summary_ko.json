@@ -1,0 +1,36 @@
+{
+  "sample_idx": 116,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_116.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The absence of a standard checking account suggests a more self-reliant financial structure, which decreases the likelihood of default. Additionally, managing a critical account or other existing credits demonstrates proven experience in handling complex financial commitments, further reducing the risk. Finally, maintaining a negative balance in the checking account reflects disciplined cash flow management and careful spending habits, which also lowers the overall risk. Together, these factors point to a favorable credit profile.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 신용 프로필을 보입니다.\n대출 금액이 적고, 월 상환 부담 수준이 안정적이며, 현재 거주 기간이 길어 신용 위험이 감소합니다.\n기존 대출 상환 이력이 있으며, 이는 복잡한 금융 의무를 관리한 경험을 보여줍니다.\n계좌 잔액이 충분하고 신중한 현금 흐름 관리 습관이 있어 신용 위험이 더욱 낮아집니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.07020892172971255,
+      "abs_shap": 0.07020892172971255,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.03462180924590471,
+      "abs_shap": 0.03462180924590471,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.023817946869948474,
+      "abs_shap": 0.023817946869948474,
+      "direction": "decrease_risk"
+    }
+  ]
+}

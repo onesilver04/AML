@@ -1,0 +1,61 @@
+{
+  "sample_idx": 226,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 24,
+    "대출 금액": 937,
+    "월 상환 부담 수준": 4,
+    "나이": 27,
+    "기존 대출 수": 2,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "직업 재교육",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1년 미만",
+    "거주 상태": "자가 거주",
+    "직업": "단순 노무직",
+    "성별": "남성",
+    "결혼 여부": "o"
+  },
+  "predicted_label": "낮음",
+  "confidence": 80,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.09,
+      "evidence_sentence": {
+        "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 24,
+        "score": 0.1900404691696167
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.21393918991088867
+      }
+    },
+    {
+      "feature": "employment_<1",
+      "value": 0.03,
+      "evidence_sentence": {
+        "sentence": "Nonetheless, when adding the predicted training data points to the graph it has to be noted that the PDP only partly explains the predictions by the models which cover a much broader range than the PDP indicates.",
+        "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+        "page": 6,
+        "score": 0.22418248653411865
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 금융 부담이 낮음을 나타내며 안정적인 재정 습관을 의미하므로 신용 위험을 감소시키는 신호로 인식되고, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n계좌 잔액이 적음도 금융 부담이 낮음을 의미하며 안정적인 재정 습관을 나타내므로 신용 위험을 낮추는 요인으로 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 식별합니다. [2]\n대출 기간이 1년 미만으로 짧은 것은 소득 안정성이 제한적임을 나타내므로 불안정한 재정 습관을 시사하고, 본 모델은 이를 위험 증가 요인으로 판단합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 79.76,
+  "decision_boundary_abs_distance": 0.1975591714085423,
+  "warning_type": "weak"
+}

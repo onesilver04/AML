@@ -1,0 +1,36 @@
+{
+  "sample_idx": 26,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_26.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, the application indicates a high credit risk. The lack of a checking account increases this risk, while keeping a savings account balance under 100 units decreases it. Furthermore, a credit history that includes critical accounts or other existing credits also decreases the overall risk assessment. These combined factors ultimately shape the final high-risk evaluation.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 높게 평가되어 대출 승인 가능성이 낮습니다.\n대출 기간  \n대출 금액이 높을수록 신용 위험이 증가합니다.\n월 상환 부담 수준  \n월 상환 부담 수준이 높을수록 신용 위험이 증가합니다.\n현재 거주 기간  \n거주 기간이 짧을수록 신용 위험이 높아질 수 있습니다.\n나이  \n나이가 많을수록 신용 위험은 낮아질 수 있으나, 이 경우에는 다른 요인들에 의해 상쇄됩니다.\n기존 대출 수  \n기존 대출 수가 많을수록 신용 위험이 증가합니다.\n부양 가족 수  \n부양 가족 수가 많을수록 신용 위험이 증가할 수 있습니다.\n계좌 잔액 부족  \n계좌 잔액 부족은 신용 위험을 더욱 높입니다.\n대출 전액 상환 이력  \n대출 전액 상환 이력은 신용 위험을 감소시키는 요인입니다.\n신용 문제 이력  \n신용 문제 이력은 신용 위험을 크게 증가시킵니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.05470308801488961,
+      "abs_shap": 0.05470308801488961,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.04216108196185439,
+      "abs_shap": 0.04216108196185439,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.03061209128444387,
+      "abs_shap": 0.03061209128444387,
+      "direction": "decrease_risk"
+    }
+  ]
+}

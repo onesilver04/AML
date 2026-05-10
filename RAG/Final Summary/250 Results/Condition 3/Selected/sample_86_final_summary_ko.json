@@ -1,0 +1,99 @@
+{
+  "sample_idx": 86,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.7789155600117458,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the requested credit amount is high due to its strong positive correlation with default probability, because larger loan exposures inherently elevate financial vulnerability, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that there is no checking account due to its negative directional impact on default probability, because applicants lacking a checking account are statistically less likely to be classified as high-risk borrowers, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [2]\nThe fact that there is no known savings account due to the established link between limited savings and higher financial vulnerability, because lower savings categories are associated with a higher estimated credit risk, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "credit_amount",
+      "evidence_sentences": [
+        {
+          "sentence": "The main research question was which applicant characteristics are most strongly associated with being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.15045541524887085
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.16266417503356934
+        },
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.17377352714538574
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20101594924926758
+        },
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.23097068071365356
+        },
+        {
+          "sentence": "Number Description Class Attribute 1 Status of existing checking account Qualitative Attribute 2 Duration in month Numerical Attribute 3 Credit history Qualitative Attribute 4 Purpose Qualitative Attribute 5 Credit amount Numerical Attribute 6 Savings account/bonds Qualitative Attribute 7 Present employment since Qualitative Attribute 8 Instalment rate in percentage of disposable income Numerical Attribute 9 Personal status and sex Qualitative Attribute 10 Other debtors/guarantors Qualitative Attribute 11 Present residence since Numerical Attribute 12 Property Qualitative Attribute 13 Age in years Numerical Attribute 14 Other instalment plans Qualitative attribute 15 Housing Qualitative",
+          "source": "Investigation and improvement of multi-layer perceptron neural.pdf",
+          "page": 4,
+          "score": 0.2390761375427246
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2456914186477661
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 5,
+          "score": 0.24602991342544556
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_no known savings",
+      "evidence_sentences": [
+        {
+          "sentence": "Savings are also informative.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19411641359329224
+        },
+        {
+          "sentence": "LongerLoan durations, largerCredit amounts, and higherInstallment rates are associated with a higher likelihood of being classified as a bad credit risk, which aligns with basic economic intuition.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22615492343902588
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.23026823997497559
+        },
+        {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.23522096872329712
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n대출 금액 부족은 채무 이행 확률과 강한 양의 상관관계를 가지므로 금융 취약성을 증가시키는 신호로 인식되며, 본 모델은 이를 위험 증가 요인으로 판단합니다. [1]\n출금 계좌 부재는 채무 불이행 확률에 부정적인 영향을 미쳐 신용 등급 부여에 있어 고위험 대출자로 분류될 가능성이 낮아지므로 신용 위험 감소 요인으로 해석됩니다. 본 모델 역시 이를 위험 감소 요인으로 식별합니다. [2]\n저축 계좌 부재는 저축 부족과 금융 취약성 간의 확립된 연관성으로 인해 신용 위험 증가 신호로 여겨지지만, 본 모델은 이를 오히려 위험 감소 요인으로 판단합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

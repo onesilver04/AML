@@ -1,0 +1,86 @@
+{
+  "sample_idx": 14,
+  "prediction_label": "BAD CREDIT RISK",
+  "prediction_probability": 0.5908352778558719,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account due to its negative association with credit risk, because it is statistically less likely to be classified as a bad credit risk, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [1]\nThe fact that the loan duration is long due to its positive impact on default probability, because it systematically elevates credit risk, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [2]\nThe fact that the requested credit amount is high due to its clear positive relationship with credit risk exposure, because it inherently magnifies potential losses, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a high risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.19424104690551758
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19932794570922852
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20458859205245972
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "The analysis relies on ordinary least squares (OLS) regression, which is extended to",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.20032978057861328
+        },
+        {
+          "sentence": "Longer loan durations, larger credit amounts, and higher installment rates are associated with a higher likelihood of being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.21045994758605957
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "credit_amount",
+      "evidence_sentences": [
+        {
+          "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.18521279096603394
+        },
+        {
+          "sentence": "Note that the exposures to interest rate risk and the exposure to credit risk are measured relative to the shock sizes of different stress tests so that the size of the coefficient cannot be interpreted, only its sign.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.18904680013656616
+        },
+        {
+          "sentence": "The main research question was which applicant characteristics are most strongly associated with being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19182467460632324
+        },
+        {
+          "sentence": "exposure at default secured by residential mortgages.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 13,
+          "score": 0.19678330421447754
+        },
+        {
+          "sentence": "This transparency can enhance customer relationships and trust in the financial institution.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 13,
+          "score": 0.20469433069229126
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,66 @@
 [
   {
+    "sample_idx": 4,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 2679,
+      "월 상환 부담 수준": 4,
+      "나이": 29,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "중고차 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "자가 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 80,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.09,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19905096292495728
+        }
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.04,
+        "evidence_sentence": {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.19950401782989502
+        }
+      },
+      {
+        "feature": "purpose_used car",
+        "value": -0.04,
+        "evidence_sentence": {
+          "sentence": "The analysis examines how demographic, financial, and credit-related characteristics are associated with the likelihood of being classified as a bad credit risk, using statistically in- terpretable methods.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19958853721618652
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 요인으로 인식되며, 이는 문헌에서도 위험 감소 신호로 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 판단합니다. [1]\n체크링 계좌 잔액이 음수인 경우는 그 영향에 대한 실증적 증거가 부족하지만, 문헌에서는 신용 위험 감소 신호로 해석되며, 본 모델 또한 이를 위험 감소 요인으로 분류합니다. [2]\n신차 구매 목적은 핵심 신용 지표에 비해 부차적이므로, 금융 및 신용 관련 특성이 위험 예측 본 모델에서 주도적 역할을 하며, 본 모델 역시 이를 신용 위험 감소 요인으로 간주합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 80.35,
+    "decision_boundary_abs_distance": 0.2035238500818336,
+    "warning_type": "weak"
+  },
+  {
     "sample_idx": 11,
     "condition": 3,
     "distance": "near",
@@ -58,6 +119,128 @@
     "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행 위험 감소 요인으로 판단됩니다 [1].\n대출 금액이 부족한 경우는 재무 비율과 관련되어 채무 불이행 위험 증가 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n대출 기간이 길어질수록 채무 불이행 가능성이 높아지므로, 이는 위험 증가 요인으로 알려져 있으나 본 모델은 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
     "class_confidence_relative_percent": 74.46,
     "decision_boundary_abs_distance": 0.14463698667946456,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 36,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 1860,
+      "월 상환 부담 수준": 4,
+      "나이": 34,
+      "기존 대출 수": 2,
+      "계좌 잔액": "적음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "중고차 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "무직",
+      "거주 상태": "자가 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 72,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20358788967132568
+        }
+      },
+      {
+        "feature": "duration",
+        "value": -0.04,
+        "evidence_sentence": {
+          "sentence": "Credit risk assessment is the most basic and critical part of credit loan management.",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.17590034008026123
+        }
+      },
+      {
+        "feature": "checking_status_0<=X<200",
+        "value": 0.04,
+        "evidence_sentence": {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche Mark) as the reference category.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.21862667798995972
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 금융 프로필의 명확한 차이를 나타내므로 신용 위험 감소 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n대출 기간이 길어짐은 채무 불이행 가능성 증가와 연관되어 이론적 기대와 일치하지만, 본 모델은 이를 오히려 위험 감소 요인으로 해석합니다 [2].\n문헌에서 계좌 잔액이 0에서 200 DM 사이인 경우는 채무 불이행 확률에 큰 영향을 미쳐 신용 위험 증가 신호로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 분류합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 72.25,
+    "decision_boundary_abs_distance": 0.12253953374574755,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 55,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 48,
+      "대출 금액": 12749,
+      "월 상환 부담 수준": 4,
+      "나이": 37,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "연체 이력 있음",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "보통",
+      "재직 기간": "4~7년",
+      "거주 상태": "자가 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 74,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "credit_amount",
+        "value": 0.1,
+        "evidence_sentence": {
+          "sentence": "The main research question was which applicant characteristics are most strongly associated with being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.15176105499267578
+        }
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.07,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.16373193264007568
+        }
+      },
+      {
+        "feature": "duration",
+        "value": 0.05,
+        "evidence_sentence": {
+          "sentence": "Longer loan durations, larger credit amounts, and higher installment rates are associated with a higher likelihood of being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.23245304822921753
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n요청된 대출 금액이 높아 금융 노출이 확대되므로 신용 위험 증가 요인으로 판단되며, 본 모델은 이를 위험 증가 요인으로 식별합니다 [1].\n입출금 계좌가 없는 것은 보호적 지표 역할을 하므로 신용 위험 감소 요인으로 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 인식합니다 [2].\n대출 기간이 연장되어 상환 기간이 길어지므로 신용 위험 증가 요인으로 인식되며, 본 모델 또한 이를 위험 증가 요인으로 분류합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 73.92,
+    "decision_boundary_abs_distance": 0.13921373236720513,
     "warning_type": "weak"
   },
   {
@@ -122,6 +305,128 @@
     "warning_type": "strong"
   },
   {
+    "sample_idx": 57,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 36,
+      "대출 금액": 8133,
+      "월 상환 부담 수준": 1,
+      "나이": 30,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "중고차 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 78,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.07,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.18163317441940308
+        }
+      },
+      {
+        "feature": "credit_amount",
+        "value": 0.06,
+        "evidence_sentence": {
+          "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19696295261383057
+        }
+      },
+      {
+        "feature": "duration",
+        "value": 0.05,
+        "evidence_sentence": {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2072630524635315
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌가 없는 사실은 신용 위험을 낮추는 요인으로 식별되며, 문헌에서도 이를 신용 위험 감소 신호로 보고하고 있습니다 [1].\n대출 금액이 증가할수록 신용 위험은 상승하는 것으로 나타나, 문헌에서는 이를 위험 증가 요인으로 설명하고 있으며, 본 모델도 동일하게 판단합니다 [2].\n대출 기간이 길어질수록 신용 위험도 함께 증가하는 경향을 보여, 문헌에서는 이를 위험 상승 요인으로 해석하고 있으며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 77.66,
+    "decision_boundary_abs_distance": 0.1766437206403927,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 58,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 30,
+      "대출 금액": 6187,
+      "월 상환 부담 수준": 1,
+      "나이": 24,
+      "기존 대출 수": 2,
+      "계좌 잔액": "부족",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "중고차 구매",
+      "저축 잔액": "적음",
+      "재직 기간": "4~7년",
+      "거주 상태": "임차 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 62,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_<0",
+        "value": 0.06,
+        "evidence_sentence": {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21361082792282104
+        }
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.23395240306854248
+        }
+      },
+      {
+        "feature": "savings_status_<100",
+        "value": -0.04,
+        "evidence_sentence": {
+          "sentence": "Note that the exposures to interest rate risk and the exposure to credit risk are measured relative to the shock sizes of different stress tests so that the size of the coefficient cannot be interpreted, only its sign.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.19463694095611572
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 부정적인 재무 지표로 인해 채무 불이행 가능성이 높아져 신용 위험을 증가시키는 신호로 알려져 있으며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다. [1]  \n출금 계좌 부재는 공식 계좌가 없는 개인의 신용 위험을 낮게 추정하는 신호로 알려져 있지만, 본 모델은 이를 오히려 위험 증가 요인으로 인식합니다. [2]  \n문헌에서 저축 잔액이 100 DM 미만인 경우는 통계적 유의성이 부족하여 신용 위험에 큰 영향을 미치지 않는 신호로 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 판단합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 62.08,
+    "decision_boundary_abs_distance": 0.020821199452087713,
+    "warning_type": "strong"
+  },
+  {
     "sample_idx": 61,
     "condition": 3,
     "distance": "near",
@@ -183,6 +488,372 @@
     "warning_type": "weak"
   },
   {
+    "sample_idx": 62,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 1358,
+      "월 상환 부담 수준": 4,
+      "나이": 40,
+      "기존 대출 수": 1,
+      "계좌 잔액": "부족",
+      "신용 이력": "대출 전액 상환 이력",
+      "대출 목적": "기타",
+      "저축 잔액": "없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "자가 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 41,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_<0",
+        "value": 0.09,
+        "evidence_sentence": {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2071649432182312
+        }
+      },
+      {
+        "feature": "savings_status_<100",
+        "value": -0.06,
+        "evidence_sentence": {
+          "sentence": "Savings are also informative.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20546966791152954
+        }
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05,
+        "evidence_sentence": {
+          "sentence": "Even after exclusions, the reduced OLS model still shows limited explanatory power, with an R2 of 0.24 (Adj.R 2 =0.22) and a lower but still elevated condition number (=3.78×10 4).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21601665019989014
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 유동성 제약으로 인해 신용 위험을 증가시키는 신호로 알려져 있으며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다[1].\n저축 잔액이 거의 없는 것은 유동 자산이 제한적이라는 이유로 신용 위험을 높이는 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다[2].\n문헌에서 입출금 계좌가 없는 것은 계좌 상태 부재로 인해 신용 위험을 낮추는 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 판단합니다[3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+    "class_confidence_relative_percent": 41.22,
+    "decision_boundary_abs_distance": 0.012235745410593413,
+    "warning_type": "strong"
+  },
+  {
+    "sample_idx": 75,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 1480,
+      "월 상환 부담 수준": 2,
+      "나이": 66,
+      "기존 대출 수": 3,
+      "계좌 잔액": "충분",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "보통",
+      "재직 기간": "무직",
+      "거주 상태": "무상 거주",
+      "직업": "무직, 단순직 외국인",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 77,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.22044169902801514
+        }
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.04,
+        "evidence_sentence": {
+          "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.18680667877197266
+        }
+      },
+      {
+        "feature": "housing_own",
+        "value": 0.03,
+        "evidence_sentence": {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2029362916946411
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n문헌에서 계좌 잔액 부족은 채무 불이행 가능성 감소와 연관되어 있으나, 본 모델은 이를 신용 위험 증가 요인으로 판단합니다 [1].\n기존 대출 상환 이력이 신용 등급으로 평가될 경우 신용 위험 감소 신호로 인식되며, 본 모델은 이를 신용 위험 감소 요인으로 식별합니다 [2].\n자가 소유는 높은 신용 위험과 약한 통계적 연관성을 보이므로, 본 모델은 이를 신용 위험 증가 요인으로 해석합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+    "class_confidence_relative_percent": 77.12,
+    "decision_boundary_abs_distance": 0.17117239113154337,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 83,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 15,
+      "대출 금액": 1478,
+      "월 상환 부담 수준": 4,
+      "나이": 44,
+      "기존 대출 수": 2,
+      "계좌 잔액": "부족",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 77,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.08,
+        "evidence_sentence": {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17354613542556763
+        }
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21066659688949585
+        }
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": 0.06,
+        "evidence_sentence": {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.18578726053237915
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족이나 신용 문제 이력이 있음에도 불구하고, 기존 대출을 전액 상환한 이력이 있어 신용 관리에 대한 책임감을 보여주므로 신용 위험 감소 요인으로 판단됩니다 [1].\n반면, 입출금 계좌가 없는 것은 금융 활동의 제한을 의미하므로 신용 위험 감소 요인으로 인식되지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n계좌 잔액이 음수인 경우는 유동성 제약을 나타내므로 신용 위험 증가 요인으로 간주되며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 77.17,
+    "decision_boundary_abs_distance": 0.1717035144504433,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 86,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 60,
+      "대출 금액": 13756,
+      "월 상환 부담 수준": 2,
+      "나이": 63,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "무상 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 78,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "credit_amount",
+        "value": 0.11,
+        "evidence_sentence": {
+          "sentence": "The main research question was which applicant characteristics are most strongly associated with being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.15045541524887085
+        }
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.06,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20101594924926758
+        }
+      },
+      {
+        "feature": "savings_status_no known savings",
+        "value": -0.04,
+        "evidence_sentence": {
+          "sentence": "Savings are also informative.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19411641359329224
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 금액 부족은 채무 이행 확률과 강한 양의 상관관계를 가지므로 금융 취약성을 증가시키는 신호로 인식되며, 본 모델은 이를 위험 증가 요인으로 판단합니다. [1]\n출금 계좌 부재는 채무 불이행 확률에 부정적인 영향을 미쳐 신용 등급 부여에 있어 고위험 대출자로 분류될 가능성이 낮아지므로 신용 위험 감소 요인으로 해석됩니다. 본 모델 역시 이를 위험 감소 요인으로 식별합니다. [2]\n저축 계좌 부재는 저축 부족과 금융 취약성 간의 확립된 연관성으로 인해 신용 위험 증가 신호로 여겨지지만, 본 모델은 이를 오히려 위험 감소 요인으로 판단합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 77.89,
+    "decision_boundary_abs_distance": 0.1789155600117458,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 92,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 36,
+      "대출 금액": 3711,
+      "월 상환 부담 수준": 2,
+      "나이": 27,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "교육비 목적",
+      "저축 잔액": "없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 74,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "savings_status_no known savings",
+        "value": -0.05,
+        "evidence_sentence": {
+          "sentence": "Savings are also informative.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.18386399745941162
+        }
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05,
+        "evidence_sentence": {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20188140869140625
+        }
+      },
+      {
+        "feature": "purpose_education",
+        "value": 0.05,
+        "evidence_sentence": {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.18510079383850098
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n문헌에서 계좌 잔액 부족은 저축 내역이 없는 것으로 간주되어 일반적으로 신용 위험을 증가시키는 신호로 여겨지지만, 본 모델은 이를 오히려 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌 없음은 채무 불이행 가능성을 낮추는 요인으로 인식되지만, 본 모델은 이를 신용 위험 증가 요인으로 해석합니다 [2].\n교육비 목적의 대출 신청은 신용 위험 증가 요인으로 보통 간주되지만, 본 모델 역시 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 74.32,
+    "decision_boundary_abs_distance": 0.14323626872110296,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 95,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 18,
+      "대출 금액": 3590,
+      "월 상환 부담 수준": 3,
+      "나이": 40,
+      "기존 대출 수": 3,
+      "계좌 잔액": "적음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "사업 자금",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "무직",
+      "거주 상태": "자가 거주",
+      "직업": "무직, 단순직 외국인",
+      "성별": "남성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 62,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2127063274383545
+        }
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.04,
+        "evidence_sentence": {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.18067479133605957
+        }
+      },
+      {
+        "feature": "checking_status_0<=X<200",
+        "value": 0.04,
+        "evidence_sentence": {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche Mark) as the reference category.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.18062090873718262
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n문헌에서 계좌 잔액 부족은 채무 불이행 가능성을 낮추는 신호로 알려져 있지만, 본 모델은 이를 신용 위험 증가 요인으로 판단합니다 [1].\n신용 이력에 문제가 있거나 기존 대출이 채무 불이행 확률 증가 요인으로 인식되지만, 본 모델은 이를 신용 위험 감소 요인으로 해석합니다 [2].\n계좌 잔액이 0에서 200 DM 사이일 경우, 낮은 잔액이 신용 위험 증가 요인으로 작용하며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 61.91,
+    "decision_boundary_abs_distance": 0.019149931727178604,
+    "warning_type": "strong"
+  },
+  {
     "sample_idx": 105,
     "condition": 3,
     "distance": "near",
@@ -242,6 +913,372 @@
     "class_confidence_relative_percent": 71.41,
     "decision_boundary_abs_distance": 0.1141117795954375,
     "warning_type": "weak"
+  },
+  {
+    "sample_idx": 108,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 9,
+      "대출 금액": 1549,
+      "월 상환 부담 수준": 4,
+      "나이": 35,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "자가 거주",
+      "직업": "무직, 단순직 외국인",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 80,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "duration",
+        "value": -0.05,
+        "evidence_sentence": {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17357689142227173
+        }
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.04,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20419210195541382
+        }
+      },
+      {
+        "feature": "savings_status_no known savings",
+        "value": -0.04,
+        "evidence_sentence": {
+          "sentence": "Savings are also informative.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19418561458587646
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n문헌에서 대출 기간이 길수록 신용 위험이 증가한다는 일반적인 인식과 달리, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌가 없는 경우, 문헌에서 신용 위험 감소 요인으로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n저축 내역이 확인되지 않는 경우, 저축 부족이 신용 위험 증가 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 평가합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 80.16,
+    "decision_boundary_abs_distance": 0.20158082092903595,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 110,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 2032,
+      "월 상환 부담 수준": 4,
+      "나이": 60,
+      "기존 대출 수": 2,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "연체 이력 있음",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "무상 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 64,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.11,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20292139053344727
+        }
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.05,
+        "evidence_sentence": {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21691572666168213
+        }
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": 0.03,
+        "evidence_sentence": {
+          "sentence": "• A32 : existing credits paid back duly till now • A 3 3: delay in paying off in the past • A34 : critical account/other credits existing (not at this bank), o Attribut e 4: purpose • A40 : car (new) • A46 : education • A41 : car (used) • A47 : vacation • A42 : furniture/equipment • A48 : retraining • A43 : radio/television • A49 : business • A44 : domestic appliances • A410 : others • A45 : repairs o Attribut e 5: credit amount o Attribut e 6: savings account/bonds • A61 : .. . < 10 0 DM 135",
+          "source": "DATA PREPARATION FOR DATA MINING BASED ON NEURAL NETWORK- A CASE STUDY ON GERMAN CREDIT CLASSIFICATION DATASET.pdf",
+          "page": 6,
+          "score": 0.20529913902282715
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 요인으로 작용하며, 이는 문헌에서 신용 위험 감소 신호로 알려져 있으며, 본 모델 또한 이를 위험 감소 요인으로 판단합니다. [1]\n계좌 잔액이 마이너스인 경우는 신용 위험을 증가시키는 요인으로, 이는 신용 등급 하락 위험을 높이는 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다. [2]\n신용 문제 이력이나 기존 대출이 존재하는 경우 신용 위험이 증가하며, 이는 과거 재정적 어려움과 상환 지연을 반영하는 신호로 알려져 있으며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다. [3]\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+    "class_confidence_relative_percent": 63.66,
+    "decision_boundary_abs_distance": 0.036608905630490574,
+    "warning_type": "strong"
+  },
+  {
+    "sample_idx": 126,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 7472,
+      "월 상환 부담 수준": 1,
+      "나이": 24,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "무직",
+      "거주 상태": "임차 거주",
+      "직업": "무직, 단순직 외국인",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 63,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "savings_status_no known savings",
+        "value": -0.05,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19905197620391846
+        }
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.04,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19905197620391846
+        }
+      },
+      {
+        "feature": "savings_status_<100",
+        "value": -0.03,
+        "evidence_sentence": {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19941401481628418
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n문헌에서 계좌 잔액 부족은 입출금 계좌 부재로 인해 채무 불이행 위험이 감소하는 신호로 인식되며, 본 모델은 이를 신용 위험 감소 요인으로 판단합니다. [1]\n기존 대출이 존재하는 경우는 금융 지표로서 채무 불이행 가능성을 향상시키는 요인으로 알려져 있으나, 본 모델은 이를 신용 위험 감소 요인으로 해석합니다. [2]\n계좌 잔액이 마이너스인 경우는 잔액이 마이너스인 것이 채무 불이행 확률을 높이는 것으로 알려져 있으나, 본 모델은 이를 신용 위험 감소 요인으로 분류합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 62.82,
+    "decision_boundary_abs_distance": 0.02818938527201864,
+    "warning_type": "strong"
+  },
+  {
+    "sample_idx": 129,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 6615,
+      "월 상환 부담 수준": 2,
+      "나이": 75,
+      "기존 대출 수": 2,
+      "계좌 잔액": "부족",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "중고차 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "무직",
+      "거주 상태": "무상 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 64,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1883535385131836
+        }
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": 0.05,
+        "evidence_sentence": {
+          "sentence": "Longer loanDurations, higherInstallment rates, and largerCredit amountsincrease the likelihood of being classified as a bad credit risk.Agehas a negative coefficient, indicating that older applicants are, on average, less likely to be considered bad credit risks.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.19684100151062012
+        }
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.05,
+        "evidence_sentence": {
+          "sentence": "As financial institutions provide loans and other forms of credit, they face uncertainty about whether borrowers will repay as agreed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.16019707918167114
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 채무 불이행 위험이 낮음을 나타내는 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n계좌 잔액이 마이너스인 경우는 신용 위험이 크게 증가한 신호로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다 [2].\n기존 대출이 많은 경우는 높은 의무 수준과 연관되어 위험이 증가하는 신호로 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 63.85,
+    "decision_boundary_abs_distance": 0.038537053487222694,
+    "warning_type": "strong"
+  },
+  {
+    "sample_idx": 131,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 13,
+      "대출 금액": 2101,
+      "월 상환 부담 수준": 2,
+      "나이": 23,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 62,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05,
+        "evidence_sentence": {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1695934534072876
+        }
+      },
+      {
+        "feature": "duration",
+        "value": -0.04,
+        "evidence_sentence": {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17424267530441284
+        }
+      },
+      {
+        "feature": "employment_<1",
+        "value": 0.04,
+        "evidence_sentence": {
+          "sentence": "The analysis relies on ordinary least squares (OLS) regression, which is extended to",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.21240979433059692
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n문헌에서 계좌 잔액 부족은 금융 특성상 중요한 신호로 신용 위험을 증가시키는 요인으로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다. [1]\n대출 기간이 길어짐은 상환 기간 연장으로 채무 불이행 가능성이 높아져 신용 위험 증가 신호로 알려져 있으나, 본 모델은 이를 위험 감소 요인으로 해석합니다. [2]\n짧은 재직 기간은 고용 근속 기간이 위험 지표로 작용한다는 점에서 신용 위험 증가 신호로 인식되며, 본 모델 또한 이를 위험 증가 요인으로 판단합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 62.46,
+    "decision_boundary_abs_distance": 0.02456654513751033,
+    "warning_type": "strong"
+  },
+  {
+    "sample_idx": 135,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 13,
+      "대출 금액": 882,
+      "월 상환 부담 수준": 4,
+      "나이": 23,
+      "기존 대출 수": 2,
+      "계좌 잔액": "적음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 61,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06,
+        "evidence_sentence": {
+          "sentence": "Number Description Class Attribute 1 Status of existing checking account Qualitative Attribute 2 Duration in month Numerical Attribute 3 Credit history Qualitative Attribute 4 Purpose Qualitative Attribute 5 Credit amount Numerical Attribute 6 Savings account/bonds Qualitative Attribute 7 Present employment since Qualitative Attribute 8 Instalment rate in percentage of disposable income Numerical Attribute 9 Personal status and sex Qualitative Attribute 10 Other debtors/guarantors Qualitative Attribute 11 Present residence since Numerical Attribute 12 Property Qualitative Attribute 13 Age in years Numerical Attribute 14 Other instalment plans Qualitative attribute 15 Housing Qualitative",
+          "source": "Investigation and improvement of multi-layer perceptron neural.pdf",
+          "page": 4,
+          "score": 0.20118236541748047
+        }
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.04,
+        "evidence_sentence": {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.16938543319702148
+        }
+      },
+      {
+        "feature": "checking_status_0<=X<200",
+        "value": 0.04,
+        "evidence_sentence": {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche Mark) as the reference category.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.19398140907287598
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n문헌에서 계좌 잔액 부족은 채무 불이행 위험이 높음을 나타내는 신호로 알려져 있으며, 본 모델도 이를 위험 증가 요인으로 판단합니다 [1].\n신용 문제 이력이나 기존 대출이 존재하는 경우는 낮은 신용 등급으로 분류될 가능성이 높아 위험 증가 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n계좌 잔액이 0에서 200DM 사이인 경우는 채무 불이행 확률 증가와 연관되어 위험 증가 신호로 여겨지며, 본 모델도 이를 위험 증가 요인으로 분류합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+    "class_confidence_relative_percent": 61.11,
+    "decision_boundary_abs_distance": 0.011113329353100942,
+    "warning_type": "strong"
   },
   {
     "sample_idx": 150,
@@ -366,6 +1403,67 @@
     "warning_type": "strong"
   },
   {
+    "sample_idx": 157,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 754,
+      "월 상환 부담 수준": 4,
+      "나이": 38,
+      "기존 대출 수": 2,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "직업 재교육",
+      "저축 잔액": "없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 79,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "savings_status_no known savings",
+        "value": -0.05,
+        "evidence_sentence": {
+          "sentence": "Savings are also informative.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19722574949264526
+        }
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05,
+        "evidence_sentence": {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20149093866348267
+        }
+      },
+      {
+        "feature": "savings_status_<100",
+        "value": -0.04,
+        "evidence_sentence": {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.17836904525756836
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 저축 기능 부족으로 신용 위험을 증가시키는 신호로 알려져 있지만, 본 모델은 이를 오히려 위험 감소 요인으로 판단합니다 [1].  \n출금 계좌 부재는 대출 기관이 반드시 확인해야 하는 핵심 요인으로 인식되어 신용 위험 증가 신호로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 보지 않고 위험 감소 요인으로 해석합니다 [2].  \n저축 잔액이 100 DM 미만일 경우, 높은 저축 수준이나 대출 기간이 신용 위험을 낮추는 요인으로 작용하지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 79.12,
+    "decision_boundary_abs_distance": 0.19124325708607692,
+    "warning_type": "weak"
+  },
+  {
     "sample_idx": 160,
     "condition": 3,
     "distance": "near",
@@ -424,6 +1522,189 @@
     "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험 감소 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].  \n저축 잔액이 100 DM 미만인 경우는 통계적으로 채무 불이행 확률에 미미한 영향을 미쳐 신용 위험 감소 신호로 인식되며, 본 모델도 여전히 이를 위험 감소 요인으로 분류합니다 [2].  \n대출 기간이 길어질수록 채무 불이행 가능성이 증가한다는 점은 신용 위험 증가 신호로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
     "class_confidence_relative_percent": 37.28,
     "decision_boundary_abs_distance": 0.02716753115959908,
+    "warning_type": "strong"
+  },
+  {
+    "sample_idx": 178,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 15,
+      "대출 금액": 3643,
+      "월 상환 부담 수준": 1,
+      "나이": 27,
+      "기존 대출 수": 2,
+      "계좌 잔액": "부족",
+      "신용 이력": "연체 이력 있음",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 64,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_<0",
+        "value": 0.06,
+        "evidence_sentence": {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.18379181623458862
+        }
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.04,
+        "evidence_sentence": {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1777699589729309
+        }
+      },
+      {
+        "feature": "installment_commitment",
+        "value": -0.03,
+        "evidence_sentence": {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.18379181623458862
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험이 증가할 수 있는 요인으로 판단됩니다 [1].\n대출 기간이 길어짐에 따라 상환 부담이 커져 신용 위험이 상승하는 요인으로 분석됩니다 [2].\n계좌 잔액이 마이너스인 경우 일반적으로 신용 위험을 증가시키는 신호로 여겨지지만, 본 모델은 이를 신용 위험 감소 요인으로 해석합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 63.57,
+    "decision_boundary_abs_distance": 0.03565287979885945,
+    "warning_type": "strong"
+  },
+  {
+    "sample_idx": 181,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 674,
+      "월 상환 부담 수준": 4,
+      "나이": 20,
+      "기존 대출 수": 1,
+      "계좌 잔액": "부족",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "적음",
+      "재직 기간": "4~7년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "높음",
+    "confidence": 44,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_<0",
+        "value": 0.08,
+        "evidence_sentence": {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19103902578353882
+        }
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20279043912887573
+        }
+      },
+      {
+        "feature": "duration",
+        "value": -0.03,
+        "evidence_sentence": {
+          "sentence": "The analysis relies on ordinary least squares (OLS) regression, which is extended to",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.17882394790649414
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 유동성 부족으로 인해 신용 위험을 증가시키는 신호로 알려져 있으며, 본 모델도 이를 위험 증가 요인으로 판단합니다 [1].\n입출금 계좌 부재는 보호적 지표로 작용할 수 있으나, 본 모델은 이를 위험 증가 요인으로 분류합니다 [2].\n대출 기간이 연장되면 상환 기간이 길어져 대출자에 대한 불확실성이 증가하여 신용 위험을 높이는 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+    "class_confidence_relative_percent": 44.31,
+    "decision_boundary_abs_distance": 0.043119747644184137,
+    "warning_type": "strong"
+  },
+  {
+    "sample_idx": 184,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 27,
+      "대출 금액": 3915,
+      "월 상환 부담 수준": 4,
+      "나이": 36,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "사업 자금",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 45,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06,
+        "evidence_sentence": {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.2137061357498169
+        }
+      },
+      {
+        "feature": "savings_status_<100",
+        "value": 0.05,
+        "evidence_sentence": {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.2137061357498169
+        }
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.04,
+        "evidence_sentence": {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20239049196243286
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 재정적 어려움을 나타내므로 신용 위험 증가 요인으로 인식되며, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n입출금 계좌 부재는 문헌에서는 안정성을 의미하므로 신용 위험 감소 요인으로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 분류합니다 [2].\n저축 계좌 미확인은 자산 축적 부족을 의미해 보통 더 큰 취약성을 시사하지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+    "class_confidence_relative_percent": 44.7,
+    "decision_boundary_abs_distance": 0.0470097588762739,
     "warning_type": "strong"
   },
   {
@@ -488,6 +1769,372 @@
     "warning_type": "strong"
   },
   {
+    "sample_idx": 204,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 4351,
+      "월 상환 부담 수준": 1,
+      "나이": 48,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 76,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "savings_status_no known savings",
+        "value": -0.05,
+        "evidence_sentence": {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.19940799474716187
+        }
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.04,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19794303178787231
+        }
+      },
+      {
+        "feature": "savings_status_<100",
+        "value": -0.03,
+        "evidence_sentence": {
+          "sentence": "and low-risk groups with the information like gender, age and savings account.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.19086110591888428
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 문헌에서 재정 불안정성에 대한 완충 역할을 하므로 신용 위험 감소 신호로 여겨지며, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌 없음은 문헌에서 낮은 위험 추정과 연관되어 있어 신용 위험 감소 신호로 인식되지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n본 문헌에서 저축 잔액 거의 없음은 재정 건강의 기본 지표로 자주 고려되므로 신용 위험 증가 신호로 보이지만, 본 모델은 이를 위험 감소 요인으로 평가합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 76.4,
+    "decision_boundary_abs_distance": 0.16397645366496594,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 209,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 18,
+      "대출 금액": 2124,
+      "월 상환 부담 수준": 4,
+      "나이": 24,
+      "기존 대출 수": 2,
+      "계좌 잔액": "부족",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "임차 거주",
+      "직업": "숙련 기술직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "높음",
+    "confidence": 47,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.07,
+        "evidence_sentence": {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.174041748046875
+        }
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20128989219665527
+        }
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": 0.05,
+        "evidence_sentence": {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.2312260866165161
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 금융 노출 증가로 인한 신용 위험 증가 신호로 알려져 있지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].  \n입출금 계좌 부재는 신용 등급 하락 신호로 인식되며, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n계좌 잔액 부족은 채무 불이행 위험 증가 신호로 인식되며, 본 모델 또한 이를 위험 증가 요인으로 분류합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+    "class_confidence_relative_percent": 47.49,
+    "decision_boundary_abs_distance": 0.07490521935673367,
+    "warning_type": "strong"
+  },
+  {
+    "sample_idx": 213,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 20,
+      "대출 금액": 4272,
+      "월 상환 부담 수준": 1,
+      "나이": 24,
+      "기존 대출 수": 2,
+      "계좌 잔액": "부족",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 58,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_<0",
+        "value": 0.06,
+        "evidence_sentence": {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20796418190002441
+        }
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.06,
+        "evidence_sentence": {
+          "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.1956390142440796
+        }
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05,
+        "evidence_sentence": {
+          "sentence": "In consumer and retail lending, this uncertainty is managed using credit and be- havioural scoring systems, which predict the probability that a borrower will default on their obligations (Thomas, 2000).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.22870397567749023
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 통계적으로 신용 위험 증가의 중요한 지표로 인식되며, 본 모델 또한 이를 위험 증가 요인으로 판단합니다[1]. 신용 이력에 중대한 대출이나 기존 대출이 포함된 경우는 대출 규모와 상환 기간이 길어져 채무 불이행 확률이 높아지는 경향이 있으나, 본 모델은 이를 오히려 위험 감소 요인으로 해석합니다[2]. 입출금 계좌가 없는 경우 문헌에서 채무 불이행 가능성이 낮아지는 경향이 있지만, 본 모델은 이를 위험 증가 요인으로 판단합니다[3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 57.98,
+    "decision_boundary_abs_distance": 0.02015395625966554,
+    "warning_type": "strong"
+  },
+  {
+    "sample_idx": 224,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 1262,
+      "월 상환 부담 수준": 2,
+      "나이": 49,
+      "기존 대출 수": 1,
+      "계좌 잔액": "부족",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 77,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_<0",
+        "value": 0.08,
+        "evidence_sentence": {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20812636613845825
+        }
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.04,
+        "evidence_sentence": {
+          "sentence": "If credit risk is underestimated and losses are realised, these costs are passed on to the customers through higher interest",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 7,
+          "score": 0.20959991216659546
+        }
+      },
+      {
+        "feature": "savings_status_<100",
+        "value": -0.04,
+        "evidence_sentence": {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21378052234649658
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 유동성 제약을 나타내므로 신용 위험을 증가시키는 신호로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다. [1]\n출금 계좌 부재는 신용 위험을 감소시키는 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 해석합니다. [2]\n저축 잔액이 적음은 신용 위험을 낮추는 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 판단합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 76.59,
+    "decision_boundary_abs_distance": 0.16593791497271504,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 225,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 625,
+      "월 상환 부담 수준": 4,
+      "나이": 26,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "남성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 61,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05,
+        "evidence_sentence": {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.18714767694473267
+        }
+      },
+      {
+        "feature": "employment_<1",
+        "value": 0.04,
+        "evidence_sentence": {
+          "sentence": "separates “good” and “bad” borrowers as effectively as possible.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.17438602447509766
+        }
+      },
+      {
+        "feature": "purpose_radio/tv",
+        "value": -0.03,
+        "evidence_sentence": {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.20242846012115479
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 증가시키는 신호로 인식되며, 본 모델은 이를 위험 증가 요인으로 판단합니다.[1]\n재직 기간이 1년 미만 인 것은 고용 안정성 부족을 나타내어 신용 위험을 높이는 요인으로 분석되며, 본 모델 또한 이를 위험 증가 요인으로 분류합니다. [2].\n전자제품 구매 목적은 신용 위험을 감소시키는 요인으로 문헌에서 인식되지만, 본 모델은 이를 위험 감소 요인으로 분류합니다[3] .\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 60.89,
+    "decision_boundary_abs_distance": 0.008931003463083509,
+    "warning_type": "strong"
+  },
+  {
+    "sample_idx": 226,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 937,
+      "월 상환 부담 수준": 4,
+      "나이": 27,
+      "기존 대출 수": 2,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "직업 재교육",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "남성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 80,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.09,
+        "evidence_sentence": {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.1900404691696167
+        }
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.04,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21393918991088867
+        }
+      },
+      {
+        "feature": "employment_<1",
+        "value": 0.03,
+        "evidence_sentence": {
+          "sentence": "Nonetheless, when adding the predicted training data points to the graph it has to be noted that the PDP only partly explains the predictions by the models which cover a much broader range than the PDP indicates.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 6,
+          "score": 0.22418248653411865
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 금융 부담이 낮음을 나타내며 안정적인 재정 습관을 의미하므로 신용 위험을 감소시키는 신호로 인식되고, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n계좌 잔액이 적음도 금융 부담이 낮음을 의미하며 안정적인 재정 습관을 나타내므로 신용 위험을 낮추는 요인으로 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 식별합니다. [2]\n대출 기간이 1년 미만으로 짧은 것은 소득 안정성이 제한적임을 나타내므로 불안정한 재정 습관을 시사하고, 본 모델은 이를 위험 증가 요인으로 판단합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 79.76,
+    "decision_boundary_abs_distance": 0.1975591714085423,
+    "warning_type": "weak"
+  },
+  {
     "sample_idx": 231,
     "condition": 3,
     "distance": "near",
@@ -546,6 +2193,189 @@
     "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 비교적 짧은 것은, 일반적으로 긴 대출 기간이 신용 위험을 증가시키는 신호로 알려져 있지만, 본 모델은 이를 오히려 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌가 없는 것은, 계좌 부족이 명확한 위험 요인으로 연결되지 않는다는 문헌의 견해와 일치하지만, 본 모델은 이를 위험 증가 요인으로 분류합니다 [2].\n고용 기간이 1년 미만인 것은, 더 긴 고용 기간이 채무 불이행 확률을 높인다는 문헌의 견해와 대조적으로, 본 모델은 이를 위험 증가 요인으로 인식합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
     "class_confidence_relative_percent": 72.65,
     "decision_boundary_abs_distance": 0.12649023774118096,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 239,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 60,
+      "대출 금액": 10144,
+      "월 상환 부담 수준": 2,
+      "나이": 21,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "적음",
+      "재직 기간": "4~7년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 78,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.07,
+        "evidence_sentence": {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19317686557769775
+        }
+      },
+      {
+        "feature": "credit_amount",
+        "value": 0.07,
+        "evidence_sentence": {
+          "sentence": "The resulting test is usually a threshold value that allows the decision-makers to make the lending decision.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.19122111797332764
+        }
+      },
+      {
+        "feature": "duration",
+        "value": 0.06,
+        "evidence_sentence": {
+          "sentence": "The empirical models and the results are given in Section 4 (Subsection 4.1 for the tactical issues and Subsection 4.2 for the strategic issues).",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 4,
+          "score": 0.20243382453918457
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 요인으로 인식되며, 본 모델은 이를 위험 감소 요인으로 판단합니다. [1]\n대출 금액이 크다는 것은 금융 부담을 증가시켜 채무 불이행 위험을 높이는 요인으로 알려져 있으며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다. [2]\n대출 기간이 길다는 것은 상환 기간 연장으로 인해 대출 기관의 채무 불이행 위험 노출이 증가하는 요인으로 인식되며, 본 모델 또한 이를 위험 증가 요인으로 판단합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 78.05,
+    "decision_boundary_abs_distance": 0.18045831002071833,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 241,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 18,
+      "대출 금액": 1113,
+      "월 상환 부담 수준": 4,
+      "나이": 26,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 66,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05,
+        "evidence_sentence": {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20281851291656494
+        }
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.04,
+        "evidence_sentence": {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.20588195323944092
+        }
+      },
+      {
+        "feature": "purpose_radio/tv",
+        "value": -0.03,
+        "evidence_sentence": {
+          "sentence": "First, by improving the accuracy of these models in assessing client default risk, we can better guide decisions related to loans and credit card approvals.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.1847178339958191
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험 증가의 신호로 인식되며, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].  \n계좌 잔액이 마이너스인 경우는 채무 불이행 신용 위험과 관련이 깊지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].  \n대출 목적이 장비 구매일 경우 문헌에서 신용 위험 증가 요인으로 여겨지지만, 본 모델은 이를 위험 감소 요인으로 분류합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+    "class_confidence_relative_percent": 65.69,
+    "decision_boundary_abs_distance": 0.0568773726399856,
+    "warning_type": "strong"
+  },
+  {
+    "sample_idx": 243,
+    "condition": 3,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 11,
+      "대출 금액": 1322,
+      "월 상환 부담 수준": 4,
+      "나이": 40,
+      "기존 대출 수": 2,
+      "계좌 잔액": "적음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "충분",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 79,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05,
+        "evidence_sentence": {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1764695644378662
+        }
+      },
+      {
+        "feature": "duration",
+        "value": -0.05,
+        "evidence_sentence": {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.18709707260131836
+        }
+      },
+      {
+        "feature": "checking_status_0<=X<200",
+        "value": 0.04,
+        "evidence_sentence": {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche Mark) as the reference category.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.2004997730255127
+        }
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\\n문헌에서 계좌 잔액 부족은 금융 지표로서 상환 능력에 큰 영향을 미쳐 신용 위험을 증가시키는 신호로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다. [1]\n대출 기간이 길어질수록 금융 불안정성 노출이 확대되어 채무 불이행 가능성이 증가한다는 점은 문헌에서 신용 위험 증가 신호로 알려져 있으나, 본 모델은 이를 위험 감소 요인으로 해석합니다. [2]\n문헌에서 계좌 잔액이 0에서 200 DM 사이일 경우 안정적인 균형을 유지함으로써 신용 위험의 기본 수준을 나타내지만, 본 모델은 이를 위험 증가 요인으로 분류합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 79.4,
+    "decision_boundary_abs_distance": 0.19395217699418765,
     "warning_type": "weak"
   },
   {

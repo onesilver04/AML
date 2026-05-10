@@ -1,0 +1,36 @@
+{
+  "sample_idx": 46,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_46.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, the assessment indicates a low credit risk. The lack of a traditional checking account increases the perceived risk by limiting daily transaction history. This is offset by having minimal savings, which decreases the overall risk, and a credit history featuring critical accounts or other existing credits, which also decreases the risk. Consequently, these combined influences lead to a final prediction of low credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n대출 기간  대출 금액이 상대적으로 적어 위험이 감소합니다.\n월 상환 부담 수준  월 상환 부담 수준이 적절하여 상환 능력이 확인됩니다.\n현재 거주 기간  거주 기간이 안정적이어서 신용 위험이 낮아집니다.\n나이  고객의 나이가 상환 능력에 큰 영향을 미치지 않습니다.\n기존 대출 수  기존 대출 수가 적어 추가 대출에 대한 부담이 적습니다.\n부양 가족 수  부양 가족 수가 적어 경제적 부담이 덜합니다.\n계좌 잔액 충분  계좌 잔액이 충분하여 유동성 위험이 감소합니다.\n대출 전액 상환 이력  대출 전액 상환 이력이 있어 신용 신뢰도가 높습니다.\n신용 문제 이력  신용 문제 이력이 없어 위험이 감소합니다.\n신용 등급  신용 등급이 양호하여 대출 승인 가능성이 높습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.04825767360485768,
+      "abs_shap": 0.04825767360485768,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.028050502831122325,
+      "abs_shap": 0.028050502831122325,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.025250839088058422,
+      "abs_shap": 0.025250839088058422,
+      "direction": "decrease_risk"
+    }
+  ]
+}

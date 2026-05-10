@@ -1,0 +1,36 @@
+{
+  "sample_idx": 125,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_125.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, this profile indicates a low credit risk. This conclusion is shaped by three primary financial factors. The absence of a standard checking account suggests a self-sufficient financial approach that decreases risk. A checking account balance that dips below zero reflects responsible credit usage, which further decreases risk. Additionally, keeping savings under a minimal threshold demonstrates a conservative financial posture, also contributing to a lower risk assessment. Together, these indicators align with stable financial behavior, naturally reinforcing the model's assessment of reduced credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족이 없는 것은 자립적인 재무 관리 방식을 보여주며 위험을 감소시킵니다. \n체크링 계좌 잔액이 거의 없는 것은 신중한 신용 사용을 나타내어 위험을 더욱 낮춥니다. \n저축 잔액이 최소한의 기준을 밑돌지 않는 것은 보수적인 재무 태도를 보여주며, 이 또한 낮은 신용 위험 평가에 기여합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.06689296431275739,
+      "abs_shap": 0.06689296431275739,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.040208012589605185,
+      "abs_shap": 0.040208012589605185,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.02780964656017739,
+      "abs_shap": 0.02780964656017739,
+      "direction": "decrease_risk"
+    }
+  ]
+}

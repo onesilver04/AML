@@ -1,0 +1,36 @@
+{
+  "sample_idx": 81,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_81.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The assessment is primarily driven by three key financial factors that collectively lower the perceived risk. Not having a checking account decreases risk, maintaining a negative balance in the checking account further decreases risk, and keeping savings under 100 also decreases risk. Together, these factors suggest a favorable credit outlook, aligning with the model's final low-risk prediction.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n대출 기간  대출 금액  월 상환 부담 수준  현재 거주 기간  나이  기존 대출 수  부양 가족 수  계좌 잔액 부족  계좌 잔액 적음  계좌 잔액 충분  계좌 잔액 부족  대출 전액 상환 이력  연체 이력  기존 대출 상환 중  대출 이력 없음 또는 전액 상환  사업 자금 목적  가전제품 구매 목적  교육비 목적  가구 또는 장비 구매 목적  신차 구매 목적  중고차 구매 목적  전자제품 구매 목적  수리비 목적  직업 재교육 목적  기타 목적  저축 잔액이 거의 없음  저축 잔액 적음  저축 잔액 보통  저축 잔액 충분  저축 내역 없음  재직 기간 1년 미만  재직 기간 1~4년  재직 기간 4~7년  재직 기간 7년 이상  무직  여성 (이혼/별거/기혼 상태)  남성 (이혼 또는 별거)  남성 (기혼 또는 사별)  남성 (미혼)  공동 신청자 있음  보증인 있음  공동 신청자, 보증인 없음  부동산 보유  보험 자산 보유  차량 보유  보유 자산 없음  타 은행 상환 중  할부·외상 상환 중  추가 상환 없음  자가 거주  임차 거주  무상 거주  전문직, 자영업, 관리직  숙련 기술직  단순 노무직  무직, 단순직 외국인  전화 보유  외국인 근로자  내국인 근로자  신용 등급  성별  결혼 여부  신청자는 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.06622622638000786,
+      "abs_shap": 0.06622622638000786,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.041852201925623514,
+      "abs_shap": 0.041852201925623514,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.04125390676208769,
+      "abs_shap": 0.04125390676208769,
+      "direction": "decrease_risk"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "sample_idx": 9,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_9.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, the application indicates a high credit risk. This assessment is driven by the absence of a checking account, which increases risk, followed by the loan purpose being for education, another factor that increases risk. However, the risk is partially mitigated by a negative checking account balance, which decreases risk. Ultimately, these combined influences point to a high credit risk outcome.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 높게 평가되어 대출 승인 가능성이 낮습니다.\n대출 금액이 주요 위험 요인으로 작용하며, 교육 목적의 대출은 신용 위험을 더욱 증가시킵니다. \n계좌 잔액 부족은 신용 위험을 일부 완화시키는 요인으로 작용하지만, 여전히 높은 신용 위험 수준이 유지됩니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.05974039505873115,
+      "abs_shap": 0.05974039505873115,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "purpose_education",
+      "definition": "Loan purpose: education.",
+      "shap_value": 0.04910239230589405,
+      "abs_shap": 0.04910239230589405,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.04044020760426131,
+      "abs_shap": 0.04044020760426131,
+      "direction": "decrease_risk"
+    }
+  ]
+}

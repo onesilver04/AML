@@ -1,0 +1,99 @@
+{
+  "sample_idx": 36,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.7225395337457475,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account due to a lower estimated log-odds, because it reflects a distinct financial profile, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [1]\nThe fact that the loan duration is extended due to a positive association with default likelihood, because it aligns with theoretical expectations, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that the checking account balance falls between 0 and 200 DM due to its high predictive importance, because it strongly influences default probability classification, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20358788967132568
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.2037588357925415
+        },
+        {
+          "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.2134975790977478
+        },
+        {
+          "sentence": "We tried our best to make a thorough analysis, and there are still a few possible",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 25,
+          "score": 0.21750915050506592
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.21782130002975464
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "Credit risk assessment is the most basic and critical part of credit loan management.",
+          "source": "Research on Credit Risk Assessment Optimization based on Machine Learning.pdf",
+          "page": 3,
+          "score": 0.17590034008026123
+        },
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17943263053894043
+        },
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.1900818943977356
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_0<=X<200",
+      "evidence_sentences": [
+        {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche Mark) as the reference category.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.21862667798995972
+        },
+        {
+          "sentence": "slightly in the two different specifications, from −0.026 to −0.023.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.2272552251815796
+        },
+        {
+          "sentence": "Value of gain ratio 1 Status of checking account 0.052573 20 Foreign worker 0.025499 3 Credit history 0.02548 2 Duration in month 0.025458 5 Credit amount 0.022629 6 Savings account 0.016658 13 Age in years 0.016078 15 Housing 0.011197 14 Other installment plans 0.010507 4 Purpose 0.009335 10 Others debtors 0.008909 12 Property 0.00872 7 Present employment since 0.006079 9 Personal status and sex 0.004445 19 Telephone 0.00099 17 Job 0.000946 16 Number of existing credits at bank 0 8 Installment rate in percentage 0 11 Present residence since 0 18 Number of people being liable to provide maintenance 0 The chi-square statistics is a correlation method used to",
+          "source": "Analysis_of_feature_selection_techniques_in_credit_risk_assessment.pdf",
+          "page": 5,
+          "score": 0.2507176995277405
+        },
+        {
+          "sentence": "Dräger et al. nario of an interest level upward shift by 200 bp at the beginning of the stress horizon.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 7,
+          "score": 0.2525554299354553
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 금융 프로필의 명확한 차이를 나타내므로 신용 위험 감소 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n대출 기간이 길어짐은 채무 불이행 가능성 증가와 연관되어 이론적 기대와 일치하지만, 본 모델은 이를 오히려 위험 감소 요인으로 해석합니다 [2].\n문헌에서 계좌 잔액이 0에서 200 DM 사이인 경우는 채무 불이행 확률에 큰 영향을 미쳐 신용 위험 증가 신호로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 분류합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

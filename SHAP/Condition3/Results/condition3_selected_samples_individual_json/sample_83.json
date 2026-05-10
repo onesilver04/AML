@@ -1,0 +1,61 @@
+{
+  "sample_idx": 83,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 15,
+    "대출 금액": 1478,
+    "월 상환 부담 수준": 4,
+    "나이": 44,
+    "기존 대출 수": 2,
+    "계좌 잔액": "부족",
+    "신용 이력": "신용 문제 이력 있음",
+    "대출 목적": "가구 또는 장비 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "7년 이상",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "낮음",
+  "confidence": 77,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": -0.08,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.17354613542556763
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.21066659688949585
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.18578726053237915
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족이나 신용 문제 이력이 있음에도 불구하고, 기존 대출을 전액 상환한 이력이 있어 신용 관리에 대한 책임감을 보여주므로 신용 위험 감소 요인으로 판단됩니다 [1].\n반면, 입출금 계좌가 없는 것은 금융 활동의 제한을 의미하므로 신용 위험 감소 요인으로 인식되지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n계좌 잔액이 음수인 경우는 유동성 제약을 나타내므로 신용 위험 증가 요인으로 간주되며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 77.17,
+  "decision_boundary_abs_distance": 0.1717035144504433,
+  "warning_type": "weak"
+}

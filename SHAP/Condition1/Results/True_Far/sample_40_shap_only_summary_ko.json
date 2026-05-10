@@ -1,0 +1,36 @@
+{
+  "sample_idx": 40,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_40.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, the applicant presents a low credit risk profile. This conclusion is driven by three key financial factors. First, not holding a standard checking account decreases risk by simplifying the financial footprint. Second, a checking account balance falling below zero decreases risk by reflecting specific account conditions the model interprets as stabilizing. Third, keeping savings under a minimal threshold decreases risk by demonstrating a conservative approach to liquid funds. Together, these indicators align with the model's final assessment of a favorable, low-risk credit outlook.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 신용 프로필을 보입니다. \n대출 금액이 상대적으로 적고, 월 상환 부담 수준이 안정적이며, 현재 거주 기간이 길어 신용 위험이 감소합니다. \n저축 잔액이 충분하여 유동성 자금 관리가 보수적이고, 기존 대출 상환 이력이 양호하여 신용 신뢰도가 높습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.07748880780912759,
+      "abs_shap": 0.07748880780912759,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.039525178057223,
+      "abs_shap": 0.039525178057223,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "savings_status_<100",
+      "definition": "Savings account status: savings below 100 DM.",
+      "shap_value": -0.02785403034510339,
+      "abs_shap": 0.02785403034510339,
+      "direction": "decrease_risk"
+    }
+  ]
+}

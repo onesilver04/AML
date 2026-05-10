@@ -1,0 +1,68 @@
+{
+  "sample_idx": 13,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.6619827597390392,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that the checking account balance is negative, because it reflects liquidity constraints or overdrawn accounts, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that the loan duration is longer, as it amplifies exposure to borrower uncertainty and financial strain, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that there is no checking account, because it may correlate with conservative financial behavior, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20948272943496704
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2291882038116455
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.16209900379180908
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17070138454437256
+        },
+        {
+          "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.18958061933517456
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21013414859771729
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.2192661166191101
+        }
+      ]
+    }
+  ]
+}

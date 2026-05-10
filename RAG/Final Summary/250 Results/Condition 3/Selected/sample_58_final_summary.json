@@ -1,0 +1,116 @@
+{
+  "sample_idx": 58,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.6208211994520877,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that having a negative checking account balance because adverse financial markers elevate default likelihood, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that having no checking account because individuals without formal accounts demonstrate lower estimated risk, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that maintaining savings below 100 DM because savings balances were excluded for lacking statistical relevance, is known in the literature as a signal that has no significant impact on credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.21361082792282104
+        },
+        {
+          "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 27,
+          "score": 0.21667969226837158
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.21894580125808716
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.22034966945648193
+        },
+        {
+          "sentence": "D.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 26,
+          "score": 0.22075343132019043
+        },
+        {
+          "sentence": "(2024).",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 17,
+          "score": 0.22549879550933838
+        },
+        {
+          "sentence": "IV.",
+          "source": "Credit Scoring Using Data Mining Techniques.pdf",
+          "page": 5,
+          "score": 0.2296130657196045
+        },
+        {
+          "sentence": "SHAP values assess the impact of individual features, such as credit amount, employment status, and payment history, on credit decisions.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 6,
+          "score": 0.23041808605194092
+        },
+        {
+          "sentence": "The sign of the respective coefficients remains negative although",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 17,
+          "score": 0.23056626319885254
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.23395240306854248
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.26695895195007324
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.2862548232078552
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_<100",
+      "evidence_sentences": [
+        {
+          "sentence": "Note that the exposures to interest rate risk and the exposure to credit risk are measured relative to the shock sizes of different stress tests so that the size of the coefficient cannot be interpreted, only its sign.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.19463694095611572
+        },
+        {
+          "sentence": "By contrast, the exposure to interest rate risk IRR does not seem to be re- lated to the size of the customer loan portfolio, suggesting that customer loans do not have a different interest rate exposure than the rest of the assets.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 20,
+          "score": 0.19532382488250732
+        },
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20197105407714844
+        }
+      ]
+    }
+  ]
+}

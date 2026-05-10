@@ -1,0 +1,36 @@
+{
+  "sample_idx": 39,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_39.json",
+  "true_label": "BAD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, this application indicates a high credit risk. The absence of a checking account slightly increases the perceived risk, while a negative account balance helps decrease it. Additionally, requesting a loan to purchase a new car further contributes to raising the risk level. Collectively, these factors guide the model to assess this application as carrying a high credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족이 신용 위험을 약간 증가시키지만, 부정적인 계좌 잔액은 이를 완화하는 역할을 합니다. \n또한 신차 구매 목적의 대출 요청은 위험 수준을 더욱 높이는 요인입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.05585311794201759,
+      "abs_shap": 0.05585311794201759,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.03993098732904914,
+      "abs_shap": 0.03993098732904914,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "purpose_new car",
+      "definition": "Loan purpose: purchase of a new car.",
+      "shap_value": 0.029125554940048346,
+      "abs_shap": 0.029125554940048346,
+      "direction": "increase_risk"
+    }
+  ]
+}

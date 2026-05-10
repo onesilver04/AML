@@ -1,0 +1,61 @@
+{
+  "sample_idx": 28,
+  "condition": 3,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 48,
+    "대출 금액": 4308,
+    "월 상환 부담 수준": 3,
+    "나이": 24,
+    "기존 대출 수": 1,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "사업 자금",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1년 미만",
+    "거주 상태": "임차 거주",
+    "직업": "숙련 기술직",
+    "성별": "여성",
+    "결혼 여부": "o"
+  },
+  "predicted_label": "높음",
+  "confidence": 81,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "duration",
+      "value": 0.09,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.16081476211547852
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": 0.08,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.2466280460357666
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.19952797889709473
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 긴 경우 대출 상환 기간이 길어져 채무 불이행 확률이 증가하므로 신용 위험이 높아지는 신호로 인식되며, 본 모델도 이를 위험 증가 요인으로 판단합니다. [1]  \n계좌 잔액이 마이너스인 경우 계좌 잔액 부족은 채무 불이행 위험을 크게 증가시키는 요인으로 알려져 있으며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다. [2]  \n체크 계좌가 없는 경우 계좌 잔액 부족이 신용 위험을 낮추는 요인으로 문헌에서 보고되지만, 본 모델은 이를 오히려 위험 증가 요인으로 판단합니다. [3]\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "class_confidence_relative_percent": 81.44,
+  "decision_boundary_abs_distance": 0.4144194458425712,
+  "warning_type": "none"
+}

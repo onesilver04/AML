@@ -1,0 +1,99 @@
+{
+  "sample_idx": 4,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.8035238500818336,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account exhibits a risk-mitigating effect, because absence of a checking account exhibits a risk-mitigating effect, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [1]\nThe fact that the checking account balance is negative lacks empirical evidence regarding its impact, because empirical evidence is lacking regarding its impact, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [2]\nThe fact that the loan purpose is for a used car is secondary to core credit metrics, because financial and credit-related characteristics dominate risk prediction models, is known in the literature as a signal that decreases credit risk, and the model also identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19905096292495728
+        },
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19921135902404785
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.20176172256469727
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.2018120288848877
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_<0",
+      "evidence_sentences": [
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.19950401782989502
+        },
+        {
+          "sentence": "T.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 6,
+          "score": 0.1996551752090454
+        },
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20505231618881226
+        },
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.20508688688278198
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.20725709199905396
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.20731902122497559
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "purpose_used car",
+      "evidence_sentences": [
+        {
+          "sentence": "The analysis examines how demographic, financial, and credit-related characteristics are associated with the likelihood of being classified as a bad credit risk, using statistically in- terpretable methods.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19958853721618652
+        },
+        {
+          "sentence": "The analysis examines how demographic, financial, and credit-related characteristics are associated with the likelihood of being classified as a bad credit risk, using statistically in- terpretable methods.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19973373413085938
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 요인으로 인식되며, 이는 문헌에서도 위험 감소 신호로 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 판단합니다. [1]\n체크링 계좌 잔액이 음수인 경우는 그 영향에 대한 실증적 증거가 부족하지만, 문헌에서는 신용 위험 감소 신호로 해석되며, 본 모델 또한 이를 위험 감소 요인으로 분류합니다. [2]\n신차 구매 목적은 핵심 신용 지표에 비해 부차적이므로, 금융 및 신용 관련 특성이 위험 예측 본 모델에서 주도적 역할을 하며, 본 모델 역시 이를 신용 위험 감소 요인으로 간주합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

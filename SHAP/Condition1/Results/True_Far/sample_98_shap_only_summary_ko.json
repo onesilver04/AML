@@ -1,0 +1,36 @@
+{
+  "sample_idx": 98,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_98.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, this profile indicates a low credit risk. The absence of a checking account is decreasing risk, as it suggests a financial structure less prone to default. A negative account balance is also decreasing risk, reflecting a conservative approach to available funds. Additionally, an employment duration of four to seven years is decreasing risk by demonstrating consistent income stability. Collectively, these factors align with a favorable and low-risk credit outlook.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족이 없음으로써 신용 위험이 감소하고 있으며, 이는 재정적 안정성을 시사합니다. 또한, 부정적인 계좌 잔액이 없는 것은 자금 관리의 보수적인 접근법을 보여주며 위험을 더욱 낮춥니다. 네 년에서 일곱 년 사이의 고용 기간은 안정적인 수입을 나타내어 위험을 감소시킵니다. 이러한 요인들이 결합되어 유리하고 낮은 신용 위험 전망을 보여줍니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.08266799896481404,
+      "abs_shap": 0.08266799896481404,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.040863221513721175,
+      "abs_shap": 0.040863221513721175,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "employment_4<=X<7",
+      "definition": "Present employment duration: between 4 and 7 years.",
+      "shap_value": -0.03211708316025919,
+      "abs_shap": 0.03211708316025919,
+      "direction": "decrease_risk"
+    }
+  ]
+}

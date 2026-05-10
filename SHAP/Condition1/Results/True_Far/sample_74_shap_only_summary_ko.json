@@ -1,0 +1,36 @@
+{
+  "sample_idx": 74,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_74.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, the application indicates a low credit risk. This assessment is primarily driven by three key factors. First, the absence of a checking account suggests a financial profile that the model interprets as lowering the overall risk. Second, having a history of critical accounts or managing other existing credits demonstrates experience with debt management, which further reduces the predicted risk. Finally, the intention to borrow funds specifically for educational purposes slightly increases the risk, as the model views this loan purpose as more uncertain. Overall, these combined factors point to a favorable credit outlook.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n대출 신청은 신용 위험이 낮은 수준으로 평가됩니다. 이 평가는 주로 세 가지 주요 요인에 의해 주도됩니다.\n첫째, 입출금 계좌 부재는 모델이 전체 위험을 낮추는 금융 프로필로 해석합니다.\n둘째, 중요한 신용 이력이나 기존 대출 관리 경험은 부채 관리 능력을 보여주며, 이는 예측 위험을 더욱 감소시킵니다.\n셋째, 교육비 목적으로 자금을 차입하려는 의도는 모델이 이 대출 목적을 더 불확실하게 보기 때문에 위험을 약간 증가시킵니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.07961941535544609,
+      "abs_shap": 0.07961941535544609,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.04157217038777378,
+      "abs_shap": 0.04157217038777378,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "purpose_education",
+      "definition": "Loan purpose: education.",
+      "shap_value": 0.03961048784690141,
+      "abs_shap": 0.03961048784690141,
+      "direction": "increase_risk"
+    }
+  ]
+}

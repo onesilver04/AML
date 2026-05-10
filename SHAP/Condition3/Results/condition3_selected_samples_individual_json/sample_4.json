@@ -1,0 +1,61 @@
+{
+  "sample_idx": 4,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 24,
+    "대출 금액": 2679,
+    "월 상환 부담 수준": 4,
+    "나이": 29,
+    "기존 대출 수": 1,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "중고차 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1년 미만",
+    "거주 상태": "자가 거주",
+    "직업": "전문직, 자영업, 관리직",
+    "성별": "여성",
+    "결혼 여부": "o"
+  },
+  "predicted_label": "낮음",
+  "confidence": 80,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.09,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.19905096292495728
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "T.",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 6,
+        "score": 0.19950401782989502
+      }
+    },
+    {
+      "feature": "purpose_used car",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "The analysis examines how demographic, financial, and credit-related characteristics are associated with the likelihood of being classified as a bad credit risk, using statistically in- terpretable methods.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.19958853721618652
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 요인으로 인식되며, 이는 문헌에서도 위험 감소 신호로 알려져 있으며, 본 모델 역시 이를 위험 감소 요인으로 판단합니다. [1]\n체크링 계좌 잔액이 음수인 경우는 그 영향에 대한 실증적 증거가 부족하지만, 문헌에서는 신용 위험 감소 신호로 해석되며, 본 모델 또한 이를 위험 감소 요인으로 분류합니다. [2]\n신차 구매 목적은 핵심 신용 지표에 비해 부차적이므로, 금융 및 신용 관련 특성이 위험 예측 본 모델에서 주도적 역할을 하며, 본 모델 역시 이를 신용 위험 감소 요인으로 간주합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 80.35,
+  "decision_boundary_abs_distance": 0.2035238500818336,
+  "warning_type": "weak"
+}

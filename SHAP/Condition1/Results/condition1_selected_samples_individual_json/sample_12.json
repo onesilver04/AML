@@ -1,0 +1,43 @@
+{
+  "sample_idx": 12,
+  "condition": 1,
+  "distance": "near",
+  "is_correct": false,
+  "customer_data": {
+    "대출 기간": 30,
+    "대출 금액": 3857,
+    "월 상환 부담 수준": 4,
+    "나이": 40,
+    "기존 대출 수": 1,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "중고차 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1~4년",
+    "거주 상태": "자가 거주",
+    "직업": "전문직, 자영업, 관리직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "높음",
+  "confidence": 61,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_<0",
+      "value": 0.08
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.06
+    },
+    {
+      "feature": "duration",
+      "value": 0.05
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족은 재정적 어려움을 시사하며 상환 신뢰성을 저하시킵니다.\n출금 계좌 부재는 재정 투명성을 떨어뜨려 소득과 지출 추적을 어렵게 합니다.\n대출 기간이 길어질수록 잠재적인 재정 변화의 기간이 연장되어 채무 불이행 가능성이 증가합니다.\n이러한 요인들이 결합되어 모델의 최종 예측인 높은 신용 위험을 확인합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 61.42,
+  "decision_boundary_abs_distance": 0.2142406251014095,
+  "warning_type": "none"
+}

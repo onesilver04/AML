@@ -1,0 +1,36 @@
+{
+  "sample_idx": 69,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_69.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, the assessment indicates a low credit risk. The absence of a checking account slightly decreases the overall risk, while a longer loan duration further reduces it by spreading out payments. Conversely, having a record of all previous credits paid back on time at this bank slightly increases the risk. Together, these factors result in a final prediction of low credit risk.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n대출 기간이 길수록 상환 부담이 분산되어 위험이 감소합니다.\n기존 대출 전액 상환 이력이 있는 것은 신용 위험을 약간 증가시킵니다.\n저축 잔액이 충분하고, 재직 기간이 길며, 신용 등급이 양호한 점들이 위험을 낮추는 요인입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.05440005551291982,
+      "abs_shap": 0.05440005551291982,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.052454878273601194,
+      "abs_shap": 0.052454878273601194,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "credit_history_all paid",
+      "definition": "Credit history: all previous credits at this bank paid back duly.",
+      "shap_value": 0.038937597404304906,
+      "abs_shap": 0.038937597404304906,
+      "direction": "increase_risk"
+    }
+  ]
+}

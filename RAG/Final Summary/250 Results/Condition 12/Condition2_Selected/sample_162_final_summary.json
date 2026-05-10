@@ -1,0 +1,110 @@
+{
+  "sample_idx": 162,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.9461527248372037,
+  "final_explanation": "Based on the AI model's prediction,\n체크계좌가 없는 상태는 금융 역량 지표가 주요 위험 지표로 식별되기 때문에, 기존 문헌에서 신용 위험을 높이는 신호로 알려져 있지만, 모델은 오히려 위험을 낮추는 요인으로 식별합니다. [1]\n대출 기간은 긴 대출 기간이 더 높은 신용 위험과 연관되기 때문에, 기존 문헌에서 신용 위험을 높이는 신호로 알려져 있지만, 모델은 오히려 위험을 낮추는 요인으로 식별합니다. [2]\n중요한 신용 이력 또는 기타 기존 신용은 계좌 상태가 대출자 디폴트 가능성에 대한 예측 가치를 지니기 때문에, 기존 문헌에서 신용 위험을 높이는 신호로 알려져 있지만, 모델은 오히려 위험을 낮추는 요인으로 식별합니다. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19400465488433838
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19416546821594238
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.19599157571792603
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.19603228569030762
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17981082201004028
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.18014848232269287
+        },
+        {
+          "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.19406312704086304
+        },
+        {
+          "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.19410377740859985
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.20534932613372803
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.205389142036438
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "credit_history_critical/other existing credit",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17625045776367188
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17643284797668457
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.1944514513015747
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.19446426630020142
+        }
+      ]
+    }
+  ]
+}

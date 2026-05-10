@@ -1,0 +1,43 @@
+{
+  "sample_idx": 49,
+  "condition": 1,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 24,
+    "대출 금액": 1823,
+    "월 상환 부담 수준": 4,
+    "나이": 30,
+    "기존 대출 수": 1,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "무직",
+    "거주 상태": "자가 거주",
+    "직업": "전문직, 자영업, 관리직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "높음",
+  "confidence": 70,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_<0",
+      "value": 0.09
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.07
+    },
+    {
+      "feature": "duration",
+      "value": 0.06
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\n주요 요인 세 가지가 이 평가를 주도합니다.\n첫째, 계좌 잔액이 마이너스인 상태는 채무 불이행 가능성을 크게 높입니다.\n둘째, 체크 계좌가 전혀 없는 것은 재정적 불안정성을 더욱 심화시킵니다.\n셋째, 대출 기간이 길어질수록 상환 불확실성이 증가하여 대출 위험이 커집니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 69.67,
+  "decision_boundary_abs_distance": 0.29669481907962936,
+  "warning_type": "none"
+}

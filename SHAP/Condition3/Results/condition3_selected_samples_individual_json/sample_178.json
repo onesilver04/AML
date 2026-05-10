@@ -1,0 +1,61 @@
+{
+  "sample_idx": 178,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 15,
+    "대출 금액": 3643,
+    "월 상환 부담 수준": 1,
+    "나이": 27,
+    "기존 대출 수": 2,
+    "계좌 잔액": "부족",
+    "신용 이력": "연체 이력 있음",
+    "대출 목적": "가구 또는 장비 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "7년 이상",
+    "거주 상태": "자가 거주",
+    "직업": "단순 노무직",
+    "성별": "여성",
+    "결혼 여부": "o"
+  },
+  "predicted_label": "낮음",
+  "confidence": 64,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_<0",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.18379181623458862
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.04,
+      "evidence_sentence": {
+        "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.1777699589729309
+      }
+    },
+    {
+      "feature": "installment_commitment",
+      "value": -0.03,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.18379181623458862
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험이 증가할 수 있는 요인으로 판단됩니다 [1].\n대출 기간이 길어짐에 따라 상환 부담이 커져 신용 위험이 상승하는 요인으로 분석됩니다 [2].\n계좌 잔액이 마이너스인 경우 일반적으로 신용 위험을 증가시키는 신호로 여겨지지만, 본 모델은 이를 신용 위험 감소 요인으로 해석합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 63.57,
+  "decision_boundary_abs_distance": 0.03565287979885945,
+  "warning_type": "strong"
+}

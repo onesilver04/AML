@@ -1,0 +1,92 @@
+{
+  "sample_idx": 131,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.6245665451375103,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that there is no checking account, because account status is a crucial financial characteristic, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [1]\nThe fact that the loan duration is extended, because longer repayment periods elevate default probability, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [2]\nThe fact that the employment tenure is short, because employment tenure is a key risk indicator, is known in the literature as a signal that increases credit risk, and the model also identifies it as a factor that increases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.1695934534072876
+        },
+        {
+          "sentence": "In practice, the results highlight the importance of lenders carefully inspecting the applicant’s account status, credit history, and the loan’s terms.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.16965961456298828
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.18583428859710693
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.18595874309539795
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17424267530441284
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17442673444747925
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "employment_<1",
+      "evidence_sentences": [
+        {
+          "sentence": "The analysis relies on ordinary least squares (OLS) regression, which is extended to",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.21240979433059692
+        },
+        {
+          "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2213495373725891
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.2243019938468933
+        },
+        {
+          "sentence": "2 Finance is among the sectors most impacted by AI/ML .",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 3,
+          "score": 0.2247740626335144
+        },
+        {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.22591489553451538
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "sample_idx": 117,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_117.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, the applicant is assessed as having a low credit risk. This favorable outlook is primarily driven by the absence of a standard checking account, which decreases the risk, followed by a negative account balance that further reduces the risk profile. However, the requested loan duration slightly increases the risk, as longer repayment periods typically introduce more uncertainty. Overall, these combined factors point to a favorable credit assessment.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n신청자는 채무 불이행 위험이 낮은 수준으로 평가됩니다. 이 긍정적인 전망은 주로 표준 예금 계좌 부재로 인해 위험이 감소하고, 부정적인 계좌 잔액이 위험 프로파일을 더욱 낮추는 요인에 의해 주도됩니다. 그러나 요청된 대출 기간이 약간 길어지면서 상환 기간이 길어짐에 따라 불확실성이 증가하여 위험이 상승하는 경향이 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.08562983621172793,
+      "abs_shap": 0.08562983621172793,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.05220090830444916,
+      "abs_shap": 0.05220090830444916,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": 0.04874471044542209,
+      "abs_shap": 0.04874471044542209,
+      "direction": "increase_risk"
+    }
+  ]
+}

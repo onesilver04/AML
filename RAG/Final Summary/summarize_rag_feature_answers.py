@@ -487,7 +487,7 @@ def main():
     args = parse_args()
     llm = build_llm(args.model)
 
-    input_files = iter_input_files(args.input_dir, target_indices=[5, 7, 17, 20, 49, 63, 70, 76, 79, 94, 100, 111, 132, 159, 187, 197, 202, 211, 221, 223, 238, 14, 39, 42, 43, 47, 53, 109, 118, 147, 236])
+    input_files = iter_input_files(args.input_dir, target_indices=[70])
     payloads = []
 
     for input_path in input_files:

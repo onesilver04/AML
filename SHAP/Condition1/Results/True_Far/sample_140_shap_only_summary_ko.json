@@ -1,0 +1,36 @@
+{
+  "sample_idx": 140,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_140.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The absence of a standard checking account suggests a more independent financial structure, which reduces the likelihood of default. Additionally, managing a critical account or other existing credits demonstrates experience in handling multiple financial obligations, further lowering the risk. Finally, maintaining a negative checking account balance reflects disciplined cash flow management, which also contributes to a reduced risk profile. Together, these factors support a favorable credit assessment.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족이 없는 것은 독립적인 재무 구조를 시사하며, 이는 상환 불이행 가능성을 감소시킵니다. \n중대한 계좌 관리나 기존 대출 경험은 다양한 금융 의무를 처리하는 능력을 보여주어 위험을 더욱 낮춥니다. \n저축 잔액이 충분하고 현금 흐름 관리가 규율적이라는 점도 위험 프로필을 낮추는 요인입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.0776553910679528,
+      "abs_shap": 0.0776553910679528,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.03749927524020817,
+      "abs_shap": 0.03749927524020817,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "checking_status_<0",
+      "definition": "Checking account status: balance below 0 DM.",
+      "shap_value": -0.02782772795912834,
+      "abs_shap": 0.02782772795912834,
+      "direction": "decrease_risk"
+    }
+  ]
+}

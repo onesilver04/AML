@@ -1,0 +1,61 @@
+{
+  "sample_idx": 240,
+  "condition": 3,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 5,
+    "대출 금액": 3448,
+    "월 상환 부담 수준": 1,
+    "나이": 74,
+    "기존 대출 수": 1,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "사업 자금",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "4~7년",
+    "거주 상태": "자가 거주",
+    "직업": "단순 노무직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "낮음",
+  "confidence": 91,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "duration",
+      "value": -0.06,
+      "evidence_sentence": {
+        "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 24,
+        "score": 0.1702578067779541
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.06,
+      "evidence_sentence": {
+        "sentence": "The performance of clas- siﬁers is compromised when good borrowers and defaulters have an imbalanced distribution of classes because classiﬁers",
+        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+        "page": 3,
+        "score": 0.1838289499282837
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.03,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.18689119815826416
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n대출 기간이 길수록 대출자의 불확실성이 증가하여 신용 위험이 높아지는 것으로 알려져 있지만, 본 모델은 이를 오히려 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌가 없는 경우, 계좌 부족은 채무 불이행 위험을 높이는 부정적 예측 요인으로 인식되지만, 본 모델 역시 이를 위험 감소 요인으로 분류합니다 [2].\n계좌 잔액이 부족한 상태는 신용 위험 증가 요인으로 문헌에서 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 91.17,
+  "decision_boundary_abs_distance": 0.31166523308911565,
+  "warning_type": "none"
+}

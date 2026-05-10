@@ -1,0 +1,61 @@
+{
+  "sample_idx": 110,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 24,
+    "대출 금액": 2032,
+    "월 상환 부담 수준": 4,
+    "나이": 60,
+    "기존 대출 수": 2,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "연체 이력 있음",
+    "대출 목적": "신차 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "7년 이상",
+    "거주 상태": "무상 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "낮음",
+  "confidence": 64,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": -0.11,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.20292139053344727
+      }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.05,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.21691572666168213
+      }
+    },
+    {
+      "feature": "credit_history_critical/other existing credit",
+      "value": 0.03,
+      "evidence_sentence": {
+        "sentence": "• A32 : existing credits paid back duly till now • A 3 3: delay in paying off in the past • A34 : critical account/other credits existing (not at this bank), o Attribut e 4: purpose • A40 : car (new) • A46 : education • A41 : car (used) • A47 : vacation • A42 : furniture/equipment • A48 : retraining • A43 : radio/television • A49 : business • A44 : domestic appliances • A410 : others • A45 : repairs o Attribut e 5: credit amount o Attribut e 6: savings account/bonds • A61 : .. . < 10 0 DM 135",
+        "source": "DATA PREPARATION FOR DATA MINING BASED ON NEURAL NETWORK- A CASE STUDY ON GERMAN CREDIT CLASSIFICATION DATASET.pdf",
+        "page": 6,
+        "score": 0.20529913902282715
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 신용 위험을 낮추는 요인으로 작용하며, 이는 문헌에서 신용 위험 감소 신호로 알려져 있으며, 본 모델 또한 이를 위험 감소 요인으로 판단합니다. [1]\n계좌 잔액이 마이너스인 경우는 신용 위험을 증가시키는 요인으로, 이는 신용 등급 하락 위험을 높이는 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다. [2]\n신용 문제 이력이나 기존 대출이 존재하는 경우 신용 위험이 증가하며, 이는 과거 재정적 어려움과 상환 지연을 반영하는 신호로 알려져 있으며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다. [3]\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "class_confidence_relative_percent": 63.66,
+  "decision_boundary_abs_distance": 0.036608905630490574,
+  "warning_type": "strong"
+}

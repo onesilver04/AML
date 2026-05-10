@@ -9,29 +9,35 @@ from typing import Any
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 DEFAULT_SELECTED_INPUT = (
-    PROJECT_ROOT / "SHAP/Task/selected_120_confidence_relative_percent.csv"
+    PROJECT_ROOT / "SHAP/test_dataset_decision_boundary_features.csv"
 )
 DEFAULT_CONFIDENCE_INPUT = PROJECT_ROOT / "SHAP/confidence.csv"
 
-DEFAULT_CONFIDENCE_GOOD_INPUT = PROJECT_ROOT / "SHAP/confidence_good.csv"
-DEFAULT_CONFIDENCE_BAD_INPUT = PROJECT_ROOT / "SHAP/confidence_bad.csv"
-
-DEFAULT_COND1_CORRECT_DIR = (
-    PROJECT_ROOT
-    / "SHAP/Condition1/Results/selected_shap_only_explanations_correct_ko"
-)
-DEFAULT_COND1_WRONG_DIR = (
-    PROJECT_ROOT
-    / "SHAP/Condition1/Results/selected_shap_only_explanations_wrong_ko"
-)
+DEFAULT_COND1_DIR = PROJECT_ROOT / "SHAP/Condition1/Results/Selected"
 
 DEFAULT_OUTPUT = PROJECT_ROOT / "SHAP/Condition1/Results/condition1_selected_samples.json"
 DEFAULT_OUTPUT_DIR = (
     PROJECT_ROOT / "SHAP/Condition1/Results/condition1_selected_samples_individual_json"
 )
-DEFAULT_LOCAL_SHAP_DIR = PROJECT_ROOT / "SHAP/Final Local Shap"
+DEFAULT_LOCAL_SHAP_DIR = PROJECT_ROOT / "SHAP/Test Dataset Local Shap 25"
 
 FEATURE_PREFIX = "feature_"
+CUSTOMER_NUMERIC_FIELDS = [
+    "duration",
+    "credit_amount",
+    "installment_commitment",
+    "age",
+    "existing_credits",
+]
+CUSTOMER_ONE_HOT_GROUPS = {
+    "checking_status": "계좌 잔액",
+    "credit_history": "신용 이력",
+    "purpose": "대출 목적",
+    "savings_status": "저축 잔액",
+    "employment": "재직 기간",
+    "housing": "거주 상태",
+    "job": "직업",
+}
 
 
 # 여기에 기존 CUSTOMER_FIELD_RENAMES 그대로 붙여넣기
@@ -102,14 +108,6 @@ CUSTOMER_FIELD_RENAMES = {
     "Married": "결혼 여부",
 }
 
-CONDITION_1_SAMPLE_INDICES = {
-    10, 45, 81, 83, 100, 123, 126, 136, 142, 146,
-    169, 176, 177, 187, 189, 194, 197, 77, 110, 111,
-    47, 63, 178, 14, 16, 120, 124, 144, 172, 179,
-    182, 32, 160, 153, 117, 61, 42, 39, 183, 13,
-}
-
-
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Build selected sample JSON files for Condition1 only."
@@ -118,19 +116,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--selected-input", type=Path, default=DEFAULT_SELECTED_INPUT)
     parser.add_argument("--confidence-input", type=Path, default=DEFAULT_CONFIDENCE_INPUT)
 
-    parser.add_argument(
-        "--confidence-good-input",
-        type=Path,
-        default=DEFAULT_CONFIDENCE_GOOD_INPUT,
-    )
-    parser.add_argument(
-        "--confidence-bad-input",
-        type=Path,
-        default=DEFAULT_CONFIDENCE_BAD_INPUT,
-    )
-
-    parser.add_argument("--cond1-correct-dir", type=Path, default=DEFAULT_COND1_CORRECT_DIR)
-    parser.add_argument("--cond1-wrong-dir", type=Path, default=DEFAULT_COND1_WRONG_DIR)
+    parser.add_argument("--cond1-dir", type=Path, default=DEFAULT_COND1_DIR)
     parser.add_argument(
         "--local-shap-dir",
         type=Path,
@@ -211,6 +197,17 @@ def distance_from_sigma_group(sigma_group: str) -> str:
     raise ValueError(f"Unexpected sigma_group: {sigma_group}")
 
 
+def distance_from_row(row: dict[str, str]) -> str:
+    if "sigma_group" in row and row["sigma_group"]:
+        return distance_from_sigma_group(row["sigma_group"])
+
+    distance = row.get("distance", "").strip().lower()
+    if distance in {"near", "far"}:
+        return distance
+
+    raise ValueError(f"Unexpected distance fields for sample_idx={row.get('sample_idx')}")
+
+
 def warning_type_from_confidence(value: str | None) -> str:
     if value is None:
         return "none"
@@ -246,32 +243,6 @@ def load_confidence_by_sample(path: Path) -> dict[int, dict[str, str]]:
     return confidence_by_sample
 
 
-def load_class_confidence_by_sample(
-    good_path: Path,
-    bad_path: Path,
-) -> dict[int, float]:
-    """
-    class_confidence_relative_percent에 넣을 값을 만든다.
-
-    - SHAP/confidence_good.csv 안의 predicted_confidence
-    - SHAP/confidence_bad.csv 안의 predicted_confidence
-
-    두 파일을 합쳐서 sample_idx 기준으로 조회한다.
-    """
-
-    class_confidence_by_sample: dict[int, float] = {}
-
-    for row in read_csv_rows(good_path):
-        sample_idx = int(row["sample_idx"])
-        class_confidence_by_sample[sample_idx] = float(row["predicted_confidence"])
-
-    for row in read_csv_rows(bad_path):
-        sample_idx = int(row["sample_idx"])
-        class_confidence_by_sample[sample_idx] = float(row["predicted_confidence"])
-
-    return class_confidence_by_sample
-
-
 def sample_idx_from_condition1_path(path: Path) -> int:
     match = re.search(r"sample_(\d+)_shap_only_summary_ko\.json$", path.name)
 
@@ -281,26 +252,22 @@ def sample_idx_from_condition1_path(path: Path) -> int:
     return int(match.group(1))
 
 
-def load_condition1_payloads_by_sample(
-    dirs: list[Path],
-) -> dict[int, dict[str, Any]]:
+def load_condition1_payloads_by_sample(directory: Path) -> dict[int, dict[str, Any]]:
     payloads_by_sample: dict[int, dict[str, Any]] = {}
+    directory = resolve_path(directory)
 
-    for directory in dirs:
-        directory = resolve_path(directory)
+    if not directory.exists():
+        raise FileNotFoundError(
+            f"Condition1 explanation directory does not exist: {directory}"
+        )
 
-        if not directory.exists():
-            raise FileNotFoundError(
-                f"Condition1 explanation directory does not exist: {directory}"
-            )
+    for path in sorted(directory.rglob("sample_*_shap_only_summary_ko.json")):
+        sample_idx = sample_idx_from_condition1_path(path)
 
-        for path in sorted(directory.glob("sample_*_shap_only_summary_ko.json")):
-            sample_idx = sample_idx_from_condition1_path(path)
+        with path.open(encoding="utf-8") as f:
+            payload = json.load(f)
 
-            with path.open(encoding="utf-8") as f:
-                payload = json.load(f)
-
-            payloads_by_sample[sample_idx] = payload
+        payloads_by_sample[sample_idx] = payload
 
     return payloads_by_sample
 
@@ -323,14 +290,35 @@ def rename_customer_value(raw_customer_key: str, parsed_value: Any) -> Any:
 def build_customer_data(row: dict[str, str]) -> dict[str, Any]:
     customer_data: dict[str, Any] = {}
 
-    for key, value in row.items():
-        if not key.startswith(FEATURE_PREFIX):
+    for raw_customer_key in CUSTOMER_NUMERIC_FIELDS:
+        key = f"{FEATURE_PREFIX}{raw_customer_key}"
+        if key not in row:
             continue
 
-        raw_customer_key = key.removeprefix(FEATURE_PREFIX)
         customer_key = CUSTOMER_FIELD_RENAMES.get(raw_customer_key, raw_customer_key)
-        parsed_value = rename_customer_value(raw_customer_key, parse_value(value))
+        customer_data[customer_key] = parse_value(row[key])
 
+    for group_prefix, customer_key in CUSTOMER_ONE_HOT_GROUPS.items():
+        selected_value = None
+
+        for key, value in row.items():
+            if not key.startswith(f"{FEATURE_PREFIX}{group_prefix}_"):
+                continue
+
+            if parse_value(value) is True:
+                raw_value_key = key.removeprefix(FEATURE_PREFIX)
+                selected_value = CUSTOMER_FIELD_RENAMES.get(raw_value_key, raw_value_key)
+                break
+
+        customer_data[customer_key] = selected_value
+
+    for raw_customer_key in ("Sex", "Married"):
+        key = f"{FEATURE_PREFIX}{raw_customer_key}"
+        if key not in row:
+            continue
+
+        customer_key = CUSTOMER_FIELD_RENAMES.get(raw_customer_key, raw_customer_key)
+        parsed_value = rename_customer_value(raw_customer_key, parse_value(row[key]))
         customer_data[customer_key] = parsed_value
 
     return customer_data
@@ -396,8 +384,11 @@ def load_local_shap_features_by_sample(directory: Path) -> dict[int, list[dict[s
 
         if isinstance(tuples, list):
             features_by_sample[sample_idx] = [
-                {"rank": rank, **item}
-                for rank, item in enumerate(tuples, 1)
+                {
+                    "feature": item["feature"],
+                    "value": round(float(item["shap_value"]), 2),
+                }
+                for item in tuples[:3]
                 if isinstance(item, dict)
             ]
 
@@ -411,9 +402,6 @@ def build_sample_payload(
     local_shap_features_by_sample: dict[int, list[dict[str, Any]]],
 ) -> dict[str, Any]:
     sample_idx = int(row["sample_idx"])
-
-    if sample_idx not in CONDITION_1_SAMPLE_INDICES:
-        raise ValueError(f"sample_idx={sample_idx} is not a Condition1 sample.")
 
     if sample_idx not in confidence_by_sample:
         raise ValueError(f"Missing confidence.csv row for sample_idx={sample_idx}")
@@ -432,15 +420,12 @@ def build_sample_payload(
             )
 
     explanation = get_condition1_explanation(condition1_payload)
-    local_shap_top3_features = get_condition1_top3_features(condition1_payload)
-
-    if not local_shap_top3_features:
-        local_shap_top3_features = local_shap_features_by_sample.get(sample_idx, [])
+    local_shap_top3_features = local_shap_features_by_sample.get(sample_idx, [])
 
     payload = {
         "sample_idx": sample_idx,
         "condition": 1,
-        "distance": distance_from_sigma_group(row["sigma_group"]),
+        "distance": distance_from_row(row),
         "is_correct": parse_bool(row["is_correct"]),
         "customer_data": build_customer_data(row),
         "predicted_label": display_predicted_label(row["predicted_label"]),
@@ -448,7 +433,10 @@ def build_sample_payload(
         "true_label": display_predicted_label(row["true_label"]),
         "local_shap_top3_features": local_shap_top3_features,
         "explanation": explanation,
-        "class_confidence_relative_percent": round(float(row["confidence_percent"]), 2),
+        "class_confidence_relative_percent": round(
+            float(confidence_row["predicted_confidence"]) * 100,
+            2,
+        ),
         "decision_boundary_abs_distance": float(row["decision_boundary_abs_distance"]),
         "warning_type": warning_type_from_confidence(
             confidence_row.get("warning_type")
@@ -471,44 +459,52 @@ def main() -> None:
     args = parse_args()
 
     selected_rows = read_csv_rows(args.selected_input)
-
-    condition1_rows = [
-        row for row in selected_rows
-        if int(row["sample_idx"]) in CONDITION_1_SAMPLE_INDICES
-    ]
-
-    if len(condition1_rows) != 40:
-        raise ValueError(f"Expected 40 Condition1 rows, got {len(condition1_rows)}")
-
+    selected_by_sample = {int(row["sample_idx"]): row for row in selected_rows}
     confidence_by_sample = load_confidence_by_sample(args.confidence_input)
-
-    condition1_payloads_by_sample = load_condition1_payloads_by_sample(
-        [args.cond1_correct_dir, args.cond1_wrong_dir]
-    )
+    condition1_payloads_by_sample = load_condition1_payloads_by_sample(args.cond1_dir)
     local_shap_features_by_sample = load_local_shap_features_by_sample(
         args.local_shap_dir
     )
 
-    missing_condition1_files = sorted(
+    if not condition1_payloads_by_sample:
+        raise ValueError(
+            f"No Condition1 JSON files found in: {resolve_path(args.cond1_dir)}"
+        )
+
+    sample_indices = sorted(condition1_payloads_by_sample)
+
+    missing_shap_files = sorted(
         sample_idx
-        for sample_idx in CONDITION_1_SAMPLE_INDICES
-        if sample_idx not in condition1_payloads_by_sample
+        for sample_idx in sample_indices
+        if sample_idx not in local_shap_features_by_sample
     )
 
-    if missing_condition1_files:
+    if missing_shap_files:
         raise ValueError(
-            "Missing Condition1 JSON files for sample_idx: "
-            + ", ".join(map(str, missing_condition1_files))
+            "Missing local SHAP JSON files for sample_idx: "
+            + ", ".join(map(str, missing_shap_files))
+        )
+
+    missing_selected_rows = sorted(
+        sample_idx
+        for sample_idx in sample_indices
+        if sample_idx not in selected_by_sample
+    )
+
+    if missing_selected_rows:
+        raise ValueError(
+            "Missing selected input CSV rows for sample_idx: "
+            + ", ".join(map(str, missing_selected_rows))
         )
 
     payloads = [
         build_sample_payload(
-            row=row,
+            row=selected_by_sample[sample_idx],
             confidence_by_sample=confidence_by_sample,
             condition1_payloads_by_sample=condition1_payloads_by_sample,
             local_shap_features_by_sample=local_shap_features_by_sample,
         )
-        for row in condition1_rows
+        for sample_idx in sample_indices
     ]
 
     write_json(args.output, payloads)
@@ -517,10 +513,13 @@ def main() -> None:
         output_dir = resolve_path(args.output_dir)
         output_dir.mkdir(parents=True, exist_ok=True)
 
+        for path in output_dir.glob("sample_*.json"):
+            path.unlink()
+
         for payload in payloads:
             write_json(output_dir / f"sample_{payload['sample_idx']}.json", payload)
 
-    print(f"Selected Condition1 samples : {len(payloads)}")
+    print(f"Selected samples            : {len(payloads)}")
     print(f"Combined output             : {resolve_path(args.output)}")
 
     if not args.no_individual:

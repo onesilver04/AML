@@ -1,0 +1,61 @@
+{
+  "sample_idx": 17,
+  "condition": 3,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 12,
+    "대출 금액": 759,
+    "월 상환 부담 수준": 4,
+    "나이": 26,
+    "기존 대출 수": 1,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "신차 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "4~7년",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "높음",
+  "confidence": 65,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_<0",
+      "value": 0.09,
+      "evidence_sentence": {
+        "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 27,
+        "score": 0.22267115116119385
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.07,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.177720308303833
+      }
+    },
+    {
+      "feature": "duration",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "The analysis relies on ordinary least squares (OLS) regression, which is extended to",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 8,
+        "score": 0.1760963797569275
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n문헌에서 계좌 잔액 부족은 신용 위험 증가의 신호로 알려져 있으며, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n출금 계좌 없음은 통계적으로 낮은 신용 위험과 연관되어 있으나, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n대출 기간이 길수록 채무 불이행 확률이 높아지는 경향이 있으나, 본 모델은 이를 위험 증가 요인으로 분류합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "class_confidence_relative_percent": 65.35,
+  "decision_boundary_abs_distance": 0.2534593804891817,
+  "warning_type": "none"
+}

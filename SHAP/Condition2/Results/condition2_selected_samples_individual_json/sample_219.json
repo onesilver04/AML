@@ -1,0 +1,61 @@
+{
+  "sample_idx": 219,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 21,
+    "대출 금액": 3652,
+    "월 상환 부담 수준": 2,
+    "나이": 27,
+    "기존 대출 수": 2,
+    "계좌 잔액": "적음",
+    "신용 이력": "신용 문제 이력 있음",
+    "대출 목적": "사업 자금",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "4~7년",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "낮음",
+  "confidence": 68,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.20914804935455322
+      }
+    },
+    {
+      "feature": "checking_status_0<=X<200",
+      "value": 0.04,
+      "evidence_sentence": {
+        "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche Mark) as the reference category.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 27,
+        "score": 0.18531930446624756
+      }
+    },
+    {
+      "feature": "savings_status_<100",
+      "value": 0.03,
+      "evidence_sentence": {
+        "sentence": "and low-risk groups with the information like gender, age and savings account.",
+        "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+        "page": 3,
+        "score": 0.18812024593353271
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 일반적인 연구에서 채무 불이행 가능성을 낮추는 신호로 인식되지만, 본 모델은 이를 신용 위험 증가 요인으로 판단합니다 [1].\n계좌 잔액이 0에서 200 DM 사이인 경우는 보통 재정 안정성의 지표로 여겨지지만, 본 모델은 이를 신용 위험 증가 요인으로 해석합니다 [2].\n저축 잔액이 100 DM 미만인 것은 재정적 여유 자금 부족을 나타내므로 신용 위험 증가 요인으로 간주되며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 68.05,
+  "decision_boundary_abs_distance": 0.08048294126529165,
+  "warning_type": "strong"
+}

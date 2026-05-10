@@ -1,0 +1,36 @@
+{
+  "sample_idx": 90,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_90.json",
+  "true_label": "GOOD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, this application indicates a low credit risk. The absence of a checking account suggests a more stable financial profile, which decreases the overall risk. A longer loan duration also decreases risk by spreading out repayment obligations over time, reducing immediate financial pressure. Additionally, a credit history involving critical accounts or other existing credits actually decreases risk in this context, as it reflects established borrowing experience. Together, these factors strongly support a favorable credit outlook.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n대출 기간이 길수록 상환 부담이 분산되어 위험이 감소합니다.\n체크 계좌 부재는 재정적 안정성을 시사하며 전체 위험을 낮춥니다.\n기존 대출 이력이 있는 경우, 특히 신용 문제 이력이 없는 경우 위험이 더욱 감소합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": -0.06723901143796317,
+      "abs_shap": 0.06723901143796317,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "duration",
+      "definition": "Loan duration in months.",
+      "shap_value": -0.056297758624532596,
+      "abs_shap": 0.056297758624532596,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.040461579643197444,
+      "abs_shap": 0.040461579643197444,
+      "direction": "decrease_risk"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "sample_idx": 109,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 12,
+    "대출 금액": 6199,
+    "월 상환 부담 수준": 4,
+    "나이": 28,
+    "기존 대출 수": 2,
+    "계좌 잔액": "부족",
+    "신용 이력": "대출 이력 없음 또는 전액 상환",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1~4년",
+    "거주 상태": "임차 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "높음",
+  "confidence": 60,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_<0",
+      "value": 0.08,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.2172759771347046
+      }
+    },
+    {
+      "feature": "duration",
+      "value": -0.06,
+      "evidence_sentence": {
+        "sentence": "exposure at default secured by residential mortgages.",
+        "source": "Interest and credit risk management in German banks.pdf",
+        "page": 13,
+        "score": 0.19852352142333984
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.05,
+      "evidence_sentence": {
+        "sentence": "1 1 Introduction Credit risk assessment remains a central challenge in modern finance, as lenders must evalu- ate the likelihood that borrowers will meet their obligations.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 7,
+        "score": 0.20741325616836548
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 유동성 제약을 나타내어 재정적 어려움을 시사하며, 신용 위험을 증가시키는 신호로 인식됩니다. 본 모델은 이를 신용 위험 증가 요인으로 판단합니다 [1].\n대출 기간이 길어짐으로써 상환 불확실성이 커지는 것은 신용 위험 증가 신호로 알려져 있지만, 본 모델은 이를 신용 위험 감소 요인으로 해석합니다 [2].\n출금 계좌 부재는 직접적인 유동성 추적 부족을 의미하여 신용 위험 증가 신호로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "class_confidence_relative_percent": 59.57,
+  "decision_boundary_abs_distance": 0.19572287386900533,
+  "warning_type": "weak"
+}

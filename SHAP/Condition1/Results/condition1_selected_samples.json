@@ -1,9 +1,9 @@
 [
   {
-    "sample_idx": 182,
+    "sample_idx": 9,
     "condition": 1,
     "distance": "near",
-    "is_correct": true,
+    "is_correct": false,
     "customer_data": {
       "대출 기간": 15,
       "대출 금액": 1905,
@@ -20,549 +20,42 @@
       "성별": "남성",
       "결혼 여부": "x"
     },
-    "predicted_label": "낮음",
-    "confidence": 44,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.05778058230237468,
-        "abs_shap": 0.05778058230237468,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "purpose_education",
-        "definition": "Loan purpose: education.",
-        "shap_value": 0.03698261153696969,
-        "abs_shap": 0.03698261153696969,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.036791256803941644,
-        "abs_shap": 0.036791256803941644,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n대출 기간\n대출 금액이 명시되지 않았습니다.\n월 상환 부담 수준\n상환 계획이 명확하지 않습니다.\n현재 거주 기간\n거주 기간이 명시되지 않았습니다.\n나이\n나이 정보가 제공되지 않았습니다.\n기존 대출 수\n기존 대출 이력이 명시되지 않았습니다.\n부양 가족 수\n부양 가족 수가 명시되지 않았습니다.\n계좌 잔액 부족\n계좌 잔액 부족이 신용 위험을 증가시킵니다.\n계좌 잔액 적음\n계좌 잔액이 적음에도 불구하고, 이는 위험을 일부 완화합니다.\n계좌 잔액 충분\n저축 잔액이 충분한 것으로 보이지만, 대출 목적에 따라 영향이 다릅니다.\n대출 이력 없음 또는 전액 상환\n대출 이력이 없거나 전액 상환된 이력이 신용 위험을 낮춥니다.\n교육비 목적\n교육 목적의 대출은 신용 위험을 낮추는 요인입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 44.25,
-    "decision_boundary_abs_distance": 0.0024512917003814,
-    "warning_type": "strong"
-  },
-  {
-    "sample_idx": 120,
-    "condition": 1,
-    "distance": "near",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 24,
-      "대출 금액": 2892,
-      "월 상환 부담 수준": 3,
-      "나이": 51,
-      "기존 대출 수": 1,
-      "계좌 잔액": "충분",
-      "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "가구 또는 장비 구매",
-      "저축 잔액": "거의 없음",
-      "재직 기간": "7년 이상",
-      "거주 상태": "무상 거주",
-      "직업": "숙련 기술직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 45,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.06546422493986846,
-        "abs_shap": 0.06546422493986846,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.0441416352479784,
-        "abs_shap": 0.0441416352479784,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "duration",
-        "definition": "Loan duration in months.",
-        "shap_value": 0.02803480763061361,
-        "abs_shap": 0.02803480763061361,
-        "direction": "increase_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n대출 금액의 영향은 제한적이며, 월 상환 부담 수준은 신용 위험에 큰 변화를 주지 않습니다.\n현재 거주 기간과 나이는 신용 위험에 미미한 영향을 미칩니다.\n기존 대출 수와 부양 가족 수는 신용 위험을 약간 증가시키지만, 여전히 건전한 수준을 유지합니다.\n계좌 잔액 부족 상태는 신용 위험을 상승시키지만, 계좌 잔액이 충분한 경우 위험은 감소합니다.\n대출 전액 상환 이력은 신용 위험을 크게 낮추는 요인입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 44.35,
-    "decision_boundary_abs_distance": 0.0035066608658373,
-    "warning_type": "strong"
-  },
-  {
-    "sample_idx": 144,
-    "condition": 1,
-    "distance": "near",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 15,
-      "대출 금액": 2631,
-      "월 상환 부담 수준": 3,
-      "나이": 25,
-      "기존 대출 수": 1,
-      "계좌 잔액": "적음",
-      "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "수리비",
-      "저축 잔액": "적음",
-      "재직 기간": "1~4년",
-      "거주 상태": "자가 거주",
-      "직업": "단순 노무직",
-      "성별": "여성",
-      "결혼 여부": "o"
-    },
-    "predicted_label": "낮음",
-    "confidence": 47,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.05497906459464253,
-        "abs_shap": 0.05497906459464253,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "savings_status_<100",
-        "definition": "Savings account status: savings below 100 DM.",
-        "shap_value": -0.028276661157428766,
-        "abs_shap": 0.028276661157428766,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "checking_status_0<=X<200",
-        "definition": "Checking account status: balance between 0 and 200 DM.",
-        "shap_value": 0.027967225459835494,
-        "abs_shap": 0.027967225459835494,
-        "direction": "increase_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n신청자는 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족이 약간의 위험 증가 요인으로 작용하지만, 저축 계좌 잔액이 100 단위 미만일 경우 전체 위험은 감소합니다. \n또한, 체크 계좌 잔액이 0에서 200 단위 사이일 때 위험이 약간 증가하는 경향이 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 46.79,
-    "decision_boundary_abs_distance": 0.0279225547237862,
-    "warning_type": "strong"
-  },
-  {
-    "sample_idx": 14,
-    "condition": 1,
-    "distance": "near",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 18,
-      "대출 금액": 2124,
-      "월 상환 부담 수준": 4,
-      "나이": 24,
-      "기존 대출 수": 2,
-      "계좌 잔액": "부족",
-      "신용 이력": "신용 문제 이력 있음",
-      "대출 목적": "가구 또는 장비 구매",
-      "저축 잔액": "거의 없음",
-      "재직 기간": "1~4년",
-      "거주 상태": "임차 거주",
-      "직업": "숙련 기술직",
-      "성별": "여성",
-      "결혼 여부": "o"
-    },
     "predicted_label": "높음",
-    "confidence": 59,
-    "true_label": "높음",
+    "confidence": 49,
+    "true_label": "낮음",
     "local_shap_top3_features": [
       {
-        "rank": 1,
-        "feature": "credit_history_critical/other existing credit",
-        "definition": "Credit history: critical account or other existing credits.",
-        "shap_value": -0.07382058463340908,
-        "abs_shap": 0.07382058463340908,
-        "direction": "decrease_risk"
+        "feature": "checking_status_no checking",
+        "value": 0.06
       },
       {
-        "rank": 2,
+        "feature": "purpose_education",
+        "value": 0.05
+      },
+      {
         "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": 0.051274966602145755,
-        "abs_shap": 0.051274966602145755,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.0505381203682975,
-        "abs_shap": 0.0505381203682975,
-        "direction": "increase_risk"
+        "value": -0.04
       }
     ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 높게 평가됩니다. 신용 이력에서 중대한 계정이나 기존 신용 문제가 일부 위험을 완화시키는 역할을 하지만, 계좌 잔액 부족과 입출금 계좌 부재라는 두 가지 금융 지표가 이를 상쇄합니다. 이러한 요인들로 인해 신용 위험이 크게 증가하여 최종적으로 나쁜 신용 위험으로 평가됩니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 58.88,
-    "decision_boundary_abs_distance": 0.0287777677020654,
-    "warning_type": "strong"
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 높게 평가되어 대출 승인 가능성이 낮습니다.\n대출 금액이 주요 위험 요인으로 작용하며, 교육 목적의 대출은 신용 위험을 더욱 증가시킵니다. \n계좌 잔액 부족은 신용 위험을 일부 완화시키는 요인으로 작용하지만, 여전히 높은 신용 위험 수준이 유지됩니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 48.7,
+    "decision_boundary_abs_distance": 0.08704805060600229,
+    "warning_type": "weak"
   },
   {
-    "sample_idx": 16,
+    "sample_idx": 12,
     "condition": 1,
     "distance": "near",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 16,
-      "대출 금액": 1175,
-      "월 상환 부담 수준": 2,
-      "나이": 68,
-      "기존 대출 수": 3,
-      "계좌 잔액": "적음",
-      "신용 이력": "신용 문제 이력 있음",
-      "대출 목적": "신차 구매",
-      "저축 잔액": "거의 없음",
-      "재직 기간": "무직",
-      "거주 상태": "무상 거주",
-      "직업": "무직, 단순직 외국인",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 50,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.05964826983607918,
-        "abs_shap": 0.05964826983607918,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "credit_history_critical/other existing credit",
-        "definition": "Credit history: critical account or other existing credits.",
-        "shap_value": -0.059239581212539034,
-        "abs_shap": 0.059239581212539034,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "checking_status_0<=X<200",
-        "definition": "Checking account status: balance between 0 and 200 DM.",
-        "shap_value": 0.032615144914597924,
-        "abs_shap": 0.032615144914597924,
-        "direction": "increase_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족이 신용 위험을 약간 증가시키지만, 중요한 계좌나 기존 대출이 이를 완화시킵니다. \n또한, 계좌 잔액이 0에서 200 단위 사이일 때 위험이 약간 상승하는 경향이 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 49.84,
-    "decision_boundary_abs_distance": 0.0583847160627419,
-    "warning_type": "strong"
-  },
-  {
-    "sample_idx": 124,
-    "condition": 1,
-    "distance": "near",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 24,
-      "대출 금액": 5152,
-      "월 상환 부담 수준": 4,
-      "나이": 25,
-      "기존 대출 수": 1,
-      "계좌 잔액": "충분",
-      "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "전자제품 구매",
-      "저축 잔액": "거의 없음",
-      "재직 기간": "4~7년",
-      "거주 상태": "자가 거주",
-      "직업": "숙련 기술직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 51,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.0684927012965275,
-        "abs_shap": 0.0684927012965275,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.05158267230775766,
-        "abs_shap": 0.05158267230775766,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "savings_status_<100",
-        "definition": "Savings account status: savings below 100 DM.",
-        "shap_value": 0.02535539216417066,
-        "abs_shap": 0.02535539216417066,
-        "direction": "increase_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족은 위험을 증가시키지만, 현재 계좌 잔액이 적음에도 불구하고 저축 잔액이 적음으로써 신용 위험이 다소 상승합니다. 이러한 요소들이 종합적으로 고려되었을 때,\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 50.65,
-    "decision_boundary_abs_distance": 0.0664716764573764,
-    "warning_type": "strong"
-  },
-  {
-    "sample_idx": 179,
-    "condition": 1,
-    "distance": "near",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 42,
-      "대출 금액": 4796,
-      "월 상환 부담 수준": 4,
-      "나이": 56,
-      "기존 대출 수": 1,
-      "계좌 잔액": "충분",
-      "신용 이력": "신용 문제 이력 있음",
-      "대출 목적": "중고차 구매",
-      "저축 잔액": "거의 없음",
-      "재직 기간": "7년 이상",
-      "거주 상태": "무상 거주",
-      "직업": "숙련 기술직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 51,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.06719795452916866,
-        "abs_shap": 0.06719795452916866,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "credit_history_critical/other existing credit",
-        "definition": "Credit history: critical account or other existing credits.",
-        "shap_value": -0.056641433034372676,
-        "abs_shap": 0.056641433034372676,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "duration",
-        "definition": "Loan duration in months.",
-        "shap_value": 0.04523862833685771,
-        "abs_shap": 0.04523862833685771,
-        "direction": "increase_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족이 신용 위험을 약간 상승시키지만, 중요한 계좌나 기존 대출의 존재는 위험을 오히려 감소시킵니다. \n대출 기간이 길어질수록 위험이 중간 정도로 증가하는 경향이 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 50.83,
-    "decision_boundary_abs_distance": 0.0683021759649713,
-    "warning_type": "strong"
-  },
-  {
-    "sample_idx": 172,
-    "condition": 1,
-    "distance": "near",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 11,
-      "대출 금액": 1577,
-      "월 상환 부담 수준": 4,
-      "나이": 20,
-      "기존 대출 수": 1,
-      "계좌 잔액": "적음",
-      "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "가구 또는 장비 구매",
-      "저축 잔액": "충분",
-      "재직 기간": "1년 미만",
-      "거주 상태": "자가 거주",
-      "직업": "숙련 기술직",
-      "성별": "여성",
-      "결혼 여부": "o"
-    },
-    "predicted_label": "낮음",
-    "confidence": 52,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "duration",
-        "definition": "Loan duration in months.",
-        "shap_value": -0.05161532072158794,
-        "abs_shap": 0.05161532072158794,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "savings_status_>=1000",
-        "definition": "Savings account status: savings at least 1000 DM.",
-        "shap_value": -0.048446642734688565,
-        "abs_shap": 0.048446642734688565,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.046962255916874286,
-        "abs_shap": 0.046962255916874286,
-        "direction": "increase_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n신청자는 채무 불이행 위험이 낮은 수준으로 평가됩니다. 대출 기간이 길어 전반적인 위험이 감소하였으며, 최소 1000 DM 이상의 저축 계좌 잔액이 채무 불이행 가능성을 더욱 낮춥니다. 반면에 체크 계좌 부재는 위험 프로파일을 약간 상승시킵니다. 이러한 요소들을 종합적으로 고려할 때, 모델은 신청자가 양호한 신용 위험을 나타낸다고 판단합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 52.1,
-    "decision_boundary_abs_distance": 0.0810162899963345,
-    "warning_type": "strong"
-  },
-  {
-    "sample_idx": 47,
-    "condition": 1,
-    "distance": "near",
-    "is_correct": true,
+    "is_correct": false,
     "customer_data": {
       "대출 기간": 30,
-      "대출 금액": 4280,
+      "대출 금액": 3857,
       "월 상환 부담 수준": 4,
-      "나이": 26,
-      "기존 대출 수": 2,
-      "계좌 잔액": "적음",
-      "신용 이력": "대출 이력 없음 또는 전액 상환",
-      "대출 목적": "사업 자금",
-      "저축 잔액": "적음",
-      "재직 기간": "1~4년",
-      "거주 상태": "임차 거주",
-      "직업": "단순 노무직",
-      "성별": "여성",
-      "결혼 여부": "o"
-    },
-    "predicted_label": "높음",
-    "confidence": 67,
-    "true_label": "높음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.04941969861522515,
-        "abs_shap": 0.04941969861522515,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "savings_status_<100",
-        "definition": "Savings account status: savings below 100 DM.",
-        "shap_value": -0.043607238888457744,
-        "abs_shap": 0.043607238888457744,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "credit_history_no credits/all paid",
-        "definition": "Credit history: no credits taken or all previous credits paid back duly.",
-        "shap_value": 0.04003748283714452,
-        "abs_shap": 0.04003748283714452,
-        "direction": "increase_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족이 신용 위험을 더욱 증가시키고 있으며, 저축 잔액이 거의 없는 상태는 위험을 약간 완화시킵니다. \n기존 대출 이력이 없거나 과거 대출이 전액 상환된 이력만 있는 것은 위험 평가를 더욱 높입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 66.89,
-    "decision_boundary_abs_distance": 0.10888849753959,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 178,
-    "condition": 1,
-    "distance": "near",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 48,
-      "대출 금액": 6224,
-      "월 상환 부담 수준": 4,
-      "나이": 50,
+      "나이": 40,
       "기존 대출 수": 1,
-      "계좌 잔액": "적음",
-      "신용 이력": "연체 이력 있음",
-      "대출 목적": "교육비 목적",
-      "저축 잔액": "거의 없음",
-      "재직 기간": "7년 이상",
-      "거주 상태": "무상 거주",
-      "직업": "숙련 기술직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "높음",
-    "confidence": 68,
-    "true_label": "높음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.05464139353967156,
-        "abs_shap": 0.05464139353967156,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "duration",
-        "definition": "Loan duration in months.",
-        "shap_value": 0.052276566435962804,
-        "abs_shap": 0.052276566435962804,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.03835493169038835,
-        "abs_shap": 0.03835493169038835,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족은 채무 불이행 위험을 증가시키며, 대출 상환 기간의 연장은 전체 위험을 더욱 높입니다. \n부정적인 계좌 잔액은 이 우려를 약간 완화시키지만, 이러한 요인들의 복합적인 영향으로 인해 모델은 신용 위험을 나쁜 수준으로 분류합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 68.61,
-    "decision_boundary_abs_distance": 0.1260642893687246,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 63,
-    "condition": 1,
-    "distance": "near",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 24,
-      "대출 금액": 11328,
-      "월 상환 부담 수준": 2,
-      "나이": 29,
-      "기존 대출 수": 2,
-      "계좌 잔액": "적음",
+      "계좌 잔액": "부족",
       "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "기타",
+      "대출 목적": "중고차 구매",
       "저축 잔액": "거의 없음",
       "재직 기간": "1~4년",
       "거주 상태": "자가 거주",
@@ -571,53 +64,256 @@
       "결혼 여부": "x"
     },
     "predicted_label": "높음",
-    "confidence": 69,
-    "true_label": "높음",
+    "confidence": 61,
+    "true_label": "낮음",
     "local_shap_top3_features": [
       {
-        "rank": 1,
-        "feature": "credit_amount",
-        "definition": "Credit amount requested by the applicant.",
-        "shap_value": 0.09159204278265018,
-        "abs_shap": 0.09159204278265018,
-        "direction": "increase_risk"
+        "feature": "checking_status_<0",
+        "value": 0.08
       },
       {
-        "rank": 2,
         "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.05258056647553289,
-        "abs_shap": 0.05258056647553289,
-        "direction": "increase_risk"
+        "value": 0.06
       },
       {
-        "rank": 3,
         "feature": "duration",
-        "definition": "Loan duration in months.",
-        "shap_value": 0.02821019357702532,
-        "abs_shap": 0.02821019357702532,
-        "direction": "increase_risk"
+        "value": 0.05
       }
     ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n요청된 대출 금액이 상당히 크기 때문에 위험이 더욱 증가하고, 체크 계좌의 부재 또한 위험을 높입니다. 또한, 상환 기간이 길어짐에 따라 대출 위험 프로필이 더욱 높아지는 경향을 보입니다.\n대출 금액\n체크 계좌 부족\n상환 기간\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 68.67,
-    "decision_boundary_abs_distance": 0.126664425428034,
+    "explanation": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족은 재정적 어려움을 시사하며 상환 신뢰성을 저하시킵니다.\n출금 계좌 부재는 재정 투명성을 떨어뜨려 소득과 지출 추적을 어렵게 합니다.\n대출 기간이 길어질수록 잠재적인 재정 변화의 기간이 연장되어 채무 불이행 가능성이 증가합니다.\n이러한 요인들이 결합되어 모델의 최종 예측인 높은 신용 위험을 확인합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 61.42,
+    "decision_boundary_abs_distance": 0.2142406251014095,
     "warning_type": "none"
   },
   {
-    "sample_idx": 153,
+    "sample_idx": 20,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 1355,
+      "월 상환 부담 수준": 3,
+      "나이": 25,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "높음",
+    "confidence": 66,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.07
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.03
+      },
+      {
+        "feature": "duration",
+        "value": 0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.\n계좌 잔액 부족으로 인해 금융 활동의 가시성이 제한되어 신용 위험이 증가했습니다.\n마이너스 계좌 잔액은 위험을 약간 감소시키지만, 특정 금융 조정으로 인해 우려가 완화되는 양상을 보입니다.\n대출 기간이 길어질수록 상환 불확실성이 커져 신용 위험 가능성 높아집니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 65.94,
+    "decision_boundary_abs_distance": 0.25936049061831146,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 23,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": false,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 2292,
+      "월 상환 부담 수준": 4,
+      "나이": 42,
+      "기존 대출 수": 2,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "사업 자금",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "무직",
+      "거주 상태": "자가 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 91,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.07
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.06
+      },
+      {
+        "feature": "duration",
+        "value": -0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮게 평가됩니다. 계좌 잔액 부족이 없는 점은 보수적인 재무 관리 방식을 반영하여 신용 위험을 감소시킵니다. \n신용 문제 이력이나 기존 대출의 존재는 복잡한 금융 의무 관리 경험을 보여주어 신용 위험을 더욱 낮춥니다. \n대출 기간이 길어짐으로써 상환 가능성이 확대되어 신용 위험이 감소하는 효과가 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 90.62,
+    "decision_boundary_abs_distance": 0.3062007443063385,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 27,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": false,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 2384,
+      "월 상환 부담 수준": 4,
+      "나이": 64,
+      "기존 대출 수": 1,
+      "계좌 잔액": "부족",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "임차 거주",
+      "직업": "단순 노무직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 73,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_<0",
+        "value": 0.1
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.07
+      },
+      {
+        "feature": "duration",
+        "value": 0.05
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.\n계좌 잔액 부족은 재정적 어려움을 시사하며 상환 신뢰성을 저하시킵니다.\n출금 계좌의 부재는 차입자의 일상 재정 관리 능력을 제한하고 수입 수령을 어렵게 하여 부채 상환을 더욱 복잡하게 만듭니다.\n대출 기간이 길어짐에 따라 상환 기간이 연장되어 예상치 못한 재정적 어려움이 발생할 가능성이 증가합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 73.12,
+    "decision_boundary_abs_distance": 0.33118208361574175,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 35,
+    "condition": 1,
+    "distance": "near",
+    "is_correct": false,
+    "customer_data": {
+      "대출 기간": 6,
+      "대출 금액": 1209,
+      "월 상환 부담 수준": 4,
+      "나이": 47,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "연체 이력 있음",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "무직",
+      "거주 상태": "자가 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 67,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "duration",
+        "value": -0.1
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05
+      },
+      {
+        "feature": "checking_status_0<=X<200",
+        "value": 0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n대출 기간은 전체 위험을 감소시키는 요인이지만, 계좌 잔액 부족과 잔액이 0에서 200DM 사이인 상태는 신용 위험을 상승시키는 요인으로 작용합니다.\n이러한 계좌 상태 요인들로 인해 신용 위험이 증가하게 됩니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 67.39,
+    "decision_boundary_abs_distance": 0.07391974553599734,
+    "warning_type": "strong"
+  },
+  {
+    "sample_idx": 39,
+    "condition": 1,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 1246,
+      "월 상환 부담 수준": 4,
+      "나이": 23,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 55,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.04
+      },
+      {
+        "feature": "purpose_new car",
+        "value": 0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족이 신용 위험을 약간 증가시키지만, 부정적인 계좌 잔액은 이를 완화하는 역할을 합니다. \n또한 신차 구매 목적의 대출 요청은 위험 수준을 더욱 높이는 요인입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 54.71,
+    "decision_boundary_abs_distance": 0.14707265739905473,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 43,
     "condition": 1,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
       "대출 기간": 12,
-      "대출 금액": 1103,
+      "대출 금액": 1108,
       "월 상환 부담 수준": 4,
-      "나이": 29,
+      "나이": 28,
       "기존 대출 수": 2,
-      "계좌 잔액": "적음",
-      "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "전자제품 구매",
+      "계좌 잔액": "부족",
+      "신용 이력": "대출 이력 없음 또는 전액 상환",
+      "대출 목적": "수리비",
       "저축 잔액": "거의 없음",
       "재직 기간": "4~7년",
       "거주 상태": "자가 거주",
@@ -625,209 +321,204 @@
       "성별": "남성",
       "결혼 여부": "x"
     },
-    "predicted_label": "낮음",
-    "confidence": 58,
-    "true_label": "낮음",
+    "predicted_label": "높음",
+    "confidence": 53,
+    "true_label": "높음",
     "local_shap_top3_features": [
       {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.049381572604988,
-        "abs_shap": 0.049381572604988,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "savings_status_<100",
-        "definition": "Savings account status: savings below 100 DM.",
-        "shap_value": -0.04709341427576947,
-        "abs_shap": 0.04709341427576947,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "savings_status_>=1000",
-        "definition": "Savings account status: savings at least 1000 DM.",
-        "shap_value": -0.04647554256223048,
-        "abs_shap": 0.04647554256223048,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족은 신용 위험을 약간 증가시키지만, 저축 잔액이 100 미만인 경우 위험은 감소합니다. \n또한, 최소 1,000 이상의 충분한 저축 금액을 보유하고 있음은 신용 위험을 더욱 낮춥니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 58.31,
-    "decision_boundary_abs_distance": 0.143103012349492,
-    "warning_type": "weak"
-  },
-  {
-    "sample_idx": 32,
-    "condition": 1,
-    "distance": "near",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 12,
-      "대출 금액": 1768,
-      "월 상환 부담 수준": 3,
-      "나이": 24,
-      "기존 대출 수": 1,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "가구 또는 장비 구매",
-      "저축 잔액": "거의 없음",
-      "재직 기간": "1~4년",
-      "거주 상태": "임차 거주",
-      "직업": "단순 노무직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 58,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.044611051137355466,
-        "abs_shap": 0.044611051137355466,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "savings_status_<100",
-        "definition": "Savings account status: savings below 100 DM.",
-        "shap_value": -0.04274321756268498,
-        "abs_shap": 0.04274321756268498,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
         "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.03164950534621661,
-        "abs_shap": 0.03164950534621661,
-        "direction": "decrease_risk"
+        "value": 0.08
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      },
+      {
+        "feature": "credit_history_no credits/all paid",
+        "value": 0.05
       }
     ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 저축 잔액이 거의 없으며, 체크 계좌 잔액도 부족한 상태로 나타나 금융 행동 패턴이 상대적으로 안정적이라고 판단됩니다.\n체크 계좌 잔액 부족은 신용 위험을 약간 증가시키는 요인이지만, 이는 매우 낮은 저축 잔액과 함께 금융 위험을 감소시키는 요소들에 의해 상쇄됩니다.\n이러한 요인들이 결합되어 신용 위험 평가가 긍정적으로 이루어짐을 보여줍니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 58.32,
-    "decision_boundary_abs_distance": 0.1432037118246996,
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 높게 평가됩니다. \n계좌 잔액 부족은 현재의 재정적 어려움을 시사하며, \n출금 계좌 부재는 일관된 재정 활동 확인을 어렵게 합니다. \n또한 대출 이력 부족 또는 전액 상환 이력 부재는 장기적인 상환 신뢰성 평가를 어렵게 합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 53.29,
+    "decision_boundary_abs_distance": 0.1328702217929253,
     "warning_type": "weak"
   },
   {
-    "sample_idx": 160,
+    "sample_idx": 49,
     "condition": 1,
-    "distance": "near",
+    "distance": "far",
     "is_correct": true,
     "customer_data": {
-      "대출 기간": 48,
-      "대출 금액": 7685,
-      "월 상환 부담 수준": 2,
-      "나이": 37,
+      "대출 기간": 24,
+      "대출 금액": 1823,
+      "월 상환 부담 수준": 4,
+      "나이": 30,
       "기존 대출 수": 1,
       "계좌 잔액": "부족",
-      "신용 이력": "대출 전액 상환 이력",
-      "대출 목적": "사업 자금",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "전자제품 구매",
       "저축 잔액": "거의 없음",
-      "재직 기간": "4~7년",
-      "거주 상태": "임차 거주",
-      "직업": "숙련 기술직",
-      "성별": "여성",
-      "결혼 여부": "o"
+      "재직 기간": "무직",
+      "거주 상태": "자가 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "남성",
+      "결혼 여부": "x"
     },
     "predicted_label": "높음",
     "confidence": 70,
     "true_label": "높음",
     "local_shap_top3_features": [
       {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.10492718482749523,
-        "abs_shap": 0.10492718482749523,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "credit_history_critical/other existing credit",
-        "definition": "Credit history: critical account or other existing credits.",
-        "shap_value": -0.05375034440792325,
-        "abs_shap": 0.05375034440792325,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
         "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.04203346086530913,
-        "abs_shap": 0.04203346086530913,
-        "direction": "decrease_risk"
+        "value": 0.09
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.07
+      },
+      {
+        "feature": "duration",
+        "value": 0.06
       }
     ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족으로 인한 입출금 계좌 부재는 신용 위험을 증가시키는 요인 중 하나입니다.\n신용 문제 이력인 비판적 계정 또는 기존 신용 문제는 신용 신뢰도를 떨어뜨립니다.\n부정적인 은행 잔액 유지 또한 대출 상환 능력에 대한 우려를 높입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 70.38,
-    "decision_boundary_abs_distance": 0.1437609256761113,
+    "explanation": "본 AI가 예측한 결과에 따르면,\n주요 요인 세 가지가 이 평가를 주도합니다.\n첫째, 계좌 잔액이 마이너스인 상태는 채무 불이행 가능성을 크게 높입니다.\n둘째, 체크 계좌가 전혀 없는 것은 재정적 불안정성을 더욱 심화시킵니다.\n셋째, 대출 기간이 길어질수록 상환 불확실성이 증가하여 대출 위험이 커집니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 69.67,
+    "decision_boundary_abs_distance": 0.29669481907962936,
     "warning_type": "none"
   },
   {
-    "sample_idx": 117,
+    "sample_idx": 53,
     "condition": 1,
     "distance": "near",
     "is_correct": true,
     "customer_data": {
-      "대출 기간": 18,
-      "대출 금액": 1984,
+      "대출 기간": 36,
+      "대출 금액": 2820,
       "월 상환 부담 수준": 4,
-      "나이": 47,
+      "나이": 27,
+      "기존 대출 수": 2,
+      "계좌 잔액": "적음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 53,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "duration",
+        "value": 0.06
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n대출 기간이 길어짐에 따라 채무 불이행 가능성이 증가하여 신용 위험이 상승했습니다.\n출금 계좌 부재는 금융 관리 능력의 제한을 시사하며 신용 위험을 더욱 높입니다.\n반면에 신용 이력에 중요한 계정이나 기존 대출이 포함되어 있어 신용 위험을 약간 완화시키는 효과가 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 52.91,
+    "decision_boundary_abs_distance": 0.12914939650937762,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 60,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 1597,
+      "월 상환 부담 수준": 4,
+      "나이": 54,
       "기존 대출 수": 2,
       "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "가구 또는 장비 구매",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "교육비 목적",
       "저축 잔액": "거의 없음",
-      "재직 기간": "1~4년",
+      "재직 기간": "7년 이상",
       "거주 상태": "무상 거주",
       "직업": "숙련 기술직",
       "성별": "남성",
       "결혼 여부": "x"
     },
     "predicted_label": "낮음",
-    "confidence": 59,
+    "confidence": 84,
     "true_label": "낮음",
     "local_shap_top3_features": [
       {
-        "rank": 1,
-        "feature": "duration",
-        "definition": "Loan duration in months.",
-        "shap_value": -0.0778719914713039,
-        "abs_shap": 0.0778719914713039,
-        "direction": "decrease_risk"
+        "feature": "checking_status_no checking",
+        "value": -0.1
       },
       {
-        "rank": 2,
         "feature": "credit_history_critical/other existing credit",
-        "definition": "Credit history: critical account or other existing credits.",
-        "shap_value": -0.06311926889330755,
-        "abs_shap": 0.06311926889330755,
-        "direction": "decrease_risk"
+        "value": -0.05
       },
       {
-        "rank": 3,
-        "feature": "savings_status_no known savings",
-        "definition": "Savings account status: no known savings account.",
-        "shap_value": -0.04545011991872763,
-        "abs_shap": 0.04545011991872763,
-        "direction": "decrease_risk"
+        "feature": "purpose_education",
+        "value": 0.04
       }
     ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n대출 기간이 연장됨에 따라 상환 가능성이 증가하여 신용 위험이 감소합니다.\n신용 이력에 중요한 계좌나 기존 대출이 포함되어 있지 않아 위험이 낮아집니다.\n알려진 저축 계좌가 없는 것도 위험을 더욱 낮추는 요인입니다.\n이러한 요소들이 결합되어 모델의 긍정적인 신용 위험 평가와 일치합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 58.48,
-    "decision_boundary_abs_distance": 0.1448479930548735,
-    "warning_type": "weak"
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족은 보수적인 재정 관리 방식을 시사하며, 이는 전체 위험을 크게 감소시킵니다. \n또한, 신용 문제 이력이나 기존 대출이 존재함으로써 신용 관리 경험이 입증되어 위험이 더욱 낮아집니다. \n반면에 교육비 목적의 대출 계획은 위험을 약간 증가시키는데, 이는 보통 담보가 부족한 대출 형태이기 때문입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 83.95,
+    "decision_boundary_abs_distance": 0.23953279680409534,
+    "warning_type": "none"
   },
   {
-    "sample_idx": 61,
+    "sample_idx": 66,
     "condition": 1,
-    "distance": "near",
+    "distance": "far",
+    "is_correct": false,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 1344,
+      "월 상환 부담 수준": 4,
+      "나이": 37,
+      "기존 대출 수": 2,
+      "계좌 잔액": "충분",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "4~7년",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 88,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05
+      },
+      {
+        "feature": "savings_status_no known savings",
+        "value": -0.04
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n신청자는 높은 신용 위험을 가진 것으로 평가됩니다. \n계좌 잔액 부족이 주요 위험 요인으로 작용하고 있습니다. \n그러나 저축 계좌 기록 부재는 위험을 일부 완화시키는 요인으로 해석됩니다. \n또한, 중요 계정이나 기존 대출의 존재는 위험 평가를 낮추는 데 기여합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 87.65,
+    "decision_boundary_abs_distance": 0.27649399861053914,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 70,
+    "condition": 1,
+    "distance": "far",
     "is_correct": true,
     "customer_data": {
       "대출 기간": 18,
@@ -846,261 +537,29 @@
       "결혼 여부": "x"
     },
     "predicted_label": "높음",
-    "confidence": 71,
+    "confidence": 69,
     "true_label": "높음",
     "local_shap_top3_features": [
       {
-        "rank": 1,
-        "feature": "savings_status_no known savings",
-        "definition": "Savings account status: no known savings account.",
-        "shap_value": -0.05864826263581112,
-        "abs_shap": 0.05864826263581112,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.051811438604175725,
-        "abs_shap": 0.051811438604175725,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "credit_history_critical/other existing credit",
-        "definition": "Credit history: critical account or other existing credits.",
-        "shap_value": -0.051159615448136325,
-        "abs_shap": 0.051159615448136325,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n대출 기간  대출 금액  월 상환 부담 수준  \n현재 거주 기간  나이  기존 대출 수  \n부양 가족 수  계좌 잔액 부족  계좌 잔액 적음  \n계좌 잔액 충분  계좌 잔액 부족  \n신용 문제 이력  연체 이력  기존 대출 상환 중  \n대출 이력 없음 또는 전액 상환  사업 자금 목적  가전제품 구매 목적  \n교육비 목적  가구 또는 장비 구매 목적  신차 구매 목적  \n중고차 구매 목적  전자제품 구매 목적  수리비 목적  \n직업 재교육 목적  기타 목적  저축 잔액이 거의 없음  \n저축 잔액 적음  저축 잔액 보통  저축 잔액 충분  \n저축 내역 없음  재직 기간 1년 미만  재직 기간 1~4년  \n재직 기간 4~7년  재직 기간 7년 이상  무직  \n여성 (이혼/별거/기혼 상태)  남성 (이혼 또는 별거)  남성 (기혼 또는 사별)  남성 (미혼)  공동 신청자 있음  보증인 있음  공동 신청자, 보증인 없음  부동산 보유  보험 자산 보유  차량 보유  보유 자산 없음  타 은행 상환 중  할부·외상 상환 중  추가 상환 없음  자가 거주  임차 거주  무상 거주  전문직, 자영업, 관리직  숙련 기술직  단순 노무직  무직, 단순직 외국인  전화 보유  전화 미보유  외국인 근로자  내국인 근로자  신용 등급  성별  결혼 여부  고객은 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 70.84,
-    "decision_boundary_abs_distance": 0.1483890608670215,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 42,
-    "condition": 1,
-    "distance": "near",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 24,
-      "대출 금액": 4351,
-      "월 상환 부담 수준": 1,
-      "나이": 48,
-      "기존 대출 수": 1,
-      "계좌 잔액": "적음",
-      "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "가구 또는 장비 구매",
-      "저축 잔액": "없음",
-      "재직 기간": "1~4년",
-      "거주 상태": "자가 거주",
-      "직업": "단순 노무직",
-      "성별": "여성",
-      "결혼 여부": "o"
-    },
-    "predicted_label": "낮음",
-    "confidence": 59,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.042633704343907446,
-        "abs_shap": 0.042633704343907446,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 2,
         "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.03578592170063125,
-        "abs_shap": 0.03578592170063125,
-        "direction": "decrease_risk"
+        "value": 0.07
       },
       {
-        "rank": 3,
-        "feature": "savings_status_<100",
-        "definition": "Savings account status: savings below 100 DM.",
-        "shap_value": 0.02562355572362646,
-        "abs_shap": 0.02562355572362646,
-        "direction": "increase_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족은 신용 위험을 약간 증가시킵니다.\n월 상환 부담 수준이 낮아 신용 위험을 감소시키는 긍정적인 요인입니다.\n저축 잔액이 최소 임계치 미만일 경우 신용 위험이 증가합니다.\n전반적으로 이러한 요인들이 결합되어 우수한 신용 위험 평가를 이끌어냅니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 59.02,
-    "decision_boundary_abs_distance": 0.1501737260069069,
-    "warning_type": "weak"
-  },
-  {
-    "sample_idx": 100,
-    "condition": 1,
-    "distance": "far",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 48,
-      "대출 금액": 3578,
-      "월 상환 부담 수준": 4,
-      "나이": 47,
-      "기존 대출 수": 1,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "신용 문제 이력 있음",
-      "대출 목적": "전자제품 구매",
-      "저축 잔액": "없음",
-      "재직 기간": "7년 이상",
-      "거주 상태": "자가 거주",
-      "직업": "숙련 기술직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 91,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
         "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.09081593175643134,
-        "abs_shap": 0.09081593175643134,
-        "direction": "decrease_risk"
+        "value": 0.06
       },
       {
-        "rank": 2,
-        "feature": "credit_history_critical/other existing credit",
-        "definition": "Credit history: critical account or other existing credits.",
-        "shap_value": -0.054006962043685505,
-        "abs_shap": 0.054006962043685505,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.0426491915181276,
-        "abs_shap": 0.0426491915181276,
-        "direction": "decrease_risk"
+        "feature": "housing_own",
+        "value": 0.03
       }
     ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 신용 위험이 낮은 수준으로 평가되어 채무 불이행 가능성이 적습니다.\n대출 금액이 적고, 월 상환 부담 수준이 낮으며, 이는 신용 위험을 더욱 감소시킵니다.\n신용 이력에 연체 기록이 없거나 기존 대출 상환 이력이 양호하여 신용 신뢰성이 높아졌습니다.\n계좌 잔액이 충분하지 않지만, 이는 신용 위험에 큰 영향을 미치지 않습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 90.64,
-    "decision_boundary_abs_distance": 0.466422340023632,
+    "explanation": "본 AI가 예측한 결과에 따르면,\n신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.\n계좌 잔액 부족은 재정적 어려움을 시사하며 채무 불이행 가능성을 높입니다.\n출금 계좌의 부재는 일상적인 거래를 원활하게 수행하는 능력을 제한하여 위험을 더욱 증가시킵니다.\n주택 소유 상태는 이 평가에서 위험 증가 요인으로 지목되며, 재정적 유연성 감소를 반영할 수 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 69.41,
+    "decision_boundary_abs_distance": 0.2940986792341206,
     "warning_type": "none"
   },
   {
-    "sample_idx": 45,
-    "condition": 1,
-    "distance": "far",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 12,
-      "대출 금액": 522,
-      "월 상환 부담 수준": 4,
-      "나이": 42,
-      "기존 대출 수": 2,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "신용 문제 이력 있음",
-      "대출 목적": "전자제품 구매",
-      "저축 잔액": "보통",
-      "재직 기간": "7년 이상",
-      "거주 상태": "자가 거주",
-      "직업": "숙련 기술직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 89,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.10117963496278362,
-        "abs_shap": 0.10117963496278362,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "credit_history_critical/other existing credit",
-        "definition": "Credit history: critical account or other existing credits.",
-        "shap_value": -0.05564275259670366,
-        "abs_shap": 0.05564275259670366,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.03352813392825474,
-        "abs_shap": 0.03352813392825474,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족은 독립적인 재무 관리 방식을 시사하며 위험을 감소시킵니다.\n신용 이력에 중요한 계좌나 기존 대출이 포함되어 있어 복잡한 재무 의무 관리 경험이 위험을 더욱 낮춥니다.\n체크링 계좌 잔액이 마이너스가 되는 상황을 적절히 관리할 수 있다는 것은 전체 위험을 낮추는 요소입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 89.34,
-    "decision_boundary_abs_distance": 0.4533771996608219,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 187,
-    "condition": 1,
-    "distance": "far",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 6,
-      "대출 금액": 250,
-      "월 상환 부담 수준": 2,
-      "나이": 41,
-      "기존 대출 수": 2,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "신용 문제 이력 있음",
-      "대출 목적": "신차 구매",
-      "저축 잔액": "충분",
-      "재직 기간": "1~4년",
-      "거주 상태": "자가 거주",
-      "직업": "단순 노무직",
-      "성별": "여성",
-      "결혼 여부": "o"
-    },
-    "predicted_label": "낮음",
-    "confidence": 87,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "duration",
-        "definition": "Loan duration in months.",
-        "shap_value": -0.08950719140860011,
-        "abs_shap": 0.08950719140860011,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.07486753571405563,
-        "abs_shap": 0.07486753571405563,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "credit_history_critical/other existing credit",
-        "definition": "Credit history: critical account or other existing credits.",
-        "shap_value": -0.048725554299793465,
-        "abs_shap": 0.048725554299793465,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n이 사례는 신용 위험이 낮은 수준으로 평가됩니다. 이러한 긍정적인 결과는 세 가지 주요 요인에 의해 뒷받침됩니다.\n대출 기간이 길수록 채무 불이행 가능성이 크게 감소합니다.\n입출금 계좌가 없는 것도 위험 인식을 낮춥니다.\n또한, 중요한 계좌나 기존 대출이 위험을 더욱 낮추는 데 기여합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 87.45,
-    "decision_boundary_abs_distance": 0.4344857517772945,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 142,
+    "sample_idx": 71,
     "condition": 1,
     "distance": "far",
     "is_correct": true,
@@ -1121,55 +580,43 @@
       "결혼 여부": "x"
     },
     "predicted_label": "낮음",
-    "confidence": 87,
+    "confidence": 93,
     "true_label": "낮음",
     "local_shap_top3_features": [
       {
-        "rank": 1,
         "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.1095708947331542,
-        "abs_shap": 0.1095708947331542,
-        "direction": "decrease_risk"
+        "value": -0.08
       },
       {
-        "rank": 2,
         "feature": "credit_history_critical/other existing credit",
-        "definition": "Credit history: critical account or other existing credits.",
-        "shap_value": -0.05303747321464805,
-        "abs_shap": 0.05303747321464805,
-        "direction": "decrease_risk"
+        "value": -0.03
       },
       {
-        "rank": 3,
-        "feature": "purpose_used car",
-        "definition": "Loan purpose: purchase of a used car.",
-        "shap_value": -0.047267416516175706,
-        "abs_shap": 0.047267416516175706,
-        "direction": "decrease_risk"
+        "feature": "checking_status_<0",
+        "value": -0.03
       }
     ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족은 신용 위험을 낮추는 요인 중 하나로, 보수적인 재정 관리 태도를 반영합니다. \n신용 문제 이력이나 기존 대출 관리 경험은 여러 금융 의무를 다루는 능력을 보여주어 신용 위험을 감소시킵니다. \n중고차량 구매 계획은 안정적인 상환을 뒷받침하는 실질적인 자산과 연관되어 있어 신용 위험을 더욱 낮춥니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 87.15,
-    "decision_boundary_abs_distance": 0.431462455822538,
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족이 없는 것은 재정 프로필을 단순화시켜 위험을 감소시킵니다. \n신용 이력에서 중요한 계정이나 기존 대출이 나타나는 것은 특정한 차입 패턴을 보여주며 위험을 낮춥니다. \n계좌 잔액이 마이너스가 되는 것은 특정한 재정 행동을 나타내며 위험을 감소시킵니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 92.51,
+    "decision_boundary_abs_distance": 0.3250643794203295,
     "warning_type": "none"
   },
   {
-    "sample_idx": 189,
+    "sample_idx": 72,
     "condition": 1,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
-      "대출 기간": 21,
-      "대출 금액": 3160,
-      "월 상환 부담 수준": 4,
-      "나이": 41,
-      "기존 대출 수": 1,
+      "대출 기간": 36,
+      "대출 금액": 5742,
+      "월 상환 부담 수준": 2,
+      "나이": 31,
+      "기존 대출 수": 2,
       "계좌 잔액": "입출금 계좌 없음",
       "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "전자제품 구매",
-      "저축 잔액": "없음",
-      "재직 기간": "7년 이상",
+      "대출 목적": "사업 자금",
+      "저축 잔액": "적음",
+      "재직 기간": "4~7년",
       "거주 상태": "자가 거주",
       "직업": "숙련 기술직",
       "성별": "남성",
@@ -1180,51 +627,340 @@
     "true_label": "낮음",
     "local_shap_top3_features": [
       {
-        "rank": 1,
         "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.0955039815536459,
-        "abs_shap": 0.0955039815536459,
-        "direction": "decrease_risk"
+        "value": -0.06
       },
       {
-        "rank": 2,
         "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.0487520522938275,
-        "abs_shap": 0.0487520522938275,
-        "direction": "decrease_risk"
+        "value": -0.04
       },
       {
-        "rank": 3,
-        "feature": "savings_status_<100",
-        "definition": "Savings account status: savings below 100 DM.",
-        "shap_value": -0.03897079221783866,
-        "abs_shap": 0.03897079221783866,
-        "direction": "decrease_risk"
+        "feature": "duration",
+        "value": 0.04
       }
     ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족과 저축 잔액이 거의 없는 상태는 신용 위험을 감소시키는 요인입니다. 이러한 재무 지표들은 신용 위험이 우수하다는 최종 평가를 뒷받침합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 85.47,
-    "decision_boundary_abs_distance": 0.4146508086157803,
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮게 평가되어 대출 승인 가능성이 높습니다.\n계좌 잔액 부족으로 인해 신용 위험이 감소하였으며, 이는 위험을 더욱 낮추는 요인입니다.\n대출 기간이 길어짐에 따라 위험이 약간 증가하는 경향이 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 84.75,
+    "decision_boundary_abs_distance": 0.24754541938558539,
     "warning_type": "none"
   },
   {
-    "sample_idx": 176,
+    "sample_idx": 79,
     "condition": 1,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
-      "대출 기간": 24,
-      "대출 금액": 5804,
+      "대출 기간": 30,
+      "대출 금액": 4280,
       "월 상환 부담 수준": 4,
-      "나이": 27,
+      "나이": 26,
+      "기존 대출 수": 2,
+      "계좌 잔액": "적음",
+      "신용 이력": "대출 이력 없음 또는 전액 상환",
+      "대출 목적": "사업 자금",
+      "저축 잔액": "적음",
+      "재직 기간": "1~4년",
+      "거주 상태": "임차 거주",
+      "직업": "단순 노무직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "높음",
+    "confidence": 68,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "credit_history_no credits/all paid",
+        "value": 0.05
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05
+      },
+      {
+        "feature": "savings_status_<100",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n대출 이력의 부재 또는 전액 상환 이력의 부족은 신뢰성을 평가할 역사적 데이터가 부족해 위험을 증가시킵니다.  \n또한 주요 입출금 계좌를 유지하지 않는 것은 일상적인 금융 활동에 대한 가시성을 감소시켜 위험을 더욱 높입니다.  \n반면에 저축 금액이 매우 적은 것은 위험을 낮추는 요인으로 작용할 수 있으나, 이 요인들을 종합하면\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 67.73,
+    "decision_boundary_abs_distance": 0.27727632094429666,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 85,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 776,
+      "월 상환 부담 수준": 4,
+      "나이": 28,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 91,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.09
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.04
+      },
+      {
+        "feature": "duration",
+        "value": -0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족과 함께 입출금 계좌 부재가 위험 감소에 기여하고 있습니다.\n대출 기간 또한 전체 위험 프로파일을 낮추는 데 도움이 됩니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 91.09,
+    "decision_boundary_abs_distance": 0.31088434719963753,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 96,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 10,
+      "대출 금액": 2146,
+      "월 상환 부담 수준": 1,
+      "나이": 23,
       "기존 대출 수": 2,
       "계좌 잔액": "입출금 계좌 없음",
       "신용 이력": "신용 문제 이력 있음",
-      "대출 목적": "중고차 구매",
-      "저축 잔액": "충분",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "임차 거주",
+      "직업": "숙련 기술직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 85,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.07
+      },
+      {
+        "feature": "duration",
+        "value": -0.06
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다.\n계좌 잔액 부족이 없는 것은 안정적인 재무 상태를 시사하며, 전체 위험을 감소시킵니다.\n대출 기간이 길어짐에 따라 상환 부담이 시간에 분산되어 채무 불이행 가능성이 더욱 줄어듭니다.\n중요한 신용 이력이나 기존 대출의 존재는 신용 평가를 낮추는데 기여하며, 이는 안정적인 차입 경험을 반영합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 85.35,
+    "decision_boundary_abs_distance": 0.2535453386603669,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 101,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": false,
+    "customer_data": {
+      "대출 기간": 18,
+      "대출 금액": 3104,
+      "월 상환 부담 수준": 3,
+      "나이": 31,
+      "기존 대출 수": 1,
+      "계좌 잔액": "부족",
+      "신용 이력": "대출 이력 없음 또는 전액 상환",
+      "대출 목적": "사업 자금",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "4~7년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 67,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_<0",
+        "value": 0.1
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      },
+      {
+        "feature": "credit_history_no credits/all paid",
+        "value": 0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.\n계좌 잔액 부족은 재정적 어려움을 시사하며 상환 신뢰성을 저하시킵니다.\n출금 계좌 부재는 일관된 현금 흐름과 재정 안정성을 확인하는 능력을 제한합니다.\n이전 대출 이력이 없거나 전액 상환된 대출 기록이 없는 것은 차입 행동을 평가할 수 있는 제한된 이력을 의미하여 불확실성을 증가시킵니다.\n이러한 지표들이 종합적으로 이 신청에 대해 높은 신용 위험을 초래한다고 모델은 결론짓습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 67.32,
+    "decision_boundary_abs_distance": 0.2731559017601891,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 102,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": false,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 4169,
+      "월 상환 부담 수준": 4,
+      "나이": 28,
+      "기존 대출 수": 1,
+      "계좌 잔액": "부족",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "거의 없음",
       "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 63,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_<0",
+        "value": 0.09
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      },
+      {
+        "feature": "duration",
+        "value": 0.05
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.\n계좌 잔액이 부족한 상태는 재정적 어려움을 나타내며 신용 위험을 증가시킵니다.\n입출금 계좌가 없는 것은 재정 투명성을 저해하고 위험을 더욱 높입니다.\n대출 기간이 길어짐에 따라 상환 기간이 연장되어 자연스럽게 위험이 증가합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 62.54,
+    "decision_boundary_abs_distance": 0.22537338098412785,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 112,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 48,
+      "대출 금액": 3578,
+      "월 상환 부담 수준": 4,
+      "나이": 47,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 93,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.06
+      },
+      {
+        "feature": "duration",
+        "value": 0.04
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n대출 기간이 길어짐에 따라 신용 위험이 약간 증가하지만, 계좌 부재는 전체 위험을 감소시키는 요인입니다. 또한, 신용 이력에 중요한 계정이나 기존 대출이 포함되어 있어 재정적 의무 관리 이력을 보여주며, 이 모든 요소들이 긍정적인 신용 결과를 시사합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 93.48,
+    "decision_boundary_abs_distance": 0.3347991829171181,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 116,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 12,
+      "대출 금액": 522,
+      "월 상환 부담 수준": 4,
+      "나이": 42,
+      "기존 대출 수": 2,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "보통",
+      "재직 기간": "7년 이상",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 93,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.07
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.03
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.02
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 신용 프로필을 보입니다.\n대출 금액이 적고, 월 상환 부담 수준이 안정적이며, 현재 거주 기간이 길어 신용 위험이 감소합니다.\n기존 대출 상환 이력이 있으며, 이는 복잡한 금융 의무를 관리한 경험을 보여줍니다.\n계좌 잔액이 충분하고 신중한 현금 흐름 관리 습관이 있어 신용 위험이 더욱 낮아집니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 93.26,
+    "decision_boundary_abs_distance": 0.33264129931884734,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 117,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 36,
+      "대출 금액": 3595,
+      "월 상환 부담 수준": 4,
+      "나이": 28,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "7년 이상",
       "거주 상태": "자가 거주",
       "직업": "숙련 기술직",
       "성별": "남성",
@@ -1235,818 +971,36 @@
     "true_label": "낮음",
     "local_shap_top3_features": [
       {
-        "rank": 1,
         "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.08985337769226254,
-        "abs_shap": 0.08985337769226254,
-        "direction": "decrease_risk"
+        "value": -0.09
       },
       {
-        "rank": 2,
-        "feature": "credit_history_critical/other existing credit",
-        "definition": "Credit history: critical account or other existing credits.",
-        "shap_value": -0.04663077481942944,
-        "abs_shap": 0.04663077481942944,
-        "direction": "decrease_risk"
+        "feature": "checking_status_<0",
+        "value": -0.05
       },
       {
-        "rank": 3,
-        "feature": "purpose_used car",
-        "definition": "Loan purpose: purchase of a used car.",
-        "shap_value": -0.04304677300796366,
-        "abs_shap": 0.04304677300796366,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족과 신용 문제 이력이 위험 프로파일을 낮추는 요인으로 작용합니다. \n중고차량 구매 목적의 대출은 이러한 위험 감소에 기여합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 85.33,
-    "decision_boundary_abs_distance": 0.4132664645085337,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 146,
-    "condition": 1,
-    "distance": "far",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 12,
-      "대출 금액": 1255,
-      "월 상환 부담 수준": 4,
-      "나이": 61,
-      "기존 대출 수": 2,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "신용 문제 이력 있음",
-      "대출 목적": "신차 구매",
-      "저축 잔액": "거의 없음",
-      "재직 기간": "7년 이상",
-      "거주 상태": "자가 거주",
-      "직업": "단순 노무직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 83,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.10945788922548197,
-        "abs_shap": 0.10945788922548197,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "credit_history_critical/other existing credit",
-        "definition": "Credit history: critical account or other existing credits.",
-        "shap_value": -0.07681304178024131,
-        "abs_shap": 0.07681304178024131,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
         "feature": "duration",
-        "definition": "Loan duration in months.",
-        "shap_value": -0.03617438704453243,
-        "abs_shap": 0.03617438704453243,
-        "direction": "decrease_risk"
+        "value": 0.05
       }
     ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족이 없는 것은 독립적인 재무 관리 스타일을 시사하며, 채무 불이행 가능성을 감소시킵니다. \n또한, 중요한 계좌나 기존 대출 이력은 다양한 금융 의무를 관리한 경험을 보여주어 위험 평가를 더욱 낮춥니다. \n대출 기간이 예측 가능한 상환 패턴과 일치함으로써 위험 프로필이 더욱 감소합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 83.12,
-    "decision_boundary_abs_distance": 0.3911541279464368,
+    "explanation": "본 AI가 예측한 결과에 따르면,\n신청자는 채무 불이행 위험이 낮은 수준으로 평가됩니다. 이 긍정적인 전망은 주로 표준 예금 계좌 부재로 인해 위험이 감소하고, 부정적인 계좌 잔액이 위험 프로파일을 더욱 낮추는 요인에 의해 주도됩니다. 그러나 요청된 대출 기간이 약간 길어지면서 상환 기간이 길어짐에 따라 불확실성이 증가하여 위험이 상승하는 경향이 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 86.15,
+    "decision_boundary_abs_distance": 0.2614788609529316,
     "warning_type": "none"
   },
   {
-    "sample_idx": 194,
-    "condition": 1,
-    "distance": "far",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 12,
-      "대출 금액": 2012,
-      "월 상환 부담 수준": 4,
-      "나이": 61,
-      "기존 대출 수": 1,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "신용 문제 이력 있음",
-      "대출 목적": "교육비 목적",
-      "저축 잔액": "없음",
-      "재직 기간": "4~7년",
-      "거주 상태": "자가 거주",
-      "직업": "숙련 기술직",
-      "성별": "여성",
-      "결혼 여부": "o"
-    },
-    "predicted_label": "낮음",
-    "confidence": 83,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.09506088955737033,
-        "abs_shap": 0.09506088955737033,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "credit_history_critical/other existing credit",
-        "definition": "Credit history: critical account or other existing credits.",
-        "shap_value": -0.05133532525773713,
-        "abs_shap": 0.05133532525773713,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "purpose_education",
-        "definition": "Loan purpose: education.",
-        "shap_value": 0.0410681432585449,
-        "abs_shap": 0.0410681432585449,
-        "direction": "increase_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족과 신용 문제 이력이 위험을 감소시키는 요인으로 작용하고 있습니다. 그러나 교육 목적의 대출 신청이 위험을 약간 증가시키는 요인입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 83.01,
-    "decision_boundary_abs_distance": 0.3900720382486219,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 197,
-    "condition": 1,
-    "distance": "far",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 12,
-      "대출 금액": 1262,
-      "월 상환 부담 수준": 3,
-      "나이": 25,
-      "기존 대출 수": 1,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "전자제품 구매",
-      "저축 잔액": "거의 없음",
-      "재직 기간": "1~4년",
-      "거주 상태": "자가 거주",
-      "직업": "숙련 기술직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 82,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.1231617106838872,
-        "abs_shap": 0.1231617106838872,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.04737949247626988,
-        "abs_shap": 0.04737949247626988,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "duration",
-        "definition": "Loan duration in months.",
-        "shap_value": -0.04312267204105814,
-        "abs_shap": 0.04312267204105814,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n신청자는 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n계좌 잔액 부족으로 인해 신용 위험이 감소하였습니다.\n부정 잔액 보유는 채무 불이행 가능성을 더욱 낮추고 있습니다.\n대출 기간이 짧아 전체 신용 위험을 감소시키는 요인으로 작용하고 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 82.21,
-    "decision_boundary_abs_distance": 0.3820816985022567,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 10,
-    "condition": 1,
-    "distance": "far",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 36,
-      "대출 금액": 2299,
-      "월 상환 부담 수준": 4,
-      "나이": 39,
-      "기존 대출 수": 1,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "전자제품 구매",
-      "저축 잔액": "보통",
-      "재직 기간": "7년 이상",
-      "거주 상태": "자가 거주",
-      "직업": "숙련 기술직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 81,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.1080736401716466,
-        "abs_shap": 0.1080736401716466,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.04937107877054918,
-        "abs_shap": 0.04937107877054918,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "savings_status_<100",
-        "definition": "Savings account status: savings below 100 DM.",
-        "shap_value": -0.04205596403286696,
-        "abs_shap": 0.04205596403286696,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 주요 금융 요인 세 가지에 기반하여 다음과 같이 분석됩니다.\n전통적인 예금 계좌를 보유하지 않는 것은 표준 신용 라인에 대한 의존도가 낮음을 시사하며, 이는 전체 위험을 감소시킵니다.\n음의 예금 계좌 잔액을 유지하는 것은 모델이 위험 감소로 해석하는 특정 금융 조정을 나타냅니다.\n매우 낮은 저축 잔액은 노출 수준을 낮추는 재무 자세를 반영하여 위험을 더욱 감소시킵니다.\n이러한 요인들이 결합되어 우수한 신용 위험 프로파일로 최종 평가됩니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 80.63,
-    "decision_boundary_abs_distance": 0.3663260355027761,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 81,
-    "condition": 1,
-    "distance": "far",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 15,
-      "대출 금액": 1478,
-      "월 상환 부담 수준": 4,
-      "나이": 33,
-      "기존 대출 수": 2,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "연체 이력 있음",
-      "대출 목적": "전자제품 구매",
-      "저축 잔액": "거의 없음",
-      "재직 기간": "1~4년",
-      "거주 상태": "자가 거주",
-      "직업": "숙련 기술직",
-      "성별": "남성",
-      "결혼 여부": "o"
-    },
-    "predicted_label": "낮음",
-    "confidence": 78,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.11783586699173688,
-        "abs_shap": 0.11783586699173688,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.04616685902985243,
-        "abs_shap": 0.04616685902985243,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "duration",
-        "definition": "Loan duration in months.",
-        "shap_value": -0.035078234652208724,
-        "abs_shap": 0.035078234652208724,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족은 채무 불이행 위험을 증가시키지만, 현재 계좌 잔액이 충분하지 않은 상태에서도 이러한 요인이 신용 위험을 크게 악화시키지는 않습니다.\n대출 기간이 짧게 설정되어 있어, 이 또한 신용 위험을 낮추는 요소로 작용합니다. 신뢰할 수 있는 대출자의 패턴과 일치하는 대출 기간은 위험 평가를 더욱 긍정적으로 만듭니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 77.95,
-    "decision_boundary_abs_distance": 0.3394877256279153,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 126,
-    "condition": 1,
-    "distance": "far",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 18,
-      "대출 금액": 1800,
-      "월 상환 부담 수준": 4,
-      "나이": 24,
-      "기존 대출 수": 2,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "신용 문제 이력 있음",
-      "대출 목적": "전자제품 구매",
-      "저축 잔액": "거의 없음",
-      "재직 기간": "1~4년",
-      "거주 상태": "자가 거주",
-      "직업": "숙련 기술직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 76,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.1111375253470449,
-        "abs_shap": 0.1111375253470449,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "credit_history_critical/other existing credit",
-        "definition": "Credit history: critical account or other existing credits.",
-        "shap_value": -0.05675112726683996,
-        "abs_shap": 0.05675112726683996,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.03838513991158005,
-        "abs_shap": 0.03838513991158005,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족과 신용 이력에 있는 중요한 계정 또는 기존 대출의 존재, 그리고 부정적인 계좌 잔액은 전체 위험을 감소시키는 요인들입니다. 이러한 요소들이 합쳐져 이 고객이 우수한 신용 위험을 가진 것으로 평가된다는 점을 강조합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 76.29,
-    "decision_boundary_abs_distance": 0.322859120542274,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 177,
-    "condition": 1,
-    "distance": "far",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 12,
-      "대출 금액": 1963,
-      "월 상환 부담 수준": 4,
-      "나이": 31,
-      "기존 대출 수": 2,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "전자제품 구매",
-      "저축 잔액": "거의 없음",
-      "재직 기간": "4~7년",
-      "거주 상태": "임차 거주",
-      "직업": "전문직, 자영업, 관리직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 75,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.11473591813231263,
-        "abs_shap": 0.11473591813231263,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.041069491389427684,
-        "abs_shap": 0.041069491389427684,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "duration",
-        "definition": "Loan duration in months.",
-        "shap_value": -0.03847372737220219,
-        "abs_shap": 0.03847372737220219,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n대출 금액이 상대적으로 적고, 월 상환 부담 수준이 관리 가능한 범위 내에 있으며, 현재 거주 기간이 길어 안정적인 재정 상태를 보입니다.  \n고객의 나이는 대출 상환 능력에 긍정적인 영향을 미치며, 기존 대출 수가 적어 추가적인 상환 부담이 적습니다.  \n저축 잔액이 충분하여 긴급 상황에 대비할 수 있는 재정적 여유가 있으며, 직업은 안정적인 수입을 보장하는 전문직에 속합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 74.51,
-    "decision_boundary_abs_distance": 0.3050599728088679,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 123,
-    "condition": 1,
-    "distance": "far",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 48,
-      "대출 금액": 10222,
-      "월 상환 부담 수준": 4,
-      "나이": 37,
-      "기존 대출 수": 1,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "전자제품 구매",
-      "저축 잔액": "없음",
-      "재직 기간": "4~7년",
-      "거주 상태": "자가 거주",
-      "직업": "숙련 기술직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 75,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.1008377871158497,
-        "abs_shap": 0.1008377871158497,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "credit_amount",
-        "definition": "Credit amount requested by the applicant.",
-        "shap_value": 0.05711658646827075,
-        "abs_shap": 0.05711658646827075,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.04601723641657512,
-        "abs_shap": 0.04601723641657512,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n대출 기간  대출 금액이 상대적으로 적어 위험을 증가시키지 않습니다.\n월 상환 부담 수준  안정적인 상환 부담 수준을 유지하고 있어 위험을 낮춥니다.\n현재 거주 기간  장기간 거주하고 있어 안정적인 거주 상황을 반영합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 74.46,
-    "decision_boundary_abs_distance": 0.3046399740264061,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 169,
-    "condition": 1,
-    "distance": "far",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 10,
-      "대출 금액": 1287,
-      "월 상환 부담 수준": 4,
-      "나이": 45,
-      "기존 대출 수": 1,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "신차 구매",
-      "저축 잔액": "없음",
-      "재직 기간": "7년 이상",
-      "거주 상태": "자가 거주",
-      "직업": "단순 노무직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 74,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.09321996364656301,
-        "abs_shap": 0.09321996364656301,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "duration",
-        "definition": "Loan duration in months.",
-        "shap_value": -0.04451249589234468,
-        "abs_shap": 0.04451249589234468,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.038142113849171905,
-        "abs_shap": 0.038142113849171905,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n이 사례는 신용 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족과 함께 대출 기간이 길고 계좌 잔액이 부정적인 상태가 위험을 감소시키는 요인으로 작용합니다. 이러한 요소들이 종합적으로 우수한 신용 위험 평가와 일치합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 74.26,
-    "decision_boundary_abs_distance": 0.3025782442521829,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 83,
-    "condition": 1,
-    "distance": "far",
-    "is_correct": true,
-    "customer_data": {
-      "대출 기간": 12,
-      "대출 금액": 1503,
-      "월 상환 부담 수준": 4,
-      "나이": 41,
-      "기존 대출 수": 1,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "연체 이력 있음",
-      "대출 목적": "중고차 구매",
-      "저축 잔액": "거의 없음",
-      "재직 기간": "1~4년",
-      "거주 상태": "임차 거주",
-      "직업": "숙련 기술직",
-      "성별": "남성",
-      "결혼 여부": "o"
-    },
-    "predicted_label": "낮음",
-    "confidence": 73,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.10945216546551416,
-        "abs_shap": 0.10945216546551416,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.04433658683833512,
-        "abs_shap": 0.04433658683833512,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "purpose_used car",
-        "definition": "Loan purpose: purchase of a used car.",
-        "shap_value": -0.041559270085346066,
-        "abs_shap": 0.041559270085346066,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 것으로 평가됩니다. \n계좌 잔액 부족과 표준 예금 계좌 부재는 모델이 채무 불이행 가능성 감소로 해석하는 재정 상황을 나타냅니다. \n또한 중고차 구매를 위한 대출 결정은 위험 인식을 더욱 낮춥니다. \n이러한 요인들이 종합적으로 양호한 신용 위험 평가를 뒷받침하여, 최종적으로 신용 위험이 우수하다는 것을 확인합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 72.69,
-    "decision_boundary_abs_distance": 0.2868503601455388,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 136,
+    "sample_idx": 120,
     "condition": 1,
     "distance": "far",
     "is_correct": true,
     "customer_data": {
       "대출 기간": 24,
-      "대출 금액": 3062,
+      "대출 금액": 6314,
       "월 상환 부담 수준": 4,
-      "나이": 32,
-      "기존 대출 수": 1,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "가구 또는 장비 구매",
-      "저축 잔액": "보통",
-      "재직 기간": "7년 이상",
-      "거주 상태": "임차 거주",
-      "직업": "숙련 기술직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 72,
-    "true_label": "낮음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.11230555431291335,
-        "abs_shap": 0.11230555431291335,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "savings_status_<100",
-        "definition": "Savings account status: savings below 100 DM.",
-        "shap_value": -0.048915178801068535,
-        "abs_shap": 0.048915178801068535,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.045326859273892225,
-        "abs_shap": 0.045326859273892225,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n이 사례는 신용 위험이 낮은 수준으로 평가됩니다. 주요 금융 요인들로는 다음과 같은 것들이 있습니다:\n입출금 계좌 미보유\n저축 잔액이 최소 임계치 미만\n부정적인 계좌 잔액 보유\n이러한 조건들은\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 72.01,
-    "decision_boundary_abs_distance": 0.2801064965578433,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 77,
-    "condition": 1,
-    "distance": "far",
-    "is_correct": false,
-    "customer_data": {
-      "대출 기간": 9,
-      "대출 금액": 1478,
-      "월 상환 부담 수준": 4,
-      "나이": 22,
-      "기존 대출 수": 1,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "전자제품 구매",
-      "저축 잔액": "거의 없음",
-      "재직 기간": "4~7년",
-      "거주 상태": "자가 거주",
-      "직업": "숙련 기술직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 84,
-    "true_label": "높음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.11722565897644824,
-        "abs_shap": 0.11722565897644824,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "duration",
-        "definition": "Loan duration in months.",
-        "shap_value": -0.0699035202478814,
-        "abs_shap": 0.0699035202478814,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.04886000393865014,
-        "abs_shap": 0.04886000393865014,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n출금 계좌 부재와 함께 대출 상환 기간의 연장은 전체 위험을 감소시키는 요인입니다. \n체크 계좌의 부정 잔액은 채무 불이행 가능성을 더욱 낮춥니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 83.79,
-    "decision_boundary_abs_distance": 0.3979054103537385,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 110,
-    "condition": 1,
-    "distance": "far",
-    "is_correct": false,
-    "customer_data": {
-      "대출 기간": 48,
-      "대출 금액": 10127,
-      "월 상환 부담 수준": 2,
-      "나이": 44,
-      "기존 대출 수": 1,
+      "나이": 27,
+      "기존 대출 수": 2,
       "계좌 잔액": "입출금 계좌 없음",
       "신용 이력": "신용 문제 이력 있음",
-      "대출 목적": "신차 구매",
-      "저축 잔액": "보통",
-      "재직 기간": "1~4년",
-      "거주 상태": "무상 거주",
-      "직업": "숙련 기술직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 69,
-    "true_label": "높음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.09928334866999108,
-        "abs_shap": 0.09928334866999108,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "credit_amount",
-        "definition": "Credit amount requested by the applicant.",
-        "shap_value": 0.05842059580593461,
-        "abs_shap": 0.05842059580593461,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "duration",
-        "definition": "Loan duration in months.",
-        "shap_value": 0.04426094168141432,
-        "abs_shap": 0.04426094168141432,
-        "direction": "increase_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 프로파일로 평가됩니다. 이 결론은 주로 세 가지 요인에 의해 주도됩니다.\n첫째, 입출금 계좌가 없는 것은 전체 위험을 감소시킵니다.\n둘째, 요청한 대출 금액이 증가할수록 위험도 상승합니다.\n셋째, 대출 기간의 길이 또한 위험을 증가시킵니다.\n대출 금액과 대출 기간의 상승 요인에도 불구하고, 이러한 요인들의 복합적인 영향은 여전히 긍정적인 신용 평가로 이어집니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 68.96,
-    "decision_boundary_abs_distance": 0.2495604192514215,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 111,
-    "condition": 1,
-    "distance": "far",
-    "is_correct": false,
-    "customer_data": {
-      "대출 기간": 24,
-      "대출 금액": 4591,
-      "월 상환 부담 수준": 2,
-      "나이": 54,
-      "기존 대출 수": 3,
-      "계좌 잔액": "입출금 계좌 없음",
-      "신용 이력": "기존 대출 상환 중",
-      "대출 목적": "사업 자금",
-      "저축 잔액": "충분",
-      "재직 기간": "1~4년",
-      "거주 상태": "자가 거주",
-      "직업": "전문직, 자영업, 관리직",
-      "성별": "남성",
-      "결혼 여부": "x"
-    },
-    "predicted_label": "낮음",
-    "confidence": 68,
-    "true_label": "높음",
-    "local_shap_top3_features": [
-      {
-        "rank": 1,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.07668759555461717,
-        "abs_shap": 0.07668759555461717,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "savings_status_>=1000",
-        "definition": "Savings account status: savings at least 1000 DM.",
-        "shap_value": -0.04095263620016703,
-        "abs_shap": 0.04095263620016703,
-        "direction": "decrease_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "savings_status_<100",
-        "definition": "Savings account status: savings below 100 DM.",
-        "shap_value": -0.03755436562193055,
-        "abs_shap": 0.03755436562193055,
-        "direction": "decrease_risk"
-      }
-    ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n계좌 잔액 부족이 신용 위험을 증가시키는 요인으로 작용하지 않습니다.\n저축 잔액이 최소 1000 이상으로 유지되어 재정적 안정성이 높게 평가됩니다.\n저축 잔액이 100 미만인 경우에도 신용 위험이 크게 증가하지 않는 것으로 나타났습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 68.76,
-    "decision_boundary_abs_distance": 0.2476481522817774,
-    "warning_type": "none"
-  },
-  {
-    "sample_idx": 39,
-    "condition": 1,
-    "distance": "near",
-    "is_correct": false,
-    "customer_data": {
-      "대출 기간": 36,
-      "대출 금액": 15857,
-      "월 상환 부담 수준": 2,
-      "나이": 43,
-      "기존 대출 수": 1,
-      "계좌 잔액": "부족",
-      "신용 이력": "기존 대출 상환 중",
       "대출 목적": "기타",
       "저축 잔액": "거의 없음",
       "재직 기간": "무직",
@@ -2055,148 +1009,714 @@
       "성별": "남성",
       "결혼 여부": "x"
     },
-    "predicted_label": "높음",
-    "confidence": 74,
+    "predicted_label": "낮음",
+    "confidence": 82,
     "true_label": "낮음",
     "local_shap_top3_features": [
       {
-        "rank": 1,
+        "feature": "checking_status_no checking",
+        "value": -0.09
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.05
+      },
+      {
         "feature": "credit_amount",
-        "definition": "Credit amount requested by the applicant.",
-        "shap_value": 0.073169164754525,
-        "abs_shap": 0.073169164754525,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 2,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": 0.05439054684576323,
-        "abs_shap": 0.05439054684576323,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 3,
-        "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.05280801255298899,
-        "abs_shap": 0.05280801255298899,
-        "direction": "increase_risk"
+        "value": 0.03
       }
     ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n이 사례는 신용 위험이 높은 수준으로 평가됩니다. 요청된 대출 금액이 위험 수준을 크게 높이고 있으며, 부정 잔액이 있는 체크 계좌는 채무 불이행 가능성을 더욱 증가시킵니다. 또한 체크 계좌의 완전한 부재는 위험 프로파일을 더욱 높입니다. 이러한 금융 요인들이 결합되어 이 신청자가 나쁜 신용 위험을 나타낸다는 결론을 도출합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 73.61,
-    "decision_boundary_abs_distance": 0.1761240174472385,
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족이 위험을 낮추고, 신용 문제 이력이나 기존 대출 또한 위험을 감소시킵니다. 반면에 요청된 대출 금액이 증가함에 따라 위험은 상승합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 82.28,
+    "decision_boundary_abs_distance": 0.22280107301011864,
     "warning_type": "none"
   },
   {
-    "sample_idx": 183,
+    "sample_idx": 122,
     "condition": 1,
-    "distance": "near",
-    "is_correct": false,
+    "distance": "far",
+    "is_correct": true,
     "customer_data": {
-      "대출 기간": 24,
-      "대출 금액": 3149,
-      "월 상환 부담 수준": 4,
-      "나이": 22,
-      "기존 대출 수": 1,
-      "계좌 잔액": "부족",
-      "신용 이력": "기존 대출 상환 중",
+      "대출 기간": 36,
+      "대출 금액": 7678,
+      "월 상환 부담 수준": 2,
+      "나이": 40,
+      "기존 대출 수": 2,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "연체 이력 있음",
       "대출 목적": "가구 또는 장비 구매",
-      "저축 잔액": "거의 없음",
-      "재직 기간": "1년 미만",
-      "거주 상태": "무상 거주",
+      "저축 잔액": "보통",
+      "재직 기간": "4~7년",
+      "거주 상태": "자가 거주",
       "직업": "숙련 기술직",
-      "성별": "남성",
-      "결혼 여부": "x"
+      "성별": "여성",
+      "결혼 여부": "o"
     },
-    "predicted_label": "높음",
-    "confidence": 71,
+    "predicted_label": "낮음",
+    "confidence": 83,
     "true_label": "낮음",
     "local_shap_top3_features": [
       {
-        "rank": 1,
-        "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": 0.061974576611424095,
-        "abs_shap": 0.061974576611424095,
-        "direction": "increase_risk"
-      },
-      {
-        "rank": 2,
         "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": 0.05215010396324036,
-        "abs_shap": 0.05215010396324036,
-        "direction": "increase_risk"
+        "value": -0.05
       },
       {
-        "rank": 3,
         "feature": "duration",
-        "definition": "Loan duration in months.",
-        "shap_value": 0.027915762115008288,
-        "abs_shap": 0.027915762115008288,
-        "direction": "increase_risk"
+        "value": 0.04
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.03
       }
     ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n주요 요인 세 가지가 이 평가를 주도합니다.\n계좌 잔액 부족은 재정적 어려움을 나타내며 채무 불이행 가능성을 크게 높입니다.\n출금 계좌가 전혀 없는 것은 일반적인 재정 안정성의 층을 제거하여 위험을 더욱 증가시킵니다.\n또한, 대출 기간이 길어질수록 상환 기간이 연장되어 위험 프로필이 높아집니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 71.16,
-    "decision_boundary_abs_distance": 0.1516459758965055,
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 신용 위험을 보여줍니다. \n계좌 잔액 부족이 신용 위험을 낮추는 요인으로 작용하고 있습니다. \n대출 기간의 길이가 증가함에 따라 상환 불확실성이 커져 신용 위험이 상승하는 경향이 있습니다. \n이러한 요소들이 결합되어 채무 불이행 가능성이 낮음을 나타냅니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 82.62,
+    "decision_boundary_abs_distance": 0.22619597519781254,
     "warning_type": "none"
   },
   {
-    "sample_idx": 13,
+    "sample_idx": 124,
     "condition": 1,
-    "distance": "near",
-    "is_correct": false,
+    "distance": "far",
+    "is_correct": true,
     "customer_data": {
-      "대출 기간": 27,
-      "대출 금액": 2570,
-      "월 상환 부담 수준": 3,
-      "나이": 21,
+      "대출 기간": 10,
+      "대출 금액": 1364,
+      "월 상환 부담 수준": 2,
+      "나이": 64,
       "기존 대출 수": 1,
       "계좌 잔액": "입출금 계좌 없음",
       "신용 이력": "기존 대출 상환 중",
       "대출 목적": "신차 구매",
       "저축 잔액": "거의 없음",
       "재직 기간": "1~4년",
-      "거주 상태": "임차 거주",
+      "거주 상태": "자가 거주",
       "직업": "숙련 기술직",
       "성별": "여성",
       "결혼 여부": "o"
     },
     "predicted_label": "낮음",
-    "confidence": 57,
+    "confidence": 92,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.08
+      },
+      {
+        "feature": "duration",
+        "value": -0.05
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮게 평가됩니다. 계좌 잔액 부족의 부재는 안정적인 재정 관리 방식을 시사하며 신용 위험을 감소시킵니다. \n대출 기간이 특정 수준으로 짧아짐으로써 상환 가능성이 안정적인 패턴을 따르게 되어 위험이 줄어듭니다. \n체크 계좌에서의 마이너스 잔액 또한 이 상황에서 위험을 더욱 낮춥니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 92.24,
+    "decision_boundary_abs_distance": 0.32238153171170814,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 127,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": false,
+    "customer_data": {
+      "대출 기간": 18,
+      "대출 금액": 1533,
+      "월 상환 부담 수준": 4,
+      "나이": 43,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1년 미만",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "남성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 83,
     "true_label": "높음",
     "local_shap_top3_features": [
       {
-        "rank": 1,
         "feature": "checking_status_no checking",
-        "definition": "Checking account status: no checking account.",
-        "shap_value": -0.12585601614407854,
-        "abs_shap": 0.12585601614407854,
-        "direction": "decrease_risk"
+        "value": -0.09
       },
       {
-        "rank": 2,
         "feature": "checking_status_<0",
-        "definition": "Checking account status: balance below 0 DM.",
-        "shap_value": -0.04681255653478022,
-        "abs_shap": 0.04681255653478022,
-        "direction": "decrease_risk"
+        "value": -0.04
       },
       {
-        "rank": 3,
-        "feature": "duration",
-        "definition": "Loan duration in months.",
-        "shap_value": 0.03028786022165705,
-        "abs_shap": 0.03028786022165705,
-        "direction": "increase_risk"
+        "feature": "credit_amount",
+        "value": -0.03
       }
     ],
-    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮게 평가됩니다. 계좌 잔액 부족인 \"계좌 잔액 부족\" 상태가 위험을 크게 감소시키고, 부정적인 계좌 잔액 \"계좌 잔액 적음\" 또한 위험을 더욱 줄입니다. 반면에 요청된 대출 기간 \"대출 기간\"은 위험을 약간 증가시키는 요인입니다. 이러한 요소들이 종합적으로 신용 평가를 긍정적으로 이끌어냅니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
-    "class_confidence_relative_percent": 56.45,
-    "decision_boundary_abs_distance": 0.1244842976133225,
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 것으로 평가됩니다. \n계좌 잔액 부족과 함께 입출금 계좌 부재는 재정적 채무 불이행 가능성을 낮추는 요인으로 작용합니다. \n대출 요청 금액이 특정 수준 이하로 제한되어 있어 위험 감소에 기여하고 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 82.7,
+    "decision_boundary_abs_distance": 0.22700345429589974,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 132,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 48,
+      "대출 금액": 6224,
+      "월 상환 부담 수준": 4,
+      "나이": 50,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "연체 이력 있음",
+      "대출 목적": "교육비 목적",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "무상 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 67,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "duration",
+        "value": 0.07
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.05
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n대출 기간이 길어짐에 따라 신용 위험이 증가하고 있습니다.\n입출금 계좌의 부재는 신용 위험을 더욱 높이는 요인입니다.\n반면에 계좌 잔액이 부족한 상태는 위험을 약간 완화시키는 역할을 합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 67.37,
+    "decision_boundary_abs_distance": 0.2737151575655311,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 134,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 30,
+      "대출 금액": 7596,
+      "월 상환 부담 수준": 1,
+      "나이": 63,
+      "기존 대출 수": 2,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "중고차 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "7년 이상",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 92,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.05
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.03
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.\n계좌 잔액 부족 상태가 신용 위험을 감소시키는 요인입니다.\n기존 대출이나 중요한 계좌의 존재 또한 신용 위험을 낮추는 요소입니다.\n계좌에서의 마이너스 잔액 유지 또한 신용 위험을 더욱 감소시키는 역할을 합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 92.22,
+    "decision_boundary_abs_distance": 0.32219111112986387,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 136,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 6,
+      "대출 금액": 250,
+      "월 상환 부담 수준": 2,
+      "나이": 41,
+      "기존 대출 수": 2,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "충분",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 92,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.06
+      },
+      {
+        "feature": "duration",
+        "value": -0.05
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족이 위험을 완화시키는 요인으로 작용하고 있습니다.\n대출 기간이 짧게 설정되어 있어 상환 부담이 줄어들었습니다.\n신용 이력에 중요한 계좌나 기존 대출이 포함되어 있어 채무 불이행 가능성이 감소했습니다.\n이러한 요소들이 결합되어 고객의 재정 상태가 안정적임을 보여주고 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 91.59,
+    "decision_boundary_abs_distance": 0.3158917091188804,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 137,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 6,
+      "대출 금액": 1238,
+      "월 상환 부담 수준": 4,
+      "나이": 36,
+      "기존 대출 수": 1,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "직업 재교육",
+      "저축 잔액": "없음",
+      "재직 기간": "무직",
+      "거주 상태": "자가 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "낮음",
+    "confidence": 89,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.06
+      },
+      {
+        "feature": "duration",
+        "value": -0.05
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 이 긍정적인 전망은 주로 세 가지 주요 요인에 의해 형성되며, 이 요인들이 함께 위험을 감소시킵니다. 입출금 계좌 부재는 신용 위험을 낮추고, 대출 기간 또한 위험 감소에 기여하며, 계좌 잔액이 마이너스 상태를 유지하는 것은 위험을 더욱 줄입니다. 이러한 요인들이 결합되어 신용 위험 프로필이 낮게 나타납니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 89.32,
+    "decision_boundary_abs_distance": 0.2932096068057194,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 140,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 15,
+      "대출 금액": 2788,
+      "월 상환 부담 수준": 2,
+      "나이": 24,
+      "기존 대출 수": 2,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "신용 문제 이력 있음",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "4~7년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 91,
+    "true_label": "낮음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.08
+      },
+      {
+        "feature": "credit_history_critical/other existing credit",
+        "value": -0.04
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. \n계좌 잔액 부족이 없는 것은 독립적인 재무 구조를 시사하며, 이는 상환 불이행 가능성을 감소시킵니다. \n중대한 계좌 관리나 기존 대출 경험은 다양한 금융 의무를 처리하는 능력을 보여주어 위험을 더욱 낮춥니다. \n저축 잔액이 충분하고 현금 흐름 관리가 규율적이라는 점도 위험 프로필을 낮추는 요인입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 90.62,
+    "decision_boundary_abs_distance": 0.3061568849232338,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 147,
+    "condition": 1,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 15,
+      "대출 금액": 1275,
+      "월 상환 부담 수준": 4,
+      "나이": 24,
+      "기존 대출 수": 1,
+      "계좌 잔액": "부족",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "가전제품 구매",
+      "저축 잔액": "없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "임차 거주",
+      "직업": "숙련 기술직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "높음",
+    "confidence": 53,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_<0",
+        "value": 0.08
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      },
+      {
+        "feature": "duration",
+        "value": -0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족과 입출금 계좌 부재는 신용 위험을 크게 증가시키는 주요 요인입니다. \n대출 기간이 길어질수록 위험은 감소하지만, 현재 계좌 상태 문제의 영향이 더 크게 작용하고 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 52.74,
+    "decision_boundary_abs_distance": 0.12741455979673844,
     "warning_type": "weak"
+  },
+  {
+    "sample_idx": 187,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 24,
+      "대출 금액": 11328,
+      "월 상환 부담 수준": 2,
+      "나이": 29,
+      "기존 대출 수": 2,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "기타",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 66,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "credit_amount",
+        "value": 0.12
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05
+      },
+      {
+        "feature": "duration",
+        "value": 0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n대출 금액의 요청이 위험 가능성을 크게 높이는 주요 요인이며, 계좌의 부재는 채무 불이행 가능성을 더욱 증가시킵니다. 또한, 대출 기간의 연장은 전체적인 불확실성을 더합니다. \n이러한 요인들이 결합되어 채무 불이행 위험이 높게 평가됩니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 66.21,
+    "decision_boundary_abs_distance": 0.2621073027155657,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 197,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 36,
+      "대출 금액": 9271,
+      "월 상환 부담 수준": 2,
+      "나이": 24,
+      "기존 대출 수": 1,
+      "계좌 잔액": "부족",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "신차 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "4~7년",
+      "거주 상태": "자가 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 75,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_<0",
+        "value": 0.09
+      },
+      {
+        "feature": "duration",
+        "value": 0.07
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n마이너스 계좌 잔액은 재정적 어려움을 시사하며 채무 불이행 가능성을 높입니다.\n대출 기간이 길어짐에 따라 상환 어려움의 가능성이 확대되어 위험이 증가합니다.\n또한 활성 계좌 부재는 현금 흐름 기록의 부족을 초래하여 재정 안정성을 확인하기 어렵게 만들고 전체 위험 프로파일을 상승시킵니다.\n이러한 요소들이 결합되어 신중한 대출 결정을 요구하며, 모델의 신용 위험 상승 평가를 반영합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 75.23,
+    "decision_boundary_abs_distance": 0.35228662837303837,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 202,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 60,
+      "대출 금액": 6288,
+      "월 상환 부담 수준": 4,
+      "나이": 42,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "교육비 목적",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "무상 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 67,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "duration",
+        "value": 0.08
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.04
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.\n대출 기간이 길어짐으로써 상환 위험이 증가하여 신용 위험이 상승하였습니다.\n출금 계좌 부재 또한 위험 수준을 더욱 높입니다.\n그러나 계좌 잔액 부족이라는 요인으로 인해 전체 위험 수준은 약간 감소하였습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 67.35,
+    "decision_boundary_abs_distance": 0.2735323620994362,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 223,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 48,
+      "대출 금액": 18424,
+      "월 상환 부담 수준": 1,
+      "나이": 32,
+      "기존 대출 수": 1,
+      "계좌 잔액": "적음",
+      "신용 이력": "대출 이력 없음 또는 전액 상환",
+      "대출 목적": "기타",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "높음",
+    "confidence": 76,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "credit_amount",
+        "value": 0.11
+      },
+      {
+        "feature": "duration",
+        "value": 0.06
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.05
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.\n대출 금액과 대출 기간이 신용 위험을 증가시키는 주요 요인입니다.\n계좌의 부재 또한 상환 능력에 대한 불확실성을 높여 신용 위험을 더욱 상승시킵니다.\n전반적으로 채무 불이행 위험이 높아 대출 승인 가능성이 제한적입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 76.04,
+    "decision_boundary_abs_distance": 0.3603809222301385,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 229,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": false,
+    "customer_data": {
+      "대출 기간": 9,
+      "대출 금액": 745,
+      "월 상환 부담 수준": 3,
+      "나이": 28,
+      "기존 대출 수": 1,
+      "계좌 잔액": "충분",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "자가 거주",
+      "직업": "단순 노무직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "낮음",
+    "confidence": 82,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "duration",
+        "value": -0.07
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.04
+      },
+      {
+        "feature": "checking_status_<0",
+        "value": -0.03
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n대출 기간이 짧아 신용 위험을 낮추는 요인으로 작용합니다.\n계좌 잔액 부족은 신용 위험을 증가시키는 요인입니다.\n마이너스 계좌 잔액은 위험을 더욱 감소시키는 것으로 나타납니다.\n이러한 요소들이 결합되어 최종적으로 낮은 신용 위험을 평가하게 됩니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 81.97,
+    "decision_boundary_abs_distance": 0.21972108729544815,
+    "warning_type": "none"
+  },
+  {
+    "sample_idx": 236,
+    "condition": 1,
+    "distance": "near",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 36,
+      "대출 금액": 10974,
+      "월 상환 부담 수준": 4,
+      "나이": 26,
+      "기존 대출 수": 2,
+      "계좌 잔액": "입출금 계좌 없음",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "가구 또는 장비 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "무직",
+      "거주 상태": "자가 거주",
+      "직업": "전문직, 자영업, 관리직",
+      "성별": "여성",
+      "결혼 여부": "o"
+    },
+    "predicted_label": "높음",
+    "confidence": 54,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "credit_amount",
+        "value": 0.1
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": -0.08
+      },
+      {
+        "feature": "duration",
+        "value": 0.05
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 프로필은 신용 위험이 높은 수준으로 평가됩니다. 이 평가는 주로 요청된 대출 금액이 크게 증가시켜 신용 위험을 높이는 요인에 의해 주도됩니다.\n대출 금액의 증가는 금융 노출을 확대시켜 위험을 증폭시킵니다. \n또한, 신청자의 입출금 계좌 부재는 신용 위험을 약간 감소시키는 요인으로 해석되지만, 이는 재정적 안정성 요소로 작용합니다. \n그러나 대출 기간이 길어짐에 따라 상환 불확실성이 증가하여 신용 위험이 더욱 상승합니다. 이러한 요인들의 복합적인 영향으로 인해\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 54.24,
+    "decision_boundary_abs_distance": 0.14239455513783938,
+    "warning_type": "weak"
+  },
+  {
+    "sample_idx": 238,
+    "condition": 1,
+    "distance": "far",
+    "is_correct": true,
+    "customer_data": {
+      "대출 기간": 45,
+      "대출 금액": 1845,
+      "월 상환 부담 수준": 4,
+      "나이": 23,
+      "기존 대출 수": 1,
+      "계좌 잔액": "부족",
+      "신용 이력": "기존 대출 상환 중",
+      "대출 목적": "전자제품 구매",
+      "저축 잔액": "거의 없음",
+      "재직 기간": "1~4년",
+      "거주 상태": "무상 거주",
+      "직업": "숙련 기술직",
+      "성별": "남성",
+      "결혼 여부": "x"
+    },
+    "predicted_label": "높음",
+    "confidence": 76,
+    "true_label": "높음",
+    "local_shap_top3_features": [
+      {
+        "feature": "checking_status_<0",
+        "value": 0.1
+      },
+      {
+        "feature": "duration",
+        "value": 0.08
+      },
+      {
+        "feature": "checking_status_no checking",
+        "value": 0.06
+      }
+    ],
+    "explanation": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족은 현재 재정적 어려움을 시사하며, 이는 채무 불이행 가능성을 높입니다.\n대출 기간이 길어짐으로써 상환 불확실성이 증가하여 상환 위험이 상승합니다.\n체크 계좌 부재는 재정 관리 이력 부족을 의미하여 신용 위험을 더욱 높입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+    "class_confidence_relative_percent": 75.94,
+    "decision_boundary_abs_distance": 0.35939967210535373,
+    "warning_type": "none"
   }
 ]

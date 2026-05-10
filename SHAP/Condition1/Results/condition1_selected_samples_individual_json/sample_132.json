@@ -1,0 +1,43 @@
+{
+  "sample_idx": 132,
+  "condition": 1,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 48,
+    "대출 금액": 6224,
+    "월 상환 부담 수준": 4,
+    "나이": 50,
+    "기존 대출 수": 1,
+    "계좌 잔액": "적음",
+    "신용 이력": "연체 이력 있음",
+    "대출 목적": "교육비 목적",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "7년 이상",
+    "거주 상태": "무상 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "x"
+  },
+  "predicted_label": "높음",
+  "confidence": 67,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "duration",
+      "value": 0.07
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.06
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.05
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\n대출 기간이 길어짐에 따라 신용 위험이 증가하고 있습니다.\n입출금 계좌의 부재는 신용 위험을 더욱 높이는 요인입니다.\n반면에 계좌 잔액이 부족한 상태는 위험을 약간 완화시키는 역할을 합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 67.37,
+  "decision_boundary_abs_distance": 0.2737151575655311,
+  "warning_type": "none"
+}

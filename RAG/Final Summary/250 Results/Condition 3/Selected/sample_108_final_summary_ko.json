@@ -1,0 +1,87 @@
+{
+  "sample_idx": 108,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.8015808209290359,
+  "final_explanation": "Based on the AI model's prediction,\nThe fact that loan duration is longer, because longer loan durations increase the likelihood of credit risk, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [1]\nThe fact that there is no checking account, because no checking account is associated with a lower estimated risk, is known in the literature as a signal that decreases credit risk, but the model instead identifies it as a factor that increases risk. [2]\nThe fact that there is no known savings, because lower savings categories show a positive association with estimated credit risk, is known in the literature as a signal that increases credit risk, but the model instead identifies it as a factor that decreases risk. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.17357689142227173
+        },
+        {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.17685234546661377
+        },
+        {
+          "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.18365824222564697
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.20419210195541382
+        },
+        {
+          "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.23248016834259033
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.23802465200424194
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.24023646116256714
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "savings_status_no known savings",
+      "evidence_sentences": [
+        {
+          "sentence": "Savings are also informative.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.19418561458587646
+        },
+        {
+          "sentence": "2D PDP for the variables status account and duration.",
+          "source": "How much do we see? On the explainability of partial dependence plots for credit risk scoring.pdf",
+          "page": 11,
+          "score": 0.22276771068572998
+        },
+        {
+          "sentence": "PredictorsPresent residence,Number of credits,People liableandTelephoneas well as dummy-encoded categorical groupsPersonal status,Other installment plans,Housing,Prop- erty,JobandSavingswere removed.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.22871673107147217
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n문헌에서 대출 기간이 길수록 신용 위험이 증가한다는 일반적인 인식과 달리, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n입출금 계좌가 없는 경우, 문헌에서 신용 위험 감소 요인으로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n저축 내역이 확인되지 않는 경우, 저축 부족이 신용 위험 증가 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 평가합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

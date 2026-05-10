@@ -1,0 +1,36 @@
+{
+  "sample_idx": 66,
+  "source_shap_json": "/root/AML/SHAP/Test Dataset Local Shap 25/shap_tuples_non_prefix_66.json",
+  "true_label": "BAD CREDIT RISK",
+  "prediction_label": "UNKNOWN",
+  "prediction_probability": "UNKNOWN",
+  "prediction_threshold": "UNKNOWN",
+  "final_explanation": "Based on the AI model's prediction, the applicant is assessed as having a high credit risk. This outcome is primarily driven by the absence of a checking account, which increases the overall risk. However, this effect is partially offset by the lack of a recorded savings account, which the model interprets as decreasing the risk. Additionally, the presence of a critical account or other existing credits further contributes to lowering the risk assessment. Ultimately, these combined factors lead the model to conclude that the credit risk remains high.",
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\n신청자는 높은 신용 위험을 가진 것으로 평가됩니다. \n계좌 잔액 부족이 주요 위험 요인으로 작용하고 있습니다. \n그러나 저축 계좌 기록 부재는 위험을 일부 완화시키는 요인으로 해석됩니다. \n또한, 중요 계정이나 기존 대출의 존재는 위험 평가를 낮추는 데 기여합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "shap_features": [
+    {
+      "rank": 1,
+      "feature": "checking_status_no checking",
+      "definition": "Checking account status: no checking account.",
+      "shap_value": 0.04639713009385008,
+      "abs_shap": 0.04639713009385008,
+      "direction": "increase_risk"
+    },
+    {
+      "rank": 2,
+      "feature": "savings_status_no known savings",
+      "definition": "Savings account status: no known savings account.",
+      "shap_value": -0.04075267093033392,
+      "abs_shap": 0.04075267093033392,
+      "direction": "decrease_risk"
+    },
+    {
+      "rank": 3,
+      "feature": "credit_history_critical/other existing credit",
+      "definition": "Credit history: critical account or other existing credits.",
+      "shap_value": -0.03967939595519506,
+      "abs_shap": 0.03967939595519506,
+      "direction": "decrease_risk"
+    }
+  ]
+}

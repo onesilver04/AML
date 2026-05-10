@@ -1,41 +1,31 @@
 {
   "sample_idx": 145,
-  "condition": 2,
-  "distance": "near",
+  "condition": 3,
+  "distance": "far",
   "is_correct": true,
   "customer_data": {
-    "대출 기간": 12,
-    "대출 금액": 759,
-    "월 상환 부담 수준": 4,
-    "나이": 26,
-    "기존 대출 수": 1,
-    "계좌 잔액": "부족",
+    "대출 기간": 9,
+    "대출 금액": 1449,
+    "월 상환 부담 수준": 3,
+    "나이": 27,
+    "기존 대출 수": 2,
+    "계좌 잔액": "입출금 계좌 없음",
     "신용 이력": "기존 대출 상환 중",
-    "대출 목적": "신차 구매",
+    "대출 목적": "사업 자금",
     "저축 잔액": "거의 없음",
     "재직 기간": "4~7년",
     "거주 상태": "자가 거주",
     "직업": "숙련 기술직",
-    "성별": "남성",
-    "결혼 여부": "x"
+    "성별": "여성",
+    "결혼 여부": "o"
   },
-  "predicted_label": "높음",
-  "confidence": 69,
-  "true_label": "높음",
+  "predicted_label": "낮음",
+  "confidence": 92,
+  "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "savings_status_<100",
-      "value": -0.06,
-      "evidence_sentence": {
-        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
-        "source": "regression-based credit risk modeling.pdf",
-        "page": 30,
-        "score": 0.19620072841644287
-      }
-    },
-    {
       "feature": "checking_status_no checking",
-      "value": 0.05,
+      "value": -0.08,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
         "source": "regression-based credit risk modeling.pdf",
@@ -45,17 +35,27 @@
     },
     {
       "feature": "duration",
-      "value": 0.04,
+      "value": -0.05,
       "evidence_sentence": {
         "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
         "source": "regression-based credit risk modeling.pdf",
         "page": 24,
         "score": 0.1723352074623108
       }
+    },
+    {
+      "feature": "checking_status_<0",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.19620072841644287
+      }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 심각한 유동성 제약을 나타내므로 신용 위험을 증가시키는 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 판단합니다. [1]\n출금 계좌 없음은 보호 요인으로 작용하여 신용 위험을 감소시키는 신호로 알려져 있으나, 본 모델은 이를 위험 증가 요인으로 분류합니다. [2]\n대출 기간이 연장되면 잠재적인 재정 악화의 기간이 늘어나므로 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다. [3]\n전반적으로 이 고객은 채무 불이행 위험이 높습니다.",
-  "class_confidence_relative_percent": 69.25,
-  "decision_boundary_abs_distance": 0.1324508194177749,
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 심각한 유동성 제약이나 이전의 재정적 어려움을 나타내므로 신용 위험을 증가시키는 신호로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다. [1]\n문헌에서 입출금 계좌 없음은 신용 위험을 감소시키는 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 해석합니다. [2]\n대출 기간이 길수록 재정 악화의 가능성이 확대되어 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 위험 감소 요인으로 판단합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 91.55,
+  "decision_boundary_abs_distance": 0.3155046055823203,
   "warning_type": "none"
 }

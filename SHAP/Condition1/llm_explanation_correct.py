@@ -17,16 +17,13 @@ DEFAULT_OLLAMA_URL = os.environ.get("OLLAMA_HOST", "http://localhost:11434")
 SHAP_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = SHAP_DIR.parent
 TRANSLATION_PATH = REPO_ROOT / "RAG" / "Final Summary" / "translation.py"
-DEFAULT_OUTPUT_DIR = SHAP_DIR / "Condition1" / "Results" / "selected_shap_only_explanations_correct_ko"
+DEFAULT_OUTPUT_DIR = SHAP_DIR / "Condition1" / "Results" / "True_Far"
 DEFAULT_SHAP_SEARCH_DIRS = [
-    SHAP_DIR / "Final Local Shap",
+    SHAP_DIR / "Test Dataset Local Shap 25",
 ]
 
 TARGET_SAMPLE_IDS = [
-    10, 45, 81, 83, 100, 123, 126, 136, 142, 146, 169, 176, 177, 187, 189, 194, 197, 
-    47, 63, 178, 14, 16, 120, 124, 144, 172, 179, 182, 32, 160, 153, 117, 61, 42
-]
-
+1, 2, 3, 8, 10, 15, 21, 24, 26, 31, 34, 37, 40, 44, 46, 50, 51, 60, 65, 68, 69, 71, 72, 73, 74, 77, 80, 81, 84, 85, 88, 90, 91, 93, 96, 98, 103, 107, 112, 115, 116, 117, 120, 122, 123, 124, 125, 130, 134, 136, 137, 140, 144, 146, 149, 151, 154, 156, 158, 164, 165, 169, 172, 173, 176, 177, 182, 185, 186, 189, 191, 192, 199, 206, 208, 215, 220, 227, 234, 235, 237, 242, 244, 246, 247, 6, 45, 67, 87, 89, 113, 194, 200, 205, 210, 228]
 # 번역 프롬프트
 def build_shap_only_translation_prompt(text: str, translation_module):
     feature_mapping_text = translation_module.build_feature_mapping_text()

@@ -1,0 +1,111 @@
+{
+  "sample_idx": 57,
+  "prediction_label": "GOOD CREDIT RISK",
+  "prediction_probability": 0.7766437206403927,
+  "final_explanation": "Based on the AI model's prediction,\n계좌가 없는 사실이 신용 위험과 명확한 음의 연관성을 보이기 때문에, 문헌에서는 신용 위험을 낮추는 신호로 알려져 있으며, 모델도 이를 위험을 낮추는 요인으로 식별합니다. [1]\n신청한 대출 금액이 신용 위험과 명확한 양의 연관성을 보이기 때문에, 문헌에서는 신용 위험을 높이는 신호로 알려져 있으며, 모델도 이를 위험을 높이는 요인으로 식별합니다. [2]\n대출 기간이 신용 위험과 통계적으로 유의미한 양의 연관성을 보이기 때문에, 문헌에서는 신용 위험을 높이는 신호로 알려져 있으며, 모델도 이를 위험을 높이는 요인으로 식별합니다. [3]\nOverall, this applicant is likely to have a low risk of default.",
+  "evidence": [
+    {
+      "ref": 1,
+      "feature": "checking_status_no checking",
+      "evidence_sentences": [
+        {
+          "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 30,
+          "score": 0.18163317441940308
+        },
+        {
+          "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2052597999572754
+        },
+        {
+          "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 24,
+          "score": 0.22016656398773193
+        },
+        {
+          "sentence": "However, there are two unique features in credit evaluation analysis.",
+          "source": "The Application of Tree-based model to Unbalanced German Credit Data Analysis.pdf",
+          "page": 3,
+          "score": 0.22498780488967896
+        },
+        {
+          "sentence": "default client from non-defaulted [8] because these parame- ters may enhance the performance of models.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.22997498512268066
+        }
+      ]
+    },
+    {
+      "ref": 2,
+      "feature": "credit_amount",
+      "evidence_sentences": [
+        {
+          "sentence": "financial capacity and credit history, such asDuration,Credit amount,Installment rate, and various levels ofStatusandPurposeas key risk indicators.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.19696295261383057
+        },
+        {
+          "sentence": "Both accuracy and explainability are essential in aligning credit risk decisions with the dynamic demands o f the digital economy.",
+          "source": "Explainable Automated Machine Learning for Credit Decisions.pdf",
+          "page": 7,
+          "score": 0.20271700620651245
+        },
+        {
+          "sentence": "18 the model.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.21229153871536255
+        },
+        {
+          "sentence": "40 versus 10 euro of credit risk adjustment for 100 euro of new defaults) driven by the securitized amount.",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 13,
+          "score": 0.21416312456130981
+        },
+        {
+          "sentence": "NIMi = α + β1 ⋅ IRRi + β2 ⋅ ImpRCST,i + β3 ⋅ Costi + γ/uF8020Xi + εi, (10)",
+          "source": "Interest and credit risk management in German banks.pdf",
+          "page": 25,
+          "score": 0.21732062101364136
+        },
+        {
+          "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 2,
+          "score": 0.21899008750915527
+        },
+        {
+          "sentence": "These ratios reveal their accessibility and regularization capabilities of predic- tion.",
+          "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
+          "page": 3,
+          "score": 0.22028136253356934
+        }
+      ]
+    },
+    {
+      "ref": 3,
+      "feature": "duration",
+      "evidence_sentences": [
+        {
+          "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 24,
+          "score": 0.2072630524635315
+        },
+        {
+          "sentence": "Longer loan durations, larger credit amounts, and higher installment rates are associated with a higher likelihood of being classified as a bad credit risk.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 3,
+          "score": 0.21651023626327515
+        }
+      ]
+    }
+  ],
+  "final_explanation_ko": "본 AI가 예측한 결과에 따르면,\\n계좌가 없는 사실은 신용 위험을 낮추는 요인으로 식별되며, 문헌에서도 이를 신용 위험 감소 신호로 보고하고 있습니다 [1].\n대출 금액이 증가할수록 신용 위험은 상승하는 것으로 나타나, 문헌에서는 이를 위험 증가 요인으로 설명하고 있으며, 본 모델도 동일하게 판단합니다 [2].\n대출 기간이 길어질수록 신용 위험도 함께 증가하는 경향을 보여, 문헌에서는 이를 위험 상승 요인으로 해석하고 있으며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다."
+}

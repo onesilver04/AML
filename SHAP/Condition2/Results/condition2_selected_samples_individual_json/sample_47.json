@@ -1,0 +1,61 @@
+{
+  "sample_idx": 47,
+  "condition": 3,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 18,
+    "대출 금액": 976,
+    "월 상환 부담 수준": 1,
+    "나이": 23,
+    "기존 대출 수": 1,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "신차 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1년 미만",
+    "거주 상태": "자가 거주",
+    "직업": "단순 노무직",
+    "성별": "여성",
+    "결혼 여부": "o"
+  },
+  "predicted_label": "높음",
+  "confidence": 60,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "checking_status_<0",
+      "value": 0.07,
+      "evidence_sentence": {
+        "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.2186102271080017
+      }
+    },
+    {
+      "feature": "checking_status_no checking",
+      "value": 0.06,
+      "evidence_sentence": {
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.19358623027801514
+      }
+    },
+    {
+      "feature": "installment_commitment",
+      "value": -0.04,
+      "evidence_sentence": {
+        "sentence": "Code 2 is used, if code... age age in years (quantitative) other installment plans installment plans from providers other than the credit-giving bank (categorical) 63",
+        "source": "South German Credit Data Classification Using Random Forest Algorithm to Predict Bank Credit Receipts.pdf",
+        "page": 3,
+        "score": 0.21907669305801392
+      }
+    }
+  ],
+  "explanation": "본 AI가 예측한 결과에 따르면,\\n계좌 잔액 부족은 재정적 어려움을 반영하여 신용 위험을 증가시키는 신호로 알려져 있으며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다 [1].\n출금 계좌 부재는 문헌에서는 위험을 낮추는 요인으로 인식되지만, 본 모델은 이를 위험 증가 요인으로 분류합니다 [2].\n월 상환 부담 수준이 높은 것은 소득 대비 상환 부담이 커져 유동성을 제약하기 때문에 신용 위험 증가 신호로 인식되지만, 본 모델은 이를 오히려 위험 감소 요인으로 해석합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "class_confidence_relative_percent": 59.96,
+  "decision_boundary_abs_distance": 0.19956751399302874,
+  "warning_type": "weak"
+}
