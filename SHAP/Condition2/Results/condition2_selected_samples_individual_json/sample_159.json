@@ -1,7 +1,7 @@
 {
   "sample_idx": 159,
-  "condition": 3,
-  "distance": "far",
+  "condition": 2,
+  "distance": "near",
   "is_correct": true,
   "customer_data": {
     "대출 기간": 24,
