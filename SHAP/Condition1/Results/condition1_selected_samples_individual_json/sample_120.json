@@ -24,19 +24,19 @@
   "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": -0.09
     },
     {
-      "feature": "credit_history_critical/other existing credit",
+      "feature": "신용 문제 이력 있음",
       "value": -0.05
     },
     {
-      "feature": "credit_amount",
+      "feature": "대출 금액",
       "value": 0.03
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮은 수준으로 평가됩니다. 계좌 잔액 부족이 위험을 낮추고, 신용 문제 이력이나 기존 대출 또한 위험을 감소시킵니다. 반면에 요청된 대출 금액이 증가함에 따라 위험은 상승합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": "고객의 입출금 계좌 부재는 위험을 낮추고, \n고객의 신용 문제 이력이나 기존 대출 또한 위험을 감소시킵니다. \n고객의 요청된 대출 금액이 증가함에 따라 위험은 상승합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "class_confidence_relative_percent": 82.28,
   "decision_boundary_abs_distance": 0.22280107301011864,
   "warning_type": "none"

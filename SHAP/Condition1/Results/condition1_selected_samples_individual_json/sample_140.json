@@ -24,19 +24,19 @@
   "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": -0.08
     },
     {
-      "feature": "credit_history_critical/other existing credit",
+      "feature": "신용 문제 이력 있음",
       "value": -0.04
     },
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": -0.03
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족이 없는 것은 독립적인 재무 구조를 시사하며, 이는 상환 불이행 가능성을 감소시킵니다. \n중대한 계좌 관리나 기존 대출 경험은 다양한 금융 의무를 처리하는 능력을 보여주어 위험을 더욱 낮춥니다. \n저축 잔액이 충분하고 현금 흐름 관리가 규율적이라는 점도 위험 프로필을 낮추는 요인입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": "고객의 입출금 계좌가 없는 것은 독립적인 재무 구조를 시사하며, 이는 상환 불이행 가능성을 감소시킵니다. \n고객의 중대한 계좌 관리나 기존 대출 경험은 다양한 금융 의무를 처리하는 능력을 보여주어 위험을 더욱 낮춥니다. \n고객의 저축 잔액이 부족하고 현금 흐름 관리가 규율적이라는 점도 위험 프로필을 낮추는 요인입니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "class_confidence_relative_percent": 90.62,
   "decision_boundary_abs_distance": 0.3061568849232338,
   "warning_type": "none"

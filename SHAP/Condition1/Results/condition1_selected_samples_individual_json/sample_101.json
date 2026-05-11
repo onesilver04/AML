@@ -24,19 +24,19 @@
   "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": 0.1
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.06
     },
     {
-      "feature": "credit_history_no credits/all paid",
+      "feature": "대출 이력 없음 또는 전액 상환",
       "value": 0.04
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.\n계좌 잔액 부족은 재정적 어려움을 시사하며 상환 신뢰성을 저하시킵니다.\n출금 계좌 부재는 일관된 현금 흐름과 재정 안정성을 확인하는 능력을 제한합니다.\n이전 대출 이력이 없거나 전액 상환된 대출 기록이 없는 것은 차입 행동을 평가할 수 있는 제한된 이력을 의미하여 불확실성을 증가시킵니다.\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "explanation": "고객의 계좌 잔액 부족은 재정적 어려움을 시사하며 상환 신뢰성을 저하시킵니다.\n고객의 출금 계좌 부재는 일관된 현금 흐름과 재정 안정성을 확인하는 능력을 제한합니다.\n고객의 이전 대출 이력이 없거나 전액 상환된 대출 기록이 없는 것은 차입 행동을 평가할 수 있는 제한된 이력을 의미하여 불확실성을 증가시킵니다.\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
   "class_confidence_relative_percent": 67.32,
   "decision_boundary_abs_distance": 0.2731559017601891,
   "warning_type": "none"

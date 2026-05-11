@@ -24,19 +24,19 @@
   "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": -0.09
     },
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": -0.05
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": 0.05
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n신청자는 채무 불이행 위험이 낮은 수준으로 평가됩니다. 이 긍정적인 전망은 주로 표준 예금 계좌 부재로 인해 위험이 감소하고, 부정적인 계좌 잔액이 위험 프로파일을 더욱 낮추는 요인에 의해 주도됩니다. 그러나 요청된 대출 기간이 약간 길어지면서 상환 기간이 길어짐에 따라 불확실성이 증가하여 위험이 상승하는 경향이 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": "고객의 입출금 계좌 부재로 인해 위험이 감소하고, \n고객의 마이너스 계좌 잔액이 위험 신용도를 더욱 낮추는 요인에 의해 주도됩니다. \n고객의 요청된 대출 기간이 약간 길어지면서 상환 기간이 길어짐에 따라 불확실성이 증가하여 위험이 상승하는 경향이 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "class_confidence_relative_percent": 86.15,
   "decision_boundary_abs_distance": 0.2614788609529316,
   "warning_type": "none"

@@ -24,19 +24,19 @@
   "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": -0.08
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": -0.05
     },
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": -0.04
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객은 채무 불이행 위험이 낮게 평가됩니다. 계좌 잔액 부족의 부재는 안정적인 재정 관리 방식을 시사하며 신용 위험을 감소시킵니다. \n대출 기간이 특정 수준으로 짧아짐으로써 상환 가능성이 안정적인 패턴을 따르게 되어 위험이 줄어듭니다. \n체크 계좌에서의 마이너스 잔액 또한 이 상황에서 위험을 더욱 낮춥니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": "고객의 입출금 계좌 부재는 안정적인 재정 관리 방식을 시사하며 신용 위험을 감소시킵니다. \n고객의 대출 기간이 특정 수준으로 짧아짐으로써 상환 가능성이 안정적인 패턴을 따르게 되어 위험이 줄어듭니다. \n고객의 계좌에서의 마이너스 잔액 또한 이 상황에서 위험을 더욱 낮춥니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "class_confidence_relative_percent": 92.24,
   "decision_boundary_abs_distance": 0.32238153171170814,
   "warning_type": "none"

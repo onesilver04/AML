@@ -24,19 +24,19 @@
   "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.05
     },
     {
-      "feature": "savings_status_no known savings",
+      "feature": "저축 내역 없음",
       "value": -0.04
     },
     {
-      "feature": "credit_history_critical/other existing credit",
+      "feature": "신용 문제 이력 있음",
       "value": -0.04
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족이 주요 위험 요인으로 작용하고 있습니다. \n그러나 저축 계좌 기록 부재는 위험을 일부 완화시키는 요인으로 해석됩니다. \n또한, 중요 계정이나 기존 대출의 존재는 위험 평가를 낮추는 데 기여합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": "고객의 저축 계좌 기록 부재는 위험을 일부 완화시키는 요인으로 해석됩니다. \n고객의 중요 이력이나 기존 대출의 존재는 위험 평가를 낮추는 데 기여합니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "class_confidence_relative_percent": 87.65,
   "decision_boundary_abs_distance": 0.27649399861053914,
   "warning_type": "none"

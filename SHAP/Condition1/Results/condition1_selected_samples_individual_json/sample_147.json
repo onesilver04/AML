@@ -24,19 +24,19 @@
   "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": 0.08
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.06
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": -0.03
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n계좌 잔액 부족과 입출금 계좌 부재는 신용 위험을 크게 증가시키는 주요 요인입니다. \n대출 기간이 길어질수록 위험은 감소하지만, 현재 계좌 상태 문제의 영향이 더 크게 작용하고 있습니다.\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": "고객의 계좌 잔액 부족과 입출금 계좌 부재는 신용 위험을 크게 증가시키는 주요 요인입니다. \n대출 기간이 길어질수록 위험은 감소하지만, 현재 계좌 상태 문제의 영향이 더 크게 작용하고 있습니다.\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
   "class_confidence_relative_percent": 52.74,
   "decision_boundary_abs_distance": 0.12741455979673844,
   "warning_type": "weak"
