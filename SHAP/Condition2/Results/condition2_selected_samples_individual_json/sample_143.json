@@ -5,8 +5,8 @@
   "is_correct": true,
   "customer_data": {
     "대출 기간": 6,
-    "대출 금액": 1299,
-    "월 상환 부담 수준": 1,
+    "대출 금액": "1,299,000",
+    "월 상환 부담 수준": "낮음",
     "나이": 74,
     "기존 대출 수": 3,
     "계좌 잔액": "충분",
@@ -17,14 +17,14 @@
     "거주 상태": "자가 거주",
     "직업": "무직, 단순직 외국인",
     "성별": "남성",
-    "결혼 여부": "x"
+    "결혼 여부": "no"
   },
   "predicted_label": "낮음",
   "confidence": 89,
   "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": -0.08,
       "evidence_sentence": {
         "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
@@ -34,17 +34,17 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.05,
       "evidence_sentence": {
-        "sentence": "T.",
+        "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
         "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
-        "page": 5,
-        "score": 0.21997535228729248
+        "page": 24,
+        "score": 0.22459173202514648
       }
     },
     {
-      "feature": "credit_history_critical/other existing credit",
+      "feature": "신용 문제 이력",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 대출 기간이 길어짐에 따라 상환 기간이 연장되어 채무 불이행 가능성이 증가함에도 불구하고, 본 모델은 이를 신용 위험 감소 요인으로 판단합니다 [1].  \n고객의 입출금 계좌가 없는 상태는 문헌에서는 신용 위험 감소 신호로 인식되지만, 본 모델은 이를 신용 위험 증가 요인으로 해석합니다 [2].  \n고객의 기존 대출 이력에 중대한 문제나 다양한 대출이 존재하는 경우, 대출 규모와 상환 기간이 길어져 채무 불이행 위험이 증가하지만, 본 모델은 이를 신용 위험 감소 요인으로 평가합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": "• 고객의 대출 기간이 짧아짐에 따라 상환 기간이 줄어들게되어 채무 이행 가능성이 증가하며, 본 AI는 이를 신용 위험 감소 요인으로 판단합니다 [1].\n• 고객의 출금 계좌 부재는 금융 추적의 제한으로 인해 신용 위험을 높이는 신호로 알려져 있으며, 본 AI 또한 이를 위험 증가 요인으로 식별합니다 [2].\n• 고객의 기존 대출 이력에 중대한 문제나 다양한 대출이 존재하는 경우, 대출 규모와 상환 기간이 길어져 채무 불이행 위험이 증가하지만, 본 AI는 이를 신용 위험 감소 요인으로 평가합니다 [3].\n\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "class_confidence_relative_percent": 89.14,
   "decision_boundary_abs_distance": 0.29135529626067125,
   "warning_type": "none"

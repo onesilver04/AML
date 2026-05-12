@@ -5,8 +5,8 @@
   "is_correct": true,
   "customer_data": {
     "대출 기간": 60,
-    "대출 금액": 7408,
-    "월 상환 부담 수준": 4,
+    "대출 금액": "7,408,000",
+    "월 상환 부담 수준": "매우 높음",
     "나이": 24,
     "기존 대출 수": 1,
     "계좌 잔액": "적음",
@@ -17,14 +17,14 @@
     "거주 상태": "자가 거주",
     "직업": "전문직, 자영업, 관리직",
     "성별": "여성",
-    "결혼 여부": "o"
+    "결혼 여부": "yes"
   },
   "predicted_label": "높음",
   "confidence": 66,
   "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": 0.06,
       "evidence_sentence": {
         "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.05,
       "evidence_sentence": {
         "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
@@ -44,17 +44,17 @@
       }
     },
     {
-      "feature": "savings_status_<100",
+      "feature": "저축 잔액이 거의 없음",
       "value": -0.04,
       "evidence_sentence": {
-        "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
-        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
-        "page": 2,
-        "score": 0.19818228483200073
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.20898675918579102
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 대출 기간이 길어질수록 상환 능력에 부정적인 영향을 미쳐 신용 위험을 증가시키는 요인으로 판단됩니다. [1]\n고객의 입출금 계좌가 없는 것은 재정적 불안정성을 감소시키는 요인으로 여겨지지만, 본 모델은 이를 신용 위험 증가 요인으로 인식합니다. [2]\n고객의 저축 잔액이 적은 것은 신용 위험 평가에서 중요한 지표로 간주되지만, 본 모델은 이를 신용 위험 증가 요인으로 판단합니다. [3]\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "explanation": "• 고객의 대출 기간이 길어질수록 상환 능력에 부정적인 영향을 미쳐 신용 위험을 증가시키는 요인으로 판단됩니다. [1]\n• 고객의 입출금 계좌가 없는 것은 재정적 불안정성을 감소시키는 요인으로 여겨지지만, 본 AI는 이를 신용 위험 증가 요인으로 인식합니다. [2]\n• 고객의 저축 잔액이 적은 것은 신용 위험 평가에서 중요한 지표로 간주되지만, 본 AI는 이를 신용 위험 증가 요인으로 판단합니다. [3]\n\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
   "class_confidence_relative_percent": 66.14,
   "decision_boundary_abs_distance": 0.2613555436532421,
   "warning_type": "none"

@@ -5,8 +5,8 @@
   "is_correct": true,
   "customer_data": {
     "대출 기간": 36,
-    "대출 금액": 5179,
-    "월 상환 부담 수준": 4,
+    "대출 금액": "5,179,000",
+    "월 상환 부담 수준": "매우 높음",
     "나이": 29,
     "기존 대출 수": 1,
     "계좌 잔액": "부족",
@@ -17,14 +17,14 @@
     "거주 상태": "자가 거주",
     "직업": "숙련 기술직",
     "성별": "남성",
-    "결혼 여부": "x"
+    "결혼 여부": "no"
   },
   "predicted_label": "높음",
   "confidence": 70,
   "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": 0.1,
       "evidence_sentence": {
         "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": 0.06,
       "evidence_sentence": {
         "sentence": "ﬁnancial organizations, loan institutes, and other decision-makers to predict the loan defaulter earlier.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.06,
       "evidence_sentence": {
         "sentence": "Subsequently, the proposed model can anticipate the default prediction of credit cards based on their previous data.",
@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 계좌 잔액 부족은 채무 불이행의 중요한 예측 지표로 알려져 있으며, 본 모델은 이를 신용 위험 증가 요인으로 판단합니다[1].\n고객의 대출 기간이 길어질수록 채무 불이행 위험이 증가한다는 점도 문헌에서 확인되며, 본 모델 역시 이를 위험 증가 요인으로 인식합니다[2].\n고객의 입출금 계좌가 없는 경우 채무 불이행 예측에서 부정적 요인으로 작용한다는 점도 알려져 있으며, 본 모델 또한 이를 위험 증가 요인으로 분류합니다[3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "explanation": "• 고객의 계좌 잔액 부족은 채무 불이행의 중요한 예측 지표로 알려져 있으며, 본 AI는 이를 신용 위험 증가 요인으로 판단합니다 [1].\n• 고객의 대출 기간이 길어질수록 채무 불이행 위험이 증가한다는 점도 문헌에서 확인되며, 본 AI 역시 이를 위험 증가 요인으로 인식합니다 [2]. \n• 입출금 계좌가 없는 경우 채무 불이행 예측에서 부정적 요인으로 작용한다는 점도 알려져 있으며, 본 AI 또한 이를 위험 증가 요인으로 분류합니다[3].\n\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
   "class_confidence_relative_percent": 69.74,
   "decision_boundary_abs_distance": 0.29744988719454246,
   "warning_type": "none"

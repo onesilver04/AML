@@ -5,8 +5,8 @@
   "is_correct": true,
   "customer_data": {
     "대출 기간": 27,
-    "대출 금액": 3915,
-    "월 상환 부담 수준": 4,
+    "대출 금액": "3,915,000",
+    "월 상환 부담 수준": "매우 높음",
     "나이": 36,
     "기존 대출 수": 1,
     "계좌 잔액": "적음",
@@ -17,34 +17,34 @@
     "거주 상태": "자가 거주",
     "직업": "숙련 기술직",
     "성별": "남성",
-    "결혼 여부": "x"
+    "결혼 여부": "no"
   },
   "predicted_label": "높음",
   "confidence": 45,
   "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.06,
-      "evidence_sentence": {
-        "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
-        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
-        "page": 2,
-        "score": 0.2137061357498169
+        "evidence_sentence": {
+          "sentence": "The significant roles of credit-related and financial characteristics,Duration,Credit amount,Checking account status, andCredit historyin the models here align with that evidence. Özdemir (2008) finds that financial variables have a stronger influence on risk classification than demographic variables, which is consistent with the findings of this study.",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 29,
+          "score": 0.2164711356163025
       }
     },
     {
-      "feature": "savings_status_<100",
+      "feature": "저축 잔액이 거의 없음",
       "value": 0.05,
-      "evidence_sentence": {
-        "sentence": "For more information, see https://creativecommons.org/licenses/by/4.0/ 201173",
-        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
-        "page": 2,
-        "score": 0.2137061357498169
+        "evidence_sentence": {
+          "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
+          "source": "regression-based credit risk modeling.pdf",
+          "page": 8,
+          "score": 0.20898675918579102
       }
     },
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 계좌 잔액 부족은 재정적 어려움을 나타내므로 신용 위험 증가 요인으로 인식되며, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n고객의 입출금 계좌 부재는 문헌에서는 안정성을 의미하므로 신용 위험 감소 요인으로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 분류합니다 [2].\n고객의 저축 계좌 미확인은 자산 축적 부족을 의미해 보통 더 큰 취약성을 시사하지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "explanation": "• 고객의 입출금 계좌 부재는 문헌에서는 안정성을 의미하므로 신용 위험 감소 요인으로 여겨지지만, 본 AI는 이를 위험 증가 요인으로 분류합니다 [1].\n• 고객의 저축 잔액이 거의 없는 경우는 채무 불이행 확률을 높이는 것으로 알려져 있으며, 본 AI는 이를 신용 위험 증가 요인으로 분류합니다.[2]\n• 고객의 계좌 잔액이 마이너스인 상태는 재정적 어려움을 나타내어 채무 불이행 가능성이 낮아져 신용 위험 증가 요인으로 해석되지만, 본 AI는 이를 위험 감소 요인으로 식별합니다. [3]\n\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
   "class_confidence_relative_percent": 44.7,
   "decision_boundary_abs_distance": 0.0470097588762739,
   "warning_type": "strong"

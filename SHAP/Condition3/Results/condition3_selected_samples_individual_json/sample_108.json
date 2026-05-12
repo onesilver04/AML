@@ -5,8 +5,8 @@
   "is_correct": true,
   "customer_data": {
     "대출 기간": 9,
-    "대출 금액": 1549,
-    "월 상환 부담 수준": 4,
+    "대출 금액": "1,549,000",
+    "월 상환 부담 수준": "매우 높음",
     "나이": 35,
     "기존 대출 수": 1,
     "계좌 잔액": "적음",
@@ -17,14 +17,14 @@
     "거주 상태": "자가 거주",
     "직업": "무직, 단순직 외국인",
     "성별": "남성",
-    "결혼 여부": "x"
+    "결혼 여부": "no"
   },
   "predicted_label": "낮음",
   "confidence": 80,
   "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": -0.05,
       "evidence_sentence": {
         "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.04,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "savings_status_no known savings",
+      "feature": "저축 내역 없음",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "Savings are also informative.",
@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 문헌에서 대출 기간이 길수록 신용 위험이 증가한다는 일반적인 인식과 달리, 본 모델은 이를 위험 감소 요인으로 판단합니다 [1].\n고객의 입출금 계좌가 없는 경우, 문헌에서 신용 위험 감소 요인으로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 해석합니다 [2].\n고객의 저축 내역이 확인되지 않는 경우, 저축 부족이 신용 위험 증가 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 평가합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": "• 문헌에서 고객의 대출 기간이 길수록 신용 위험이 증가한다는 일반적인 인식과 달리, 본 AI는 이를 위험 감소 요인으로 판단합니다 [1].\n• 고객의 입출금 계좌 부재는 문헌에서 신용 위험 감소 요인으로 여겨지지만, 본 AI는 이를 위험 증가 요인으로 해석합니다 [2].\n• 고객의 저축 내역이 확인되지 않는 경우, 저축 부족이 신용 위험 증가 요인으로 인식되지만, 본 AI는 이를 위험 감소 요인으로 평가합니다 [3].\n\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "class_confidence_relative_percent": 80.16,
   "decision_boundary_abs_distance": 0.20158082092903595,
   "warning_type": "weak"

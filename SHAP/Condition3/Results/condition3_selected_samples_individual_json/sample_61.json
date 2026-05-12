@@ -5,8 +5,8 @@
   "is_correct": false,
   "customer_data": {
     "대출 기간": 12,
-    "대출 금액": 3499,
-    "월 상환 부담 수준": 3,
+    "대출 금액": "3,499,000",
+    "월 상환 부담 수준": "높음",
     "나이": 29,
     "기존 대출 수": 2,
     "계좌 잔액": "부족",
@@ -17,14 +17,14 @@
     "거주 상태": "자가 거주",
     "직업": "숙련 기술직",
     "성별": "여성",
-    "결혼 여부": "o"
+    "결혼 여부": "yes"
   },
   "predicted_label": "낮음",
   "confidence": 75,
   "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "credit_history_critical/other existing credit",
+      "feature": "신용 문제 이력",
       "value": -0.06,
       "evidence_sentence": {
         "sentence": "Although some customers have bad credit history or risky credit experience, which is categorized as critical or delay on attribute credit-history, it is found that it is still possible for them to obtain the credit, as they can be included into the good class.",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": -0.06,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": 0.05,
       "evidence_sentence": {
         "sentence": "Although some customers have bad credit history or risky credit experience, which is categorized as critical or delay on attribute credit-history, it is found that it is still possible for them to obtain the credit, as they can be included into the good class.",
@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 계좌 잔액 부족은 저축 내역 없음으로 인해 채무 불이행 위험이 증가할 수 있으나, 본 모델은 이를 신용 위험 감소 요인으로 판단합니다 [1].\n고객의 입출금 계좌 없음은 일반적으로 채무 불이행 위험을 높이는 신호로 여겨지지만, 본 모델은 이를 신용 위험 증가 요인이 아닌 다른 요인으로 해석합니다 [2].\n고객의 신용 문제 이력이 있더라도 연체 이력이 없는 경우, 신용 위험을 낮추는 요인으로 간주되며, 본 모델 역시 이를 신용 위험 감소 요인으로 평가합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": "• 고객의 신용 문제 이력이 있더라도 연체 이력이 없는 경우, 신용 위험을 낮추는 요인으로 간주되며, 본 AI 역시 이를 신용 위험 감소 요인으로 평가합니다 [1].\n• 고객의 대출 기간이 줄어듦은 채무 이행 가능성 증가와 연관되어 이론적 기대와 일치하며, 본 AI 또한 이를 위험 감소 요인으로 해석합니다 [2].\n• 고객의 계좌 잔액 부족은 채무 불이행 위험이 증가할 수 있으며, 본 AI는 이를 신용 위험 감소 요인으로 판단합니다 [3].\n\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "class_confidence_relative_percent": 74.6,
   "decision_boundary_abs_distance": 0.14603888182569524,
   "warning_type": "weak"

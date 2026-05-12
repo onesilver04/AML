@@ -5,8 +5,8 @@
   "is_correct": false,
   "customer_data": {
     "대출 기간": 36,
-    "대출 금액": 8086,
-    "월 상환 부담 수준": 2,
+    "대출 금액": "8,086,000",
+    "월 상환 부담 수준": "보통",
     "나이": 42,
     "기존 대출 수": 4,
     "계좌 잔액": "적음",
@@ -17,14 +17,14 @@
     "거주 상태": "자가 거주",
     "직업": "전문직, 자영업, 관리직",
     "성별": "남성",
-    "결혼 여부": "x"
+    "결혼 여부": "no"
   },
   "predicted_label": "낮음",
   "confidence": 69,
   "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "savings_status_<100",
+      "feature": "저축 잔액이 거의 없음",
       "value": -0.05,
       "evidence_sentence": {
         "sentence": "The reduced model therefore retains only variables that demonstrate statistical relevance or clear theoretical importance in credit-risk modeling.",
@@ -34,17 +34,17 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
-      "value": 0.04,
+      "feature": "입출금 계좌 없음",
+      "value": 0.05,
       "evidence_sentence": {
-        "sentence": "T.",
-        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
-        "page": 5,
-        "score": 0.22114700078964233
+        "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 30,
+        "score": 0.20032763481140137
       }
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": 0.04,
       "evidence_sentence": {
         "sentence": "OLS also lays a solid foundation for Tikhonov regularization and logistic regression analysis.",
@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 계좌 잔액 부족은 저축이 적어 채무 불이행 가능성이 높다는 연구 결과와 대조적으로, 본 모델은 이를 신용 위험 감소 요인으로 판단합니다 [1].\n고객의 입출금 계좌 없음은 문헌에서 신용 위험을 낮추는 요인으로 인식되지만, 본 모델은 이를 신용 위험 증가 요인으로 해석합니다 [2].\n고객의 대출 기간이 길다는 것은 통상적으로 신용 위험 증가 요인으로 여겨지지만, 본 모델은 이 요인을 신용 위험 감소 요인으로 평가합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": "• 고객의 저축이 적으면 채무 불이행 가능성이 높다는 문헌 내용과는 대조적으로, 본 AI는 이를 신용 위험 감소 요인으로 판단합니다 [1].\n• 고객의 입출금 계좌 없음은 문헌에서 신용 위험을 낮추는 요인으로 인식되지만, 본 AI는 이를 신용 위험 증가 요인으로 해석합니다 [2].\n• 고객의 대출 기간이 길다는 것은 통상적으로 신용 위험 증가 요인으로 여겨지며, 본 AI는 이 요인을 신용 위험 증가 요인으로 평가합니다 [3].\n\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "class_confidence_relative_percent": 68.6,
   "decision_boundary_abs_distance": 0.0859848082647875,
   "warning_type": "strong"

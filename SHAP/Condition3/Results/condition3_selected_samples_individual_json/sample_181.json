@@ -5,8 +5,8 @@
   "is_correct": true,
   "customer_data": {
     "대출 기간": 12,
-    "대출 금액": 674,
-    "월 상환 부담 수준": 4,
+    "대출 금액": "674,000",
+    "월 상환 부담 수준": "매우 높음",
     "나이": 20,
     "기존 대출 수": 1,
     "계좌 잔액": "부족",
@@ -17,14 +17,14 @@
     "거주 상태": "자가 거주",
     "직업": "숙련 기술직",
     "성별": "남성",
-    "결혼 여부": "o"
+    "결혼 여부": "yes"
   },
   "predicted_label": "높음",
   "confidence": 44,
   "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": 0.08,
       "evidence_sentence": {
         "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.06,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": -0.03,
       "evidence_sentence": {
         "sentence": "The analysis relies on ordinary least squares (OLS) regression, which is extended to",
@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 계좌 잔액 부족은 유동성 부족으로 인해 신용 위험을 증가시키는 신호로 알려져 있으며, 본 모델도 이를 위험 증가 요인으로 판단합니다 [1].\n고객의 입출금 계좌 부재는 보호적 지표로 작용할 수 있으나, 본 모델은 이를 위험 증가 요인으로 분류합니다 [2].\n고객의 대출 기간이 연장되면 상환 기간이 길어져 대출자에 대한 불확실성이 증가하여 신용 위험을 높이는 요인으로 인식되지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "explanation": "• 고객의 계좌 잔액 부족은 유동성 부족으로 인해 신용 위험을 증가시키는 신호로 알려져 있으며, 본 AI도 이를 위험 증가 요인으로 판단합니다 [1].\n• 고객의 입출금 계좌 부재는 보호적 지표로 작용할 수 있으나, 본 AI는 이를 위험 증가 요인으로 분류합니다 [2].\n• 고객의 대출 기간이 연장되면 상환 기간이 길어져 대출자에 대한 불확실성이 증가하여 신용 위험을 높이는 요인으로 인식되지만, 본 AI는 이를 위험 감소 요인으로 해석합니다 [3].\n\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
   "class_confidence_relative_percent": 44.31,
   "decision_boundary_abs_distance": 0.043119747644184137,
   "warning_type": "strong"

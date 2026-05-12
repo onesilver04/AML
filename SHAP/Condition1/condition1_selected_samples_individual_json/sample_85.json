@@ -1,0 +1,43 @@
+{
+  "sample_idx": 85,
+  "condition": 1,
+  "distance": "far",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 12,
+    "대출 금액": "776,000",
+    "월 상환 부담 수준": "매우 높음",
+    "나이": 28,
+    "기존 대출 수": 1,
+    "계좌 잔액": "입출금 계좌 없음",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "전자제품 구매",
+    "저축 잔액": "거의 없음",
+    "재직 기간": "1~4년",
+    "거주 상태": "자가 거주",
+    "직업": "숙련 기술직",
+    "성별": "남성",
+    "결혼 여부": "yes"
+  },
+  "predicted_label": "낮음",
+  "confidence": 91,
+  "true_label": "낮음",
+  "local_shap_top3_features": [
+    {
+      "feature": "입출금 계좌 없음",
+      "value": -0.09
+    },
+    {
+      "feature": "계좌 잔액 부족",
+      "value": -0.04
+    },
+    {
+      "feature": "대출 기간",
+      "value": -0.03
+    }
+  ],
+  "explanation": "• 고객의 계좌 잔액 부족과 함께 입출금 계좌 부재가 위험 감소에 기여하고 있습니다.\n• 고객의 대출 기간 또한 전체 위험 프로파일을 낮추는 데 도움이 됩니다.\n\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "class_confidence_relative_percent": 91.09,
+  "decision_boundary_abs_distance": 0.31088434719963753,
+  "warning_type": "none"
+}

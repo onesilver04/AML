@@ -5,8 +5,8 @@
   "is_correct": true,
   "customer_data": {
     "대출 기간": 24,
-    "대출 금액": 3234,
-    "월 상환 부담 수준": 4,
+    "대출 금액": "3,234,000",
+    "월 상환 부담 수준": "매우 높음",
     "나이": 23,
     "기존 대출 수": 1,
     "계좌 잔액": "부족",
@@ -17,14 +17,14 @@
     "거주 상태": "임차 거주",
     "직업": "단순 노무직",
     "성별": "여성",
-    "결혼 여부": "o"
+    "결혼 여부": "yes"
   },
   "predicted_label": "높음",
   "confidence": 73,
   "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": 0.07,
       "evidence_sentence": {
         "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.05,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": 0.05,
       "evidence_sentence": {
         "sentence": "The delinquency rate indicates the percentage of past-due loans within the bor- rower’s entire loan portfolio.",
@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 문헌에서 계좌 잔액 부족은 신용 위험 증가의 신호로 인식되며, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n고객의 출금 계좌 부재는 문헌에서는 위험 감소 요인으로 여겨지지만, 본 모델은 이를 위험 증가 요인으로 분류합니다 [2].\n고객의 대출 기간이 길어질수록 채무 불이행 가능성이 높아지므로, 본 모델은 이를 신용 위험 증가 요인으로 판단합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "explanation": "• 문헌에서 고객의 계좌 잔액 부족은 신용 위험 증가의 신호로 인식되며, 본 AI는 이를 위험 증가 요인으로 판단합니다 [1].\n• 고객의 출금 계좌 부재는 문헌에서는 위험 감소 요인으로 여겨지지만, 본 AI는 이를 위험 증가 요인으로 분류합니다 [2].\n• 고객의 대출 기간이 길어질수록 채무 불이행 가능성이 높아지므로, 본 AI는 이를 신용 위험 증가 요인으로 판단합니다 [3].\n\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
   "class_confidence_relative_percent": 72.56,
   "decision_boundary_abs_distance": 0.32562343102835156,
   "warning_type": "none"

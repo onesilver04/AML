@@ -1,0 +1,43 @@
+{
+  "sample_idx": 147,
+  "condition": 1,
+  "distance": "near",
+  "is_correct": true,
+  "customer_data": {
+    "대출 기간": 15,
+    "대출 금액": "1,275,000",
+    "월 상환 부담 수준": "매우 높음",
+    "나이": 24,
+    "기존 대출 수": 1,
+    "계좌 잔액": "부족",
+    "신용 이력": "기존 대출 상환 중",
+    "대출 목적": "가전제품 구매",
+    "저축 잔액": "없음",
+    "재직 기간": "1~4년",
+    "거주 상태": "임차 거주",
+    "직업": "숙련 기술직",
+    "성별": "여성",
+    "결혼 여부": "yes"
+  },
+  "predicted_label": "높음",
+  "confidence": 53,
+  "true_label": "높음",
+  "local_shap_top3_features": [
+    {
+      "feature": "계좌 잔액 부족",
+      "value": 0.08
+    },
+    {
+      "feature": "입출금 계좌 없음",
+      "value": 0.06
+    },
+    {
+      "feature": "대출 기간",
+      "value": -0.03
+    }
+  ],
+  "explanation": "• 고객의 계좌 잔액 부족과 입출금 계좌 부재는 신용 위험을 크게 증가시키는 주요 요인입니다. \n• 대출 기간이 길어질수록 위험은 감소하지만, 현재 계좌 상태 문제의 영향이 더 크게 작용하고 있습니다.\n\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "class_confidence_relative_percent": 52.74,
+  "decision_boundary_abs_distance": 0.12741455979673844,
+  "warning_type": "weak"
+}

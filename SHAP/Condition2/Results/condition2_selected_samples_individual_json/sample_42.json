@@ -5,8 +5,8 @@
   "is_correct": true,
   "customer_data": {
     "대출 기간": 12,
-    "대출 금액": 2149,
-    "월 상환 부담 수준": 4,
+    "대출 금액": "2,149,000",
+    "월 상환 부담 수준": "매우 높음",
     "나이": 29,
     "기존 대출 수": 1,
     "계좌 잔액": "부족",
@@ -17,24 +17,24 @@
     "거주 상태": "무상 거주",
     "직업": "숙련 기술직",
     "성별": "남성",
-    "결혼 여부": "x"
+    "결혼 여부": "no"
   },
   "predicted_label": "높음",
   "confidence": 51,
   "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": 0.07,
       "evidence_sentence": {
-        "sentence": "T.",
-        "source": "An_Investigation_of_Credit_Card_Default_Prediction_in_the_Imbalanced_Datasets.pdf",
-        "page": 6,
-        "score": 0.20876556634902954
+        "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
+        "source": "regression-based credit risk modeling.pdf",
+        "page": 27,
+        "score": 0.2090166211128235
       }
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": -0.06,
       "evidence_sentence": {
         "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.06,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 계좌 잔액 부족은 채무 불이행 가능성이 높아 신용 위험을 증가시키는 신호로 인식되며, 본 모델은 이를 위험 증가 요인으로 판단합니다. [1]\n고객의 대출 기간이 짧은 것은 채무 불이행 위험이 낮아 신용 위험을 감소시키는 요인으로 알려져 있으며, 본 모델은 이를 위험 감소 요인으로 해석합니다. [2]\n고객의 문헌에서 출금 계좌가 없는 것은 위험이 상대적으로 낮은 것으로 평가되지만, 본 모델은 이를 위험 증가 요인으로 분류합니다. [3]\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "explanation": "• 고객의 계좌 잔액 부족은 채무 불이행 가능성이 높아 신용 위험을 증가시키는 신호로 인식되며, 본 AI는 이를 위험 증가 요인으로 판단합니다. [1]\n• 고객의 대출 기간이 짧은 것은 채무 불이행 위험이 낮아 신용 위험을 감소시키는 요인으로 알려져 있으며, 본 AI는 이를 위험 감소 요인으로 해석합니다. [2]\n• 문헌에서 고객의 출금 계좌가 없는 것은 위험이 상대적으로 낮은 것으로 평가되지만, 본 AI는 이를 위험 증가 요인으로 분류합니다. [3]\n\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
   "class_confidence_relative_percent": 51.18,
   "decision_boundary_abs_distance": 0.1117911353046871,
   "warning_type": "weak"

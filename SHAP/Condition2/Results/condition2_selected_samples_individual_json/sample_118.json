@@ -5,8 +5,8 @@
   "is_correct": true,
   "customer_data": {
     "대출 기간": 6,
-    "대출 금액": 14896,
-    "월 상환 부담 수준": 1,
+    "대출 금액": "14,896,000",
+    "월 상환 부담 수준": "낮음",
     "나이": 68,
     "기존 대출 수": 1,
     "계좌 잔액": "부족",
@@ -17,14 +17,14 @@
     "거주 상태": "자가 거주",
     "직업": "전문직, 자영업, 관리직",
     "성별": "남성",
-    "결혼 여부": "x"
+    "결혼 여부": "no"
   },
   "predicted_label": "높음",
   "confidence": 49,
   "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "credit_amount",
+      "feature": "대출 금액",
       "value": 0.11,
       "evidence_sentence": {
         "sentence": "The main research question was which applicant characteristics are most strongly associated with being classified as a bad credit risk.",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": -0.1,
       "evidence_sentence": {
         "sentence": "Empirical work has exam- ined how demographic characteristics, such as age and marital status, and loan terms, such as loan size and interest rate, affect the borrower’s ability to repay on time (Özdemir, 2008).",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": 0.05,
       "evidence_sentence": {
         "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 대출 금액이 크고 금융 및 신용 관련 변수들이 주요 결정 요인으로 작용함으로써 신용 위험이 증가하는 신호로 인식되며, 본 모델 또한 이를 위험 증가 요인으로 판단합니다[1].\n고객의 대출 기간이 길어 상환 기간이 연장되고 채무 불이행 가능성이 증가함에도 불구하고, 본 모델은 이를 오히려 위험 감소 요인으로 해석합니다[2].\n고객의 계좌 잔액이 부족하여 유동성 제약으로 인해 상환 능력이 약화되어 채무 불이행 위험이 증가하는 요인으로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 판단합니다[3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "explanation": "• 고객의 대출 금액이 크고 금융 및 신용 관련 변수들이 주요 결정 요인으로 작용함으로써 신용 위험이 증가하는 신호로 인식되며, 본 AI 또한 이를 위험 증가 요인으로 판단합니다 [1].\n• 고객의 대출 기간이 짧아 상환 기간이 줄어들고 채무 불이행 가능성이 줄어들어, 본 AI는 이를 위험 감소 요인으로 해석합니다 [2].\n• 고객의 계좌 잔액이 부족하여 유동성 제약으로 인해 상환 능력이 약화되어 채무 불이행 위험이 증가하는 요인으로 인식되며, 본 AI 역시 이를 위험 증가 요인으로 판단합니다[3].\n\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
   "class_confidence_relative_percent": 49.34,
   "decision_boundary_abs_distance": 0.09340603796753083,
   "warning_type": "weak"

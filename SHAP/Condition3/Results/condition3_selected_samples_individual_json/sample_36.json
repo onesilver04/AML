@@ -5,26 +5,26 @@
   "is_correct": true,
   "customer_data": {
     "대출 기간": 12,
-    "대출 금액": 1860,
-    "월 상환 부담 수준": 4,
+    "대출 금액": "1,860,000",
+    "월 상환 부담 수준": "매우 높음",
     "나이": 34,
     "기존 대출 수": 2,
     "계좌 잔액": "적음",
     "신용 이력": "신용 문제 이력 있음",
     "대출 목적": "중고차 구매",
     "저축 잔액": "거의 없음",
-    "재직 기간": "무직",
+    "재직 기간": "0년",
     "거주 상태": "자가 거주",
     "직업": "전문직, 자영업, 관리직",
     "성별": "남성",
-    "결혼 여부": "x"
+    "결혼 여부": "no"
   },
   "predicted_label": "낮음",
   "confidence": 72,
   "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.06,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "Credit risk assessment is the most basic and critical part of credit loan management.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "checking_status_0<=X<200",
+      "feature": "계좌 잔액 적음",
       "value": 0.04,
       "evidence_sentence": {
         "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche Mark) as the reference category.",
@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 계좌 잔액 부족은 금융 프로필의 명확한 차이를 나타내므로 신용 위험 감소 신호로 알려져 있지만, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n고객의 대출 기간이 길어짐은 채무 불이행 가능성 증가와 연관되어 이론적 기대와 일치하지만, 본 모델은 이를 오히려 위험 감소 요인으로 해석합니다 [2].\n고객의 문헌에서 계좌 잔액이 0에서 200 DM 사이인 경우는 채무 불이행 확률에 큰 영향을 미쳐 신용 위험 증가 신호로 인식되며, 본 모델 역시 이를 위험 증가 요인으로 분류합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": "• 고객의 입출금 계좌 부재는 금융 프로필의 명확한 차이를 나타내므로 신용 위험 감소 신호로 알려져 있지만, 본 AI는 이를 위험 증가 요인으로 판단합니다 [1].\n• 고객의 대출 기간이 길어짐은 채무 불이행 가능성 증가와 연관되어 이론적 기대와 일치하지만, 본 AI는 이를 오히려 위험 감소 요인으로 해석합니다 [2].\n• 문헌에서 고객의 계좌 잔액이 0에서 20만 원(200 DM) 사이인 경우는 채무 불이행 확률에 큰 영향을 미쳐 신용 위험 증가 신호로 인식되며, 본 AI 역시 이를 위험 증가 요인으로 분류합니다 [3].\n\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "class_confidence_relative_percent": 72.25,
   "decision_boundary_abs_distance": 0.12253953374574755,
   "warning_type": "weak"

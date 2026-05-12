@@ -5,8 +5,8 @@
   "is_correct": false,
   "customer_data": {
     "대출 기간": 12,
-    "대출 금액": 1484,
-    "월 상환 부담 수준": 2,
+    "대출 금액": "1,484,000",
+    "월 상환 부담 수준": "보통",
     "나이": 25,
     "기존 대출 수": 1,
     "계좌 잔액": "적음",
@@ -17,14 +17,14 @@
     "거주 상태": "자가 거주",
     "직업": "숙련 기술직",
     "성별": "남성",
-    "결혼 여부": "o"
+    "결혼 여부": "yes"
   },
   "predicted_label": "낮음",
   "confidence": 84,
   "true_label": "높음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.05,
       "evidence_sentence": {
         "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": -0.03,
       "evidence_sentence": {
         "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "savings_status_no known savings",
+      "feature": "저축 내역 없음",
       "value": -0.03,
       "evidence_sentence": {
         "sentence": "The no checking account category has lower estimated log-odds compared to the baseline, with an odds ratio ofe −0.898 ≈0.41.",
@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 입출금 계좌가 없는 경우는 신용 위험을 낮추는 요인으로 문헌에서 인식되나, 본 모델은 이를 위험 증가 요인으로 판단합니다 [1].\n고객의 저축 잔액이 거의 없는 경우는, 저축 잔액이 적을수록 신용 위험이 상승하므로 문헌에서는 위험 증가 신호로 보지만, 본 모델은 이를 위험 감소 요인으로 해석합니다 [2].\n고객의 계좌 잔액이 마이너스인 경우, 마이너스 잔액은 신용 위험을 증가시키는 요인으로 문헌에서 인식되지만, 본 모델은 이를 위험 감소 요인으로 판단합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": "• 고객의 입출금 계좌가 없는 경우는 신용 위험을 낮추는 요인으로 문헌에서 인식되나, 본 AI는 이를 위험 증가 요인으로 판단합니다 [1].\n• 고객의 계좌 잔액이 마이너스인 경우, 마이너스 잔액은 신용 위험을 증가시키는 요인으로 문헌에서 인식되지만, 본 AI는 이를 위험 감소 요인으로 판단합니다 [2].\n• 고객의 저축 내역 없음은 표준 신용 위험 모델이 주로 재무 비율, 소득 계정, 재무제표 데이터를 기반으로 하기 때문에, 신용 위험을 낮추는 신호로 인식되며, 본 모델 또한 이를 위험 감소 요인으로 분류합니다. [3].\n\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "class_confidence_relative_percent": 83.57,
   "decision_boundary_abs_distance": 0.2356529280346641,
   "warning_type": "none"

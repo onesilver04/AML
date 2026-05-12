@@ -5,26 +5,26 @@
   "is_correct": true,
   "customer_data": {
     "대출 기간": 18,
-    "대출 금액": 3590,
-    "월 상환 부담 수준": 3,
+    "대출 금액": "3,590,000",
+    "월 상환 부담 수준": "높음",
     "나이": 40,
     "기존 대출 수": 3,
     "계좌 잔액": "적음",
     "신용 이력": "신용 문제 이력 있음",
     "대출 목적": "사업 자금",
     "저축 잔액": "거의 없음",
-    "재직 기간": "무직",
+    "재직 기간": "0년",
     "거주 상태": "자가 거주",
     "직업": "무직, 단순직 외국인",
     "성별": "남성",
-    "결혼 여부": "o"
+    "결혼 여부": "yes"
   },
   "predicted_label": "낮음",
   "confidence": 62,
   "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.06,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "credit_history_critical/other existing credit",
+      "feature": "신용 문제 이력",
       "value": -0.04,
       "evidence_sentence": {
         "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "checking_status_0<=X<200",
+      "feature": "계좌 잔액 적음",
       "value": 0.04,
       "evidence_sentence": {
         "sentence": "The checking accountStatusvariable uses applicants with more than 200 DM (Deutsche Mark) as the reference category.",
@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 문헌에서 계좌 잔액 부족은 채무 불이행 가능성을 낮추는 신호로 알려져 있지만, 본 모델은 이를 신용 위험 증가 요인으로 판단합니다 [1].\n고객의 신용 이력에 문제가 있거나 기존 대출이 채무 불이행 확률 증가 요인으로 인식되지만, 본 모델은 이를 신용 위험 감소 요인으로 해석합니다 [2].\n고객의 계좌 잔액이 0에서 200 DM 사이일 경우, 낮은 잔액이 신용 위험 증가 요인으로 작용하며, 본 모델 역시 이를 위험 증가 요인으로 식별합니다 [3].\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": "• 문헌에서 고객의 입출금 계좌 부재는 채무 불이행 가능성을 낮추는 신호로 알려져 있지만, 본 AI는 이를 신용 위험 증가 요인으로 판단합니다 [1].\n• 고객의 신용 이력에 문제가 있거나 기존 대출이 채무 불이행 확률 증가 요인으로 인식되지만, 본 AI는 이를 신용 위험 감소 요인으로 해석합니다 [2].\n• 고객의 계좌 잔액이 0에서 20만 원(200 DM) 사이일 경우, 낮은 잔액이 신용 위험 증가 요인으로 작용하며, 본 AI 역시 이를 위험 증가 요인으로 식별합니다 [3].\n\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "class_confidence_relative_percent": 61.91,
   "decision_boundary_abs_distance": 0.019149931727178604,
   "warning_type": "strong"

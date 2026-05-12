@@ -5,26 +5,26 @@
   "is_correct": true,
   "customer_data": {
     "대출 기간": 12,
-    "대출 금액": 7472,
-    "월 상환 부담 수준": 1,
+    "대출 금액": "7,472,000",
+    "월 상환 부담 수준": "낮음",
     "나이": 24,
     "기존 대출 수": 1,
     "계좌 잔액": "적음",
     "신용 이력": "기존 대출 상환 중",
     "대출 목적": "신차 구매",
     "저축 잔액": "없음",
-    "재직 기간": "무직",
+    "재직 기간": "0년",
     "거주 상태": "임차 거주",
     "직업": "무직, 단순직 외국인",
     "성별": "여성",
-    "결혼 여부": "o"
+    "결혼 여부": "yes"
   },
   "predicted_label": "낮음",
   "confidence": 63,
   "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "savings_status_no known savings",
+      "feature": "저축 내역 없음",
       "value": -0.05,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.04,
       "evidence_sentence": {
         "sentence": "while the category of no checking account is associated with a lower estimated risk in this dataset.",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "savings_status_<100",
+      "feature": "저축 잔액이 거의 없음",
       "value": -0.03,
       "evidence_sentence": {
         "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 문헌에서 계좌 잔액 부족은 입출금 계좌 부재로 인해 채무 불이행 위험이 감소하는 신호로 인식되며, 본 모델은 이를 신용 위험 감소 요인으로 판단합니다. [1]\n고객의 기존 대출이 존재하는 경우는 금융 지표로서 채무 불이행 가능성을 향상시키는 요인으로 알려져 있으나, 본 모델은 이를 신용 위험 감소 요인으로 해석합니다. [2]\n고객의 계좌 잔액이 마이너스인 경우는 잔액이 마이너스인 것이 채무 불이행 확률을 높이는 것으로 알려져 있으나, 본 모델은 이를 신용 위험 감소 요인으로 분류합니다. [3]\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
+  "explanation": "• 문헌에서 고객의 저축 내역 부재는 입출금 계좌 부재로 인해 채무 불이행 위험이 감소하는 신호로 인식되며, 본 AI는 이를 신용 위험 감소 요인으로 판단합니다. [1]\n• 고객의 입출금 계좌 부재는 금융 지표로서 채무 불이행 가능성을 향상시키는 요인으로 알려져 있으며, 본 AI는 이를 신용 위험 증가 요인으로 해석합니다. [2]\n• 고객의 저축 잔액이 거의 없는 경우는 채무 불이행 확률을 높이는 것으로 알려져 있으나, 본 AI는 이를 신용 위험 감소 요인으로 분류합니다. [3]\n\n전반적으로 신용 위험이 낮은 수준으로 평가되어 대출 승인 가능성이 높습니다.",
   "class_confidence_relative_percent": 62.82,
   "decision_boundary_abs_distance": 0.02818938527201864,
   "warning_type": "strong"

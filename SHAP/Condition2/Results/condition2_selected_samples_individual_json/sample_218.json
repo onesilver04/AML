@@ -5,8 +5,8 @@
   "is_correct": false,
   "customer_data": {
     "대출 기간": 24,
-    "대출 금액": 2924,
-    "월 상환 부담 수준": 3,
+    "대출 금액": "2,924,000",
+    "월 상환 부담 수준": "높음",
     "나이": 63,
     "기존 대출 수": 1,
     "계좌 잔액": "부족",
@@ -17,14 +17,14 @@
     "거주 상태": "자가 거주",
     "직업": "숙련 기술직",
     "성별": "남성",
-    "결혼 여부": "x"
+    "결혼 여부": "no"
   },
   "predicted_label": "높음",
   "confidence": 61,
   "true_label": "낮음",
   "local_shap_top3_features": [
     {
-      "feature": "checking_status_<0",
+      "feature": "계좌 잔액 부족",
       "value": 0.11,
       "evidence_sentence": {
         "sentence": "Applicants with a checking account balance below 0 DM (Deutsche Mark) exhibit a substantially higher estimated risk relative to the reference group, while the category of no checking account is associated with a lower estimated risk in this",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "feature": "checking_status_no checking",
+      "feature": "입출금 계좌 없음",
       "value": 0.07,
       "evidence_sentence": {
         "sentence": "This low-productivity, signiﬁcant expense conjectures cannot meet consumer ﬁnance enterprise’s credit",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "feature": "duration",
+      "feature": "대출 기간",
       "value": 0.05,
       "evidence_sentence": {
         "sentence": "These findings confirm that the reduced model serves as an effective descriptive benchmark.",
@@ -54,7 +54,7 @@
       }
     }
   ],
-  "explanation": "본 AI가 예측한 결과에 따르면,\n고객의 계좌 잔액 부족은 유동성 위험을 증가시켜 신용 위험을 높이는 요인으로 판단됩니다 [1].\n고객의 입출금 계좌 없음은 문헌에서 신용 위험을 낮추는 요인이지만, 본 모델은 이를 위험 증가 요인으로 분류합니다 [2].\n고객의 대출 기간이 길수록 미래의 불확실성이 커져 신용 위험이 증가하며, 본 모델 역시 이를 위험 증가 요인으로 인식합니다 [3].\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
+  "explanation": "• 고객의 계좌 잔액 부족은 유동성 위험을 증가시켜 신용 위험을 높이는 요인으로 판단됩니다 [1].\n• 고객의 입출금 계좌 없음은 문헌에서 신용 위험을 낮추는 요인이지만, 본 AI는 이를 위험 증가 요인으로 분류합니다 [2].\n• 고객의 대출 기간이 길수록 미래의 불확실성이 커져 신용 위험이 증가하며, 본 AI 역시 이를 위험 증가 요인으로 인식합니다 [3].\n\n전반적으로 신용 위험이 높은 수준으로 평가되어 대출 승인 가능성이 낮습니다.",
   "class_confidence_relative_percent": 61.28,
   "decision_boundary_abs_distance": 0.2128266514735596,
   "warning_type": "none"
